@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>sources/55f1486ae390.txt | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>sources/55f1486ae390.txt</h1>
+<div class="meta"><span>1529 BYTES</span><span>30 LINES</span><span>TXT</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/sources/55f1486ae390.txt">RAW</a></div>
+</header>
+<main>
+
+<pre>name: &#x27;Configure GitHub Pages&#x27;
+description: &#x27;A GitHub Action to enable Pages, extract various metadata about a site, and configure some supported static site generators.&#x27;
+author: &#x27;GitHub&#x27;
+runs:
+  using: &#x27;node24&#x27;
+  main: &#x27;dist/index.js&#x27;
+inputs:
+  static_site_generator:
+    description: &#x27;Optional static site generator to attempt to configure: &quot;nuxt&quot;, &quot;next&quot;, &quot;gatsby&quot;, or &quot;sveltekit&quot;&#x27;
+    required: false
+  generator_config_file:
+    description: &#x27;Optional file path to static site generator configuration file&#x27;
+    required: false
+  token:
+    description: &#x27;GitHub token&#x27;
+    default: ${{ github.token }}
+    required: true
+  enablement:
+    description: &#x27;Try to enable Pages for the repository if it is not already enabled. This option requires a token other than `GITHUB_TOKEN` to be provided. In the context of a Personal Access Token, the `repo` scope or Pages write permission is required. In the context of a GitHub App, the `administration:write` and `pages:write` permissions are required.&#x27;
+    default: &#x27;false&#x27;
+    required: false
+outputs:
+  base_url:
+    description: &#x27;GitHub Pages site full base URL. Examples: &quot;https://octocat.github.io/my-repo&quot;, &quot;https://octocat.github.io&quot;, &quot;https://www.example.com&quot;&#x27;
+  origin:
+    description: &#x27;GitHub Pages site origin. Examples: &quot;https://octocat.github.io&quot;, &quot;https://www.example.com&quot;&#x27;
+  host:
+    description: &#x27;GitHub Pages site host. Examples: &quot;octocat.github.io&quot;, &quot;www.example.com&quot;&#x27;
+  base_path:
+    description: &#x27;GitHub Pages site full base path. Examples: &quot;/my-repo&quot; or &quot;&quot;&#x27;
+</pre>
+</main>
+<footer>Cleetus MANUAL / COVERAGE BUILD / PUBLISHED TO Jayzee/Cleetus DOCS WIKI</footer>
+</body>
+</html>

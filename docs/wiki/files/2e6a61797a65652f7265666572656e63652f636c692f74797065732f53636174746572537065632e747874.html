@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>.jayzee/reference/cli/types/ScatterSpec.txt | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>.jayzee/reference/cli/types/ScatterSpec.txt</h1>
+<div class="meta"><span>479 BYTES</span><span>20 LINES</span><span>TXT</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/.jayzee/reference/cli/types/ScatterSpec.txt">RAW</a></div>
+</header>
+<main>
+
+<pre>ScatterSpec = {
+  bounds: ScatterBounds
+  sampling?: ScatterSampling
+  count?: number
+  maxDistance?: number
+  seed: number
+  templates: ScatterTemplate[]
+  variation?: {
+    scale?: [number, number]
+    yaw?: [number, number]
+  }
+  surface?: &quot;terrain&quot; | { y: number } | { mesh: string | string[] }
+  filter?: {
+    maxSlope?: number
+    minSlope?: number
+    materials?: string[]
+    avoidStructures?: boolean
+  }
+  instanceOverrides?: Record&lt;string, ScatterInstanceOverride&gt;
+}
+</pre>
+</main>
+<footer>Cleetus MANUAL / COVERAGE BUILD / PUBLISHED TO Jayzee/Cleetus DOCS WIKI</footer>
+</body>
+</html>

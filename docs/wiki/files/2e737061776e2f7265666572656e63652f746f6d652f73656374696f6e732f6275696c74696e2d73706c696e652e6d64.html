@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>.jayzee/reference/tome/sections/builtin-spline.md | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>.jayzee/reference/tome/sections/builtin-spline.md</h1>
+<div class="meta"><span>530 BYTES</span><span>9 LINES</span><span>TEXT</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/.jayzee/reference/tome/sections/builtin-spline.md">RAW</a></div>
+</header>
+<main>
+
+<pre>## builtin/spline
+
+splineLength returns meters, or 0 for a non-spline id. at is 0 to 1 by default; space: distance uses meters. Assign object.spline = { id, at } to place an object on a spline.
+
+```ts
+splineLength(ctx, id: string): number
+sampleSpline(ctx, id: string, at: number, opts?: { space?: &quot;normalized&quot; | &quot;distance&quot;, tangentAxis?: &quot;x&quot; | &quot;z&quot; }): { position, tangent, normal, lateral, rotation, distance, progress } | null
+projectToSpline(ctx, id: string, point: Vec3 | [x, y, z] | objectId, opts?): SplineSample | null
+```
+</pre>
+</main>
+<footer>Cleetus MANUAL / 5a30f94 / REBUILT ON EVERY PUSH TO MAIN</footer>
+</body>
+</html>

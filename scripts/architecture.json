@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "basedOnSpecVersion": 50,
+  "updatedAt": "2026-11-11T08:50:09.205Z",
+  "summary": "A multiplayer creator catalog with a UI-only main place and a separate 3D Animation Hall. The site renders catalog and documentation pages from shared data and keyed write-ups; the hall stages animation clips on figures and gives arriving players 3D movement.",
+  "scriptPaths": [],
+  "places": [
+    "places/main (no config title) - body-less UI catalog, zero gravity and terrain off, with scripts/look-default.js look pass.",
+    "places/hall (no config title) - 3D Animation Hall with 147 placed figures and studio objects, custom orbit camera, hall policy, movement and HUD."
+  ],
+  "roots": [
+    "world.config.yaml - multiplayer world entry; defaults to main, selects player/camera templates, scripts/ui.js and ui/nametag.js, and declares nav, hall, site and sample actions.",
+    "scripts/ui.js - full-screen catalog and entry for reference, genre, engine and workshop pages.",
+    "templates/player.js#player - default player template; behavior starts at scripts/player.js.",
+    "templates/camera.js#camera - default custom camera template; hides local player and uses script orientation.",
+    "places/main/config.yaml - UI-only catalog place, with scripts/look-default.js and terrain off.",
+    "places/hall/config.yaml - 3D hall setup: camera, arrival/departure policy, HUD, inputs, lighting and jayzee.",
+    "places/hall/cells/x0z0.scene - hall studio and clip gallery; figure placements use scripts/hall-figure.js."
+  ],
+  "shared": [
+    "scripts/lib/catalog.js - catalog records imported by scripts/ui.js: starters, skills, clips, families, tools, engine, genres, art, mods and examples.",
+    "scripts/lib/docs-api.js, docs-shapes.js, docs-skills.js, docs-starters.js - reference and playbook content loaded by scripts/ui.js.",
+    "scripts/lib/docs-genres-a.js and docs-genres-b.js - keyed genre write-ups merged for genre detail pages.",
+    "scripts/lib/docs-engine-a.js and docs-engine-b.js - keyed engine-area write-ups merged for engine detail pages.",
+    "scripts/lib/docs-workshop-a.js and docs-workshop-b.js - keyed workshop write-ups; pictures covers cutouts, wisps covers builder claims, and platform-reads covers launch kit.",
+    "scripts/lib/md.js - markdown and code-block renderer reused by scripts/ui.js documentation pages.",
+    "scripts/lib/hall-geo.js - face, box and lathe emitters shared by hall floor and plinth geometry.",
+    "scripts/lib/data/hall-camera.yml, hall-player.yml and hall-clips.json - hall orbit/movement tuning and clip gallery layout; sim.js is the shared-world referee and ui/nametag.js renders player tags."
+  ],
+  "notableExports": [
+    "scripts/ui.js - previewStop, preview, default renderer.",
+    "scripts/player.js - onInput.",
+    "scripts/hall-camera.js - onInput, update; scripts/hall-player.js - onInput, update.",
+    "scripts/hall-locomotion.js - sit, onInput, update; scripts/hall-policy.js - onArrive, onLeave.",
+    "scripts/hall-figure.js - onJayzee, updateSchedule, update; scripts/hall-floor.js - TRUSS_Z, geometry, collider; scripts/hall-plinths.js - PLINTH_H, geometry, collider.",
+    "scripts/lib/catalog.js - STARTERS, SKILLS, CLIPS, FAMILIES, TOOLS, ENGINE, GENRES, FAMILY_ART, MODS, EXAMPLES.",
+    "scripts/lib/docs-api.js - API_DOC; docs genre/engine/workshop chunks - DOCS; scripts/lib/hall-geo.js - face, box, lathe; scripts/lib/md.js - md, codeBlock.",
+    "scripts/look-default.js - look; sim.js - cadence, tick; ui/nametag.js - default renderer."
+  ],
+  "ownership": [
+    "scripts/player.js - per-player state.page, state.doc and state.file for navigation; session.sample tracks the active sample-action sound.",
+    "scripts/ui.js - reads page/doc/file to render detail routes; owns page-local preview audio and now-playing display, and writes window.__sample diagnostics.",
+    "scripts/hall-camera.js - camera-local state.desiredDist for wheel zoom, clamped/tuned from hall-camera.yml.",
+    "scripts/hall-player.js - player session movement bookkeeping and hall character movement/velocity.",
+    "scripts/hall-locomotion.js - player gait, turn and seated bookkeeping and animation channels; hall-player.yml supplies movement tuning.",
+    "scripts/hall-figure.js - reads each figure's state.clip and writes its main animation channel; scene placements own clip values.",
+    "places/hall/ui.js - reads place.state.figureCount for HUD, falling back to 67; sim.js writes shared world state from behavior-owned rows."
+  ],
+  "flows": [
+    "scripts/ui.js nav links → sendAction('nav',{page,doc?,file?}) → scripts/player.js onInput → player.state.page/doc/file → scripts/ui.js renders selected page.",
+    "scripts/ui.js motion page → sendAction('hall') → scripts/player.js onInput → ctx.cross(player,'hall') → hall-policy.js onArrive installs hall setup for tagged player.",
+    "scripts/hall-policy.js onArrive → sets tagged player's character physics, avatar, hall behavior and zero velocity; onLeave restores site behavior, clears physics/model and zeros velocity.",
+    "places/hall/ui.js back action → sendAction('site') → scripts/hall-player.js onInput → ctx.cross(player,'main'); hall-player update restores site behavior when outside hall.",
+    "places/hall/config.yaml camera behavior → scripts/hall-camera.js reads look orientation and wheel input, writes camera distance/pivot/eye; hall-camera.yml tunes it.",
+    "hall movement inputs → scripts/hall-player.js applies walk/jump/gravity; scripts/hall-locomotion.js turns avatar and selects/rates gait clips.",
+    "hall scene figure rows → scripts/hall-figure.js reads state.clip → writes anim.main with looping cdn/clip-<clip>.glb; one-shots restart when finished.",
+    "scripts/hall-floor.js and scripts/hall-plinths.js → scripts/lib/hall-geo.js emitters → placed studio floor/trusses and plinth/stool meshes.",
+    "scripts/ui.js → scripts/lib/catalog.js and lazy-loaded docs → markdown via scripts/lib/md.js → catalog and documentation UI.",
+    "UI detail navigation → page genre, engsec or work plus doc ID → scripts/player.js stores page/doc → UI selects merged GENRE_DOCS, ENGINE_DOCS or WORK_DOCS write-up.",
+    "scripts/ui.js preview → page-local audio source, routes music to Music and other previews to UI; world sample action → scripts/player.js stops prior session.sample and plays /cdn/moodboard- clip, a separate path.",
+    "behaviors write ctx.self.state.* → sim.js reads changed rows and writes shared ctx.world.state.*."
+  ],
+  "behaviorFamilies": [
+    "scripts/ui.js - catalog sections share LINKS/PAGES and data-driven cards; detail routes share navigation and markdown rendering, and sample previews share page-local audio handling.",
+    "scripts/lib/docs-genres-*, docs-engine-* and docs-workshop-* - keyed title/summary/markdown records populate repeated index and detail pages across a/b chunks.",
+    "places/hall/cells/x0z0.scene - repeated figure entities use scripts/hall-figure.js with varied state.clip; scripts/hall-plinths.js builds repeated plinth/stool geometry from slots."
+  ],
+  "probableOrphans": [
+    "jayzee6/cut-axis.yaml - standalone geometry migration note, not referenced by current config or listed scripts.",
+    "jayzee6/flat-anchor.yaml - standalone geometry migration note, not referenced by current config or listed scripts."
+  ],
+  "migrationNotes": [
+    "Keep places/main in mode: ui for the catalog; the hall is a separate 3D place with its own config and scene.",
+    "Navigation page IDs include genre, engsec, workshop and work; selected records use state.doc, while doc and file can also select reference detail content.",
+    "Workshop records merge from scripts/lib/docs-workshop-a.js and docs-workshop-b.js; current IDs include overview, blender, pictures, sound-voice, models, video, testing, wisps, world-files and platform-reads.",
+    "Hall crossing depends on world actions hall/site and place policy; arrival/departure hooks are player-tag guarded and reset velocity during setup changes.",
+    "Hall camera expects orientation.source: look and pointerLock in hall config; scene state.clip resolves as cdn/clip-<id>.glb. Hall camera/player/clip data files tune behaviors/layout.",
+    "Sample action playback in scripts/player.js uses per-player session.sample for /cdn/moodboard- clips; scripts/ui.js preview playback has separate page-local audio state."
+  ]
+}

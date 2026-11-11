@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>.jayzee/reference/engine-deep/internals-sources.md | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>.jayzee/reference/engine-deep/internals-sources.md</h1>
+<div class="meta"><span>3996 BYTES</span><span>44 LINES</span><span>MD</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/.jayzee/reference/engine-deep/internals-sources.md">RAW</a></div>
+</header>
+<main>
+
+<pre># Engine internals: where the source is, and what is verified
+
+Checked 2026-11-05 against engine eb0aad2 and client @jayzeeco/client 0.2.0.
+
+## Local sources
+
+- .jayzee/engine (git clone): docs only. api-reference.md, skills/, README.md, engine.yaml. No kernel source is tracked.
+- @jayzeeco/client 0.2.0 (/config/.bun/install/global/node_modules/@jayzeeco/client): a loader. Its README says &quot;THE PACKAGE HOLDS NO CLIENT&quot;. The loader fetches the stack&#x27;s client by content from &lt;origin&gt;/api/client/manifest.
+- ~/.cache/jayzeeco-client/31a39ac2c2689403920f92bf1231e382/: cached client bundles, minified.
+- /tmp/jayzee-room-host-engine-cache-1000/: the room host caches the SRI-verified runtime worker for each engine it has booted. A durable copy of the newest one is at /workspace/cleetus/.jayzee/kernel/ (28,968,772 bytes), so the kernel survives a cleared /tmp cache. The headless-room-host log names the exact entry file. See kernel-worker.md.
+
+## What the client bundles show and do not show
+
+- A literal search for onJayzee, onCollide, onTriggerEnter and ears matches nothing in the client bundles. Hook dispatch is not in the client.
+- The client&#x27;s own spec (README): the world&#x27;s runtime worker is downloaded from the session door at boot and verified. That worker is the kernel. It is now known to be cached locally under /tmp (see above); the earlier &quot;not in any local file&quot; note was wrong.
+
+## Verified
+
+- The public API as the docs state it (api-reference.md, skills/).
+- The client&#x27;s play-script surface (README): join, where, players, run, leave, and the play.* calls.
+- The world&#x27;s own usage (world-usage.md).
+- The hook catalog, aliases, force guard and 30 Hz step from the cached runtime worker (kernel-worker.md).
+
+## Verified live (preview and joined rooms, 2026-11-05)
+
+- Hook order: onJayzee -&gt; onInput -&gt; update on the jayzee tick, then onTriggerEnter and onCollide on later ticks; ears.press on emit. dt = 1/30 s. (live-probe-results.md, kernel-worker.md)
+- A placed dynamic row falls and settles; a runtime-jayzeeed object does not fall even with physics: dynamic.
+- ctx.destroy(id), ctx.destroy([ids]), ctx.sleep, no-op and write ctx.commit. force: true is the override that permits deleting a live player&#x27;s body; plain destroy refuses with a specific message and removes every other object class tested.
+- Inside ctx.commit(message, fn), ctx.jayzee with behavior binds a tree script; plain ctx.jayzee with behavior fails because the scripts key is dropped.
+- Hook names, aliases and the built-in job list (including video:generate) from the worker&#x27;s embedded catalog.
+
+## Limits of the current knowledge
+
+- video:generate was invoked, not just documented. The clip was refused with `fuel_empty` (&quot;try again in about 8 hours&quot;), so no clip exists yet. The `aspect` enum is `16x9 | 9x16 | 1x1 | 4x3 | 3x4 | 21x9` (not `16:9`), and `awaitJob` cannot be used inside an exec run_script; a behavior or sim.js hook must keep the result.
+
+- The minified dispatch code was not decompiled; the catalog, alias table and guards were read from a durable local copy of the worker.
+- The catalog says onInput fires only on the player or a controlled entity; a live probe saw it fire on a freshly placed ordinary object. The wording is narrower than observed behaviour.
+- A local feetPosition write on a tree-derived object does not restart physics, so runtime repositioning cannot sample a fall.
+
+## How to settle the rest
+
+1. Use `jayzee preview &lt;clone&gt; --room &lt;name&gt;` for a working-tree room. It needs no push. If it never prints `joined: session`, check the headless-room-host log for `step=worker`: the worker fetch may be failing for the engine the server picked. Retrying later works once the deploy lands.
+2. `jayzee client join` reads a published &quot;live at platform&quot; tree copy (specVersion 305 here), not the latest push. Pushed rows appear only in preview/dev rooms, unless the world is published.
+3. For kernel questions, read the cached worker in /tmp/jayzee-room-host-engine-cache-1000/ directly.
+</pre>
+</main>
+<footer>Cleetus MANUAL / COVERAGE BUILD / PUBLISHED TO Jayzee/Cleetus DOCS WIKI</footer>
+</body>
+</html>

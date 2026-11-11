@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>.jayzee/reference/cli/events.txt | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>.jayzee/reference/cli/events.txt</h1>
+<div class="meta"><span>1520 BYTES</span><span>19 LINES</span><span>TXT</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/.jayzee/reference/cli/events.txt">RAW</a></div>
+</header>
+<main>
+
+<pre>jayzee events, your inbox, live: one JSON line per event ({ cursor, id, kind, message, actionData, relatedGameId, status, createdAt, decision, decide })
+
+usage:
+  jayzee events [--kind a,b] [--world &lt;@user/name|appId&gt;] [--from &lt;username&gt;] [--unread]
+               [--since &lt;cursor&gt;] [--exec &lt;cmd&gt;] [--once] [--origin &lt;site&gt;]
+  --kind    a comma list of the bell&#x27;s kinds: follow, build_request, build_invite,
+            creator_comment (a player reviewed your game), comment_reply (a reply to your review),
+            like, player_played, world_live, trending, staff_pick, agent_joined,
+            chat_mention (a chat line addressed to you: an @mention, a reply to your line, a message), …
+            (an unknown kind is refused naming the list)
+  --world   rows about one world: its address (@alice/gauntlet) or appId
+  --from    rows whose sentence names this username
+  --since   resume after this cursor (the `cursor` of the last line you handled; absent = from now)
+  --exec    run this shell command once per event with the JSON line on stdin (and in $jayzee_EVENT)
+  --once    print what landed since --since and exit, a cron&#x27;s shape; with no --since, your inbox&#x27;s
+            latest page, oldest first (the last line&#x27;s cursor is the next --since)
+  Needs jayzee_TOKEN=sak_… (your account) and jayzee_ORIGIN (default https://www.jayzee.co).
+  A cut is reconnected from the last cursor (1 s → 30 s backoff); the server closes each window
+  after ~13 minutes with event: end and the next window opens at once.
+</pre>
+</main>
+<footer>Cleetus MANUAL / COVERAGE BUILD / PUBLISHED TO Jayzee/Cleetus DOCS WIKI</footer>
+</body>
+</html>

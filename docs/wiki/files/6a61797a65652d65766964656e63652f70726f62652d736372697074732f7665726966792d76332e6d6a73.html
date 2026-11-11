@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>jayzee-evidence/probe-scripts/verify-v3.mjs | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>jayzee-evidence/probe-scripts/verify-v3.mjs</h1>
+<div class="meta"><span>5832 BYTES</span><span>136 LINES</span><span>MJS</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/jayzee-evidence/probe-scripts/verify-v3.mjs">RAW</a></div>
+</header>
+<main>
+
+<pre>import { readFileSync, readdirSync, appendFileSync, existsSync, mkdirSync } from &#x27;node:fs&#x27;;
+import { createHash } from &#x27;node:crypto&#x27;;
+import { gunzipSync } from &#x27;node:zlib&#x27;;
+
+const EPHEMERAL_PROVENANCE_ROOT = &#x27;/tmp/jayzee-probe&#x27;;
+const root = EPHEMERAL_PROVENANCE_ROOT;
+const outDir = root + &#x27;/v3&#x27;;
+const resPath = outDir + &#x27;/results.jsonl&#x27;;
+const RAW_TARGET = &#x27;0016de866e01dbc82afb3448900e69185a5d9e73531379f0f29afdfa5cd9a132&#x27;;
+const DEC_TARGET = &#x27;13abafd82723caeb078177b84ab6e1f7e8d03057bd32d8b9442655cae55f9314&#x27;;
+const EXPECTED = 2580;
+mkdirSync(outDir, { recursive: true });
+
+const sha = (b) =&gt; createHash(&#x27;sha256&#x27;).update(b).digest(&#x27;hex&#x27;);
+const isGzip = (b) =&gt; b.length &gt;= 3 &amp;&amp; b[0] === 0x1f &amp;&amp; b[1] === 0x8b &amp;&amp; b[2] === 0x08;
+
+function census(buf) {
+  const n0 = buf.readUInt32BE(0);
+  const sheetText = buf.subarray(4, 4 + n0).toString(&#x27;utf8&#x27;);
+  const hashes = JSON.parse(sheetText).hashes;
+  const c = {
+    bytes: buf.length, sheetHashes: hashes.length, frames: 0, gzipFrames: 0, gzipDecodedMatch: 0,
+    gzipFail: 0, rawMatch: 0, rawFail: 0, eof: false, hitRaw: sheetText.includes(RAW_TARGET), hitDec: sheetText.includes(DEC_TARGET),
+  };
+  let pos = 4 + n0, i = 0, trunc = false;
+  while (pos &lt; buf.length) {
+    if (pos + 4 &gt; buf.length) { trunc = true; break; }
+    const n = buf.readUInt32BE(pos);
+    if (pos + 4 + n &gt; buf.length) { trunc = true; break; }
+    const body = buf.subarray(pos + 4, pos + 4 + n);
+    const expected = hashes[i];
+    c.frames++;
+    if (isGzip(body)) {
+      c.gzipFrames++;
+      let ok = false;
+      try { ok = sha(gunzipSync(body)) === expected; } catch { ok = false; }
+      if (ok) c.gzipDecodedMatch++; else c.gzipFail++;
+    } else if (sha(body) === expected) c.rawMatch++;
+    else c.rawFail++;
+    pos += 4 + n;
+    i++;
+  }
+  c.eof = !trunc &amp;&amp; pos === buf.length;
+  c.framesEqualHashes = c.frames === hashes.length;
+  return c;
+}
+
+const selfBuf = readFileSync(root + &#x27;/wide-all/d048.bin&#x27;);
+const self = census(selfBuf);
+const selfOk = self.gzipFrames === 1 &amp;&amp; self.gzipDecodedMatch === 1 &amp;&amp; self.rawMatch === 2 &amp;&amp; self.rawFail === 0 &amp;&amp; self.gzipFail === 0 &amp;&amp; self.eof &amp;&amp; self.framesEqualHashes;
+console.log(&#x27;SELFTEST &#x27; + (selfOk ? &#x27;PASS&#x27; : &#x27;FAIL&#x27;) + &#x27; &#x27; + JSON.stringify(self));
+if (!selfOk) process.exit(1);
+
+const manifests = new Map();
+for (const f of readdirSync(root).filter((x) =&gt; /^cdn-scan-\d+\.jsonl$/.test(x))) {
+  for (const line of readFileSync(root + &#x27;/&#x27; + f, &#x27;utf8&#x27;).split(&#x27;\n&#x27;)) {
+    if (!line.trim()) continue;
+    let o;
+    try { o = JSON.parse(line); } catch { continue; }
+    if (/^[0-9a-f]{64}$/.test(o.manifest || &#x27;&#x27;)) manifests.set(o.manifest, o.uuid);
+  }
+}
+const wideText = readFileSync(root + &#x27;/wide-all/results.jsonl&#x27;, &#x27;utf8&#x27;);
+const missing = [...manifests.keys()].filter((m) =&gt; !wideText.includes(m));
+console.log(&#x27;SET manifests=&#x27; + manifests.size + &#x27; missingFromWideAll=&#x27; + missing.length);
+if (manifests.size !== EXPECTED || missing.length) process.exit(1);
+
+const done = new Set();
+if (existsSync(resPath)) {
+  for (const l of readFileSync(resPath, &#x27;utf8&#x27;).split(&#x27;\n&#x27;)) {
+    if (!l.trim()) continue;
+    try { done.add(JSON.parse(l).m); } catch {}
+  }
+}
+const todo = [...manifests.keys()].sort().filter((m) =&gt; !done.has(m));
+console.log(&#x27;RESUME done=&#x27; + done.size + &#x27; todo=&#x27; + todo.length);
+
+async function fetchManifest(m) {
+  const url = &#x27;https://play.jayzee.co/world-store/manifests/&#x27; + m;
+  let last = { status: &#x27;error&#x27;, error: &#x27;none&#x27; };
+  for (let a = 1; a &lt;= 3; a++) {
+    try {
+      const res = await fetch(url, { signal: AbortSignal.timeout(30000) });
+      if (res.status !== 200) { last = { status: res.status, attempt: a }; continue; }
+      return { status: 200, attempt: a, buf: Buffer.from(await res.arrayBuffer()) };
+    } catch (e) {
+      last = { status: &#x27;error&#x27;, attempt: a, error: String(e.cause?.code || e.name).slice(0, 40) };
+    }
+  }
+  return last;
+}
+
+let next = 0, completed = 0;
+const started = Date.now();
+async function worker() {
+  while (next &lt; todo.length) {
+    const m = todo[next++];
+    const f = await fetchManifest(m);
+    let row;
+    if (f.status === 200) {
+      try { row = { m, status: 200, attempt: f.attempt, ...census(f.buf) }; }
+      catch (e) { row = { m, status: 200, attempt: f.attempt, censusError: String(e.message).slice(0, 80) }; }
+    } else row = { m, ...f };
+    appendFileSync(resPath, JSON.stringify(row) + &#x27;\n&#x27;);
+    completed++;
+    if (completed % 20 === 0 || completed === todo.length) {
+      console.log(&#x27;progress completed=&#x27; + completed + &#x27;/&#x27; + todo.length + &#x27; elapsedS=&#x27; + Math.round((Date.now() - started) / 1000) + &#x27; at &#x27; + new Date().toISOString());
+    }
+  }
+}
+await Promise.all(Array.from({ length: 12 }, worker));
+
+const rows = readFileSync(resPath, &#x27;utf8&#x27;).split(&#x27;\n&#x27;).filter((l) =&gt; l.trim()).map((l) =&gt; JSON.parse(l));
+const uniq = new Map();
+for (const r of rows) uniq.set(r.m, r);
+const all = [...uniq.values()];
+const sum = (k) =&gt; all.reduce((s, r) =&gt; s + (r[k] || 0), 0);
+const count = (fn) =&gt; all.filter(fn).length;
+const summary = {
+  manifests: all.length,
+  status200: count((r) =&gt; r.status === 200 &amp;&amp; !r.censusError),
+  nonOk: all.filter((r) =&gt; r.status !== 200 || r.censusError).map((r) =&gt; ({ m: r.m, status: r.status, censusError: r.censusError })),
+  frames: sum(&#x27;frames&#x27;),
+  gzipFrames: sum(&#x27;gzipFrames&#x27;),
+  gzipDecodedMatch: sum(&#x27;gzipDecodedMatch&#x27;),
+  gzipFail: sum(&#x27;gzipFail&#x27;),
+  rawMatch: sum(&#x27;rawMatch&#x27;),
+  rawFail: sum(&#x27;rawFail&#x27;),
+  manifestsEof: count((r) =&gt; r.eof),
+  manifestsFramesEqualHashes: count((r) =&gt; r.framesEqualHashes),
+  manifestsWithGzip: count((r) =&gt; r.gzipFrames &gt; 0),
+  hitRawManifests: all.filter((r) =&gt; r.hitRaw).map((r) =&gt; r.m),
+  hitDecManifests: all.filter((r) =&gt; r.hitDec).map((r) =&gt; r.m),
+};
+console.log(&#x27;SUMMARY &#x27; + JSON.stringify(summary));
+console.log(&#x27;DONE scan completed rows=&#x27; + all.length + &#x27; expected=&#x27; + EXPECTED);
+</pre>
+</main>
+<footer>Cleetus MANUAL / COVERAGE BUILD / PUBLISHED TO Jayzee/Cleetus DOCS WIKI</footer>
+</body>
+</html>

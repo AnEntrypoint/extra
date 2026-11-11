@@ -1,0 +1,12 @@
+jayzee mod <verb> — the mods of a world you build in, as cleetus's mod verbs run there
+
+  jayzee mod install <name>[@<version>]     install a published mod into the world's mods/<name>/ (bare = the latest)
+  jayzee mod update [<name>] [--version <x.y.z>] [--changelog <text>]
+                                           release the next version of a mod you made, from its folder here
+  jayzee mod list                           the mods installed here, and whether a newer version exists
+  jayzee mod status [<name>]                what an update of the folder would release
+
+  --world <@user/name|worldId>             the world; default: the clone this shell stands in
+  --origin <site>                          the jayzee site; default: the clone's own
+
+Publishing a mod is cleetus's turn: ask her in your world's chat.

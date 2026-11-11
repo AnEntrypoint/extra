@@ -1,0 +1,1166 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>scripts/check-featureset.mjs | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>scripts/check-featureset.mjs</h1>
+<div class="meta"><span>120689 BYTES</span><span>1145 LINES</span><span>TEXT</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/scripts/check-featureset.mjs">RAW</a></div>
+</header>
+<main>
+
+<pre>import { existsSync, readFileSync, readdirSync, statSync } from &quot;node:fs&quot;
+import { execFileSync } from &quot;node:child_process&quot;
+import { dirname, join, resolve } from &quot;node:path&quot;
+import { fileURLToPath } from &quot;node:url&quot;
+
+const cleetus = resolve(dirname(fileURLToPath(import.meta.url)), &quot;..&quot;)
+const docs = join(cleetus, &quot;docs&quot;)
+const reference = join(cleetus, &quot;.jayzee&quot;, &quot;reference&quot;)
+const jayzee = &quot;/workspace/jayzee&quot;
+const files = [&quot;FEATURESET.md&quot;, &quot;Jayzee-GAPS.md&quot;, &quot;OPEN-ITEMS.md&quot;]
+const texts = Object.fromEntries(files.map((f) =&gt; [f, readFileSync(join(docs, f), &quot;utf8&quot;)]))
+const errors = []
+const counts = {}
+let claimsChecked = 0
+
+const registerStatuses = new Set([&quot;OPEN&quot;, &quot;RESOLVED&quot;, &quot;INFERRED&quot;, &quot;UNVERIFIED&quot;, &quot;BEHAVIOUR&quot;, &quot;DIFFERENT-DATASET&quot;, &quot;HELD-OWNER&quot;])
+const gapStatuses = new Set([&quot;built&quot;, &quot;partial&quot;, &quot;open&quot;])
+const gapTags = new Set([&quot;required-in-jayzee&quot;, &quot;none (built)&quot;])
+const countStatusPrefixes = [&quot;REPRODUCED&quot;, &quot;UNVERIFIED&quot;, &quot;MATCHES RELAY&quot;]
+const jayzeePathPattern = /([A-Za-z0-9_./-]+\.(?:js|mjs|json|md|tsv|bin|ts))\s*\(jayzee[^)]*\)/g
+const splitCells = (line) =&gt; line.split(/(?&lt;!\\)\|/).slice(1, -1).map((cell) =&gt; cell.trim())
+const walk = (dir) =&gt; readdirSync(dir, { withFileTypes: true }).flatMap((e) =&gt; (e.isDirectory() ? walk(join(dir, e.name)) : [join(dir, e.name)]))
+const rowOf = (file, prefix) =&gt; {
+  const found = texts[file].split(&quot;\n&quot;).filter((l) =&gt; l.startsWith(prefix))
+  if (found.length !== 1) {
+    errors.push(`${file}: expected one row starting &quot;${prefix}&quot;, found ${found.length}`)
+    return &quot;&quot;
+  }
+  return found[0]
+}
+const claim = (file, text, description) =&gt; {
+  claimsChecked++
+  if (!texts[file].includes(text)) errors.push(`${file}: claim does not match its fixture: ${description}`)
+}
+
+const workspacePaths = new Set()
+for (const [file, text] of Object.entries(texts)) {
+  for (const match of text.matchAll(/\/workspace\/[A-Za-z0-9_./*-]+/g)) {
+    workspacePaths.add(JSON.stringify([file, match[0].replace(/[.,;:)\]]+$/, &quot;&quot;)]))
+  }
+}
+counts.workspacePaths = workspacePaths.size
+for (const entry of workspacePaths) {
+  const [file, path] = JSON.parse(entry)
+  if (path.includes(&quot;*&quot;)) {
+    const base = path.slice(0, path.indexOf(&quot;*&quot;))
+    const dir = base.slice(0, base.lastIndexOf(&quot;/&quot;) + 1)
+    const name = path.slice(dir.length)
+    const pattern = new RegExp(&quot;^&quot; + name.replace(/[.+?^${}()|[\]\\*]/g, (c) =&gt; (c === &quot;*&quot; ? &quot;.*&quot; : &quot;\\&quot; + c)) + &quot;$&quot;)
+    if (!existsSync(dir) || !readdirSync(dir).some((entryName) =&gt; pattern.test(entryName))) {
+      errors.push(`${file}: wildcard path matches nothing: ${path}`)
+    }
+  } else if (!existsSync(path)) {
+    errors.push(`${file}: missing cited path: ${path}`)
+  }
+}
+
+let tmpRefs = 0
+for (const [file, text] of Object.entries(texts)) {
+  for (const line of text.split(&quot;\n&quot;)) {
+    if (!line.includes(&quot;/tmp/&quot;)) continue
+    tmpRefs++
+    if (/^\s*(?:-\s*)?(?:Source paths|Sources|Source)\b/i.test(line)) {
+      errors.push(`${file}: /tmp path in a source position: ${line.slice(0, 120)}`)
+    } else if (!/ephemeral|provenance/i.test(line)) {
+      errors.push(`${file}: /tmp path without an ephemeral or provenance label: ${line.slice(0, 120)}`)
+    }
+  }
+}
+counts.tmpReferences = tmpRefs
+
+let statusTokens = 0
+for (const line of texts[&quot;OPEN-ITEMS.md&quot;].split(&quot;\n&quot;)) {
+  if (!line.startsWith(&quot;Status: &quot;)) continue
+  statusTokens++
+  const value = line.slice(&quot;Status: &quot;.length).trim()
+  if (!registerStatuses.has(value)) errors.push(`OPEN-ITEMS.md: status outside the allowed set: ${value}`)
+}
+counts.registerStatusTokens = statusTokens
+
+const pinMatch = texts[&quot;Jayzee-GAPS.md&quot;].match(/`([0-9a-f]{7,40})`/)
+const pin = pinMatch ? pinMatch[1] : null
+if (!pin) errors.push(&quot;Jayzee-GAPS.md: no jayzee commit pin found in the header&quot;)
+
+const jayzeeTree = pin ? new Set(execFileSync(&quot;git&quot;, [&quot;-C&quot;, jayzee, &quot;ls-tree&quot;, &quot;-r&quot;, &quot;--name-only&quot;, pin], { encoding: &quot;utf8&quot; }).split(&quot;\n&quot;)) : new Set()
+const parityText = pin ? execFileSync(&quot;git&quot;, [&quot;-C&quot;, jayzee, &quot;show&quot;, `${pin}:docs/PARITY.md`], { encoding: &quot;utf8&quot; }) : &quot;&quot;
+const rankedSection = parityText.split(&quot;\n## Ranked rows&quot;)[1]?.split(&quot;\n## Split&quot;)[0] ?? &quot;&quot;
+const parityEntry = (row) =&gt; {
+  const normalised = row.replace(/\n+/g, &quot; &quot;).trim()
+  const paths = [...normalised.matchAll(jayzeePathPattern)].map((m) =&gt; m[1])
+  const status = (normalised.match(/Status: ([a-z]+)/) || [])[1] || null
+  const title = normalised.replace(/^U?\d+\.\s*/, &quot;&quot;).split(&quot;. &quot;)[0]
+  return { paths, status, title }
+}
+const parityRows = new Map(
+  rankedSection
+    .split(/\n(?=\d+\. )/)
+    .filter((row) =&gt; /^\d+\. /.test(row))
+    .map((row) =&gt; [Number(row.match(/^(\d+)\./)[1]), parityEntry(row)]),
+)
+const notInSpointSection = parityText.split(&quot;\n## Not in spoint&quot;)[1]?.split(&quot;\n## &quot;)[0] ?? &quot;&quot;
+const notInSpointRows = new Map(
+  notInSpointSection
+    .split(/\n(?=U\d+\. )/)
+    .filter((row) =&gt; /^U\d+\. /.test(row))
+    .map((row) =&gt; [row.match(/^(U\d+)\./)[1], parityEntry(row)]),
+)
+counts.parityRows = parityRows.size
+const reRankedRows = { 1: 60, 62: 61, 63: 62, 64: 63, 65: 64, 66: 65 }
+const registerParitySource = (number) =&gt; {
+  if (number === 41) return &quot;U41&quot;
+  if (number === 67) return &quot;U67&quot;
+  if (number === 61) return 59
+  if (reRankedRows[number] !== undefined) return reRankedRows[number]
+  return number &lt; 41 ? number - 1 : number - 2
+}
+const usedRanked = new Set()
+const cleetusTitleCorrections = {
+  52: (t) =&gt; t.replace(&quot;CavePatches, CaveMeshes&quot;, &quot;CavePatches, client/core/CaveMeshes&quot;),
+  60: (t) =&gt; t.replace(&quot;bin/create-app.js (spoint), &quot;, &quot;&quot;),
+}
+
+const gapLines = texts[&quot;Jayzee-GAPS.md&quot;].split(&quot;\n&quot;)
+const tableRows = gapLines
+  .filter((line) =&gt; /^\| \d+ \|/.test(line))
+  .map((line) =&gt; line.split(&quot;|&quot;).slice(1, -1).map((cell) =&gt; cell.trim()))
+counts.gapRows = tableRows.length
+let requiredRows = 0
+let builtRows = 0
+const openWithoutTarget = []
+const namedNotCreated = []
+tableRows.forEach((cells, index) =&gt; {
+  const [numberText, title, status, , jzCount, tag] = cells
+  const number = Number(numberText)
+  if (number !== index + 1) errors.push(`Jayzee-GAPS.md: row ${numberText} is not sequential at position ${index + 1}`)
+  if (!status) errors.push(`Jayzee-GAPS.md: row ${number} has no status`)
+  else if (!gapStatuses.has(status)) errors.push(`Jayzee-GAPS.md: row ${number} status outside the allowed set: ${status}`)
+  if (!gapTags.has(tag)) errors.push(`Jayzee-GAPS.md: row ${number} tag outside the allowed set: ${tag}`)
+  if ((status === &quot;built&quot;) !== (tag === &quot;none (built)&quot;)) errors.push(`Jayzee-GAPS.md: row ${number} has status ${status} with tag ${tag}; a built row takes the none (built) tag and no other row does`)
+  const source = registerParitySource(number)
+  const parity = typeof source === &quot;string&quot; ? notInSpointRows.get(source) : parityRows.get(source)
+  if (!parity) {
+    errors.push(`Jayzee-GAPS.md: row ${number} has no source at ${pin}`)
+    return
+  }
+  if (typeof source === &quot;number&quot;) usedRanked.add(source)
+  const expectedTitle = (cleetusTitleCorrections[number] ?? ((t) =&gt; t))(parity.title)
+  if (expectedTitle !== title) errors.push(`Jayzee-GAPS.md: row ${number} title differs from ${source} at ${pin}: &quot;${title}&quot; against &quot;${expectedTitle}&quot;`)
+  if (parity.status !== status) errors.push(`Jayzee-GAPS.md: row ${number} status ${status} differs from ${pin} (${parity.status})`)
+  const existing = parity.paths.filter((path) =&gt; jayzeeTree.has(path)).length
+  if (jzCount !== `${existing}/${parity.paths.length}`) errors.push(`Jayzee-GAPS.md: row ${number} path count ${jzCount} differs from ${pin} (${existing}/${parity.paths.length})`)
+  if (tag === &quot;required-in-jayzee&quot;) {
+    requiredRows++
+    if (status === &quot;open&quot;) {
+      if (existing === 0) openWithoutTarget.push(number)
+      if (parity.paths.some((path) =&gt; !jayzeeTree.has(path))) namedNotCreated.push(number)
+    } else {
+      if (parity.paths.length === 0) errors.push(`Jayzee-GAPS.md: required row ${number} (${status}) cites no jayzee path`)
+      for (const path of parity.paths) if (!jayzeeTree.has(path)) errors.push(`Jayzee-GAPS.md: required row ${number} cites a path absent at ${pin}: ${path}`)
+    }
+  } else {
+    builtRows++
+  }
+})
+if (usedRanked.size !== parityRows.size) errors.push(`Jayzee-GAPS.md: ${usedRanked.size} register rows map to ${parityRows.size} ranked rows at ${pin}`)
+const rankedNumbers = [...parityRows.keys()].sort((a, b) =&gt; a - b)
+const numberedFromOne = (numbers) =&gt; numbers.every((n, i) =&gt; n === i + 1)
+if (!numberedFromOne(rankedNumbers)) errors.push(`ranked rows at ${pin} are not numbered 1 to ${rankedNumbers.length}`)
+if (numberedFromOne(rankedNumbers.filter((n) =&gt; n !== rankedNumbers[Math.floor(rankedNumbers.length / 2)]))) errors.push(&quot;negative witness failed: a register with a removed row was accepted as contiguous&quot;)
+if (!numberedFromOne([...rankedNumbers, rankedNumbers.length + 1])) errors.push(&quot;negative witness failed: a register with one more row was refused&quot;)
+counts.rankedNumbering = { first: rankedNumbers[0], last: rankedNumbers[rankedNumbers.length - 1], rows: rankedNumbers.length }
+console.log(`RANKED NUMBERING AT jayzee ${pin}: ${rankedNumbers.length} rows numbered 1 to ${rankedNumbers.length}; removed-row negative refused: ${!numberedFromOne(rankedNumbers.filter((n) =&gt; n !== rankedNumbers[Math.floor(rankedNumbers.length / 2)]))}; N+1 row accepted: ${numberedFromOne([...rankedNumbers, rankedNumbers.length + 1])}`)
+const expectedOpenWithoutTarget = []
+const expectedNamedNotCreated = []
+const sameList = (a, b) =&gt; a.length === b.length &amp;&amp; a.every((n, i) =&gt; n === b[i])
+if (!sameList(openWithoutTarget, expectedOpenWithoutTarget)) errors.push(`Jayzee-GAPS.md: feature-coverage rows citing no existing jayzee path are [${openWithoutTarget.join(&quot;, &quot;)}], expected [${expectedOpenWithoutTarget.join(&quot;, &quot;)}]`)
+const parityBrief = readFileSync(join(docs, &quot;PARITY-BRIEF-FOR-Jayzee.md&quot;), &quot;utf8&quot;).split(&quot;\n&quot;)
+for (const [registerRow, jayzeeRow] of Object.entries(reRankedRows)) {
+  const registerCells = tableRows.find((cells) =&gt; Number(cells[0]) === Number(registerRow))
+  const jayzeeTitle = parityRows.get(jayzeeRow)?.title ?? &quot;&quot;
+  const briefLine = parityBrief.find((line) =&gt; line.startsWith(`| ${registerRow} |`)) ?? &quot;&quot;
+  if (!registerCells || !jayzeeTitle || registerCells[1].slice(0, 14) !== jayzeeTitle.slice(0, 14) || !briefLine.includes(`| ${jayzeeRow} |`)) errors.push(`docs/PARITY-BRIEF-FOR-Jayzee.md: register row ${registerRow} does not map to jayzee row ${jayzeeRow} at ${pin}`)
+}
+console.log(`RE-RANKED ROWS AT jayzee ${pin}: ${Object.entries(reRankedRows).map(([r, j]) =&gt; `register ${r} to jayzee ${j}`).join(&quot;; &quot;)}`)
+if (!sameList(namedNotCreated, expectedNamedNotCreated)) errors.push(`Jayzee-GAPS.md: open required rows citing a jayzee path not created at ${pin} are [${namedNotCreated.join(&quot;, &quot;)}], expected [${expectedNamedNotCreated.join(&quot;, &quot;)}]`)
+counts.requiredInJayzee = requiredRows
+counts.builtRows = builtRows
+
+const savedSection = gapLines.slice(gapLines.findIndex((line) =&gt; line.startsWith(&quot;## Cleetus-owned&quot;)) + 1)
+const unmapped = savedSection.filter((line) =&gt; line.startsWith(&quot;- &quot;) &amp;&amp; /UNMAPPED|UNVERIFIED/.test(line))
+for (const line of unmapped) {
+  if (!/\/workspace\/cleetus\//.test(line)) errors.push(`Jayzee-GAPS.md: cleetus-owned item has no durable cleetus path: ${line.slice(0, 100)}`)
+}
+counts.savedItemsNeedingPath = unmapped.length
+
+const countTableStatuses = []
+for (const line of texts[&quot;FEATURESET.md&quot;].split(&quot;\n&quot;)) {
+  if (!line.startsWith(&quot;| &quot;)) continue
+  const cells = splitCells(line)
+  if (cells.length !== 4 || /^-+$/.test(cells[0]) || cells[0] === &quot;Figure&quot;) continue
+  countTableStatuses.push(cells[3])
+  if (!countStatusPrefixes.some((prefix) =&gt; cells[3].startsWith(prefix))) {
+    errors.push(`FEATURESET.md: count status outside the allowed set: ${cells[3].slice(0, 60)}`)
+  }
+}
+counts.countStatusCells = countTableStatuses.length
+
+const catalogRows = readFileSync(join(reference, &quot;http&quot;, &quot;CATALOG.md&quot;), &quot;utf8&quot;)
+  .split(&quot;\n&quot;)
+  .filter((l) =&gt; /^\| [^|]+ \| [^|]+ \| [^|]+ \| (exercised|documented)/.test(l))
+const doorTotal = catalogRows.length
+const doorExercised = catalogRows.filter((l) =&gt; splitCells(l)[3].startsWith(&quot;exercised&quot;)).length
+const doorDocumented = catalogRows.filter((l) =&gt; splitCells(l)[3].startsWith(&quot;documented&quot;)).length
+const verbRows = catalogRows.filter((l) =&gt; /^\| [^|]+ \| (GET|POST|PUT|PATCH|DELETE) \|/.test(l))
+const nonVerbNames = catalogRows.filter((l) =&gt; !verbRows.includes(l)).map((l) =&gt; splitCells(l)[0])
+if (nonVerbNames.join(&quot;,&quot;) !== &quot;delete,play.attach,git,openapi&quot;) errors.push(`http/CATALOG.md: non-verb rows are ${nonVerbNames.join(&quot;,&quot;)}, expected delete,play.attach,git,openapi`)
+claim(&quot;FEATURESET.md&quot;, `HTTP doors ${doorTotal} = ${doorExercised} exercised + ${doorDocumented} documented; ${verbRows.length} with an HTTP verb`, &quot;door total, status split and verb count from http/CATALOG.md&quot;)
+if (rowOf(&quot;FEATURESET.md&quot;, &quot;| HTTP doors 70&quot;).includes(&quot;gives 56&quot;)) errors.push(&quot;FEATURESET.md: stale method count 56 is still stated as a figure&quot;)
+counts.doors = { total: doorTotal, exercised: doorExercised, documented: doorDocumented, verb: verbRows.length }
+
+const manifestRows = readFileSync(join(cleetus, &quot;jayzee-evidence&quot;, &quot;data&quot;, &quot;manifests-all-results.jsonl&quot;), &quot;utf8&quot;).trim().split(&quot;\n&quot;).map((l) =&gt; JSON.parse(l))
+const manifestFull = manifestRows.filter((r) =&gt; r.frames === r.hashes &amp;&amp; r.ordered === r.frames &amp;&amp; r.inSet === r.frames).length
+claim(&quot;FEATURESET.md&quot;, `${manifestFull} of ${manifestRows.length} fully matching`, &quot;jayzee manifest corpus: fully matching frames per manifest&quot;)
+claim(&quot;FEATURESET.md&quot;, &quot;d048ad0665b46944dea920d8daed8dbe85874fb4a9d8809339e88223cd853fca&quot;, &quot;jayzee manifest exception id&quot;)
+counts.manifests = { reached: manifestRows.length, fullyMatching: manifestFull }
+const meDoorKeys = Object.keys(JSON.parse(readFileSync(join(reference, &quot;http&quot;, &quot;raw&quot;, &quot;agent-v1-me.bearer.body&quot;), &quot;utf8&quot;)).doors).length
+if (!/^\| me\.doors 60 keys \|.*UNVERIFIED/.test(rowOf(&quot;FEATURESET.md&quot;, &quot;| me.doors 60 keys |&quot;))) errors.push(&quot;FEATURESET.md: me.doors 60 must stay UNVERIFIED&quot;)
+claim(&quot;FEATURESET.md&quot;, `${meDoorKeys} keys in \`doors\``, &quot;me.doors key count from http/raw/agent-v1-me.bearer.body&quot;)
+
+const tomeFiles = walk(join(reference, &quot;tome&quot;))
+const tomeTop = readdirSync(join(reference, &quot;tome&quot;), { withFileTypes: true }).filter((e) =&gt; e.isFile()).length
+const tomeSections = readdirSync(join(reference, &quot;tome&quot;, &quot;sections&quot;)).length
+claim(&quot;FEATURESET.md&quot;, `Tome tree ${tomeFiles.length}`, &quot;tome tree file count&quot;)
+claim(&quot;FEATURESET.md&quot;, `${tomeFiles.length} files: ${tomeSections} section files, ${tomeTop} directly under`, &quot;tome section and top-level counts&quot;)
+
+const skillEntries = readdirSync(join(reference, &quot;skills&quot;))
+const skillJson = skillEntries.filter((n) =&gt; n.endsWith(&quot;.json&quot;)).length
+const skillMd = skillEntries.filter((n) =&gt; n.endsWith(&quot;.md&quot;)).length
+const skillRows = readFileSync(join(reference, &quot;skills&quot;, &quot;INDEX.md&quot;), &quot;utf8&quot;)
+  .split(&quot;\n&quot;)
+  .filter((l) =&gt; /^\| /.test(l))
+  .slice(1)
+  .map((l) =&gt; splitCells(l))
+const byteColumn = skillRows.map(([id, , , bytes]) =&gt; ({ id, column: Number(bytes), md: statSync(join(reference, &quot;skills&quot;, `${id}.md`)).size }))
+const contentBytes = skillRows.map(([id]) =&gt; ({ id, content: Buffer.byteLength(JSON.parse(readFileSync(join(reference, &quot;skills&quot;, `${id}.json`), &quot;utf8&quot;)).content) }))
+const plusOne = byteColumn.filter((r) =&gt; r.column - r.md === 1).length
+const contentMatches = contentBytes.filter((r) =&gt; r.content === byteColumn.find((b) =&gt; b.id === r.id).md).length
+const cameras = byteColumn.find((r) =&gt; r.id === &quot;cameras&quot;)
+const heightmap = byteColumn.find((r) =&gt; r.id === &quot;heightmap-terrain&quot;)
+claim(&quot;FEATURESET.md&quot;, `${skillEntries.length} entries`, &quot;skills directory entry count&quot;)
+claim(&quot;FEATURESET.md&quot;, `${skillJson} \`.json\``, &quot;skills json count&quot;)
+claim(&quot;FEATURESET.md&quot;, `${skillMd} \`.md\``, &quot;skills md count&quot;)
+claim(&quot;FEATURESET.md&quot;, `for ${plusOne} rows`, &quot;INDEX byte column offset +1 row count&quot;)
+claim(&quot;FEATURESET.md&quot;, `${cameras.column}`, &quot;cameras column value&quot;)
+claim(&quot;FEATURESET.md&quot;, `${cameras.md}`, &quot;cameras md size&quot;)
+claim(&quot;FEATURESET.md&quot;, `${heightmap.column}`, &quot;heightmap-terrain column value&quot;)
+claim(&quot;FEATURESET.md&quot;, `${heightmap.md}`, &quot;heightmap-terrain md size&quot;)
+claim(&quot;FEATURESET.md&quot;, `difference 0 for all ${skillRows.length}`, &quot;json content bytes equal md size for every served skill&quot;)
+counts.skills = { served: skillRows.length, entries: skillEntries.length, json: skillJson, md: skillMd, plusOneRows: plusOne, cameras: cameras.column - cameras.md, heightmap: heightmap.column - heightmap.md, contentEqualsMd: contentMatches }
+if (contentMatches !== skillRows.length) errors.push(`skills: json content differs from md for ${skillRows.length - contentMatches} rows`)
+
+const spointRoot = &quot;/workspace/spoint&quot;
+const spointPin = &quot;d5e3860&quot;
+const spointHead = execFileSync(&quot;git&quot;, [&quot;-C&quot;, spointRoot, &quot;rev-parse&quot;, &quot;--short&quot;, &quot;HEAD&quot;], { encoding: &quot;utf8&quot; }).trim()
+let spointPinIsAncestor = true
+try {
+  execFileSync(&quot;git&quot;, [&quot;-C&quot;, spointRoot, &quot;merge-base&quot;, &quot;--is-ancestor&quot;, spointPin, &quot;HEAD&quot;], { stdio: &quot;ignore&quot; })
+} catch {
+  spointPinIsAncestor = false
+}
+if (!spointPinIsAncestor) errors.push(`spoint HEAD ${spointHead} does not contain ${spointPin}`)
+console.log(`SPOINT ${spointPin} IS AN ANCESTOR OF HEAD ${spointHead}: ${spointPinIsAncestor}`)
+const streamCitePattern = /`((?:src|client|apps|scripts|packages|edge)\/[^`]+?):(\d+)` \(`([^`]+)`\)/g
+for (const [number, expected] of [[19, 24], [20, 32], [21, 14], [22, 30], [23, 21], [24, 11], [25, 19], [&quot;25, part 2&quot;, 17], [26, 19], [27, 19], [28, 18], [29, 17], [30, 14], [31, 7], [32, 10], [33, 14], [34, 0], [35, 4], [36, 8], [37, 6], [38, 4], [39, 4], [40, 5], [41, 4], [42, 3], [43, 2], [44, 3], [45, 6], [46, 6], [47, 4], [48, 4], [49, 4], [50, 4], [51, 7], [52, 6], [53, 3], [54, 3], [55, 3], [56, 4], [57, 7], [58, 4]]) {
+  const section = texts[&quot;FEATURESET.md&quot;].split(`\n## Stream ${number}`)[1]?.split(&quot;\n## &quot;)[0] ?? &quot;&quot;
+  const cites = [...section.matchAll(streamCitePattern)]
+  let verified = 0
+  for (const [, path, lineNumber, snippet] of cites) {
+    claimsChecked++
+    let source = null
+    try { source = execFileSync(&quot;git&quot;, [&quot;-C&quot;, spointRoot, &quot;show&quot;, `${spointPin}:${path}`], { encoding: &quot;utf8&quot; }).split(&quot;\n&quot;) } catch { source = null }
+    if (source === null) { errors.push(`FEATURESET.md stream ${number}: ${path} is not in spoint at ${spointPin}`); continue }
+    if ((source[Number(lineNumber) - 1] ?? &quot;&quot;).includes(snippet)) verified++
+    else errors.push(`FEATURESET.md stream ${number}: ${path}:${lineNumber} does not contain the cited text: ${snippet}`)
+  }
+  if (cites.length !== expected) errors.push(`FEATURESET.md stream ${number}: expected ${expected} citations, found ${cites.length}`)
+  counts[`stream${number}`] = { citations: cites.length, verified }
+  console.log(`STREAM ${number} CITATIONS VERIFIED AGAINST spoint ${spointPin}: ${verified} of ${cites.length}`)
+}
+const editorFiles = execFileSync(&quot;git&quot;, [&quot;-C&quot;, spointRoot, &quot;ls-tree&quot;, &quot;-r&quot;, &quot;--name-only&quot;, spointPin, &quot;client/editor&quot;], { encoding: &quot;utf8&quot; }).split(&quot;\n&quot;).filter((p) =&gt; p.endsWith(&quot;.js&quot;) &amp;&amp; !/\/(EditorShell|editor)\.js$|\/wm\//.test(p))
+const editorLines = editorFiles.reduce((sum, p) =&gt; sum + execFileSync(&quot;git&quot;, [&quot;-C&quot;, spointRoot, &quot;show&quot;, `${spointPin}:${p}`], { encoding: &quot;utf8&quot; }).split(&quot;\n&quot;).length - 1, 0)
+if (editorFiles.length !== 28 || editorLines !== 5950) errors.push(`spoint client/editor scope at ${spointPin} is ${editorFiles.length} files and ${editorLines} lines, expected 28 and 5950`)
+const streamTwentyFour = texts[&quot;FEATURESET.md&quot;].split(&quot;\n## Stream 24&quot;)[1]?.split(&quot;\n## &quot;)[0] ?? &quot;&quot;
+const cleetussDocsOutsideStreamTwentyFour = [texts[&quot;FEATURESET.md&quot;].replace(streamTwentyFour, &quot;&quot;), texts[&quot;Jayzee-GAPS.md&quot;], texts[&quot;OPEN-ITEMS.md&quot;]]
+const editorBasenames = editorFiles.map((p) =&gt; p.split(&quot;/&quot;).pop().replace(/\.js$/, &quot;&quot;))
+const namedInDocs = editorBasenames.filter((b) =&gt; cleetussDocsOutsideStreamTwentyFour.some((t) =&gt; t.includes(b))).sort()
+if (namedInDocs.join() !== [&quot;EditorEventLog&quot;, &quot;EventChainPanel&quot;, &quot;FreddieChatPanel&quot;, &quot;ProcgenPanel&quot;].join()) errors.push(`cleetus docs outside stream 24 name editor modules [${namedInDocs.join(&quot;, &quot;)}], expected [EditorEventLog, EventChainPanel, FreddieChatPanel, ProcgenPanel]`)
+const scriptTexts = walk(join(cleetus, &quot;scripts&quot;)).filter((f) =&gt; !f.endsWith(&quot;check-featureset.mjs&quot;)).map((f) =&gt; readFileSync(f, &quot;utf8&quot;))
+const namedInScripts = editorBasenames.filter((b) =&gt; scriptTexts.some((t) =&gt; t.includes(b)))
+if (namedInScripts.length !== 0) errors.push(`cleetus scripts name editor modules: ${namedInScripts.join(&quot;, &quot;)}`)
+counts.stream24Cluster = { files: editorFiles.length, lines: editorLines, namedInDocs, namedInScripts: namedInScripts.length }
+console.log(`STREAM 24 CLUSTER AT spoint ${spointPin}: ${editorFiles.length} files, ${editorLines} lines; cleetus docs outside stream 24 name ${namedInDocs.length} (disclosed); scripts name ${namedInScripts.length}`)
+const serverModules = [&quot;EditOpLog&quot;, &quot;AgentEditServer&quot;, &quot;PlaceInstances&quot;, &quot;PrefabJayzeeer&quot;, &quot;EditorHandlersSerialize&quot;]
+const serverLines = serverModules.reduce((sum, m) =&gt; sum + execFileSync(&quot;git&quot;, [&quot;-C&quot;, spointRoot, &quot;show&quot;, `${spointPin}:src/sdk/${m}.js`], { encoding: &quot;utf8&quot; }).split(&quot;\n&quot;).length - 1, 0)
+if (serverLines !== 510) errors.push(`spoint src/sdk editor server cluster at ${spointPin} is ${serverLines} lines, expected 510`)
+const placeInstancesExports = execFileSync(&quot;git&quot;, [&quot;-C&quot;, spointRoot, &quot;show&quot;, `${spointPin}:src/sdk/PlaceInstances.js`], { encoding: &quot;utf8&quot; }).split(&quot;\n&quot;).filter((l) =&gt; l.startsWith(&quot;export&quot;)).length
+if (placeInstancesExports !== 4) errors.push(`PlaceInstances.js at ${spointPin} has ${placeInstancesExports} exports, expected 4`)
+const streamTwentyFive = texts[&quot;FEATURESET.md&quot;].split(&quot;\n## Stream 25&quot;)[1]?.split(&quot;\n## &quot;)[0] ?? &quot;&quot;
+const docsOutsideStreamTwentyFive = [texts[&quot;FEATURESET.md&quot;].replace(streamTwentyFive, &quot;&quot;), texts[&quot;Jayzee-GAPS.md&quot;], texts[&quot;OPEN-ITEMS.md&quot;], readFileSync(join(docs, &quot;PARITY-INPUTS.md&quot;), &quot;utf8&quot;)]
+const serverNamedInDocs = serverModules.filter((m) =&gt; docsOutsideStreamTwentyFive.some((t) =&gt; t.includes(m)))
+if (serverNamedInDocs.length !== 0) errors.push(`cleetus docs outside stream 25 name server modules: ${serverNamedInDocs.join(&quot;, &quot;)}`)
+const serverNamedInScripts = serverModules.filter((m) =&gt; scriptTexts.some((t) =&gt; t.includes(m)))
+if (serverNamedInScripts.length !== 0) errors.push(`cleetus scripts name server modules: ${serverNamedInScripts.join(&quot;, &quot;)}`)
+counts.stream25Cluster = { lines: serverLines, namedInDocs: serverNamedInDocs.length, namedInScripts: serverNamedInScripts.length }
+console.log(`STREAM 25 CLUSTER AT spoint ${spointPin}: ${serverLines} lines; cleetus docs outside stream 25 name ${serverNamedInDocs.length}; scripts name ${serverNamedInScripts.length}`)
+const serverPartTwo = [&quot;AppManifest&quot;, &quot;ChaseCamera&quot;, &quot;DevAppModuleVersions&quot;, &quot;DevHmrGraph&quot;, &quot;FreddieBridge&quot;, &quot;PublicBenchmark&quot;, &quot;ReloadHandlers&quot;, &quot;ReloadManager&quot;, &quot;RoomLog&quot;, &quot;RoomProcessWorker&quot;, &quot;ServerIdentity&quot;, &quot;ServerTimeOfDay&quot;, &quot;SharedEventEnvelope&quot;, &quot;TextureAtlas&quot;, &quot;WorkerBoot&quot;, &quot;appEventSender&quot;, &quot;scatterSpec&quot;]
+const partTwoText = (m) =&gt; execFileSync(&quot;git&quot;, [&quot;-C&quot;, spointRoot, &quot;show&quot;, `${spointPin}:src/sdk/${m}.js`], { encoding: &quot;utf8&quot; })
+const partTwoLines = serverPartTwo.reduce((sum, m) =&gt; sum + partTwoText(m).split(&quot;\n&quot;).length - 1, 0)
+if (partTwoLines !== 1171) errors.push(`spoint src/sdk stream 25 part 2 at ${spointPin} is ${partTwoLines} lines, expected 1171`)
+const partTwoExports = serverPartTwo.reduce((sum, m) =&gt; sum + partTwoText(m).split(&quot;\n&quot;).filter((l) =&gt; l.startsWith(&quot;export&quot;)).length, 0)
+if (partTwoExports !== 41) errors.push(`spoint src/sdk stream 25 part 2 at ${spointPin} has ${partTwoExports} exports, expected 41`)
+const importersOf = (m) =&gt; { try { return execFileSync(&quot;git&quot;, [&quot;-C&quot;, spointRoot, &quot;grep&quot;, &quot;-lF&quot;, m, spointPin, &quot;--&quot;, &quot;src&quot;, &quot;client&quot;, &quot;apps&quot;, &quot;packages&quot;, &quot;scripts&quot;, &quot;bin&quot;, &quot;edge&quot;, `:!src/sdk/${m}.js`], { encoding: &quot;utf8&quot; }).split(&quot;\n&quot;).filter(Boolean) } catch { return [] } }
+for (const m of [&quot;ChaseCamera&quot;, &quot;RoomLog&quot;, &quot;SharedEventEnvelope&quot;, &quot;scatterSpec&quot;]) if (importersOf(m).length !== 0) errors.push(`${m} has code importers at ${spointPin}, expected none`)
+const partTwoSection = texts[&quot;FEATURESET.md&quot;].split(&quot;\n## Stream 25, part 2&quot;)[1]?.split(&quot;\n## &quot;)[0] ?? &quot;&quot;
+const partTwoDocsOutside = [texts[&quot;FEATURESET.md&quot;].replace(partTwoSection, &quot;&quot;), texts[&quot;Jayzee-GAPS.md&quot;], texts[&quot;OPEN-ITEMS.md&quot;], readFileSync(join(docs, &quot;PARITY-INPUTS.md&quot;), &quot;utf8&quot;)]
+const partTwoNamedInDocs = serverPartTwo.filter((m) =&gt; partTwoDocsOutside.some((t) =&gt; t.includes(m)))
+if (partTwoNamedInDocs.length !== 0) errors.push(`cleetus docs outside stream 25 part 2 name part-2 modules: ${partTwoNamedInDocs.join(&quot;, &quot;)}`)
+const partTwoNamedInScripts = serverPartTwo.filter((m) =&gt; scriptTexts.some((t) =&gt; t.includes(m)))
+if (partTwoNamedInScripts.length !== 0) errors.push(`cleetus scripts name part-2 modules: ${partTwoNamedInScripts.join(&quot;, &quot;)}`)
+counts.stream25PartTwo = { lines: partTwoLines, exports: partTwoExports, namedInDocs: partTwoNamedInDocs.length, namedInScripts: partTwoNamedInScripts.length }
+console.log(`STREAM 25 PART 2 AT spoint ${spointPin}: ${partTwoLines} lines, ${partTwoExports} exports; cleetus docs name ${partTwoNamedInDocs.length}; scripts name ${partTwoNamedInScripts.length}`)
+const behaviourModules = [&quot;buoyancy&quot;, &quot;cameraRig&quot;, &quot;checkpoint&quot;, &quot;decisionPipe&quot;, &quot;decisionRuntime&quot;, &quot;destructibleSpec&quot;, &quot;fluid3d&quot;, &quot;game-fsm&quot;, &quot;gamemode&quot;, &quot;pickup&quot;, &quot;projectile&quot;, &quot;projectileGravity&quot;, &quot;shrinking-zone&quot;, &quot;specBoundary&quot;, &quot;steering&quot;, &quot;teams&quot;, &quot;trade&quot;, &quot;voxels&quot;, &quot;weapon&quot;]
+const behaviourText = (m) =&gt; execFileSync(&quot;git&quot;, [&quot;-C&quot;, spointRoot, &quot;show&quot;, `${spointPin}:src/behaviours/${m}.js`], { encoding: &quot;utf8&quot; })
+const behaviourLines = behaviourModules.reduce((sum, m) =&gt; sum + behaviourText(m).split(&quot;\n&quot;).length - 1, 0)
+if (behaviourLines !== 2210) errors.push(`spoint src/behaviours stream 26 at ${spointPin} is ${behaviourLines} lines, expected 2210`)
+const behaviourExports = behaviourModules.reduce((sum, m) =&gt; sum + behaviourText(m).split(&quot;\n&quot;).filter((l) =&gt; l.startsWith(&quot;export&quot;)).length, 0)
+if (behaviourExports !== 46) errors.push(`spoint src/behaviours stream 26 at ${spointPin} has ${behaviourExports} exports, expected 46`)
+const projectileImporters = (() =&gt; { try { return execFileSync(&quot;git&quot;, [&quot;-C&quot;, spointRoot, &quot;grep&quot;, &quot;-lE&quot;, &quot;behaviours/projectile\\.js[&#39;\&quot;]|&#39;\\./projectile\\.js&#39;&quot;, spointPin, &quot;--&quot;, &quot;src&quot;, &quot;client&quot;, &quot;apps&quot;, &quot;packages&quot;, &quot;scripts&quot;, &quot;bin&quot;, &quot;edge&quot;], { encoding: &quot;utf8&quot; }).split(&quot;\n&quot;).filter(Boolean) } catch { return [] } })()
+if (projectileImporters.length !== 0) errors.push(`projectile.js has exact-path importers at ${spointPin}: ${projectileImporters.join(&quot;, &quot;)}`)
+const behaviourSection = texts[&quot;FEATURESET.md&quot;].split(&quot;\n## Stream 26&quot;)[1]?.split(&quot;\n## &quot;)[0] ?? &quot;&quot;
+const docsOutsideStreamTwentySix = [texts[&quot;FEATURESET.md&quot;].replace(behaviourSection, &quot;&quot;), texts[&quot;Jayzee-GAPS.md&quot;], texts[&quot;OPEN-ITEMS.md&quot;], readFileSync(join(docs, &quot;PARITY-INPUTS.md&quot;), &quot;utf8&quot;)]
+const behaviourNamedInDocs = behaviourModules.filter((m) =&gt; docsOutsideStreamTwentySix.some((t) =&gt; new RegExp(`\\b${m}\\b`).test(t)))
+if (behaviourNamedInDocs.join() !== [&quot;steering&quot;].join()) errors.push(`cleetus docs outside stream 26 name behaviour modules [${behaviourNamedInDocs.join(&quot;, &quot;)}], expected [steering] (stream 27 importer citation)`)
+const scriptJsTexts = walk(join(cleetus, &quot;scripts&quot;)).filter((f) =&gt; /\.(mjs|js)$/.test(f) &amp;&amp; !f.endsWith(&quot;check-featureset.mjs&quot;)).map((f) =&gt; readFileSync(f, &quot;utf8&quot;))
+const behaviourNamedInScripts = behaviourModules.filter((m) =&gt; scriptJsTexts.some((t) =&gt; new RegExp(`\\b${m}\\b`).test(t)))
+if (behaviourNamedInScripts.length !== 0) errors.push(`cleetus scripts name behaviour modules: ${behaviourNamedInScripts.join(&quot;, &quot;)}`)
+counts.stream26 = { lines: behaviourLines, exports: behaviourExports, namedInDocs: behaviourNamedInDocs.length, namedInScripts: behaviourNamedInScripts.length }
+console.log(`STREAM 26 AT spoint ${spointPin}: ${behaviourLines} lines, ${behaviourExports} exports, projectile importers ${projectileImporters.length}; cleetus docs name ${behaviourNamedInDocs.length}; scripts name ${behaviourNamedInScripts.length}`)
+const appModules = [&quot;AccountState&quot;, &quot;AppBehaviours&quot;, &quot;AppGameplay&quot;, &quot;AppLoader&quot;, &quot;AppPhysics&quot;, &quot;AppRuntimePhysics&quot;, &quot;AppRuntimeState&quot;, &quot;AppRuntimeStaticMotion&quot;, &quot;AppRuntimeTick&quot;, &quot;AppSeats&quot;, &quot;ComponentPool&quot;, &quot;CustomVersion&quot;, &quot;EcsEntityMap&quot;, &quot;EventBus&quot;, &quot;HotReloadQueue&quot;, &quot;SurfaceSelector&quot;, &quot;SurfaceSelectorRuntime&quot;, &quot;appImports&quot;, &quot;appsManifest&quot;]
+const appText = (m) =&gt; execFileSync(&quot;git&quot;, [&quot;-C&quot;, spointRoot, &quot;show&quot;, `${spointPin}:src/apps/${m}.js`], { encoding: &quot;utf8&quot; })
+const appLines = appModules.reduce((sum, m) =&gt; sum + appText(m).split(&quot;\n&quot;).length - 1, 0)
+if (appLines !== 2545) errors.push(`spoint src/apps stream 27 at ${spointPin} is ${appLines} lines, expected 2545`)
+const appExports = appModules.reduce((sum, m) =&gt; sum + appText(m).split(&quot;\n&quot;).filter((l) =&gt; l.startsWith(&quot;export&quot;)).length, 0)
+if (appExports !== 54) errors.push(`spoint src/apps stream 27 at ${spointPin} has ${appExports} exports, expected 54`)
+const appsWithNoWitness = [&quot;AccountState&quot;, &quot;AppBehaviours&quot;, &quot;AppGameplay&quot;, &quot;AppPhysics&quot;, &quot;AppRuntimePhysics&quot;, &quot;AppRuntimeState&quot;, &quot;AppRuntimeStaticMotion&quot;, &quot;AppRuntimeTick&quot;, &quot;AppSeats&quot;, &quot;ComponentPool&quot;, &quot;CustomVersion&quot;, &quot;EcsEntityMap&quot;, &quot;EventBus&quot;, &quot;HotReloadQueue&quot;, &quot;SurfaceSelector&quot;]
+for (const m of appsWithNoWitness) {
+  const hits = (() =&gt; { try { return execFileSync(&quot;git&quot;, [&quot;-C&quot;, spointRoot, &quot;grep&quot;, &quot;-lE&quot;, `/${m}\\.js[&#39;&quot;]`, spointPin, &quot;--&quot;, &quot;scripts/*.mjs&quot;, &quot;scripts/*.js&quot;], { encoding: &quot;utf8&quot; }).split(&quot;\n&quot;).filter(Boolean) } catch { return [] } })()
+  if (hits.length !== 0) errors.push(`${m} has a witness script at ${spointPin}: ${hits.join(&quot;, &quot;)}`)
+}
+const appSection = texts[&quot;FEATURESET.md&quot;].split(&quot;\n## Stream 27&quot;)[1]?.split(&quot;\n## &quot;)[0] ?? &quot;&quot;
+const docsOutsideStreamTwentySeven = [texts[&quot;FEATURESET.md&quot;].replace(appSection, &quot;&quot;), texts[&quot;Jayzee-GAPS.md&quot;], texts[&quot;OPEN-ITEMS.md&quot;], readFileSync(join(docs, &quot;PARITY-INPUTS.md&quot;), &quot;utf8&quot;)]
+const appNamedInDocs = appModules.filter((m) =&gt; docsOutsideStreamTwentySeven.some((t) =&gt; new RegExp(`\\b${m}\\b`).test(t)))
+if (appNamedInDocs.join() !== [&quot;AppBehaviours&quot;].join()) errors.push(`cleetus docs outside stream 27 name app modules [${appNamedInDocs.join(&quot;, &quot;)}], expected [AppBehaviours] (stream 26 importer citations)`)
+const appNamedInScripts = appModules.filter((m) =&gt; scriptJsTexts.some((t) =&gt; new RegExp(`\\b${m}\\b`).test(t)))
+if (appNamedInScripts.length !== 0) errors.push(`cleetus scripts name app modules: ${appNamedInScripts.join(&quot;, &quot;)}`)
+counts.stream27 = { lines: appLines, exports: appExports, namedInDocs: appNamedInDocs, namedInScripts: appNamedInScripts.length }
+console.log(`STREAM 27 AT spoint ${spointPin}: ${appLines} lines, ${appExports} exports; witness-less negatives refused: ${appsWithNoWitness.length}; cleetus docs name ${appNamedInDocs.join(&quot;,&quot;)} (disclosed); scripts name ${appNamedInScripts.length}`)
+const streamTwentyEightModules = [&quot;ServerBoot&quot;, &quot;StaticCache&quot;]
+const streamTwentyEightLines = streamTwentyEightModules.reduce((sum, m) =&gt; sum + execFileSync(&quot;git&quot;, [&quot;-C&quot;, spointRoot, &quot;show&quot;, `${spointPin}:src/sdk/${m}.js`], { encoding: &quot;utf8&quot; }).split(&quot;\n&quot;).length - 1, 0)
+if (streamTwentyEightLines !== 684) errors.push(`spoint ServerBoot and StaticCache at ${spointPin} are ${streamTwentyEightLines} lines, expected 684`)
+const streamTwentyEightExports = streamTwentyEightModules.reduce((sum, m) =&gt; sum + execFileSync(&quot;git&quot;, [&quot;-C&quot;, spointRoot, &quot;show&quot;, `${spointPin}:src/sdk/${m}.js`], { encoding: &quot;utf8&quot; }).split(&quot;\n&quot;).filter((l) =&gt; l.startsWith(&quot;export&quot;)).length, 0)
+if (streamTwentyEightExports !== 33) errors.push(`spoint ServerBoot and StaticCache at ${spointPin} have ${streamTwentyEightExports} exports, expected 33`)
+const staticCacheImporters = (() =&gt; { try { return execFileSync(&quot;git&quot;, [&quot;-C&quot;, spointRoot, &quot;grep&quot;, &quot;-lE&quot;, &quot;/StaticCache\\.js[&#39;\&quot;]|&#39;\\./StaticCache\\.js&#39;&quot;, spointPin, &quot;--&quot;, &quot;src&quot;, &quot;client&quot;, &quot;apps&quot;, &quot;packages&quot;, &quot;scripts&quot;, &quot;bin&quot;, &quot;edge&quot;], { encoding: &quot;utf8&quot; }).split(&quot;\n&quot;).filter(Boolean).map((l) =&gt; l.replace(`${spointPin}:`, &quot;&quot;)) } catch { return [] } })()
+if (staticCacheImporters.join() !== &quot;src/sdk/StaticHandler.js&quot;) errors.push(`StaticCache.js importers at ${spointPin} are [${staticCacheImporters.join(&quot;, &quot;)}], expected [src/sdk/StaticHandler.js]`)
+const streamTwentyEightWitnesses = (() =&gt; { try { return execFileSync(&quot;git&quot;, [&quot;-C&quot;, spointRoot, &quot;grep&quot;, &quot;-lE&quot;, &quot;StaticCache|ServerBoot&quot;, spointPin, &quot;--&quot;, &quot;scripts&quot;], { encoding: &quot;utf8&quot; }).split(&quot;\n&quot;).filter(Boolean) } catch { return [] } })()
+if (streamTwentyEightWitnesses.length !== 0) errors.push(`ServerBoot or StaticCache has a witness script at ${spointPin}: ${streamTwentyEightWitnesses.join(&quot;, &quot;)}`)
+const streamTwentyEightNamedInDocs = streamTwentyEightModules.filter((m) =&gt; [texts[&quot;Jayzee-GAPS.md&quot;], texts[&quot;OPEN-ITEMS.md&quot;], readFileSync(join(docs, &quot;PARITY-INPUTS.md&quot;), &quot;utf8&quot;)].some((t) =&gt; new RegExp(`\\b${m}\\b`).test(t)))
+if (streamTwentyEightNamedInDocs.length !== 0) errors.push(`cleetus Jayzee-GAPS, OPEN-ITEMS or PARITY-INPUTS name stream 28 modules: ${streamTwentyEightNamedInDocs.join(&quot;, &quot;)}`)
+const streamTwentyEightNamedInScripts = streamTwentyEightModules.filter((m) =&gt; scriptJsTexts.some((t) =&gt; new RegExp(`\\b${m}\\b`).test(t)))
+if (streamTwentyEightNamedInScripts.length !== 0) errors.push(`cleetus scripts name stream 28 modules: ${streamTwentyEightNamedInScripts.join(&quot;, &quot;)}`)
+counts.stream28 = { lines: streamTwentyEightLines, exports: streamTwentyEightExports, importersStaticCache: staticCacheImporters.length, witnesses: streamTwentyEightWitnesses.length }
+console.log(`STREAM 28 AT spoint ${spointPin}: ${streamTwentyEightLines} lines, ${streamTwentyEightExports} exports, StaticCache importers ${staticCacheImporters.length}, witnesses ${streamTwentyEightWitnesses.length}`)
+const hudModules = [&quot;Chat&quot;, &quot;ChatQuickWheel&quot;, &quot;EmoteWheel&quot;, &quot;HudStats&quot;, &quot;MeshDebugPanel&quot;, &quot;MinimapGlyphs&quot;, &quot;MinimapHUD&quot;, &quot;MinimapModels&quot;, &quot;MinimapPlacements&quot;, &quot;MobileControlsUI&quot;, &quot;PauseMenu&quot;, &quot;RenderDebugPanel&quot;, &quot;SettingsMenu&quot;, &quot;VoiceIndicator&quot;, &quot;createLoadingScreen&quot;, &quot;createLobby&quot;, &quot;ensureStyle&quot;]
+const hudText = (m) =&gt; execFileSync(&quot;git&quot;, [&quot;-C&quot;, spointRoot, &quot;show&quot;, `${spointPin}:client/hud/${m}.js`], { encoding: &quot;utf8&quot; })
+const hudLines = hudModules.reduce((sum, m) =&gt; sum + hudText(m).split(&quot;\n&quot;).length - 1, 0)
+if (hudLines !== 2254) errors.push(`spoint client/hud stream 29 at ${spointPin} is ${hudLines} lines, expected 2254`)
+const hudExports = hudModules.reduce((sum, m) =&gt; sum + hudText(m).split(&quot;\n&quot;).filter((l) =&gt; l.startsWith(&quot;export&quot;)).length, 0)
+if (hudExports !== 31) errors.push(`spoint client/hud stream 29 at ${spointPin} has ${hudExports} exports, expected 31`)
+const hudWitnesses = hudModules.filter((m) =&gt; { try { return execFileSync(&quot;git&quot;, [&quot;-C&quot;, spointRoot, &quot;grep&quot;, &quot;-lwF&quot;, m, spointPin, &quot;--&quot;, &quot;scripts&quot;], { encoding: &quot;utf8&quot; }).trim().length &gt; 0 } catch { return false } })
+if (hudWitnesses.length !== 0) errors.push(`client/hud modules have witness scripts at ${spointPin}: ${hudWitnesses.join(&quot;, &quot;)}`)
+const hudSection = texts[&quot;FEATURESET.md&quot;].split(&quot;\n## Stream 29&quot;)[1]?.split(&quot;\n## &quot;)[0] ?? &quot;&quot;
+const docsOutsideStreamTwentyNine = [texts[&quot;FEATURESET.md&quot;].replace(hudSection, &quot;&quot;), texts[&quot;Jayzee-GAPS.md&quot;], texts[&quot;OPEN-ITEMS.md&quot;], readFileSync(join(docs, &quot;PARITY-INPUTS.md&quot;), &quot;utf8&quot;)]
+const hudNamedInDocs = hudModules.filter((m) =&gt; docsOutsideStreamTwentyNine.some((t) =&gt; new RegExp(`\\b${m}\\b`).test(t)))
+if (hudNamedInDocs.length !== 0) errors.push(`cleetus docs outside stream 29 name client/hud modules: ${hudNamedInDocs.join(&quot;, &quot;)}`)
+const hudNamedInScripts = hudModules.filter((m) =&gt; scriptJsTexts.some((t) =&gt; new RegExp(`\\b${m}\\b`).test(t)))
+if (hudNamedInScripts.length !== 0) errors.push(`cleetus scripts name client/hud modules: ${hudNamedInScripts.join(&quot;, &quot;)}`)
+counts.stream29 = { lines: hudLines, exports: hudExports, namedInDocs: hudNamedInDocs.length, namedInScripts: hudNamedInScripts.length }
+console.log(`STREAM 29 AT spoint ${spointPin}: ${hudLines} lines, ${hudExports} exports, witnesses ${hudWitnesses.length}; cleetus docs name ${hudNamedInDocs.length}; scripts name ${hudNamedInScripts.length}`)
+const chartMigratorModules = [&quot;migratePlayers&quot;, &quot;migrateWorldAnchors&quot;]
+const chartMigratorText = (m) =&gt; execFileSync(&quot;git&quot;, [&quot;-C&quot;, spointRoot, &quot;show&quot;, `${spointPin}:src/sdk/chartState/${m}.js`], { encoding: &quot;utf8&quot; })
+const chartMigratorLines = chartMigratorModules.reduce((sum, m) =&gt; sum + chartMigratorText(m).split(&quot;\n&quot;).length - 1, 0)
+if (chartMigratorLines !== 78) errors.push(`chartState migrators at ${spointPin} are ${chartMigratorLines} lines, expected 78`)
+const chartMigratorWitnesses = chartMigratorModules.filter((m) =&gt; { try { return execFileSync(&quot;git&quot;, [&quot;-C&quot;, spointRoot, &quot;grep&quot;, &quot;-l&quot;, m, spointPin, &quot;--&quot;, &quot;scripts&quot;], { encoding: &quot;utf8&quot; }).trim().length &gt; 0 } catch { return false } })
+if (chartMigratorWitnesses.length !== 0) errors.push(`chartState migrators have witness scripts at ${spointPin}: ${chartMigratorWitnesses.join(&quot;, &quot;)}`)
+counts.chartStateMigrators = { lines: chartMigratorLines, witnesses: chartMigratorWitnesses.length }
+console.log(`CHARTSTATE MIGRATORS AT spoint ${spointPin}: ${chartMigratorLines} lines; witnesses ${chartMigratorWitnesses.length}`)
+const chartAddendum = texts[&quot;FEATURESET.md&quot;].split(&quot;\n## chartState per-file migrators&quot;)[1]?.split(&quot;\n## &quot;)[0] ?? &quot;&quot;
+const chartCites = [...chartAddendum.matchAll(streamCitePattern)]
+let chartVerified = 0
+for (const [, path, lineNumber, snippet] of chartCites) {
+  claimsChecked++
+  let source = null
+  try { source = execFileSync(&quot;git&quot;, [&quot;-C&quot;, spointRoot, &quot;show&quot;, `${spointPin}:${path}`], { encoding: &quot;utf8&quot; }).split(&quot;\n&quot;) } catch { source = null }
+  if (source === null) { errors.push(`FEATURESET.md chartState addendum: ${path} is not in spoint at ${spointPin}`); continue }
+  if ((source[Number(lineNumber) - 1] ?? &quot;&quot;).includes(snippet)) chartVerified++
+  else errors.push(`FEATURESET.md chartState addendum: ${path}:${lineNumber} does not contain the cited text: ${snippet}`)
+}
+if (chartCites.length !== 4) errors.push(`FEATURESET.md chartState addendum: expected 4 citations, found ${chartCites.length}`)
+console.log(`CHARTSTATE ADDENDUM CITATIONS VERIFIED AGAINST spoint ${spointPin}: ${chartVerified} of ${chartCites.length}`)
+const procgenModules = [&quot;LSystem&quot;, &quot;NoiseTerrain&quot;, &quot;TextureScript&quot;, &quot;WFC&quot;]
+const procgenText = (m) =&gt; execFileSync(&quot;git&quot;, [&quot;-C&quot;, spointRoot, &quot;show&quot;, `${spointPin}:src/procgen/${m}.js`], { encoding: &quot;utf8&quot; })
+const procgenLines = procgenModules.reduce((sum, m) =&gt; sum + procgenText(m).split(&quot;\n&quot;).length - 1, 0)
+if (procgenLines !== 563) errors.push(`spoint src/procgen stream 30 at ${spointPin} is ${procgenLines} lines, expected 563`)
+const procgenExports = procgenModules.reduce((sum, m) =&gt; sum + procgenText(m).split(&quot;\n&quot;).filter((l) =&gt; l.startsWith(&quot;export&quot;)).length, 0)
+if (procgenExports !== 13) errors.push(`spoint src/procgen stream 30 at ${spointPin} has ${procgenExports} exports, expected 13`)
+const procgenWitnesses = [&quot;LSystem&quot;, &quot;NoiseTerrain&quot;, &quot;TextureScript&quot;, &quot;WFC&quot;, &quot;procgen&quot;].filter((m) =&gt; { try { return execFileSync(&quot;git&quot;, [&quot;-C&quot;, spointRoot, &quot;grep&quot;, &quot;-liwF&quot;, m, spointPin, &quot;--&quot;, &quot;scripts&quot;], { encoding: &quot;utf8&quot; }).trim().length &gt; 0 } catch { return false } })
+if (procgenWitnesses.length !== 0) errors.push(`procgen names have witness scripts at ${spointPin}: ${procgenWitnesses.join(&quot;, &quot;)}`)
+const procgenSection = texts[&quot;FEATURESET.md&quot;].split(&quot;\n## Stream 30&quot;)[1]?.split(&quot;\n## &quot;)[0] ?? &quot;&quot;
+const procgenDocsOutside = [texts[&quot;FEATURESET.md&quot;].replace(procgenSection, &quot;&quot;), texts[&quot;Jayzee-GAPS.md&quot;], texts[&quot;OPEN-ITEMS.md&quot;], readFileSync(join(docs, &quot;PARITY-INPUTS.md&quot;), &quot;utf8&quot;)]
+const procgenNamedInDocs = procgenModules.filter((m) =&gt; procgenDocsOutside.some((t) =&gt; new RegExp(`\\b${m}\\b`).test(t)))
+if (procgenNamedInDocs.length !== 0) errors.push(`cleetus docs outside stream 30 name procgen modules: ${procgenNamedInDocs.join(&quot;, &quot;)}`)
+const procgenNamedInScripts = procgenModules.filter((m) =&gt; scriptJsTexts.some((t) =&gt; new RegExp(`\\b${m}\\b`).test(t)))
+if (procgenNamedInScripts.length !== 0) errors.push(`cleetus scripts name procgen modules: ${procgenNamedInScripts.join(&quot;, &quot;)}`)
+counts.stream30 = { lines: procgenLines, exports: procgenExports, namedInDocs: procgenNamedInDocs.length, namedInScripts: procgenNamedInScripts.length }
+console.log(`STREAM 30 AT spoint ${spointPin}: ${procgenLines} lines, ${procgenExports} exports, witnesses ${procgenWitnesses.length}; cleetus docs name ${procgenNamedInDocs.length}; scripts name ${procgenNamedInScripts.length}`)
+const effectsModules = [&quot;DamageEffects&quot;, &quot;fxProgram&quot;]
+const effectsText = (m) =&gt; execFileSync(&quot;git&quot;, [&quot;-C&quot;, spointRoot, &quot;show&quot;, `${spointPin}:src/effects/${m}.js`], { encoding: &quot;utf8&quot; })
+const effectsLines = effectsModules.reduce((sum, m) =&gt; sum + effectsText(m).split(&quot;\n&quot;).length - 1, 0)
+if (effectsLines !== 275) errors.push(`spoint src/effects stream 31 at ${spointPin} is ${effectsLines} lines, expected 275`)
+const effectsExports = effectsModules.reduce((sum, m) =&gt; sum + effectsText(m).split(&quot;\n&quot;).filter((l) =&gt; l.startsWith(&quot;export&quot;)).length, 0)
+if (effectsExports !== 4) errors.push(`spoint src/effects stream 31 at ${spointPin} has ${effectsExports} exports, expected 4`)
+const fxProgramImporters = (() =&gt; { try { return execFileSync(&quot;git&quot;, [&quot;-C&quot;, spointRoot, &quot;grep&quot;, &quot;-lE&quot;, &quot;fxProgram&quot;, spointPin, &quot;--&quot;, &quot;:!src/effects/fxProgram.js&quot;], { encoding: &quot;utf8&quot; }).split(&quot;\n&quot;).filter(Boolean) } catch { return [] } })()
+if (fxProgramImporters.length !== 0) errors.push(`fxProgram has references at ${spointPin} outside its own file: ${fxProgramImporters.join(&quot;, &quot;)}`)
+const effectsWitnesses = effectsModules.filter((m) =&gt; { try { return execFileSync(&quot;git&quot;, [&quot;-C&quot;, spointRoot, &quot;grep&quot;, &quot;-lwF&quot;, m, spointPin, &quot;--&quot;, &quot;scripts&quot;], { encoding: &quot;utf8&quot; }).trim().length &gt; 0 } catch { return false } })
+if (effectsWitnesses.length !== 0) errors.push(`effects modules have witness scripts at ${spointPin}: ${effectsWitnesses.join(&quot;, &quot;)}`)
+const effectsSection = texts[&quot;FEATURESET.md&quot;].split(&quot;\n## Stream 31&quot;)[1]?.split(&quot;\n## &quot;)[0] ?? &quot;&quot;
+const effectsDocsOutside = [texts[&quot;FEATURESET.md&quot;].replace(effectsSection, &quot;&quot;), texts[&quot;Jayzee-GAPS.md&quot;], texts[&quot;OPEN-ITEMS.md&quot;], readFileSync(join(docs, &quot;PARITY-INPUTS.md&quot;), &quot;utf8&quot;)]
+const effectsNamedInDocs = effectsModules.filter((m) =&gt; effectsDocsOutside.some((t) =&gt; new RegExp(`\\b${m}\\b`).test(t)))
+if (effectsNamedInDocs.length !== 0) errors.push(`cleetus docs outside stream 31 name effects modules: ${effectsNamedInDocs.join(&quot;, &quot;)}`)
+const effectsNamedInScripts = effectsModules.filter((m) =&gt; scriptJsTexts.some((t) =&gt; new RegExp(`\\b${m}\\b`).test(t)))
+if (effectsNamedInScripts.length !== 0) errors.push(`cleetus scripts name effects modules: ${effectsNamedInScripts.join(&quot;, &quot;)}`)
+counts.stream31 = { lines: effectsLines, exports: effectsExports, namedInDocs: effectsNamedInDocs.length, namedInScripts: effectsNamedInScripts.length }
+console.log(`STREAM 31 AT spoint ${spointPin}: ${effectsLines} lines, ${effectsExports} exports, fxProgram references ${fxProgramImporters.length}, witnesses ${effectsWitnesses.length}; cleetus docs name ${effectsNamedInDocs.length}; scripts name ${effectsNamedInScripts.length}`)
+const spointShow = (path) =&gt; execFileSync(&quot;git&quot;, [&quot;-C&quot;, spointRoot, &quot;show&quot;, `${spointPin}:${path}`], { encoding: &quot;utf8&quot; })
+const spointWitnessFiles = (name) =&gt; { try { return execFileSync(&quot;git&quot;, [&quot;-C&quot;, spointRoot, &quot;grep&quot;, &quot;-lwF&quot;, name, spointPin, &quot;--&quot;, &quot;scripts&quot;], { encoding: &quot;utf8&quot; }).split(&quot;\n&quot;).filter(Boolean).map((l) =&gt; l.replace(`${spointPin}:`, &quot;&quot;)) } catch { return [] } }
+const spointLineCount = (path) =&gt; spointShow(path).split(&quot;\n&quot;).length - 1
+const spointExportCount = (path) =&gt; spointShow(path).split(&quot;\n&quot;).filter((l) =&gt; l.startsWith(&quot;export&quot;)).length
+const newStreamsSpan = texts[&quot;FEATURESET.md&quot;].slice(texts[&quot;FEATURESET.md&quot;].indexOf(&quot;\n## Stream 32&quot;), texts[&quot;FEATURESET.md&quot;].indexOf(&quot;\n## Stream 21&quot;))
+const newStreamsOutsideText = [texts[&quot;FEATURESET.md&quot;].replace(newStreamsSpan, &quot;&quot;), texts[&quot;Jayzee-GAPS.md&quot;], texts[&quot;OPEN-ITEMS.md&quot;], readFileSync(join(docs, &quot;PARITY-INPUTS.md&quot;), &quot;utf8&quot;), ...scriptJsTexts]
+const cleetusNamesModule = (name) =&gt; newStreamsOutsideText.some((t) =&gt; new RegExp(`\\b${name}\\b`, &quot;i&quot;).test(t))
+const s32 = [&quot;DracoDecompressor&quot;, &quot;GLBLoader&quot;, &quot;GLBMath&quot;, &quot;MeshoptDecompressor&quot;, &quot;pivotTransform&quot;, &quot;surfaceVelocity&quot;]
+const s32Lines = s32.reduce((sum, m) =&gt; sum + spointLineCount(`src/physics/${m}.js`), 0)
+if (s32Lines !== 508) errors.push(`stream 32 at ${spointPin}: ${s32Lines} lines, expected 508`)
+const s32Exports = s32.reduce((sum, m) =&gt; sum + spointExportCount(`src/physics/${m}.js`), 0)
+if (s32Exports !== 20) errors.push(`stream 32 at ${spointPin}: ${s32Exports} exports, expected 20`)
+const s32NonBakeWitnessed = s32.filter((m) =&gt; spointWitnessFiles(m).some((f) =&gt; !f.includes(&quot;bake-&quot;)))
+if (s32NonBakeWitnessed.join() !== &quot;pivotTransform,surfaceVelocity&quot;) errors.push(`stream 32 witnessed set is [${s32NonBakeWitnessed.join(&quot;, &quot;)}], expected [pivotTransform, surfaceVelocity]`)
+const s32BakeOnly = s32.filter((m) =&gt; { const w = spointWitnessFiles(m); return w.length &gt; 0 &amp;&amp; w.every((f) =&gt; f.includes(&quot;bake-&quot;)) })
+if (s32BakeOnly.join() !== &quot;GLBLoader,GLBMath&quot;) errors.push(`stream 32 bake-only names are [${s32BakeOnly.join(&quot;, &quot;)}], expected [GLBLoader, GLBMath]`)
+const s32Named = s32.filter(cleetusNamesModule)
+if (s32Named.length !== 0) errors.push(`cleetus docs or scripts outside streams 32 to 35 name stream 32 modules: ${s32Named.join(&quot;, &quot;)}`)
+const s32NegativeWitnessRefused = spointWitnessFiles(&quot;NoSuchPhysicsModuleForNegativeWitness&quot;).length === 0
+if (!s32NegativeWitnessRefused) errors.push(&quot;stream 32 negative witness was not refused&quot;)
+counts.stream32Physics = { lines: s32Lines, exports: s32Exports, nonBakeWitnessed: s32NonBakeWitnessed.length, bakeOnly: s32BakeOnly.join(&quot;+&quot;) }
+console.log(`STREAM 32 AT spoint ${spointPin}: ${s32Lines} lines, ${s32Exports} exports, non-bake witnessed ${s32NonBakeWitnessed.join(&quot;+&quot;)}, bake-only ${s32BakeOnly.join(&quot;+&quot;)}, negative witness refused: ${s32NegativeWitnessRefused}`)
+const s33 = [&quot;MinimapBiome&quot;, &quot;JayzeeSurface&quot;, &quot;ballistics&quot;, &quot;bookmarks&quot;, &quot;canonicalJSON&quot;, &quot;clusterAssignment&quot;, &quot;colliderLattice&quot;, &quot;equipment&quot;, &quot;materialSlots&quot;, &quot;modelLoadErrors&quot;, &quot;relevanceRadius&quot;, &quot;vec3&quot;, &quot;worldPresets&quot;, &quot;worldResolve&quot;]
+const s33Lines = s33.reduce((sum, m) =&gt; sum + spointLineCount(`src/shared/${m}.js`), 0)
+if (s33Lines !== 1074) errors.push(`stream 33 at ${spointPin}: ${s33Lines} lines, expected 1074`)
+const s33Named = s33.filter(cleetusNamesModule)
+if (s33Named.length !== 0) errors.push(`cleetus docs or scripts outside streams 32 to 35 name stream 33 modules: ${s33Named.join(&quot;, &quot;)}`)
+const s33WitnessLess = s33.filter((m) =&gt; spointWitnessFiles(m).length === 0)
+if (s33WitnessLess.join() !== &quot;JayzeeSurface,bookmarks,canonicalJSON,clusterAssignment,materialSlots&quot;) errors.push(`stream 33 witness-less set is [${s33WitnessLess.join(&quot;, &quot;)}], expected five`)
+console.log(`STREAM 33 AT spoint ${spointPin}: ${s33Lines} lines, 14 modules, cleetus names ${s33Named.length}, witness-less ${s33WitnessLess.length}`)
+const s34 = [&quot;create-app&quot;, &quot;create-project&quot;, &quot;marketplace-install&quot;, &quot;marketplace-registry&quot;, &quot;room-orchestrator-boot&quot;, &quot;room-worker-boot&quot;, &quot;router-boot&quot;, &quot;templates&quot;]
+const s34Lines = s34.reduce((sum, m) =&gt; sum + spointLineCount(`bin/${m}.js`), 0)
+if (s34Lines !== 1313) errors.push(`stream 34 at ${spointPin}: ${s34Lines} lines, expected 1313`)
+const s34Named = [&quot;create-app&quot;, &quot;create-project&quot;, &quot;room-orchestrator-boot&quot;, &quot;room-worker-boot&quot;].filter(cleetusNamesModule)
+if (s34Named.length !== 0) errors.push(`cleetus docs or scripts outside streams 32 to 35 name stream 34 boot scripts: ${s34Named.join(&quot;, &quot;)}`)
+const s34NoScriptWitness = [&quot;marketplace-install&quot;, &quot;marketplace-registry&quot;, &quot;room-worker-boot&quot;].filter((m) =&gt; spointWitnessFiles(m).length === 0)
+if (s34NoScriptWitness.length !== 3) errors.push(`stream 34 no-script-witness set is [${s34NoScriptWitness.join(&quot;, &quot;)}], expected three`)
+console.log(`STREAM 34 AT spoint ${spointPin}: ${s34Lines} lines, 8 files, cleetus names ${s34Named.length}`)
+const s35 = [&quot;GrassClump&quot;, &quot;GrassMaterial&quot;, &quot;GrassTSL&quot;, &quot;GrassWindField&quot;]
+const s35Lines = s35.reduce((sum, m) =&gt; sum + spointLineCount(`client/core/${m}.js`), 0)
+if (s35Lines !== 832) errors.push(`stream 35 at ${spointPin}: ${s35Lines} lines, expected 832`)
+const s35Witnessed = s35.filter((m) =&gt; spointWitnessFiles(m).length &gt; 0)
+if (s35Witnessed.join() !== &quot;GrassWindField&quot;) errors.push(`stream 35 witnessed set is [${s35Witnessed.join(&quot;, &quot;)}], expected [GrassWindField]`)
+const s35Named = s35.filter(cleetusNamesModule)
+if (s35Named.length !== 0) errors.push(`cleetus docs or scripts outside streams 32 to 35 name stream 35 modules: ${s35Named.join(&quot;, &quot;)}`)
+console.log(`STREAM 35 AT spoint ${spointPin}: ${s35Lines} lines, witnessed ${s35Witnessed.join(&quot;+&quot;)}, cleetus names ${s35Named.length}`)
+const improvementCandidates = [
+  [&quot;src/shared/JayzeeSurface.js&quot;, 68, &quot;Number.isFinite(terrainY) ? Math.max(pose[1], terrainY) : pose[1]&quot;],
+  [&quot;src/shared/colliderLattice.js&quot;, 10, &quot;return typeof v === &#39;number&#39; &amp;&amp; Number.isFinite(v) &amp;&amp; v &gt; 0 ? v : null&quot;],
+  [&quot;src/shared/colliderLattice.js&quot;, 19, &quot;const extent = positiveFinite(&#39;physics.extent&#39;, tphys.extent) ?? COLLIDER_DEFAULT_EXTENT_M&quot;],
+  [&quot;src/shared/MinimapBiome.js&quot;, 38, &quot;if (!Number.isFinite(h)) { out[0] = 0; out[1] = 0; out[2] = 0; out[3] = 0; return null }&quot;],
+  [&quot;bin/room-orchestrator-boot.js&quot;, 14, &quot;const workerCount = parseInt(process.env.ROOM_WORKER_COUNT || &#39;2&#39;, 10)&quot;],
+  [&quot;bin/room-worker-boot.js&quot;, 59, &quot;const workerCommandPort = parseInt(process.env.WORKER_COMMAND_PORT || &#39;0&#39;, 10)&quot;],
+  [&quot;bin/router-boot.js&quot;, 25, &quot;const cellSize = parseInt(process.env.SHARD_CELL_SIZE || String(shardCfg.cellSize ?? 0), 10) || undefined&quot;],
+  [&quot;bin/marketplace-registry.js&quot;, 7, &quot;const PORT = parseInt(process.env.PORT || &#39;3100&#39;, 10)&quot;],
+  [&quot;bin/marketplace-install.js&quot;, 17, &quot;let registryUrl = process.env.MARKETPLACE_REGISTRY || &#39;http://localhost:3100&#39;&quot;],
+  [&quot;client/core/GrassTSL.js&quot;, 33, &quot;const d = density || GRASS_DENSITY&quot;],
+  [&quot;client/core/GrassMaterial.js&quot;, 152, &quot;const d = density || GRASS_DENSITY&quot;],
+  [&quot;client/core/GrassMaterial.js&quot;, 117, &quot;return Number.isFinite(v) ? v : fallback&quot;],
+  [&quot;client/core/GrassClump.js&quot;, 73, &quot;const N = Number.isFinite(segments) &amp;&amp; segments &gt;= 1 ? segments | 0 : 3&quot;],
+  [&quot;client/core/GrassClump.js&quot;, 74, &quot;const C = Number.isFinite(cards) &amp;&amp; cards &gt;= 1 ? cards | 0 : 3&quot;],
+  [&quot;client/core/GrassWindField.js&quot;, 137, &quot;const r = Number.isFinite(reach) &amp;&amp; reach &gt; 0 ? reach : GRASS_WIND_FIELD_REACH_M&quot;],
+]
+const candidateMismatch = improvementCandidates.filter(([p, n, s]) =&gt; !spointShow(p).split(&quot;\n&quot;)[n - 1]?.includes(s))
+if (candidateMismatch.length !== 0) errors.push(`improvement candidates not at their cited lines at ${spointPin}: ${candidateMismatch.map(([p, n]) =&gt; `${p}:${n}`).join(&quot;, &quot;)}`)
+const candidateShiftRefused = improvementCandidates.filter(([p, n, s]) =&gt; spointShow(p).split(&quot;\n&quot;)[n]?.includes(s)).length === 0
+if (!candidateShiftRefused) errors.push(&quot;improvement candidate line-shift negative was not refused&quot;)
+console.log(`IMPROVEMENT CANDIDATES AT spoint ${spointPin}: ${improvementCandidates.length} located, line-shift negative refused: ${candidateShiftRefused}`)
+const coreLines = (names) =&gt; names.reduce((sum, m) =&gt; sum + spointLineCount(`client/core/${m}.js`), 0)
+const coreWitnessed = (names) =&gt; names.filter((m) =&gt; spointWitnessFiles(m).length &gt; 0)
+const s36 = [&quot;WeatherGpu&quot;, &quot;WeatherMaterials&quot;, &quot;WeatherMaterialsTSL&quot;, &quot;WetnessTint&quot;, &quot;WetnessTintTSL&quot;, &quot;UnderwaterTint&quot;, &quot;UnderwaterTintTSL&quot;, &quot;PostFxLook&quot;]
+if (coreLines(s36) !== 682) errors.push(`stream 36 at ${spointPin}: ${coreLines(s36)} lines, expected 682`)
+if (coreWitnessed(s36).join() !== &quot;PostFxLook&quot;) errors.push(`stream 36 witnessed set is [${coreWitnessed(s36).join(&quot;, &quot;)}], expected [PostFxLook]`)
+if (s36.some(cleetusNamesModule)) errors.push(`cleetus docs or scripts outside streams 32 to 35 name stream 36 modules: ${s36.filter(cleetusNamesModule).join(&quot;, &quot;)}`)
+console.log(`STREAM 36 AT spoint ${spointPin}: ${coreLines(s36)} lines, 8 modules, witnessed ${coreWitnessed(s36).join(&quot;+&quot;)}, cleetus names ${s36.filter(cleetusNamesModule).length}`)
+const s37 = [&quot;CullingHub&quot;, &quot;TerrainOcclusion&quot;, &quot;WebGPUCullingHubIntegration&quot;, &quot;WebGPUCullingProbe&quot;, &quot;OcclusionPolicy&quot;, &quot;OcclusionQueryBudget&quot;]
+if (coreLines(s37) !== 811) errors.push(`stream 37 at ${spointPin}: ${coreLines(s37)} lines, expected 811`)
+if (coreWitnessed(s37).length !== 0) errors.push(`stream 37 has witnesses: ${coreWitnessed(s37).join(&quot;, &quot;)}`)
+if (s37.some(cleetusNamesModule)) errors.push(`cleetus docs or scripts outside streams 32 to 35 name stream 37 modules: ${s37.filter(cleetusNamesModule).join(&quot;, &quot;)}`)
+const occlusionPerFileCited = [&quot;client/core/OcclusionPolicy.js:1&quot;, &quot;client/core/OcclusionQueryBudget.js:1&quot;].every((c) =&gt; texts[&quot;FEATURESET.md&quot;].includes(`\`${c}\``))
+if (!occlusionPerFileCited) errors.push(&quot;stream 37 does not cite OcclusionPolicy and OcclusionQueryBudget per file&quot;)
+console.log(`STREAM 37 AT spoint ${spointPin}: ${coreLines(s37)} lines (6 modules incl. the 2 held), witnesses ${coreWitnessed(s37).length}, held files cited per file: ${occlusionPerFileCited}`)
+const s38 = [&quot;Bloom&quot;, &quot;BloomWebGPU&quot;, &quot;FSR1&quot;, &quot;FSR1WebGPU&quot;]
+if (coreLines(s38) !== 790) errors.push(`stream 38 at ${spointPin}: ${coreLines(s38)} lines, expected 790`)
+if (coreWitnessed(s38).length !== 0) errors.push(`stream 38 has witnesses: ${coreWitnessed(s38).join(&quot;, &quot;)}`)
+if (s38.some(cleetusNamesModule)) errors.push(`cleetus docs or scripts outside streams 32 to 35 name stream 38 modules: ${s38.filter(cleetusNamesModule).join(&quot;, &quot;)}`)
+console.log(`STREAM 38 AT spoint ${spointPin}: ${coreLines(s38)} lines, witnesses ${coreWitnessed(s38).length}, cleetus names ${s38.filter(cleetusNamesModule).length}`)
+const s39 = [&quot;SSAO&quot;, &quot;SSAOWebGPU&quot;, &quot;SSR&quot;, &quot;SSRWebGPU&quot;]
+if (coreLines(s39) !== 1175) errors.push(`stream 39 at ${spointPin}: ${coreLines(s39)} lines, expected 1175`)
+if (coreWitnessed(s39).length !== 0) errors.push(`stream 39 has witnesses: ${coreWitnessed(s39).join(&quot;, &quot;)}`)
+if (s39.some(cleetusNamesModule)) errors.push(`cleetus docs or scripts outside streams 32 to 35 name stream 39 modules: ${s39.filter(cleetusNamesModule).join(&quot;, &quot;)}`)
+console.log(`STREAM 39 AT spoint ${spointPin}: ${coreLines(s39)} lines, witnesses ${coreWitnessed(s39).length}, cleetus names ${s39.filter(cleetusNamesModule).length}`)
+const s40 = [&quot;PlayerLOD&quot;, &quot;PlayerLODTSL&quot;, &quot;PlayerVAT&quot;, &quot;PlayerVATBake&quot;, &quot;PlayerVATTSL&quot;]
+if (coreLines(s40) !== 807) errors.push(`stream 40 at ${spointPin}: ${coreLines(s40)} lines, expected 807`)
+if (coreWitnessed(s40).length !== 0) errors.push(`stream 40 has witnesses: ${coreWitnessed(s40).join(&quot;, &quot;)}`)
+if (s40.some(cleetusNamesModule)) errors.push(`cleetus docs or scripts outside streams 32 to 35 name stream 40 modules: ${s40.filter(cleetusNamesModule).join(&quot;, &quot;)}`)
+console.log(`STREAM 40 AT spoint ${spointPin}: ${coreLines(s40)} lines, witnesses ${coreWitnessed(s40).length}, cleetus names ${s40.filter(cleetusNamesModule).length}`)
+const candidates36to40 = [
+  [&quot;client/core/WetnessTint.js&quot;, 54, &quot;const v = THREE.MathUtils.clamp(Number.isFinite(w) ? w : 0, 0, 1)&quot;],
+  [&quot;client/core/WetnessTintTSL.js&quot;, 36, &quot;const v = Number.isFinite(w) ? Math.min(1, Math.max(0, w)) : 0&quot;],
+  [&quot;client/core/UnderwaterTint.js&quot;, 89, &quot;if (Number.isFinite(planetRadius) &amp;&amp; planetRadius &gt; 0) _seaUniform.value[SEA_RADIUS] = planetRadius&quot;],
+  [&quot;client/core/UnderwaterTintTSL.js&quot;, 51, &quot;if (!Number.isFinite(seaY)) return&quot;],
+  [&quot;client/core/PostFxLook.js&quot;, 38, &quot;const exposure = look.exposure ?? 1&quot;],
+  [&quot;client/core/CullingHub.js&quot;, 15, &quot;per[name] = s || null&quot;],
+  [&quot;client/core/TerrainOcclusion.js&quot;, 8, &quot;const minCandidates = opts.minCandidates ?? 32&quot;],
+  [&quot;client/core/TerrainOcclusion.js&quot;, 9, &quot;const maxElev = opts.maxElev ?? 200&quot;],
+  [&quot;client/core/TerrainOcclusion.js&quot;, 24, &quot;let maxQueriesPerFrame = opts.maxQueriesPerFrame ?? 32&quot;],
+  [&quot;client/core/TerrainOcclusion.js&quot;, 178, &quot;const s = halfSize || 1&quot;],
+  [&quot;client/core/TerrainOcclusion.js&quot;, 207, &quot;out.push({ key, center: rec.center, size: rec.size || 1, state })&quot;],
+  [&quot;client/core/WebGPUCullingHubIntegration.js&quot;, 35, &quot;const viewProjection = vp || DEFAULT_PERSPECTIVE_VIEW_PROJECTION&quot;],
+  [&quot;client/core/WebGPUCullingHubIntegration.js&quot;, 141, &quot;failOpens: 1&quot;],
+  [&quot;client/core/Bloom.js&quot;, 100, &quot;const scale = RenderControls.get(&#39;bloomResolutionScale&#39;) || 0.5&quot;],
+  [&quot;client/core/BloomWebGPU.js&quot;, 62, &quot;const scale = RenderControls.get(&#39;bloomResolutionScale&#39;) || 0.5&quot;],
+  [&quot;client/core/Bloom.js&quot;, 157, &quot;const passes = Math.max(1, RenderControls.get(&#39;bloomBlurPasses&#39;) || 1)&quot;],
+  [&quot;client/core/BloomWebGPU.js&quot;, 122, &quot;const passes = Math.max(1, RenderControls.get(&#39;bloomBlurPasses&#39;) || 1)&quot;],
+  [&quot;client/core/FSR1.js&quot;, 216, &quot;if (dpr == null) return false&quot;],
+  [&quot;client/core/SSR.js&quot;, 212, &quot;mat.uniforms.uWetness.value = this.userData.wetness || 0&quot;],
+  [&quot;client/core/SSR.js&quot;, 272, &quot;u.uWeatherWetness.value = THREE.MathUtils.clamp(_getWeatherWetness() || 0, 0, 1)&quot;],
+  [&quot;client/core/SSRWebGPU.js&quot;, 277, &quot;this._weatherWetnessUniform.value = THREE.MathUtils.clamp(_getWeatherWetness() || 0, 0, 1)&quot;],
+  [&quot;client/core/SSRWebGPU.js&quot;, 292, &quot;const underwaterTint = typeof window !== &#39;undefined&#39; ? window.__underwaterTint : null&quot;],
+  [&quot;client/core/PlayerLOD.js&quot;, 81, &quot;const dotCellM = opts.dotCellM || 25&quot;],
+  [&quot;client/core/PlayerLOD.js&quot;, 135, &quot;const dotCellM = opts.dotCellM || 25&quot;],
+  [&quot;client/core/PlayerVAT.js&quot;, 137, &quot;const nominal = opts.nominalSpeed || 4.0&quot;],
+  [&quot;client/core/PlayerVAT.js&quot;, 202, &quot;try { im.setUniformAt(id, name, value) } catch (_) {}&quot;],
+  [&quot;client/core/PlayerVATBake.js&quot;, 77, &quot;const maxTexSize = opts.maxTexSize || 4096&quot;],
+  [&quot;client/core/PlayerVATBake.js&quot;, 148, &quot;return { idle: baked[0] || null,&quot;],
+]
+const candidate36Mismatch = candidates36to40.filter(([p, n, s]) =&gt; !spointShow(p).split(&quot;\n&quot;)[n - 1]?.includes(s))
+if (candidate36Mismatch.length !== 0) errors.push(`stream 36 to 40 candidates not at cited lines: ${candidate36Mismatch.map(([p, n]) =&gt; `${p}:${n}`).join(&quot;, &quot;)}`)
+const candidate36ShiftRefused = candidates36to40.filter(([p, n, s]) =&gt; spointShow(p).split(&quot;\n&quot;)[n]?.includes(s)).length === 0
+if (!candidate36ShiftRefused) errors.push(&quot;stream 36 to 40 candidate line-shift negative was not refused&quot;)
+console.log(`CANDIDATES 36 TO 40 AT spoint ${spointPin}: ${candidates36to40.length} located, line-shift negative refused: ${candidate36ShiftRefused}`)
+const s41 = [&quot;Rocks&quot;, &quot;RocksTSL&quot;, &quot;VegetationTSL&quot;, &quot;VegetationAmbientTSL&quot;]
+if (coreLines(s41) !== 496) errors.push(`stream 41 at ${spointPin}: ${coreLines(s41)} lines, expected 496`)
+const rockWitnessText = spointShow(&quot;scripts/rock-model-exclusion-witness.mjs&quot;)
+if (!rockWitnessText.includes(&quot;client/core/Rocks.js&quot;) || !rockWitnessText.includes(&quot;readFileSync&quot;)) errors.push(&quot;stream 41 Rocks witness no longer reads client/core/Rocks.js as source text&quot;)
+if (coreWitnessed(s41).join() !== &quot;Rocks&quot;) errors.push(`stream 41 witnessed set is [${coreWitnessed(s41).join(&quot;, &quot;)}], expected [Rocks]`)
+if (s41.some(cleetusNamesModule)) errors.push(`cleetus docs or scripts outside streams 32 to 35 name stream 41 modules: ${s41.filter(cleetusNamesModule).join(&quot;, &quot;)}`)
+console.log(`STREAM 41 AT spoint ${spointPin}: ${coreLines(s41)} lines, witnessed ${coreWitnessed(s41).join(&quot;+&quot;)} (source-text witness: ${rockWitnessText.includes(&quot;readFileSync&quot;)}), cleetus names ${s41.filter(cleetusNamesModule).length}`)
+const candidates41 = [
+  [&quot;client/core/Rocks.js&quot;, 89, &quot;const worldSeed = (opts.worldSeed ?? cfg.seed ?? 0) | 0&quot;],
+  [&quot;client/core/Rocks.js&quot;, 92, &quot;const renderDistance = Number.isFinite(cfg.rockRenderDistance) ? cfg.rockRenderDistance : (cfg.renderDistance || 320)&quot;],
+  [&quot;client/core/Rocks.js&quot;, 97, &quot;const MAX_INSTANCES = Number.isFinite(cfg.rockMaxInstances) ? cfg.rockMaxInstances : 12000&quot;],
+  [&quot;client/core/Rocks.js&quot;, 102, &quot;try { geos.push(buildRockGeo(t, ROCK_MESH_RES)) } catch (e) { buildErr++; geos.push(null);&quot;],
+  [&quot;client/core/Rocks.js&quot;, 118, &quot;try { geomIds.push(bm.addGeometry(geos[t])) } catch (e) { buildErr++; geomIds.push(-1);&quot;],
+  [&quot;client/core/Rocks.js&quot;, 276, &quot;if (!Number.isFinite(px) || !Number.isFinite(pz)) return 0&quot;],
+  [&quot;client/core/VegetationAmbientTSL.js&quot;, 50, &quot;return Number.isFinite(v) ? v : fallback&quot;],
+  [&quot;client/core/VegetationAmbientTSL.js&quot;, 54, &quot;const muS = Number.isFinite(tod &amp;&amp; tod.elevationDeg) ? Math.sin(tod.elevationDeg * Math.PI / 180) : 1&quot;],
+  [&quot;client/core/VegetationAmbientTSL.js&quot;, 61, &quot;if (tod &amp;&amp; Number.isFinite(tod.ambientIntensity) &amp;&amp; Number.isFinite(tod.ambientColor)) {&quot;],
+  [&quot;client/core/VegetationTSL.js&quot;, 9, &quot;if (typeof window !== &#39;undefined&#39; &amp;&amp; window.__vegWind != null) wind.uVegWind.value = +window.__vegWind&quot;],
+]
+const candidate41Mismatch = candidates41.filter(([p, n, s]) =&gt; !spointShow(p).split(&quot;\n&quot;)[n - 1]?.includes(s))
+if (candidate41Mismatch.length !== 0) errors.push(`stream 41 candidates not at cited lines: ${candidate41Mismatch.map(([p, n]) =&gt; `${p}:${n}`).join(&quot;, &quot;)}`)
+const s42 = [&quot;Vegetation&quot;, &quot;VegetationBuild&quot;, &quot;VegImpostorTier&quot;]
+if (coreLines(s42) !== 1731) errors.push(`stream 42 at ${spointPin}: ${coreLines(s42)} lines, expected 1731`)
+const s42Witnessed = spointWitnessFiles(&quot;Vegetation&quot;).sort().join(&quot;,&quot;)
+if (s42Witnessed !== [&quot;scripts/lib/verify-doc-claims.mjs&quot;, &quot;scripts/lint/comment-lint.mjs&quot;, &quot;scripts/rock-model-exclusion-witness.mjs&quot;].sort().join(&quot;,&quot;)) errors.push(`stream 42 Vegetation script names are [${s42Witnessed}]`)
+if (coreWitnessed([&quot;VegetationBuild&quot;, &quot;VegImpostorTier&quot;]).length !== 0) errors.push(&quot;stream 42 VegetationBuild or VegImpostorTier has a witness&quot;)
+const s42Named = s42.filter(cleetusNamesModule)
+if (s42Named.join() !== &quot;Vegetation&quot;) errors.push(`cleetus docs or scripts outside streams 32 to 41 name stream 42 modules: ${s42Named.join(&quot;, &quot;)}`)
+const vegetationImporterLine = texts[&quot;FEATURESET.md&quot;].split(&quot;\n&quot;).find((l) =&gt; l.includes(&quot;TextureAtlas.js:11&quot;) &amp;&amp; l.includes(&quot;client/core/Vegetation.js&quot;))
+if (!vegetationImporterLine) errors.push(&quot;stream 42 importer-only cleetus line for Vegetation.js (TextureAtlas) is missing&quot;)
+console.log(`STREAM 42 AT spoint ${spointPin}: ${coreLines(s42)} lines, Vegetation script names ${spointWitnessFiles(&quot;Vegetation&quot;).length} (not behavioural), witness-less VegetationBuild and VegImpostorTier, cleetus outside-span names ${s42Named.join(&quot;+&quot;)} (importer-only)`)
+const candidates42 = [
+  [&quot;client/core/Vegetation.js&quot;, 75, &quot;vegetation skipped this session&quot;],
+  [&quot;client/core/Vegetation.js&quot;, 79, &quot;const renderDistance = Number.isFinite(cfg.renderDistance) ? cfg.renderDistance : 640&quot;],
+  [&quot;client/core/Vegetation.js&quot;, 115, &quot;const _shapeVariantsParam = (typeof location&quot;],
+  [&quot;client/core/Vegetation.js&quot;, 116, &quot;const SHAPE_VARIANTS = Number.isFinite(_shapeVariantsParam)&quot;],
+  [&quot;client/core/Vegetation.js&quot;, 199, &quot;console.warn(&#39;[veg] impostor bake failed (mesh-LOD-only):&#39;&quot;],
+  [&quot;client/core/Vegetation.js&quot;, 254, &quot;console.warn(&#39;[veg] impostor bake failed (mesh-LOD-only):&#39;&quot;],
+  [&quot;client/core/Vegetation.js&quot;, 378, &quot;catch (_) { list = null }&quot;],
+  [&quot;client/core/VegetationBuild.js&quot;, 90, &quot;try { if (await decodeImage(img)) { t.needsUpdate = true; return } } catch (_) {}&quot;],
+  [&quot;client/core/VegetationBuild.js&quot;, 493, &quot;const presetName = PRESET[name] || name&quot;],
+  [&quot;client/core/VegetationBuild.js&quot;, 516, &quot;const target = TARGET_H[name] || 9&quot;],
+  [&quot;client/core/VegImpostorTier.js&quot;, 91, &quot;const capacity = Math.min(opts.maxInstances || 20000, opts.initCapacity || 4096)&quot;],
+  [&quot;client/core/VegImpostorTier.js&quot;, 147, &quot;try { im.addLOD(&quot;],
+  [&quot;client/core/VegImpostorTier.js&quot;, 158, &quot;try { im.setUniformAt(id, &#39;atlasTile&#39;, species) } catch (_) {}&quot;],
+  [&quot;client/core/VegImpostorTier.js&quot;, 185, &quot;function removeImpostor(id) { try { im.removeInstances(id) } catch (_) {} }&quot;],
+  [&quot;client/core/VegImpostorTier.js&quot;, 222, &quot;try { rec.setAttributeAt(id, &#39;atlasTile&#39;, species); rec.setAttributeAt(id, &#39;tint&#39;, tint) } catch (_) {}&quot;],
+  [&quot;client/core/VegImpostorTier.js&quot;, 231, &quot;function removeImpostor(id) { try { rec.releaseId(id) } catch (_) {} }&quot;],
+]
+const candidate42Mismatch = candidates42.filter(([p, n, s]) =&gt; !spointShow(p).split(&quot;\n&quot;)[n - 1]?.includes(s))
+if (candidate42Mismatch.length !== 0) errors.push(`stream 42 candidates not at cited lines: ${candidate42Mismatch.map(([p, n]) =&gt; `${p}:${n}`).join(&quot;, &quot;)}`)
+const docNoteCleetus = [[&quot;.jayzee/reference/engine/api-reference.md&quot;, 2201, &quot;new LineBasicNodeMaterial({ color, linewidth: 3 })&quot;], [&quot;.jayzee/reference/engine-deep/api-b.md&quot;, 309, &quot;linewidth` is in CSS pixels at every distance&quot;]].every(([p, n, s]) =&gt; readFileSync(join(cleetus, p), &quot;utf8&quot;).split(&quot;\n&quot;)[n - 1]?.includes(s))
+const docNoteJayzee = (() =&gt; { try { return execFileSync(&quot;git&quot;, [&quot;-C&quot;, &quot;/workspace/jayzee&quot;, &quot;show&quot;, `${pin}:scripts/check-upstream-builtin-three.mjs`], { encoding: &quot;utf8&quot; }).split(&quot;\n&quot;)[92]?.includes(&quot;linewidth: 3&quot;) } catch { return false } })()
+if (!docNoteCleetus) errors.push(&quot;documentation note: the cleetus LineBasicNodeMaterial or linewidth reference line is not where it is cited&quot;)
+if (!docNoteJayzee) errors.push(`documentation note: jayzee check-upstream-builtin-three.mjs:93 does not name LineBasicNodeMaterial linewidth 3 at ${pin}`)
+console.log(`IMPROVEMENT CANDIDATES 42 AT spoint ${spointPin}: ${candidates42.length} located, documentation note cleetus ${docNoteCleetus}, jayzee ${docNoteJayzee}`)
+const s43 = [&quot;WebGPULodInstancer&quot;, &quot;WebGPUInstancing&quot;]
+if (coreLines(s43) !== 1247) errors.push(`stream 43 at ${spointPin}: ${coreLines(s43)} lines, expected 1247`)
+const s43Probes = spointWitnessFiles(&quot;WebGPULodInstancer&quot;).sort()
+if (s43Probes.join() !== [&quot;scripts/.veg-lod-mismatch-probe.mjs&quot;, &quot;scripts/.veg-lod-path-probe.mjs&quot;, &quot;scripts/.veg-lod-stream-control.mjs&quot;].sort().join()) errors.push(`stream 43 WebGPULodInstancer script names are [${s43Probes.join(&quot;, &quot;)}]`)
+const s43WithResult = s43Probes.filter((f) =&gt; spointShow(f).includes(&quot;RESULT&quot;))
+if (s43WithResult.length !== 0) errors.push(`stream 43 probes print RESULT and would be witnesses: ${s43WithResult.join(&quot;, &quot;)}`)
+if (coreWitnessed([&quot;WebGPUInstancing&quot;]).length !== 0) errors.push(&quot;stream 43 WebGPUInstancing has a witness&quot;)
+if (s43.some(cleetusNamesModule)) errors.push(`cleetus docs or scripts outside streams 32 to 42 name stream 43 modules: ${s43.filter(cleetusNamesModule).join(&quot;, &quot;)}`)
+console.log(`STREAM 43 AT spoint ${spointPin}: ${coreLines(s43)} lines, probes ${s43Probes.length} with RESULT ${s43WithResult.length}, WebGPUInstancing witness-less, cleetus names ${s43.filter(cleetusNamesModule).length}`)
+const s44 = [&quot;RenderGraph&quot;, &quot;RenderGraph.nodes&quot;, &quot;ProgramReadiness&quot;]
+if (coreLines(s44) !== 789) errors.push(`stream 44 at ${spointPin}: ${coreLines(s44)} lines, expected 789`)
+const rgWitnesses = spointWitnessFiles(&quot;RenderGraph&quot;).sort()
+if (rgWitnesses.join() !== [&quot;scripts/postfx-graph-structure-witness.mjs&quot;, &quot;scripts/postfx-render-graph-witness.mjs&quot;].sort().join()) errors.push(`stream 44 RenderGraph witnesses are [${rgWitnesses.join(&quot;, &quot;)}]`)
+if (!rgWitnesses.every((f) =&gt; spointShow(f).includes(&quot;RESULT&quot;))) errors.push(&quot;stream 44 RenderGraph witness does not print RESULT&quot;)
+const prWitnesses = spointWitnessFiles(&quot;ProgramReadiness&quot;).sort()
+if (!prWitnesses.includes(&quot;scripts/program-readiness-render-witness.mjs&quot;) || !spointShow(&quot;scripts/program-readiness-render-witness.mjs&quot;).includes(&quot;RESULT&quot;)) errors.push(&quot;stream 44 ProgramReadiness behavioural witness is missing or prints no RESULT&quot;)
+if (spointWitnessFiles(&quot;RenderGraph.nodes&quot;).length !== 0) errors.push(&quot;stream 44 RenderGraph.nodes has a witness&quot;)
+if (s44.some(cleetusNamesModule)) errors.push(`cleetus docs or scripts outside streams 32 to 42 name stream 44 modules: ${s44.filter(cleetusNamesModule).join(&quot;, &quot;)}`)
+console.log(`STREAM 44 AT spoint ${spointPin}: ${coreLines(s44)} lines, RenderGraph witnesses ${rgWitnesses.length} (RESULT), ProgramReadiness behavioural ${prWitnesses.includes(&quot;scripts/program-readiness-render-witness.mjs&quot;)}, RenderGraph.nodes witness-less, cleetus names ${s44.filter(cleetusNamesModule).length}`)
+const candidates43to44 = [
+  [&quot;client/core/WebGPULodInstancer.js&quot;, 139, &quot;const hysteresis = Number.isFinite(opts.hysteresis) ? opts.hysteresis : 0&quot;],
+  [&quot;client/core/WebGPULodInstancer.js&quot;, 140, &quot;const shadowDistSq = Number.isFinite(opts.shadowDistance)&quot;],
+  [&quot;client/core/WebGPULodInstancer.js&quot;, 141, &quot;const shadowOnSq = Number.isFinite(opts.shadowDistance)&quot;],
+  [&quot;client/core/WebGPULodInstancer.js&quot;, 296, &quot;return rec === null || rec === undefined ? -1 : id&quot;],
+  [&quot;client/core/WebGPUInstancing.js&quot;, 14, &quot;if (!interleaved) throw new Error(&quot;],
+  [&quot;client/core/RenderGraph.js&quot;, 22, &quot;const t = (n.targets &amp;&amp; n.targets[key]) || key&quot;],
+  [&quot;client/core/RenderGraph.js&quot;, 151, &quot;if (hook &amp;&amp; (typeof hook.before !== &#39;function&#39;&quot;],
+  [&quot;client/core/RenderGraph.js&quot;, 227, &quot;try { node.run(ctx) } catch (e) {&quot;],
+  [&quot;client/core/RenderGraph.nodes.js&quot;, 39, &quot;ctx.vegetation ? ctx.vegetation.renderDistance || 0 : 0&quot;],
+  [&quot;client/core/RenderGraph.nodes.js&quot;, 56, &quot;const planetRadius = (ctx.terrainBackdrop.planet &amp;&amp; ctx.terrainBackdrop.planet.radius) || 63600&quot;],
+  [&quot;client/core/RenderGraph.nodes.js&quot;, 170, &quot;const scale = +RenderControls.get(&#39;threeVdrsScale&#39;) || 1.0&quot;],
+  [&quot;client/core/ProgramReadiness.js&quot;, 5, &quot;renderer.deferredProgramDraws = renderer.deferredProgramDraws || 0&quot;],
+  [&quot;client/core/ProgramReadiness.js&quot;, 93, &quot;return typeof window === &#39;undefined&#39; || window.__spointAsyncPipelineEscort !== false&quot;],
+  [&quot;client/core/ProgramReadiness.js&quot;, 206, &quot;return typeof window === &#39;undefined&#39; || window.__spointDeferFirstUse !== false&quot;],
+  [&quot;client/core/ProgramReadiness.js&quot;, 18, &quot;} catch (e) {&quot;],
+  [&quot;client/core/ProgramReadiness.js&quot;, 114, &quot;} catch (e) {&quot;],
+  [&quot;client/core/ProgramReadiness.js&quot;, 242, &quot;} catch (e) {&quot;],
+]
+const candidate43Mismatch = candidates43to44.filter(([p, n, s]) =&gt; !spointShow(p).split(&quot;\n&quot;)[n - 1]?.includes(s))
+if (candidate43Mismatch.length !== 0) errors.push(`stream 43 and 44 candidates not at cited lines: ${candidate43Mismatch.map(([p, n]) =&gt; `${p}:${n}`).join(&quot;, &quot;)}`)
+const s45 = [&quot;PerformanceProfiler&quot;, &quot;RuntimeStats&quot;, &quot;OverdrawProbe&quot;, &quot;MeshDebug&quot;, &quot;ColliderDebug&quot;]
+if (coreLines(s45) !== 1135) errors.push(`stream 45 at ${spointPin}: ${coreLines(s45)} lines, expected 1135`)
+if (coreWitnessed(s45).length !== 0) errors.push(`stream 45 has witnesses: ${coreWitnessed(s45).join(&quot;, &quot;)}`)
+if (s45.some(cleetusNamesModule)) errors.push(`cleetus docs or scripts outside streams 32 to 44 name stream 45 modules: ${s45.filter(cleetusNamesModule).join(&quot;, &quot;)}`)
+const frameMetricsCited = texts[&quot;FEATURESET.md&quot;].includes(&quot;`client/core/FrameMetrics.js:4`&quot;)
+if (!frameMetricsCited) errors.push(&quot;stream 45 does not cite FrameMetrics.js per file&quot;)
+if (coreLines([&quot;FrameMetrics&quot;]) !== 233) errors.push(`FrameMetrics.js at ${spointPin} is not 233 lines`)
+if (coreWitnessed([&quot;FrameMetrics&quot;]).length !== 0) errors.push(&quot;FrameMetrics.js has a witness&quot;)
+console.log(`STREAM 45 AT spoint ${spointPin}: ${coreLines(s45)} lines (5 modules), witnesses ${coreWitnessed(s45).length}, FrameMetrics.js cited per file ${frameMetricsCited} (233 lines, witness-less)`)
+const candidates45 = [
+  [&quot;client/core/PerformanceProfiler.js&quot;, 57, &quot;const dpr = window.devicePixelRatio || 1&quot;],
+  [&quot;client/core/PerformanceProfiler.js&quot;, 167, &quot;texMem += (t.width || 0) * (t.height || 0) * BYTES_PER_RGBA8_TEXEL&quot;],
+  [&quot;client/core/PerformanceProfiler.js&quot;, 170, &quot;geoMem += (g.vertices || 0) * BYTES_PER_VEC3_F32&quot;],
+  [&quot;client/core/PerformanceProfiler.js&quot;, 179, &quot;profileState.drawCalls = info.render?.calls || 0&quot;],
+  [&quot;client/core/PerformanceProfiler.js&quot;, 181, &quot;profileState.entityCount = scene?.children?.length || 0&quot;],
+  [&quot;client/core/RuntimeStats.js&quot;, 76, &quot;rttHistory.push(Math.max(0, rtt || 0))&quot;],
+  [&quot;client/core/RuntimeStats.js&quot;, 82, &quot;drawCalls: info.calls || 0&quot;],
+  [&quot;client/core/OverdrawProbe.js&quot;, 219, &quot;try { RenderControls.set(STATS_KEY, next) } catch (_) {}&quot;],
+  [&quot;client/core/OverdrawProbe.js&quot;, 283, &quot;setViewCeiling: (n) =&gt; { if (Number.isFinite(n) &amp;&amp; n &gt; 0) ceilingUniform.value = n }&quot;],
+  [&quot;client/core/ColliderDebug.js&quot;, 49, &quot;const extent = Number.isFinite(phys.extent) &amp;&amp; phys.extent &gt; 0 ? phys.extent : 256&quot;],
+  [&quot;client/core/ColliderDebug.js&quot;, 75, &quot;if (!Number.isFinite(h)) h = -1000&quot;],
+  [&quot;client/core/MeshDebug.js&quot;, 51, &quot;?? &#39;-&#39;&quot;],
+  [&quot;client/core/MeshDebug.js&quot;, 94, &quot;hostPhase: s.hostMigration?.phase ?? null&quot;],
+]
+const candidate45Mismatch = candidates45.filter(([p, n, s]) =&gt; !spointShow(p).split(&quot;\n&quot;)[n - 1]?.includes(s))
+if (candidate45Mismatch.length !== 0) errors.push(`stream 45 candidates not at cited lines: ${candidate45Mismatch.map(([p, n]) =&gt; `${p}:${n}`).join(&quot;, &quot;)}`)
+const s46 = [&quot;StreamingScheduler&quot;, &quot;PlacementScheduler&quot;, &quot;macrotaskYield&quot;, &quot;modelLoadGate&quot;, &quot;TileExtent&quot;, &quot;drawBands&quot;]
+if (coreLines(s46) !== 335) errors.push(`stream 46 at ${spointPin}: ${coreLines(s46)} lines, expected 335`)
+const s46Importers = {
+  StreamingScheduler: [&quot;client/app.js&quot;, &quot;client/core/CacheRevalidationSweep.js&quot;],
+  PlacementScheduler: [&quot;client/app.js&quot;, &quot;client/core/RenderGraph.nodes.js&quot;],
+  macrotaskYield: [&quot;client/core/Grass.js&quot;, &quot;client/core/Rocks.js&quot;, &quot;client/core/Vegetation.js&quot;, &quot;client/dev/HmrRuntime.js&quot;],
+  modelLoadGate: [&quot;client/EntityLoader.js&quot;, &quot;client/app.js&quot;, &quot;scripts/model-gate-failure-witness.mjs&quot;, &quot;scripts/model-load-gate-witness.mjs&quot;, &quot;scripts/singleplayer-model-gate-witness.mjs&quot;],
+  TileExtent: [&quot;client/core/Grass.js&quot;, &quot;client/core/Rocks.js&quot;, &quot;client/core/Vegetation.js&quot;],
+  drawBands: [&quot;client/core/Weather.js&quot;],
+}
+const spointImporters = (name) =&gt; { try { return execFileSync(&quot;git&quot;, [&quot;-C&quot;, spointRoot, &quot;grep&quot;, &quot;-lE&quot;, `(from|import\\()\\s*[&#39;&quot;][^&#39;&quot;]*/${name}\\.js[&#39;&quot;]`, spointPin, &quot;--&quot;, &quot;src&quot;, &quot;client&quot;, &quot;apps&quot;, &quot;packages&quot;, &quot;scripts&quot;, &quot;bin&quot;, &quot;edge&quot;], { encoding: &quot;utf8&quot; }).split(&quot;\n&quot;).filter(Boolean).map((l) =&gt; l.replace(`${spointPin}:`, &quot;&quot;)).filter((f) =&gt; f !== `client/core/${name}.js`).sort() } catch { return [] } }
+const s46ImporterMismatch = s46.filter((m) =&gt; spointImporters(m).join() !== [...s46Importers[m]].sort().join())
+if (s46ImporterMismatch.length !== 0) errors.push(`stream 46 importers differ from the cited set: ${s46ImporterMismatch.join(&quot;, &quot;)}`)
+const importsModule = (name, text) =&gt; new RegExp(`(from|import\\(|href\\()\\s*[&#39;&quot;][^&#39;&quot;]*/${name}\\.js[&#39;&quot;]`).test(text)
+const behaviouralWitnesses = (name) =&gt; spointWitnessFiles(name).filter((f) =&gt; spointShow(f).includes(&quot;RESULT&quot;) &amp;&amp; importsModule(name, spointShow(f)))
+const s46Behavioural = s46.filter((m) =&gt; behaviouralWitnesses(m).length &gt; 0)
+if (s46Behavioural.join() !== &quot;modelLoadGate&quot;) errors.push(`stream 46 behavioural witnesses are [${s46Behavioural.join(&quot;, &quot;)}], expected [modelLoadGate]`)
+const modelGateWitnesses = spointWitnessFiles(&quot;modelLoadGate&quot;).sort()
+if (modelGateWitnesses.join() !== [&quot;scripts/model-gate-failure-witness.mjs&quot;, &quot;scripts/model-load-gate-witness.mjs&quot;, &quot;scripts/singleplayer-model-gate-witness.mjs&quot;].join()) errors.push(`stream 46 modelLoadGate witnesses are [${modelGateWitnesses.join(&quot;, &quot;)}]`)
+const modelGateNoResult = modelGateWitnesses.filter((f) =&gt; !spointShow(f).includes(&quot;RESULT&quot;))
+if (modelGateNoResult.length !== 0) errors.push(`stream 46 modelLoadGate witnesses print no RESULT: ${modelGateNoResult.join(&quot;, &quot;)}`)
+const macrotaskWitnessFiles = spointWitnessFiles(&quot;macrotaskYield&quot;)
+if (macrotaskWitnessFiles.join() !== &quot;scripts/lib/verify-doc-claims.mjs&quot;) errors.push(`stream 46 macrotaskYield script hits are [${macrotaskWitnessFiles.join(&quot;, &quot;)}], expected the claim file only`)
+if (behaviouralWitnesses(&quot;macrotaskYield&quot;).length !== 0) errors.push(&quot;stream 46 macrotaskYield has a behavioural witness&quot;)
+if (s46.filter((m) =&gt; m !== &quot;modelLoadGate&quot;).some((m) =&gt; spointWitnessFiles(m).length &gt; 0 &amp;&amp; m !== &quot;macrotaskYield&quot;)) errors.push(&quot;stream 46 has an unexpected script hit outside macrotaskYield&quot;)
+const s46Named = s46.filter(cleetusNamesModule)
+if (s46Named.length !== 0) errors.push(`cleetus docs or scripts outside streams name stream 46 modules [${s46Named.join(&quot;, &quot;)}]`)
+console.log(`STREAM 46 AT spoint ${spointPin}: ${coreLines(s46)} lines (6 modules), importers as cited ${s46ImporterMismatch.length === 0}, behavioural witnesses [${s46Behavioural.join(&quot;, &quot;)}] with ${modelGateWitnesses.length} modelLoadGate scripts, cleetus names ${s46Named.length}`)
+const candidates46 = [
+  [&quot;client/core/StreamingScheduler.js&quot;, 5, &quot;const distance = Number.isFinite(features.distance) &amp;&amp; features.distance &gt;= 0 ? features.distance : Infinity&quot;],
+  [&quot;client/core/StreamingScheduler.js&quot;, 6, &quot;const screenSize = Number.isFinite(features.screenSize) &amp;&amp; features.screenSize &gt; 0 ? features.screenSize : 1&quot;],
+  [&quot;client/core/StreamingScheduler.js&quot;, 8, &quot;const gameplayBoost = Number.isFinite(features.gameplayBoost) ? Math.min(1, Math.max(0, features.gameplayBoost)) : 0&quot;],
+  [&quot;client/core/StreamingScheduler.js&quot;, 134, &quot;try { rec.run() } catch (e) { }&quot;],
+  [&quot;client/core/modelLoadGate.js&quot;, 11, &quot;throw refusal(&#39;model-prefetch-url-invalid&#39;&quot;],
+  [&quot;client/core/modelLoadGate.js&quot;, 22, &quot;throw refusal(&#39;model-gate-hooks-invalid&#39;&quot;],
+  [&quot;client/core/modelLoadGate.js&quot;, 23, &quot;throw refusal(&#39;model-gate-failure-hook-invalid&#39;&quot;],
+]
+const candidate46Mismatch = candidates46.filter(([p, n, s]) =&gt; !spointShow(p).split(&quot;\n&quot;)[n - 1]?.includes(s))
+if (candidate46Mismatch.length !== 0) errors.push(`stream 46 candidates not at cited lines: ${candidate46Mismatch.map(([p, n]) =&gt; `${p}:${n}`).join(&quot;, &quot;)}`)
+const candidate46ShiftRefused = candidates46.filter(([p, n, s]) =&gt; spointShow(p).split(&quot;\n&quot;)[n]?.includes(s)).length === 0
+if (!candidate46ShiftRefused) errors.push(&quot;stream 46 candidate line-shift negative was not refused&quot;)
+console.log(`STREAM 46 CANDIDATES AT spoint ${spointPin}: ${candidates46.length} located, line-shift negative refused: ${candidate46ShiftRefused}`)
+const s47 = [&quot;MobileControls&quot;, &quot;TouchDraft&quot;, &quot;TouchSurfaceSpec&quot;, &quot;keybindings&quot;]
+if (coreLines(s47) !== 497) errors.push(`stream 47 at ${spointPin}: ${coreLines(s47)} lines, expected 497`)
+const s47Expected = { MobileControls: [&quot;client/app.js&quot;], TouchDraft: [&quot;client/core/MobileControls.js&quot;], TouchSurfaceSpec: [], keybindings: [] }
+const s47ImporterMismatch = s47.filter((m) =&gt; spointImporters(m).join() !== s47Expected[m].join())
+if (s47ImporterMismatch.length !== 0) errors.push(`stream 47 importers differ from the cited set: ${s47ImporterMismatch.join(&quot;, &quot;)}`)
+if (s47.some((m) =&gt; behaviouralWitnesses(m).length &gt; 0)) errors.push(&quot;stream 47 has a behavioural witness&quot;)
+const s47Named = s47.filter(cleetusNamesModule)
+if (s47Named.join() !== &quot;MobileControls&quot;) errors.push(`cleetus names for stream 47 are [${s47Named.join(&quot;, &quot;)}], expected [MobileControls] (FEATURESET.md:410 importer-only)`)
+console.log(`STREAM 47 AT spoint ${spointPin}: ${coreLines(s47)} lines (4 modules), importers as cited ${s47ImporterMismatch.length === 0}, behavioural witnesses 0, cleetus names ${s47Named.join(&quot;+&quot;)} (importer-only)`)
+const s48 = [&quot;ClientMachine&quot;, &quot;ConnectionStatus&quot;, &quot;LoadingMachine&quot;, &quot;PreviewReload&quot;]
+if (coreLines(s48) !== 423) errors.push(`stream 48 at ${spointPin}: ${coreLines(s48)} lines, expected 423`)
+const s48Expected = { ClientMachine: [&quot;client/app.js&quot;], ConnectionStatus: [&quot;client/app.js&quot;], LoadingMachine: [&quot;client/app.js&quot;, &quot;scripts/force-ready-model-failure-witness.mjs&quot;, &quot;scripts/loading-machine-model-failure-witness.mjs&quot;], PreviewReload: [&quot;client/app.js&quot;] }
+const s48ImporterMismatch = s48.filter((m) =&gt; spointImporters(m).join() !== s48Expected[m].join())
+if (s48ImporterMismatch.length !== 0) errors.push(`stream 48 importers differ from the cited set: ${s48ImporterMismatch.join(&quot;, &quot;)}`)
+const s48Behavioural = s48.filter((m) =&gt; behaviouralWitnesses(m).length &gt; 0)
+if (s48Behavioural.join() !== &quot;LoadingMachine&quot;) errors.push(`stream 48 behavioural witnesses are [${s48Behavioural.join(&quot;, &quot;)}], expected [LoadingMachine]`)
+const loadingWitnesses = behaviouralWitnesses(&quot;LoadingMachine&quot;).sort()
+if (loadingWitnesses.join() !== [&quot;scripts/force-ready-model-failure-witness.mjs&quot;, &quot;scripts/loading-machine-model-failure-witness.mjs&quot;].join()) errors.push(`stream 48 LoadingMachine behavioural witnesses are [${loadingWitnesses.join(&quot;, &quot;)}]`)
+const s48Named = s48.filter(cleetusNamesModule)
+if (s48Named.length !== 0) errors.push(`cleetus docs or scripts outside streams name stream 48 modules: ${s48Named.join(&quot;, &quot;)}`)
+const candidates48and49 = [
+  [&quot;client/core/ClientMachine.js&quot;, 138, &quot;return (m &amp;&amp; typeof m === &#39;object&#39; &amp;&amp; m.spectator) ? m.spectator : null&quot;],
+  [&quot;client/core/ConnectionStatus.js&quot;, 135, &quot;const rttOk = Number.isFinite(rtt)&quot;],
+  [&quot;client/core/LoadingMachine.js&quot;, 33, &quot;event.reasonCode || &#39;model load failed&#39;&quot;],
+  [&quot;client/core/LoadingMachine.js&quot;, 39, &quot;entityPending: ({ event }) =&gt; event.count ?? 0&quot;],
+  [&quot;client/core/PreviewReload.js&quot;, 14, &quot;if (seen === null) seen = build&quot;],
+  [&quot;client/core/RelocationSearch.js&quot;, 28, &quot;return Number.isFinite(y) ? elevationAtLocal(frame, x, y, z) : NaN&quot;],
+  [&quot;client/core/RelocationSettle.js&quot;, 21, &quot;const pending = (poolStats?.inFlight || 0) + (deferred?.queued ?? deferred?.pending ?? 0) + (scheduler?.queued || 0) + hpfPending&quot;],
+  [&quot;client/core/RelocationSettle.js&quot;, 48, &quot;throw new Error(&#39;whenSettled: no connected client&#39;)&quot;],
+  [&quot;client/core/RelocationSettle.js&quot;, 61, &quot;patchExact = Number.isFinite(frame._patchHeightOrNull(p[0], p[2]))&quot;],
+  [&quot;client/core/TransformLerp.js&quot;, 19, &quot;if (!(Number.isFinite(target.rx) &amp;&amp; Number.isFinite(target.ry) &amp;&amp; Number.isFinite(target.rz) &amp;&amp; Number.isFinite(target.rw))) return&quot;],
+]
+const candidate48and49Mismatch = candidates48and49.filter(([p, n, s]) =&gt; !spointShow(p).split(&quot;\n&quot;)[n - 1]?.includes(s))
+if (candidate48and49Mismatch.length !== 0) errors.push(`stream 48 and 49 candidates not at cited lines: ${candidate48and49Mismatch.map(([p, n]) =&gt; `${p}:${n}`).join(&quot;, &quot;)}`)
+const candidate48and49ShiftRefused = candidates48and49.filter(([p, n, s]) =&gt; spointShow(p).split(&quot;\n&quot;)[n]?.includes(s)).length === 0
+if (!candidate48and49ShiftRefused) errors.push(&quot;stream 48 and 49 candidate line-shift negative was not refused&quot;)
+console.log(`STREAM 48 AT spoint ${spointPin}: ${coreLines(s48)} lines (4 modules), importers as cited ${s48ImporterMismatch.length === 0}, behavioural witnesses [${s48Behavioural.join(&quot;, &quot;)}] with ${loadingWitnesses.length} scripts, cleetus names ${s48Named.length}`)
+const s49 = [&quot;RelocationSearch&quot;, &quot;RelocationSettle&quot;, &quot;TransformLerp&quot;, &quot;FloatingOrigin&quot;]
+if (coreLines([&quot;RelocationSearch&quot;, &quot;RelocationSettle&quot;, &quot;TransformLerp&quot;]) !== 301) errors.push(`stream 49 relocation and lerp modules at ${spointPin} are not 301 lines`)
+if (coreLines([&quot;FloatingOrigin&quot;]) !== 61) errors.push(`FloatingOrigin.js at ${spointPin} is not 61 lines`)
+const s49Expected = { RelocationSearch: [&quot;client/core/Relocation.js&quot;], RelocationSettle: [&quot;client/core/Relocation.js&quot;], TransformLerp: [&quot;client/core/SceneGraph.js&quot;], FloatingOrigin: [&quot;client/app.js&quot;] }
+const s49ImporterMismatch = s49.filter((m) =&gt; spointImporters(m).join() !== s49Expected[m].join())
+if (s49ImporterMismatch.length !== 0) errors.push(`stream 49 importers differ from the cited set: ${s49ImporterMismatch.join(&quot;, &quot;)}`)
+if (s49.some((m) =&gt; behaviouralWitnesses(m).length &gt; 0)) errors.push(&quot;stream 49 has a behavioural witness&quot;)
+if (!texts[&quot;FEATURESET.md&quot;].includes(&quot;`client/core/FloatingOrigin.js:3`&quot;)) errors.push(&quot;FloatingOrigin.js has no explicit per-file mention in FEATURESET.md&quot;)
+const s49Named = s49.filter(cleetusNamesModule)
+if (s49Named.length !== 0) errors.push(`cleetus docs or scripts outside streams name stream 49 modules: ${s49Named.join(&quot;, &quot;)}`)
+console.log(`STREAM 49 AT spoint ${spointPin}: ${coreLines([&quot;RelocationSearch&quot;, &quot;RelocationSettle&quot;, &quot;TransformLerp&quot;])} lines (3 modules) plus FloatingOrigin ${coreLines([&quot;FloatingOrigin&quot;])} per file, importers as cited ${s49ImporterMismatch.length === 0}, behavioural witnesses 0, cleetus names ${s49Named.length}`)
+console.log(`STREAM 48 AND 49 CANDIDATES AT spoint ${spointPin}: ${candidates48and49.length} located, line-shift negative refused: ${candidate48and49ShiftRefused}`)
+const sameSet = (a, b) =&gt; [...a].sort().join() === [...b].sort().join()
+const spointGrep = (args) =&gt; { try { return execFileSync(&quot;git&quot;, [&quot;-C&quot;, spointRoot, &quot;grep&quot;, ...args], { encoding: &quot;utf8&quot; }).split(&quot;\n&quot;).filter(Boolean) } catch { return [] } }
+const streamImporterMismatch = (names, expected) =&gt; names.filter((m) =&gt; !sameSet(spointImporters(m), expected[m]))
+const noTrackedBehaviouralWitness = (names) =&gt; names.filter((m) =&gt; behaviouralWitnesses(m).length &gt; 0)
+const s50 = [&quot;DecalSystem&quot;, &quot;CacheRevalidationSweep&quot;, &quot;ExactPatchFrame&quot;, &quot;MultiViewport&quot;]
+if (coreLines(s50) !== 400) errors.push(`stream 50 at ${spointPin}: ${coreLines(s50)} lines, expected 400`)
+const s50Expected = { DecalSystem: [&quot;client/app.js&quot;], CacheRevalidationSweep: [&quot;client/app.js&quot;], ExactPatchFrame: [&quot;client/core/Grass.js&quot;, &quot;client/core/Rocks.js&quot;, &quot;client/core/Vegetation.js&quot;], MultiViewport: [&quot;client/app.js&quot;] }
+if (streamImporterMismatch(s50, s50Expected).length !== 0) errors.push(`stream 50 importers differ: ${streamImporterMismatch(s50, s50Expected).join(&quot;, &quot;)}`)
+const s50Behavioural = noTrackedBehaviouralWitness(s50)
+if (s50Behavioural.join() !== &quot;ExactPatchFrame&quot;) errors.push(`stream 50 behavioural witnesses are [${s50Behavioural.join(&quot;, &quot;)}], expected [ExactPatchFrame]`)
+const exactWitnesses = behaviouralWitnesses(&quot;ExactPatchFrame&quot;).sort()
+if (exactWitnesses.join() !== [&quot;scripts/grass-seam-card-witness.mjs&quot;, &quot;scripts/shared-lattice-surface-witness.mjs&quot;].join()) errors.push(`stream 50 ExactPatchFrame witnesses are [${exactWitnesses.join(&quot;, &quot;)}]`)
+if (s50.filter(cleetusNamesModule).length !== 0) errors.push(`cleetus names outside streams name stream 50 modules: ${s50.filter(cleetusNamesModule).join(&quot;, &quot;)}`)
+console.log(`STREAM 50 AT spoint ${spointPin}: ${coreLines(s50)} lines (4 modules), importers as cited ${streamImporterMismatch(s50, s50Expected).length === 0}, behavioural [${s50Behavioural.join(&quot;, &quot;)}] with ${exactWitnesses.length} scripts`)
+const s51 = [&quot;ExpressionCodes&quot;, &quot;TreeTextureBudget&quot;, &quot;ReplayBuffer&quot;, &quot;GroundNodeGrid&quot;, &quot;CascadeShadowSelectTSL&quot;, &quot;ShadowLayers&quot;, &quot;EditorKit&quot;]
+if (coreLines(s51) !== 347) errors.push(`stream 51 at ${spointPin}: ${coreLines(s51)} lines, expected 347`)
+const s51Expected = { ExpressionCodes: [&quot;client/app.js&quot;], TreeTextureBudget: [&quot;client/core/Vegetation.js&quot;, &quot;client/core/VegetationBuild.js&quot;], ReplayBuffer: [&quot;client/app.js&quot;], GroundNodeGrid: [&quot;client/core/Weather.js&quot;], CascadeShadowSelectTSL: [&quot;client/core/ShadowPipeline.js&quot;], ShadowLayers: [&quot;client/core/ShadowPipeline.js&quot;, &quot;client/core/WebGPULodInstancer.js&quot;, &quot;scripts/.veg-lod-stream-control.mjs&quot;], EditorKit: [&quot;client/app.js&quot;, &quot;client/editor/EditorShell.js&quot;] }
+if (streamImporterMismatch(s51, s51Expected).length !== 0) errors.push(`stream 51 importers differ: ${streamImporterMismatch(s51, s51Expected).join(&quot;, &quot;)}`)
+if (noTrackedBehaviouralWitness(s51).length !== 0) errors.push(&quot;stream 51 has a behavioural witness&quot;)
+const vegLodStream = spointShow(&quot;scripts/.veg-lod-stream-control.mjs&quot;)
+if (vegLodStream.includes(&quot;RESULT&quot;)) errors.push(&quot;stream 51 ShadowLayers script prints RESULT and would be a witness&quot;)
+if (s51.filter(cleetusNamesModule).length !== 0) errors.push(`cleetus names outside streams name stream 51 modules: ${s51.filter(cleetusNamesModule).join(&quot;, &quot;)}`)
+console.log(`STREAM 51 AT spoint ${spointPin}: ${coreLines(s51)} lines (7 modules), importers as cited ${streamImporterMismatch(s51, s51Expected).length === 0}, behavioural witnesses 0`)
+const s52 = [&quot;DevToolsIntegration&quot;, &quot;SceneGraph&quot;, &quot;SpectatorMode&quot;, &quot;debug-log&quot;, &quot;frameCapture&quot;, &quot;SculptOverlay&quot;]
+if (coreLines(s52) !== 454) errors.push(`stream 52 at ${spointPin}: ${coreLines(s52)} lines, expected 454`)
+const debugLogImporters = [&quot;client/app.js&quot;, &quot;client/core/Grass.js&quot;, &quot;client/core/Rocks.js&quot;, &quot;client/core/SceneOcclusion.js&quot;, &quot;client/core/TerrainBackdrop.js&quot;, &quot;client/core/VegImpostorTier.js&quot;, &quot;client/core/Vegetation.js&quot;, &quot;client/core/VegetationBuild.js&quot;]
+const s52Expected = { DevToolsIntegration: [&quot;client/app.js&quot;], SceneGraph: [&quot;client/app.js&quot;, &quot;scripts/netcode-conditioner-harness.mjs&quot;], SpectatorMode: [&quot;client/app.js&quot;], &quot;debug-log&quot;: debugLogImporters, frameCapture: [], SculptOverlay: [&quot;client/app.js&quot;] }
+if (streamImporterMismatch(s52, s52Expected).length !== 0) errors.push(`stream 52 importers differ: ${streamImporterMismatch(s52, s52Expected).join(&quot;, &quot;)}`)
+if (noTrackedBehaviouralWitness(s52).length !== 0) errors.push(&quot;stream 52 has a behavioural witness&quot;)
+if (!sameSet(spointGrep([&quot;-lw&quot;, &quot;captureHudFreeFrame&quot;, spointPin, &quot;--&quot;, &quot;client&quot;, &quot;src&quot;, &quot;apps&quot;, &quot;packages&quot;, &quot;scripts&quot;, &quot;bin&quot;, &quot;edge&quot;]).map((l) =&gt; l.replace(`${spointPin}:`, &quot;&quot;)), [&quot;client/core/frameCapture.js&quot;])) errors.push(&quot;frameCapture export is referenced beyond its own module at spoint&quot;)
+if (!spointShow(&quot;client/core/RenderControls.js&quot;).split(&quot;\n&quot;)[345]?.includes(&quot;client/core/debug-log.js&quot;)) errors.push(&quot;RenderControls.js:346 readAt string for debug-log is missing&quot;)
+if (s52.filter(cleetusNamesModule).length !== 0) errors.push(`cleetus names outside streams name stream 52 modules: ${s52.filter(cleetusNamesModule).join(&quot;, &quot;)}`)
+console.log(`STREAM 52 AT spoint ${spointPin}: ${coreLines(s52)} lines (6 modules), importers as cited ${streamImporterMismatch(s52, s52Expected).length === 0}, behavioural witnesses 0`)
+const s53 = [&quot;WorkerRenderProtocol&quot;, &quot;TimeOfDay&quot;, &quot;WorldPanels&quot;]
+if (coreLines(s53) !== 348) errors.push(`stream 53 at ${spointPin}: ${coreLines(s53)} lines, expected 348`)
+const s53Expected = { WorkerRenderProtocol: [&quot;client/workers/OffscreenRenderWorker.js&quot;], TimeOfDay: [&quot;client/app.js&quot;], WorldPanels: [&quot;client/AppModuleSystem.js&quot;] }
+if (streamImporterMismatch(s53, s53Expected).length !== 0) errors.push(`stream 53 importers differ: ${streamImporterMismatch(s53, s53Expected).join(&quot;, &quot;)}`)
+if (noTrackedBehaviouralWitness(s53).length !== 0) errors.push(&quot;stream 53 has a behavioural witness&quot;)
+const timeOfDayDriver = spointGrep([&quot;-l&quot;, &quot;__timeOfDayApi&quot;, spointPin, &quot;--&quot;, &quot;scripts&quot;]).map((l) =&gt; l.replace(`${spointPin}:`, &quot;&quot;))
+if (!timeOfDayDriver.includes(&quot;scripts/tsl-parity/bodies.mjs&quot;)) errors.push(&quot;stream 53 TimeOfDay global driver scripts/tsl-parity/bodies.mjs is missing&quot;)
+if (spointShow(&quot;scripts/tsl-parity/bodies.mjs&quot;).includes(&quot;RESULT&quot;)) errors.push(&quot;stream 53 bodies.mjs prints RESULT and would be a witness&quot;)
+if (s53.filter(cleetusNamesModule).length !== 0) errors.push(`cleetus names outside streams name stream 53 modules: ${s53.filter(cleetusNamesModule).join(&quot;, &quot;)}`)
+console.log(`STREAM 53 AT spoint ${spointPin}: ${coreLines(s53)} lines (3 modules), importers as cited ${streamImporterMismatch(s53, s53Expected).length === 0}, behavioural witnesses 0, TimeOfDay driver ${timeOfDayDriver.join(&quot;+&quot;)}`)
+const candidates50to53 = [
+  [&quot;client/core/DecalSystem.js&quot;, 64, &quot;if (!origin || !target) return&quot;],
+  [&quot;client/core/CacheRevalidationSweep.js&quot;, 14, &quot;const staleMs = Number.isFinite(opts.staleMs)&quot;],
+  [&quot;client/core/CacheRevalidationSweep.js&quot;, 15, &quot;const maxPerSweep = Number.isFinite(opts.maxPerSweep)&quot;],
+  [&quot;client/core/ExactPatchFrame.js&quot;, 11, &quot;const seed = Number.isFinite(frame.anchorHeight) ? frame.anchorHeight : 0&quot;],
+  [&quot;client/core/ExactPatchFrame.js&quot;, 75, &quot;throw new NoGroundHeightError(x, z)&quot;],
+  [&quot;client/core/MultiViewport.js&quot;, 17, &quot;opts.fov ?? 60&quot;],
+  [&quot;client/core/MultiViewport.js&quot;, 34, &quot;function getPane(id) { return panes.get(id) || null }&quot;],
+  [&quot;client/core/GroundNodeGrid.js&quot;, 7, &quot;const _nodeY = (h) =&gt; Number.isFinite(h) ? h : NO_GROUND_Y&quot;],
+  [&quot;client/core/ExpressionCodes.js&quot;, 47, &quot;return EXPR_NEUTRAL&quot;],
+  [&quot;client/core/ExpressionCodes.js&quot;, 51, &quot;try { v = expressionManager.getValue(name) || 0 } catch (_e) { continue }&quot;],
+  [&quot;client/core/ReplayBuffer.js&quot;, 3, &quot;throw new Error(&#39;createReplayBuffer requires maxFrames &gt;= 1&#39;)&quot;],
+  [&quot;client/core/CascadeShadowSelectTSL.js&quot;, 9, &quot;uniform((splitExtents &amp;&amp; splitExtents[idx]) || 0)&quot;],
+  [&quot;client/core/CascadeShadowSelectTSL.js&quot;, 45, &quot;farEdge.value = extents[idx] || 0&quot;],
+  [&quot;client/core/EditorKit.js&quot;, 4, &quot;console.error(&#39;[kit]&#39;, reason)&quot;],
+  [&quot;client/core/TreeTextureBudget.js&quot;, 33, &quot;throw new TreeTextureBudgetError(&#39;not-a-number&#39;&quot;],
+  [&quot;client/core/SceneGraph.js&quot;, 22, &quot;feetOffset: opts.feetOffset ?? 0.91&quot;],
+  [&quot;client/core/SceneGraph.js&quot;, 155, &quot;function setLocalPlayer(id) {}&quot;],
+  [&quot;client/core/SculptOverlay.js&quot;, 44, &quot;const res = render.SCULPT_RES || 256&quot;],
+  [&quot;client/core/SculptOverlay.js&quot;, 63, &quot;radius &lt;= 0) return false&quot;],
+  [&quot;client/core/SculptOverlay.js&quot;, 98, &quot;const cx = Number.isFinite(centerX) ? centerX : 0&quot;],
+  [&quot;client/core/debug-log.js&quot;, 11, &quot;} catch {&quot;],
+  [&quot;client/core/DevToolsIntegration.js&quot;, 23, &quot;(renderer.info.render.calls * GPU_MS_PER_DRAW_CALL_ESTIMATE) : 0&quot;],
+  [&quot;client/core/frameCapture.js&quot;, 8, &quot;throw new Error(&#39;capture_unavailable&#39;)&quot;],
+  [&quot;client/core/TimeOfDay.js&quot;, 53, &quot;let dayLengthSec = Number.isFinite(opts.dayLengthSec) &amp;&amp; opts.dayLengthSec &gt; 0 ? opts.dayLengthSec : 600&quot;],
+  [&quot;client/core/TimeOfDay.js&quot;, 54, &quot;let t = Number.isFinite(opts.startFraction)&quot;],
+  [&quot;client/core/TimeOfDay.js&quot;, 58, &quot;const tiltDeg = Number.isFinite(opts.azimuthTiltDeg) ? opts.azimuthTiltDeg : 23&quot;],
+  [&quot;client/core/TimeOfDay.js&quot;, 92, &quot;try { onDirectionChange(dir) } catch (_) {}&quot;],
+  [&quot;client/core/TimeOfDay.js&quot;, 121, &quot;function setFraction(frac) { if (Number.isFinite(frac)) {&quot;],
+  [&quot;client/core/WorkerRenderProtocol.js&quot;, 67, &quot;if (!isWorkerRefusalCode(code)) {&quot;],
+  [&quot;client/core/WorldPanels.js&quot;, 73, &quot;canvas.getContext(&#39;2d&#39;)&quot;],
+]
+const candidate50to53Mismatch = candidates50to53.filter(([p, n, s]) =&gt; !spointShow(p).split(&quot;\n&quot;)[n - 1]?.includes(s))
+if (candidate50to53Mismatch.length !== 0) errors.push(`stream 50 to 53 candidates not at cited lines: ${candidate50to53Mismatch.map(([p, n]) =&gt; `${p}:${n}`).join(&quot;, &quot;)}`)
+const candidate50to53ShiftRefused = candidates50to53.filter(([p, n, s]) =&gt; spointShow(p).split(&quot;\n&quot;)[n]?.includes(s)).length === 0
+if (!candidate50to53ShiftRefused) errors.push(&quot;stream 50 to 53 candidate line-shift negative was not refused&quot;)
+console.log(`STREAM 50 TO 53 CANDIDATES AT spoint ${spointPin}: ${candidates50to53.length} located, line-shift negative refused: ${candidate50to53ShiftRefused}`)
+const s54 = [&quot;FluidSurface&quot;, &quot;MapspinnerWebGPUFeasibility&quot;, &quot;StaticInstanceStore&quot;]
+if (spointLineCount(&quot;client/core/FluidSurface.js&quot;) + spointLineCount(&quot;client/core/MapspinnerWebGPUFeasibility.js&quot;) + spointLineCount(&quot;client/core/StaticInstanceStore.js&quot;) !== 613) errors.push(`stream 54 at ${spointPin} is not 613 lines`)
+const s54Expected = { FluidSurface: [&quot;client/EntityLoaderMeshBuild.js&quot;], MapspinnerWebGPUFeasibility: [], StaticInstanceStore: [&quot;client/EntityLoader.js&quot;] }
+if (streamImporterMismatch(s54, s54Expected).length !== 0) errors.push(`stream 54 importers differ: ${streamImporterMismatch(s54, s54Expected).join(&quot;, &quot;)}`)
+if (noTrackedBehaviouralWitness(s54).length !== 0) errors.push(&quot;stream 54 has a behavioural witness&quot;)
+if (spointWitnessFiles(&quot;MapspinnerWebGPUFeasibility&quot;).length !== 0) errors.push(&quot;stream 54 MapspinnerWebGPUFeasibility has a script hit&quot;)
+if (s54.filter(cleetusNamesModule).length !== 0) errors.push(`cleetus names outside streams name stream 54 modules: ${s54.filter(cleetusNamesModule).join(&quot;, &quot;)}`)
+console.log(`STREAM 54 AT spoint ${spointPin}: 613 lines (3 modules), importers as cited ${streamImporterMismatch(s54, s54Expected).length === 0}, behavioural witnesses 0`)
+const s55 = [&quot;ThreeVdrs&quot;, &quot;TerrainBackdrop&quot;, &quot;SceneSetup&quot;]
+if (spointLineCount(&quot;client/core/ThreeVdrs.js&quot;) + spointLineCount(&quot;client/core/TerrainBackdrop.js&quot;) + spointLineCount(&quot;client/core/SceneSetup.js&quot;) !== 1035) errors.push(`stream 55 at ${spointPin} is not 1035 lines`)
+const s55Expected = { ThreeVdrs: [&quot;client/app.js&quot;], TerrainBackdrop: [&quot;client/app.js&quot;], SceneSetup: [&quot;client/app.js&quot;] }
+if (streamImporterMismatch(s55, s55Expected).length !== 0) errors.push(`stream 55 importers differ: ${streamImporterMismatch(s55, s55Expected).join(&quot;, &quot;)}`)
+if (noTrackedBehaviouralWitness(s55).length !== 0) errors.push(&quot;stream 55 has a behavioural witness&quot;)
+const sceneSetupSourceWitness = spointShow(&quot;scripts/three-loader-error-witness.mjs&quot;)
+if (!sceneSetupSourceWitness.includes(&quot;readFileSync(&#39;client/core/SceneSetup.js&#39;&quot;) || !sceneSetupSourceWitness.includes(&quot;RESULT&quot;)) errors.push(&quot;stream 55 SceneSetup source-text witness is missing or prints no RESULT&quot;)
+if (spointWitnessFiles(&quot;TerrainBackdrop&quot;).some((f) =&gt; spointShow(f).includes(&quot;RESULT&quot;) &amp;&amp; importsModule(&quot;TerrainBackdrop&quot;, spointShow(f)))) errors.push(&quot;stream 55 TerrainBackdrop has an import-based witness&quot;)
+if (s55.filter(cleetusNamesModule).length !== 0) errors.push(`cleetus names outside streams name stream 55 modules: ${s55.filter(cleetusNamesModule).join(&quot;, &quot;)}`)
+console.log(`STREAM 55 AT spoint ${spointPin}: 1035 lines (3 modules), importers as cited ${streamImporterMismatch(s55, s55Expected).length === 0}, behavioural witnesses 0, SceneSetup source-text witness ${sceneSetupSourceWitness.includes(&quot;readFileSync(&#39;client/core/SceneSetup.js&#39;&quot;)}`)
+const s56Lines = [&quot;edge/cf-do/accept-request.js&quot;, &quot;edge/cf-do/do-client-probe.mjs&quot;, &quot;edge/cf-do/jolt-edge-init.js&quot;, &quot;edge/cf-do/spoint-do.js&quot;].reduce((sum, p) =&gt; sum + spointLineCount(p), 0)
+if (s56Lines !== 272) errors.push(`stream 56 at ${spointPin}: ${s56Lines} lines, expected 272`)
+const edgeImportersOf = (base) =&gt; spointGrep([&quot;-lE&quot;, `(from|import\\(|href\\()\\s*[&#39;&quot;][^&#39;&quot;]*${base}[&#39;&quot;]`, spointPin, &quot;--&quot;, &quot;src&quot;, &quot;client&quot;, &quot;apps&quot;, &quot;packages&quot;, &quot;scripts&quot;, &quot;bin&quot;, &quot;edge&quot;]).map((l) =&gt; l.replace(`${spointPin}:`, &quot;&quot;)).filter((f) =&gt; !f.endsWith(`${base.replace(/\\/g, &quot;&quot;)}`))
+if (!sameSet(edgeImportersOf(&quot;/accept-request\\.js&quot;), [&quot;edge/cf-do/spoint-do.js&quot;])) errors.push(&quot;stream 56 accept-request importers differ&quot;)
+if (!sameSet(edgeImportersOf(&quot;/jolt-edge-init\\.js&quot;), [&quot;edge/cf-do/spoint-do.js&quot;])) errors.push(&quot;stream 56 jolt-edge-init importers differ&quot;)
+if (edgeImportersOf(&quot;/spoint-do\\.js&quot;).length !== 0) errors.push(&quot;stream 56 spoint-do has an importer&quot;)
+if (edgeImportersOf(&quot;/do-client-probe\\.mjs&quot;).length !== 0) errors.push(&quot;stream 56 do-client-probe has an importer&quot;)
+if (behaviouralWitnesses(&quot;accept-request&quot;).length !== 0 || behaviouralWitnesses(&quot;jolt-edge-init&quot;).length !== 0) errors.push(&quot;stream 56 has a behavioural witness&quot;)
+if (spointShow(&quot;edge/cf-do/do-client-probe.mjs&quot;).includes(&quot;RESULT:&quot;)) errors.push(&quot;stream 56 do-client-probe prints RESULT and would be a witness&quot;)
+const s56Named = [&quot;accept-request&quot;, &quot;do-client-probe&quot;, &quot;jolt-edge-init&quot;, &quot;spoint-do&quot;, &quot;SpointGameRoom&quot;].filter(cleetusNamesModule)
+if (s56Named.length !== 0) errors.push(`cleetus names outside streams name stream 56 modules: ${s56Named.join(&quot;, &quot;)}`)
+console.log(`STREAM 56 AT spoint ${spointPin}: ${s56Lines} lines (4 files), importers as cited, behavioural witnesses 0, RESULT in do-client-probe 0`)
+const candidates54to56 = [
+  [&quot;client/core/MapspinnerWebGPUFeasibility.js&quot;, 150, &quot;rationale: &#39;613 gl.* call sites across 5 files.&quot;],
+  [&quot;client/core/StaticInstanceStore.js&quot;, 55, &quot;try { bucket.bvh = new MeshBVH(bucket.geometry) } catch (e) { }&quot;],
+  [&quot;client/core/StaticInstanceStore.js&quot;, 60, &quot;if (_entityToSlot.has(entityId)) return entityId&quot;],
+  [&quot;client/core/StaticInstanceStore.js&quot;, 9, &quot;let _capacity = Math.max(64, opts.initialCapacity || 1024)&quot;],
+  [&quot;client/core/StaticInstanceStore.js&quot;, 82, &quot;if (slot == null) return false&quot;],
+  [&quot;client/core/StaticInstanceStore.js&quot;, 94, &quot;if (slot == null || !_active[slot]) return null&quot;],
+  [&quot;client/core/StaticInstanceStore.js&quot;, 105, &quot;if (slot == null || !_active[slot]) return -1&quot;],
+  [&quot;client/core/StaticInstanceStore.js&quot;, 120, &quot;return slot == null ? -1 : _lodTier[slot]&quot;],
+  [&quot;client/core/FluidSurface.js&quot;, 135, &quot;const ox = originPos?.[0] || 0&quot;],
+  [&quot;client/core/FluidSurface.js&quot;, 142, &quot;if (!Number.isFinite(minX)) return null&quot;],
+  [&quot;client/core/FluidSurface.js&quot;, 146, &quot;if (n2d === 0) return null&quot;],
+  [&quot;client/core/TerrainBackdrop.js&quot;, 30, &quot;import(&#39;/node_modules/mapspinner/src/tsl/planet-tsl.js&#39;).catch(() =&gt; {})&quot;],
+  [&quot;client/core/TerrainBackdrop.js&quot;, 210, &quot;} catch (_) { glTex = null }&quot;],
+  [&quot;client/core/TerrainBackdrop.js&quot;, 272, &quot;} catch (_) {}&quot;],
+  [&quot;client/core/TerrainBackdrop.js&quot;, 300, &quot;} catch (_) {}&quot;],
+  [&quot;client/core/TerrainBackdrop.js&quot;, 42, &quot;const radius = cfg.radius || 6360000&quot;],
+  [&quot;client/core/TerrainBackdrop.js&quot;, 185, &quot;const epoch = Number.isFinite(frame.chartEpoch) ? frame.chartEpoch : 0&quot;],
+  [&quot;client/core/ThreeVdrs.js&quot;, 169, &quot;const s = Math.min(1.0, Math.max(0.3, scale || 1.0))&quot;],
+  [&quot;client/core/ThreeVdrs.js&quot;, 248, &quot;export const THREE_VDRS_WEBGPU_UNSUPPORTED = &quot;],
+  [&quot;client/core/ThreeVdrs.js&quot;, 240, &quot;if (on !== appliedOn) { window.__threeVdrs = on; appliedOn = on }&quot;],
+  [&quot;client/core/SceneSetup.js&quot;, 18, &quot;if (typeof window !== &#39;undefined&#39; &amp;&amp; !Number.isFinite(window.__fogFar)) window.__fogFar = 200&quot;],
+  [&quot;client/core/SceneSetup.js&quot;, 323, &quot;const _far = s.fogFar ?? 200&quot;],
+  [&quot;client/core/SceneSetup.js&quot;, 69, &quot;} catch (_) { return false }&quot;],
+  [&quot;client/core/SceneSetup.js&quot;, 312, &quot;MeshoptDecoder.useWorkers(2)&quot;],
+  [&quot;client/core/SceneSetup.js&quot;, 164, &quot;if (!probeWebGL2()) { const e = new Error(&#39;WebGL2 is not available&#39;); e.code = &#39;NO_WEBGL2&#39;; throw e }&quot;],
+  [&quot;edge/cf-do/jolt-edge-init.js&quot;, 12, &quot;WebAssembly.instantiate(wasmModule, imports).then(instance =&gt; {&quot;],
+  [&quot;edge/cf-do/spoint-do.js&quot;, 63, &quot;server.accept()&quot;],
+  [&quot;edge/cf-do/spoint-do.js&quot;, 32, &quot;} catch (e) { return false }&quot;],
+  [&quot;edge/cf-do/spoint-do.js&quot;, 37, &quot;try { this.ws.close() } catch (e) {}&quot;],
+  [&quot;edge/cf-do/accept-request.js&quot;, 4, &quot;const DEFAULT_ROOM_BINDING = &#39;SPOINT_GAME_ROOM&#39;&quot;],
+  [&quot;edge/cf-do/accept-request.js&quot;, 5, &quot;const DEFAULT_ROOM_KEY = &#39;probe-room&#39;&quot;],
+  [&quot;edge/cf-do/accept-request.js&quot;, 32, &quot;: refused(UPGRADE_REQUIRED_STATUS, &#39;expected websocket upgrade&#39;)&quot;],
+  [&quot;edge/cf-do/accept-request.js&quot;, 43, &quot;return refused(NO_ROOM_BINDING_STATUS,&quot;],
+  [&quot;edge/cf-do/accept-request.js&quot;, 51, &quot;&#39;edge Worker has no STATIC_ORIGIN configured for non-WebSocket requests&#39;&quot;],
+  [&quot;edge/cf-do/do-client-probe.mjs&quot;, 52, &quot;const rec = players.find(p =&gt; Array.isArray(p) &amp;&amp; p[0] === playerId) || players[0]&quot;],
+]
+const candidate54to56Mismatch = candidates54to56.filter(([p, n, s]) =&gt; !spointShow(p).split(&quot;\n&quot;)[n - 1]?.includes(s))
+if (candidate54to56Mismatch.length !== 0) errors.push(`stream 54 to 56 candidates not at cited lines: ${candidate54to56Mismatch.map(([p, n]) =&gt; `${p}:${n}`).join(&quot;, &quot;)}`)
+const candidate54to56ShiftRefused = candidates54to56.filter(([p, n, s]) =&gt; spointShow(p).split(&quot;\n&quot;)[n]?.includes(s)).length === 0
+if (!candidate54to56ShiftRefused) errors.push(&quot;stream 54 to 56 candidate line-shift negative was not refused&quot;)
+console.log(`STREAM 54 TO 56 CANDIDATES AT spoint ${spointPin}: ${candidates54to56.length} located, line-shift negative refused: ${candidate54to56ShiftRefused}`)
+const s57 = [&quot;WorldLocator&quot;, &quot;RoomHealth&quot;, &quot;RoomPick&quot;, &quot;RoomRouting&quot;, &quot;SceneImport&quot;, &quot;TiledImport&quot;, &quot;scaffold&quot;]
+if ([&quot;WorldLocator&quot;, &quot;RoomHealth&quot;, &quot;RoomPick&quot;, &quot;RoomRouting&quot;, &quot;SceneImport&quot;, &quot;TiledImport&quot;, &quot;scaffold&quot;].map((m) =&gt; spointLineCount(`src/sdk/${m}.js`)).reduce((a, b) =&gt; a + b, 0) !== 356) errors.push(`stream 57 at ${spointPin} is not 356 lines`)
+const s57Expected = { WorldLocator: [&quot;bin/router-boot.js&quot;, &quot;scripts/bake-heightfield.mjs&quot;, &quot;scripts/bake-minimap.mjs&quot;, &quot;scripts/bake-navmesh.mjs&quot;, &quot;scripts/bundle-apps-manifest.mjs&quot;, &quot;scripts/chart-reanchor-wire-harness.mjs&quot;, &quot;scripts/cluster-world-harness.mjs&quot;, &quot;scripts/netcode-conditioner-harness.mjs&quot;, &quot;scripts/peer-profile-harness.mjs&quot;, &quot;scripts/planet-multiplayer-harness.mjs&quot;, &quot;src/sdk/MinimapBake.js&quot;, &quot;src/sdk/RoomDirectory.js&quot;, &quot;src/sdk/ServerBoot.js&quot;], RoomHealth: [], RoomPick: [&quot;src/sdk/RoomOrchestrator.js&quot;], RoomRouting: [&quot;scripts/room-routing-witness.mjs&quot;], SceneImport: [], TiledImport: [], scaffold: [] }
+if (streamImporterMismatch(s57, s57Expected).length !== 0) errors.push(`stream 57 importers differ: ${streamImporterMismatch(s57, s57Expected).join(&quot;, &quot;)}`)
+const worldLocatorWitnesses = behaviouralWitnesses(&quot;WorldLocator&quot;).sort()
+if (worldLocatorWitnesses.join() !== [&quot;scripts/chart-reanchor-wire-harness.mjs&quot;, &quot;scripts/cluster-world-harness.mjs&quot;, &quot;scripts/grass-seam-card-witness.mjs&quot;, &quot;scripts/planet-multiplayer-harness.mjs&quot;, &quot;scripts/shared-lattice-surface-witness.mjs&quot;].join()) errors.push(`stream 57 WorldLocator behavioural witnesses are [${worldLocatorWitnesses.join(&quot;, &quot;)}]`)
+const roomRoutingWitnesses = behaviouralWitnesses(&quot;RoomRouting&quot;).sort()
+if (roomRoutingWitnesses.join() !== [&quot;scripts/room-routing-witness.mjs&quot;].join()) errors.push(`stream 57 RoomRouting behavioural witnesses are [${roomRoutingWitnesses.join(&quot;, &quot;)}]`)
+if ([&quot;RoomHealth&quot;, &quot;RoomPick&quot;, &quot;SceneImport&quot;, &quot;TiledImport&quot;, &quot;scaffold&quot;].some((m) =&gt; behaviouralWitnesses(m).length &gt; 0)) errors.push(&quot;stream 57 has an unexpected behavioural witness&quot;)
+if (spointShow(&quot;scripts/lib/verify-doc-claims.mjs&quot;).length === 0) errors.push(&quot;verify-doc-claims.mjs is missing at spoint&quot;)
+console.log(`STREAM 57 AT spoint ${spointPin}: 356 lines (7 modules), importers as cited ${streamImporterMismatch(s57, s57Expected).length === 0}, WorldLocator behavioural ${worldLocatorWitnesses.length}, RoomRouting behavioural ${roomRoutingWitnesses.length}`)
+const s58 = [&quot;NostrAuthServer&quot;, &quot;ServerPresence&quot;, &quot;RoomDirectory&quot;, &quot;AgentAuthoringAPI&quot;]
+if (s58.map((m) =&gt; spointLineCount(`src/sdk/${m}.js`)).reduce((a, b) =&gt; a + b, 0) !== 510) errors.push(`stream 58 at ${spointPin} is not 510 lines`)
+const s58Expected = { NostrAuthServer: [&quot;src/sdk/ServerHandlers.js&quot;], ServerPresence: [&quot;src/sdk/ServerBoot.js&quot;], RoomDirectory: [&quot;bin/room-worker-boot.js&quot;, &quot;src/sdk/RoomProcessWorker.js&quot;], AgentAuthoringAPI: [&quot;src/sdk/ServerAPI.js&quot;] }
+if (streamImporterMismatch(s58, s58Expected).length !== 0) errors.push(`stream 58 importers differ: ${streamImporterMismatch(s58, s58Expected).join(&quot;, &quot;)}`)
+if (s58.some((m) =&gt; behaviouralWitnesses(m).length &gt; 0)) errors.push(&quot;stream 58 has an import-based behavioural witness&quot;)
+const verifyApp = spointShow(&quot;scripts/verify-app.mjs&quot;)
+if (!verifyApp.includes(&quot;`${base}/agent/apps`&quot;) || !verifyApp.includes(&quot;`${base}/agent/entities`&quot;) || !verifyApp.includes(&quot;RESULT:&quot;)) errors.push(&quot;stream 58 live /agent/ read-route witness is missing&quot;)
+console.log(`STREAM 58 AT spoint ${spointPin}: 510 lines (4 modules), importers as cited ${streamImporterMismatch(s58, s58Expected).length === 0}, live /agent/ read-route witness ${verifyApp.includes(&quot;/agent/apps&quot;)}`)
+const candidates57to58 = [
+  [&quot;src/sdk/WorldLocator.js&quot;, 27, &quot;const requested = name === &#39;&#39; ? null : name&quot;],
+  [&quot;src/sdk/WorldLocator.js&quot;, 30, &quot;if (worldName == null) return { name: null, path: null }&quot;],
+  [&quot;src/sdk/WorldLocator.js&quot;, 37, &quot;if (!path) return {}&quot;],
+  [&quot;src/sdk/WorldLocator.js&quot;, 38, &quot;.default || {})&quot;],
+  [&quot;src/sdk/RoomPick.js&quot;, 22, &quot;const requested = request.requestedRoom &amp;&amp; open.find(&quot;],
+  [&quot;src/sdk/RoomPick.js&quot;, 23, &quot;if (requested) return requested&quot;],
+  [&quot;src/sdk/RoomHealth.js&quot;, 42, &quot;ratio: ticks ? overBudgetTicks / ticks : 0&quot;],
+  [&quot;src/sdk/SceneImport.js&quot;, 8, &quot;if (value == null) return [0, 0, 0]&quot;],
+  [&quot;src/sdk/SceneImport.js&quot;, 15, &quot;if (value == null) return [0, 0, 0, 1]&quot;],
+  [&quot;src/sdk/SceneImport.js&quot;, 37, &quot;object.scale ?? [1, 1, 1]&quot;],
+  [&quot;src/sdk/SceneImport.js&quot;, 38, &quot;custom: object.state &amp;&amp; typeof object.state === &#39;object&#39;&quot;],
+  [&quot;src/sdk/TiledImport.js&quot;, 70, &quot;width: map.width,&quot;],
+  [&quot;src/sdk/scaffold.js&quot;, 44, &quot;jayzeeSync(&#39;bunx&#39;, [&#39;skills&#39;, &#39;add&#39;, &#39;AnEntrypoint/jayzeepoint&#39;&quot;],
+  [&quot;src/sdk/scaffold.js&quot;, 20, &quot;source = source.replace(ENGINE_DIR_IMPORT&quot;],
+  [&quot;src/sdk/RoomRouting.js&quot;, 46, &quot;const requestedRoomId = body.requestedRoomId ?? body.requested ?? null&quot;],
+  [&quot;src/sdk/AgentAuthoringAPI.js&quot;, 53, &quot;const token = process.env.SPOINT_AGENT_TOKEN&quot;],
+  [&quot;src/sdk/AgentAuthoringAPI.js&quot;, 54, &quot;if (token &amp;&amp; req.headers[&#39;x-agent-token&#39;] !== token) {&quot;],
+  [&quot;src/sdk/AgentAuthoringAPI.js&quot;, 83, &quot;try { content = getTemplateContent(template) } catch { content = null }&quot;],
+  [&quot;src/sdk/AgentAuthoringAPI.js&quot;, 122, &quot;const eid = (typeof id === &#39;string&#39;&quot;],
+  [&quot;src/sdk/AgentAuthoringAPI.js&quot;, 125, &quot;const pos = Array.isArray(position)&quot;],
+  [&quot;src/sdk/AgentAuthoringAPI.js&quot;, 150, &quot;port: ctx?.port || 3002&quot;],
+  [&quot;src/sdk/AgentAuthoringAPI.js&quot;, 170, &quot;json(res, 500, { ok: false, error: String(e?.message || e) })&quot;],
+  [&quot;src/sdk/NostrAuthServer.js&quot;, 21, &quot;arr[i] = Math.floor(Math.random() * 256)&quot;],
+  [&quot;src/sdk/NostrAuthServer.js&quot;, 9, &quot;catch { _nodeCrypto = false; return false }&quot;],
+  [&quot;src/sdk/NostrAuthServer.js&quot;, 44, &quot;try { transport.close() } catch {}&quot;],
+  [&quot;src/sdk/NostrAuthServer.js&quot;, 60, &quot;.slice(0, MAX_PUBKEY_LEN)&quot;],
+  [&quot;src/sdk/NostrAuthServer.js&quot;, 73, &quot;created_at: payload?.created_at || 0&quot;],
+  [&quot;src/sdk/NostrAuthServer.js&quot;, 74, &quot;kind: payload?.kind || NIP98_HTTP_AUTH_KIND&quot;],
+  [&quot;src/sdk/ServerPresence.js&quot;, 16, &quot;} catch { }&quot;],
+  [&quot;src/sdk/ServerPresence.js&quot;, 20, &quot;await mkdir(join(process.cwd(), &#39;data&#39;)&quot;],
+  [&quot;src/sdk/ServerPresence.js&quot;, 94, &quot;try { await publish(&#39;offline&#39;) } catch { }&quot;],
+  [&quot;src/sdk/ServerPresence.js&quot;, 99, &quot;publish(&#39;heartbeat&#39;).catch(() =&gt; {})&quot;],
+  [&quot;src/sdk/RoomDirectory.js&quot;, 8, &quot;throw new Error(&#39;RoomDirectory requires { sdkRoot }&#39;)&quot;],
+  [&quot;src/sdk/RoomDirectory.js&quot;, 36, &quot;if (this._reservedPorts.has(port)) throw new Error(&quot;],
+  [&quot;src/sdk/RoomDirectory.js&quot;, 44, &quot;physicsRadius: worldDef.physicsRadius || 0&quot;],
+  [&quot;src/sdk/RoomDirectory.js&quot;, 48, &quot;...opts.configOverrides,&quot;],
+  [&quot;src/sdk/RoomDirectory.js&quot;, 88, &quot;handle.server.stop()&quot;],
+  [&quot;src/sdk/RoomDirectory.js&quot;, 111, &quot;const avgTickMs = budgets.length ? ts._tickBudgetSum / budgets.length : 0&quot;],
+]
+const candidate57to58Mismatch = candidates57to58.filter(([p, n, s]) =&gt; !spointShow(p).split(&quot;\n&quot;)[n - 1]?.includes(s))
+if (candidate57to58Mismatch.length !== 0) errors.push(`stream 57 and 58 candidates not at cited lines: ${candidate57to58Mismatch.map(([p, n]) =&gt; `${p}:${n}`).join(&quot;, &quot;)}`)
+const candidate57to58ShiftRefused = candidates57to58.filter(([p, n, s]) =&gt; spointShow(p).split(&quot;\n&quot;)[n]?.includes(s)).length === 0
+if (!candidate57to58ShiftRefused) errors.push(&quot;stream 57 and 58 candidate line-shift negative was not refused&quot;)
+console.log(`STREAM 57 TO 58 CANDIDATES AT spoint ${spointPin}: ${candidates57to58.length} located, line-shift negative refused: ${candidate57to58ShiftRefused}`)
+const cavePresentAtPin = (() =&gt; { try { execFileSync(&quot;git&quot;, [&quot;-C&quot;, spointRoot, &quot;cat-file&quot;, &quot;-e&quot;, `${spointPin}:src/terrain/CaveMeshes.js`]); return true } catch { return false } })()
+if (cavePresentAtPin) errors.push(&quot;spoint: src/terrain/CaveMeshes.js exists at the pin, so the CaveMeshes correction is wrong&quot;)
+const cavePatchesImporters = (() =&gt; { try { return execFileSync(&quot;git&quot;, [&quot;-C&quot;, spointRoot, &quot;grep&quot;, &quot;-l&quot;, &quot;CavePatches&quot;, spointPin, &quot;--&quot;, &quot;src&quot;, &quot;client&quot;, &quot;apps&quot;, &quot;packages&quot;, &quot;edge&quot;, &quot;scripts&quot;], { encoding: &quot;utf8&quot; }).split(&quot;\n&quot;).filter(Boolean).length } catch { return 0 } })()
+if (cavePatchesImporters !== 0) errors.push(`spoint: CavePatches has ${cavePatchesImporters} files outside .gm, expected 0`)
+for (const file of [&quot;FEATURESET.md&quot;, &quot;Jayzee-GAPS.md&quot;, &quot;PARITY-INPUTS.md&quot;]) {
+  const body = readFileSync(join(docs, file), &quot;utf8&quot;)
+  if (body.includes(&quot;CavePatches/CaveMeshes&quot;) || body.includes(&quot;CavePatches, CaveMeshes&quot;)) errors.push(`${file}: CaveMeshes is still listed under src/terrain`)
+  if (!body.includes(&quot;client/core/CaveMeshes&quot;)) errors.push(`${file}: the CaveMeshes correction is missing`)
+}
+const denominatorSection = texts[&quot;FEATURESET.md&quot;].split(&quot;\n## Scoped jayzee decoded-frame token scan&quot;)[1]?.split(&quot;\n## &quot;)[0] ?? &quot;&quot;
+const denominatorPatterns = {
+  textVisibleKeys: /(\d+) text-visible keys/,
+  uniqueDecodedKeys: /(\d+) unique decoded-frame `world\.assets` keys/,
+  manifestsReached: /(\d+) manifests reached/,
+  worldsWithCdnGlb: /(\d+) worlds with `\/cdn\/` GLB references/,
+}
+const readDenominators = (text) =&gt; Object.fromEntries(Object.entries(denominatorPatterns).map(([name, pattern]) =&gt; [name, Number((text.match(pattern) ?? [])[1])]))
+const hasMergedDenominators = (values) =&gt; new Set(Object.values(values)).size !== Object.values(values).length
+const denominators = readDenominators(denominatorSection)
+if (Object.values(denominators).some((value) =&gt; !(value &gt; 0))) errors.push(`FEATURESET.md: a denominator is missing from the decoded-frame section: ${JSON.stringify(denominators)}`)
+if (hasMergedDenominators(denominators)) errors.push(`FEATURESET.md: denominators are merged: ${JSON.stringify(denominators)}`)
+const mergedWitness = readDenominators(denominatorSection.replace(&quot;307 text-visible keys&quot;, &quot;11987 text-visible keys&quot;))
+if (!hasMergedDenominators(mergedWitness)) errors.push(&quot;negative witness failed: merging two denominators was not refused&quot;)
+console.log(`FOUR DENOMINATORS DISTINCT: ${Object.values(denominators).join(&quot;, &quot;)}; merge negative refused: ${hasMergedDenominators(mergedWitness)}`)
+for (const [frame, base] of [[24518, 12259], [24372, 12186], [23974, 11987]]) {
+  if (2 * base !== frame) errors.push(`arithmetic: 2 × ${base} is not ${frame}`)
+  if (!denominatorSection.includes(`${frame} = 2 × ${base}`)) errors.push(`FEATURESET.md: the ~2f scope ${frame} = 2 × ${base} is not stated`)
+}
+if (12259 - 12186 !== 73 || 12186 - 11987 !== 199) errors.push(&quot;arithmetic: the 73 and 199 gaps do not hold&quot;)
+for (const phrase of [&quot;withinManifestRepeatSum 73&quot;, &quot;manifestsWithRepeats 61&quot;, &quot;negativeDiffs 0&quot;, &quot;199 cross-manifest&quot;]) {
+  if (!denominatorSection.includes(phrase)) errors.push(`FEATURESET.md: the 73-gap resolution is missing &quot;${phrase}&quot;`)
+}
+console.log(&quot;THREE ~2f SCOPES AND 73-GAP RESOLUTION CHECKED&quot;)
+const jayzeeRecord = texts[&quot;FEATURESET.md&quot;].split(&quot;\n## Jayzee consolidated learning record&quot;)[1]?.split(&quot;\n## &quot;)[0] ?? &quot;&quot;
+const v3Rows = readFileSync(join(cleetus, &quot;jayzee-evidence&quot;, &quot;data&quot;, &quot;manifests-all-v3-results.jsonl&quot;), &quot;utf8&quot;).trim().split(&quot;\n&quot;).map((line) =&gt; JSON.parse(line))
+const v3 = {
+  rows: v3Rows.length,
+  status200: v3Rows.filter((r) =&gt; r.status === 200).length,
+  eof: v3Rows.filter((r) =&gt; r.eof === true).length,
+  framesEqualHashes: v3Rows.filter((r) =&gt; r.framesEqualHashes === true).length,
+  frames: v3Rows.reduce((a, r) =&gt; a + (r.frames || 0), 0),
+  gzipFrames: v3Rows.reduce((a, r) =&gt; a + (r.gzipFrames || 0), 0),
+  gzipDecodedMatch: v3Rows.reduce((a, r) =&gt; a + (r.gzipDecodedMatch || 0), 0),
+  gzipFail: v3Rows.reduce((a, r) =&gt; a + (r.gzipFail || 0), 0),
+}
+const v3Phrase = `${v3.rows} rows, ${v3.status200} status 200, ${v3.eof} eof true, ${v3.framesEqualHashes} framesEqualHashes true, ${v3.frames} frames, ${v3.gzipFrames} gzip frame, ${v3.gzipDecodedMatch} gzip decode match, ${v3.gzipFail} gzip failures`
+if (!jayzeeRecord.includes(v3Phrase)) errors.push(`FEATURESET.md jayzee record: durable v3 figures are not stated as &quot;${v3Phrase}&quot;`)
+counts.jayzeeV3 = v3
+console.log(`Jayzee V3 RE-DERIVED FROM jayzee-evidence/data: ${v3Phrase}`)
+const nonDurableDenominators = { textVisibleKeys: 307, uniqueDecodedKeys: 11987, worldsWithCdnGlb: 399 }
+const denominatorProblems = (text) =&gt; {
+  const lines = text.split(&quot;\n&quot;)
+  const problems = []
+  for (const [name, value] of Object.entries(nonDurableDenominators)) {
+    const line = lines.find((l) =&gt; denominatorPatterns[name].test(l))
+    if (line === undefined) { problems.push(`${name}: no line states the denominator`); continue }
+    const stated = Number(line.match(denominatorPatterns[name])[1])
+    if (stated !== value) problems.push(`${name} is stated as ${stated}, expected ${value}`)
+    if (!line.includes(&quot;jayzee-reported&quot;)) problems.push(`${name} is not labelled jayzee-reported`)
+  }
+  return problems
+}
+const denominatorLabelProblems = denominatorProblems(denominatorSection)
+for (const problem of denominatorLabelProblems) errors.push(`FEATURESET.md denominators: ${problem}`)
+if (denominatorProblems(denominatorSection.replace(&quot;307 text-visible keys&quot;, &quot;11987 text-visible keys&quot;)).length === 0) errors.push(&quot;negative witness failed: substituting a different-scope number for a labelled denominator was not refused&quot;)
+console.log(`DENOMINATOR LABELS (non-durable figures): ${denominatorLabelProblems.length === 0 ? &quot;all jayzee-reported&quot; : denominatorLabelProblems.join(&quot;; &quot;)}; substitution negative refused: true`)
+const stream17 = texts[&quot;FEATURESET.md&quot;].split(&quot;\n## Stream 17&quot;)[1]?.split(&quot;\n## &quot;)[0] ?? &quot;&quot;
+const stream17Cites = [...stream17.matchAll(/`((?:src|client|apps|scripts)\/[^`]+?):(\d+)` \(`([^`]+)`\)/g)]
+let stream17Verified = 0
+for (const [, path, lineNumber, snippet] of stream17Cites) {
+  claimsChecked++
+  let source = null
+  try { source = execFileSync(&quot;git&quot;, [&quot;-C&quot;, spointRoot, &quot;show&quot;, `${spointPin}:${path}`], { encoding: &quot;utf8&quot; }).split(&quot;\n&quot;) } catch { source = null }
+  if (source === null) { errors.push(`FEATURESET.md stream 17: ${path} is not in spoint at ${spointPin}`); continue }
+  if ((source[Number(lineNumber) - 1] ?? &quot;&quot;).includes(snippet)) stream17Verified++
+  else errors.push(`FEATURESET.md stream 17: ${path}:${lineNumber} does not contain the cited text: ${snippet}`)
+}
+counts.stream17 = { citations: stream17Cites.length, verified: stream17Verified }
+console.log(`STREAM 17 CITATIONS VERIFIED AGAINST spoint ${spointPin}: ${stream17Verified} of ${stream17Cites.length}`)
+const stream18 = texts[&quot;FEATURESET.md&quot;].split(&quot;\n## Stream 18&quot;)[1]?.split(&quot;\n## &quot;)[0] ?? &quot;&quot;
+const stream18Cites = [...stream18.matchAll(/`((?:src|client|apps|scripts)\/[^`]+?):(\d+)` \(`([^`]+)`\)/g)]
+let stream18Verified = 0
+for (const [, path, lineNumber, snippet] of stream18Cites) {
+  claimsChecked++
+  let source = null
+  try { source = execFileSync(&quot;git&quot;, [&quot;-C&quot;, spointRoot, &quot;show&quot;, `d5e3860:${path}`], { encoding: &quot;utf8&quot; }).split(&quot;\n&quot;) } catch { source = null }
+  if (source === null) { errors.push(`FEATURESET.md stream 18: ${path} is not in spoint at d5e3860`); continue }
+  if ((source[Number(lineNumber) - 1] ?? &quot;&quot;).includes(snippet)) stream18Verified++
+  else errors.push(`FEATURESET.md stream 18: ${path}:${lineNumber} does not contain the cited text: ${snippet}`)
+}
+if (stream18Cites.length !== 25) errors.push(`FEATURESET.md stream 18: expected 25 citations, found ${stream18Cites.length}`)
+const scopedNegatives = [
+  [&quot;Content-Security-Policy|Strict-Transport-Security&quot;, &quot;&quot;, 0],
+  [&quot;Cross-Origin-Resource-Policy&quot;, &quot;&quot;, 0],
+  [&quot;Access-Control-Allow-Origin&quot;, &quot;&quot;, 1],
+  [&quot;rate.?limit&quot;, &quot;src/sdk/UploadHandler.js src/sdk/StaticHandler.js src/sdk/llmJobs.js&quot;, 0],
+]
+const negativeCounts = scopedNegatives.map(([pattern, paths, expected]) =&gt; {
+  const args = [&quot;-C&quot;, spointRoot, &quot;grep&quot;, &quot;-i&quot;, &quot;-c&quot;, &quot;-E&quot;, pattern, &quot;d5e3860&quot;, &quot;--&quot;, ...(paths ? paths.split(&quot; &quot;) : [&quot;src&quot;])]
+  let out = &quot;&quot;
+  try { out = execFileSync(&quot;git&quot;, args, { encoding: &quot;utf8&quot; }) } catch { out = &quot;&quot; }
+  const lines = out.split(&quot;\n&quot;).filter(Boolean).reduce((n, row) =&gt; n + Number(row.split(&quot;:&quot;).pop()), 0)
+  if (lines !== expected) errors.push(`FEATURESET.md stream 18 negative ${pattern} expected ${expected}, counted ${lines}`)
+  return lines
+})
+const callSites = execFileSync(&quot;git&quot;, [&quot;-C&quot;, spointRoot, &quot;grep&quot;, &quot;-c&quot;, &quot;timingSafeTokenEqual(&quot;, &quot;d5e3860&quot;, &quot;--&quot;, &quot;src&quot;], { encoding: &quot;utf8&quot; }).split(&quot;\n&quot;).filter(Boolean).map((row) =&gt; row.split(&quot;:&quot;).pop())
+if (callSites.join(&quot;,&quot;) !== &quot;3,1,1&quot;) errors.push(`FEATURESET.md stream 18: timingSafeTokenEqual call sites are ${callSites.join(&quot;,&quot;)}, expected 3,1,1`)
+counts.stream18 = { citations: stream18Cites.length, verified: stream18Verified }
+console.log(`STREAM 18 CITATIONS VERIFIED AGAINST spoint d5e3860: ${stream18Verified} of ${stream18Cites.length}`)
+console.log(`STREAM 18 SCOPED NEGATIVES (CSP+HSTS, CORP, ACAO, rate limit): ${negativeCounts.join(&quot;, &quot;)}`)
+console.log(`STREAM 18 timingSafeTokenEqual CALL SITES (ServerAPIRoutes, ServerHandlers, authCompare): ${callSites.join(&quot;, &quot;)}`)
+console.log(`FEATURESET CHECK FILES: ${files.length}`)
+console.log(`CITED WORKSPACE PATHS: ${counts.workspacePaths}`)
+console.log(`TMP REFERENCES LABELLED: ${counts.tmpReferences}`)
+console.log(`REGISTER STATUS TOKENS: ${counts.registerStatusTokens}`)
+console.log(`COUNT TABLE STATUS CELLS: ${counts.countStatusCells}`)
+console.log(`COUNT CLAIMS CHECKED AGAINST FIXTURES: ${claimsChecked}`)
+console.log(`DOORS: total ${counts.doors.total}, exercised ${counts.doors.exercised}, documented ${counts.doors.documented}, verb ${counts.doors.verb}, non-verb ${nonVerbNames.length}`)
+console.log(`ME.DOORS KEYS (local body): ${meDoorKeys}`)
+console.log(`TOME TREE FILES: ${tomeFiles.length} (top-level ${tomeTop}, sections ${tomeSections})`)
+console.log(`SKILLS: served ${counts.skills.served}, entries ${counts.skills.entries} (json ${skillJson}, md ${skillMd}), INDEX minus md: +1 for ${plusOne}, cameras ${counts.skills.cameras}, heightmap-terrain ${counts.skills.heightmap}, content equals md for ${contentMatches}`)
+console.log(`Jayzee PINNED COMMIT: ${pin}`)
+console.log(`Jayzee RANKED ROWS AT PIN: ${counts.parityRows}`)
+console.log(`GAP TABLE ROWS: ${counts.gapRows} (required-in-jayzee ${requiredRows}, built ${builtRows})`)
+console.log(`Cleetus-OWNED ITEMS WITH PATH CHECK: ${counts.savedItemsNeedingPath}`)
+console.log(`OPEN ROWS CITING NO EXISTING Jayzee PATH (architectural, not a feature obligation; tracked): ${openWithoutTarget.join(&quot;, &quot;)}`)
+console.log(`OPEN ROWS CITING A Jayzee PATH NOT CREATED (architectural, not a feature obligation; tracked): ${namedNotCreated.join(&quot;, &quot;)}`)
+for (const error of errors) console.log(`ERROR: ${error}`)
+console.log(`RESULT: ${errors.length === 0 ? &quot;PASS&quot; : &quot;FAIL&quot;}`)
+
+if (errors.length &gt; 0) process.exitCode = 1
+</pre>
+</main>
+<footer>Cleetus MANUAL / 5a30f94 / REBUILT ON EVERY PUSH TO MAIN</footer>
+</body>
+</html>

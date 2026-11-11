@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>.jayzee/reference/guide/served-guide.guide.txt | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>.jayzee/reference/guide/served-guide.guide.txt</h1>
+<div class="meta"><span>15543 BYTES</span><span>118 LINES</span><span>TEXT</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/.jayzee/reference/guide/served-guide.guide.txt">RAW</a></div>
+</header>
+<main>
+
+<pre># @lanmower/the-cleetus-gallery — a live multiplayer world on Jayzee
+
+This tree IS the world. A push to main reaches every room open on main with no build and no deploy, and every open page takes it with no reload. Most pushes reach the rooms in seconds; a large change or a large or busy world can take a minute or more. People may be standing in it while you edit. Play it:
+https://www.jayzee.co/@lanmower/the-cleetus-gallery
+
+The game is three.js in files: an object is a row with three.js&#39;s geometry and material fields, a behavior is a module with `update(ctx, dt)`, the HUD is HTML in `scripts/ui.js`. `git push` to main lands it, and the push&#39;s `remote:` lines carry the verdicts; a fault names the file and the line. `https://www.jayzee.co/@lanmower/the-cleetus-gallery@dev` is that push in any browser, with no sign-in, and its console prints the game&#39;s `console.log` and faults. A push never publishes. To publish, POST https://www.jayzee.co/api/games/{appId}/publish with your token and the appId from me; the public page then shows that version until the next publish.
+
+## The tree
+
+- `world.config.yaml` — the root: engine, inputs, the player and camera templates, the default place.
+- `places/&lt;place&gt;/config.yaml` — one place&#39;s atmosphere, terrain, physics, jayzee.
+- `places/&lt;place&gt;/cells/x&lt;cx&gt;z&lt;cz&gt;.scene` — placements, by 128 m cell over the object&#39;s feet:
+  `cx = Math.round(x / 128)`, `cz = Math.round(z / 128)` — round, never floor, half up: `x0z0` holds
+  −64 ≤ x &lt; 64 (z alike); 64 files under `x1z0`, −64 under `x0z0`. Line 1
+  is the header `# jayzee-scene v2 yaml &lt;cellKey&gt;`; then one block per placement — the object as it was
+  jayzeeed, its fields at the row&#39;s indent. `objects.scene` holds placements with no plain world xz.
+- `templates/&lt;name&gt;.js` — a module you write when several things share one definition. Export the object def; a row uses `template: &quot;templates/&lt;name&gt;.js#&lt;export&gt;&quot;` + `overrides:`.
+- `scripts/**/*.js` — behavior modules (`export function onJayzee(ctx)`, `update(ctx, dt)`, `onCollide(ctx, other, contact)`, `onArrive` …). `scripts/lib/data/*.yml` is importable. `sim.js` runs the world&#39;s own program, one copy per room.
+- `skills/&lt;name&gt;.md` — a skill for Cleetus; `commands/&lt;name&gt;.md` — a slash command. Tree files like any other.
+- `design.md` — the game&#39;s one page: what it is, how a player wins and loses, the loop, and a dated line per decision the creator made with Cleetus or you. A decision stands until the creator changes it.
+- `source/**` — a game a person made somewhere else, as its own files, left as they are. &quot;Bring a game you already made&quot; in https://www.jayzee.co/llms.txt says how it comes in and what is built from it.
+- Art is a CDN NAME, never bytes in this tree: `model: &quot;/cdn/model-knight.glb&quot;`, `texture: &quot;/cdn/moodboard-pixel/sprite-fox.png&quot;`,
+  `clip: &quot;/cdn/sfx-bell.mp3&quot;` — a name the CDN has not cooked is generated on first fetch and is immutable after. Your own art, a `.mp4` video too, goes
+  up by its bytes: `PUT https://www.jayzee.co/api/sdk/v1/&lt;worldId&gt;/assets/value.&lt;sha256 of the file&gt;.&lt;ext&gt;` + Bearer, Content-Type its type, the file as the
+  body → `{ url }`; the tree references it as `/cdn/value.&lt;sha256&gt;.&lt;ext&gt;` (a `.wav`, `.ogg` or `.flac` goes up as it is and is named `value.&lt;sha256&gt;.mp3`). That PUT carries a body only up to the API&#39;s request cap (about 4.5 MB, headers counted); over it the door answers 413 and the bytes go by address: `POST https://www.jayzee.co/api/sdk/v1/&lt;worldId&gt;/assets/upload-target` with `{ name, sizeBytes }` for a storage PUT url, PUT the bytes there, then `PUT https://www.jayzee.co/api/sdk/v1/&lt;worldId&gt;/assets/&lt;name&gt;` with `{ tempPath }`. A push carrying asset bytes, by its extension, wherever it sits, is refused typed (law.git.asset-kind), like JS that does not parse.
+- `AGENTS.md`, `CLAUDE.md`, `README.md`, `.jayzee/` — for you. The room never receives these exact paths. Write what you learn about THIS world into AGENTS.md, not into your own memory.
+
+## One placement, whole
+
+`places/main/cells/x0z0.scene` — the row IS the object: one cube standing at (4, 0, 6): round(4/128) = round(6/128) = 0. An
+object&#39;s fields (primitive, material, physics, feetPosition, …) sit flat beside its frame (id, tags, state, behavior, parent, children).
+
+```yaml
+# jayzee-scene v2 yaml x0z0
+&quot;cube-1&quot;:
+  &quot;feetPosition&quot;: { &quot;x&quot;: 4, &quot;y&quot;: 0, &quot;z&quot;: 6 }
+  &quot;material&quot;: { &quot;color&quot;: &quot;oklch(0.72 0.19 30)&quot; }
+  &quot;physics&quot;: &quot;static&quot;
+  &quot;primitive&quot;: { &quot;kind&quot;: &quot;box&quot;, &quot;width&quot;: 2, &quot;height&quot;: 2, &quot;depth&quot;: 2 }
+  &quot;tags&quot;: [&quot;cube&quot;]
+```
+
+`physics` omitted = walk-through; `&quot;static&quot;` = solid and still; `{ body: &quot;dynamic&quot;, mass: 2 }` = falls and pushes. Push the file and the cube stands in every open room. `primitive` takes three.js&#39;s geometry names and constructor parameters (`{ kind: &quot;box&quot;, width, height, depth }`, `{ kind: &quot;cylinder&quot;, radiusTop, radiusBottom, height }`, sphere, cone, ring, circle, torus, the polyhedra); capsule&#39;s length is `halfHeight`; tube, lathe and extrude, and Jayzee&#39;s own shapes (wedge, arch, wall, …), are in the reference&#39;s primitive section. `material` takes MeshStandardMaterial&#39;s (color, roughness, metalness, emissive, emissiveIntensity, opacity, transparent, the maps).
+For several cubes, write the definition once in `templates/cube.js`. Each row uses `&quot;template&quot;: &quot;templates/cube.js#cube&quot;`, with differences under `&quot;overrides&quot;:`.
+
+```js
+export const cube = { primitive: { kind: &quot;box&quot;, width: 2, height: 2, depth: 2 }, material: { color: &quot;oklch(0.72 0.19 30)&quot; }, physics: &quot;static&quot;, tags: [&quot;cube&quot;] };
+```
+
+## The API, in one screen
+
+`ctx` is the first argument of every hook — `onJayzee(ctx)`, `update(ctx, dt)`, `onCollide(ctx, other, contact)` — and there
+are no ambient globals. `ctx` carries the scopes (`ctx.world`, `ctx.place`, `ctx.self`, `ctx.session`) — reads compose like a
+prototype chain, writes land in the handle&#39;s own layer, `delete` clears — and the eight verbs: `ctx.jayzee(spec)` / `ctx.jayzee(id, spec)`,
+`ctx.destroy(id)`, `ctx.getObject(id)` / `ctx.query(sel)`, a dot assignment is the write (`ctx.self.state.hp = 3`), `ctx.attach(a, b)`,
+`ctx.cross(entity, link)`, `ctx.emit(topic, payload)` (+ `ctx.on`). `ctx.now()` is the only clock; `ctx.after(seconds, &quot;export&quot;, payload)`
+is the one-shot timer. Durable per-player data is
+`player.state.*`; shared is `ctx.world.state.*`; room-life-only is `ctx.session.*`. The public API
+reference and engine-use guide live in the engine repo pinned by `.jayzee/engine.yaml`:
+`git clone --depth 1 -c credential.helper= -c credential.helper=&#39;!f() { echo username=&lt;you&gt;; echo password=${Jayzee_TOKEN:-$(cat &quot;${Jayzee_TOKEN_FILE:-$HOME/.jayzee/token}&quot;)}; }; f&#39; https://git.jayzee.co/engine/6.0.0.git .jayzee/engine` (gitignored).
+
+## The page
+
+`https://www.jayzee.co/@lanmower/the-cleetus-gallery@dev` is the world at the latest push to main, as a web page. Each page is a player in a room.
+The page marks `&lt;html&gt;` with the class `jayzee-world-shown` once the world is drawn, and with the attribute `data-jayzee-stood` once it lets go of its own hold (the world standing, a boot fault, or a press on the page): `page.waitForSelector(&#39;html.jayzee-world-shown&#39;)` waits for the world and not for a timer.
+The game&#39;s `console.log` and every fault in its scripts, with the script&#39;s path, line and column, print in that page&#39;s console.
+A screenshot of the page is the frame a player sees, the game&#39;s HTML UI and the rail included.
+The page draws with WebGPU. A headless Chromium with no GPU drew it in software, slowly and at a low resolution, with `--enable-unsafe-webgpu --enable-features=Vulkan,WebGPU --use-angle=vulkan --use-vulkan=swiftshader --use-webgpu-adapter=swiftshader --enable-unsafe-swiftshader`.
+The page holds the game in a frame at another origin, `iframe[data-jayzee-kernel-frame]`, and that frame holds the game&#39;s HTML UI (`scripts/ui.js`) in a sandboxed frame at a throwaway origin of its own, `iframe[data-tome-realm=&quot;game&quot;]`.
+Neither frame has a fixed `name`, the page&#39;s first `iframe` is not the HUD, and the HUD&#39;s words are in the inner frame only: a text read or a locator on the top document, or on the outer frame, finds none of them. In Playwright `page.frameLocator(&#39;iframe[data-jayzee-kernel-frame]&#39;).frameLocator(&#39;iframe[data-tome-realm=&quot;game&quot;]&#39;)` is the HUD, `hud.getByRole(&#39;button&#39;, { name: &#39;Play again&#39; }).click()` presses its button, a `page.mouse.click` at a HUD button&#39;s bounding box lands on it as a person&#39;s click does, and a key press reaches the game&#39;s actions once a click in the page has given the game the focus.
+In a headed browser a 3D place holds the mouse for the camera&#39;s look (pointer lock: on by default in a 3D place, off with the camera&#39;s `pointerLock: false`, and off by default in a 2D place). While it holds, the cursor is hidden and a click goes to the world, never to the HUD; Escape from a person&#39;s keyboard frees it, and a key an automation sends does not. A `data-modal` element in the HUD frees the mouse while that element stands, so a card&#39;s button takes a click, and the lock returns when the card goes. A headless browser never holds the mouse, and every click lands where it is aimed.
+A browser a program drives says so (`navigator.webdriver`), and Jayzee counts that page apart from a person&#39;s; one that cannot say so ends its user agent with ` JayzeeProbe/&lt;name&gt;`.
+
+## Who writes here
+
+Cleetus, `exec --persist` and other clones commit to main too: git refuses a push behind their commit (`fetch first`).
+Jayzee commits this guide to main too: a push behind that commit lands under Jayzee&#39;s merge commit, and `git pull` fast-forwards. The server never force-pushes.
+The first line of each commit message lands in the creator&#39;s chat and changes list under your name, and Cleetus reads it at her next step, never the body or `design.md`. It is one plain sentence
+about what changed for the player or the rule the creator set, never a file, a function or a diagnosis; the how goes in the body.
+`git log --notes=jayzee` carries the world&#39;s own reading of each commit (the clone line below fetches it).
+A push prints `remote:` lines that name the rooms, players, ops and verdicts. The `verdicts →` page reads with `printf &#39;user = &quot;&lt;you&gt;:%s&quot;\n&#39; &quot;${Jayzee_TOKEN:-$(cat &quot;${Jayzee_TOKEN_FILE:-$HOME/.jayzee/token}&quot;)}&quot; | curl -K - &lt;url&gt;`.
+Agents never wake Cleetus. There is no door into her chat.
+
+## The packaged client
+
+`@jayzeeco/client` (`bun add -g @jayzeeco/client`) stands a body in a room from a shell, wearing your name:
+`jayzee client join @lanmower/the-cleetus-gallery --ttl 600`, `jayzee client leave`. `jayzee client exec &lt;file&gt;` or `-e &#39;&lt;code&gt;&#39;` runs an async JS
+body in that room&#39;s real engine with `api`, `ctx` and the world&#39;s imports; its changes stay in that room unless `--persist` saves
+them into the world&#39;s files. `--realm browser` runs in the body&#39;s page (join with `--render cpu` or `--render gpu`), where
+`client.capture({ method: &quot;preview_object&quot;, params: { object, children } })` draws one object&#39;s draft by its fields alone.
+`jayzee client --help` and `jayzee client exec --help` list every verb and flag.
+`jayzee preview`, run inside this clone, stands a body in a room of its own at the version main is at, carries the files of your working tree that differ from `origin/main` into that room, prints the room&#39;s page, and lands every save there as you make it, with no push; Ctrl-C ends it, and the world&#39;s rooms and history never see the preview&#39;s files.
+
+## The doors — one token everywhere
+
+Your token is the password on the git remote and the Bearer on every door. Every line here reads `$Jayzee_TOKEN`,
+else the file `jayzee login` keeps it in (`~/.jayzee/token`); never commit it, never print it. Git with no helper
+asks the person at the screen for a login. The clone, with its helper and the notes:
+`git clone --config credential.helper= --config credential.helper=&#39;!f() { echo username=&lt;you&gt;; echo password=${Jayzee_TOKEN:-$(cat &quot;${Jayzee_TOKEN_FILE:-$HOME/.jayzee/token}&quot;)}; }; f&#39; --config http.proactiveAuth=basic --config remote.origin.fetch=&#39;+refs/notes/*:refs/notes/*&#39; https://git.jayzee.co/@lanmower/the-cleetus-gallery.git`
+An existing clone: `git config credential.helper &#39;&#39;` (drops a stored login), `git config --add credential.helper &#39;!f() { echo username=&lt;you&gt;; echo password=${Jayzee_TOKEN:-$(cat &quot;${Jayzee_TOKEN_FILE:-$HOME/.jayzee/token}&quot;)}; }; f&#39;`,
+`git config http.proactiveAuth basic`, `git config --add remote.origin.fetch &#39;+refs/notes/*:refs/notes/*&#39;`, `git fetch`. `&lt;worldId&gt;` below is the id `me` and `worlds` answer for this world.
+
+- who am I, my worlds with their git and play URLs: `curl -H @&lt;(printf &#39;Authorization: Bearer %s\n&#39; &quot;${Jayzee_TOKEN:-$(cat &quot;${Jayzee_TOKEN_FILE:-$HOME/.jayzee/token}&quot;)}&quot;) https://www.jayzee.co/api/agent/v1/me`
+- this world&#39;s live rooms and player counts: `curl -H @&lt;(printf &#39;Authorization: Bearer %s\n&#39; &quot;${Jayzee_TOKEN:-$(cat &quot;${Jayzee_TOKEN_FILE:-$HOME/.jayzee/token}&quot;)}&quot;) https://www.jayzee.co/api/sdk/v1/&lt;worldId&gt;/agent/rooms`
+- the room&#39;s script log (errors name your paths): `curl -H @&lt;(printf &#39;Authorization: Bearer %s\n&#39; &quot;${Jayzee_TOKEN:-$(cat &quot;${Jayzee_TOKEN_FILE:-$HOME/.jayzee/token}&quot;)}&quot;) https://www.jayzee.co/api/sdk/v1/&lt;worldId&gt;/agent/logs`
+- run read-only JS in the live room: `curl -H @&lt;(printf &#39;Authorization: Bearer %s\n&#39; &quot;${Jayzee_TOKEN:-$(cat &quot;${Jayzee_TOKEN_FILE:-$HOME/.jayzee/token}&quot;)}&quot;) -X POST https://www.jayzee.co/api/sdk/v1/&lt;worldId&gt;/agent/exec -H &quot;Content-Type: application/json&quot; -d &#39;{&quot;script&quot;:&quot;return api.query({tags:[\&quot;enemy\&quot;]}).length&quot;}&#39;` (409 `no_live_room` when nobody is in it — an open page or a client body is a player in a room; add `&quot;place&quot;:&quot;&lt;name&gt;&quot;` to read one place, else it runs where most of the room&#39;s players stand and the answer&#39;s `place` says where)
+- the reference and skills at this pin over HTTP: `curl -H @&lt;(printf &#39;Authorization: Bearer %s\n&#39; &quot;${Jayzee_TOKEN:-$(cat &quot;${Jayzee_TOKEN_FILE:-$HOME/.jayzee/token}&quot;)}&quot;) https://www.jayzee.co/api/sdk/v1/&lt;worldId&gt;/agent/docs` — The Tome API reference is read by section: the docs door with ?section=&lt;heading&gt; answers that one section in tomeApi with every heading in sections; with no section named it answers the opening and the headings. Every shape in it is exact, and a push in another shape is refused naming the row, the line and the field. That curl is the docs door; the whole reference is also `api-reference.md` at the root of the engine repo above.
+- a browser signed in as you (the url works once, within 5 minutes): `curl -H @&lt;(printf &#39;Authorization: Bearer %s\n&#39; &quot;${Jayzee_TOKEN:-$(cat &quot;${Jayzee_TOKEN_FILE:-$HOME/.jayzee/token}&quot;)}&quot;) -X POST https://www.jayzee.co/api/agent/v1/login-link -H &quot;Content-Type: application/json&quot; -d &#39;{&quot;next&quot;:&quot;/@lanmower/the-cleetus-gallery@dev&quot;}&#39;` answers `url`.
+- your inbox (notes, plays, invites, a link&#39;s verdict): `curl -H @&lt;(printf &#39;Authorization: Bearer %s\n&#39; &quot;${Jayzee_TOKEN:-$(cat &quot;${Jayzee_TOKEN_FILE:-$HOME/.jayzee/token}&quot;)}&quot;) &quot;https://www.jayzee.co/api/notifications?unread=1&quot;`
+- make a world: `git push -o create` to `https://git.jayzee.co/@@&lt;you&gt;/&lt;free-slug&gt;.git`, or `POST https://www.jayzee.co/api/agent/v1/games`.
+- the human invites the next agent here: https://www.jayzee.co/@lanmower/the-cleetus-gallery/code
+
+## The rail is Jayzee&#39;s
+
+The right-middle block of the game screen (one reservation, vertically centered on the right edge; its size is
+the engine&#39;s, published to ui.js as CSS variables — the game-ui skill names them) belongs to the platform — home,
+creator, like, comments in play; Cleetus&#39;s face while creating. Game UI you write (raw HTML) keeps out of it; the
+engine forwards the same keep-out rects.
+</pre>
+</main>
+<footer>Cleetus MANUAL / 5a30f94 / REBUILT ON EVERY PUSH TO MAIN</footer>
+</body>
+</html>

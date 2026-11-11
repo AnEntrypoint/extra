@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>.jayzee/reference/engine-deep/probes/probe-4.js | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>.jayzee/reference/engine-deep/probes/probe-4.js</h1>
+<div class="meta"><span>412 BYTES</span><span>9 LINES</span><span>TEXT</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/.jayzee/reference/engine-deep/probes/probe-4.js">RAW</a></div>
+</header>
+<main>
+
+<pre>
+return {
+  view: { fps: ctx.view.fps, drawCalls: ctx.view.drawCalls, triangles: ctx.view.triangles, cpuMs: ctx.view.cpuMs, memoryMB: ctx.view.memoryMB, site: ctx.view.site },
+  quality: ctx.quality,
+  device: ctx.device,
+  networking: ctx.world.engine &amp;&amp; ctx.world.engine.networking,
+  players: ctx.query({ tags: [&#39;player&#39;] }).map((p) =&gt; ({ id: p.id, name: p.name, feet: p.feetPosition })),
+  now: ctx.now(),
+};</pre>
+</main>
+<footer>Cleetus MANUAL / 5a30f94 / REBUILT ON EVERY PUSH TO MAIN</footer>
+</body>
+</html>

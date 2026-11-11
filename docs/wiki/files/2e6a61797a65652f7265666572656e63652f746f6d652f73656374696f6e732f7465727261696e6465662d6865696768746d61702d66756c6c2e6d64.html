@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>.jayzee/reference/tome/sections/terraindef-heightmap-full.md | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>.jayzee/reference/tome/sections/terraindef-heightmap-full.md</h1>
+<div class="meta"><span>1821 BYTES</span><span>14 LINES</span><span>MD</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/.jayzee/reference/tome/sections/terraindef-heightmap-full.md">RAW</a></div>
+</header>
+<main>
+
+<pre>## TerrainDef heightmap (full)
+
+```ts
+terrain: {
+  kind: &quot;heightmap&quot;,
+  seed?: num | str,
+  materials?: [{ id: str, albedo?: &quot;/cdn/value.&lt;sha&gt;.png&quot;, pbr?: bool, tint?: Color, normal?: str, roughness?: str, textureScale?: num, metalness?: num, normalStrength?: num, roughnessIntensity?: num, antiTiling?: &quot;none&quot; | &quot;stochastic&quot;, filter?: &quot;pixel&quot; | &quot;linear&quot;, macro?: { scale?, hue?, value? } }, ...],
+  generator?: &quot;scripts/file.js&quot;,
+  verticalRange?: { min, max },
+  marks?: Record&lt;string, { kind: &quot;sea&quot;, level: num, reach?: { shape: &quot;rectangle&quot;, width: num, depth: num, center: { x, z } } | { shape: &quot;halfplane&quot;, edge: &quot;north&quot; | &quot;south&quot; | &quot;east&quot; | &quot;west&quot;, offset: num }, floorMaterial?: str, liquid?: LiquidSpec } | { kind: &quot;lake&quot;, at: { x, z }, radius: num, level?: num, depth?: num, bedMaterial?: str, liquid?: LiquidSpec } | { kind: &quot;river&quot;, points: [[x, z] | [x, z, level], ...], width: num, depth?: num, closed?: bool, bedMaterial?: str, liquid?: LiquidSpec } | { kind: &quot;path&quot;, points: [[x, y], ...], width: num, material?: str, edgeMaterial?: str, noise?: num, falloff?: num, clearScatter?: bool, grade?: bool, maxGrade?: num } | { kind: &quot;road&quot;, points?: [[x, y], ...], spline?: [[x, y, z], ...], closed?: bool, width: num, material?: str, edgeMaterial?: str, edgeWidth?: num, falloff?: num, clearScatter?: bool } | { kind: &quot;flatten&quot;, center: { x, z }, height: num | { terrain: num }, shape: MarkShape | { kind: &quot;path&quot;, points: [[x, y], ...], width: num }, falloff: num, falloffCurve?: &quot;smooth&quot; | &quot;cliff&quot; | &quot;linear&quot;, maxGrade?: num, material?: str, edgeMaterial?: str, clearScatter?: bool } | { kind: &quot;clear-scatter&quot;, center: { x, z }, shape: MarkShape | { kind: &quot;path&quot;, points: [[x, y], ...], width: num } } | { kind: &quot;hole&quot;, points: [[x, y], ...] }&gt;,
+  water?: LiquidSpec,
+  material?: ScriptedMaterialSpec,
+}
+```
+</pre>
+</main>
+<footer>Cleetus MANUAL / COVERAGE BUILD / PUBLISHED TO Jayzee/Cleetus DOCS WIKI</footer>
+</body>
+</html>

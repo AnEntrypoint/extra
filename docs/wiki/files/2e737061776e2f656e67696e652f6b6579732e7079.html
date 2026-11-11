@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>.jayzee/engine/keys.py | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>.jayzee/engine/keys.py</h1>
+<div class="meta"><span>615 BYTES</span><span>18 LINES</span><span>TEXT</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/.jayzee/engine/keys.py">RAW</a></div>
+</header>
+<main>
+
+<pre>import json
+import sys
+
+for path in sys.argv[1:]:
+    try:
+        with open(path, encoding=&quot;utf-8&quot;) as fh:
+            data = json.load(fh)
+    except Exception:
+        print(&quot;non-json body&quot;)
+        continue
+    if isinstance(data, dict):
+        print(&quot;top-level keys: &quot; + &quot;, &quot;.join(sorted(data.keys())))
+    elif isinstance(data, list):
+        first = data[0] if data else None
+        item_keys = sorted(first.keys()) if isinstance(first, dict) else []
+        print(&quot;top-level array, length %d, item keys: %s&quot; % (len(data), &quot;, &quot;.join(item_keys)))
+    else:
+        print(&quot;top-level &quot; + type(data).__name__)
+</pre>
+</main>
+<footer>Cleetus MANUAL / 5a30f94 / REBUILT ON EVERY PUSH TO MAIN</footer>
+</body>
+</html>

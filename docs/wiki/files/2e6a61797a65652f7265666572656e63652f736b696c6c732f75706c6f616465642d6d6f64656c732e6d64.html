@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>.jayzee/reference/skills/uploaded-models.md | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>.jayzee/reference/skills/uploaded-models.md</h1>
+<div class="meta"><span>6359 BYTES</span><span>49 LINES</span><span>MD</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/.jayzee/reference/skills/uploaded-models.md">RAW</a></div>
+</header>
+<main>
+
+<pre># Uploaded Models
+
+```js
+jayzee({ id: &quot;fountain&quot;, feetPosition: { x: 12, z: -4 }, physics: &quot;static&quot;, layout: { box: { min: { y: 0 }, max: { y: 2.6 } } },
+  model: { id: &quot;cdn/fountain.glb&quot;, materials: {
+    marble: { texture: &quot;cdn/texture-marble-white-veined.png&quot;, roughness: 0.3 },
+    brass: { texture: &quot;cdn/texture-brass-brushed.png&quot;, metalness: 1, roughness: 0.4 } } },
+  children: [{ id: &quot;fountain-lamp&quot;, attachment: { socket: &quot;lamp_top&quot; }, model: &quot;cdn/lantern.glb&quot; }] });
+jayzee({ id: &quot;knight&quot;, feetPosition: { x: 4, z: 2 }, physics: &quot;character&quot;, model: &quot;cdn/knight-silver-armor.glb&quot;,
+  children: [{ id: &quot;knight-cape&quot;, attachment: { skin: true }, model: &quot;cdn/cape.glb&quot; }] });
+```
+
+- A creator&#x27;s own picture they want in 3D asks for its cooked mesh, nothing built first: one cook, not one a turn. Its `/cdn/` name plus `.glb` is that mesh (`model: &quot;cdn/value.&lt;sha&gt;.png.glb&quot;`), again when they say yours looks wrong. `?static` on that address cooks one unrigged statue in the picture&#x27;s own pose, no clips. Any other likeness is yours to build (→geometry). A chat picture gets its `/cdn/` name by `jayzee attachments download`, then `jayzee upload`. A humanoid comes rigged with Idle, Walk, Run, Sprint and Jump inside it; any other motion is a clip address; an animal comes as one unrigged mesh.
+- Size: the DM&#x27;s height and bounds, not the thumbnail, are the in-game size. The collider follows, coarse until the hull cooks; a `character` with no `collider` keeps a 1.9 m capsule, radius 0.35, until `physics.capsule` sizes it; `collider: &quot;capsule&quot;` fits it to the model. A box hitbox is a `render: false` box `primitive` with `collider: &quot;box&quot;` that never turns; its model turns on a child.
+- Clips play by name, case-insensitive and near (Walk finds Walking; `Armature|` ignored), past the DM&#x27;s cap; a missing name plays its idle (else first) clip and `getLogs()` lists the real ones. An unrigged model plays baked clips but takes no bone attachments, IK or library clips.
+- Name each material slot for its surface in Blender so each takes its own texture; until it lands a slot wears the GLB&#x27;s paint.
+- Read bones, sockets and shape keys as if the model is there: a read holds your hook until it loads; a `{ bone }` or `{ socket }` attachment written first rides its anchor once there. A shape-key read&#x27;s `[]` or a socket read&#x27;s `null` = none. A face talks by its jaw bone or mouth key; with neither, weight a jaw to its mouth in Blender.
+- `ctx.getObject(id).skeleton` is an array of rows by `name`. Check a pose (astride a saddle) by each knee&#x27;s and foot&#x27;s drawn `currentWorldPosition`, as a picture can hide a crossed limb.
+- `ctx.attach` is for a piece swap alone, hiding `replaces` as the piece&#x27;s model lands.
+- A humanoid rig with recognizable bone names (Mixamo-style; prefixes and twist bones tolerated) gets foot grounding; a rig the platform knows (Mixamo, jayzee&#x27;s, Meshy, UE mannequin, Auto-Rig Pro, Unity humanoid) also plays every library clip by address; any other rig plays its own clips and one made on its bones, by the address `jayzee clip import` prints.
+- The DM comes once the file is live at world scale; compression lands later. A DM calling it too heavy: fix its source, else Blender.
+- Facing: the engine, a CDN model and a dropped file face −Z (no `forward`). A workshop file faces as its bytes do: a platform body fetched plain keeps −Z through Blender, its `?raw` copy faces as it came in (often +Z); on `jayzee upload` and `jayzee fetch` their `facing:` line names the `forward` it takes. `forward` turns the mesh, sockets and parts; `rotation` turns the whole object, children and colliders.
+
+&lt;api&gt;
+model.materials: { &lt;slot&gt;: material } // keyed by the GLB&#x27;s material names (node names as fallback); a miss lists the real names in getLogs()
+// a colour painted into a body&#x27;s texture: a scripted material on its slot shifts its hue in materialColor; every colour of that hue there shifts
+model.parts.&lt;name&gt;: { visible, ...material } // each mesh node or material the .glb names, no cook; it draws until { visible: false }; ?parts=a,b cuts a nameless mesh; ?extract=a mints one as a model
+model.forward: &quot;+z&quot; | &quot;+x&quot; | &quot;-x&quot; // for a model that stands turned round: the axis it was built to face; the engine turns it onto −Z once (omitted: no turn)
+attachment: { bone } // on a parent: &quot;player&quot; root, every player wears a copy; a hand&#x27;s joint is the wrist: the fist closes on the hand row&#x27;s `fist.grip`: seat a handle along it, its middle on `fist.position`
+attachment: { skin: true | { map: { &lt;childBone&gt;: &lt;parentBone&gt; } } } // a SKINNED child (its own joints named for the parent&#x27;s bones, case-insensitive) deforms with the parent&#x27;s rig; one child per garment, never baked in; its own feetPosition/rotation/scale mean nothing
+// a { bone } or { skin } child on a shape-keyed body follows its keys (hair grows with a head-size morph); its own morph write wins per key
+attachment: { socket } // any snake_case name on any model resolves on its own; the child sits at the parent&#x27;s origin until it does
+attachment: { part } // names normalize to snake_case
+layout.box // meters; model meets the nearest side
+&lt;/api&gt;
+
+&lt;!-- generated-types --&gt;
+
+### Signatures (generated: do not edit)
+
+```ts
+ctx.getObjectBoneNames(id: str): BoneNamesResult // Use before setting attachment.bone. A model still loading is waited for; once it lands, [] means no rig
+ctx.getObjectMorphTargetNames(id: str): MorphTargetNamesResult // Discover an object&#x27;s shape keys (morph targets / blend shapes): the names morph takes, e.g. [&quot;Blink&quot;, &quot;Smile&quot;]
+ctx.getObjectSocket(id: str, name: str): { position: Vec3, direction: Vec3, confidence: num } | null // Same for another object: projectile jayzee points without invisible marker children
+ctx.self.ragdoll = {…} (= null releases it) // Flip a rigged character to physics: joints[bone].strength pulls each to its animation; its own fixed joint to a kinematic object at the hips keeps it standing
+ctx.attach(entity: str | { readonly id: str }, parent: str | { readonly id: str } | null, offset?: { position?: Vec3, rotation?: RotationSpec, scale?: Vec3, pivot?: PivotSpec, attachment?: ObjectAttachmentSpec | null, replaces?: str }) // The piece swap: attach(piece, holder, { attachment: { part: &quot;turret&quot; }, replaces: &quot;turret&quot; }) hides the named thing: a child of the world by id
+```
+
+&lt;!-- /generated-types --&gt;</pre>
+</main>
+<footer>Cleetus MANUAL / COVERAGE BUILD / PUBLISHED TO Jayzee/Cleetus DOCS WIKI</footer>
+</body>
+</html>

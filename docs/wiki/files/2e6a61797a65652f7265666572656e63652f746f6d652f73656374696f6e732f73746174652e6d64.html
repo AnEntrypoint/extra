@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>.jayzee/reference/tome/sections/state.md | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>.jayzee/reference/tome/sections/state.md</h1>
+<div class="meta"><span>1498 BYTES</span><span>39 LINES</span><span>MD</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/.jayzee/reference/tome/sections/state.md">RAW</a></div>
+</header>
+<main>
+
+<pre>## State
+
+Assigning an entire state object replaces it. Assign a field to change only that field; delete a field to clear it. Changes made through game handles are shared. A player&#x27;s save, `player.state`, has no size cap and nests to any depth, and it loads whole at every join. A list or a string is one value that every change sends and saves whole, so keep a large collection as a record keyed by id.
+
+```ts
+ctx.self.state.*
+ctx.state = ctx.self.state
+ctx.self.session.*
+ctx.world
+ctx.world.state: Record&lt;string, unknown&gt;
+ctx.world.camera: Record&lt;string, unknown&gt;
+ctx.world.inputs: Record&lt;string, unknown&gt;
+ctx.world.assets: Record&lt;string, AssetMetadata | undefined&gt;
+ctx.world.mode: &quot;dev&quot; | &quot;live&quot;
+ctx.world.version: number | null
+ctx.world.id: string | null
+ctx.world.address: string | null
+ctx.world.players: PlayerQueryResult[]
+ctx.world.playerCount: number
+ctx.world.onlineCount: number
+ctx.world.date: string
+ctx.world.places: PlacesCollection
+ctx.world.engine: EngineConfig
+ctx.world.passThrough: Record&lt;string, string[]&gt;
+ctx.world.routing: RoutingDef
+ctx.world.ui: Record&lt;string, unknown&gt;
+ctx.world.player: Record&lt;string, unknown&gt;
+ctx.world.godMode: Record&lt;string, unknown&gt;
+ctx.world.creatorTabs: CreatorTabDef[]
+ctx.world.defaultPlace: string
+ctx.world.settling: boolean
+ctx.world.files: readonly string[]
+ctx.session.*
+ctx.files.read(path) / .write(path, text) / .delete(path)
+ctx.view.camera = { eye, aim, fov } | { parent: id, eye, aim, fov } | null
+ctx.quality
+ctx.self
+ctx.place
+```
+</pre>
+</main>
+<footer>Cleetus MANUAL / COVERAGE BUILD / PUBLISHED TO Jayzee/Cleetus DOCS WIKI</footer>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>.jayzee/reference/cli/api-PrimitiveSpec.txt | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>.jayzee/reference/cli/api-PrimitiveSpec.txt</h1>
+<div class="meta"><span>4433 BYTES</span><span>33 LINES</span><span>TXT</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/.jayzee/reference/cli/api-PrimitiveSpec.txt">RAW</a></div>
+</header>
+<main>
+
+<pre>PrimitiveSpec =
+  | { kind: &quot;cube&quot;; size?: number; segments?: number } &amp; PrimitiveBase
+  | { kind: &quot;box&quot;; width?: number; height?: number; depth?: number; widthSegments?: number; heightSegments?: number; depthSegments?: number } &amp; PrimitiveBase
+  | { kind: &quot;sphere&quot;; radius?: number; widthSegments?: number; heightSegments?: number; phiStart?: number; phiLength?: number; thetaStart?: number; thetaLength?: number } &amp; PrimitiveBase
+  | { kind: &quot;cylinder&quot;; radiusTop?: number; radiusBottom?: number; height?: number; radialSegments?: number; heightSegments?: number; openEnded?: boolean; thetaStart?: number; thetaLength?: number } &amp; PrimitiveBase
+  | { kind: &quot;capsule&quot;; radius?: number; halfHeight?: number; capSegments?: number; radialSegments?: number } &amp; PrimitiveBase
+  | { kind: &quot;plane&quot;; width?: number; height?: number; widthSegments?: number; heightSegments?: number } &amp; PrimitiveBase
+  | { kind: &quot;torus&quot;; radius?: number; tube?: number; radialSegments?: number; tubularSegments?: number; arc?: number } &amp; PrimitiveBase
+  | { kind: &quot;octahedron&quot;; radius?: number; detail?: number } &amp; PrimitiveBase
+  | { kind: &quot;tube&quot;; points: Array&lt;[number, number, number]&gt;; radius?: number; radialSegments?: number; tubularSegments?: number; closed?: boolean; straight?: boolean } &amp; PrimitiveBase
+  | { kind: &quot;cone&quot;; radius?: number; height?: number; radialSegments?: number; heightSegments?: number; openEnded?: boolean; thetaStart?: number; thetaLength?: number } &amp; PrimitiveBase
+  | { kind: &quot;ring&quot;; innerRadius?: number; outerRadius?: number; thetaSegments?: number; phiSegments?: number; thetaStart?: number; thetaLength?: number } &amp; PrimitiveBase
+  | { kind: &quot;tetrahedron&quot;; radius?: number; detail?: number } &amp; PrimitiveBase
+  | { kind: &quot;icosahedron&quot;; radius?: number; detail?: number } &amp; PrimitiveBase
+  | { kind: &quot;dodecahedron&quot;; radius?: number; detail?: number } &amp; PrimitiveBase
+  | { kind: &quot;pyramid&quot;; radius?: number; height?: number; segments?: number; width?: number; depth?: number; thetaStart?: number } &amp; PrimitiveBase
+  | { kind: &quot;lathe&quot;; points: Array&lt;[number, number]&gt;; segments?: number; phiStart?: number; phiLength?: number } &amp; PrimitiveBase
+  | { kind: &quot;extrude&quot;; shape: Array&lt;[number, number]&gt; | string; holes?: Array&lt;Array&lt;[number, number]&gt;&gt;; depth?: number; bevelEnabled?: boolean; bevelThickness?: number; bevelSize?: number; bevelSegments?: number; curveSegments?: number } &amp; PrimitiveBase
+  | { kind: &quot;circle&quot;; radius?: number; segments?: number; thetaStart?: number; thetaLength?: number } &amp; PrimitiveBase
+  | { kind: &quot;torusKnot&quot;; radius?: number; tube?: number; radialSegments?: number; tubularSegments?: number; p?: number; q?: number } &amp; PrimitiveBase
+  | { kind: &quot;frustum&quot;; radiusTop?: number; radiusBottom?: number; height?: number; segments?: number } &amp; PrimitiveBase
+  | { kind: &quot;ellipsoid&quot;; radiusX?: number; radiusY?: number; radiusZ?: number; widthSegments?: number; heightSegments?: number } &amp; PrimitiveBase
+  | { kind: &quot;superellipsoid&quot;; a?: number; b?: number; c?: number; n1?: number; n2?: number; segments?: number } &amp; PrimitiveBase
+  | { kind: &quot;hollowCylinder&quot;; innerRadius?: number; outerRadius?: number; height?: number; radialSegments?: number; openEnded?: boolean } &amp; PrimitiveBase
+  | { kind: &quot;hemisphere&quot;; radius?: number; segments?: number; direction?: &quot;up&quot; | &quot;down&quot; } &amp; PrimitiveBase
+  | { kind: &quot;arch&quot;; width?: number; height?: number; depth?: number; segments?: number } &amp; PrimitiveBase
+  | { kind: &quot;archway&quot;; width?: number; height?: number; depth?: number; thickness?: number; segments?: number } &amp; PrimitiveBase
+  | { kind: &quot;squareArch&quot;; width?: number; height?: number; depth?: number; archWidth?: number; archHeight?: number; segments?: number } &amp; PrimitiveBase
+  | { kind: &quot;wall&quot;; width: number; height: number; depth: number; holes?: Array&lt;{ x: number; bottomY?: number; y?: number; w: number; h: number }&gt;; facing?: &quot;z&quot; | &quot;x&quot; | &quot;y&quot; } &amp; PrimitiveBase
+  | { kind: &quot;line&quot;; points?: [number, number, number][]; segments?: boolean; count?: number; bounds?: { min: [number, number, number]; max: [number, number, number] } }
+  | { kind: &quot;custom&quot;; geometry: BespokeGeometrySpec; forward?: ForwardAxis; sockets?: PrimitiveSockets }
+  | { kind: &quot;scripted&quot;; script: ScriptRef; params?: Record&lt;string, unknown&gt;; seed?: number; forward?: ForwardAxis; sockets?: PrimitiveSockets }
+  | { kind: &quot;points&quot;; count: number; bounds?: { min: [number, number, number]; max: [number, number, number] } }
+</pre>
+</main>
+<footer>Cleetus MANUAL / COVERAGE BUILD / PUBLISHED TO Jayzee/Cleetus DOCS WIKI</footer>
+</body>
+</html>

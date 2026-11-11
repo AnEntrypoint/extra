@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>.jayzee/reference/tome/sections/builtin-room-routing.md | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>.jayzee/reference/tome/sections/builtin-room-routing.md</h1>
+<div class="meta"><span>557 BYTES</span><span>11 LINES</span><span>TEXT</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/.jayzee/reference/tome/sections/builtin-room-routing.md">RAW</a></div>
+</header>
+<main>
+
+<pre>## builtin/room-routing
+
+Use only in a routing script that exports pickRoom(ctx). firstOpenRoom selects the requested open room, an available room, or a new room. mostFullWithSpace returns null when none has space. roomFor gives a stable room name for a key.
+
+```ts
+export async function pickRoom(ctx: { player, rooms, requestedRoomId, game, rejectedRooms }): Promise&lt;string | { room, persistence } | null&gt;
+firstOpenRoom(ctx): string;
+mostFullWithSpace(ctx): string | null;
+nextRoomName(rooms, exclude?: string[]): string;
+roomFor(key: string): string;
+```
+</pre>
+</main>
+<footer>Cleetus MANUAL / 5a30f94 / REBUILT ON EVERY PUSH TO MAIN</footer>
+</body>
+</html>

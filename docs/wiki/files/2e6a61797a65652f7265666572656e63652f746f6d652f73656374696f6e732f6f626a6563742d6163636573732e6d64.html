@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>.jayzee/reference/tome/sections/object-access.md | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>.jayzee/reference/tome/sections/object-access.md</h1>
+<div class="meta"><span>732 BYTES</span><span>22 LINES</span><span>MD</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/.jayzee/reference/tome/sections/object-access.md">RAW</a></div>
+</header>
+<main>
+
+<pre>## Object Access
+
+```ts
+ctx.world.places.&lt;p&gt;
+ctx.getRoomId(): string
+ctx.presence(userIds: ReadonlyArray&lt;string | { readonly userId: string }&gt;): Promise&lt;readonly PresenceRow[]&gt;
+ctx.world.mode
+ctx.getObject(id: string): ObjectView | null
+&lt;entity&gt;.state.*
+ctx.self.audio.params.&lt;name&gt; = v
+ctx.getVibeAudio(id: string): VibeAudioSnapshot | null
+&lt;entity&gt;.&lt;prop&gt;
+ctx.getObjectBoneNames(id: string): BoneNamesResult
+ctx.getObjectMorphTargetNames(id: string): MorphTargetNamesResult
+ctx.getObjectSocket(id: string, name: string): { position: Vec3; direction: Vec3; confidence: number } | null
+&lt;entity&gt;.children
+&lt;entity&gt;.&lt;prop&gt; = v
+ctx.place.tiles[x][y] = id
+ctx.place.tiles[x][y] = 0
+delete ctx.place.tiles[x][y]
+ctx.place.tiles[x][y]
+```
+</pre>
+</main>
+<footer>Cleetus MANUAL / COVERAGE BUILD / PUBLISHED TO Jayzee/Cleetus DOCS WIKI</footer>
+</body>
+</html>

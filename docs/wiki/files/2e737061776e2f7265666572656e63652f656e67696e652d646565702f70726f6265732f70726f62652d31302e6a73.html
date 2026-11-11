@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>.jayzee/reference/engine-deep/probes/probe-10.js | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>.jayzee/reference/engine-deep/probes/probe-10.js</h1>
+<div class="meta"><span>402 BYTES</span><span>3 LINES</span><span>TEXT</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/.jayzee/reference/engine-deep/probes/probe-10.js">RAW</a></div>
+</header>
+<main>
+
+<pre>const pre = &#39;26f64424-cc19-43af-a9c3-666e4559bb05|&#39;;
+const ids = ctx.query({}).map((x) =&gt; x.id);
+return { cmEditorLabel: ids.includes(pre + &#39;cm-editor-label&#39;), x5rails: ids.includes(pre + &#39;x5-rails&#39;), x0z0Sample: ids.filter((i) =&gt; /^(cm-|x5-|x4-)/.test(i.replace(pre, &#39;&#39;))).slice(0, 12).map((i) =&gt; i.replace(pre, &#39;&#39;)), hookProbe: ids.filter((i) =&gt; i.includes(&#39;hook&#39;)).map((i) =&gt; i.replace(pre, &#39;&#39;)) };
+</pre>
+</main>
+<footer>Cleetus MANUAL / 5a30f94 / REBUILT ON EVERY PUSH TO MAIN</footer>
+</body>
+</html>

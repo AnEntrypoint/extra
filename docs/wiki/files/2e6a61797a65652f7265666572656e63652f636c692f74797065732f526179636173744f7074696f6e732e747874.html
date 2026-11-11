@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>.jayzee/reference/cli/types/RaycastOptions.txt | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>.jayzee/reference/cli/types/RaycastOptions.txt</h1>
+<div class="meta"><span>515 BYTES</span><span>19 LINES</span><span>TXT</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/.jayzee/reference/cli/types/RaycastOptions.txt">RAW</a></div>
+</header>
+<main>
+
+<pre>RaycastOptions = {
+  distance?: number
+  radius?: number
+  shape?: { sphere: number } | { capsule: { radius: number; height: number } } | { box: { halfExtents: Vec3 } }
+  ignoreEntities?: string[]
+  tags?: string[]
+  anyTags?: string[]
+  excludeTags?: string[]
+  bodies?: &quot;static&quot; | &quot;dynamic&quot; | &quot;all&quot;
+  minSize?: number
+  ignoreSelf?: boolean
+  includeSensors?: boolean
+  physicsOnly?: boolean
+  visuals?: boolean
+  place?: string
+  verdict?: boolean
+  through?: number
+  hits?: &quot;colliders&quot; | &quot;geometry&quot; | &quot;both&quot;
+}
+</pre>
+</main>
+<footer>Cleetus MANUAL / COVERAGE BUILD / PUBLISHED TO Jayzee/Cleetus DOCS WIKI</footer>
+</body>
+</html>

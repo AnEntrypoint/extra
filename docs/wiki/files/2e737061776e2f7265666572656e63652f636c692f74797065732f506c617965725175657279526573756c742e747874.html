@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>.jayzee/reference/cli/types/PlayerQueryResult.txt | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>.jayzee/reference/cli/types/PlayerQueryResult.txt</h1>
+<div class="meta"><span>585 BYTES</span><span>23 LINES</span><span>TEXT</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/.jayzee/reference/cli/types/PlayerQueryResult.txt">RAW</a></div>
+</header>
+<main>
+
+<pre>PlayerQueryResult = ObjectQueryResult &amp; {
+  displayName: string | null
+  userId: string | null
+  portraitUrl: string | null
+  place: string
+  isLocal: boolean
+  isEditor: boolean
+  isGodMode: boolean
+  isGuest: boolean
+  isTestAccount: boolean
+  party: PlayerParty | null
+  partyMembership: PlayerParty | null | undefined
+  guild: PlayerGuild | null
+  latencyMs: number | null
+  inputHeld: boolean
+  talking: boolean
+  mail: readonly PlayerMail[]
+  friends: readonly PlayerFriend[]
+  spectating: boolean
+  wisps: readonly SessionWisp[]
+  den: string | null
+  region: EdgeHint | null
+}
+</pre>
+</main>
+<footer>Cleetus MANUAL / 5a30f94 / REBUILT ON EVERY PUSH TO MAIN</footer>
+</body>
+</html>

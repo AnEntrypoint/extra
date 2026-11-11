@@ -1,0 +1,6 @@
+jayzee api [<Type> [<kind> …]] [--engine <semver>] [--origin <site>]
+                                           a spec type's shape, as a room's jayzee api prints it: every key
+                                           typed, a union's members inline. No type lists every row; a kind
+                                           prints one member (jayzee api PrimitiveSpec box); <Type>.<key> one
+                                           key (jayzee api TerrainDef.marks). Inside a clone it reads the
+                                           world's engine (.jayzee/engine.yaml), else --engine, else the newest

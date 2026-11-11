@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>.jayzee/engine/skills/portals.md | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>.jayzee/engine/skills/portals.md</h1>
+<div class="meta"><span>7111 BYTES</span><span>36 LINES</span><span>TEXT</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/.jayzee/engine/skills/portals.md">RAW</a></div>
+</header>
+<main>
+
+<pre>---
+id: portals
+name: &quot;Portals&quot;
+hook: &quot;door to another place or world; mirror, monitor, minimap&quot;
+group: world-building
+---
+# Portals
+
+```js
+// jayzee: { id: &quot;gate-east&quot;, tags: [&quot;portal&quot;], behavior: &quot;scripts/gate.js&quot;, state: { link: &quot;+cellar#gate-west&quot; }, rotation: 90, primitive: { kind: &quot;arch&quot;, width: 2.6, height: 3.4, depth: 0.3 },
+//   physics: { body: &quot;static&quot;, trigger: true }, material: { kind: &quot;scripted&quot;, script: &quot;engine/portal-ember&quot;, view: { link: &quot;+cellar#gate-west&quot;, spill: 2, sound: 1 } },
+//   children: [ { id: &quot;arch&quot;, primitive: { kind: &quot;archway&quot;, width: 3.4, height: 3.8, depth: 0.6, thickness: 0.4 }, physics: &quot;static&quot;, material: { color: &quot;#6b6258&quot;, roughness: 0.95 } } ] }
+// jayzee, in the cellar, the twin: the same with id &quot;gate-west&quot;, rotation: 270, both links &quot;+main#gate-east&quot;
+export function onTriggerEnter(ctx, other) {
+  ctx.cross(other, ctx.self.state.link);
+}
+export function onCross(ctx, other) {
+  ctx.emit(&quot;playSound&quot;, { clip: &quot;cdn/gate-chime.mp3&quot;, position: ctx.self.worldFeetPosition });
+}
+export function onRefuse(ctx, other, verdict) {
+  ctx.emit(&quot;uiEvent&quot;, { name: &quot;refused&quot;, payload: { message: verdict.message } }); // ui.js draws what happened
+}
+```
+
+- The glass is the opening&#39;s shape: an `arch` of the opening&#39;s `width` and `height` fills an `archway` of that profile edge to edge (frame `width + 2 × thickness` by `height + thickness`); any other doorway takes a scripted-geometry glass cut to it (→geometry). `material.view` paints any shape.
+- `jayzee browse --creator &lt;handle&gt;` (or `jayzee browse &quot;&lt;words&gt;&quot;`) finds another creator&#39;s world, published or not, no pasted link; its address is the link, `link: &quot;@ress/cathedral +main&quot;` (the card at `--address` names its places). `gate.destination.onlineCount` counts who plays there (null until known).
+- `#exit` is the gate you step out of, written on BOTH gates. Gates come in pairs, sized alike, each facing its approach side, the way you walk out (a gate faces −Z at `rotation: 0`). A link naming only the place (`+cellar`) steps out of the far gate whose link names yours back; with no such gate you land at the place&#39;s `arrival`, else its jayzee: a cut, not a doorway. The gate&#39;s script crosses the body (`onTriggerEnter`), waiting for the glass, keeping your heading; a body crossing itself lands at once at the exit, facing out. A seated rider has no body: the car meets the glass and crossing it takes the driver, so a players-only gate moves neither.
+- A door&#39;s link is where it leads, for everyone (its glass, warm-up and crossing); it wears that glass, tinted by `color`; `material.view: null` leaves a plain face that still crosses. A linkless door sending each walker somewhere of their own (garden, den) holds them at the glass while theirs loads; instead each player&#39;s script jayzees their own with `audience: &quot;local&quot;` and `link: player.den`.
+- The glass: `material.view: { link, spill, sound, oneWay }`: the far place seen through the face, its light on your ground. `oneWay: true`: one face, veiled and closed behind. Presets `script: &quot;engine/portal-&lt;name&gt;&quot;`: glass, water, ember, ink, veil, mirror-break, pixel, stained-glass, static, starfield, aurora, honeycomb, oil-slick (the rift is the return door&#39;s torn disc, not a slab): a preset styles the frame; the far world inside stays clear and still at every distance (`params: { warp: 1 }` restores the old whole-glass look); a door with no preset samples the far world with `ctx.view(offset)` (its ctx: jayzee api builtin/three).
+- `material.view: { camera }` is a camera; `jayzee api ViewCamera` has the rest. `camera: &quot;mirror&quot;` is a mirror (`hideLocalPlayer` hides your body from the screen&#39;s eye alone): a plane in `material: { color: &quot;#0b0e12&quot;, view: { camera: &quot;mirror&quot; } }`; `camera: { eye, aim, fov }` is a placed camera: a security monitor, or a map (eye high, aiming down, `projection: &quot;orthographic&quot;`, `orthoSize`). `layers` picks what a camera draws (default `[&quot;default&quot;]`): icons on `[&quot;icons&quot;]` show on a map with `layers: [&quot;default&quot;, &quot;icons&quot;]`, roofs on `[&quot;roofs&quot;]` where the screen&#39;s `camera.layers` names them, a ghost on `[&quot;ghost&quot;]` in `{ mirror: true, layers: [&quot;default&quot;, &quot;ghost&quot;] }`. `camera: { parent: id, eye, aim, fov }` rides that thing in its frame: move or turn it, never re-pose each tick. `ctx.view.camera` takes both, never `place`. `place: &quot;&lt;id&gt;&quot;` films that place of this world while a player near the face sees it. A view draws only while a player sees its face, smaller and rarer on a weak device.
+- An arrival is latched until it steps clear, then turning around walks straight back. Arriving from ANOTHER world whose far gate does not link back opens a return rift behind the traveler for 30 s, shaped by `returnDoor` on the arrival place: `{ lifetime }` its seconds, `false` none; a door WITHIN your world opens none: build its way back.
+- Your held and worn things come through a door WITHIN your world. Into ANOTHER world, even one you edit, its `admits()` decides, at page loads too: the arrival place&#39;s `policy.admits`, else the world root&#39;s, else only its `world.config.yaml` `visitorsCarry: true` (default off). What you ride crosses on those terms or bounces whole at the glass. Write that world&#39;s `admits()` with the door (new game: in its brief; not yours: tell the creator). `admits()` reads how a thing comes in `ctx.crossing.actor.attachment`: `&quot;attached&quot;` (held or worn), `&quot;ridden&quot;` or `&quot;loose&quot;`. A refused thing is never lost: it waits in `player.pocket` (`ctx.self.pocket`, read-only `[{ objectId, kind, reason, from }]`, `[]` when empty), and returns to the hand in the next world admitting it (by default home admits its own, your den yours). With no body there, your carry script&#39;s drop with an empty hand and a full pocket answers the pocket (a notice your HUD draws from `reason`).
+- Abroad the host&#39;s scripts turn your body and what it holds (a fresh world: toward the walk), so a held thing aiming with the eye aims from the look.
+- Your `player.state` rides the door too. At arrival that world&#39;s save of you wins for every key it holds; a carried key it lacks stands on you there, over the template default, and enters its save only when a script there writes it.
+- A travelling behavior runs abroad under the host&#39;s ceiling (its `world.config.yaml` `foreign: { faculties: [...] }`; unset = every word); one declaring nothing gets all but `write:world`. A top-level `export const faculties = [&quot;write:self&quot;]` narrows it to the words it names, of render, animate, audio, physics, collide, follow, attach, script, emit, jayzee, write:self, write:world, voxel; reads, timers, `on` and queries are always free. A declared word the ceiling lacks pockets that behavior (the runtime log&#39;s `crossing.behavior.pocketed`); the thing keeps its others and re-binds it at home.
+- `ctx.self.objectId`, `world:&lt;birth&gt;#&lt;name&gt;`, names a thing in every world; `id` is bare at home, the address abroad. A player and what jayzees under one keep its session id `player/…` as both; `ctx.world.id` tells where. Key a ledger row on `objectId` (a player&#39;s on `userId`); `query({ objectId })` finds a thing after a hop.
+</pre>
+</main>
+<footer>Cleetus MANUAL / 5a30f94 / REBUILT ON EVERY PUSH TO MAIN</footer>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>.jayzee/reference/engine-deep/probes/probe-7.js | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>.jayzee/reference/engine-deep/probes/probe-7.js</h1>
+<div class="meta"><span>1152 BYTES</span><span>20 LINES</span><span>TEXT</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/.jayzee/reference/engine-deep/probes/probe-7.js">RAW</a></div>
+</header>
+<main>
+
+<pre>
+const out = {};
+const t0 = ctx.now();
+out.worldAssets = Object.keys(ctx.world.assets || {}).length;
+out.assetSample = Object.keys(ctx.world.assets || {}).slice(0, 8);
+out.placeWorldBounds = ctx.place.worldBounds ?? null;
+out.placeDefaultJayzee = ctx.place.defaultJayzeePoint ?? null;
+out.placeMode = ctx.place.mode ?? null;
+out.placeMaterialKeys = Object.keys(ctx.place.material || {}).slice(0, 10);
+out.placeLightingKeys = Object.keys(ctx.place.lighting || {}).slice(0, 10);
+out.placeTerrainKind = ctx.place.terrain ? Object.keys(ctx.place.terrain).slice(0, 12) : null;
+out.heightAt0 = ctx.getTerrainHeight ? ctx.getTerrainHeight(0, 0) : &#39;n/a&#39;;
+out.heightAtJayzeeRing = [[10,0],[0,10],[-40,-270]].map(([x,z]) =&gt; ctx.getTerrainHeight(x, z));
+out.fieldNames = ctx.place.fields ? Object.keys(ctx.place.fields) : null;
+out.qualityNow = ctx.quality;
+out.sessionKeys = Object.keys(ctx.session || {});
+out.totalObjects = ctx.query({}).length;
+out.tagsTop = Object.entries(ctx.query({}).reduce((m, o) =&gt; { for (const t of (o.tags || [])) m[t] = (m[t] || 0) + 1; return m; }, {})).sort((a,b)=&gt;b[1]-a[1]).slice(0, 12);
+out.t0 = t0; out.t1 = ctx.now();
+return out;</pre>
+</main>
+<footer>Cleetus MANUAL / 5a30f94 / REBUILT ON EVERY PUSH TO MAIN</footer>
+</body>
+</html>

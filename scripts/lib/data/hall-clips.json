@@ -1,0 +1,17 @@
+{
+  "spacing": 3.4,
+  "rows": [
+    { "z": 2.2, "groups": [
+      { "name": "LOCOMOTION", "clips": ["idle-loop","walk-loop","run-loop","sprint-loop","crouch-idle-loop","crouch-walk-loop"] },
+      { "name": "AIRBORNE", "clips": ["jump","fall-loop","land","roll","backflip"] },
+      { "name": "WOMAN'S BODY", "clips": ["idle-female-loop","walk-female-loop","talk-female-loop","sit-female-loop","sitting-clapping-female-loop","sitting-talking-female-loop"] } ] },
+    { "z": -1.9, "groups": [
+      { "name": "COMBAT", "clips": ["attack","kick","throw","block-loop","hit-react","die","cast","magic-spell-casting-loop","spell-casting-loop"] } ] },
+    { "z": -5.6, "groups": [
+      { "name": "BODY · WATER · TRAVERSAL", "clips": ["sit-loop","sit-floor-loop","sleep-loop","swim-idle-loop","swim-loop","climb-loop","climbing-up-wall-loop","climbing-down-wall-loop","drive-loop","entering-car","exiting-car","pickup"] } ] },
+    { "z": -9.4, "groups": [
+      { "name": "SOCIAL", "clips": ["wave-loop","waving-single-hand-loop","waving-both-hands-loop","talk-loop","point","clap-loop","laugh-loop","cry-loop","bow","salute","nod-yes","shake-no","sitting-talking-loop","sitting-laughing-loop","sitting-pointing","sitting-clapping-loop"] } ] },
+    { "z": -13.1, "groups": [
+      { "name": "EMOTES · DANCE", "clips": ["dance-loop","chicken-dance-loop","locking-hip-hop-dance-loop","slide-hip-hop-dance-loop","step-hip-hop-dance-loop","wave-hip-hop-dance-loop","cheer-loop","sitting-cheering-loop","victory","thumbs-up","sitting-thumbs-up","shrug","angry"] } ] }
+  ]
+}

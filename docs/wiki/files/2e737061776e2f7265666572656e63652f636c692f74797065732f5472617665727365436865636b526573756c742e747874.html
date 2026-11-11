@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>.jayzee/reference/cli/types/TraverseCheckResult.txt | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>.jayzee/reference/cli/types/TraverseCheckResult.txt</h1>
+<div class="meta"><span>478 BYTES</span><span>24 LINES</span><span>TEXT</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/.jayzee/reference/cli/types/TraverseCheckResult.txt">RAW</a></div>
+</header>
+<main>
+
+<pre>TraverseCheckResult = {
+  traversable: boolean
+  blockedAt?: Vec3
+  reason?: TraverseCheckBlockReason
+  blockedBy?: string
+  detail?: {
+    riser?: number
+    maxStep?: number
+    slopeDeg?: number
+    maxSlopeDeg?: number
+    clearance?: number
+    requiredClearance?: number
+    drop?: number
+  }
+  approximate: string[]
+  exact?: string
+  params: {
+    maxStep: number
+    maxSlopeDeg: number
+    capsuleRadius: number
+    capsuleHeight: number
+    body: string | null
+  }
+}
+</pre>
+</main>
+<footer>Cleetus MANUAL / 5a30f94 / REBUILT ON EVERY PUSH TO MAIN</footer>
+</body>
+</html>

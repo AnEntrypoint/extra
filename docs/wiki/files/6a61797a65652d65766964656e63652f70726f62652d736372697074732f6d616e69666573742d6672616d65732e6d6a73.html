@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>jayzee-evidence/probe-scripts/manifest-frames.mjs | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>jayzee-evidence/probe-scripts/manifest-frames.mjs</h1>
+<div class="meta"><span>787 BYTES</span><span>10 LINES</span><span>MJS</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/jayzee-evidence/probe-scripts/manifest-frames.mjs">RAW</a></div>
+</header>
+<main>
+
+<pre>import { readFileSync } from &#x27;node:fs&#x27;;
+const buf = readFileSync(process.argv[2]);
+const text = buf.toString(&#x27;latin1&#x27;);
+const start = text.indexOf(&#x27;{&quot;v&quot;:1&#x27;);
+let depth = 0, end = -1;
+for (let i = start; i &lt; text.length; i++) { const c = text[i]; if (c === &#x27;{&#x27;) depth++; else if (c === &#x27;}&#x27;) { depth--; if (depth === 0) { end = i + 1; break; } } }
+const json = text.slice(start, end);
+const parsed = JSON.parse(json);
+const tail = buf.subarray(Buffer.byteLength(text.slice(0, end), &#x27;latin1&#x27;));
+console.log(JSON.stringify({ bytes: buf.length, jsonStart: start, jsonEnd: end, keys: Object.keys(parsed), hashes: parsed.hashes.length, tailBytes: tail.length, tailHead: tail.subarray(0, 48).toString(&#x27;hex&#x27;), tailText: tail.subarray(0, 120).toString(&#x27;latin1&#x27;).replace(/[^\x20-\x7e]/g, &#x27;.&#x27;) }));
+</pre>
+</main>
+<footer>Cleetus MANUAL / COVERAGE BUILD / PUBLISHED TO Jayzee/Cleetus DOCS WIKI</footer>
+</body>
+</html>

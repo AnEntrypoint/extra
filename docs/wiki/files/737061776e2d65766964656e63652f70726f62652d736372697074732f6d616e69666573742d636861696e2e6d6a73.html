@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>jayzee-evidence/probe-scripts/manifest-chain.mjs | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>jayzee-evidence/probe-scripts/manifest-chain.mjs</h1>
+<div class="meta"><span>818 BYTES</span><span>16 LINES</span><span>TEXT</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/jayzee-evidence/probe-scripts/manifest-chain.mjs">RAW</a></div>
+</header>
+<main>
+
+<pre>import { readFileSync } from &#39;node:fs&#39;;
+const buf = readFileSync(process.argv[2]);
+const frames = [];
+let pos = 0;
+let ok = true;
+while (pos &lt; buf.length &amp;&amp; frames.length &lt; 100000) {
+  const n = buf.readUInt32BE(pos);
+  const body = buf.subarray(pos + 4, pos + 4 + n);
+  let kind = &#39;unparsed&#39;;
+  let keys = null;
+  try { const p = JSON.parse(body.toString(&#39;utf8&#39;)); kind = &#39;json&#39;; keys = Object.keys(p).slice(0, 6); } catch (e) { kind = &#39;nonjson:&#39; + body.subarray(0, 12).toString(&#39;hex&#39;); ok = false; }
+  frames.push({ at: pos, len: n, kind, keys });
+  if (n === 0 || pos + 4 + n &gt; buf.length) { ok = false; break; }
+  pos += 4 + n;
+}
+console.log(JSON.stringify({ bytes: buf.length, frames: frames.length, chainEnd: pos, exactEnd: pos === buf.length, allJson: ok, first: frames.slice(0, 4), last: frames.slice(-2) }));
+</pre>
+</main>
+<footer>Cleetus MANUAL / 5a30f94 / REBUILT ON EVERY PUSH TO MAIN</footer>
+</body>
+</html>

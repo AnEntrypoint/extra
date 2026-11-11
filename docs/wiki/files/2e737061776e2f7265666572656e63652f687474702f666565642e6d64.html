@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>.jayzee/reference/http/feed.md | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>.jayzee/reference/http/feed.md</h1>
+<div class="meta"><span>457 BYTES</span><span>10 LINES</span><span>TEXT</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/.jayzee/reference/http/feed.md">RAW</a></div>
+</header>
+<main>
+
+<pre># GET /api/feed
+
+- Method: GET
+- Path: /api/feed (documented with `?sort=hot|top|recent&amp;q=`; no query sent in this probe)
+- URL: https://www.jayzee.co/api/feed
+- Auth: not required. Bearer and no-auth both return 200 with identical bodies (33397 bytes).
+- Status with Bearer: 200. Status without auth: 200.
+- Top-level keys (200): games, ok
+- Source: llms.txt says &quot;lists public games without a credential&quot;.
+- Raw: raw/feed.bearer.body, raw/feed.noauth.body
+</pre>
+</main>
+<footer>Cleetus MANUAL / 5a30f94 / REBUILT ON EVERY PUSH TO MAIN</footer>
+</body>
+</html>

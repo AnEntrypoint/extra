@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>.jayzee/reference/cli/types/LightSpec.txt | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>.jayzee/reference/cli/types/LightSpec.txt</h1>
+<div class="meta"><span>939 BYTES</span><span>7 LINES</span><span>TXT</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/.jayzee/reference/cli/types/LightSpec.txt">RAW</a></div>
+</header>
+<main>
+
+<pre>LightSpec =
+  | { kind: &quot;ambient&quot;; color?: Color; intensity?: number }
+  | { kind: &quot;hemisphere&quot;; skyColor?: Color; groundColor?: Color; intensity?: number }
+  | { kind: &quot;directional&quot;; color?: Color; intensity?: number; aim?: LightAimSpec; shadow?: { enabled?: boolean; softness?: number }; castShadow?: boolean; followCamera?: boolean }
+  | { kind: &quot;point&quot;; color?: Color; intensity?: number; distance?: number; decay?: number; fan?: [number, number][]; passes?: (&quot;screen&quot; | &quot;camera&quot;)[]; shadow?: { enabled?: boolean }; castShadow?: boolean }
+  | { kind: &quot;spot&quot;; color?: Color; intensity?: number; distance?: number; angle?: number; penumbra?: number; decay?: number; aim?: LightAimSpec; passes?: (&quot;screen&quot; | &quot;camera&quot;)[]; shadow?: { enabled?: boolean }; castShadow?: boolean }
+  | { kind: &quot;rect&quot;; color?: Color; intensity?: number; width?: number; height?: number; distance?: number; aim?: LightAimSpec; passes?: (&quot;screen&quot; | &quot;camera&quot;)[] }
+</pre>
+</main>
+<footer>Cleetus MANUAL / COVERAGE BUILD / PUBLISHED TO Jayzee/Cleetus DOCS WIKI</footer>
+</body>
+</html>

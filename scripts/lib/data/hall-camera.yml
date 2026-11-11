@@ -1,0 +1,7 @@
+# The hall's third-person orbit: arm length (wheel zooms between min and max), pivot height, aim height.
+distance: 5.5
+minDistance: 2.5
+maxDistance: 12
+heightOffset: 2.0
+lookOffsetY: 1.5
+zoomSpeed: 0.8

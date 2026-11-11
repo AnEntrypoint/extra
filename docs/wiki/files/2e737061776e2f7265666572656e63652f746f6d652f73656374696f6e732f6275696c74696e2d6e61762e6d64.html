@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>.jayzee/reference/tome/sections/builtin-nav.md | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>.jayzee/reference/tome/sections/builtin-nav.md</h1>
+<div class="meta"><span>640 BYTES</span><span>7 LINES</span><span>TEXT</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/.jayzee/reference/tome/sections/builtin-nav.md">RAW</a></div>
+</header>
+<main>
+
+<pre>## builtin/nav
+
+findPath returns feet positions. ok: false means a cut-off path that ends at the reachable spot nearest the goal. partial: true means the search is still reading the ground: ask again on a later tick. An empty list with no partial means no path was found. Defaults use the caller&#39;s body size, step height, and slope limit; maxDrop is 3 meters and bodies is all. Call from a behavior with the place&#39;s physics available.
+
+```ts
+findPath(ctx, from: Vec3, to: Vec3, opts?: { radius?, height?, step?, slope?, maxDrop?, bodies?: &#39;all&#39; | &#39;static&#39;, ignore?: string[], budget? }): { points: Vec3[], ok: boolean, partial?: true }
+```
+</pre>
+</main>
+<footer>Cleetus MANUAL / 5a30f94 / REBUILT ON EVERY PUSH TO MAIN</footer>
+</body>
+</html>

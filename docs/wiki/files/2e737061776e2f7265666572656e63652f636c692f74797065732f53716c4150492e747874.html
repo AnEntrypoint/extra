@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>.jayzee/reference/cli/types/SqlAPI.txt | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>.jayzee/reference/cli/types/SqlAPI.txt</h1>
+<div class="meta"><span>304 BYTES</span><span>6 LINES</span><span>TEXT</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/.jayzee/reference/cli/types/SqlAPI.txt">RAW</a></div>
+</header>
+<main>
+
+<pre>SqlAPI = {
+  (strings: TemplateStringsArray, ...params: unknown[]): Promise&lt;SqlQueryResult&gt;
+  size(): Promise&lt;number&gt;
+  backup(label: string): Promise&lt;{ label: string; bookmark: string; ts: number }&gt;
+  restore(target: string | number | { label?: string; ts?: number }): Promise&lt;{ restoredTo: string }&gt;
+}
+</pre>
+</main>
+<footer>Cleetus MANUAL / 5a30f94 / REBUILT ON EVERY PUSH TO MAIN</footer>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>.jayzee/reference/engine-deep/probes/probe-9.js | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>.jayzee/reference/engine-deep/probes/probe-9.js</h1>
+<div class="meta"><span>227 BYTES</span><span>3 LINES</span><span>JS</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/.jayzee/reference/engine-deep/probes/probe-9.js">RAW</a></div>
+</header>
+<main>
+
+<pre>const o = ctx.getObject(&#x27;26f64424-cc19-43af-a9c3-666e4559bb05|x-hook-probe&#x27;);
+const byTag = ctx.query({ tags: [&#x27;probe&#x27;] }).map((x) =&gt; x.id);
+return { found: !!o, byTag, state: o ? o.state : null, total: ctx.query({}).length };
+</pre>
+</main>
+<footer>Cleetus MANUAL / COVERAGE BUILD / PUBLISHED TO Jayzee/Cleetus DOCS WIKI</footer>
+</body>
+</html>

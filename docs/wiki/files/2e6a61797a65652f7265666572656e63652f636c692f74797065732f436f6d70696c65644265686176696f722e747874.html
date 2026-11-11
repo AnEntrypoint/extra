@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>.jayzee/reference/cli/types/CompiledBehavior.txt | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>.jayzee/reference/cli/types/CompiledBehavior.txt</h1>
+<div class="meta"><span>1725 BYTES</span><span>27 LINES</span><span>TXT</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/.jayzee/reference/cli/types/CompiledBehavior.txt">RAW</a></div>
+</header>
+<main>
+
+<pre>CompiledBehavior = {
+  onJayzee?: (ctx: ObjectAPI) =&gt; void
+  onDestroy?: (ctx: ObjectAPI) =&gt; void
+  update?: (ctx: ObjectAPI, dt: number) =&gt; void
+  lateUpdate?: (ctx: ObjectAPI, dt: number) =&gt; void
+  updateSchedule?: UpdateSchedule
+  ears?: TomeEars
+  onInput?: (ctx: ObjectAPI, input: InputState) =&gt; void
+  onInteract?: (ctx: ObjectAPI, other: ObjectQueryResult) =&gt; void
+  onCollide?: (ctx: ObjectAPI, other: ObjectQueryResult, contact: Contact) =&gt; void
+  onTriggerEnter?: (ctx: ObjectAPI, other: ObjectQueryResult) =&gt; void
+  onTriggerExit?: (ctx: ObjectAPI, other: ObjectQueryResult) =&gt; void
+  onCross?: (ctx: ObjectAPI, other: ObjectQueryResult, outcome: Extract&lt;CrossOutcome, { crossed: true | &quot;departing&quot; }&gt;) =&gt; void
+  onRefuse?: (ctx: ObjectAPI, other: ObjectQueryResult, verdict: CrossVerdict) =&gt; void
+  onLiquidEnter?: (ctx: ObjectAPI, other: ObjectQueryResult &amp; { liquidKind?: string; markKind?: string }) =&gt; void
+  onLiquidExit?: (ctx: ObjectAPI, other: ObjectQueryResult &amp; { liquidKind?: string; markKind?: string }) =&gt; void
+  onNoise?: (ctx: ObjectAPI, noise: NoiseEvent) =&gt; void
+  onSay?: (ctx: ObjectAPI, line: SaidLine) =&gt; void
+  onSoundEnd?: (ctx: ObjectAPI, sound: SoundEndEvent) =&gt; void
+  onAnimationEvent?: (ctx: ObjectAPI, event: AnimationFrameEvent) =&gt; void
+  onJointBreak?: (ctx: ObjectAPI, other: ObjectQueryResult, info: JointBreakEvent) =&gt; void
+  onOutOfBounds?: (ctx: ObjectAPI, event: OutOfBoundsEvent) =&gt; boolean | void
+  onControlBegin?: (ctx: ObjectAPI, player: ObjectQueryResult) =&gt; boolean | void
+  onControlEnd?: (ctx: ObjectAPI, player: ObjectQueryResult) =&gt; void
+  editor?: (ctx: ObjectAPI, obj: ObjectView) =&gt; void
+  visual?: (ctx: ObjectAPI, obj: ObjectView) =&gt; GodModeVisualSpec | void
+}
+</pre>
+</main>
+<footer>Cleetus MANUAL / COVERAGE BUILD / PUBLISHED TO Jayzee/Cleetus DOCS WIKI</footer>
+</body>
+</html>

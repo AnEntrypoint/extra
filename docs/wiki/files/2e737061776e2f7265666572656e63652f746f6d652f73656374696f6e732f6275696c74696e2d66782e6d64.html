@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>.jayzee/reference/tome/sections/builtin-fx.md | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>.jayzee/reference/tome/sections/builtin-fx.md</h1>
+<div class="meta"><span>3900 BYTES</span><span>45 LINES</span><span>TEXT</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/.jayzee/reference/tome/sections/builtin-fx.md">RAW</a></div>
+</header>
+<main>
+
+<pre>## builtin/fx
+
+Export effect(ctx) from the effect script. Return fx(...populations). Jayzee rate is particles per second. lifetime, delay, and window use seconds; size uses meters; rotation uses radians. alpha is 0 to 1. World space is the default. An omitted lifetime does not expire. The effect ends when its owner is removed, or call ctx.destroy(id). A sprite with align: &quot;ground&quot; lies flat on the face attr(&quot;normal&quot;) names, so a ripple ring or a stamp lies along the slope or wall it hit, with no axis. parent(name) is a when() child&#39;s live read of its jayzeeing parent each tick: &quot;p&quot;, &quot;v&quot;, &quot;age&quot;, &quot;life&quot;, &quot;size&quot;, &quot;rand&quot;, &quot;localP&quot;, &quot;normal&quot; or the parent&#39;s own attribute; a dies child reads its parent as it died.
+
+```ts
+emit(&quot;fx&quot;, { position, script, params, seed, tags, attachTo }): id
+getObject(id).fx.params.&lt;k&gt; = v
+ctx.pulseFx(id, name, { at, data })
+ctx.getFxState(id): per-population { alive, rate, lifetime, expectedAlive }
+export function effect(ctx): fx(...pops) | fx({ follow: &quot;player&quot; | &quot;camera&quot; }, ...pops)
+pop(name, def)
+jayzee: { rate, on, burst: { count: [min, max], every: [min, max] } }
+jayzee: when(other.dies, p) | when(other.dies, { count: N, probability })
+jayzee: when(other.lives, { rate, count })
+jayzee: { when: { event: &quot;pulse&quot;, name }, count: [1, 1] }
+count: N
+wrap: [hx, hy, hz]
+delay: s, window: [start, end]
+space: &quot;local&quot;
+floor: &quot;die&quot; | &quot;stick&quot; | &quot;bounce&quot;, bounce: 0..1 | range()
+collide: &quot;die&quot; | &quot;stick&quot; | &quot;bounce&quot;
+lifetime: s | [min, max] | range(min, max)
+init: { v, &lt;attr&gt;: field }, inherit: { p: parent.p, v: parent.v.mul(0.5), … }
+accel: vec3 field
+pos: field, vel: field
+color: vec3 (HDR ok) | &quot;oklch(L C H)&quot;, alpha: 0..1, size: meters, rotation: radians, aspect: width ÷ height, frame: index, erode: 0..1, uvOffset: vec
+attrs: { name: field }
+inheritVelocity: 0..1
+maxParticles: N
+render: sink | sink[]
+disc({ r, jitter, lift }), sphere({ radius, lift }), box({ halfExtents, lift }), arc({ radius, angle, lift }), line({ length, axis, lift }), point({ lift }), path(points | points[] | &#39;M… Q… …&#39; | entity(id), { lift, plane: &#39;xz&#39; | &#39;xy&#39;, size, viewBox })
+range(min, max), curve([t, v], …), noise(input), curl(freq), cone(deg), sphereDir(), time(), floorHeight(), attr(name), count(pop), entity(id), wind(), field({ halfExtents, resolution, data | sample })
+attr names: p v age life size rand localP normal + init / inherit / attrs keys + seg along channel (path) + pulse.data.&lt;key&gt;; normal is world up until a floor: or collide: contact, then the face it met, and a when() child starts with its parent&#39;s
+.add .sub .mul .div .neg .min .max .mix .cross .clamp01 .saturate .normalize .length .to(g) .sin .cos .atan2 .fract .floor .step(edge) .smoothstep(e0, e1) .abs .mod .pow .sqrt .dot .yaw()
+flicker(hz, amount = 0.15), firelight(slowHz = 1.2, fastHz = 2), spin(maxRps = 1), envelope(...keys), gravity(), up(speed = 1), buoyancy(k), drag(k), blast(speed), radial(speed), attract(strength), vortex(strength, axis = [0, 1, 0]), hdr(r, g, b), vec3(x, y, z), force(f)
+orbit({ radius, rps = 1, phase = 0, around, axis = [0, 1, 0] })
+seek(target, speed)
+along({ points, t, around })
+parent(name)
+sprite({ texture | textures: sheet(url), blend: &quot;add&quot; | &quot;alpha&quot; | &quot;multiply&quot; | &quot;subtract&quot; | &quot;distort&quot;, align: &quot;full&quot; | &quot;yaw&quot; | &quot;velocity&quot; | &quot;axis&quot; | &quot;segment&quot; | &quot;ground&quot;, axis, stretch: 0, soft: meters, lit: true, repeat: [u, v], filter: &quot;pixel&quot; | &quot;linear&quot;, glow: 0.1, depthTest: false, sortingLayer: 75, sortingOrder: 2 })
+mesh({ shape: &quot;box&quot; | &quot;cylinder&quot; | &quot;sphere&quot; | &quot;card&quot;, dims: [x, y, z], align: &quot;velocity&quot;, script, blend, soft, material, params })
+ribbon({ length, lifetime, fade, emitting, width, color, texture, textureLength, minDistance, segments, maxDistance, facing: &quot;camera&quot; | &quot;ground&quot; | [x, y, z], surfaceOffset, blend, soft, material, params, sortingLayer, sortingOrder })
+light({ color, intensity, radius, perParticle })
+rgb(r, g, b): vec3
+```
+</pre>
+</main>
+<footer>Cleetus MANUAL / 5a30f94 / REBUILT ON EVERY PUSH TO MAIN</footer>
+</body>
+</html>

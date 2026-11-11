@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>.jayzee/reference/cli/types/ObjectPhysics.txt | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>.jayzee/reference/cli/types/ObjectPhysics.txt</h1>
+<div class="meta"><span>1022 BYTES</span><span>8 LINES</span><span>TXT</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/.jayzee/reference/cli/types/ObjectPhysics.txt">RAW</a></div>
+</header>
+<main>
+
+<pre>ObjectPhysics =
+  | false
+  | &quot;none&quot;
+  | &quot;static&quot;
+  | &quot;dynamic&quot;
+  | &quot;kinematic&quot;
+  | &quot;character&quot;
+  | { body: PhysicsBodyType; trigger?: boolean; collider?: &quot;auto&quot; | &quot;box&quot; | &quot;sphere&quot; | &quot;capsule&quot; | &quot;cylinder&quot; | &quot;mesh&quot; | &quot;none&quot;; mass?: number; centerOfMass?: [number, number, number]; friction?: number; frictionCombine?: &quot;average&quot; | &quot;min&quot; | &quot;multiply&quot; | &quot;max&quot;; restitution?: number; restitutionCombine?: &quot;average&quot; | &quot;min&quot; | &quot;multiply&quot; | &quot;max&quot;; rollingResistance?: number; surfaceVelocity?: [number, number, number]; linearDamping?: number; angularDamping?: number; gravityScale?: number; lockedAxes?: (&quot;x&quot; | &quot;y&quot; | &quot;z&quot; | &quot;rotX&quot; | &quot;rotY&quot; | &quot;rotZ&quot;)[]; layer?: string; density?: number; autostep?: { maxHeight: number; minWidth: number } | false; maxSlopeClimbAngle?: number; minSlopeSlideAngle?: number; slideEnabled?: boolean; snapToGroundDistance?: number | false; characterMass?: number; applyImpulsesToDynamicBodies?: boolean; offset?: number; up?: [number, number, number]; capsule?: { height?: number; radius?: number } }
+</pre>
+</main>
+<footer>Cleetus MANUAL / COVERAGE BUILD / PUBLISHED TO Jayzee/Cleetus DOCS WIKI</footer>
+</body>
+</html>

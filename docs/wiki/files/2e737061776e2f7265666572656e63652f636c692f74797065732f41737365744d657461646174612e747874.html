@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>.jayzee/reference/cli/types/AssetMetadata.txt | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>.jayzee/reference/cli/types/AssetMetadata.txt</h1>
+<div class="meta"><span>535 BYTES</span><span>18 LINES</span><span>TEXT</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/.jayzee/reference/cli/types/AssetMetadata.txt">RAW</a></div>
+</header>
+<main>
+
+<pre>AssetMetadata = {
+  boundsVersion?: number
+  triangles?: number
+  skinned?: boolean
+  clips?: string[]
+  gait?: Record&lt;string, number&gt;
+  gaitVersion?: number
+  bounds?: { min: [number, number, number]; max: [number, number, number]; size: [number, number, number]; center: [number, number, number] }
+  sockets?: Record&lt;string, AssetSocketEntry&gt;
+  parts?: Record&lt;string, AssetPartEntry&gt;
+  partsVersion?: number
+  sprite2d?: AssetSprite2DEntry
+  duration?: number
+  kind?: string
+  name?: string
+  uploadedAt?: string
+  bytes?: number
+}
+</pre>
+</main>
+<footer>Cleetus MANUAL / 5a30f94 / REBUILT ON EVERY PUSH TO MAIN</footer>
+</body>
+</html>

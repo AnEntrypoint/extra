@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>sources/e8ce828a4f2a.txt | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>sources/e8ce828a4f2a.txt</h1>
+<div class="meta"><span>2895 BYTES</span><span>89 LINES</span><span>TXT</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/sources/e8ce828a4f2a.txt">RAW</a></div>
+</header>
+<main>
+
+<pre>name: &quot;Upload GitHub Pages artifact&quot;
+description: &quot;A composite action that prepares your static assets to be deployed to GitHub Pages&quot;
+author: &quot;GitHub&quot;
+inputs:
+  name:
+    description: &#x27;Artifact name&#x27;
+    required: false
+    default: &#x27;github-pages&#x27;
+  path:
+    description: &quot;Path of the directory containing the static assets.&quot;
+    required: true
+    default: &quot;_site/&quot;
+  retention-days:
+    description: &quot;Duration after which artifact will expire in days.&quot;
+    required: false
+    default: &quot;1&quot;
+  include-hidden-files:
+    description: &quot;Include hidden files and directories (those starting with a dot) in the artifact. Excludes .git and .github regardless.&quot;
+    required: false
+    default: &quot;false&quot;
+outputs:
+  artifact_id:
+    description: &quot;The ID of the artifact that was uploaded.&quot;
+    value: ${{ steps.upload-artifact.outputs.artifact-id }}
+runs:
+  using: composite
+  steps:
+    - name: Archive artifact
+      shell: sh
+      if: runner.os == &#x27;Linux&#x27;
+      run: |
+        echo ::group::Archive artifact
+        tar \
+          --dereference --hard-dereference \
+          --directory &quot;$INPUT_PATH&quot; \
+          -cvf &quot;$RUNNER_TEMP/artifact.tar&quot; \
+          --exclude=.git \
+          --exclude=.github \
+          ${{ inputs.include-hidden-files != &#x27;true&#x27; &amp;&amp; &#x27;--exclude=.[^/]*&#x27; || &#x27;&#x27; }} \
+          .
+        echo ::endgroup::
+      env:
+        INPUT_PATH: ${{ inputs.path }}
+
+    # Switch to gtar (GNU tar instead of bsdtar which is the default in the MacOS runners so we can use --hard-dereference)
+    - name: Archive artifact
+      shell: sh
+      if: runner.os == &#x27;macOS&#x27;
+      run: |
+        echo ::group::Archive artifact
+        gtar \
+          --dereference --hard-dereference \
+          --directory &quot;$INPUT_PATH&quot; \
+          -cvf &quot;$RUNNER_TEMP/artifact.tar&quot; \
+          --exclude=.git \
+          --exclude=.github \
+          ${{ inputs.include-hidden-files != &#x27;true&#x27; &amp;&amp; &#x27;--exclude=.[^/]*&#x27; || &#x27;&#x27; }} \
+          .
+        echo ::endgroup::
+      env:
+        INPUT_PATH: ${{ inputs.path }}
+
+    # Massage the paths for Windows only
+    - name: Archive artifact
+      shell: bash
+      if: runner.os == &#x27;Windows&#x27;
+      run: |
+        echo ::group::Archive artifact
+        tar \
+          --dereference --hard-dereference \
+          --directory &quot;$INPUT_PATH&quot; \
+          -cvf &quot;$RUNNER_TEMP\artifact.tar&quot; \
+          --exclude=.git \
+          --exclude=.github \
+          ${{ inputs.include-hidden-files != &#x27;true&#x27; &amp;&amp; &#x27;--exclude=.[^/]*&#x27; || &#x27;&#x27; }} \
+          --force-local \
+          &quot;.&quot;
+        echo ::endgroup::
+      env:
+        INPUT_PATH: ${{ inputs.path }}
+
+    - name: Upload artifact
+      id: upload-artifact
+      uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+      with:
+        name: ${{ inputs.name }}
+        path: ${{ runner.temp }}/artifact.tar
+        retention-days: ${{ inputs.retention-days }}
+        if-no-files-found: error
+</pre>
+</main>
+<footer>Cleetus MANUAL / COVERAGE BUILD / PUBLISHED TO Jayzee/Cleetus DOCS WIKI</footer>
+</body>
+</html>

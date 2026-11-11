@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>.jayzee/reference/skills/player-settings.json | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>.jayzee/reference/skills/player-settings.json</h1>
+<div class="meta"><span>2990 BYTES</span><span>1 LINES</span><span>JSON</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/.jayzee/reference/skills/player-settings.json">RAW</a></div>
+</header>
+<main>
+
+<pre>{&quot;id&quot;:&quot;player-settings&quot;,&quot;name&quot;:&quot;Player Settings&quot;,&quot;description&quot;:&quot;creator policy: enable protections, lock controls&quot;,&quot;content&quot;:&quot;# Player Settings\n\nPlayers own their settings: sound levels (kept per game), accessibility protections, perf preference, control overrides, and every game&#x27;s keys and pad, rebound in Settings › look › keys; no cap reaches them. On the player&#x27;s press (ctx.self), `ctx.emit(\&quot;openSettings\&quot;, { page: \&quot;keys\&quot; })` opens that page and `\&quot;openAvatarEditor\&quot;` their avatar editor (a wardrobe). A game shapes the STARTING experience and bounds what its design can survive; it never overrides a choice a player made. `defaults` speak only for players who never chose; `caps` bound only the families where the creator holds design authority, never graphics quality. A creator wanting high sets their own: the rail&#x27;s Settings → screen → quality re-tiers their renderer to it, terrain reach included; phones and tablets stop at what they measured, and late frames still lower resolution beneath it. Accessibility is safe-direction only, by law: nothing you write can force flashing on a photosensitive player.\n\n```js\n// run_script: a dot write saves it (world.config.yaml engine.playerSettings); patch only the keys you change, null clears one\nctx.world.engine.playerSettings.defaults.accessibility.reduceFlashing = true; // a strobe-heavy game ships photosensitive-safe; players may still turn it off for themselves\nctx.world.engine.playerSettings.caps.controls.lookSensitivity = false; // this game&#x27;s cutscene camera ignores the player&#x27;s sensitivity override\nctx.world.engine.playerSettings.caps.controls.lookSensitivity = null; // remove the lock; the rest of the policy survives\n```\n\n&lt;api&gt;\nengine.playerSettings.defaults.accessibility: { reduceFlashing, reduceMotion } // true only. false answers \&quot;playerSettings.defaults.accessibility.reduceFlashing may only be true: a creator can pre-enable a protection, never disable one (players own accessibility)\&quot;. Tell the creator why; there is no other path\nengine.playerSettings.caps.accessibility // never legal: no creator may bound a player&#x27;s accessibility protections\nengine.playerSettings.caps.controls: { lookSensitivity, invertY } // booleans, both honored by default: whether the player&#x27;s override applies in this game; disable one only when it breaks the design. Values live where they always did: camera and inputs\ndefaults.sound, defaults.controls, defaults.perf, caps.perf // not creator surfaces: the mix is authored in audio and composes under the player&#x27;s sliders; sensitivity and bindings are camera and inputs; quality is the player&#x27;s: a game slow on phones is made cheaper in its content, never pinned to a level\na refused field is dropped with a warning in the run result and getLogs; the legal keys beside it apply // a default that \&quot;isn&#x27;t applying\&quot; means the player already chose: nothing to fix. Policy is per game, never a player&#x27;s own preference written for everyone\n&lt;/api&gt;&quot;}</pre>
+</main>
+<footer>Cleetus MANUAL / COVERAGE BUILD / PUBLISHED TO Jayzee/Cleetus DOCS WIKI</footer>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>.jayzee/reference/tome/sections/world-queries.md | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>.jayzee/reference/tome/sections/world-queries.md</h1>
+<div class="meta"><span>346 BYTES</span><span>10 LINES</span><span>MD</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/.jayzee/reference/tome/sections/world-queries.md">RAW</a></div>
+</header>
+<main>
+
+<pre>## World Queries
+
+query excludes self by default; set ignoreSelf: false to include it. ctx.place.players lists the current place&#x27;s players.
+
+```ts
+ctx.query(opts: ObjectQueryOptions &amp; { select: &quot;ids&quot; }): string[]
+ctx.query(opts: CrossingScopeQueryOptions): CrossingRecord[]
+ctx.query(opts: ObjectQueryOptions): ObjectView[]
+ctx.place.players
+```
+</pre>
+</main>
+<footer>Cleetus MANUAL / COVERAGE BUILD / PUBLISHED TO Jayzee/Cleetus DOCS WIKI</footer>
+</body>
+</html>

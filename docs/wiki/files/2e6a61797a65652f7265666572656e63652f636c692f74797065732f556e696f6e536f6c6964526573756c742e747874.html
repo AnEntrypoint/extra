@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>.jayzee/reference/cli/types/UnionSolidResult.txt | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>.jayzee/reference/cli/types/UnionSolidResult.txt</h1>
+<div class="meta"><span>335 BYTES</span><span>3 LINES</span><span>TXT</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/.jayzee/reference/cli/types/UnionSolidResult.txt">RAW</a></div>
+</header>
+<main>
+
+<pre>UnionSolidResult =
+  | { merged: true; id: string; pieces: number; faces: { before: number; after: number }; triangles: { before: number; after: number }; colliders: { before: number; after: number } }
+  | { merged: false; reason: UnionSolidBlockReason | &quot;too_few_pieces&quot; | &quot;id_taken&quot;; message: string; blockers: UnionSolidBlocker[] }
+</pre>
+</main>
+<footer>Cleetus MANUAL / COVERAGE BUILD / PUBLISHED TO Jayzee/Cleetus DOCS WIKI</footer>
+</body>
+</html>

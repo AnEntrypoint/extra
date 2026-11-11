@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>.jayzee/reference/http/social-me.md | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>.jayzee/reference/http/social-me.md</h1>
+<div class="meta"><span>815 BYTES</span><span>12 LINES</span><span>TEXT</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/.jayzee/reference/http/social-me.md">RAW</a></div>
+</header>
+<main>
+
+<pre># GET /api/social/me
+
+- Method: GET
+- Path: /api/social/me
+- URL: https://www.jayzee.co/api/social/me
+- Auth: required (Authorization: Bearer)
+- Status with Bearer: 200 (363 bytes)
+- Status without auth: 401, body `{&quot;ok&quot;:false,&quot;error&quot;:&quot;Unauthorized&quot;}`. Top-level keys: error, ok.
+- Top-level keys (200): avatarUrl, bio, dnd, friendCount, friendIds, games, handle, home, homeAppId, messagesFrom, mutualCount, neverWords, ok, pinned, reach, recent, statusLine, strangersMayReach
+- Source: llms.txt says it is &quot;your own social row&quot;; PATCH on the same path sets bio, statusLine, reach, messagesFrom, dnd, neverWords, pin (PATCH not called).
+- Note: llms.txt says the social layer is flagged per deployment; where it is off, every /api/social door answers 404.
+- Raw: raw/social-me.bearer.body, raw/social-me.noauth.body
+</pre>
+</main>
+<footer>Cleetus MANUAL / 5a30f94 / REBUILT ON EVERY PUSH TO MAIN</footer>
+</body>
+</html>

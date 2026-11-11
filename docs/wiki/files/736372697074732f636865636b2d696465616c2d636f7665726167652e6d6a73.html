@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>scripts/check-ideal-coverage.mjs | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>scripts/check-ideal-coverage.mjs</h1>
+<div class="meta"><span>1252 BYTES</span><span>33 LINES</span><span>TEXT</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/scripts/check-ideal-coverage.mjs">RAW</a></div>
+</header>
+<main>
+
+<pre>import { existsSync, readFileSync } from &quot;node:fs&quot;
+import { dirname, join, resolve } from &quot;node:path&quot;
+import { fileURLToPath } from &quot;node:url&quot;
+
+const cleetus = resolve(dirname(fileURLToPath(import.meta.url)), &quot;..&quot;)
+const idealPath = resolve(cleetus, &quot;..&quot;, &quot;jayzee&quot;, &quot;docs&quot;, &quot;IDEAL.md&quot;)
+const gapsPath = join(cleetus, &quot;docs&quot;, &quot;Jayzee-GAPS.md&quot;)
+
+const rowIds = readFileSync(gapsPath, &quot;utf8&quot;)
+  .split(&quot;\n&quot;)
+  .map((line) =&gt; line.match(/^\| (\d+) \|/))
+  .filter(Boolean)
+  .map((match) =&gt; Number(match[1]))
+
+if (!existsSync(idealPath)) {
+  console.log(`IDEAL COVERAGE: ${idealPath} is missing, so none of the ${rowIds.length} gap rows can be verified`)
+  console.log(`MISSING ROW IDS: ${rowIds.join(&quot;, &quot;)}`)
+  console.log(&quot;RESULT: FAIL&quot;)
+  process.exit(1)
+}
+
+const ideal = readFileSync(idealPath, &quot;utf8&quot;)
+const missing = rowIds.filter((id) =&gt; !new RegExp(`\\brow ${id}\\b`, &quot;i&quot;).test(ideal))
+
+if (missing.length &gt; 0) {
+  console.log(`IDEAL COVERAGE: ${rowIds.length - missing.length} of ${rowIds.length} gap rows are named in ${idealPath}`)
+  console.log(`MISSING ROW IDS: ${missing.join(&quot;, &quot;)}`)
+  console.log(&quot;RESULT: FAIL&quot;)
+  process.exit(1)
+}
+
+console.log(`IDEAL COVERAGE: all ${rowIds.length} gap rows are named in ${idealPath}`)
+console.log(&quot;RESULT: PASS&quot;)
+</pre>
+</main>
+<footer>Cleetus MANUAL / 5a30f94 / REBUILT ON EVERY PUSH TO MAIN</footer>
+</body>
+</html>

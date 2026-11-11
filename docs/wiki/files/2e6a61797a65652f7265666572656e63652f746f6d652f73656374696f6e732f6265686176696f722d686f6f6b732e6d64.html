@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>.jayzee/reference/tome/sections/behavior-hooks.md | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>.jayzee/reference/tome/sections/behavior-hooks.md</h1>
+<div class="meta"><span>2494 BYTES</span><span>27 LINES</span><span>MD</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/.jayzee/reference/tome/sections/behavior-hooks.md">RAW</a></div>
+</header>
+<main>
+
+<pre>## Behavior Hooks
+
+Export these functions from a behavior module. onInput reads named axes and actions declared in the world&#x27;s inputs. pressed and released apply on the transition; held stays true while the action is held.
+
+```ts
+onJayzee(ctx)
+onDestroy(ctx)
+update(ctx, dt: number)
+lateUpdate(ctx, dt: number)
+onInput(ctx, input: InputState)
+onCollide(ctx, other: ObjectQueryResult, contact: Contact)
+onTriggerEnter(ctx, other: ObjectQueryResult)
+onTriggerExit(ctx, other: ObjectQueryResult)
+onCross(ctx, other: ObjectQueryResult, outcome: Extract&lt;CrossOutcome, { crossed: true | &quot;departing&quot; }&gt;)
+onRefuse(ctx, other: ObjectQueryResult, verdict: CrossVerdict)
+onLiquidEnter(ctx, other: ObjectQueryResult &amp; { liquidKind?: string; markKind?: string })
+onLiquidExit(ctx, other: ObjectQueryResult &amp; { liquidKind?: string; markKind?: string })
+onSay(ctx, line: SaidLine)
+onSoundEnd(ctx, sound: SoundEndEvent)
+onOutOfBounds(ctx, event: OutOfBoundsEvent)
+onControlBegin(ctx, player: ObjectQueryResult)
+onControlEnd(ctx, player: ObjectQueryResult)
+editor(ctx, obj: ObjectView)
+visual(ctx, obj: ObjectView)
+updateSchedule, data export, not a hook: export const updateSchedule = { every: N | { seconds: s }, near: { radius } }. update() runs only while a player is near the object (the engine&#x27;s locality default, ~500 m; an object with no position always runs; a rule that must advance for everyone wherever they stand is sim.js, not an update()). The engine skips update() on ticks the schedule declines: every runs update() every N ticks (deterministic per-entity phase: a cohort auto-spreads). dt = the declared cadence step (every × tick dt), so integrate-by-dt code just works. Declaring every REPLACES a hand-rolled tick % N gate, delete the gate line, never keep both: the engine&#x27;s per-entity phase and the body&#x27;s own phase rarely coincide, so a script that keeps its gate mostly stops running. A path that must run every tick (aggro, sprint, a raising burst) is a reason to declare the gate wide enough in the export; the schedule is the file&#x27;s, not a runtime dial.
+async and import() in a hook or ear: the part before the first await runs in the tick, the rest later on the same ctx. import() answers an ES module&#x27;s exports. A file only import() names stays out of arrival, so code only some moments need is its own module, import()ed where first needed: let seeder; export const ears = { &quot;match:start&quot;: async (ctx) =&gt; { seeder ??= await import(&quot;./lib/seeder.js&quot;); seeder.seedAll(ctx); } };
+```
+</pre>
+</main>
+<footer>Cleetus MANUAL / COVERAGE BUILD / PUBLISHED TO Jayzee/Cleetus DOCS WIKI</footer>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>.jayzee/reference/tome/sections/movement.md | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>.jayzee/reference/tome/sections/movement.md</h1>
+<div class="meta"><span>709 BYTES</span><span>20 LINES</span><span>TEXT</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/.jayzee/reference/tome/sections/movement.md">RAW</a></div>
+</header>
+<main>
+
+<pre>## Movement
+
+Velocity uses meters per second. forces holds named forces until a key is cleared with null. Force uses newtons and torque uses newton-meters on world axes. Dynamic bodies accept forces. A character body standing on a moving kinematic platform rides it: the engine carries it, and its velocity is relative to the platform.
+
+```ts
+ctx.self.grounded
+ctx.self.touching.wallLeft/.wallRight
+ctx.self.touching.ceiling
+ctx.self.velocity
+ctx.self.velocity = v
+ctx.self.forces.&lt;key&gt; = { force?, position?, torque? }
+&lt;entity&gt;.velocity
+&lt;entity&gt;.velocity = v
+ctx.self.angularVelocity
+ctx.self.angularVelocity = v
+&lt;entity&gt;.angularVelocity = v
+ctx.self.liquid.in
+ctx.self.liquid.level
+ctx.self.overlapping
+```
+</pre>
+</main>
+<footer>Cleetus MANUAL / 5a30f94 / REBUILT ON EVERY PUSH TO MAIN</footer>
+</body>
+</html>

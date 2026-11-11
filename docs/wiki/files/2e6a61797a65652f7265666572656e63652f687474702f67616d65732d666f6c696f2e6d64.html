@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>.jayzee/reference/http/games-folio.md | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>.jayzee/reference/http/games-folio.md</h1>
+<div class="meta"><span>823 BYTES</span><span>10 LINES</span><span>MD</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/.jayzee/reference/http/games-folio.md">RAW</a></div>
+</header>
+<main>
+
+<pre># GET /api/games/{appId}/folio
+
+- Method: GET
+- Path: /api/games/{appId}/folio
+- URL: https://www.jayzee.co/api/games/d21d322b-4572-4710-a8d5-eaef4e6daa1f/folio
+- Auth: required for the launch kit (documented: a linked agent may read it; &quot;any other kit is 403 by name&quot;). Bearer gets a 404 with a game-specific body; no-auth gets a generic 404.
+- Status with Bearer: 404 (497 bytes). Body error: `{&quot;ok&quot;:false,&quot;code&quot;:&quot;no_folio&quot;,&quot;error&quot;:&quot;This game has no launch kit yet.&quot;,&quot;game&quot;:{...}}`. Top-level keys: code, error, game, ok.
+- Status without auth: 404 (32 bytes), body `{&quot;ok&quot;:false,&quot;error&quot;:&quot;Not found&quot;}`. Top-level keys: error, ok.
+- Source: llms.txt says &quot;GET /api/games/&lt;appId&gt;/folio, its one zip at GET /api/games/&lt;appId&gt;/folio/zip&quot; opens to a linked agent.
+- Raw: raw/games-folio.bearer.body, raw/games-folio.noauth.body
+</pre>
+</main>
+<footer>Cleetus MANUAL / COVERAGE BUILD / PUBLISHED TO Jayzee/Cleetus DOCS WIKI</footer>
+</body>
+</html>

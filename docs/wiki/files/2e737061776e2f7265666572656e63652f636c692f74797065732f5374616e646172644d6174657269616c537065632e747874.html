@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>.jayzee/reference/cli/types/StandardMaterialSpec.txt | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>.jayzee/reference/cli/types/StandardMaterialSpec.txt</h1>
+<div class="meta"><span>1591 BYTES</span><span>53 LINES</span><span>TEXT</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/.jayzee/reference/cli/types/StandardMaterialSpec.txt">RAW</a></div>
+</header>
+<main>
+
+<pre>StandardMaterialSpec = {
+  texture?: string | null
+  time?: number
+  timeAt?: number
+  paused?: boolean
+  speed?: number
+  view?: { link: string; oneWay?: boolean; spill?: number; sound?: number } | { camera: ViewCamera; cadence?: string } | null
+  canvas?: string | null
+  pbr?: boolean | &quot;fal1&quot;
+  normalMap?: string
+  roughnessMap?: string
+  metalnessMap?: string
+  alphaMap?: string
+  normalScale?: number
+  alphaTest?: number
+  color?: Color
+  repeat?: [number, number]
+  textureScale?: number
+  wrap?: &quot;repeat&quot; | &quot;clamp&quot;
+  filter?: &quot;pixel&quot; | &quot;linear&quot;
+  metalness?: number
+  roughness?: number
+  opacity?: number
+  transparent?: boolean
+  emissive?: Color
+  emissiveIntensity?: number
+  emissiveMap?: string
+  unlit?: boolean
+  dissolve?: number
+  side?: &quot;front&quot; | &quot;back&quot; | &quot;double&quot;
+  vertexColors?: boolean
+  depthWrite?: boolean
+  depthTest?: boolean
+  renderOrder?: number
+  drawsOver?: string[] | { parts: string[]; strength?: number; angle?: number }
+  outline?: boolean | { color?: Color; width?: number; warm?: number; lightness?: number } | null
+  polygonOffset?: boolean
+  polygonOffsetFactor?: number
+  polygonOffsetUnits?: number
+  blending?: &quot;none&quot; | &quot;normal&quot; | &quot;additive&quot; | &quot;subtractive&quot; | &quot;multiply&quot; | &quot;custom&quot;
+  blendSrc?: BlendFactor
+  blendDst?: BlendFactor
+  blendEquation?: BlendEquation
+  blendSrcAlpha?: BlendFactor
+  blendDstAlpha?: BlendFactor
+  blendEquationAlpha?: BlendEquation
+  premultipliedAlpha?: boolean
+  colorWrite?: boolean
+  clippingPlanes?: ClipPlane[] | null
+  clipIntersection?: boolean
+  clipShadows?: boolean
+  overrides?: MaterialOverridesSpec
+}
+</pre>
+</main>
+<footer>Cleetus MANUAL / 5a30f94 / REBUILT ON EVERY PUSH TO MAIN</footer>
+</body>
+</html>

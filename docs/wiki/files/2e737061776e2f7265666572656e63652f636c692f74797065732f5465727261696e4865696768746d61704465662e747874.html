@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>.jayzee/reference/cli/types/TerrainHeightmapDef.txt | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>.jayzee/reference/cli/types/TerrainHeightmapDef.txt</h1>
+<div class="meta"><span>610 BYTES</span><span>11 LINES</span><span>TEXT</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/.jayzee/reference/cli/types/TerrainHeightmapDef.txt">RAW</a></div>
+</header>
+<main>
+
+<pre>TerrainHeightmapDef = {
+  kind: &quot;heightmap&quot;
+  seed?: number
+  materials?: Array&lt;{ id: string; albedo?: string; pbr?: boolean | &quot;fal1&quot;; tint?: number | string; normal?: string; roughness?: string; textureScale?: number; metalness?: number; normalStrength?: number; roughnessIntensity?: number; antiTiling?: &quot;none&quot; | &quot;stochastic&quot;; filter?: &quot;pixel&quot; | &quot;linear&quot;; macro?: { scale?: number; hue?: number; value?: number } }&gt;
+  generator?: ScriptRef
+  verticalRange?: { min: number; max: number }
+  marks?: HeightmapTerrainMarkMap
+  decorations?: DecorationDef
+  water?: LiquidSpec
+  material?: ScriptedMaterialSpec
+}
+</pre>
+</main>
+<footer>Cleetus MANUAL / 5a30f94 / REBUILT ON EVERY PUSH TO MAIN</footer>
+</body>
+</html>

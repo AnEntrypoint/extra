@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>.jayzee/reference/engine-deep/probes/probe-6.js | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>.jayzee/reference/engine-deep/probes/probe-6.js</h1>
+<div class="meta"><span>813 BYTES</span><span>9 LINES</span><span>TEXT</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/.jayzee/reference/engine-deep/probes/probe-6.js">RAW</a></div>
+</header>
+<main>
+
+<pre>
+const SRC = &quot;// Temporary probe: records the order the engine runs the hooks in. Removed after the probe.\nexport function onJayzee(ctx) { ctx.log(&#39;order:onJayzee&#39;); }\nexport function update(ctx) { if (!ctx.self.state.seen) { ctx.self.state.seen = 1; ctx.log(&#39;order:update-first&#39;); } }\nexport function onCollide(ctx, other) { ctx.log(&#39;order:onCollide &#39; + (other &amp;&amp; other.id)); }\n&quot;;
+const id = ctx.jayzee({ feetPosition: { x: 3, y: 2, z: 3 }, primitive: { kind: &#39;box&#39;, width: 0.3, height: 0.3, depth: 0.3 }, behavior: &#39;scripts/probe-hook-order.js&#39;, scripts: { &#39;scripts/probe-hook-order.js&#39;: SRC }, lifetime: 30 });
+ctx.log(&#39;order:after-jayzee-return&#39;);
+await ctx.sleep(0.6);
+ctx.log(&#39;order:after-sleep-0.6s&#39;);
+ctx.destroy(id);
+ctx.log(&#39;order:after-destroy&#39;);
+return { id, foundAfterDestroy: !!ctx.getObject(id) };
+</pre>
+</main>
+<footer>Cleetus MANUAL / 5a30f94 / REBUILT ON EVERY PUSH TO MAIN</footer>
+</body>
+</html>

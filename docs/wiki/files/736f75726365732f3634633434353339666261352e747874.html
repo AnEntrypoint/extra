@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>sources/64c44539fba5.txt | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>sources/64c44539fba5.txt</h1>
+<div class="meta"><span>1244 BYTES</span><span>34 LINES</span><span>TXT</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/sources/64c44539fba5.txt">RAW</a></div>
+</header>
+<main>
+
+<pre>name: &#x27;Deploy GitHub Pages site&#x27;
+description: &#x27;A GitHub Action to deploy an artifact as a GitHub Pages site&#x27;
+author: &#x27;GitHub&#x27;
+runs:
+  using: &#x27;node24&#x27;
+  main: &#x27;dist/index.js&#x27;
+inputs:
+  token:
+    description: &#x27;GitHub token&#x27;
+    default: ${{ github.token }}
+    required: true
+  timeout:
+    description: &#x27;Time in milliseconds after which to timeout and cancel the deployment (default: 10 minutes)&#x27;
+    required: false
+    default: &#x27;600000&#x27;
+  error_count:
+    description: &#x27;Maximum number of status report errors before cancelling a deployment (default: 10)&#x27;
+    required: false
+    default: &#x27;10&#x27;
+  reporting_interval:
+    description: &#x27;Initial time between deployment status reports; successful polls use capped backoff and jitter, with error backoff added separately (default: 5 seconds)&#x27;
+    required: false
+    default: &#x27;5000&#x27;
+  artifact_name:
+    description: &#x27;Name of the artifact to deploy&#x27;
+    required: false
+    default: &#x27;github-pages&#x27;
+  preview:
+    description: &#x27;Is this attempting to deploy a pull request as a GitHub Pages preview site? (NOTE: This feature is only in alpha currently and is not available to the public!)&#x27;
+    required: false
+    default: &#x27;false&#x27;
+outputs:
+  page_url:
+    description: &#x27;URL to deployed GitHub Pages&#x27;
+</pre>
+</main>
+<footer>Cleetus MANUAL / COVERAGE BUILD / PUBLISHED TO Jayzee/Cleetus DOCS WIKI</footer>
+</body>
+</html>

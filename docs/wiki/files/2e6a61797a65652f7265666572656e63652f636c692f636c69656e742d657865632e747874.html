@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>.jayzee/reference/cli/client-exec.txt | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>.jayzee/reference/cli/client-exec.txt</h1>
+<div class="meta"><span>3198 BYTES</span><span>38 LINES</span><span>TXT</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/.jayzee/reference/cli/client-exec.txt">RAW</a></div>
+</header>
+<main>
+
+<pre>jayzee client exec &lt;file&gt; | -e &quot;&lt;source&gt;&quot; [--realm game|browser]
+                        [--input &lt;json-file&gt;] [--out &lt;file&gt;] [--name &lt;session&gt;]
+                        [--module] [--place &lt;id&gt;] [--persist | --read-only]
+
+Run a JavaScript body in your joined client. Top-level await and return work.
+The file is read on this machine. --input reads a local JSON file into the global input.
+The client uses the world&#x27;s pinned engine. You do not need its source or a mock context.
+
+game (default): the engine&#x27;s console, with its real api and ctx and world module imports.
+  jayzee client exec -e &#x27;return ctx.query({ tags: [&quot;enemy&quot;] }).length;&#x27;
+  Runtime changes are transient by default. --persist saves them into the world&#x27;s files, which every room of the world starts from. From a room of a place that many rooms share, a thing the run jayzees or a field it paints goes into that place&#x27;s files, so every room of the place gets it. To keep a test in one room, run it without --persist. A write to a place&#x27;s terrain or config is a file write and saves either way.
+  --read-only refuses game writes. The console runs in the place your body stands in;
+  --place &lt;id&gt; runs it in another place.
+  These flags apply only to the game realm.
+  From your body, authored file writes and explicit commits keep their normal durable effects. A tester&#x27;s client is a
+  player&#x27;s: its file writes are never saved.
+
+browser: join with --render cpu or gpu first. The body runs in the real rendered page, with
+  window, document, fetch, canvas and WebGPU. The game&#x27;s HTML UI is not in this document:
+  it stands in its own frames (Playwright, page.frames()). The client handle supplies:
+  await client.exec(script, options?): the game console; options: input, persist, readOnly, place
+  await client.request(debugRequest): a request to the real simulation
+  await client.capture({ method, params }): the engine&#x27;s capture API, including preview_object
+  preview_object with scene: true stands the object in the world for that picture, under your camera or views
+  await client.ready(): wait for a rendered frame; capture waits for this itself
+  client.renderer(): the current renderer; client.host(): the browser host
+  await client.sound(): the game&#x27;s own sound as a live audio track, for MediaRecorder; track.stop() ends it
+  jayzee client exec --realm browser -e &#x27;return document.querySelector(&quot;canvas&quot;).getBoundingClientRect().toJSON();&#x27;
+  --module bundles a local browser module and its imports. Export default async (client, input) =&gt; result.
+  jayzee client exec inspect.mjs --realm browser --module --input params.json
+
+The answer includes ok and result. Game code also returns the engine&#x27;s logs and save receipt. A script failure exits 1.
+--out writes only the returned value: bytes for ArrayBuffer or typed arrays, exact text
+for a string, JSON for other values. Parent directories are created. A path in the world&#x27;s tree
+lands at the same path under /workspace, never in the world. The receipt stays on stdout and names the file.
+  jayzee client exec --realm browser -e &#x27;return new Uint8Array([0, 127, 255]);&#x27; --out bytes.bin
+To play, drive your body&#x27;s page with Playwright (jayzee client --help, YOUR BODY&#x27;S PAGE).
+
+</pre>
+</main>
+<footer>Cleetus MANUAL / COVERAGE BUILD / PUBLISHED TO Jayzee/Cleetus DOCS WIKI</footer>
+</body>
+</html>

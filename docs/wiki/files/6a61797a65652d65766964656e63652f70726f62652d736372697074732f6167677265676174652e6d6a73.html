@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>jayzee-evidence/probe-scripts/aggregate.mjs | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>jayzee-evidence/probe-scripts/aggregate.mjs</h1>
+<div class="meta"><span>1310 BYTES</span><span>18 LINES</span><span>MJS</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/jayzee-evidence/probe-scripts/aggregate.mjs">RAW</a></div>
+</header>
+<main>
+
+<pre>import { readFileSync, readdirSync, writeFileSync } from &#x27;node:fs&#x27;;
+const files = readdirSync(&#x27;.&#x27;).filter((f) =&gt; /^(feed-scan-|sample-scan|full-scan-).*\.jsonl$/.test(f));
+const seen = new Map();
+for (const f of files) for (const line of readFileSync(f, &#x27;utf8&#x27;).split(&#x27;\n&#x27;).filter(Boolean)) {
+  const r = JSON.parse(line);
+  if (!seen.has(r.uuid)) seen.set(r.uuid, r);
+}
+const recs = [...seen.values()];
+const ok = recs.filter((r) =&gt; r.values != null);
+const fail = recs.filter((r) =&gt; r.values == null);
+const glbWorlds = ok.filter((r) =&gt; r.glb.length);
+const magic = {};
+for (const r of ok) for (const [k, v] of Object.entries(r.magic)) magic[k] = (magic[k] || 0) + v;
+const failStages = {};
+for (const r of fail) { const k = `${r.stage}:${r.status}`; failStages[k] = (failStages[k] || 0) + 1; }
+const summary = { files: files.length, worlds: recs.length, ok: ok.length, fail: fail.length, failStages, glbWorlds: glbWorlds.length, glbHashes: glbWorlds.reduce((a, r) =&gt; a + r.glb.length, 0), values: ok.reduce((a, r) =&gt; a + r.values, 0), magic: Object.fromEntries(Object.entries(magic).sort((a, b) =&gt; b[1] - a[1]).slice(0, 25)) };
+writeFileSync(&#x27;aggregate.json&#x27;, JSON.stringify({ summary, glb: glbWorlds.map((r) =&gt; ({ world: r.world, glb: r.glb })) }, null, 1));
+console.log(JSON.stringify(summary, null, 1));
+</pre>
+</main>
+<footer>Cleetus MANUAL / COVERAGE BUILD / PUBLISHED TO Jayzee/Cleetus DOCS WIKI</footer>
+</body>
+</html>

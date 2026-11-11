@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>.jayzee/reference/tome/sections/camera.md | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>.jayzee/reference/tome/sections/camera.md</h1>
+<div class="meta"><span>416 BYTES</span><span>10 LINES</span><span>MD</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/.jayzee/reference/tome/sections/camera.md">RAW</a></div>
+</header>
+<main>
+
+<pre>## Camera
+
+```ts
+ctx.world.camera (+ derived forward/fov/aspect/insetRight live reads; aspect = this screen&#x27;s width ÷ height, insetRight = the share of that width jayzee&#x27;s rail covers at the right edge, 0..1; in skill:cameras)
+ctx.worldToScreen(position: Vec3): { x: number; y: number; depth: number; onScreen: boolean } | null
+&lt;player&gt;.camera = {…}
+&lt;player&gt;.camera = null
+&lt;player&gt;.isGodMode
+&lt;player&gt;.isEditor
+```
+</pre>
+</main>
+<footer>Cleetus MANUAL / COVERAGE BUILD / PUBLISHED TO Jayzee/Cleetus DOCS WIKI</footer>
+</body>
+</html>

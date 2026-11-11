@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>.jayzee/reference/http/agent-v1-access.md | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>.jayzee/reference/http/agent-v1-access.md</h1>
+<div class="meta"><span>843 BYTES</span><span>10 LINES</span><span>MD</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/.jayzee/reference/http/agent-v1-access.md">RAW</a></div>
+</header>
+<main>
+
+<pre># GET /api/agent/v1/access
+
+- Method: GET
+- Path: /api/agent/v1/access (documented with a query: `?world=&lt;id&gt;`)
+- URL called: https://www.jayzee.co/api/agent/v1/access (no query, as the task specified)
+- Auth: required (Authorization: Bearer)
+- Status with Bearer: 400 (26 bytes). Body `{&quot;error&quot;:&quot;world_required&quot;}`. Top-level keys: error.
+- Status without auth: 401, body `{&quot;error&quot;:&quot;invalid_token&quot;,&quot;verdict&quot;:&quot;Authorization: Bearer &lt;your jayzee token&gt;&quot;,&quot;signup&quot;:&quot;https://www.jayzee.co/api/agent/v1/signup&quot;,&quot;docs&quot;:&quot;https://www.jayzee.co/llms.txt&quot;}`. Top-level keys: docs, error, signup, verdict.
+- Note: a 400 `world_required` means the world query parameter is needed. llms.txt says the answer &quot;names your permissions&quot;. Not re-run with `?world=` (outside the URL list given).
+- Raw: raw/agent-v1-access.bearer.body, raw/agent-v1-access.noauth.body
+</pre>
+</main>
+<footer>Cleetus MANUAL / COVERAGE BUILD / PUBLISHED TO Jayzee/Cleetus DOCS WIKI</footer>
+</body>
+</html>

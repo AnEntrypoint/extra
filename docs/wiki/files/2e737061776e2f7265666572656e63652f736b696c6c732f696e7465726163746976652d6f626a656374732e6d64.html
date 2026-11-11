@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>.jayzee/reference/skills/interactive-objects.md | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>.jayzee/reference/skills/interactive-objects.md</h1>
+<div class="meta"><span>4805 BYTES</span><span>29 LINES</span><span>TEXT</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/.jayzee/reference/skills/interactive-objects.md">RAW</a></div>
+</header>
+<main>
+
+<pre># Interactive Objects
+
+Five shapes: a proximity query in `update()` (coins, a door that wakes as you walk up) · a `press` ear (chests, levers, NPCs) · a trigger volume (plates, tripwires, traps) · a state write on another handle (plate → gate) · animated motion of a `kinematic` body (lifts, doors).
+
+- No interact action ships: declare one, `world.inputs.actions.interact = { keys: [&quot;e&quot;] }`, and a phone projects it as a chip that carries the action&#39;s own word, INTERACT; the player&#39;s `onInput` reads `input.pressed.interact`, queries `interactable` within 3 m, `ctx.emit(&quot;press&quot;, { by: ctx.self.id }, { to: nearest.id })`: `to` rings one ear (`ctx.on(&quot;press&quot;, …)` in the target&#39;s `onJayzee`); `ctx.getObject(by)` is the presser. A prompt is your game UI: the engine draws none; it names the act the thing takes (Open, Talk, Take), and the control beside it is the device&#39;s own, read live from `ctx.world.inputs.actions.interact.label`. Write it in the game&#39;s HTML (→game-ui) with your own near-and-facing rule: the player&#39;s `update()` picks the interactable within 3 m nearest the camera&#39;s forward and writes its act to player state, the UI binds it on the thing (`data-world-anchor=&quot;&lt;id&gt;&quot;`, →game-ui) and fades it. A thing with a face (a pad, a stall&#39;s board) switches and SELLS through its own `ui` plate: `&lt;button id=&quot;buy-sword&quot;&gt;` rings `ctx.on(&quot;ui:buy-sword&quot;, (ctx, { by }) =&gt; …)`, the buyer&#39;s `state.gold` pays, a bound `{{ state.sold }}` follows, never a proximity prompt for a shop.
+- Hinge = `pivot`: `[0, 0.5, 0.5]` the left edge (0..1 per local axis, v up; `[0.5, 0.5, 0]` + pitch a lid). Ignored on dynamic bodies: a swinging door is `physics: &quot;kinematic&quot;` (moves AND blocks; the collider rides the leaf); write `rotation` (a slab: `feetPosition`) yourself, eased in `update()` ~300 °/s. Author closed, facing the doorway, `yaw: 0`; the open state on the door&#39;s own row: one door for every player.
+- Plate = TWO entities: an invisible trigger (`physics: { body: &quot;static&quot;, trigger: true }`, ~1.5 m tall so a body reliably enters) over the visible plate; `onTriggerEnter/Exit` → an `overlapping` map, down while ANY key stands; the link = one write on the other handle, `ctx.place.objects[&quot;gate-1&quot;].state.open = true`, read in the gate&#39;s own `update()`. `playSound` at `ctx.self.worldFeetPosition` on open AND close. Trap = the same trigger + `ctx.emit(&quot;impulse&quot;, { target: other.id, impulse })` on the body that entered (a kick a player&#39;s own motor cannot ease away; `hurt` is your own event, heard by the body&#39;s `ctx.on`) + a re-arm timer on its own state.
+- A flat coin (`cylinder`) is invisible edge-on → `rotation: { pitch: 90 }`; `ctx.after(0.12, &quot;vanish&quot;)` so the pop covers the disappearance. Lift = kinematic motion toward `stops[]`; the engine carries riders and releases them with momentum. Belt = `physics: { body: &quot;static&quot;, surfaceVelocity: [0, 0, 2] }`, m/s in its own frame. Dialog: the `press` ear copies the tree&#39;s node into the PLAYER&#39;s state and frees the pointer (`player.camera.pointerLock = false`); `update()` ends it (`player.camera = null`) when they walk off. Held thing = `jayzee({ parent: ctx.self.id, tags: [&quot;carried&quot;], attachment: { bone: &quot;RightHand&quot; } })` seated in its `fist` (→uploaded-models), read back as that row, never player state (a room change re-creates the body). Swap = `ctx.trade(mine, { with: theirBodyId, for: theirItemId })` from each side; both marks standing → both hands change in ONE tick, else nothing, never a lock, a timer, an escrow object.
+
+```js
+// scripts/door.js: one entity IS the door: a kinematic box, pivot [0, 0.5, 0.5] (the hinge = its left edge), tags [&quot;door&quot;, &quot;interactable&quot;], state { open: false, yaw: 0 }
+export const ears = {
+  press: (ctx, { by }) =&gt; {
+    const open = (ctx.self.state.open = !ctx.self.state.open);
+    ctx.emit(&quot;playSound&quot;, { clip: open ? &quot;cdn/sfx-door-creak-open.mp3&quot; : &quot;cdn/sfx-door-shut.mp3&quot;, position: ctx.self.worldFeetPosition, volume: 0.5 });
+  },
+};
+export function update(ctx, dt) {
+  // ease the yaw at 300 °/s toward 100 open / 0 shut; the collider swings too
+  const target = ctx.self.state.open ? 100 : 0,
+    yaw = ctx.self.state.yaw ?? 0;
+  if (yaw !== target) ctx.self.rotation = { yaw: (ctx.self.state.yaw = yaw + Math.sign(target - yaw) * Math.min(Math.abs(target - yaw), 300 * dt)) };
+}
+```
+
+&lt;api&gt;
+ears.press = (ctx, { by }) =&gt; … // the ear, declared; by = the presser&#39;s id; the press is ctx.emit(&quot;press&quot;, { by }, { to }) from the player&#39;s onInput on an interact action you declare
+ctx.trade(mine, { with, for } | null): { offered, id, give, with, for } | { offered: false, refused: &quot;unknown-target&quot; | &quot;not-held&quot; | &quot;not-mine&quot; | &quot;same-party&quot; | &quot;withdrawn&quot;, message } // both sides call it; null withdraws; the mark rides state.__trade { to, for, verdict }
+&lt;/api&gt;</pre>
+</main>
+<footer>Cleetus MANUAL / 5a30f94 / REBUILT ON EVERY PUSH TO MAIN</footer>
+</body>
+</html>

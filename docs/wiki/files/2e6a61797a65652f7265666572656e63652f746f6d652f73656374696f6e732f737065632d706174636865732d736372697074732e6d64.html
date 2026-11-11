@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>.jayzee/reference/tome/sections/spec-patches-scripts.md | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>.jayzee/reference/tome/sections/spec-patches-scripts.md</h1>
+<div class="meta"><span>1356 BYTES</span><span>25 LINES</span><span>MD</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/.jayzee/reference/tome/sections/spec-patches-scripts.md">RAW</a></div>
+</header>
+<main>
+
+<pre>## Spec Patches &amp; Scripts
+
+```ts
+ctx.place.atmosphere.*
+ctx.world.player.*
+ctx.world.camera.* = …
+ctx.world.inputs.* = …
+ctx.resolveControls(surface?: string): { surface: TouchSurfaceDef; diagnostics: Array&lt;{ code: string; message: string }&gt; }
+ctx.world.godMode.* = … (enabled · scope · behavior · brushes.&lt;id&gt; · movement.flySpeed · movement.sprintMultiplier · movement.verticalSpeed · camera.fov · visuals.disableFog: root = replaces, .leaf = merges, a brush is validated as the brush that will stand)
+ctx.world.ui.render = &#x27;scripts/hud.js&#x27;
+ctx.world.creatorTabs
+ctx.world.engine.* = …
+ctx.world.routing = { script, maxPlayers } | null (.maxPlayers = 8 writes one key; = null turns routing off)
+ctx.world.buyables.&lt;id&gt; = { name, priceSpoins, minSpoins?, imageUrl?, description?, onPurchase? }
+ctx.world.buyables.&lt;id&gt;.&lt;field&gt; = v
+delete ctx.world.buyables.&lt;id&gt; (= null removes too)
+ctx.world.buyables.&lt;id&gt;
+ctx.world.godMode.brushes.&lt;id&gt; = { paintScript, label, icon, color?, defaultRadius, defaultStrength, feather?, field? }
+ctx.world.godMode.brushes.&lt;id&gt;
+Object.keys(ctx.world.buyables) / &#x27;x&#x27; in ctx.world.buyables
+ctx.world.places.&lt;p&gt; = { mode, terrain, atmosphere, objects, … }
+ctx.place.&lt;dial&gt; = … / ctx.world.places.&lt;p&gt;.&lt;dial&gt;.&lt;leaf&gt; = …
+delete ctx.world.places.&lt;p&gt;
+ctx.world.defaultPlace = &#x27;lobby&#x27; | ctx.world.places.lobby
+```
+</pre>
+</main>
+<footer>Cleetus MANUAL / COVERAGE BUILD / PUBLISHED TO Jayzee/Cleetus DOCS WIKI</footer>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>.jayzee/reference/cli/types/ObjectView.txt | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>.jayzee/reference/cli/types/ObjectView.txt</h1>
+<div class="meta"><span>1108 BYTES</span><span>40 LINES</span><span>TXT</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/.jayzee/reference/cli/types/ObjectView.txt">RAW</a></div>
+</header>
+<main>
+
+<pre>ObjectView = ObjectQueryResult &amp; Omit&lt;Partial&lt;ObjectProperties&gt;, keyof ObjectQueryResult&gt; &amp; {
+  worldFeetPosition: Vec3
+  worldRotation: {
+    x: number
+    y: number
+    z: number
+    w: number
+    yaw: number
+    pitch: number
+    roll: number
+  }
+  place: string
+  audience: ObjectAudience
+  visibility: ObjectVisibility | null
+  scope: &quot;session&quot; | &quot;world&quot;
+  retention: ObjectRetention | &quot;current&quot;
+  lifetime?: number
+  template?: string
+  name: string | null
+  simulatedBy: string | null
+  sleeping: boolean | null
+  awake: boolean | null
+  measure: { readonly volume: number; readonly mass: number } | null
+  triangles: number | null
+  skeleton: BoneInfoResult
+  destination: { readonly onlineCount: number | null } | null
+  env: EnvView
+  velocity: Vec3
+  angularVelocity: Vec3
+  forces: Record&lt;string, ForceEntrySpec | null | undefined&gt;
+  controller: string | null
+  controlling: ObjectView | null
+  anim: Record&lt;string, unknown&gt;
+  behavior: string[]
+  behaviorHealth?: BehaviorHealth
+  spectating: boolean
+  gains?: Partial&lt;Record&lt;Bus, number&gt;&gt;
+  parent: ObjectView | null
+  children: ObjectView[]
+}
+</pre>
+</main>
+<footer>Cleetus MANUAL / COVERAGE BUILD / PUBLISHED TO Jayzee/Cleetus DOCS WIKI</footer>
+</body>
+</html>

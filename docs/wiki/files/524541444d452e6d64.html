@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>README.md | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>README.md</h1>
+<div class="meta"><span>553 BYTES</span><span>19 LINES</span><span>TEXT</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/README.md">RAW</a></div>
+</header>
+<main>
+
+<pre># Cleetus Manual
+
+A static manual built from this repository. Every committed file is shown as exact text, or as a hex dump when binary, with a raw copy and a commit history.
+
+Every push to main runs .github/workflows/publish.yml, which rebuilds the site, checks it, and deploys it to GitHub Pages.
+
+Some files are not published and are left out of the build.
+
+## Build locally
+
+    npm run build
+    npm run endpoints
+    npm run check
+
+The generated site is in site/. No npm packages are required.
+
+## Published URL
+
+https://anentrypoint.github.io/cleetus/
+</pre>
+</main>
+<footer>Cleetus MANUAL / 5a30f94 / REBUILT ON EVERY PUSH TO MAIN</footer>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>.jayzee/reference/cli/api-ObjectSpec.txt | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>.jayzee/reference/cli/api-ObjectSpec.txt</h1>
+<div class="meta"><span>401 BYTES</span><span>17 LINES</span><span>TXT</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/.jayzee/reference/cli/api-ObjectSpec.txt">RAW</a></div>
+</header>
+<main>
+
+<pre>ObjectSpec = ObjectProperties &amp; {
+  id?: string
+  tags?: string[]
+  place?: string
+  audience?: ObjectAudience
+  simulatedBy?: PlatformDial
+  visibility?: ObjectVisibility
+  lifetime?: number
+  scope?: &quot;session&quot; | &quot;world&quot;
+  retention?: ObjectRetention
+  state?: TomeState
+  behavior?: BehaviorRef
+  children?: ObjectSpec[]
+  parent?: string
+  template?: string
+  overrides?: Record&lt;string, unknown&gt;
+}
+</pre>
+</main>
+<footer>Cleetus MANUAL / COVERAGE BUILD / PUBLISHED TO Jayzee/Cleetus DOCS WIKI</footer>
+</body>
+</html>

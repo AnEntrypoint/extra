@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>.jayzee/reference/cli/types/CustomCameraDef.txt | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>.jayzee/reference/cli/types/CustomCameraDef.txt</h1>
+<div class="meta"><span>319 BYTES</span><span>10 LINES</span><span>TXT</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/.jayzee/reference/cli/types/CustomCameraDef.txt">RAW</a></div>
+</header>
+<main>
+
+<pre>CustomCameraDef = CameraCommon &amp; {
+  kind: &quot;custom&quot;
+  state?: TomeCameraState
+  orientation?: CameraOrientationDef
+  sensitivity?: number = 3
+  minPitch?: number
+  maxPitch?: number
+  pointerLock?: boolean | &quot;drag&quot; | { drag: &quot;left&quot; | &quot;right&quot; | &quot;middle&quot; } | { unadjustedMovement: boolean }
+  hideLocalPlayer?: boolean
+}
+</pre>
+</main>
+<footer>Cleetus MANUAL / COVERAGE BUILD / PUBLISHED TO Jayzee/Cleetus DOCS WIKI</footer>
+</body>
+</html>

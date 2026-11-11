@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>.jayzee/reference/http/sdk-agent-health.md | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>.jayzee/reference/http/sdk-agent-health.md</h1>
+<div class="meta"><span>685 BYTES</span><span>11 LINES</span><span>MD</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/.jayzee/reference/http/sdk-agent-health.md">RAW</a></div>
+</header>
+<main>
+
+<pre># GET /api/sdk/v1/{worldId}/agent/health
+
+- Method: GET
+- Path: /api/sdk/v1/{worldId}/agent/health
+- URL: https://www.jayzee.co/api/sdk/v1/26f64424-cc19-43af-a9c3-666e4559bb05/agent/health
+- Auth: required (Authorization: Bearer)
+- Status with Bearer: 200 (966 bytes)
+- Status without auth: 401, body `{&quot;error&quot;:&quot;Missing authorization header&quot;,&quot;signup&quot;:&quot;https://www.jayzee.co/api/agent/v1/signup&quot;,&quot;docs&quot;:&quot;https://www.jayzee.co/llms.txt&quot;}`
+- Top-level keys (200): note, readingsEverySeconds, rooms
+- Source: llms.txt says it reports &quot;each room&#x27;s server: tick against budget, memory, start; answers when exec cannot&quot;.
+- Raw: raw/sdk-agent-health.bearer.body, raw/sdk-agent-health.noauth.body
+</pre>
+</main>
+<footer>Cleetus MANUAL / COVERAGE BUILD / PUBLISHED TO Jayzee/Cleetus DOCS WIKI</footer>
+</body>
+</html>

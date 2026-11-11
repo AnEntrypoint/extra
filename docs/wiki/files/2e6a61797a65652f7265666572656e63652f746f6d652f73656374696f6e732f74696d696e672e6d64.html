@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>.jayzee/reference/tome/sections/timing.md | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>.jayzee/reference/tome/sections/timing.md</h1>
+<div class="meta"><span>477 BYTES</span><span>11 LINES</span><span>MD</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/.jayzee/reference/tome/sections/timing.md">RAW</a></div>
+</header>
+<main>
+
+<pre>## Timing
+
+after takes seconds and a named hook export; its callback receives (ctx, payload). cancel takes the returned timer id. now returns milliseconds.
+
+```ts
+dt · ctx.dtMs · ctx.gapMs
+ctx.after(seconds: number, hookExport: string, payload?: unknown): string
+ctx.cancel(id: string): void
+ctx.getTimers(ownerId?: string): Array&lt;{ id: number | string; ownerId: string; dueInTicks: number; dueInSeconds: number; engineOwned: boolean; hook?: string }&gt;
+ctx.world.settling
+```
+</pre>
+</main>
+<footer>Cleetus MANUAL / COVERAGE BUILD / PUBLISHED TO Jayzee/Cleetus DOCS WIKI</footer>
+</body>
+</html>

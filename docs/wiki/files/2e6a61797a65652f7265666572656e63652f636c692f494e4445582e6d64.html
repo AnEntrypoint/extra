@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>.jayzee/reference/cli/INDEX.md | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>.jayzee/reference/cli/INDEX.md</h1>
+<div class="meta"><span>5105 BYTES</span><span>136 LINES</span><span>MD</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/.jayzee/reference/cli/INDEX.md">RAW</a></div>
+</header>
+<main>
+
+<pre># jayzee CLI reference
+
+Captured from /workspace/game-6 with /config/.bun/bin/jayzee. Each file is the raw output of the command named. The api type shapes resolve against the clone engine in /workspace/cleetus/.jayzee/engine.yaml (semver 6.0.0).
+
+## Top level
+
+- `jayzee --help` -&gt; help.txt
+  - no flags; verbs: client, events, api, numbers, mod, git clone, preview, bring
+- `jayzee login --help` -&gt; login.txt (exit 2, prints &quot;unknown word --help&quot;, then the usage text)
+  - --invite &lt;sbk_…&gt; --username &lt;name&gt;
+  - --invite &lt;sbk_…&gt;
+  - --reconnect &lt;sbk_…&gt;
+  - --origin &lt;site&gt; (jayzee_ORIGIN)
+- `jayzee events --help` -&gt; events.txt
+  - --kind a,b (follow, build_request, build_invite, creator_comment, comment_reply, like, player_played, world_live, trending, staff_pick, agent_joined, chat_mention, ...)
+  - --world &lt;@user/name|appId&gt;
+  - --from &lt;username&gt;
+  - --unread
+  - --since &lt;cursor&gt;
+  - --exec &lt;cmd&gt;
+  - --once
+  - --origin &lt;site&gt;
+- `jayzee api --help` -&gt; api.txt
+  - --engine &lt;semver&gt;
+  - --origin &lt;site&gt;
+- `jayzee api` (no args, lists 305 types) -&gt; api-list.txt
+- `jayzee numbers --help` -&gt; numbers.txt
+  - --world &lt;@user/name|appId&gt;
+  - --json
+  - --origin &lt;site&gt;
+- `jayzee mod --help` -&gt; mod.txt (install, update, list and status each print this same text)
+  - install &lt;name&gt;[@&lt;version&gt;] -&gt; mod-install.txt
+  - update [&lt;name&gt;] --version &lt;x.y.z&gt; --changelog &lt;text&gt; -&gt; mod-update.txt
+  - list -&gt; mod-list.txt
+  - status [&lt;name&gt;] -&gt; mod-status.txt
+  - --world &lt;@user/name|worldId&gt; (all verbs)
+  - --origin &lt;site&gt; (all verbs)
+- `jayzee preview --help` -&gt; preview.txt
+  - [&lt;dir&gt;]
+  - --room &lt;name&gt;
+  - --render none|cpu|gpu
+  - --base &lt;commit&gt;
+  - --ttl &lt;s&gt; (default six hours)
+  - --origin &lt;site&gt;
+- `jayzee bring --help` -&gt; bring.txt
+  - &lt;folder&gt; (no flags)
+- `jayzee client --help` -&gt; client.txt (holds every client verb&#x27;s section)
+- `jayzee client exec --help` -&gt; client-exec.txt
+
+## jayzee client verbs
+
+Each `jayzee client &lt;verb&gt; --help` prints the whole client.txt, not a per-verb page. Each verb file below is that same text. client-exec.txt is the only verb-specific page.
+
+- join [&lt;@user/world&gt;] -&gt; client-join.txt
+  - --as &lt;name&gt;
+  - --body &lt;model-url | /cdn/ref&gt;
+  - --outfit-json &lt;path-or-inline&gt; (requires --body)
+  - --ttl &lt;s&gt;
+  - --ready-timeout &lt;ms&gt;
+  - --name &lt;session&gt;
+  - --room &lt;name&gt;
+  - --tester &lt;n&gt;
+  - --latency &lt;ms&gt; (with --tester)
+  - --render cpu|gpu|none
+  - --width &lt;pixels&gt;
+  - --height &lt;pixels&gt;
+  - --actor &lt;agentActorId&gt;
+  - --origin &lt;site&gt;
+  - --door &lt;play host&gt;
+  - --engine &lt;32hex&gt;
+- where [--name &lt;session&gt;] -&gt; client-where.txt
+  - --name &lt;session&gt;
+- players [--name &lt;session&gt;] -&gt; client-players.txt
+  - --name &lt;session&gt;
+- logs [--level log|warn|error] [--object &lt;id&gt;] [--limit &lt;n&gt;] [--name &lt;session&gt;] -&gt; client-logs.txt
+  - --level log|warn|error
+  - --object &lt;id&gt;
+  - --limit &lt;n&gt;
+  - --name &lt;session&gt;
+- exec &lt;file&gt; | -e &quot;&lt;source&gt;&quot; -&gt; client-exec.txt
+  - --realm game|browser
+  - --input &lt;json-file&gt;
+  - --out &lt;file&gt;
+  - --module
+  - --place &lt;id&gt;
+  - --persist | --read-only
+  - --name &lt;session&gt;
+- crossing [--name &lt;session&gt;] -&gt; client-crossing.txt
+  - --name &lt;session&gt;
+- prefetch --world &lt;id&gt; --manifest &lt;hash&gt; --hex &lt;32hex&gt; [--name &lt;session&gt;] -&gt; client-prefetch.txt
+  - --world &lt;id&gt; (required)
+  - --manifest &lt;hash&gt; (required)
+  - --hex &lt;32hex&gt; (required)
+  - --name &lt;session&gt;
+- install-browser -&gt; client-install-browser.txt
+  - no flags
+- hear [--scope &lt;name&gt;] [--wait &lt;s&gt;] [--name &lt;session&gt;] -&gt; client-hear.txt
+  - --scope &lt;name&gt;
+  - --wait &lt;s&gt;
+  - --name &lt;session&gt;
+- say &quot;&lt;words&gt;&quot; [--scope &lt;name&gt;] [--reply &lt;line&gt;] [--name &lt;session&gt;] -&gt; client-say.txt
+  - --scope &lt;name&gt;
+  - --reply &lt;line&gt;
+  - --name &lt;session&gt;
+- leave [--name &lt;session&gt;] -&gt; client-leave.txt
+  - --name &lt;session&gt;
+  - --tester &lt;n&gt; (named in the help text, not in the usage line)
+- status -&gt; client-status.txt
+  - no flags
+
+## api type shapes
+
+Each file is `jayzee api &lt;Type&gt;` output at engine 6.0.0.
+
+- ObjectSpec -&gt; api-ObjectSpec.txt (ObjectProperties &amp; id, tags, place, audience, simulatedBy, visibility, lifetime, scope, retention, state, behavior, children, parent, template, overrides)
+- PrimitiveSpec -&gt; api-PrimitiveSpec.txt (32 kinds)
+- ObjectPropertiesSpec -&gt; api-ObjectPropertiesSpec.txt (identical to ObjectProperties; the name resolves as an alias)
+- ObjectProperties -&gt; api-ObjectProperties.txt
+- InputsDef -&gt; api-InputsDef.txt
+- AtmosphereDef -&gt; api-AtmosphereDef.txt
+- GameSpec -&gt; api-GameSpec.txt
+- ObjectDef -&gt; api-ObjectDef.txt
+- PlaceDef -&gt; api-PlaceDef.txt
+- RoomSpec -&gt; api-RoomSpec.txt
+- UIDef -&gt; api-UIDef.txt
+- PlayerDef -&gt; api-PlayerDef.txt
+
+## Gaps
+
+- The client verb help text is one shared page (client.txt). No per-verb help is printed.
+- The mod verbs print one shared page (mod.txt).
+- `jayzee login --help` exits 2 with &quot;unknown word --help&quot; and then prints usage.
+- The api listing marks no type as core. The five named types and seven extras were fetched.
+- The api listing has 305 types. Only the 12 above were fetched.
+- ObjectPropertiesSpec resolves to ObjectProperties, not to a separate type.
+- No `jayzee api &lt;Type&gt; &lt;kind&gt;` or `jayzee api &lt;Type&gt;.&lt;key&gt;` forms were run.
+</pre>
+</main>
+<footer>Cleetus MANUAL / COVERAGE BUILD / PUBLISHED TO Jayzee/Cleetus DOCS WIKI</footer>
+</body>
+</html>

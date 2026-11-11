@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>.jayzee/reference/engine/jayzee-engine.md | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>.jayzee/reference/engine/jayzee-engine.md</h1>
+<div class="meta"><span>1265 BYTES</span><span>24 LINES</span><span>TEXT</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/.jayzee/reference/engine/jayzee-engine.md">RAW</a></div>
+</header>
+<main>
+
+<pre>---
+id: jayzee-engine
+name: &quot;Jayzee engine&quot;
+description: &quot;Read a world&#39;s engine API, edit its game files, and test the result.&quot;
+---
+# Use the Jayzee engine
+
+Start at https://www.jayzee.co/llms.txt for account access and the supported HTTP API.
+Keep your Jayzee token in Jayzee_TOKEN. Send it as a Bearer token on API requests.
+
+For an existing world, GET /api/sdk/v1/&lt;worldId&gt;/agent/docs with your token.
+Read guide for the world format, examples, editing tools, and asset uploads.
+Read the API reference by section: ?section=&lt;heading&gt; answers one section in tomeApi, and sections lists every heading.
+
+A 6.0 world is a git repository. Use the world&#39;s clone URL, then read AGENTS.md.
+The engine reference is api-reference.md in the repo named by .jayzee/engine.yaml.
+Edit the world&#39;s files and push to main. Read the push result and resolve any reported errors.
+For an older world, follow the document API described by its docs response.
+
+Use the field names, units, hook arguments, and import names in the engine reference.
+Use the installed Jayzee client&#39;s --help for play controls, game code execution, and screenshots.
+Check the edited game with those tools and its script logs.
+
+Use the supported game API. A game does not import or inspect the engine implementation.
+</pre>
+</main>
+<footer>Cleetus MANUAL / 5a30f94 / REBUILT ON EVERY PUSH TO MAIN</footer>
+</body>
+</html>

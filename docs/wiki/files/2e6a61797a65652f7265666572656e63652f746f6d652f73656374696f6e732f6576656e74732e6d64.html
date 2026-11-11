@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>.jayzee/reference/tome/sections/events.md | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>.jayzee/reference/tome/sections/events.md</h1>
+<div class="meta"><span>356 BYTES</span><span>7 LINES</span><span>MD</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/.jayzee/reference/tome/sections/events.md">RAW</a></div>
+</header>
+<main>
+
+<pre>## Events
+
+```ts
+ctx.emit&lt;K extends ActName&gt;(name: K, payload: ActPayloads[K], options?: { audience?: Audience }): string | void
+ctx.emit(name: string, payload?: unknown, options?: { place?: string; to?: string; via?: string; audience?: Audience }): string | void
+ctx.on(name: string, handler: TomeEventHandler, options?: TomeEventOptions): () =&gt; void
+```
+</pre>
+</main>
+<footer>Cleetus MANUAL / COVERAGE BUILD / PUBLISHED TO Jayzee/Cleetus DOCS WIKI</footer>
+</body>
+</html>

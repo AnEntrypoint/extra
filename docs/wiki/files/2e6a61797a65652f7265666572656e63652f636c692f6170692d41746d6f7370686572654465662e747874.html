@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>.jayzee/reference/cli/api-AtmosphereDef.txt | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>.jayzee/reference/cli/api-AtmosphereDef.txt</h1>
+<div class="meta"><span>2869 BYTES</span><span>25 LINES</span><span>TXT</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/.jayzee/reference/cli/api-AtmosphereDef.txt">RAW</a></div>
+</header>
+<main>
+
+<pre>AtmosphereDef = {
+  sky?:
+    | { kind: &quot;color&quot;, color: Color, params?: Record&lt;string, num | bool | [num | [num, ...], ...] | { size: [x, y], data: [num, ...] }&gt; }
+    | { kind: &quot;gradient&quot;, horizon: Color, zenith: Color, params?: Record&lt;string, num | bool | [num | [num, ...], ...] | { size: [x, y], data: [num, ...] }&gt; }
+    | { kind: &quot;rayleigh&quot;, turbidity?: num, rayleighCoefficient?: num, mieCoefficient?: num, mieDirectionalG?: num, skyColor?: Color, rayleighColor?: Color, mieColor?: Color, groundAlbedo?: Color, horizonTint?: Color, zenithTint?: Color, saturation?: 0-2, sunDiskSize?: num, sunDiskIntensity?: num, params?: Record&lt;string, num | bool | [num | [num, ...], ...] | { size: [x, y], data: [num, ...] }&gt; }
+    | { kind: &quot;realistic&quot;, model: &quot;rayleigh&quot;, turbidity?: num, rayleighCoefficient?: num, mieCoefficient?: num, mieDirectionalG?: num, skyColor?: Color, rayleighColor?: Color, mieColor?: Color, groundAlbedo?: Color, horizonTint?: Color, zenithTint?: Color, saturation?: 0-2, sunDiskSize?: num, sunDiskIntensity?: num, params?: Record&lt;string, num | bool | [num | [num, ...], ...] | { size: [x, y], data: [num, ...] }&gt; }
+    | { kind: &quot;realistic&quot;, model: &quot;hosek&quot;, turbidity?: num, rayleighColor?: Color, mieColor?: Color, groundAlbedo?: Color, horizonTint?: Color, zenithTint?: Color, saturation?: 0-2, sunDiskSize?: num, sunDiskIntensity?: num, params?: Record&lt;string, num | bool | [num | [num, ...], ...] | { size: [x, y], data: [num, ...] }&gt; },
+  ground?: bool,
+  fog?:
+    | { kind: &quot;linear&quot;, color?: Color | null, near: num, far: num, height?: { base?, falloff } }
+    | { kind: &quot;exp2&quot;, color?: Color | null, density: num, height?: { base?, falloff } },
+  sun?: { rotation?: { pitch?, yaw? }, orbit?: { noonYaw?, maxElevation? }, light?: { color?: Color, intensity?: num, shadow?: bool | { enabled?: bool, softness?: num } } },
+  ambient?: { light?: { color?: Color, intensity?: num } },
+  hemisphere?: { skyColor?: Color, groundColor?: Color, intensity?: num },
+  environmentIntensity?: num,
+  clouds?: { enabled?: bool, density?: 0-1, altitude?: num, thickness?: num, speed?: num, color?: Color, opacity?: 0-1, shadow?: 0-1, texture?: &quot;/cdn/value.&lt;sha&gt;.png&quot; },
+  stars?: { enabled?: bool, density?: 0-1, brightness?: 0-2, size?: num, twinkle?: bool, color?: Color, milkyWay?: 0-1 },
+  moon?: { enabled?: bool, phase?: 0-1, size?: num, color?: Color, intensity?: num },
+  wind?: { direction?, speed? },
+  wet?: 0-1,
+  rain?: 0-1,
+  timeOfDay?: 0-24,
+  cycle?: { periodMs: num, epoch: num, bands?: [[fromHour, speed], ...] } | { frozen: 0-24 } | { lengthSeconds, startTime?, anchorHour?, anchorTick? },
+  look?: { script?: &quot;scripts/file.js&quot;, filter?: &quot;pixel&quot; | &quot;linear&quot;, toneMapping?: &quot;aces&quot; | &quot;neutral&quot; | &quot;none&quot; | &quot;linear&quot; | &quot;reinhard&quot; | &quot;cineon&quot; | &quot;agx&quot;, params?: Record&lt;string, num | bool | str&gt;, cube?: { parent: str, eye?: [x, y, z] } },
+}
+</pre>
+</main>
+<footer>Cleetus MANUAL / COVERAGE BUILD / PUBLISHED TO Jayzee/Cleetus DOCS WIKI</footer>
+</body>
+</html>

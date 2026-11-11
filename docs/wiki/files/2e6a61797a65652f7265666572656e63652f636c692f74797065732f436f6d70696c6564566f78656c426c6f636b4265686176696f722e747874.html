@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>.jayzee/reference/cli/types/CompiledVoxelBlockBehavior.txt | Cleetus Manual</title>
+<link rel="stylesheet" href="../../docs.css">
+</head>
+<body>
+<header>
+<h1>.jayzee/reference/cli/types/CompiledVoxelBlockBehavior.txt</h1>
+<div class="meta"><span>746 BYTES</span><span>14 LINES</span><span>TXT</span></div>
+<div class="links"><a href="../index.html">INDEX</a><a href="../raw/.jayzee/reference/cli/types/CompiledVoxelBlockBehavior.txt">RAW</a></div>
+</header>
+<main>
+
+<pre>CompiledVoxelBlockBehavior = {
+  stateSchema?: StateSchema
+  geometry?: (state: Record&lt;string, number&gt;) =&gt; unknown
+  collider?: (state: Record&lt;string, number&gt;) =&gt; unknown
+  raycastShape?: (state: Record&lt;string, number&gt;) =&gt; unknown
+  surface?: (state: Record&lt;string, number&gt;) =&gt; unknown
+  onInteract?: (block: VoxelBlockApi, player?: ObjectQueryResult | null) =&gt; void
+  onBreak?: (block: VoxelBlockApi) =&gt; void
+  onOverlapEnter?: (block: VoxelBlockApi, entity: ObjectQueryResult) =&gt; void
+  onOverlapExit?: (block: VoxelBlockApi, entity: ObjectQueryResult) =&gt; void
+  onRandomTick?: (block: VoxelBlockApi) =&gt; void
+  onScheduledTick?: (block: VoxelBlockApi) =&gt; void
+  onNeighborChanged?: (block: VoxelBlockApi, change: VoxelNeighborChange) =&gt; void
+}
+</pre>
+</main>
+<footer>Cleetus MANUAL / COVERAGE BUILD / PUBLISHED TO Jayzee/Cleetus DOCS WIKI</footer>
+</body>
+</html>

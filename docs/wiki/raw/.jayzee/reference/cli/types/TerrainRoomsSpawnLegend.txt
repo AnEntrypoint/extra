@@ -1,0 +1,6 @@
+TerrainRoomsJayzeeLegend = {
+  type: "jayzee"
+  albedo: string
+  normal?: string
+  roughness?: string
+}
