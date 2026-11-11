@@ -1,0 +1,5 @@
+{"seq":1,"t":"2026-11-08T07:11:24.641Z","mono":0.019,"inFlight":0,"kind":"start","mode":"mcp","maxSteps":50,"maxInflight":8,"taskFrom":"session prompt"}
+{"seq":2,"t":"2026-11-08T07:11:24.642Z","mono":0.39,"inFlight":0,"kind":"tools","sha":"e6760a40a5d63491c92c5652903566ecf080a6ca3e1245861c0938986e6250f8","count":3}
+{"seq":3,"t":"2026-11-08T07:21:24.944Z","mono":600302.594,"inFlight":0,"kind":"mcp-server","server":"playwriter","state":"down","reason":"stopped by gm","stderr":""}
+{"seq":4,"t":"2026-11-08T07:21:24.945Z","mono":600303.559,"inFlight":0,"kind":"mcp-server","server":"playwriter","state":"failed","error":"initialize timed out after 600000 ms","stderr":""}
+{"seq":5,"t":"2026-11-08T08:01:22.117Z","mono":2997475.886,"inFlight":0,"kind":"paused","reason":"the supervisor ended stdin"}
