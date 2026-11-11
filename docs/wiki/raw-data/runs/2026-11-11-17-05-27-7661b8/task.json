@@ -1,0 +1,10 @@
+{
+  "id": "2026-11-11-17-05-27-7661b8",
+  "mode": "mcp",
+  "task": "",
+  "witness": "Finish only with a witness: one string that states the evidence (command output, file content or query result) showing the task is done.",
+  "workspace": "/workspace/cleetus",
+  "maxSteps": 50,
+  "maxInflight": 8,
+  "createdAt": "2026-11-11T17:05:27.326Z"
+}

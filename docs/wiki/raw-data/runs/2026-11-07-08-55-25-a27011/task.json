@@ -1,0 +1,10 @@
+{
+  "id": "2026-11-07-08-55-25-a27011",
+  "mode": "mcp",
+  "task": "cleetus standby after 6c39a16: read-only head/status check, report ranked remaining work and witness to orchestrator, act only on new assigned work or a head move; no edits, commits, or pushes.",
+  "witness": "Finish only with a witness: one string that states the evidence (command output, file content or query result) showing the task is done.",
+  "workspace": "/workspace/cleetus",
+  "maxSteps": 50,
+  "maxInflight": 8,
+  "createdAt": "2026-11-07T08:55:25.203Z"
+}

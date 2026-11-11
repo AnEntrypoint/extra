@@ -1,0 +1,10 @@
+{
+  "id": "2026-11-08-14-00-23-941256",
+  "mode": "mcp",
+  "task": "Separate the release pin from the api-reference hash: restore sha256 in .jayzee/engine/engine.yaml to its pre-1542dcb value, add api_reference_sha256 field in engine.yaml and engine INDEX, make update-engine-pin.py ignore the new field, witness the read path and sha256sum match, run npm run check and check-open-items, commit as lanmower no trailers, push origin main, confirm git log origin/main -1.",
+  "witness": "Finish only with a witness: one string that states the evidence (command output, file content or query result) showing the task is done.",
+  "workspace": "/workspace/cleetus",
+  "maxSteps": 50,
+  "maxInflight": 8,
+  "createdAt": "2026-11-08T14:00:23.789Z"
+}

@@ -1,0 +1,10 @@
+{
+  "id": "2026-11-08-14-17-51-7cab4a",
+  "mode": "mcp",
+  "task": "Close the release-commit check as out of scope in docs/OPEN-ITEMS.md: OPEN-023 resolution says release pin b5d10e37 is a reference value not verified against upstream (out of scope); remove the open item for the release-commit subject; keep item 5 API hash result; run check-open-items and npm run check; commit as lanmower no trailers; push origin main; confirm git log origin/main -1.",
+  "witness": "Finish only with a witness: one string that states the evidence (command output, file content or query result) showing the task is done.",
+  "workspace": "/workspace/cleetus",
+  "maxSteps": 50,
+  "maxInflight": 8,
+  "createdAt": "2026-11-08T14:17:51.560Z"
+}
