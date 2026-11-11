@@ -1,0 +1,1 @@
+.jayzee/reference/cli/types/TerrainRoomsSpawnLegend.txt
