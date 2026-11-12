@@ -434,3 +434,62 @@ Starting state: local main and origin/main at c6b058b, no tracked file modified.
 - The six untracked top-level entries stay untracked.
 - The 38 state-changing controls stay unclicked.
 - No writes into /workspace/savi or /workspace/jayzee.
+
+## Games pages over HTTP, and the gh-pages publish (2026-11-12, Phase B of the 25bc03a pass)
+
+### Browser stop
+
+- The browser crawl of the games stopped after 12 pages: the browser closed during the 13th page. Rerunning one game per playwriter call still failed (46 errors). The owner then asked for HTTP.
+- Stopped by PID, with no browser.close() call: the job wrapper 136023, its playwriter session 189909, the Chromium main process 158873 and its helpers, all on the project profile /workspace/extra/.playwriter/browser-profile. No browser call was made after that.
+- Not touched, because this pass did not start them: playwriter-ws-server 88264, the gate processes 2531, 21949 and 168964, and the npx processes 9567, 10302 and 10309.
+
+### Games: count, source and method
+
+- The Games section lists 53 cards once its panel is scrolled. They resolve to 52 distinct game addresses. One address appears on two cards, and the manifest keeps the first.
+- The figure of 148 in the Phase A lines above was the number of click targets the first recapture made across these 53 cards (wiki-tools/recapture/states/toolbox/summary-10.json, clicked 148). It was not a count of game pages. The wiki covers the 52 pages the section holds.
+- Each address comes from the card's onclick, openLink('https://spawn.co/@creator/slug'), read from the page and never clicked.
+- Each address was fetched once with curl (HTTP GET, --compressed, a desktop user agent). 52 of 52 returned 200 with a closing html tag. curl-impersonate was not needed, because plain curl was not blocked. The HTML as served was read. Scripts were not run, so the pages have no scroll stage.
+- Files: wiki-tools/fetch-games.mjs, wiki-tools/recapture/games/cards.json, manifest.json and 001.json to 052.json. The raw HTML is in /tmp/extra-scratch/html and is not committed. The 12 browser captures from the first run were replaced by the HTTP captures.
+- Item 9 of the ranked list above (the game pages were not opened) is resolved by this pass.
+
+### Witnesses
+
+- Fetch: node wiki-tools/fetch-games.mjs printed {"planned":52,"statusCounts":{"200":52},"errorCount":0,"errors":[]}.
+- Capture totals over the 52 pages: 2901 text blocks, 541 headings, 104 links, 276 images, 52 code or JSON blocks, 417 controls, 2986 scripts and 416 styles not kept.
+- Generate: node wiki-tools/gen-recapture.mjs ran, and node wiki-tools/gen-games.mjs printed {"games":52,"pages":"/workspace/extra/wiki/reference-game-16/games","index":"recapture-games.md"}.
+- Build: node wiki-tools/build.mjs wiki wiki-site printed "built 150 pages into wiki-site".
+- Link check: node wiki-tools/check-links.mjs printed "pages: 150  internal links checked: 23738  broken: 0".
+- Token scan: a node scan of wiki, wiki-site and wiki-tools/recapture/games for the token patterns in the gate found 355 files and 0 with a token-shaped value. Only file names and counts were printed.
+- Pick a genre: wiki/reference-game-16/recapture-pick-a-genre.md is identical to 25bc03a (git diff gives 0 lines).
+
+### Fixes made in this pass
+
+- The removal of the Games entry from the section list in 7cf7be4 shifted the index of Pick a genre. Its page then read the Games state files and was emptied. Fixed by b287ebd (the list keeps Games, and the loop skips it), d37b723 (restores the Pick a genre page and its index row), and 3801dda (rebuilds the site).
+- gen-games.mjs reads the planned count from the manifest, so the count is 52 and not a fixed 148 (in 428063b).
+- Pages that were not scrolled say so. The Not captured list gives the script and style counts and any fetch error (in 428063b).
+
+### Publish
+
+- gh-pages: commit 8273f8b, on top of origin gh-pages 5ba0be6. Its tree is wiki-site with a .nojekyll file added, as the existing tree has. An earlier local commit d82eaae was built before the Pick a genre fix and was never pushed. It is not in the publish.
+- Pages settings, read with gh api repos/AnEntrypoint/extra/pages: status built, source branch gh-pages at path /, html_url https://anentrypoint.github.io/extra/, https_enforced true.
+- The owner cleared the gh-pages publish in the message of this run. That clearance is recorded here, and it is the clearance item 4 above was waiting for.
+
+### Render check
+
+- No browser render was run in this pass, because the owner asked for no browser where HTTP can answer. The built site is checked by the link check (23738 internal links, 0 broken) and by the token scan above. The earlier render witness, for the 98-page build, is not repeated.
+
+### Commits
+
+- Phase A: 349b3b7, 9fdaf56, 7cf7be4, 0968612, d49989b.
+- Phase B: f6d8a87 (fetch and captures), 428063b (generators and table of contents), 710005c (wiki pages), 143787c (site), b287ebd (recapture generator index fix), d37b723 (Pick a genre page restored), 3801dda (site rebuilt), and this record.
+
+### game-16
+
+- Unchanged: .gitignore and .spawn/engine.yaml are not committed, and game-16 is not pushed. Owner decision, as in Phase A.
+
+### Held, not run
+
+- History rewrite and force push: not run.
+- The six untracked top-level entries: untouched.
+- The 38 state-changing controls: not clicked. The HTTP pass clicked nothing.
+- No writes into /workspace/savi or /workspace/jayzee.
