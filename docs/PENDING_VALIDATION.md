@@ -341,3 +341,25 @@ Phase A is the edit and the local commit. The rebuild, link check and push are r
 ### gm playwriter gate
 
 - gm playwriter_execute could not reach its gate on port 9611 (connect ECONNREFUSED; the executor kept a stale browser endpoint). The live check of the walk control was run through the playwriter CLI session instead (playwriter-project session, then -s 4 -e), as in the second pass. The stale gate from run c6fa69 was stopped by PID.
+
+
+## Untracked entries and token check after the reboot (2026-11-12, reboot pass)
+
+Starting state: local main at 40bec3f, equal to origin/main. No tracked file was modified. The six entries were untracked top-level paths: .gitignore, .local/, game-16/, runs/, scripts/ and site/.
+
+### Decision for each entry
+
+- site/: saved GitHub page captures and assets. The token scrub of this session (216 authenticity_token values emptied, 18 files) was made here. The directory is untracked by design, so the scrub is in no commit.
+- .local/: capture output, drift reports, logs and engine files. Untracked by design. The API captures in it hold no token value (see the grep below).
+- runs/: the gm run records of this session. Untracked by design.
+- game-16/: a nested git repository with its own .git. It is not part of this repository.
+- scripts/: check-extraction-complete.py and check-extraction-drift.py, extraction tooling. Not committed in this pass; committing it is an owner decision.
+- .gitignore: one line, .playwriter/, which keeps the browser profile and its cookie store out of git. Left untracked; committing it is an owner decision.
+
+Nothing was committed for the six entries, because none of the planned changes is in a tracked file. The wiki changes were committed earlier (b948a02 and f8454c8).
+
+### Token check
+
+- Grep over the working tree, tracked and untracked, excluding .git, with the patterns in runs/2026-11-12-16-08-34-698b36/token-patterns.txt: GitHub authenticity_token, csrf-token and upload_token values of 40 or more characters; named session cookies with a value of 16 or more characters; frame grant values; invite keys with a value of 40 or more characters; sak_ tokens; Bearer values. Result: 0 files.
+- The grep was checked against a synthetic positive line before the run, and it matched.
+- Git history is not changed by this pass. Four old commits (31463f6, c3abe99, d0c93b1 and 2bbbca0) still hold GitHub authenticity_token values, and d0c93b1 is on origin/main. History removal stays with the owner.
