@@ -268,3 +268,42 @@ The live page https://www.spawn.co/@lanmower/game-16@dev was captured again with
 - The 148 Games entries were each clicked once. None brought up anything in the toolbox frame that the swept state did not already hold. A game's own page was not opened.
 - One click, on the arrow link Walk into the animation hall in Animations, was made before the travel verbs were added to the skip list. The toolbox frame was gone on the next check, and the page was reloaded. What that click did in the live world was not verified.
 - Hidden text (inline script, style, and the schema.org data on the host) is captured as text, with whitespace collapsed by the extractor.
+
+
+## Token removal and walk-control check (2026-11-12, second pass)
+
+This pass closes the two open items of the earlier REPORT: the Spawn token and invite values in the workspace, and the live state after the walk-control click. Phase A is the edit and the local commit. Phase B (wiki-site rebuild, link check, push) is recorded at the end of this section once it has run.
+
+### Changes
+
+- Redacted the play-frame grant query values frameGrant and heldClaim in wiki-tools/recapture/states/play/load.json, wiki/jayzee/sources-captures.md and wiki/jayzee/sources-index.md. Keys and all other text are unchanged.
+- wiki-tools/gen-recapture.mjs: adds WALK_NOTE, written on the Animations page under Not captured, and replaces the index sentence about the walk click with the live-check result.
+- Regenerated wiki/reference-game-16/recapture-animations.md (one new paragraph) and wiki/reference-game-16/recapture-index.md (the walk-click sentence). No other generated page changed.
+- Redacted the same grant values in untracked run files: runs/2026-11-12-12-38-01-c6fa69/recapture/frames/all-frames.json and runs/2026-11-12-13-28-26-57c23e/log.jsonl. The log edit keeps each value's length, so byte offsets stay the same.
+- Redacted the same grant values in one gitignored Chromium cache entry under .playwriter/browser-profile, keeping its length.
+- Phase B rebuilds wiki-site/jayzee/sources-captures.html and sources-index.html, which carry the same grant values in the committed copy.
+- Not changed: the saved GitHub page embeds in the untracked site/docs/wiki/raw/sources/ files (authenticity_token fields). They are GitHub form tokens, not Spawn values, and were left as found.
+
+### Spawn token and invite search
+
+- Scope: every file under /workspace/extra, tracked and untracked, read with binary-safe grep and a Node scan. Patterns: sak_ tokens, Bearer values, token, key, secret, invite and grant fields with a value, and the frameGrant and heldClaim query values.
+- No sak_ token, Bearer value or invite code exists in any file.
+- .local/api-me.json, .local/api/me.json and .local/drift/me.body hold doors.token and doors.invites as endpoint URLs, and doors.invite_accept as a template with a placeholder. These are public endpoints, not credentials, so they were left as they are. .local/api/invites.meta.json has redacted set to true. .local/api/invites.json is an empty list.
+- The grant values are the only Spawn credentials found. They were in tracked files and in the untracked run files and cache listed above.
+- Git history still holds them: commits d78bf0b, 5ba0be6 and 5025920 (5025920 is on origin/main). Removing them from history needs a rewrite and a force push, which were not done.
+- Correction: the secrets scan in the first pass did not look for query-string grants. It reported no token-valued fields in wiki/, wiki-tools/ and the run files, and that was wrong for these files. The earlier open-gap bullet about the walk click is superseded by the check below.
+
+### Walk control, live check
+
+- Method: a fresh load of https://www.spawn.co/@lanmower/game-16@dev through a playwriter CLI session. The control was read with DOM queries and a CDP listener lookup. It was not clicked. The Animations tab was clicked once to open its section.
+- The control is an anchor with the text "Walk into the animation hall", an inline handler sendAction('hall') and no href. CDP reports one click listener, the inline handler.
+- So a click sends a hall action to the world. It does not follow a link.
+- The play session after a fresh load is the same world as the first baseline (same world path and same address parameter). The page did not move to another world.
+- What the hall action does on the server is not visible on the page, because the play frame is a canvas. Its effect on the server is not verified.
+- The one effect recorded at the time of the earlier click was the toolbox frame detaching. A fresh load shows the toolbox again. So the click did change something on the page at that time; it did not change nothing.
+
+### Witnesses
+
+- Live probe: toolboxFound true; one A element with onclick sendAction('hall') and href null; one click listener; cdpError null.
+- Redaction: 30 grant values replaced across the files above. The verification scan found no grant value left in any file. Its only other hits are the grep patterns in the run log's own tool-call records.
+- Generator: node wiki-tools/gen-recapture.mjs printed pages 14. Besides the redacted files, git status shows only the two regenerated recapture pages.

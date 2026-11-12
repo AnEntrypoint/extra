@@ -29,7 +29,7 @@ The run 2026-11-07-10-41-32-040293 recorded the same fields in its witness (seq 
 
 ### Section 3: 4ed031bf3c55.txt (175,388 bytes, 468 lines, HTML)
 
-The capture is the HTML shell of the session page at https://play.spawn.co/session/world%3A4b37bdd8-06b1-42e4-980a-443e48806c1f%40live?address=%40lanmower%2Fdeepfall&link=world%3A4b37bdd806b142e4980a443e48806c1f%40live%2Froom%3Amain&bootPack=narrow&frameGrant=off&siteSave=on&siteRoad=page&spawn-page=ca1da515. Lines were read by structure, and the long minified lines were read by their first characters and by whole-file search (see [sources-overview.md](sources-overview.md)).
+The capture is the HTML shell of the session page at https://play.spawn.co/session/world%3A4b37bdd8-06b1-42e4-980a-443e48806c1f%40live?address=%40lanmower%2Fdeepfall&link=world%3A4b37bdd806b142e4980a443e48806c1f%40live%2Froom%3Amain&bootPack=narrow&frameGrant=REDACTED&siteSave=on&siteRoad=page&spawn-page=ca1da515. Lines were read by structure, and the long minified lines were read by their first characters and by whole-file search (see [sources-overview.md](sources-overview.md)).
 
 3.1 Document head (lines 1 to 7). The document is HTML5. The base href is "https://play.spawn.co/v4/client/pool/", and the title is "Spawn". The viewport disables zoom (maximum-scale=1, user-scalable=no).
 

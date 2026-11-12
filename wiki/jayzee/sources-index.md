@@ -22,8 +22,8 @@ Entry 2: c0a1026ad961
 
 Entry 3: 4ed031bf3c55
 
-- Line: {"url":"https://play.spawn.co/session/world%3A4b37bdd8-06b1-42e4-980a-443e48806c1f%40live?address=%40lanmower%2Fdeepfall&link=world%3A4b37bdd806b142e4980a443e48806c1f%40live%2Froom%3Amain&bootPack=narrow&frameGrant=off&siteSave=on&siteRoad=page&spawn-page=ca1da515","id":"4ed031bf3c55","at":"2026-11-07T10:45:12.270Z"}
-- url: https://play.spawn.co/session/world%3A4b37bdd8-06b1-42e4-980a-443e48806c1f%40live?address=%40lanmower%2Fdeepfall&link=world%3A4b37bdd806b142e4980a443e48806c1f%40live%2Froom%3Amain&bootPack=narrow&frameGrant=off&siteSave=on&siteRoad=page&spawn-page=ca1da515
+- Line: {"url":"https://play.spawn.co/session/world%3A4b37bdd8-06b1-42e4-980a-443e48806c1f%40live?address=%40lanmower%2Fdeepfall&link=world%3A4b37bdd806b142e4980a443e48806c1f%40live%2Froom%3Amain&bootPack=narrow&frameGrant=REDACTED&siteSave=on&siteRoad=page&spawn-page=ca1da515","id":"4ed031bf3c55","at":"2026-11-07T10:45:12.270Z"}
+- url: https://play.spawn.co/session/world%3A4b37bdd8-06b1-42e4-980a-443e48806c1f%40live?address=%40lanmower%2Fdeepfall&link=world%3A4b37bdd806b142e4980a443e48806c1f%40live%2Froom%3Amain&bootPack=narrow&frameGrant=REDACTED&siteSave=on&siteRoad=page&spawn-page=ca1da515
 - id: 4ed031bf3c55 (capture file 4ed031bf3c55.txt)
 - at: 2026-11-07T10:45:12.270Z (2026-11-07, 10:45:12 UTC)
 - Capture content: the HTML shell of the session page. See [sources-captures.md](sources-captures.md), section 3.

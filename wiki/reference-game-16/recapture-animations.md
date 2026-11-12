@@ -31,6 +31,7 @@ Controls clicked: 0 of 0 planned controls in this section, out of 0 candidates f
 Controls not clicked by policy: 1. Their labels name an action that changes state or sends something, so they were left alone: "Walk into the animation hall →".
 Controls that could not be found again after a retry: 0. Errors: 0.
 
+The control Walk into the animation hall was clicked once, before the travel verbs were added to the skip list. A live check on 2026-11-12, on a fresh load and without clicking it again, found it is an anchor with no href. Its inline click handler sends a hall action, so a click sends that action instead of following a link. The play session world id and address match the first baseline. What the hall action does on the server is not visible on the page, because the play frame is a canvas.
 Clicks made: 0. Clicks that brought up content not in the swept state: 0. The rest brought up nothing new.
 
 
