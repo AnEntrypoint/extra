@@ -391,3 +391,12 @@ Starting state: local main and origin/main at c6b058b, no tracked file modified.
 
 - wiki/jayzee/runs-findings.md lines 45 and 108: the cited path /workspace/savi/.spawn/update-engine-pin.py is marked as absent from this workspace on 2026-11-12.
 - docs/PENDING_VALIDATION.md: this section.
+
+
+### Phase B witnesses (2026-11-12, ranked work pass)
+
+- Build: node wiki-tools/build.mjs wiki wiki-site printed "built 98 pages into wiki-site", exit 0, 169 ms. The rebuild changed one generated page, wiki-site/jayzee/runs-findings.html.
+- Link check: node wiki-tools/check-links.mjs printed "pages: 98  internal links checked: 10477  broken: 0", exit 0, 145 ms.
+- Render, item 1: a playwriter CLI session loaded file:///workspace/extra/wiki-site/index.html. Status 200, title "Project wiki: how this wiki is organised · Wiki", the same first heading, 104 links, 0 broken images, 0 page or console errors. The screenshot matches wiki-tools/wiki-site-home.png in layout and content. The scrollbar thumb is shorter in the new render, so the built page is slightly taller than when the reference was taken.
+- Citation, item 2: wiki/jayzee/runs-findings.md has both citations marked absent on 2026-11-12, and the built page carries the same annotation.
+- Processes: the CLI session's browser and controller exited when the call ended. A process comparison against a snapshot taken before the call found no new process. Pre-existing processes belonging to other sessions were not touched.
