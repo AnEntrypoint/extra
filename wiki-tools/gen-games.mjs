@@ -6,7 +6,6 @@ const ROOT = '/workspace/extra';
 const GAMES = join(ROOT, 'wiki-tools', 'recapture', 'games');
 const OUT = join(ROOT, 'wiki', 'reference-game-16');
 const PAGES = join(OUT, 'games');
-const EXPECTED = 148;
 const LIVE = 'https://www.spawn.co/@lanmower/game-16@dev';
 const KINDS = ['blocks', 'headings', 'links', 'images', 'code'];
 const SECRET = [
@@ -75,7 +74,7 @@ const gamePage = (g, c, load, after) => {
   return [
     '# Game ' + pad(g.n) + ': ' + name,
     '',
-    'The game ' + name + ' in the Games section of the live game page ' + LIVE + '. Its address was opened once and read, with no control clicked and nothing signed in or saved.',
+    'The game ' + name + ' in the Games section of the live game page ' + LIVE + '. Its address was fetched once over HTTP with curl and the HTML as served was read, with no control clicked and nothing signed in or saved.',
     '',
     '## Items on the page',
     '',
@@ -89,7 +88,7 @@ const gamePage = (g, c, load, after) => {
     '',
     '## Loaded after a scroll',
     '',
-    hasAny(after) ? renderItems(after) : 'None found after the scroll.',
+    c.scroll ? (hasAny(after) ? renderItems(after) : 'None found after the scroll.') : 'Not read: the page was fetched as HTML over HTTP, which does not run its scripts, so there was no scroll.',
     '',
     '## Loaded after a click',
     '',
@@ -99,6 +98,8 @@ const gamePage = (g, c, load, after) => {
     '',
     '- Address opened: \u0060' + g.url + '\u0060. Address after redirects: \u0060' + (c.final ?? g.url) + '\u0060. HTTP status: ' + (c.status ?? 'not recorded') + '.',
     '- Controls on the page: ' + (c.controls ?? 0) + '. None clicked.',
+    '- Script and style bodies not kept: ' + (c.skipped?.scripts ?? 0) + ' scripts and ' + (c.skipped?.styles ?? 0) + ' styles. JSON data blocks in the page are kept as code blocks.',
+    ...(c.error ? ['- Fetch error: ' + c.error + '.'] : []),
     '- Anything the page loads only when a game is played is not captured, because play was not started.',
     '',
     '## Sources',
@@ -114,7 +115,7 @@ const indexPage = (rows) => {
   return [
     '# Games: the ' + EXPECTED + ' game pages in the Games section',
     '',
-    'The Games section of the live game page ' + LIVE + ' lists ' + EXPECTED + ' games. Each game\u2019s address was read from its card and opened once, read-only, with the playwriter setup inside gm. No control on any game page was clicked. Each game has its own page, listed below.',
+    'The Games section of the live game page ' + LIVE + ' lists ' + EXPECTED + ' games. Each game\u2019s address was read from its card and fetched once over HTTP with curl, read-only, the HTML as served. No control on any game page was clicked. Each game has its own page, listed below.',
     '',
     '## Totals',
     '',
@@ -122,7 +123,7 @@ const indexPage = (rows) => {
     '| --- | --- |',
     '| Games listed | ' + rows.length + ' |',
     '| Pages written | ' + rows.length + ' |',
-    '| Opened with HTTP 200 | ' + rows.filter((r) => r.status === 200).length + ' |',
+    '| Fetched with HTTP 200 | ' + rows.filter((r) => r.status === 200).length + ' |',
     ...['Headings', 'Visible text blocks', 'Hidden text blocks', 'Links', 'Images', 'Code or data blocks'].map((k) => '| ' + k + ' | ' + sum(k) + ' |'),
     '',
     '## Games',
@@ -146,8 +147,9 @@ const indexPage = (rows) => {
 };
 
 const manifest = readJson(join(GAMES, 'manifest.json'));
+const EXPECTED = manifest.planned;
 const games = [...manifest.games].sort((a, b) => a.n - b.n);
-if (games.length !== EXPECTED) throw new Error('manifest lists ' + games.length + ' games, expected ' + EXPECTED);
+if (!Number.isInteger(EXPECTED) || games.length !== EXPECTED) throw new Error('manifest lists ' + games.length + ' games, planned ' + EXPECTED);
 games.forEach((g, i) => { if (g.n !== i + 1) throw new Error('game numbers must run 1 to ' + EXPECTED + ', found ' + g.n + ' at position ' + (i + 1)); });
 
 rmSync(PAGES, { recursive: true, force: true });

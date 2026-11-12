@@ -98,7 +98,7 @@ Every page of the wiki, grouped by project. Each entry links to the page; the fi
 - [Host page: text and links not in the first capture](reference-game-16/recapture-host.md)
 - [Play frame: text not in the capture](reference-game-16/recapture-play-frame.md)
 - [Game page section: Overview: text not in the capture](reference-game-16/recapture-overview.md)
-- [Games: the 148 game pages in the Games section](reference-game-16/recapture-games.md)
+- [Games: the 52 game pages in the Games section](reference-game-16/recapture-games.md)
 - [Game page section: Starters: text not in the capture](reference-game-16/recapture-starters.md)
 - [Game page section: Skills: text not in the capture](reference-game-16/recapture-skills.md)
 - [Game page section: Animations: text not in the capture](reference-game-16/recapture-animations.md)
