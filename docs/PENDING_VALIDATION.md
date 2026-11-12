@@ -307,3 +307,13 @@ This pass closes the two open items of the earlier REPORT: the Spawn token and i
 - Live probe: toolboxFound true; one A element with onclick sendAction('hall') and href null; one click listener; cdpError null.
 - Redaction: 30 grant values replaced across the files above. The verification scan found no grant value left in any file. Its only other hits are the grep patterns in the run log's own tool-call records.
 - Generator: node wiki-tools/gen-recapture.mjs printed pages 14. Besides the redacted files, git status shows only the two regenerated recapture pages.
+
+
+### Phase B
+
+- Build: node wiki-tools/build.mjs wiki wiki-site printed "built 98 pages into wiki-site", exit 0.
+- Link check: node wiki-tools/check-links.mjs printed "pages: 98  internal links checked: 10477  broken: 0", exit 0.
+- Rebuilt pages with changes: wiki-site/jayzee/sources-captures.html and sources-index.html (grant values replaced), and wiki-site/reference-game-16/recapture-animations.html and recapture-index.html (walk note).
+- Processes stopped by PID: 3605443 (playwriter gate started by this session's run c6fa69; it no longer listened on port 9611) and its child 3605459. Both were gone after a plain kill. Not touched: 2791557 and 2791574 (jayzee project gate), 929361 and 929382 (another gm session), 307851 (playwriter-ws-server). No browser from this pass was left running.
+- Grant check after the rebuild: 30 placeholders. The only other matches are grep patterns in the tool-call records of this run's log (events 261 to 269).
+- The push of origin main is recorded in the run report, not here, because this record is committed before the push.
