@@ -1,0 +1,51 @@
+[
+ {
+  "frameName": "",
+  "frameUrl": "https://www.spawn.co/@lanmower/game-16@dev",
+  "visibleTextLength": 129,
+  "blocks": 34,
+  "canvases": 0
+ },
+ {
+  "frameName": "spawn-frame-mwdjshdxhqu1-1",
+  "frameUrl": "https://play.spawn.co/session/world%3A02e941af-9db1-4d86-b1fa-f7bca802c4b1%40dev?address=%",
+  "visibleTextLength": null,
+  "blocks": 0,
+  "canvases": 1
+ },
+ {
+  "frameName": "spawn-frame-witness",
+  "frameUrl": "https://www.spawn.co/kernel-witness",
+  "visibleTextLength": null,
+  "blocks": 0,
+  "canvases": 0
+ },
+ {
+  "frameName": "",
+  "frameUrl": "",
+  "visibleTextLength": null,
+  "blocks": 0,
+  "canvases": 0
+ },
+ {
+  "frameName": "spawn-ui:1",
+  "frameUrl": "https://r1wed1ugv-playco.spawnfile.io/v4/client/pool/tome-ui/authored-realm-kept-824f2ec94",
+  "visibleTextLength": 8771,
+  "blocks": 239,
+  "canvases": 1
+ },
+ {
+  "frameName": "spawn-frame-witness-host",
+  "frameUrl": "https://r1wed1ugv-playco.spawnfile.io/kernel-witness-host",
+  "visibleTextLength": null,
+  "blocks": 0,
+  "canvases": 0
+ },
+ {
+  "frameName": "spawn-frame-witness",
+  "frameUrl": "https://play.spawn.co/kernel-witness",
+  "visibleTextLength": null,
+  "blocks": 0,
+  "canvases": 0
+ }
+]

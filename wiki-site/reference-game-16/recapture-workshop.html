@@ -1,0 +1,1116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Game page section: Workshop: text not in the capture · Wiki</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="topbar">
+<div class="topbar-inner">
+<a class="brand" href="../index.html">wi<span>ki</span></a>
+<nav class="pills"><a href="../cleetus/ci-workflows.html">cleetus</a><a href="../index/cdn-inventory.html">index</a><a href="../jayzee/maps-glb-urls.html">jayzee</a><a class="active" href="../reference-game-16/coverage.html">reference-game-16</a></nav>
+</div>
+</header>
+<div class="layout">
+<nav class="side">
+<h3>Start</h3><ul>
+<li><a href="../index.html">Project wiki: how this wiki is organised</a></li>
+<li><a href="../toc.html">Table of contents</a></li>
+</ul>
+<h3>cleetus</h3><ul>
+<li><a href="../cleetus/ci-workflows.html">CI workflows and npm scripts</a></li>
+<li><a href="../cleetus/docs-folder.html">The docs folder</a></li>
+<li><a href="../cleetus/endpoints.html">Endpoints</a></li>
+<li><a href="../cleetus/engine-decisions.html">Engine decisions: why the jayzee engine notes are shaped as they are</a></li>
+<li><a href="../cleetus/engine-overview.html">Engine overview: the jayzee engine notes (cleetus workspace)</a></li>
+<li><a href="../cleetus/evidence-claims.html">Evidence claims</a></li>
+<li><a href="../cleetus/evidence-overview.html">Evidence overview</a></li>
+<li><a href="../cleetus/featureset-part-1.html">Featureset part 1: cleetus counts, spoint surface, and the relayed streams</a></li>
+<li><a href="../cleetus/featureset-part-2.html">Featureset part 2: streams 12 to 25 and the src/sdk modules</a></li>
+<li><a href="../cleetus/featureset-part-3.html">Featureset part 3: streams 26 to 34</a></li>
+<li><a href="../cleetus/featureset-part-4.html">Featureset part 4: streams 35 to 45, client/core rendering modules</a></li>
+<li><a href="../cleetus/featureset-part-5.html">Featureset part 5: streams 45 to 55, client/core modules</a></li>
+<li><a href="../cleetus/featureset-part-6.html">Featureset part 6: streams 56 to 58 and the improvement opportunities</a></li>
+<li><a href="../cleetus/featureset-part-7.html">Featureset part 7: improvement candidates from streams 43 to 58</a></li>
+<li><a href="../cleetus/featureset-part-8.html">Featureset part 8: agent and room candidates, session store, bake pins, learning record and terrain</a></li>
+<li><a href="../cleetus/featureset-part-9.html">FEATURESET part 9: render, editor, HUD, XR, packages, static serving and server surface</a></li>
+<li><a href="../cleetus/jayzee-gaps.html">Jayzee implementation gaps</a></li>
+<li><a href="../cleetus/manual-build.html">Manual build and check</a></li>
+<li><a href="../cleetus/manual-worklist.html">Manual worklist</a></li>
+<li><a href="../cleetus/morluto-ci-findings.html">Morluto rea PR 9234 CI findings</a></li>
+<li><a href="../cleetus/netcode.html">Netcode</a></li>
+<li><a href="../cleetus/open-gaps.html">Open gaps across the cleetus repository</a></li>
+<li><a href="../cleetus/open-items.html">Open items register</a></li>
+<li><a href="../cleetus/overview.html">Overview of cleetus</a></li>
+<li><a href="../cleetus/parity.html">Parity</a></li>
+<li><a href="../cleetus/runs-overview.html">Runs overview</a></li>
+<li><a href="../cleetus/site-overview.html">Site overview (built manual output)</a></li>
+<li><a href="../cleetus/sources-overview.html">Sources overview</a></li>
+<li><a href="../cleetus/state-and-tooling.html">State and tooling</a></li>
+</ul>
+<h3>index</h3><ul>
+<li><a href="../index/cdn-inventory.html">CDN inventory and manifests</a></li>
+<li><a href="../index/discovery.html">Discovery evidence</a></li>
+<li><a href="../index/exhaustive-index.html">Exhaustive world and GLB index</a></li>
+<li><a href="../index/extra-docs.html">extra docs: the Jayzee game API reference copy</a></li>
+<li><a href="../index/extra-worlds.html">extra world lists and feeds</a></li>
+<li><a href="../index/open-gaps.html">Open gaps in the index</a></li>
+<li><a href="../index/overview.html">Overview of the index project</a></li>
+<li><a href="../index/provenance.html">Provenance manifests</a></li>
+<li><a href="../index/savi-index.html">cleetus index</a></li>
+<li><a href="../index/spawn-index.html">jayzee index</a></li>
+<li><a href="../index/tree/tree-borick.html">The borick/ directory</a></li>
+<li><a href="../index/tree/tree-build-scripts.html">Build, check and discovery scripts, and the patch files</a></li>
+<li><a href="../index/tree/tree-extra.html">The extra/ directory</a></li>
+<li><a href="../index/tree/tree-indexes.html">The index files: COMPLETE_INDEX, EXTRA_WORLD_INDEX and INDEX</a></li>
+<li><a href="../index/tree/tree-open-gaps.html">Open gaps in the top-level index, its directories and the browser state</a></li>
+<li><a href="../index/tree/tree-overview.html">Top-level layout of the jayzee tree</a></li>
+<li><a href="../index/tree/tree-provenance.html">provenance.sha256.txt and the other provenance manifests</a></li>
+<li><a href="../index/tree/tree-savi-directory.html">The cleetus/ directory (old name: savi)</a></li>
+<li><a href="../index/tree/tree-spawn-directory.html">The jayzee/ directory (old name: spawn)</a></li>
+</ul>
+<h3>jayzee</h3><ul>
+<li><a href="../jayzee/maps-glb-urls.html">jayzee GLB URL list (glb-urls-all.tsv)</a></li>
+<li><a href="../jayzee/maps-head-status.html">jayzee world head status lists</a></li>
+<li><a href="../jayzee/maps-learning-record-part-1.html">jayzee learning record, part 1 (denominators, corpus, keys, escapes, bucket rule, 410)</a></li>
+<li><a href="../jayzee/maps-learning-record-part-2.html">jayzee learning record, part 2 (error keys, non-CDN refs, open items, name decode, /cdn/ attempt)</a></li>
+<li><a href="../jayzee/maps-learning-record.html">jayzee learning record</a></li>
+<li><a href="../jayzee/maps-noncdn-refs.html">jayzee non-CDN data references (unverified-noncdn-refs.tsv)</a></li>
+<li><a href="../jayzee/maps-open-gaps.html">jayzee maps open gaps</a></li>
+<li><a href="../jayzee/maps-overview.html">jayzee maps directory overview</a></li>
+<li><a href="../jayzee/maps-root-worlds.html">jayzee root-linked worlds map</a></li>
+<li><a href="../jayzee/maps-witness-inputs.html">jayzee witness input directories and their sha256 checks</a></li>
+<li><a href="../jayzee/maps-witness.html">jayzee witness scripts</a></li>
+<li><a href="../jayzee/runs-findings.html">Runs findings and decisions</a></li>
+<li><a href="../jayzee/runs-open-gaps.html">Runs open gaps and failures</a></li>
+<li><a href="../jayzee/runs-overview.html">Runs overview</a></li>
+<li><a href="../jayzee/runs-timeline.html">Runs timeline</a></li>
+<li><a href="../jayzee/sources-captures.html">Sources captures</a></li>
+<li><a href="../jayzee/sources-index.html">Sources index</a></li>
+<li><a href="../jayzee/sources-overview.html">Sources overview</a></li>
+</ul>
+<h3>reference-game-16</h3><ul>
+<li><a href="../reference-game-16/coverage.html">Capture coverage: game page</a></li>
+<li><a href="../reference-game-16/download-process.html">Download process: from the join instructions to a working site</a></li>
+<li><a href="../reference-game-16/page-00-overview.html">Game page section: Overview</a></li>
+<li><a href="../reference-game-16/page-01-starters.html">Game page section: Starters</a></li>
+<li><a href="../reference-game-16/page-02-skills.html">Game page section: Skills</a></li>
+<li><a href="../reference-game-16/page-03-animations.html">Game page section: Animations</a></li>
+<li><a href="../reference-game-16/page-04-sound-art.html">Game page section: Sound Art</a></li>
+<li><a href="../reference-game-16/page-05-workshop.html">Game page section: Workshop</a></li>
+<li><a href="../reference-game-16/page-06-engine.html">Game page section: Engine</a></li>
+<li><a href="../reference-game-16/page-07-reference.html">Game page section: Reference</a></li>
+<li><a href="../reference-game-16/page-08-shapes.html">Game page section: Shapes</a></li>
+<li><a href="../reference-game-16/page-09-mods.html">Game page section: Mods</a></li>
+<li><a href="../reference-game-16/page-10-games.html">Game page section: Games</a></li>
+<li><a href="../reference-game-16/page-11-pick-a-genre.html">Game page section: Pick A Genre</a></li>
+<li><a href="../reference-game-16/page-host.html">Host page: Untitled game (@lanmower/game-16)</a></li>
+<li><a href="../reference-game-16/recapture-animations.html">Game page section: Animations: text not in the capture</a></li>
+<li><a href="../reference-game-16/recapture-engine.html">Game page section: Engine: text not in the capture</a></li>
+<li><a href="../reference-game-16/recapture-games.html">Game page section: Games: text not in the capture</a></li>
+<li><a href="../reference-game-16/recapture-host.html">Host page: text and links not in the first capture</a></li>
+<li><a href="../reference-game-16/recapture-index.html">Recapture index: what the game page holds outside the first capture</a></li>
+<li><a href="../reference-game-16/recapture-mods.html">Game page section: Mods: text not in the capture</a></li>
+<li><a href="../reference-game-16/recapture-overview.html">Game page section: Overview: text not in the capture</a></li>
+<li><a href="../reference-game-16/recapture-pick-a-genre.html">Game page section: Pick A Genre: text not in the capture</a></li>
+<li><a href="../reference-game-16/recapture-play-frame.html">Play frame: text not in the capture</a></li>
+<li><a href="../reference-game-16/recapture-reference.html">Game page section: Reference: text not in the capture</a></li>
+<li><a href="../reference-game-16/recapture-shapes.html">Game page section: Shapes: text not in the capture</a></li>
+<li><a href="../reference-game-16/recapture-skills.html">Game page section: Skills: text not in the capture</a></li>
+<li><a href="../reference-game-16/recapture-sound-art.html">Game page section: Sound Art: text not in the capture</a></li>
+<li><a href="../reference-game-16/recapture-starters.html">Game page section: Starters: text not in the capture</a></li>
+<li><a class="current" href="../reference-game-16/recapture-workshop.html">Game page section: Workshop: text not in the capture</a></li>
+</ul>
+</nav>
+<main>
+<span class="eyebrow">reference-game-16</span>
+<h1 id="game-page-section-workshop-text-not-in-the-capture">Game page section: Workshop: text not in the capture</h1>
+<p>The Workshop section of the toolbox, read on load, after a scroll, and after a click on each control that does not change state. Only text, headings, links, images and code that the first capture does not hold are listed.</p>
+<h2 id="items-not-in-the-capture">Items not in the capture</h2>
+<div class="table-wrap"><table><thead><tr><th>Item</th><th>Count</th></tr></thead><tbody><tr><td>Headings</td><td>9</td></tr><tr><td>Visible text blocks</td><td>697</td></tr><tr><td>Hidden text blocks</td><td>0</td></tr><tr><td>Links</td><td>0</td></tr><tr><td>Images</td><td>0</td></tr><tr><td>Code or data blocks</td><td>87</td></tr></tbody></table></div>
+<h2 id="present-on-load-not-in-the-capture">Present on load, not in the capture</h2>
+<p>None found on load.</p>
+<h2 id="loaded-after-a-scroll-not-in-the-capture">Loaded after a scroll, not in the capture</h2>
+<p>None found after the scroll.</p>
+<h2 id="loaded-after-a-click-not-in-the-capture">Loaded after a click, not in the capture</h2>
+<h3 id="after-clicking-read-the-workshop-at-a-glance-the-making-bench-behind-every-build-blender-models-painted-pictures-sound-and-voices-uploaded-models-video-playtests-and-helper-wisps-and-when-each-is-reached-for">After clicking &quot;read → The workshop at a glance The making bench behind every build: Blender models, painted pictures, sound and voices, uploaded models, video, playtests and helper wisps, and when each is reached for.&quot;</h3>
+<ul><li>H3: What it makes</li><li>H3: How a request becomes a result</li><li>H3: What it looks like in a game</li><li>H3: The commands</li><li>H3: Limits and good habits</li><li>H3: Related skills</li></ul>
+<p>← the workshop</p>
+<p>What it makes</p>
+<p>Every game on Jayzee is made of things a player sees, hears and touches: a lantern on a post, a shop icon, the thud of a door, a song that swells at the boss gate, a knight that walks and swings. The workshop is the bench where those things are made. You never have to open it yourself: you describe what you want in chat, and Cleetus (or a wisp, one of her helpers) reaches for the right tool, makes the piece, checks it with an eye, and stands it in your world.</p>
+<p>The bench holds a handful of tools, each for a different kind of thing:</p>
+<p>Blender builds hero models: a shrine, a ship, a statue, a creature or a character that needs real sculpted shape and its own rig. Each model is one script that can be re-run and edited, so a change is a small edit, not a rebuild from scratch.</p>
+<p>Painted pictures come from jayzee paint: icons, posters, portraits, mock screens, wall paintings, and seamless textures for floors and walls.</p>
+<p>jayzee paint</p>
+<p>Sound, music and voices are named into being. The filename is the prompt: a footstep on wet gravel, a calm guitar loop, a gruff soldier saying a line.</p>
+<p>Sound, music and voices</p>
+<p>Uploaded models are .glb files you hand over (or ones a wisp exports). They arrive with a spec sheet, then get dressed: textures on each named surface, a lantern in a hand, a cape that moves with the body.</p>
+<p>Video makes short scenes from words or a still: a cutscene, a trailer cut from real play, a looping backdrop, a portrait that speaks one line.</p>
+<p>Playtests put a real body in your game: Cleetus's own body can join as a player, and Jev can drive the keys while she watches, so a jump that is too tight gets found before your players find it.</p>
+<p>Wisps and weaves split a big build into lanes that run at once, each wisp with its own copy of the world.</p>
+<p>Wisps and weaves</p>
+<p>Files and versions: every save is a commit in your world's history, and one undo reverts one.</p>
+<p>Files and versions</p>
+<p>How a request becomes a result</p>
+<p>You say what you want, in your own words: &quot;a mossy stone well in the village square&quot;, &quot;a coin pickup sound&quot;, &quot;an icon for the fire spell&quot;.</p>
+<p>You say what you want</p>
+<p>Cleetus picks the tool. A box-like prop or a building a player walks into is usually built as scripted geometry right in the world. An organic or hero shape, a creature, a carved statue, goes to Blender. A flat picture goes to paint. A sound is named. A clip of motion comes from the animation library.</p>
+<p>Cleetus picks the tool.</p>
+<p>The piece is made and proofed. A model renders a proof picture from several sides before it is exported; a picture is looked at; a sound is placed and heard in context.</p>
+<p>The piece is made and proofed.</p>
+<p>It is uploaded. Only jayzee upload puts a made file into the world; it prints the asset's address.</p>
+<p>It is uploaded.</p>
+<p>jayzee upload</p>
+<p>It stands in the game, finished. The bar the workshop holds itself to: a delivery arrives finished, never a grey model or a web address in chat. A model stands in the world with its material slots wearing textures; a sprite sheet is cut, tiled and on a sprite; a sound plays from the thing that makes it.</p>
+<p>It stands in the game, finished.</p>
+<p>One more look, one more fix. What the look shows gets fixed in one more pass. A building a body walks into earns a second round; a small prop does not.</p>
+<p>One more look, one more fix.</p>
+<p>What it looks like in a game</p>
+<p>A cozy farm game: a Blender-built windmill with a sagging sail, textured wood on its planks slot; painted crop icons in the inventory; a soft wind ambience under a fingerpicked guitar track; a farmer who says &quot;Morning! Seeds are on the cart.&quot;</p>
+<p>planks</p>
+<p>A dungeon crawler: a knight model you uploaded, dressed with a cape and a torch in its right fist; a hit sound placed at the exact point of each strike; a short painted poster for each boss.</p>
+<p>A racing game: a trailer cut from several shots of real play, each close where the move lands; a crowd roar that sounds as a kart passes.</p>
+<p>The commands</p>
+<p>These are the bench's verbs. You never need to type them, but seeing them helps you know what to ask for.</p>
+<p>jayzee upload &lt;file&gt; [--name &lt;display&gt;] [--full-size] jayzee paint &quot;&lt;what&gt;&quot; --size 1024x1024 jayzee voice &quot;&lt;line with [sighs] tags&gt;&quot; --voice &lt;name&gt; jayzee video &quot;&lt;what happens&gt;&quot; jayzee clip import &lt;file&gt; --name &quot;&lt;words&gt;&quot; [--loop] jayzee see &lt;file…&gt; jayzee ls --assets</p>
+<p>A playtest in its own room, so a race it starts is not yours:</p>
+<p>spawn client join --tester 1 --room test jayzee jev start &quot;&lt;goal&gt;&quot; jayzee jev stop</p>
+<p>Limits and good habits</p>
+<p>Name the thing, not the tool. &quot;A cracked marble statue missing a chunk of shoulder&quot; is a better ask than &quot;make a Blender model&quot;. The details you name are what ends up in the piece.</p>
+<p>Name the thing, not the tool.</p>
+<p>Reuse before remaking. Every upload of your world is listed in its assets (ctx.world.assets, or jayzee ls --assets), so an earlier lantern is found by name and placed again, never rebuilt or uploaded twice.</p>
+<p>Reuse before remaking.</p>
+<p>jayzee ls --assets</p>
+<p>A sound's name is permanent. Once a sound name has been made, it keeps its first sound. A changed sound wants a new filename.</p>
+<p>A sound's name is permanent.</p>
+<p>Perf comes first. The bench budgets triangles: most things a game shows are under 20k each, a finished game plays about half a million in frame, a heavy scene one to two million.</p>
+<p>Perf comes first.</p>
+<p>Big builds go wide. A large ask splits into wisps working at the same time; ask for the lanes you want if you have a picture of how the work divides.</p>
+<p>Big builds go wide.</p>
+<p>Play it, not just look at it. A playtest finds what a picture hides: a door too narrow, a jump too long.</p>
+<p>Play it, not just look at it.</p>
+<p>Volume is Jayzee's. Players set their own volume in Jayzee's settings; a game carries one mute at most, and the mix itself is made in the game's gains.</p>
+<p>Volume is Jayzee's.</p>
+<p>Related skills</p>
+<p>workshop, blender-game-assets, uploaded-models, animations, audio, video, game-ui, weaves, debugging, publish, geometry</p>
+<p>next: Blender: hero models →</p>
+<h4 id="block-1">Block 1</h4>
+<pre><code class="language-`text">spawn paint</code></pre>
+<h4 id="block-2">Block 2</h4>
+<pre><code class="language-`text">spawn upload</code></pre>
+<h4 id="block-3">Block 3</h4>
+<pre><code class="language-`text">planks</code></pre>
+<h4 id="block-4">Block 4</h4>
+<pre><code class="language-`text">spawn upload &lt;file&gt; [--name &lt;display&gt;] [--full-size]
+spawn paint &quot;&lt;what&gt;&quot; --size 1024x1024
+spawn voice &quot;&lt;line with [sighs] tags&gt;&quot; --voice &lt;name&gt;
+spawn video &quot;&lt;what happens&gt;&quot;
+spawn clip import &lt;file&gt; --name &quot;&lt;words&gt;&quot; [--loop]
+spawn see &lt;file…&gt;
+spawn ls --assets</code></pre>
+<h4 id="block-5">Block 5</h4>
+<pre><code class="language-`text">spawn client join --tester 1 --room test
+spawn jev start &quot;&lt;goal&gt;&quot;
+spawn jev stop</code></pre>
+<h4 id="block-6">Block 6</h4>
+<pre><code class="language-`text">spawn ls --assets</code></pre>
+<h3 id="after-clicking-read-blender-hero-models-blender-builds-the-pieces-that-need-real-shape-a-statue-with-centuries-eaten-off-its-rim-a-sagging-rope-bridge-a-creature-or-a-rigged-character-each-from-one-re-runnable-script">After clicking &quot;read → Blender: hero models Blender builds the pieces that need real shape: a statue with centuries eaten off its rim, a sagging rope bridge, a creature or a rigged character, each from one re-runnable script.&quot;</h3>
+<p>Blender is the bench's sculptor. It makes the pieces that a simple box or a few shapes cannot: organic forms, carved and weathered surfaces, and characters that move on their own skeleton. The bar is that a Blender prop reads as made from the player's feet:</p>
+<p>a crate with bitten edges and a web of cracks across one plank,</p>
+<p>a statue missing a chunk of shoulder, with centuries eaten off its rim,</p>
+<p>a bridge whose cables sag between the posts,</p>
+<p>a shrine roof sitting on its walls with no daylight showing at the gable.</p>
+<p>It also makes characters: one skin that reads as its art style's character, never a pile of parts. A face and hands with anatomy, armour seated on the shoulders it was fitted to, cloth hanging between the legs, a weapon gripped in the hand, all moving on the character's own rig. A realistic human body starts from a body generator with dials for age, weight, muscle and height; a toon person takes its art style's own road instead.</p>
+<p>Most of a world's buildings and simple props are built straight in the world as scripted geometry. Blender is reached for when the piece is a hero, an organic shape, or something with damage and wear that has to be real geometry.</p>
+<p>Plan the whole piece first. Its parts and sizes, and its material slots named for the surface each will wear in the game: marble, brass, planks.</p>
+<p>Plan the whole piece first.</p>
+<p>marble</p>
+<p>brass</p>
+<p>One script builds it. A model is its script, art/&lt;model&gt;/build.py in your world's files. It runs from source through every edit to the export, whole. A later change edits that same script and re-runs it, never a new script layered over the last export. This is why a Blender model can always be changed: the recipe is kept.</p>
+<p>One script builds it.</p>
+<p>art/&lt;model&gt;/build.py</p>
+<p>Damage and detail are real geometry. Cracks, holes, chipped chunks, worn edges, ropes along an edge and cables that sag are applied as tools on the mesh, so they cast real shadows.</p>
+<p>Damage and detail are real geometry.</p>
+<p>A proof render. The script renders proof pictures: a three-quarter view, the back and the top, each lit from its own camera's side so a hole in the back cannot hide in shadow. Three 656-pixel views sit side by side in one picture that gets looked at.</p>
+<p>A proof render.</p>
+<p>Look, fix, re-run. What the proof shows gets fixed in the script, and the script runs again.</p>
+<p>Look, fix, re-run.</p>
+<p>Export and upload. The model exports as a .glb and jayzee upload puts it in the world.</p>
+<p>Export and upload.</p>
+<p>Placed and dressed. It stands in your world with a texture on every named slot. A prop is done once placed, not when its still is perfect. A building a body walks into gets a second look-and-fix round once placed.</p>
+<p>Placed and dressed.</p>
+<p>For a character the order adds steps: a contract first (its height, which way it faces, its triangle budget), the body measured, armour and cloth fitted as their own pieces, a skeleton with standard bone names, the weights proven at an extreme pose (knee bent, arm raised) before any texture, then each clip keyed: Idle, Walk, Run, Attack, Hit, Death. When several characters share a family, one hero is made and approved first, and the others share its pipeline, never one body scaled and recoloured.</p>
+<p>A ruined temple in an adventure game: columns with chipped capitals, a fallen lintel cracked through, moss on the low stones. Each column wears a stone texture on its stone slot and the cracks catch the sun.</p>
+<p>A ruined temple in an adventure game:</p>
+<p>stone</p>
+<p>A pirate ship: hull planks, ropes running down from the mast along real edge paths, a sail with slack in it. The ship is the hero piece the player stands beside, so it earns more triangles and its edges read from a metre.</p>
+<p>A pirate ship:</p>
+<p>A boss creature: an animal mesh rigged by automatic weights, with every clip keyed, idle included, so it never stands like a statue.</p>
+<p>A boss creature:</p>
+<p>A breakable wall: exported twice, whole and shattered into pieces, so the game swaps one for the other at the blow.</p>
+<p>A breakable wall:</p>
+<p>The proof loop renders and shows the picture in one go:</p>
+<p>blender -b --factory-startup --python-exit-code 1 --python art/&lt;model&gt;/build.py &amp;&amp; jayzee see &lt;model&gt;/proof.png</p>
+<p>Inside the script, the render and the export:</p>
+<p>scene.render.engine = &quot;CYCLES&quot; bpy.ops.export_scene.gltf(filepath=..., export_apply=True)</p>
+<p>Applying damage tools to a mesh, by tool name and its settings:</p>
+<p>qm.qm_apply(wall, &quot;chunks&quot;, selection_attr=&quot;dmg&quot;) qm.qm_apply(wall, &quot;cracks&quot;, Scale=4.0)</p>
+<p>The damage tools on hand: cracks (an engraved web), holes (noise gouges), chunks (pieces bitten out), edge_wear, cables (sag between regions), panel_cut, hull_cut, edges_to_ropes, selection_to_box, selection_to_cylinder.</p>
+<p>Putting it in the world, then dressing each slot:</p>
+<p>jayzee upload &lt;model&gt;.glb</p>
+<p>model: { id: &quot;/cdn/value.&lt;sha&gt;.glb&quot;, forward: &quot;+z&quot;, materials: { stone: { texture: &quot;cdn/texture-&lt;what&gt;.png&quot; } } }</p>
+<p>Budget triangles against three anchors. Most things a game shows are under 20k triangles each; a finished game plays about half a million in frame; a heavy scene one to two million. A hero piece the player stands beside earns more.</p>
+<p>Budget triangles against three anchors.</p>
+<p>Junctions are seated, never touching. Roof slabs sink about 2 cm into the roof's slope; trim, sills and chimneys sit at least 3 cm into their walls; armour plates sit at least 2 cm into their host. Overlap makes gaps impossible; exact contact leaves hairline gaps.</p>
+<p>Junctions are seated, never touching.</p>
+<p>Name every slot. Each material slot is named for its surface so the game can mount its own texture there. Placeholder grey outside a flat style is unfinished.</p>
+<p>Name every slot.</p>
+<p>Facing. Blender's front exports facing +Z, so a thing built with a face is placed with forward: &quot;+z&quot;.</p>
+<p>Facing.</p>
+<p>forward: &quot;+z&quot;</p>
+<p>Feet at the bottom. Each part's origin sits at its visual bottom centre, because the game stands a thing on its feet. Sinking into the ground is done at placement, never by moving the origin.</p>
+<p>Feet at the bottom.</p>
+<p>Smooth before export. Weld and smooth-shade first; a flat-shaded export splits every edge into seams that far detail levels cannot simplify.</p>
+<p>Smooth before export.</p>
+<p>Solid only when asked. A placed model is solid with physics: &quot;static&quot;, its collider cooked from the mesh; a walker uses &quot;character&quot;.</p>
+<p>Solid only when asked.</p>
+<p>Lighten once, everywhere. If a model is too heavy, its file is reduced once (a Decimate pass), re-uploaded, and every placement points at the new address; the before and after triangle counts get reported.</p>
+<p>Lighten once, everywhere.</p>
+<p>Per-face colour jitter reads as a checkerboard, not age. Real wear is geometry or a good texture.</p>
+<p>Per-face colour jitter reads as a checkerboard, not age.</p>
+<p>Proofs are checked by eye, never by an exit code. Every claim about the model is checked in a rendered still someone looked at.</p>
+<p>Proofs are checked by eye, never by an exit code.</p>
+<p>blender-game-assets, workshop, uploaded-models, animations, geometry</p>
+<p>next: Painting pictures →</p>
+<h4 id="block-1">Block 1</h4>
+<pre><code class="language-`text">marble</code></pre>
+<h4 id="block-2">Block 2</h4>
+<pre><code class="language-`text">brass</code></pre>
+<h4 id="block-3">Block 3</h4>
+<pre><code class="language-`text">art/&lt;model&gt;/build.py</code></pre>
+<h4 id="block-4">Block 4</h4>
+<pre><code class="language-`text">stone</code></pre>
+<h4 id="block-5">Block 5</h4>
+<pre><code class="language-`text">blender -b --factory-startup --python-exit-code 1 --python art/&lt;model&gt;/build.py &amp;&amp; spawn see &lt;model&gt;/proof.png</code></pre>
+<h4 id="block-6">Block 6</h4>
+<pre><code class="language-`text">scene.render.engine = &quot;CYCLES&quot;
+bpy.ops.export_scene.gltf(filepath=..., export_apply=True)</code></pre>
+<h4 id="block-7">Block 7</h4>
+<pre><code class="language-`text">qm.qm_apply(wall, &quot;chunks&quot;, selection_attr=&quot;dmg&quot;)
+qm.qm_apply(wall, &quot;cracks&quot;, Scale=4.0)</code></pre>
+<h4 id="block-8">Block 8</h4>
+<pre><code class="language-`text">spawn upload &lt;model&gt;.glb</code></pre>
+<h4 id="block-9">Block 9</h4>
+<pre><code class="language-`text">model: { id: &quot;/cdn/value.&lt;sha&gt;.glb&quot;, forward: &quot;+z&quot;, materials: { stone: { texture: &quot;cdn/texture-&lt;what&gt;.png&quot; } } }</code></pre>
+<h4 id="block-10">Block 10</h4>
+<pre><code class="language-`text">forward: &quot;+z&quot;</code></pre>
+<h3 id="after-clicking-read-painting-pictures-painted-pictures-in-seconds-icons-posters-portraits-mock-screens-wall-paintings-seamless-textures-and-cutouts-each-a-picture-address-the-game-shows">After clicking &quot;read → Painting pictures Painted pictures in seconds: icons, posters, portraits, mock screens, wall paintings, seamless textures and cutouts, each a picture address the game shows.&quot;</h3>
+<ul><li>H3: Cutouts: a subject on a see-through background</li></ul>
+<p>Painting is the fastest tool on the bench. A sentence goes in, a finished picture comes out in seconds, and the address it prints is the asset itself. It makes:</p>
+<p>Icons: an ability, an item, a badge. A game's icons are one set: one frame, one style sentence, one prompt shape, so the sword and the potion look like they came from the same hand.</p>
+<p>Posters and wall paintings: a wanted poster in the saloon, a portrait of the old king over the throne, a movie poster on a cinema wall.</p>
+<p>Posters and wall paintings</p>
+<p>Portraits: a character's face for a dialogue box or a shopkeeper's window.</p>
+<p>Mock screens: before a game's interface is built, the finished screen is painted as a mock, so you can see the plan before any code.</p>
+<p>Posters for clips: a video scene has no still of its own, so a painted picture is shown as its poster while it loads.</p>
+<p>Posters for clips</p>
+<p>Seamless textures: pictures that repeat both ways with no seam, for floors, walls, rock and wood. A texture is also named into being by its address, cdn/texture-&lt;what&gt;.png, and worn on a model's slot or a surface.</p>
+<p>cdn/texture-&lt;what&gt;.png</p>
+<p>Cutouts: a picture with a transparent background, a tree, a sign, a character card, that stands in the world as a flat sprite with clean edges.</p>
+<p>You describe the picture: &quot;an icon of a cracked blue crystal&quot;, &quot;a weathered wanted poster for a one-eyed bandit&quot;.</p>
+<p>You describe the picture</p>
+<p>The style sentence is fixed once. For a set (all the icons, all the portraits), one frame and one prompt shape keep them matched. A new icon follows the set's sentence.</p>
+<p>The style sentence is fixed once.</p>
+<p>One paint per picture. An icon is one jayzee paint at 1024 by 1024; a mock screen is painted over a look at the current frame, with your own pictures passed as references.</p>
+<p>One paint per picture.</p>
+<p>The address is the asset. The printed address goes wherever the picture belongs: an image in the game's screen, a texture on the face that hangs it, a picture shown in chat.</p>
+<p>The address is the asset.</p>
+<p>It is placed and looked at. An icon is sized to its slot; a poster hangs on the wall that carries it; a texture is checked on the surface it tiles across.</p>
+<p>It is placed and looked at.</p>
+<p>An RPG inventory: a grid of painted item icons, each its own picture, each sized to its slot, all in one style.</p>
+<p>An RPG inventory:</p>
+<p>A detective game: painted evidence photos and suspect portraits pinned to a corkboard wall in the 3D office.</p>
+<p>A detective game:</p>
+<p>A horror house: an oil painting over the fireplace whose subject is a little wrong, hung as a texture on the frame's canvas face.</p>
+<p>A horror house:</p>
+<p>A forest: cutout sprites of ferns and signposts standing in the world, clipped clean at their edges.</p>
+<p>A forest:</p>
+<p>A shop screen planned as a mock: the painted screen shows each panel, its words and its place; the real screen is then built to match it, and a before and after are shown.</p>
+<p>A shop screen planned as a mock:</p>
+<p>An icon, one per picture:</p>
+<p>jayzee paint &quot;&lt;what&gt;&quot; --size 1024x1024</p>
+<p>A mock screen, painted over the current frame, with more of your pictures as further references:</p>
+<p>jayzee paint &quot;&lt;the finished screen: each plate, its words, its place&gt;&quot; --ref &lt;address beside the frame&gt;</p>
+<p>Showing a painted picture in the game's screen and in chat:</p>
+<p>&lt;img src=&quot;/cdn/value.&lt;sha&gt;.png&quot;&gt; ![the mock](&lt;its /cdn/ address&gt;)</p>
+<p>A cutout standing in the world as a sprite, clipped at its edge:</p>
+<p>sprite: { texture: &quot;/cdn/value.&lt;sha&gt;.png&quot;, billboard: &quot;yaw&quot;, cutout: true, alphaCutoff: 0.5 }</p>
+<p>A texture worn on a model's named slot:</p>
+<p>model: { id: &quot;&lt;model address&gt;&quot;, materials: { marble: { texture: &quot;cdn/texture-&lt;what&gt;.png&quot;, roughness: 0.3 } } }</p>
+<p>A game can also paint for its players while they play. The image:generate job paints one picture per player per game from that player's words, 1536 by 1024 when no size is given; transparent gives a cutout and tile an opaque texture that repeats both ways with no seam:</p>
+<p>ctx.job(&quot;image:generate&quot;, { prompt, width, height, transparent, tile }, (r) =&gt; { /* r.data.url */ });</p>
+<p>And image:segment finds the things a picture shows, giving one black-and-white mask per thing found, white where it is, with its box in the picture's pixels.</p>
+<p>One set, one style. Icons that share a frame, a style sentence and a prompt shape read as a set; a mix of styles reads as a pile.</p>
+<p>One set, one style.</p>
+<p>An uploaded picture's address is exact. It serves at the address upload prints; a size or variant word added to that name serves nothing. Never split an image to dodge a limit.</p>
+<p>An uploaded picture's address is exact.</p>
+<p>Players get one painted picture each per game. A game that paints for its players keeps the address in the player's own saved state, because the next ask is refused as already spent.</p>
+<p>Players get one painted picture each per game.</p>
+<p>Pictures shared by players are checked by Jayzee. A player's own picture said in chat is shown from its address, never copied.</p>
+<p>Pictures shared by players are checked by Jayzee.</p>
+<p>Flat glyphs are drawn, not painted. An icon asked to be flat or hand-drawn is a drawn vector glyph set instead; a painted picture is for everything with depth and texture.</p>
+<p>Flat glyphs are drawn, not painted.</p>
+<p>Textures belong on named slots. A model's surfaces each take their own texture once each slot is named for its surface; until then it wears the paint baked into the file.</p>
+<p>Textures belong on named slots.</p>
+<p>In a 2D world every sprite, tile and backdrop is drawn in code unless you hand a picture or ask for finished art.</p>
+<p>In a 2D world</p>
+<p>Your own picture in 3D. If you want a picture you made turned into a 3D model, it is cooked into a mesh once (see Uploaded &amp; built models), not rebuilt by hand.</p>
+<p>Your own picture in 3D.</p>
+<p>Cutouts: a subject on a see-through background</p>
+<p>jayzee cutout takes any picture, a painted one or one you shared, and lifts its subject out onto a transparent png, printed back by name. It is how a painted character becomes a sprite that stands on the scene with no box around it, how a portrait drops onto a dialogue plate, how an item icon sits cleanly on a slot.</p>
+<p>jayzee cutout</p>
+<p>When: a painted hero for a menu card, a shop item over a wooden shelf, a creature sprite in a 2D game, a sticker on a sign.</p>
+<p>How it goes: paint (or share) the picture, cut it out, then hang the cut-out: &lt;img src&gt; in the HUD, sprite.texture on a billboard, texture on a face.</p>
+<p>How it goes:</p>
+<p>&lt;img src&gt;</p>
+<p>sprite.texture</p>
+<p>Tip: a painted subject on a plain background cuts cleanest; jayzee paint --transparent paints straight onto see-through when the cut can be skipped.</p>
+<p>Tip:</p>
+<p>jayzee paint --transparent</p>
+<p>jayzee paint &quot;a brass lantern, three-quarter view, plain background&quot; --name lantern jayzee cutout lantern</p>
+<p>game-ui, video, uploaded-models, 2d-mode, workshop</p>
+<p>next: Sound, music &amp; voices →</p>
+<h4 id="block-1">Block 1</h4>
+<pre><code class="language-`text">cdn/texture-&lt;what&gt;.png</code></pre>
+<h4 id="block-2">Block 2</h4>
+<pre><code class="language-`text">spawn paint &quot;&lt;what&gt;&quot; --size 1024x1024</code></pre>
+<h4 id="block-3">Block 3</h4>
+<pre><code class="language-`text">spawn paint &quot;&lt;the finished screen: each plate, its words, its place&gt;&quot; --ref &lt;address beside the frame&gt;</code></pre>
+<h4 id="block-4">Block 4</h4>
+<pre><code class="language-`text">&lt;img src=&quot;/cdn/value.&lt;sha&gt;.png&quot;&gt;
+![the mock](&lt;its /cdn/ address&gt;)</code></pre>
+<h4 id="block-5">Block 5</h4>
+<pre><code class="language-`text">sprite: { texture: &quot;/cdn/value.&lt;sha&gt;.png&quot;, billboard: &quot;yaw&quot;, cutout: true, alphaCutoff: 0.5 }</code></pre>
+<h4 id="block-6">Block 6</h4>
+<pre><code class="language-`text">model: { id: &quot;&lt;model address&gt;&quot;, materials: { marble: { texture: &quot;cdn/texture-&lt;what&gt;.png&quot;, roughness: 0.3 } } }</code></pre>
+<h4 id="block-7">Block 7</h4>
+<pre><code class="language-`text">ctx.job(&quot;image:generate&quot;, { prompt, width, height, transparent, tile }, (r) =&gt; { /* r.data.url */ });</code></pre>
+<h4 id="block-8">Block 8</h4>
+<pre><code class="language-`text">spawn cutout</code></pre>
+<h4 id="block-9">Block 9</h4>
+<pre><code class="language-`text">&lt;img src&gt;</code></pre>
+<h4 id="block-10">Block 10</h4>
+<pre><code class="language-`text">sprite.texture</code></pre>
+<h4 id="block-11">Block 11</h4>
+<pre><code class="language-`text">spawn paint --transparent</code></pre>
+<h4 id="block-12">Block 12</h4>
+<pre><code class="language-`text">spawn paint &quot;a brass lantern, three-quarter view, plain background&quot; --name lantern
+spawn cutout lantern</code></pre>
+<h3 id="after-clicking-read-sound-music-voices-sounds-music-tracks-songs-and-voice-lines-are-named-into-being-the-filename-is-the-prompt-how-they-are-made-placed-mixed-and-kept-from-getting-too-loud">After clicking &quot;read → Sound, music &amp; voices Sounds, music tracks, songs and voice lines are named into being: the filename is the prompt. How they are made, placed, mixed and kept from getting too loud.&quot;</h3>
+<p>A place should sound like itself. The workshop makes four kinds of sound, all named into being by their address:</p>
+<p>Sound effects: a blade thwacking into a straw dummy, a door creaking on iron hinges, a coin dropping into a tin cup. Named for what a microphone would hear.</p>
+<p>Sound effects</p>
+<p>Ambience loops: wind, a crowd, rain on a roof. Mastered to whisper under everything else.</p>
+<p>Ambience loops</p>
+<p>Music tracks: a mood, a genre and instruments, as a loop. Any track or upload can be remade into a variation, and a song can be sung from your own lyrics, word for word.</p>
+<p>Voice lines: a character saying a line, in one consistent voice. A performed line can carry acting cues like a sigh.</p>
+<p>Your own recordings work too: an uploaded mp3, wav, flac or ogg is itself a track, ready to play.</p>
+<p>You say what the sound is. &quot;A heavy wooden door slamming in a stone hall&quot;, &quot;a tense taiko battle track&quot;, &quot;the blacksmith greets you gruffly&quot;.</p>
+<p>You say what the sound is.</p>
+<p>The name is written as the prompt. Every word of the filename is rendered into the sound, so it names the physics: the materials, the force, the space. A loop ends in -loop so its seam is levelled.</p>
+<p>The name is written as the prompt.</p>
+<p>-loop</p>
+<p>The voice is cast once. A character's throat (&quot;gravel-voiced old soldier&quot;) is one constant every line of theirs derives from, so the blacksmith sounds the same in every line.</p>
+<p>The voice is cast once.</p>
+<p>It is placed where it happens. A hit sounds at the point of the hit; a smithy's loop sits on the smithy; the soundtrack plays on the one jukebox everyone hears.</p>
+<p>It is placed where it happens.</p>
+<p>It is mixed. Each sound rides a bus (music, effects, ambience, interface, voice, footsteps), and the game's gains balance them under each player's own volume.</p>
+<p>It is mixed.</p>
+<p>It is heard in context. A first play takes a few seconds to cook; after that it plays at once.</p>
+<p>It is heard in context.</p>
+<p>There are three planes of sound.</p>
+<p>Music is one jukebox for everyone: a calm meadow guitar in the day that crossfades to drums when a fight starts, and ducks under a voice line so the words are heard.</p>
+<p>World sound happens at a place: a one-shot when something happens (the hit at its position, the roar as a kart passes), or a placed sound on an object (a fountain, a radio) loud up close and silent past its range. A radio's song can be paused, sought and looped, and heard only by the people in the car.</p>
+<p>Program sound is for things words cannot name: live synthesis, a beat machine, an engine note that rises with speed.</p>
+<p>Program sound</p>
+<p>Examples: a tavern with a crackling fire loop on the hearth, crowd murmur beneath, and a bard's track on the jukebox; a dialogue scene where each line plays from the speaker, a caption appears the moment it is heard, the music ducks, and the next line starts when this one ends.</p>
+<p>Placeholders show the shape; the words inside the angle brackets are what you would describe.</p>
+<p>A sound effect, a track, and a voice line:</p>
+<p>cdn/sfx-&lt;what a microphone would hear&gt;.mp3 cdn/music-&lt;mood-genre-instrument words&gt;-loop.mp3 cdn/voice-&lt;throat words&gt;-&lt;emotion&gt;-saying-&lt;the line&gt;.mp3</p>
+<p>A remake of a track or upload adds sound words to its address, and a song sings your lyrics verbatim, line breaks kept:</p>
+<p>&lt;track address&gt;.&lt;sound words&gt;-loop.mp3 cdn/music-&lt;mood-genre-voice words&gt;.mp3?lyrics=&lt;your lyrics&gt;</p>
+<p>A performed line with acting cues:</p>
+<p>jayzee voice &quot;&lt;line with [sighs] tags&gt;&quot; --voice &lt;name&gt;</p>
+<p>The jukebox, from the game's program:</p>
+<p>ctx.music.play(track, { fade: 2.5, volume: 0.7 }); ctx.music.duck(0.3, { duration: 2 }); ctx.music.stop({ fade: 0.8 });</p>
+<p>A one-shot at a position, on the voice bus:</p>
+<p>ctx.emit(&quot;playSound&quot;, { clip: LINE, position, bus: &quot;Voice&quot;, onPlaying: &quot;said&quot; });</p>
+<p>The game's mix:</p>
+<p>audio: { gains: { Master, Music, SFX, UI, Ambience, Voice, Footsteps }, maxVoices: 32, cullBeyond: 200 }</p>
+<p>A name keeps its first sound forever. To change a sound, give it a new filename (add -2 or -v3). Each fresh name is a new purchase against the game's budget, so combinations use a few kinds plus the game's own tint: one bear growl at different pitches, not a name per bear.</p>
+<p>A name keeps its first sound forever.</p>
+<p>Avoid register words. Words like low, warm, soft, muted or hum render as a band that erases everything above it, which can be silence on a phone speaker. Name the physics instead.</p>
+<p>Avoid register words.</p>
+<p>Ambience whispers. A sourced loop like a smithy sits around 0.2 gain, its range ending where the source leaves sight. Loops add up.</p>
+<p>Ambience whispers.</p>
+<p>Too loud means one row. &quot;Too loud&quot; is fixed in one sound's gain, its range or its bus, never by turning everything down.</p>
+<p>Too loud means one row.</p>
+<p>Volume belongs to Jayzee. Each player sets volume in Jayzee's settings. A game may carry one mute toggle; a volume slider or sound page is never built, because it would stack a second dial under Jayzee's. The game's own balance lives in its gains.</p>
+<p>Volume belongs to Jayzee.</p>
+<p>Child voices. The voice maker mostly refuses a child's voice however it is worded, so a young character is cast as a light, young adult voice instead, and you are told.</p>
+<p>Child voices.</p>
+<p>Time lines by sound, not guesses. The next voice line starts when the last one ends, not after a guessed length.</p>
+<p>Time lines by sound, not guesses.</p>
+<p>Stop what you start. Looping one-shots are kept by handle and stopped when their source is gone.</p>
+<p>Stop what you start.</p>
+<p>Your own songs. Eight uploaded songs are eight addresses, ready to play; nothing more is needed.</p>
+<p>Your own songs.</p>
+<p>audio, video, vehicles, game-ui, workshop</p>
+<p>next: Uploaded &amp; built models →</p>
+<h4 id="block-1">Block 1</h4>
+<pre><code class="language-`text">-loop</code></pre>
+<h4 id="block-2">Block 2</h4>
+<pre><code class="language-`text">cdn/sfx-&lt;what a microphone would hear&gt;.mp3
+cdn/music-&lt;mood-genre-instrument words&gt;-loop.mp3
+cdn/voice-&lt;throat words&gt;-&lt;emotion&gt;-saying-&lt;the line&gt;.mp3</code></pre>
+<h4 id="block-3">Block 3</h4>
+<pre><code class="language-`text">&lt;track address&gt;.&lt;sound words&gt;-loop.mp3
+cdn/music-&lt;mood-genre-voice words&gt;.mp3?lyrics=&lt;your lyrics&gt;</code></pre>
+<h4 id="block-4">Block 4</h4>
+<pre><code class="language-`text">spawn voice &quot;&lt;line with [sighs] tags&gt;&quot; --voice &lt;name&gt;</code></pre>
+<h4 id="block-5">Block 5</h4>
+<pre><code class="language-`text">ctx.music.play(track, { fade: 2.5, volume: 0.7 });
+ctx.music.duck(0.3, { duration: 2 });
+ctx.music.stop({ fade: 0.8 });</code></pre>
+<h4 id="block-6">Block 6</h4>
+<pre><code class="language-`text">ctx.emit(&quot;playSound&quot;, { clip: LINE, position, bus: &quot;Voice&quot;, onPlaying: &quot;said&quot; });</code></pre>
+<h4 id="block-7">Block 7</h4>
+<pre><code class="language-`text">audio: { gains: { Master, Music, SFX, UI, Ambience, Voice, Footsteps }, maxVoices: 32, cullBeyond: 200 }</code></pre>
+<h3 id="after-clicking-uploaded-built-models">After clicking &quot;Uploaded &amp; built models&quot;</h3>
+<p>An uploaded model is a 3D file, a .glb, that stands in your game: one you made elsewhere, one you dropped in, or one a wisp built in Blender and exported. When it lands, a message arrives that is the model's spec sheet: its true height, footprint, clips and bones. Then the model is dressed:</p>
+<p>textures on its named surfaces: white veined marble on the marble slot, brushed metal on the brass slot;</p>
+<p>textures on its named surfaces</p>
+<p>things in its hands: a lantern in its right fist, a sword gripped along the hand;</p>
+<p>things in its hands</p>
+<p>clothes that move: a cape that deforms with the body's rig, one garment per piece;</p>
+<p>clothes that move</p>
+<p>sockets: a lamp sitting on the fountain's top socket, a muzzle point for a turret's shot;</p>
+<p>parts: a broken turret swapped for a new one with no hole in the silhouette, a mesh piece hidden or recoloured by name.</p>
+<p>Your own drawing or photo can become a model too: its picture is cooked into a mesh once, and a humanoid comes rigged and ready to walk.</p>
+<p>The file arrives. You drop in a .glb, or a picture you want in 3D; a chat picture is downloaded and uploaded so it has an address.</p>
+<p>The file arrives.</p>
+<p>The spec sheet comes back. Its height and bounds, not the thumbnail, are its in-game size. The message comes once the file is live at world scale.</p>
+<p>The spec sheet comes back.</p>
+<p>It is placed and sized. A layout box fits it to a height you choose; the collider follows. Facing is checked: a model built facing the other way takes a forward.</p>
+<p>It is placed and sized.</p>
+<p>Each surface is dressed. Every material slot named for its surface takes its own texture and finish. A slot name that misses lists the real names in the logs.</p>
+<p>Each surface is dressed.</p>
+<p>Children are attached. A held thing rides a bone, a garment rides the skin, a lamp rides a socket.</p>
+<p>Children are attached.</p>
+<p>Motion is added. A humanoid comes with Idle, Walk, Run, Sprint and Jump inside it; any other motion is a clip from the animation library, played by address.</p>
+<p>Motion is added.</p>
+<p>It is looked at in place, checked from the player's feet.</p>
+<p>It is looked at in place</p>
+<p>A town fountain: marble basin, brass spout, a lantern sitting on its top socket, solid so players walk around it.</p>
+<p>A town fountain:</p>
+<p>A knight NPC: your uploaded knight walks on its own rig, a cape child deforming as it strides, a torch seated in its left hand.</p>
+<p>A knight NPC:</p>
+<p>A tank: its turret is a named part, so a destroyed turret is swapped by a new piece that hides the old one as it lands.</p>
+<p>A tank:</p>
+<p>A statue from your drawing: cooked as one unrigged statue in the drawing's own pose, standing in the square.</p>
+<p>A statue from your drawing:</p>
+<p>A dancing crowd: each rigged body plays a library dance clip by address on a gesture channel, legs left to the walk.</p>
+<p>A dancing crowd:</p>
+<p>A fountain, sized to 2.6 m, solid, its slots dressed and a lamp on a socket:</p>
+<p>jayzee({ id: &quot;fountain&quot;, feetPosition: { x: 12, z: -4 }, physics: &quot;static&quot;, layout: { box: { min: { y: 0 }, max: { y: 2.6 } } }, model: { id: &quot;&lt;fountain address&gt;&quot;, materials: { marble: { texture: &quot;cdn/texture-&lt;what&gt;.png&quot;, roughness: 0.3 }, brass: { texture: &quot;cdn/texture-&lt;what&gt;.png&quot;, metalness: 1, roughness: 0.4 } } }, children: [{ id: &quot;fountain-lamp&quot;, attachment: { socket: &quot;lamp_top&quot; }, model: &quot;&lt;lantern address&gt;&quot; }] });</p>
+<p>A walking character wearing a cape that deforms with its rig:</p>
+<p>jayzee({ id: &quot;knight&quot;, feetPosition: { x: 4, z: 2 }, physics: &quot;character&quot;, model: &quot;&lt;knight address&gt;&quot;, children: [{ id: &quot;knight-cape&quot;, attachment: { skin: true }, model: &quot;&lt;cape address&gt;&quot; }] });</p>
+<p>A held thing on a hand bone, a part hidden by name, and a model that faces the other way:</p>
+<p>children: [{ attachment: { bone: &quot;RightHand&quot; }, model: &quot;&lt;lantern address&gt;&quot; }] model: { id: &quot;&lt;address&gt;&quot;, parts: { turret: { visible: false } } } model: { id: &quot;&lt;address&gt;&quot;, forward: &quot;+z&quot; }</p>
+<p>The piece swap, hiding the named part as the new piece lands:</p>
+<p>ctx.attach(piece, holder, { attachment: { part: &quot;turret&quot; }, replaces: &quot;turret&quot; });</p>
+<p>Your picture as a mesh is its picture address plus .glb, and ?static cooks an unrigged statue:</p>
+<p>?static</p>
+<p>model: &quot;/cdn/value.&lt;sha&gt;.png.glb&quot;</p>
+<p>A library clip on a channel, and a clip file of your own added to the library:</p>
+<p>ctx.self.anim.gesture = { clip: &quot;cdn/clip-&lt;words&gt;.glb&quot;, weight: 4, duration: 3, mask: { from: &quot;Spine&quot; } };</p>
+<p>jayzee clip import &lt;file&gt; --name &quot;&lt;words&gt;&quot; [--loop] jayzee upload &lt;file&gt; [--name &lt;display&gt;] [--full-size]</p>
+<p>Size is the spec sheet's. The height and bounds in the message are the in-game size, not how big the thumbnail looked.</p>
+<p>Size is the spec sheet's.</p>
+<p>Colliders. A character with no collider keeps a 1.9 m capsule of radius 0.35 until it is sized; collider: &quot;capsule&quot; fits it to the model. A box hitbox is an invisible box that never turns, with the model turning on a child.</p>
+<p>Colliders.</p>
+<p>collider: &quot;capsule&quot;</p>
+<p>Name your slots in Blender. Each material slot named for its surface takes its own texture; until then the model wears the paint in its file.</p>
+<p>Name your slots in Blender.</p>
+<p>Pictures in a .glb serve at 1024 px, at their own size with --full-size when you ask for it.</p>
+<p>Pictures in a .glb serve at 1024 px</p>
+<p>--full-size</p>
+<p>Rigs that play every clip. A humanoid rig with recognisable bone names (Mixamo-style, and rigs from Mixamo, Jayzee, Meshy, the UE mannequin, Auto-Rig Pro and Unity humanoid) gets foot grounding and plays every library clip by address. Any other rig plays its own clips. An unrigged model plays its baked clips but takes no bone attachments or library clips.</p>
+<p>Rigs that play every clip.</p>
+<p>Clips by name are forgiving. &quot;Walk&quot; finds &quot;Walking&quot;; a missing name plays the idle, and the logs list the real names.</p>
+<p>Clips by name are forgiving.</p>
+<p>Animals. An animal arrives as one unrigged mesh and is rigged in Blender by automatic weights.</p>
+<p>Animals.</p>
+<p>One cook per picture. Your picture is cooked into a mesh once, not once a turn; if you say it looks wrong, the same address is used again.</p>
+<p>One cook per picture.</p>
+<p>Too heavy? If the spec sheet calls it too heavy, its source is fixed, else it is lightened in Blender.</p>
+<p>Too heavy?</p>
+<p>Garments stay separate. One child per garment, never baked into the body, so outfits can change.</p>
+<p>Garments stay separate.</p>
+<p>Facing. Models face −Z by default; forward turns the mesh, sockets and parts once, while rotation turns the whole object with its children and colliders.</p>
+<p>uploaded-models, blender-game-assets, animations, geometry, workshop</p>
+<p>next: Video, trailers &amp; clips →</p>
+<h4 id="block-1">Block 1</h4>
+<pre><code class="language-`text">spawn({ id: &quot;fountain&quot;, feetPosition: { x: 12, z: -4 }, physics: &quot;static&quot;,
+  layout: { box: { min: { y: 0 }, max: { y: 2.6 } } },
+  model: { id: &quot;&lt;fountain address&gt;&quot;, materials: {
+    marble: { texture: &quot;cdn/texture-&lt;what&gt;.png&quot;, roughness: 0.3 },
+    brass: { texture: &quot;cdn/texture-&lt;what&gt;.png&quot;, metalness: 1, roughness: 0.4 } } },
+  children: [{ id: &quot;fountain-lamp&quot;, attachment: { socket: &quot;lamp_top&quot; }, model: &quot;&lt;lantern address&gt;&quot; }] });</code></pre>
+<h4 id="block-2">Block 2</h4>
+<pre><code class="language-`text">spawn({ id: &quot;knight&quot;, feetPosition: { x: 4, z: 2 }, physics: &quot;character&quot;, model: &quot;&lt;knight address&gt;&quot;,
+  children: [{ id: &quot;knight-cape&quot;, attachment: { skin: true }, model: &quot;&lt;cape address&gt;&quot; }] });</code></pre>
+<h4 id="block-3">Block 3</h4>
+<pre><code class="language-`text">children: [{ attachment: { bone: &quot;RightHand&quot; }, model: &quot;&lt;lantern address&gt;&quot; }]
+model: { id: &quot;&lt;address&gt;&quot;, parts: { turret: { visible: false } } }
+model: { id: &quot;&lt;address&gt;&quot;, forward: &quot;+z&quot; }</code></pre>
+<h4 id="block-4">Block 4</h4>
+<pre><code class="language-`text">ctx.attach(piece, holder, { attachment: { part: &quot;turret&quot; }, replaces: &quot;turret&quot; });</code></pre>
+<h4 id="block-5">Block 5</h4>
+<pre><code class="language-`text">?static</code></pre>
+<h4 id="block-6">Block 6</h4>
+<pre><code class="language-`text">model: &quot;/cdn/value.&lt;sha&gt;.png.glb&quot;</code></pre>
+<h4 id="block-7">Block 7</h4>
+<pre><code class="language-`text">ctx.self.anim.gesture = { clip: &quot;cdn/clip-&lt;words&gt;.glb&quot;, weight: 4, duration: 3, mask: { from: &quot;Spine&quot; } };</code></pre>
+<h4 id="block-8">Block 8</h4>
+<pre><code class="language-`text">spawn clip import &lt;file&gt; --name &quot;&lt;words&gt;&quot; [--loop]
+spawn upload &lt;file&gt; [--name &lt;display&gt;] [--full-size]</code></pre>
+<h4 id="block-9">Block 9</h4>
+<pre><code class="language-`text">collider: &quot;capsule&quot;</code></pre>
+<h4 id="block-10">Block 10</h4>
+<pre><code class="language-`text">--full-size</code></pre>
+<h3 id="after-clicking-video-trailers-clips">After clicking &quot;Video, trailers &amp; clips&quot;</h3>
+<p>A film is the right tool only when you ask for one. Anything your world can act out live (a door swinging, a boss roaring, a crowd cheering) is better scripted in the world itself, because it reacts to players and costs nothing to replay. Video is for the moments a live scene cannot be: a trailer of your game, a painted cutscene, a backdrop that drifts forever, a portrait that speaks one line.</p>
+<p>There are four kinds of clip, and each takes a different road.</p>
+<p>A film of this world. A trailer, a gameplay clip or a walkthrough of your own game, filmed from real play on a machine with a graphics card. Several shots, each close where its move lands.</p>
+<p>A film of this world.</p>
+<p>A made scene. Something that is not your world (a dragon over a burning city, a letter being sealed) made from a sentence with jayzee video, 5 to 15 seconds long, with its own sound.</p>
+<p>A made scene.</p>
+<p>A conjured scene. A short clip named by its address: the words in the address describe it, and it is made the first time anyone asks for it. Good for clips under 5 seconds and for loops.</p>
+<p>A conjured scene.</p>
+<p>A still that sings or speaks. A painted or uploaded portrait whose lips move on the time of a sound you already have: a recorded voice, or one line of a song.</p>
+<p>A still that sings or speaks.</p>
+<p>Every one of these plays inside a Jayzee world, the one it is made for. The file or its address is handed over only when it is about a Jayzee game, and that includes your game's story and characters.</p>
+<p>A trailer of your game:</p>
+<p>Your helper takes a graphics machine with jayzee gpu.</p>
+<p>jayzee gpu</p>
+<p>Each take opens your running game in its own browser as a nameless player. A small script plays that page: walks the player to something the game does and plays the move at its target. A test flag or an autopilot is not play, so the take shows the game as a player meets it.</p>
+<p>An optional camera script flies over the take with no HUD, for example behind your player facing the nearest foe, so the hit is framed.</p>
+<p>Before cutting, your helper looks at each take's frame sheet. A black or loading frame means wait longer; a camera spinning or stuck inside something means film again.</p>
+<p>The takes are joined into one clip and uploaded. You hear what the clip shows and its address.</p>
+<p>Offered at hand-over: jayzee publish set_trailer puts it on your game's page and box, where it plays silent and looping.</p>
+<p>jayzee publish set_trailer</p>
+<p>A made scene: you describe what happens; the helper first looks up any real thing you name (a photo, a dance, a game) rather than trusting memory; jayzee video makes the clip and prints its address; it is placed where you said it plays.</p>
+<p>A made scene:</p>
+<p>A speaking portrait: a portrait is painted or uploaded, the line is recorded or cut from a vocal, and jayzee video --image with --audio makes the lip-synced clip. A song goes a line at a time, each line its own clip, joined on the song's timing.</p>
+<p>A speaking portrait:</p>
+<p>jayzee video --image</p>
+<p>--audio</p>
+<p>The trailer on your game's page. A new visitor sees thirty seconds of real play looping silently on the box, before they ever click. A device set to less motion or less data shows a still with a play button instead.</p>
+<p>The trailer on your game's page.</p>
+<p>A cutscene at the throne room. The first time a player reaches the crown, a painted king turns and says his line, then hands the screen back. It fires once, with the world still running warm behind it.</p>
+<p>A cutscene at the throne room.</p>
+<p>A title banner. A wide strip of clouds drifting in a seamless loop across the top of a menu.</p>
+<p>A title banner.</p>
+<p>A speaking shopkeeper. A portrait in the shop panel that greets the player in your recorded voice, lips on time.</p>
+<p>A speaking shopkeeper.</p>
+<p>A time-lapse of your build. Several saved versions of your world filmed one after another into one clip, the camera moving on, so players watch the village grow.</p>
+<p>A time-lapse of your build.</p>
+<p>A record button that lets players capture their own play is not a film at all: it is screen code in your game's interface.</p>
+<p>A film of the world, two takes joined and uploaded:</p>
+<p>spawn-film 22 take.mp4 spawn-film 22 close.mp4 --camera cam.js ffmpeg -y -i take.mp4 -i close.mp4 -lavfi concat=n=2:a=1 -pix_fmt yuv420p -movflags +faststart trailer.mp4 &amp;&amp; jayzee upload trailer.mp4</p>
+<p>A time-lapse across saved versions (jayzee versions inspect lists them):</p>
+<p>jayzee versions inspect</p>
+<p>spawn-film @v1 @v4 @v9 2 lapse.mp4 --camera cam.js</p>
+<p>The trailer onto your game's page:</p>
+<p>jayzee publish set_trailer --video trailer.mp4</p>
+<p>A made scene, and one that starts from a still:</p>
+<p>jayzee video &quot;&lt;what happens&gt;&quot; jayzee video &quot;&lt;what happens&gt;&quot; --image &lt;still&gt; --end &lt;still&gt; --seconds 10 --aspect 9x16 jayzee video --show &lt;name&gt;</p>
+<p>A still that speaks a sound you have:</p>
+<p>jayzee video --image &lt;still&gt; --audio &lt;sound&gt;</p>
+<p>From game code, a scene asked for while the game runs, paid from the world's fuel:</p>
+<p>await ctx.awaitJob(ctx.job(&quot;video:generate&quot;, { prompt, seconds, aspect }))</p>
+<p>A conjured address is written in plain words. The shapes, with placeholders:</p>
+<p>/cdn/&lt;scene words&gt;.mp4 /cdn/&lt;still&gt;.png.&lt;action words&gt;.mp4 /cdn/&lt;still&gt;.png.&lt;who&gt;-saying-&lt;the line&gt;-for-&lt;n&gt;-seconds.aspect-9x16.mp4 /cdn/&lt;backdrop words&gt;-4-second-loop.aspect-3x1.mp4</p>
+<p>Lengths. A made scene runs 5 to 15 seconds (5 by default). A conjured clip is made to the nearest of 1 to 15 seconds as its words say (about 6 when unnamed), and a loop at most 9 (2.5 to 6 when unnamed).</p>
+<p>Lengths.</p>
+<p>Frames. A conjured clip's shape is one of 16x9, 9x16, 1x1, 4x3, 3x4, 3x2, 2x3, 21x9 or 3x1; with no shape named it is 16x9, and a clip from a still keeps the still's shape.</p>
+<p>Frames.</p>
+<p>Loops are picture only. An action ending in loop is cut to cycle without a seam, but its sound is a separate looping sound effect played by the engine's audio.</p>
+<p>Loops are picture only.</p>
+<p>Give every clip a poster. A first conjure takes minutes, so a painted still stands in its place until it arrives.</p>
+<p>Give every clip a poster.</p>
+<p>A short sound gets silence. A speaking clip runs as long as its sound; a sound under 5 seconds is followed by silence.</p>
+<p>A short sound gets silence.</p>
+<p>A film saves nothing, but the room is real. A flag, key, camera or prop placed for a shoot runs for every player, and the players in the room are real people. The take's player moves by play alone.</p>
+<p>A film saves nothing, but the room is real.</p>
+<p>Film an update's trailer first. A take of unpublished work goes up with the next publish.</p>
+<p>Film an update's trailer first.</p>
+<p>Clips you upload are looked at. Every frame of a creator's uploaded clip is checked; one a stranger should not meet stays off the shelf, with the reason said.</p>
+<p>Clips you upload are looked at.</p>
+<p>Keep the controls clear. A cutscene's clip never covers the screen's control rail.</p>
+<p>Keep the controls clear.</p>
+<p>video for every road above.</p>
+<p>game-ui for where a clip plays: the video panel, the once-only cue that fires a cutscene, and a record button.</p>
+<p>publish for putting the trailer on your game's page.</p>
+<p>audio for the looping sound under a looping clip and for recorded voices.</p>
+<p>workshop for uploads and the bench the films are cut on.</p>
+<p>next: Testers, eyes &amp; playtests →</p>
+<h4 id="block-1">Block 1</h4>
+<pre><code class="language-`text">spawn gpu</code></pre>
+<h4 id="block-2">Block 2</h4>
+<pre><code class="language-`text">spawn publish set_trailer</code></pre>
+<h4 id="block-3">Block 3</h4>
+<pre><code class="language-`text">spawn video --image</code></pre>
+<h4 id="block-4">Block 4</h4>
+<pre><code class="language-`text">--audio</code></pre>
+<h4 id="block-5">Block 5</h4>
+<pre><code class="language-`text">spawn-film 22 take.mp4
+spawn-film 22 close.mp4 --camera cam.js
+ffmpeg -y -i take.mp4 -i close.mp4 -lavfi concat=n=2:a=1 -pix_fmt yuv420p -movflags +faststart trailer.mp4 &amp;&amp; spawn upload trailer.mp4</code></pre>
+<h4 id="block-6">Block 6</h4>
+<pre><code class="language-`text">spawn versions inspect</code></pre>
+<h4 id="block-7">Block 7</h4>
+<pre><code class="language-`text">spawn-film @v1 @v4 @v9 2 lapse.mp4 --camera cam.js</code></pre>
+<h4 id="block-8">Block 8</h4>
+<pre><code class="language-`text">spawn publish set_trailer --video trailer.mp4</code></pre>
+<h4 id="block-9">Block 9</h4>
+<pre><code class="language-`text">spawn video &quot;&lt;what happens&gt;&quot;
+spawn video &quot;&lt;what happens&gt;&quot; --image &lt;still&gt; --end &lt;still&gt; --seconds 10 --aspect 9x16
+spawn video --show &lt;name&gt;</code></pre>
+<h4 id="block-10">Block 10</h4>
+<pre><code class="language-`text">spawn video --image &lt;still&gt; --audio &lt;sound&gt;</code></pre>
+<h4 id="block-11">Block 11</h4>
+<pre><code class="language-`text">await ctx.awaitJob(ctx.job(&quot;video:generate&quot;, { prompt, seconds, aspect }))</code></pre>
+<h4 id="block-12">Block 12</h4>
+<pre><code class="language-`text">/cdn/&lt;scene words&gt;.mp4
+/cdn/&lt;still&gt;.png.&lt;action words&gt;.mp4
+/cdn/&lt;still&gt;.png.&lt;who&gt;-saying-&lt;the line&gt;-for-&lt;n&gt;-seconds.aspect-9x16.mp4
+/cdn/&lt;backdrop words&gt;-4-second-loop.aspect-3x1.mp4</code></pre>
+<h3 id="after-clicking-testers-eyes-playtests">After clicking &quot;Testers, eyes &amp; playtests&quot;</h3>
+<p>A build that only reads right in code is not done. Every piece your helpers make is checked two ways: it is looked at, with a camera that sees exactly what a player would, and it is played, by a body that walks into your game through the same page a player opens. This page explains both, and the playtests you can ask for.</p>
+<p>looked at</p>
+<p>Looks. Pictures of the live game: a wide contact sheet of a world's first look, one object alone on a plain backdrop, a filmstrip of a motion, the game screen with its interface, or a read of the interface's live parts.</p>
+<p>Looks.</p>
+<p>A body in your world. Your helper's own body stands in your game. While it plays a page, it counts as a player: the game's player counts and player hooks see it, and you can watch it work.</p>
+<p>A body in your world.</p>
+<p>Tester players. Extra test players sent into a room of their own, so a test race or a test wave never starts in yours.</p>
+<p>Tester players.</p>
+<p>Rounds. A real play-through of what you asked for, followed by what it felt like, in your words, what landed and what fell flat. Never an invented score.</p>
+<p>A first look. A new world is first seen from four vantages at one instant: from above, at the jayzee point, at a player's eye height, and indoors.</p>
+<p>A first look.</p>
+<p>The piece, close. A model, a building or a sign is looked at alone and at full size, never only as a speck in a wide shot. What the look shows gets fixed in one more pass.</p>
+<p>The piece, close.</p>
+<p>Motion. A walk cycle, a door swing or a sword stroke is checked as a burst: several frames over a second or two, laid side by side, so a foot sliding or a stroke landing late shows up.</p>
+<p>Play. For a mechanic that misbehaves, or before something lands, the helper joins its body and drives the page: clicks into the view, presses keys, takes a screenshot, looks, adjusts. A round is a loop of act, look, adjust every few hundred milliseconds, never a blind list of key presses.</p>
+<p>A tester room. When the test would start something shared (a race, a match, a wave), the tester joins in its own room so your round stays yours.</p>
+<p>A tester room.</p>
+<p>The verdict. You hear what landed and what did not. A jump too tight for the tester is too tight for your players: that failure is the finding.</p>
+<p>The verdict.</p>
+<p>A platformer's third jump. The tester tries the gap ten times, lands it twice, and the report says the gap is half a metre too wide, not that the level is fine.</p>
+<p>A platformer's third jump.</p>
+<p>A phone check. The game screen is looked at as a phone in portrait and in landscape, so a button hiding under a thumb is caught before a player meets it.</p>
+<p>A phone check.</p>
+<p>A shop panel. The interface's live parts are read: which buttons exist, their text, where they sit, so a price that never updates is found by reading, not guessing.</p>
+<p>A shop panel.</p>
+<p>A walk cycle. A four-frame burst of a character walking shows the feet planted on each step.</p>
+<p>A walk cycle.</p>
+<p>A live round with you. You ask to play together; the helper hands its keys and mouse to a fast player model that reads the game ten times a second, and steers it with words while you play beside it.</p>
+<p>A live round with you.</p>
+<p>Join your body and get the page it plays:</p>
+<p>A tester in its own room:</p>
+<p>spawn client join --tester 1 --room test</p>
+<p>Read your body, step out, come back:</p>
+<p>spawn client spawn client leave</p>
+<p>A short play script on the body's page, then a look at the result:</p>
+<p>import { chromium } from &quot;playwright&quot;; const browser = await chromium.connectOverCDP(&quot;http://127.0.0.1:9222&quot;); const page = browser.contexts()[0].pages()[0]; await page.mouse.click(...(await page.evaluate(() =&gt; [innerWidth / 2, innerHeight / 2]))); await page.keyboard.press(&quot;KeyW&quot;, { delay: 1500 }); await page.screenshot({ path: &quot;view.png&quot; }); await browser.close();</p>
+<p>jayzee see view.png</p>
+<p>A live round driven by Jev, steered by name, read, and stopped:</p>
+<p>jayzee jev start &quot;&lt;goal&gt;&quot; jayzee jev say --now &quot;jump onto the bridge&quot; --key &quot;Space=tap at a gap&quot; jayzee jev jayzee jev stop</p>
+<p>The kinds of look, as a helper asks them:</p>
+<p>target &quot;scene&quot;, views [&quot;aerial&quot;, &quot;jayzee&quot;, &quot;pov&quot;, &quot;indoors&quot;] a world's first look target &quot;object&quot;, objectId &lt;id&gt; one thing alone, front-right target &quot;scene&quot;, burst { frames 4, spanSeconds 1.5 } a motion filmstrip target &quot;player&quot;, device &quot;phone&quot;, landscape true the game screen on a phone target &quot;ui&quot;, verb &quot;text&quot;, selector &quot;#shop&quot; the interface's live text</p>
+<p>A test body is a real player. While it plays, it is counted in your room and the player hooks see it. A race it starts is a race in your room, which is why tests that start shared things go to their own room.</p>
+<p>A test body is a real player.</p>
+<p>A click locks the pointer. Coordinates in a play script are screenshot pixels; the game's interface lives in its own frames on the page.</p>
+<p>A click locks the pointer.</p>
+<p>Bursts span 2 to 6 frames over a quarter of a second to 3 seconds.</p>
+<p>Bursts span 2 to 6 frames</p>
+<p>Phone presets are 390 by 664 in portrait (756 by 265 in landscape) and a tablet at 834 by 1194; the touch controls mount on them.</p>
+<p>Phone presets</p>
+<p>Clean up. Test objects are tagged temp when they are made and removed before the helper finishes. Your world is never left mid-wave or mid-race by a test.</p>
+<p>Clean up.</p>
+<p>Two accounts, not two tabs. One account in two tabs of one room hands the game to the newer tab; real multiplayer tests use two accounts.</p>
+<p>Two accounts, not two tabs.</p>
+<p>Ask for the round you want. Say what to play (&quot;try the boss with no upgrades&quot;) and you get that round played whole, then an honest account of it.</p>
+<p>Ask for the round you want.</p>
+<p>Check what must survive a restart on a fresh start. Something only spawned by a live script is gone on a restart unless its spawner makes it again.</p>
+<p>Check what must survive a restart on a fresh start.</p>
+<p>workshop for the body, the page, tester rooms and Jev rounds.</p>
+<p>debugging for what a test turns up: errors, slow frames, a thing a player cannot see.</p>
+<p>game-ui for the interface a test reads and clicks.</p>
+<p>weaves for the play lane: a helper whose whole job is to play.</p>
+<p>next: Wisps &amp; weaves →</p>
+<h4 id="block-1">Block 1</h4>
+<pre><code class="language-`text">spawn client join --tester 1 --room test</code></pre>
+<h4 id="block-2">Block 2</h4>
+<pre><code class="language-`text">spawn client
+spawn client leave</code></pre>
+<h4 id="block-3">Block 3</h4>
+<pre><code class="language-`text">import { chromium } from &quot;playwright&quot;;
+const browser = await chromium.connectOverCDP(&quot;http://127.0.0.1:9222&quot;);
+const page = browser.contexts()[0].pages()[0];
+await page.mouse.click(...(await page.evaluate(() =&gt; [innerWidth / 2, innerHeight / 2])));
+await page.keyboard.press(&quot;KeyW&quot;, { delay: 1500 });
+await page.screenshot({ path: &quot;view.png&quot; });
+await browser.close();</code></pre>
+<h4 id="block-4">Block 4</h4>
+<pre><code class="language-`text">spawn see view.png</code></pre>
+<h4 id="block-5">Block 5</h4>
+<pre><code class="language-`text">spawn jev start &quot;&lt;goal&gt;&quot;
+spawn jev say --now &quot;jump onto the bridge&quot; --key &quot;Space=tap at a gap&quot;
+spawn jev
+spawn jev stop</code></pre>
+<h4 id="block-6">Block 6</h4>
+<pre><code class="language-`text">target &quot;scene&quot;, views [&quot;aerial&quot;, &quot;spawn&quot;, &quot;pov&quot;, &quot;indoors&quot;]   a world's first look
+target &quot;object&quot;, objectId &lt;id&gt;                                  one thing alone, front-right
+target &quot;scene&quot;, burst { frames 4, spanSeconds 1.5 }             a motion filmstrip
+target &quot;player&quot;, device &quot;phone&quot;, landscape true                 the game screen on a phone
+target &quot;ui&quot;, verb &quot;text&quot;, selector &quot;#shop&quot;                      the interface's live text</code></pre>
+<h3 id="after-clicking-read-wisps-weaves-wisps-are-helpers-that-build-pieces-of-your-world-at-the-same-time-a-weave-plans-them-a-brief-each-a-lane-each-then-reviewers-critics-and-players-to-check-the-work">After clicking &quot;read → Wisps &amp; weaves Wisps are helpers that build pieces of your world at the same time. A weave plans them: a brief each, a lane each, then reviewers, critics and players to check the work.&quot;</h3>
+<ul><li>H3: Claims: who is working on what</li></ul>
+<p>A big build goes faster when many hands work at once. On Jayzee those hands are wisps: helpers that each take one piece of your world, build it in their own copy, and land it in yours. A weave is the plan that sends them out together and brings their work back.</p>
+<p>Lanes. Each wisp works one lane: one task, one piece. A lane gets its own clone of the world and the same building tools your main helper has (files, scripts, looks, a shell), plus Tripo for models. Painting pictures, video and voice stay with your main helper.</p>
+<p>Lanes.</p>
+<p>Blueprint boxes. When a lane starts, a placeholder box stands in the world where its piece will go, under the piece's id. The finished piece replaces it.</p>
+<p>Blueprint boxes.</p>
+<p>A card you can follow. While a weave runs you see a card: its title, the stage it is in, one line per lane, notes at turning points, and a closing word naming what landed and what did not.</p>
+<p>A card you can follow.</p>
+<p>Checkers. Lanes of special kinds that do not build new pieces: review, verify, judge, critic, polish, and play.</p>
+<p>Checkers.</p>
+<p>Plan the whole. Your helper splits your ask into pieces: the tavern, the market, the road between them. Each piece gets a footprint: where it stands and how big it is.</p>
+<p>Plan the whole.</p>
+<p>Write the briefs. A lane's prompt is its whole brief: the facts it cannot read from the world's files. Shared facts name ONE centre and ONE ground height every lane builds to. Each thing a player can act on carries its verb (E draws water at the well) and the life around it. A building is rooms a body walks into, never a sealed front.</p>
+<p>Write the briefs.</p>
+<p>Send them out in parallel. All the pieces build at once. A file two lanes both need is one lane's to write; the other imports it after.</p>
+<p>Send them out in parallel.</p>
+<p>Join the pieces. The paths that connect them are one network and one lane's job, run after the piece lanes return, reading each door's position from the files.</p>
+<p>Join the pieces.</p>
+<p>Check. A review lane looks at the finished work and mends what it shows; a play lane plays it.</p>
+<p>Check.</p>
+<p>Report. The weave's word arrives as messages. Your helper reads where you are standing before telling you where things are, because the world moved while you did not.</p>
+<p>Report.</p>
+<p>If you change your mind mid-build, the change is a steer: running lanes fold it in and queued lanes take it as an addendum. Only a changed plan stops the weave.</p>
+<p>A village in one go. Five lanes raise the inn, the smithy, the well, the chapel and the houses round the square at the same time, while a sixth lane waits to lay the roads between their doors.</p>
+<p>A village in one go.</p>
+<p>A map filled to its edge. On a big map, one lane fills the land between the places with groves, fields and hamlets, so a trip never crosses an empty plain.</p>
+<p>A map filled to its edge.</p>
+<p>A bar you set. You share screenshots of a game you love. Each round builds and installs its best try, then a critic lane, shown only your bar, scores how close it is and names the biggest gap. The next round starts from that gap, until the critic says ours wins. Under the bar, the best try still stands until a better one does.</p>
+<p>A bar you set.</p>
+<p>A playtest squad. Play lanes each join as a player; in a multiplayer world each weave's players get their own empty room, so two squads are two weaves.</p>
+<p>A playtest squad.</p>
+<p>The skeleton of a weave, with one build lane and one checker:</p>
+<p>export const meta = { name: &quot;village&quot;, description: &quot;raise your village square&quot; }; phase(&quot;build the square&quot;); const inn = agent(&quot;&lt;the inn's brief&gt;&quot;, { label: &quot;raise your inn&quot;, footprint: { id: &quot;inn&quot;, feetPosition: { x: 0, z: 0 }, size: { width: 12, height: 8, depth: 10 }, place: &quot;main&quot; }, skills: [&quot;geometry&quot;], effort: &quot;medium&quot;, }); log(&quot;the inn stands&quot;); const verdict = await agent(&quot;&lt;what to judge, and the bar&gt;&quot;, { agentType: &quot;critic&quot;, schema: { type: &quot;object&quot;, properties: { winner: { enum: [&quot;ours&quot;, &quot;bar&quot;] }, score: { type: &quot;number&quot;, maximum: 10 }, biggestGap: { type: &quot;string&quot; } } } });</p>
+<p>The building blocks: agent(prompt, opts) for a lane, parallel([...]) to run lanes together, pipeline(items, ...stages) for a chain, phase(title) for a stage on the card, log(text) for a note, and args.</p>
+<p>agent(prompt, opts)</p>
+<p>parallel([...])</p>
+<p>pipeline(items, ...stages)</p>
+<p>phase(title)</p>
+<p>log(text)</p>
+<p>The lane options that matter most:</p>
+<p>label a verb phrase in your words: &quot;raise your three stalls&quot; footprint { id, feetPosition, size: { width, height, depth }, place, rotation? }, or null skills skill ids loaded into the lane maxSteps 60 by default referenceImages your picture, so the lane builds to it color the wisp's flame, &quot;#rrggbb&quot; agentType review, verify, judge, critic, polish, play effort low, medium (default) or high</p>
+<p>A lane is one task. It ends when it replies, or at its step limit or budget. Nothing holds it open for a verdict: a lane told to wait just spends its steps waiting. A verdict is the next round, a new lane carrying the verdict and the files the last one left.</p>
+<p>A lane is one task.</p>
+<p>A lane that lands nothing counts as nothing. Words with no world change and no upload come back empty.</p>
+<p>A lane that lands nothing counts as nothing.</p>
+<p>Effort by kind. Wiring, scripts, interface, fixes and placements run well at low effort. Art that has to read (a model, a texture, a look) takes medium or high.</p>
+<p>Effort by kind.</p>
+<p>Your brief is yours. When you dictate what a wisp gets (your picture, your sentence, &quot;nothing else&quot;), it is sent as you said it, with nothing added.</p>
+<p>Your brief is yours.</p>
+<p>One owner per shared thing. A file two lanes need is one lane's to write. A config that turns the ground off is saved by the floor lane after the new floor stands under everyone's feet, never at kickoff.</p>
+<p>One owner per shared thing.</p>
+<p>Name stages and lanes. Bare-noun labels, one stage and no notes make a build nobody can follow.</p>
+<p>Name stages and lanes.</p>
+<p>Asking how long. A swarm list says what each lane has landed and holds right now; no finish time is invented.</p>
+<p>Asking how long.</p>
+<p>Your standing rule. If you have told your helper to always run as many wisps at once as it can, that rule shapes every plan.</p>
+<p>Your standing rule.</p>
+<p>Claims: who is working on what</p>
+<p>When more than one builder (or more than one Cleetus) is in a world, a claim says out loud who has a file, folder or place for now. It is a courtesy, not a lock: the others are told, and nothing stops them.</p>
+<p>jayzee claim scripts/castle.js &quot;raising the bridge&quot; takes the file with a reason everyone sees.</p>
+<p>jayzee claim scripts/castle.js &quot;raising the bridge&quot;</p>
+<p>jayzee who scripts/castle.js (or a folder or place) answers who is working there now.</p>
+<p>jayzee who scripts/castle.js</p>
+<p>jayzee tell &quot;tiger's cleetus&quot; &quot;leave the bridge to me?&quot; hands one message to another Cleetus in the room.</p>
+<p>jayzee tell &quot;tiger's cleetus&quot; &quot;leave the bridge to me?&quot;</p>
+<p>Wisps inside one weave avoid each other differently: each lane gets its own footprint (a blueprint box where its piece will stand) and a file belongs to exactly one lane; a lane that needs another's file imports it after that lane returns.</p>
+<p>weaves for the whole grammar and its options.</p>
+<p>workshop for the bench every lane works on, including play lanes.</p>
+<p>blender-game-assets for model lanes and their effort.</p>
+<p>debugging for what a verify or review lane checks.</p>
+<p>next: World files, versions &amp; undo →</p>
+<h4 id="block-1">Block 1</h4>
+<pre><code class="language-`text">export const meta = { name: &quot;village&quot;, description: &quot;raise your village square&quot; };
+phase(&quot;build the square&quot;);
+const inn = agent(&quot;&lt;the inn's brief&gt;&quot;, {
+  label: &quot;raise your inn&quot;,
+  footprint: { id: &quot;inn&quot;, feetPosition: { x: 0, z: 0 }, size: { width: 12, height: 8, depth: 10 }, place: &quot;main&quot; },
+  skills: [&quot;geometry&quot;], effort: &quot;medium&quot;,
+});
+log(&quot;the inn stands&quot;);
+const verdict = await agent(&quot;&lt;what to judge, and the bar&gt;&quot;, { agentType: &quot;critic&quot;,
+  schema: { type: &quot;object&quot;, properties: { winner: { enum: [&quot;ours&quot;, &quot;bar&quot;] }, score: { type: &quot;number&quot;, maximum: 10 }, biggestGap: { type: &quot;string&quot; } } } });</code></pre>
+<h4 id="block-2">Block 2</h4>
+<pre><code class="language-`text">agent(prompt, opts)</code></pre>
+<h4 id="block-3">Block 3</h4>
+<pre><code class="language-`text">parallel([...])</code></pre>
+<h4 id="block-4">Block 4</h4>
+<pre><code class="language-`text">pipeline(items, ...stages)</code></pre>
+<h4 id="block-5">Block 5</h4>
+<pre><code class="language-`text">phase(title)</code></pre>
+<h4 id="block-6">Block 6</h4>
+<pre><code class="language-`text">log(text)</code></pre>
+<h4 id="block-7">Block 7</h4>
+<pre><code class="language-`text">label            a verb phrase in your words: &quot;raise your three stalls&quot;
+footprint        { id, feetPosition, size: { width, height, depth }, place, rotation? }, or null
+skills           skill ids loaded into the lane
+maxSteps         60 by default
+referenceImages  your picture, so the lane builds to it
+color            the wisp's flame, &quot;#rrggbb&quot;
+agentType        review, verify, judge, critic, polish, play
+effort           low, medium (default) or high</code></pre>
+<h4 id="block-8">Block 8</h4>
+<pre><code class="language-`text">spawn claim scripts/castle.js &quot;raising the bridge&quot;</code></pre>
+<h4 id="block-9">Block 9</h4>
+<pre><code class="language-`text">spawn who scripts/castle.js</code></pre>
+<h4 id="block-10">Block 10</h4>
+<pre><code class="language-`text">spawn tell &quot;tiger's savi&quot; &quot;leave the bridge to me?&quot;</code></pre>
+<h3 id="after-clicking-world-files-versions-undo">After clicking &quot;World files, versions &amp; undo&quot;</h3>
+<p>Behind every game on Jayzee is a plain folder of files. The places, the things standing in them, the scripts, the interface and the settings are all files, and the world keeps them like a careful notebook: every save becomes a version you can look back at, compare, and undo.</p>
+<p>The world as files. The game's settings live in one config file; each place has its own config and its own scene files listing what stands where; behaviors, templates, the interface and data tables are files of their own. Each tuned number lives in one table, so a change is one edit.</p>
+<p>The world as files.</p>
+<p>Versions. Every save is a commit: one entry in the world's history, with a line in your words saying what changed.</p>
+<p>Versions.</p>
+<p>A change history per file. For each file, a record of every change to it, and who made it.</p>
+<p>A change history per file.</p>
+<p>Chat history. Your conversations, kept by day, so &quot;what did we decide about the shop?&quot; has an answer.</p>
+<p>Chat history.</p>
+<p>A journal. Notes about the game that every helper reads before working on it.</p>
+<p>A journal.</p>
+<p>You ask for a change. &quot;Make the bridge longer.&quot;</p>
+<p>You ask for a change.</p>
+<p>The helper reads first. It opens the files that touch the bridge, and for a bug, that file's history, before naming any cause.</p>
+<p>The helper reads first.</p>
+<p>The edit lands as one save. Files that belong together are written in one call, so they save as one version. A world never sits half-changed.</p>
+<p>The edit lands as one save.</p>
+<p>You get a history line. It reads like you would say it: &quot;the bridge now reaches the far bank.&quot;</p>
+<p>You get a history line.</p>
+<p>If you do not like it, undo. One undo puts that whole save back.</p>
+<p>If you do not like it, undo.</p>
+<p>If something worked before, the records answer it: the file's history and the chat show when it changed and who changed it. Present before and absent now means something deleted it.</p>
+<p>If something worked before,</p>
+<p>When you say &quot;perfect, keep it&quot;, that is a pin: the version is noted beside the feature, and any later repair restores those exact bytes instead of rebuilding from memory.</p>
+<p>A safe experiment. You try a darker night sky for an evening. You do not like it. One undo and the old sky is back exactly.</p>
+<p>A safe experiment.</p>
+<p>&quot;The boss used to roar.&quot; The roar's file history shows a later save removed the sound line. The fix restores it from the version that worked.</p>
+<p>&quot;The boss used to roar.&quot;</p>
+<p>A time-lapse. Several versions of your world filmed into one clip, showing the town growing from a field.</p>
+<p>A time-lapse.</p>
+<p>A hotfix while you build. Your live game has a broken door, but your draft is mid-way through a new level. The fix goes straight to the live copy's script, and that change alone publishes, leaving the draft alone.</p>
+<p>A hotfix while you build.</p>
+<p>Two builders at once. One wisp raises the inn while another lays the roads; neither overwrites the other.</p>
+<p>Two builders at once.</p>
+<p>The world's history, and one version opened up:</p>
+<p>jayzee versions jayzee versions inspect</p>
+<p>Undo a whole save:</p>
+<p>jayzee undo</p>
+<p>Search the notes, history and docs:</p>
+<p>jayzee grep &quot;&lt;words&gt;&quot;</p>
+<p>The folders you will hear named:</p>
+<p>world.config.yaml the game's settings places/&lt;p&gt;/config.yaml one place's settings places/&lt;p&gt;/cells/x&lt;cx&gt;z&lt;cz&gt;.scene what stands in the place templates/&lt;t&gt;.js shared definitions scripts/&lt;name&gt;.js behaviors scripts/lib/data/ tuning tables history/changes/&lt;file&gt; each file's change record history/chat/ your chats, by day memory/game/ the game's shared journal</p>
+<p>A fix to the live game while the draft holds unfinished work edits the live copy's file directly:</p>
+<p>@user/slug@live/scripts/x.js</p>
+<p>A behavior that must save its own work does it as one commit, one undo:</p>
+<p>ctx.commit(&quot;&lt;what changed&gt;&quot;, () =&gt; { /* the writes */ })</p>
+<p>What a live script spawns is not in the files. Enemies, dropped loot or a placed block made while the game runs live in the room, not the folder. Destroying one by hand is temporary: a restart runs its spawner again and it returns. Fix the spawner instead.</p>
+<p>What a live script spawns is not in the files.</p>
+<p>State is not a file. A player's progress, a room's shared state and a thing's state persist in the game itself; scores across rooms live in the game's database.</p>
+<p>State is not a file.</p>
+<p>Undo is whole. It puts back one full save, not part of it. That is why files that belong together save together.</p>
+<p>Undo is whole.</p>
+<p>Repeated fixes stack. A second &quot;fix it&quot; on one thing can mean two attempts now stand side by side. The good habit is to delete the attempts and rebuild it as one.</p>
+<p>Repeated fixes stack.</p>
+<p>Claims between builders. When several helpers build at once, each piece has a footprint: a placeholder box under the piece's id that the finished piece replaces. A file two builders need belongs to one of them; the other uses it after. A placeholder put in the wrong place blocks that id there.</p>
+<p>Claims between builders.</p>
+<p>Other hands commit too. The history rows say who made each change, so a surprise is traced, not guessed.</p>
+<p>Other hands commit too.</p>
+<p>A save another player was touching is judged by the machine that holds it; the records show whether a write landed.</p>
+<p>A save another player was touching</p>
+<p>Files stay inside Jayzee. Your game cannot be exported as a package; players get only what the game gives them.</p>
+<p>Files stay inside Jayzee.</p>
+<p>debugging for using history to find what changed and when.</p>
+<p>weaves for footprints and file ownership between builders.</p>
+<p>publish for live fixes and versions players see.</p>
+<p>workshop for model scripts kept in the files and rerun whole.</p>
+<p>next: Platform reads →</p>
+<h4 id="block-1">Block 1</h4>
+<pre><code class="language-`text">spawn versions
+spawn versions inspect</code></pre>
+<h4 id="block-2">Block 2</h4>
+<pre><code class="language-`text">spawn undo</code></pre>
+<h4 id="block-3">Block 3</h4>
+<pre><code class="language-`text">spawn grep &quot;&lt;words&gt;&quot;</code></pre>
+<h4 id="block-4">Block 4</h4>
+<pre><code class="language-`text">world.config.yaml                  the game's settings
+places/&lt;p&gt;/config.yaml             one place's settings
+places/&lt;p&gt;/cells/x&lt;cx&gt;z&lt;cz&gt;.scene  what stands in the place
+templates/&lt;t&gt;.js                   shared definitions
+scripts/&lt;name&gt;.js                  behaviors
+scripts/lib/data/                  tuning tables
+history/changes/&lt;file&gt;             each file's change record
+history/chat/                      your chats, by day
+memory/game/                       the game's shared journal</code></pre>
+<h4 id="block-5">Block 5</h4>
+<pre><code class="language-`text">@user/slug@live/scripts/x.js</code></pre>
+<h4 id="block-6">Block 6</h4>
+<pre><code class="language-`text">ctx.commit(&quot;&lt;what changed&gt;&quot;, () =&gt; { /* the writes */ })</code></pre>
+<h3 id="after-clicking-platform-reads">After clicking &quot;Platform reads&quot;</h3>
+<ul><li>H3: The launch kit</li></ul>
+<p>Your game runs on every player's own device, and a lot can happen there that your build room never shows. Platform reads are the instruments that tell your helper what really happened: what broke on a player's screen, how fast frames drew, what the engine had to give up, and how the published game looks to a newcomer.</p>
+<p>Logs. Behavior errors with the file and line, receipts of writes, render faults forwarded from players' devices, and the game's own log lines.</p>
+<p>Logs.</p>
+<p>A performance table. A verdict on top, then each script's cost, each screen's frame, physics, the network, each player's actions, and the ground builders.</p>
+<p>A performance table.</p>
+<p>Live frame numbers. Frames per second, draw calls, triangles drawn, milliseconds on the CPU and GPU, memory, and how much the picture was scaled down to stay fast.</p>
+<p>Live frame numbers.</p>
+<p>Pixel answers. For any spot on screen, which system drew it and what thing it belongs to.</p>
+<p>Pixel answers.</p>
+<p>Bug reports. A note to Jayzee when the engine itself answers wrong, or when something you need does not exist yet.</p>
+<p>Bug reports.</p>
+<p>The launch kit. The steps that turn a playable world into a published game: covers, trophies, controls for pad and phone, an optional trailer, then updates with notes players read.</p>
+<p>The launch kit.</p>
+<p>&quot;It's slow&quot;:</p>
+<p>The performance table is read before any cause is said, even on a fresh change.</p>
+<p>You hear the frame's triangles, what draws most of them, the table's top row, and the fix.</p>
+<p>The top row is the fix's address: that script, or that model.</p>
+<p>A drawing fix is timed on a graphics machine before anyone says it is faster.</p>
+<p>&quot;I can't see the statue&quot; (from a player):</p>
+<p>The warnings are read: they carry that player's forwarded render faults, naming the thing and the fix.</p>
+<p>Their version stamp shows which version their tab started on.</p>
+<p>If their copy got stranded, the answer is simply &quot;refresh&quot;.</p>
+<p>&quot;Publish it&quot;:</p>
+<p>Scripts are checked for wallet or chain calls, which hold a publish back until removed.</p>
+<p>Achievements are set up as trophies.</p>
+<p>Four covers are proposed while full controls for a gamepad and a phone are written.</p>
+<p>Your cover pick publishes the game. You get its play link.</p>
+<p>Later changes go out as updates, each with a name and notes players read.</p>
+<p>A phone that lowers its picture. A busy fight scene on an older phone: the frame line says the engine is reducing work, and the plain-words line says what that screen gave up. Fix the costly effect and the picture rises again.</p>
+<p>A phone that lowers its picture.</p>
+<p>Sparkles on a fence. Thin rails drawn smaller than a pixel crawl as white dots. The fix is fewer, wider parts hidden past a few metres, not a look setting.</p>
+<p>Sparkles on a fence.</p>
+<p>A hitch at the boss door. The boss model pops in late. The game warms it ahead by asking for a preload just before the door, instead of spawning it early.</p>
+<p>A hitch at the boss door.</p>
+<p>Forty-seven enemies. The table's top row is each enemy looking for the player every tick. Looking a few times a second fixes it.</p>
+<p>Forty-seven enemies.</p>
+<p>A launch. Your game appears on the shelf with the cover you picked and a trailer looping on its box.</p>
+<p>A launch.</p>
+<p>The performance table and its focused reads:</p>
+<p>jayzee perf jayzee perf --frame jayzee perf --script &lt;file&gt; jayzee perf --boot jayzee perf --room live jayzee perf --wait</p>
+<p>Logs, from a script in the world:</p>
+<p>getLogs({ level: &quot;error&quot; }) getLogs({ level: &quot;warn&quot; })</p>
+<p>A player's own device log, and the live frame numbers:</p>
+<p>read_client_logs ctx.view.fps ctx.view.triangles ctx.view.drawCalls ctx.view.gpuMs ctx.view.renderScale</p>
+<p>What drew a pixel:</p>
+<p>await getPixelProvenance({ screen: [x, y], camera: { eye, aim, fov } })</p>
+<p>A bug report to Jayzee:</p>
+<p>jayzee report_bug --kind fault &quot;&lt;what broke&gt;&quot; jayzee report_bug --kind request &quot;&lt;what you need&gt;&quot;</p>
+<p>Publishing and updating:</p>
+<p>jayzee publish propose_covers jayzee publish publish_update jayzee publish set_trailer --video trailer.mp4 jayzee publish declare_platforms --platforms '[&quot;desktop&quot;]' jayzee mod publish</p>
+<p>One sample per call. jayzee perf --wait waits for the next sample; nobody loops it.</p>
+<p>One sample per call.</p>
+<p>jayzee perf --wait</p>
+<p>A room restart wipes the logs, and render faults from devices are best effort: an empty list never proves a player's screen is fine.</p>
+<p>A room restart wipes the logs,</p>
+<p>The frame is one screen's view. Your world's models can total far more triangles than one frame draws.</p>
+<p>The frame is one screen's view.</p>
+<p>The game owns its speed. Slow frames come from what was built, and the cure is cutting that, named by its cost.</p>
+<p>The game owns its speed.</p>
+<p>No graphics menu. The engine lowers the picture per device on its own; looks and effects step down by quality. A game never adds a quality toggle.</p>
+<p>No graphics menu.</p>
+<p>A broken script keeps running. Its errors are counted and one folded row names the file and line. Only an endless loop stops that hook.</p>
+<p>A broken script keeps running.</p>
+<p>Report the engine, fix your own. A fault in the game's own script is fixed, not reported.</p>
+<p>Report the engine, fix your own.</p>
+<p>A frozen body after a rejoin is cured by restarting dev rooms, which you call, or a new room name for a posted game; refreshing does not help.</p>
+<p>A frozen body after a rejoin</p>
+<p>Publishing. Desktop-only games declare it after the covers. Unpublishing takes the box off the shelf while the play link plays the last publish. Offer to publish as soon as the game turns playable.</p>
+<p>No covers of loading. A game adds no loading screen or staged wait before play; a match starts on ready or a countdown with the world in view.</p>
+<p>No covers of loading.</p>
+<p>No file export. Players get what the game gives: a prize, a save, the play link.</p>
+<p>No file export.</p>
+<p>The launch kit</p>
+<p>Once a game is published, a Launch kit button appears in the top bar next to Publish. It is the kit for getting players: Jayzee gives a new game some plays, but most players come from where you share it.</p>
+<p>Launch kit</p>
+<p>The link: spawn.co/@you/your-game opens the posted game for anyone; it also plays inside X posts.</p>
+<p>The link:</p>
+<p>Covers: the game's box art and card pictures, made from real frames of the world (the publish skill makes and swaps them).</p>
+<p>Covers:</p>
+<p>Where it goes: the communities that already like this kind of game: a Discord, a subreddit, a group chat, a short clip on X.</p>
+<p>Where it goes:</p>
+<p>Coming back to it: jayzee here reads versions, players, likes and reviews, so you can see what a share brought in. A publish is one step from undone: it can be unpublished.</p>
+<p>Coming back to it:</p>
+<p>jayzee here</p>
+<p>debugging for logs, the performance table, pixels and bug reports.</p>
+<p>publish for covers, updates, platforms and mods.</p>
+<p>mobile-controls for the phone controls written at launch.</p>
+<p>video for the trailer on your game's page.</p>
+<p>blender-game-assets for lightening a heavy model the table names.</p>
+<h4 id="block-1">Block 1</h4>
+<pre><code class="language-`text">spawn perf
+spawn perf --frame
+spawn perf --script &lt;file&gt;
+spawn perf --boot
+spawn perf --room live
+spawn perf --wait</code></pre>
+<h4 id="block-2">Block 2</h4>
+<pre><code class="language-`text">getLogs({ level: &quot;error&quot; })
+getLogs({ level: &quot;warn&quot; })</code></pre>
+<h4 id="block-3">Block 3</h4>
+<pre><code class="language-`text">read_client_logs
+ctx.view.fps   ctx.view.triangles   ctx.view.drawCalls   ctx.view.gpuMs   ctx.view.renderScale</code></pre>
+<h4 id="block-4">Block 4</h4>
+<pre><code class="language-`text">await getPixelProvenance({ screen: [x, y], camera: { eye, aim, fov } })</code></pre>
+<h4 id="block-5">Block 5</h4>
+<pre><code class="language-`text">spawn report_bug --kind fault &quot;&lt;what broke&gt;&quot;
+spawn report_bug --kind request &quot;&lt;what you need&gt;&quot;</code></pre>
+<h4 id="block-6">Block 6</h4>
+<pre><code class="language-`text">spawn publish propose_covers
+spawn publish publish_update
+spawn publish set_trailer --video trailer.mp4
+spawn publish declare_platforms --platforms '[&quot;desktop&quot;]'
+spawn mod publish</code></pre>
+<h4 id="block-7">Block 7</h4>
+<pre><code class="language-`text">spawn perf --wait</code></pre>
+<h4 id="block-8">Block 8</h4>
+<pre><code class="language-`text">spawn here</code></pre>
+<h2 id="not-captured">Not captured</h2>
+<p>Controls clicked: 21 of 21 planned controls in this section, out of 0 candidates found after the load and the scroll. Controls not clicked by policy: 10. Their labels name an action that changes state or sends something, so they were left alone: &quot;read → Uploaded &amp; built models A .glb you upload or a wisp exports arrives with a spec sheet, then gets fitted and dressed: textures on named slots, a lantern in a fist, a cape that moves, sockets and swappable parts.&quot;; &quot;A .glb you upload or a wisp exports arrives with a spec sheet, then gets fitted and dressed: textures on named slots, a lantern in a fist, a cape that moves, sockets and swappable parts.&quot;; &quot;read → Video, trailers &amp; clips Trailers filmed from real play, short scenes made from a sentence or a still, looping backdrops and speaking portraits, and where each one plays in your game.&quot;; &quot;Trailers filmed from real play, short scenes made from a sentence or a still, looping backdrops and speaking portraits, and where each one plays in your game.&quot;; &quot;read → Testers, eyes &amp; playtests How your helpers see and play what they build: camera looks at the world, a body that plays your game in a real browser page, tester players in their own room, and live rounds.&quot;; &quot;How your helpers see and play what they build: camera looks at the world, a body that plays your game in a real browser page, tester players in their own room, and live rounds.&quot;; &quot;read → World files, versions &amp; undo Your world is a folder of files, and every save is a version. Read the history, film old versions, undo a change whole, and keep several builders from stepping on each other.&quot;; &quot;Your world is a folder of files, and every save is a version. Read the history, film old versions, undo a change whole, and keep several builders from stepping on each other.&quot;; &quot;read → Platform reads What your helper can read about your game as players meet it: errors and render faults from their devices, frame rate and performance tables, bug reports, and the publish and launch steps.&quot;; &quot;What your helper can read about your game as players meet it: errors and render faults from their devices, frame rate and performance tables, bug reports, and the publish and launch steps.&quot;. Controls that could not be found again after a retry: 0. Errors: 0.</p>
+<p>Clicks made: 21. Clicks that brought up content not in the swept state: 21. The rest brought up nothing new.</p>
+<h2 id="sources">Sources</h2>
+<ul><li><code>wiki-tools/recapture/states/toolbox/05-initial.json</code></li><li><code>wiki-tools/recapture/states/toolbox/05-swept.json</code></li><li><code>wiki-tools/recapture/states/toolbox/05-c001.json</code></li><li><code>wiki-tools/recapture/states/toolbox/05-c002.json</code></li><li><code>wiki-tools/recapture/states/toolbox/05-c003.json</code></li><li><code>wiki-tools/recapture/states/toolbox/05-c004.json</code></li><li><code>wiki-tools/recapture/states/toolbox/05-c005.json</code></li><li><code>wiki-tools/recapture/states/toolbox/05-c006.json</code></li><li><code>wiki-tools/recapture/states/toolbox/05-c007.json</code></li><li><code>wiki-tools/recapture/states/toolbox/05-c008.json</code></li><li><code>wiki-tools/recapture/states/toolbox/05-c009.json</code></li><li><code>wiki-tools/recapture/states/toolbox/05-c010.json</code></li><li><code>wiki-tools/recapture/states/toolbox/05-c011.json</code></li><li><code>wiki-tools/recapture/states/toolbox/05-c012.json</code></li><li><code>wiki-tools/recapture/states/toolbox/05-c013.json</code></li><li><code>wiki-tools/recapture/states/toolbox/05-c014.json</code></li><li><code>wiki-tools/recapture/states/toolbox/05-c015.json</code></li><li><code>wiki-tools/recapture/states/toolbox/05-c016.json</code></li><li><code>wiki-tools/recapture/states/toolbox/05-c017.json</code></li><li><code>wiki-tools/recapture/states/toolbox/05-c018.json</code></li><li><code>wiki-tools/recapture/states/toolbox/05-c019.json</code></li><li><code>wiki-tools/recapture/states/toolbox/05-c020.json</code></li><li><code>wiki-tools/recapture/states/toolbox/05-c021.json</code></li><li><code>wiki-tools/recapture/states/toolbox/summary-05.json</code></li></ul>
+</main>
+</div>
+<footer class="foot"><div class="foot-inner">wiki · every page cites the on-disk sources it was written from</div></footer>
+</body>
+</html>

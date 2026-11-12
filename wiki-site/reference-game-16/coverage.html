@@ -107,6 +107,21 @@
 <li><a href="../reference-game-16/page-10-games.html">Game page section: Games</a></li>
 <li><a href="../reference-game-16/page-11-pick-a-genre.html">Game page section: Pick A Genre</a></li>
 <li><a href="../reference-game-16/page-host.html">Host page: Untitled game (@lanmower/game-16)</a></li>
+<li><a href="../reference-game-16/recapture-animations.html">Game page section: Animations: text not in the capture</a></li>
+<li><a href="../reference-game-16/recapture-engine.html">Game page section: Engine: text not in the capture</a></li>
+<li><a href="../reference-game-16/recapture-games.html">Game page section: Games: text not in the capture</a></li>
+<li><a href="../reference-game-16/recapture-host.html">Host page: text and links not in the first capture</a></li>
+<li><a href="../reference-game-16/recapture-index.html">Recapture index: what the game page holds outside the first capture</a></li>
+<li><a href="../reference-game-16/recapture-mods.html">Game page section: Mods: text not in the capture</a></li>
+<li><a href="../reference-game-16/recapture-overview.html">Game page section: Overview: text not in the capture</a></li>
+<li><a href="../reference-game-16/recapture-pick-a-genre.html">Game page section: Pick A Genre: text not in the capture</a></li>
+<li><a href="../reference-game-16/recapture-play-frame.html">Play frame: text not in the capture</a></li>
+<li><a href="../reference-game-16/recapture-reference.html">Game page section: Reference: text not in the capture</a></li>
+<li><a href="../reference-game-16/recapture-shapes.html">Game page section: Shapes: text not in the capture</a></li>
+<li><a href="../reference-game-16/recapture-skills.html">Game page section: Skills: text not in the capture</a></li>
+<li><a href="../reference-game-16/recapture-sound-art.html">Game page section: Sound Art: text not in the capture</a></li>
+<li><a href="../reference-game-16/recapture-starters.html">Game page section: Starters: text not in the capture</a></li>
+<li><a href="../reference-game-16/recapture-workshop.html">Game page section: Workshop: text not in the capture</a></li>
 </ul>
 </nav>
 <main>
@@ -118,7 +133,7 @@
 <h2 id="decisions">Decisions</h2>
 <ul><li>The reference's sections are kept as separate pages, one per navigation entry, because the reference navigates between them with its own pill nav. The wiki uses the same split.</li><li>Renames are applied to prose and headings. Hostnames, URLs, package names and the <code>spawn client</code> command are kept verbatim, because they are published identifiers that do not change.</li><li>Capture files are kept outside the wiki, in <code>wiki-tools/capture/</code>, unchanged, so the rename can be checked against them.</li></ul>
 <h2 id="open-gaps">Open gaps</h2>
-<ul><li>Text that a section loads only after a later scroll or a click inside it is not in this capture. The capture reads each section once, after a 1.2 second wait.</li><li>The <code>Reference</code> section is 124 thousand characters with 73 code blocks. It is captured in full, but the wiki copy is long.</li><li>The play frame of the game itself (the live world, rendered by the engine) is not captured as text. Only the toolbox UI around it is.</li></ul>
+<ul><li>The first capture read each section once, after a 1.2 second wait. What the recapture found outside it is listed on the recapture pages: <a href="recapture-index.html">Recapture index</a>.</li><li>The <code>Reference</code> section is 124 thousand characters with 73 code blocks. It is captured in full, but the wiki copy is long.</li><li>The play frame of the game itself is a canvas with no text, so the live world is not captured as text: <a href="recapture-play-frame.html">Play frame</a>.</li><li>Controls whose labels name a state-changing action were not clicked. Each section's recapture page lists them under Not captured.</li></ul>
 <h2 id="sources">Sources</h2>
 <ul><li><code>capture/host.json</code> and <code>capture/00-overview.json</code> to <code>capture/11-pick-a-genre.json</code> in <code>wiki-tools/capture/</code>.</li></ul>
 <h2 id="totals">Totals</h2>

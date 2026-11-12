@@ -14,9 +14,10 @@ Each captured section is one page in this folder. Text is in document order. Hea
 
 ## Open gaps
 
-- Text that a section loads only after a later scroll or a click inside it is not in this capture. The capture reads each section once, after a 1.2 second wait.
+- The first capture read each section once, after a 1.2 second wait. What the recapture found outside it is listed on the recapture pages: [Recapture index](recapture-index.md).
 - The `Reference` section is 124 thousand characters with 73 code blocks. It is captured in full, but the wiki copy is long.
-- The play frame of the game itself (the live world, rendered by the engine) is not captured as text. Only the toolbox UI around it is.
+- The play frame of the game itself is a canvas with no text, so the live world is not captured as text: [Play frame](recapture-play-frame.md).
+- Controls whose labels name a state-changing action were not clicked. Each section's recapture page lists them under Not captured.
 
 ## Sources
 
