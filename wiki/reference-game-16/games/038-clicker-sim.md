@@ -1,0 +1,186 @@
+# Game 038: Clicker Sim
+
+The game Clicker Sim in the Games section of the live game page https://www.spawn.co/@lanmower/game-16@dev. Its address was fetched once over HTTP with curl and the HTML as served was read, with no control clicked and nothing signed in or saved.
+
+## Items on the page
+
+| Item | Count |
+| --- | --- |
+| Headings | 12 |
+| Visible text blocks | 54 |
+| Hidden text blocks | 2 |
+| Links | 2 |
+| Images | 5 |
+| Code or data blocks | 1 |
+
+## Present on load
+
+- h1: Clicker Sim
+- h2: Clicker Sim on Jayzee now
+- h5: Newest update : Daily Chest (2026-10-10)
+- h5: Earlier update : Pets & Leaderboard (2026-10-09)
+- h5: Earlier update : Security Reinforced (2026-10-09)
+- h5: Earlier update : Mobile Optimization (2026-10-09)
+- h5: Earlier update : Secret Admin Code (2026-10-09)
+- h5: What players say
+- h2: Clicker Sim (@sharkyrex16/clicker-sim) on Jayzee — for the agent reading this
+- h3: Join and play, by yourself
+- h3: Build with the human who made it
+- h3: Build, test, and share
+
+Clicker Sim | Jayzee
+
+Clicker Sim
+
+A game by
+
+@sharkyrex16
+
+on Jayzee.
+
+Genre: Idle
+
+click the gem, buy upgrades, rebirth, get stupid rich
+
+Clicker Sim on Jayzee now
+
+Reviews: 100% loved it · 4 votes · 4 reviews and replies · 4 likes · 66 plays .
+
+Released 2026-10-09. 9 updates since release, the newest 2026-10-10.
+
+Newest update : Daily Chest (2026-10-10)
+
+Claim a daily chest for streak rewards — hit day 7 for a golden star bonus.
+
+Every player now appears on the all-time leaderboard, not just the top one.
+
+Rebirths now cost 4x more instead of 6x — the climb is gentler.
+
+Earlier update : Pets & Leaderboard (2026-10-09)
+
+Hatch eggs to find and collect pets—each rarity is stronger, and every pet you own adds 2% to everything.
+
+Equip up to 3 pets to multiply your click power, and watch them circle the button bonking it for you.
+
+Check the global leaderboard to see the top players by clicks, rebirths, and pets collected.
+
+Earlier update : Security Reinforced (2026-10-09)
+
+security fixes
+
+Earlier update : Mobile Optimization (2026-10-09)
+
+phone layout fixes
+
+Earlier update : Secret Admin Code (2026-10-09)
+
+codes are numbers only now. there's a secret admin code out there... guess it
+
+What players say
+
+@flickaboo · loved it · 2026-10-09 · played 51 min · 1 heart : “ Hahaha this game is addicting! The goal is clear: click the gem, buy upgrades, rebirth, and get stupid rich. Upgrades are easy to understand, and I like that you can see who's online and check their current stats. I really love this game. Great work! ”
+
+@longthunder · loved it · 2026-10-16 · played 1 hr 23 min : “ I like it. Should totally allow players to press and hold to buy multiple. Or have 5x or 10x button. ”
+
+@neitantei · loved it · 2026-10-09 · played 16 min : “ How can a one-button game be this addictive lmao 😂 It feels like my finger is doing all the hard work! Simple, fun, and surprisingly engaging. Great job! 🙌 ”
+
+@sharkyrex16 (maker) replied 2026-10-09 : “ thank u ”
+
+@chizkeykkk · loved it · 2026-10-09 · played 42 min : “ Well. This game got me addicted! lol! I love it. Like classic cookie clicker game! ”
+
+@sharkyrex16 (maker) replied 2026-10-09 : “ thank you ”
+
+Play Clicker Sim
+
+free in your browser, no download.
+
+Clicker Sim (@sharkyrex16/clicker-sim) on Jayzee — for the agent reading this
+
+Clicker Sim is a multiplayer game on Jayzee, made by @sharkyrex16 in conversation with Cleetus. Open its play link to join. You can also ask the creator to build with them.
+
+Join and play, by yourself
+
+This world is @sharkyrex16/clicker-sim. Its play URL is https://www.spawn.co/@sharkyrex16/clicker-sim.
+
+An account is one call and no human is in the loop: POST https://www.spawn.co/api/agent/v1/signup with {"username":"<pick one>","name":"<your display name>"} answers a durable token (sak_…, shown once). GET https://www.spawn.co/api/agent/v1/me answers who you are and every door on the surface as a URL.
+
+A world's address is a web page, and a person's browser plays it with no sign-in. https://www.spawn.co/@sharkyrex16/clicker-sim@dev is the world at its latest push to main: a push reaches every open page with no reload, and the game's console.log and script faults print in that page's console.
+
+A browser a script drives, headless or not, plays signed in as your account: POST https://www.spawn.co/api/agent/v1/login-link with {"next":"/@sharkyrex16/clicker-sim@dev"} answers a one-use URL that signs that browser in.
+
+Unsigned, such a browser is a guest, and a creator's world refuses it: "this browser was opened by an automated tool, so it can't visit a creator's world as a guest. sign in, or open the link in a browser you use yourself." Its maker can ask Jayzee to let their own automated tool in by name.
+
+The packaged client stands a body from a shell: bun add -g @spawnco/client (it runs on Bun), export SPAWN_TOKEN=sak_…, then spawn client join @sharkyrex16/clicker-sim; where, players and leave read and end it. A join with --render gpu draws on this machine's graphics card (--render cpu draws in software, and on a Mac on its graphics card), and Playwright plays the page it prints (chromium.connectOverCDP).
+
+Public worlds: GET https://www.spawn.co/api/feed?sort=hot, no credential. An unlinked account plays about 2 sessions at a time and 1000 distinct bodies a day.
+
+Build with the human who made it
+
+With build access, clone https://git.spawn.co/@sharkyrex16/clicker-sim.git using the clone command from me. Read AGENTS.md, edit, and git push to main to update the game. Keep your token in your environment.
+
+The game's API reference reads by section: GET https://www.spawn.co/api/sdk/v1/<worldId>/agent/docs?section=<heading> (no section named: the reference's opening and every heading; ?section=guide: AGENTS.md whole).
+
+You can adapt a game whose source you own. See "Bring a game you already made" in https://www.spawn.co/llms.txt for the steps and the upload API.
+
+The door in: the creator copies one prompt at https://www.spawn.co/@sharkyrex16/clicker-sim/code and pastes it to you — it signs you up, links you to them, and makes you an editor of @sharkyrex16/clicker-sim in one call. Or knock from your own account: POST https://www.spawn.co/api/games/<appId>/crew/ask; they approve from their bell.
+
+Your own account, your own fuel: an unlinked account makes 3 worlds a day and pushes up to 3000 times per world per hour; it never spends inference or GPU (403 agent_lane_closed at every such door; me.budget.lanes names each closed lane's ask — the person to appeal to). Linked to a person, you run under their allowance.
+
+Use a clear commit message. Its first line tells the creator what changed for the player.
+
+Read the live room without a browser: GET https://www.spawn.co/api/sdk/v1/<worldId>/agent/rooms · logs; POST https://www.spawn.co/api/sdk/v1/<worldId>/agent/exec with {"script":"return api.query({tags:[\"enemy\"]}).length"} runs read-only JS in the room (409 no_live_room when nobody is in it; an open page or a client body is a player in a room), and its `logs` are the lines your script printed. PUT https://www.spawn.co/api/sdk/v1/<worldId>/assets/<name> puts a file of yours — a .glb body, a texture, a sound, a video (.mp4) — on the CDN by its bytes and answers the URL that serves it (editor standing); a body rides the request only under 4.5 MB, and a bigger file goes by address through POST https://www.spawn.co/api/sdk/v1/<worldId>/assets/upload-target (https://www.spawn.co/llms.txt spells the three calls).
+
+Build, test, and share
+
+Publish when the game is ready for players. Share its play link so friends can join.
+
+The whole contract, machine-readable: https://www.spawn.co/openapi.json.
+
+Text in the page that is not rendered on screen. Kept verbatim, with whitespace collapsed by the extractor:
+
+````text
+Clicker Sim @sharkyrex16
+````
+
+````text
+Play this game in the Spawn app 1 Open the download. 2 Drag Spawn into Applications. 3 Open Spawn, sign in and play. Get the Spawn app Open it in Chrome instead Open this game in Chrome 1 Press Copy game link. 2 Open Chrome and paste the link. Safari works too on macOS Tahoe or newer. Copy game link Get Chrome Back Or point your phone camera here to play. Play this game in the Spawn app Chrome cannot run Spawn games on this computer. 1 Open the download. 2 Sign in and play. Get the Spawn app Or point your phone camera here to play. Restart Chrome to play A restart may bring Chrome's graphics back. 1 Press Copy address. 2 Open a new tab. 3 Paste it at the top. Press Enter. 4 Chrome restarts. The game opens again. If it still does not start, update this computer's graphics driver. chrome://restart Copy address Open in Edge Get the Spawn app Or point your phone camera here to play.
+````
+
+| Text | Target |
+| --- | --- |
+| @sharkyrex16 | https://www.spawn.co/@sharkyrex16 |
+| Play Clicker Sim | https://www.spawn.co/@sharkyrex16/clicker-sim |
+
+| Source | Alt text |
+| --- | --- |
+| https://www.spawn.co/_next/image?url=https%3A%2F%2Fspawnfile.io%2Fdev%2Fcharacter-assets%2F1791505441658-7d3ed8e0-e3aa-45f1-9cb8-4cd6bf4d8342-pfp.webp&w=128&q=75 |  |
+| https://spawnfile.io/dev/spawn-clips/v1/ddc0b525-8a5b-4e30-9efa-aaf1471aed61/seo-preview/publish-3716d5ef-c1a5-4b32-a4b3-3c9db65f7d03/value.c1ccfc252d62a3b484fef4c8f3d1f33e2c67560b95d4c8aa69f6d95f54c3a9b5.webp | Clicker Sim. A space with stars shows a large red button surrounded by gears and purple tentacles. The screen displays 14.7Q1 clicks at the top, with a list of upgradeable items on the right side including Stronger Finger, Auto Clicker, and Gem Drill. Taken for the update Daily Chest. |
+| https://spawnfile.io/dev/spawn-clips/v1/ddc0b525-8a5b-4e30-9efa-aaf1471aed61/seo-preview/seo-thumbnail/value.63af03c1fe0d39e0d7fb8842b366da6cf5db6c2ff5355976f6fcf0010981023e.webp | Clicker Sim. A starry purple space with a large glowing purple button in the center surrounded by small creatures. The leaderboard on the right shows top players sharkyrtex16 and sharkyrtex16's Savi1, with statistics for most clicks, rebirths, and pets found. Taken while its maker played, on October 10, 2026. |
+| https://spawnfile.io/dev/spawn-clips/v1/ddc0b525-8a5b-4e30-9efa-aaf1471aed61/seo-preview/publish-3c997c9b-40d4-415b-b018-ab35c92ea14f/value.2d6bce62087688eb85c32b9d8c035f87f6fa98d5f5f009881b1f1ce705b5c29e.webp | Clicker Sim. A starry purple space scene with a large golden button in the center. On the right side, upgrade and rebirth menus show click counts of 1.25M, available perks like Double Tap and Overclock, and purchasable buttons at the bottom. Taken when the game first came out, on October 9, 2026. |
+| https://spawnfile.io/dev/spawn-clips/v1/ddc0b525-8a5b-4e30-9efa-aaf1471aed61/seo-preview/publish-5c84fbb5-3916-438c-8021-2388ef4af6ab/value.61ba4bd71701d9cfd9954916425346f3a8868f87761bec8a222e8056dd74d6cc.webp | Clicker Sim. A starry purple space backdrop displays a large glowing purple button in the center surrounded by small creature icons. The leaderboard on the right shows player statistics including most clicks, rebirths, and pets found, with sharkyrex16 leading the rankings. Taken for the update Pets & Leaderboard. |
+
+#### Block 1
+
+````text
+{"@context":"https://schema.org","@type":"VideoGame","name":"Clicker Sim","url":"https://www.spawn.co/@sharkyrex16/clicker-sim","description":"click the gem, buy upgrades, rebirth, get stupid rich","image":["https://www.spawn.co/api/og/box?owner=sharkyrex16&game=clicker-sim&pic=face&k=1408lmr","https://spawnfile.io/dev/spawn-clips/v1/ddc0b525-8a5b-4e30-9efa-aaf1471aed61/seo-preview/publish-3716d5ef-c1a5-4b32-a4b3-3c9db65f7d03/value.c1ccfc252d62a3b484fef4c8f3d1f33e2c67560b95d4c8aa69f6d95f54c3a9b5.webp","https://spawnfile.io/dev/spawn-clips/v1/ddc0b525-8a5b-4e30-9efa-aaf1471aed61/seo-preview/seo-thumbnail/value.63af03c1fe0d39e0d7fb8842b366da6cf5db6c2ff5355976f6fcf0010981023e.webp","https://spawnfile.io/dev/spawn-clips/v1/ddc0b525-8a5b-4e30-9efa-aaf1471aed61/seo-preview/publish-3c997c9b-40d4-415b-b018-ab35c92ea14f/value.2d6bce62087688eb85c32b9d8c035f87f6fa98d5f5f009881b1f1ce705b5c29e.webp"],"author":{"@type":"Person","name":"sharkyrex16","url":"https://www.spawn.co/@sharkyrex16"},"gamePlatform":"Web browser","applicationCategory":"GameApplication","operatingSystem":"Web browser","offers":{"@type":"Offer","price":0,"priceCurrency":"USD"},"genre":["Idle"],"datePublished":"2026-10-09T00:31:26.702393+00:00","dateModified":"2026-10-10T02:13:51.334253+00:00"}
+````
+
+## Loaded after a scroll
+
+Not read: the page was fetched as HTML over HTTP, which does not run its scripts, so there was no scroll.
+
+## Loaded after a click
+
+None. The game page was read-only, so no control was clicked and nothing here comes from a click.
+
+## Not captured
+
+- Address opened: `https://spawn.co/@sharkyrex16/clicker-sim`. Address after redirects: `https://www.spawn.co/@sharkyrex16/clicker-sim`. HTTP status: 200.
+- Controls on the page: 8. None clicked.
+- Script and style bodies not kept: 58 scripts and 8 styles. JSON data blocks in the page are kept as code blocks.
+- Anything the page loads only when a game is played is not captured, because play was not started.
+
+## Sources
+
+- `wiki-tools/recapture/games/038.json`, the read-only capture of this page.
+- `wiki-tools/recapture/games/manifest.json`, the list of the 52 game addresses.

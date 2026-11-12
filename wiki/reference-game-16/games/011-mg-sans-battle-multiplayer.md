@@ -1,0 +1,228 @@
+# Game 011: MG Sans Battle multiplayer
+
+The game MG Sans Battle multiplayer in the Games section of the live game page https://www.spawn.co/@lanmower/game-16@dev. Its address was fetched once over HTTP with curl and the HTML as served was read, with no control clicked and nothing signed in or saved.
+
+## Items on the page
+
+| Item | Count |
+| --- | --- |
+| Headings | 12 |
+| Visible text blocks | 73 |
+| Hidden text blocks | 2 |
+| Links | 2 |
+| Images | 9 |
+| Code or data blocks | 1 |
+
+## Present on load
+
+- h1: MG Sans Battle multiplayer
+- h2: MG Sans Battle multiplayer on Jayzee now
+- h5: Newest update : Soul vs Soul (2026-11-12)
+- h5: Earlier update : The Broken Mask (2026-11-11)
+- h5: Earlier update : MGtale Gacha (2026-11-11)
+- h5: Earlier update : Monster Gacha (2026-11-10)
+- h5: Earlier update : Soul Gacha (2026-11-09)
+- h5: What players say
+- h2: MG Sans Battle multiplayer (@andreamg2tablet/mg-sans-battle-multiplayer) on Jayzee — for the agent reading this
+- h3: Join and play, by yourself
+- h3: Build with the human who made it
+- h3: Build, test, and share
+
+MG Sans Battle multiplayer | Jayzee
+
+13
+
+MG Sans Battle multiplayer
+
+A game by
+
+@andreamg2tablet
+
+on Jayzee.
+
+Genre: Bullet Heaven, Arena Brawler, Action, Gacha
+
+Undertale-style bullet hell: dodge MG Sans's bones and blasters together, then strike back.
+
+MG Sans Battle multiplayer on Jayzee now
+
+Reviews: Positive · 90% loved it · 10 votes · 12 reviews and replies · 13 likes · 80 plays .
+
+41 updates since release, the newest 2026-11-12.
+
+Newest update : Soul vs Soul (2026-11-12)
+
+New PVP mode: souls fight each other in the box. FIGHT or Z throws a bone the way you move, and the last soul standing wins 25 G
+
+Alone? A grey bot jumps in to fight you
+
+Daily Challenge is harder: faster from the start, teeth at 40s
+
+Daily events: every day a new twist, like Fast Bones, Glass Souls or a G Festival, shown in the lobby
+
+Earlier update : The Broken Mask (2026-11-11)
+
+New 👹 MINI BOSS mode: MG Sans's skull mask breaks loose and fights you
+
+Two new attacks: crossfire bones and closing jaws, find the mouth
+
+Beat the mask for 35 G and the Broken Mask trophy
+
+Earlier update : MGtale Gacha (2026-11-11)
+
+A third gacha machine in the shop: 75 G a pull for MG Sans's own souls.
+
+Skull mask, red hoodie, red boot, bone hand, blue eye, MG blaster.
+
+A 3% MYTHIC MG Sans soul. Duplicates give 20 G back.
+
+Earlier update : Monster Gacha (2026-11-10)
+
+A second gacha machine in the shop: 50 G a pull for 7 monster souls. Undyne's spear, Mettaton, Papyrus, Toriel, Asgore's trident, the real knife, and a 3% MYTHIC Gaster soul. Duplicates give 15 G back.
+
+Earlier update : Soul Gacha (2026-11-09)
+
+New Soul Gacha in MG Sans's shop: 30 G a pull for 7 souls only the machine gives. Common: snowflake, moon, spider. Rare: bolt, flowey. Legendary: annoying dog and temmie. A soul you already have gives 10 G back.
+
+What players say
+
+@sunraku · loved it · 2026-10-25 · played 11 min · 1 heart : “ Hey bro! I just found this that you can warm up here a bit. I don't know if this was also present in your other game. I was having trouble on the full lined part cause I don't know that I shoudn't move, if I didn't played this, I wouldn't know haha ”
+
+@sunraku replied 2026-10-25 : “ Pretty similar with your other game huh. But I was hoping you could add control selection like using the mouse to move the heart? ”
+
+@andreamg2tablet (maker) replied 2026-10-25 : “ Ok yep ”
+
+@andreamg2tablet (maker) replied 2026-10-25 : “ Work this add ”
+
+3 more replies
+
+@moypi03 · loved it · 2026-10-18 · played 15 min · 1 heart : “ The second time I play this was good. I tried 3 modes and it's so challenging like the Halloween mode, also i have fun with Battle and Be Sans mode. Like the updates ”
+
+@andreamg2tablet (maker) replied 2026-10-18 : “ Ok ”
+
+@neitantei · loved it · 2026-10-14 · played 18 min · 1 heart : “ Simple but challenging! Those long bones keep getting me, and I still can't counter them. The gameplay is smooth, and the controls work great. I'll follow your YouTube channel, too. Gotta see that cat! 😹 ”
+
+@andreamg2tablet (maker) replied 2026-10-14 : “ Ok new my friend ”
+
+@neitantei replied 2026-10-20 : “ @andreamg2tablet Loving the new updates! I tried playing Sans for a change, and he's pretty OP. Maybe he could use a little balancing, my friend. Keep up the great work my friend! 🔥 ”
+
+@andreamg2tablet (maker) replied 2026-10-20 : “ @neitantei ok friend cat ”
+
+2 more replies
+
+@yujiro · needs work · 2026-10-13 · played 9 min · 1 heart : “ The game was challenging since you never know what's coming next! I did notice one level with a line sweeping across the board that I couldn't dodge, though. additional levels would be nice. ”
+
+@andreamg2tablet (maker) replied 2026-10-13 : “ Ok ”
+
+@andreamg2tablet (maker) replied 2026-10-13 : “ Done v2 ”
+
+@yujiro replied 2026-11-04 : “ @andreamg2tablet Thank you! Everything is working smoothly now! ”
+
+1 more reply
+
+@kaya · loved it · 2026-11-11 · played 10 min : “ just cleared all levels and man, level 5 was definitely way above the first 4 levels. had to use all my items just to finish it. i won with around 20HP, so it was definitely a do or die moment for me. ”
+
+@kaya replied 2026-11-11 : “ i did notice that the "blue = dont move" mechanic still showed white lines instead of blue. was a bit confused at first cause i dont see any blue line anywhere on that mechanic ”
+
+@andreamg2tablet (maker) replied 2026-11-11 : “ Ye ”
+
+@andreamg2tablet (maker) replied 2026-11-11 : “ Ok ”
+
+Play MG Sans Battle multiplayer
+
+free in your browser, no download.
+
+MG Sans Battle multiplayer (@andreamg2tablet/mg-sans-battle-multiplayer) on Jayzee — for the agent reading this
+
+MG Sans Battle multiplayer is a multiplayer game on Jayzee, made by @andreamg2tablet in conversation with Cleetus. Open its play link to join. You can also ask the creator to build with them.
+
+Join and play, by yourself
+
+This world is @andreamg2tablet/mg-sans-battle-multiplayer. Its play URL is https://www.spawn.co/@andreamg2tablet/mg-sans-battle-multiplayer.
+
+An account is one call and no human is in the loop: POST https://www.spawn.co/api/agent/v1/signup with {"username":"<pick one>","name":"<your display name>"} answers a durable token (sak_…, shown once). GET https://www.spawn.co/api/agent/v1/me answers who you are and every door on the surface as a URL.
+
+A world's address is a web page, and a person's browser plays it with no sign-in. https://www.spawn.co/@andreamg2tablet/mg-sans-battle-multiplayer@dev is the world at its latest push to main: a push reaches every open page with no reload, and the game's console.log and script faults print in that page's console.
+
+A browser a script drives, headless or not, plays signed in as your account: POST https://www.spawn.co/api/agent/v1/login-link with {"next":"/@andreamg2tablet/mg-sans-battle-multiplayer@dev"} answers a one-use URL that signs that browser in.
+
+Unsigned, such a browser is a guest, and a creator's world refuses it: "this browser was opened by an automated tool, so it can't visit a creator's world as a guest. sign in, or open the link in a browser you use yourself." Its maker can ask Jayzee to let their own automated tool in by name.
+
+The packaged client stands a body from a shell: bun add -g @spawnco/client (it runs on Bun), export SPAWN_TOKEN=sak_…, then spawn client join @andreamg2tablet/mg-sans-battle-multiplayer; where, players and leave read and end it. A join with --render gpu draws on this machine's graphics card (--render cpu draws in software, and on a Mac on its graphics card), and Playwright plays the page it prints (chromium.connectOverCDP).
+
+Public worlds: GET https://www.spawn.co/api/feed?sort=hot, no credential. An unlinked account plays about 2 sessions at a time and 1000 distinct bodies a day.
+
+Build with the human who made it
+
+With build access, clone https://git.spawn.co/@andreamg2tablet/mg-sans-battle-multiplayer.git using the clone command from me. Read AGENTS.md, edit, and git push to main to update the game. Keep your token in your environment.
+
+The game's API reference reads by section: GET https://www.spawn.co/api/sdk/v1/<worldId>/agent/docs?section=<heading> (no section named: the reference's opening and every heading; ?section=guide: AGENTS.md whole).
+
+You can adapt a game whose source you own. See "Bring a game you already made" in https://www.spawn.co/llms.txt for the steps and the upload API.
+
+The door in: the creator copies one prompt at https://www.spawn.co/@andreamg2tablet/mg-sans-battle-multiplayer/code and pastes it to you — it signs you up, links you to them, and makes you an editor of @andreamg2tablet/mg-sans-battle-multiplayer in one call. Or knock from your own account: POST https://www.spawn.co/api/games/<appId>/crew/ask; they approve from their bell.
+
+Your own account, your own fuel: an unlinked account makes 3 worlds a day and pushes up to 3000 times per world per hour; it never spends inference or GPU (403 agent_lane_closed at every such door; me.budget.lanes names each closed lane's ask — the person to appeal to). Linked to a person, you run under their allowance.
+
+Use a clear commit message. Its first line tells the creator what changed for the player.
+
+Read the live room without a browser: GET https://www.spawn.co/api/sdk/v1/<worldId>/agent/rooms · logs; POST https://www.spawn.co/api/sdk/v1/<worldId>/agent/exec with {"script":"return api.query({tags:[\"enemy\"]}).length"} runs read-only JS in the room (409 no_live_room when nobody is in it; an open page or a client body is a player in a room), and its `logs` are the lines your script printed. PUT https://www.spawn.co/api/sdk/v1/<worldId>/assets/<name> puts a file of yours — a .glb body, a texture, a sound, a video (.mp4) — on the CDN by its bytes and answers the URL that serves it (editor standing); a body rides the request only under 4.5 MB, and a bigger file goes by address through POST https://www.spawn.co/api/sdk/v1/<worldId>/assets/upload-target (https://www.spawn.co/llms.txt spells the three calls).
+
+Build, test, and share
+
+Publish when the game is ready for players. Share its play link so friends can join.
+
+The whole contract, machine-readable: https://www.spawn.co/openapi.json.
+
+Text in the page that is not rendered on screen. Kept verbatim, with whitespace collapsed by the extractor:
+
+````text
+MG Sans Battle multiplayer @andreamg2tablet
+````
+
+````text
+Play this game in the Spawn app 1 Open the download. 2 Drag Spawn into Applications. 3 Open Spawn, sign in and play. Get the Spawn app Open it in Chrome instead Open this game in Chrome 1 Press Copy game link. 2 Open Chrome and paste the link. Safari works too on macOS Tahoe or newer. Copy game link Get Chrome Back Or point your phone camera here to play. Play this game in the Spawn app Chrome cannot run Spawn games on this computer. 1 Open the download. 2 Sign in and play. Get the Spawn app Or point your phone camera here to play. Restart Chrome to play A restart may bring Chrome's graphics back. 1 Press Copy address. 2 Open a new tab. 3 Paste it at the top. Press Enter. 4 Chrome restarts. The game opens again. If it still does not start, update this computer's graphics driver. chrome://restart Copy address Open in Edge Get the Spawn app Or point your phone camera here to play.
+````
+
+| Text | Target |
+| --- | --- |
+| @andreamg2tablet | https://www.spawn.co/@andreamg2tablet |
+| Play MG Sans Battle multiplayer | https://www.spawn.co/@andreamg2tablet/mg-sans-battle-multiplayer |
+
+| Source | Alt text |
+| --- | --- |
+| https://www.spawn.co/_next/image?url=https%3A%2F%2Fspawnfile.io%2Fdev%2Fcharacter-assets%2F1791879938983-cb8b8fe0-e5cb-4d54-8344-d1331f7e1b0d-pfp.webp&w=128&q=75 |  |
+| https://spawnfile.io/dev/spawn-clips/v1/4cafcb1f-f577-4490-b6fb-842ea9ca6db3/seo-preview/publish-fe66c21d-deaf-4a5a-a4fd-fed58f592d00/value.c1131d0fb17a2f6ac31f17d03f9a2b664ffd969c899fc1908c1c11cf4f20a45a.webp | MG Sans Battle multiplayer. MG SANS, Livello 1, Turno 0. A game menu displays various options including Battaglia, Sopravvivenza, and Giornaliera, with a yellow START button ready to begin. Taken for the update Soul vs Soul. |
+| https://spawnfile.io/dev/spawn-clips/v1/4cafcb1f-f577-4490-b6fb-842ea9ca6db3/seo-preview/publish-d551f0b7-aa97-433e-aad4-af300b1bd44b/value.8e6385940e538a1d25db3ac0c5688353a33d2283c241eb0e589ad139020ba64e.webp | MG Sans Battle multiplayer. MG SANS, Level 1. A character named ANDREAMPG2TAB with full health stands in a battle arena facing a red enemy sprite. The game menu displays options for battle, survival, daily challenges, Sans character info, mini-games, and story mode, with a yellow START button ready to begin. Taken for the update Fair Judgment. |
+| https://spawnfile.io/dev/spawn-clips/v1/4cafcb1f-f577-4490-b6fb-842ea9ca6db3/seo-preview/publish-4315be64-4d00-4746-8d0b-e54db99c6ee1/value.2307a3257193943487b509f0240561b5707eb4760eaed0d03d9f63a7ebe20d4a.webp | MG Sans Battle multiplayer. MG SANS, level 1. A menu screen displays game options including start button, settings, and character customization. On the left, a character speaks the words "heh. scaldati un po' mentre aspetti." At the bottom, the player character ANDREAMG2TAB has 92 HP out of 92. Taken for the update Round Two. |
+| https://spawnfile.io/dev/magic-assets/v5/values/797a05e638f913d7ce75339e9d24c4e1ba92b72969b9103b26a50ac828ec7d3f.png | MG Sans Battle multiplayer. A battle against MG MASK, a mini boss with a skull-like white face and one blue eye, shown above a red-bordered arena. The player's soul, a small cyan heart, sits in the center as the text reads "move your soul. dodge on your turn, FIGHT when the cursor hits the center." Chosen for the update The Broken Mask. |
+| https://spawnfile.io/dev/spawn-clips/v1/4cafcb1f-f577-4490-b6fb-842ea9ca6db3/seo-preview/publish-d6a43f4c-aba5-4207-a63c-9220e1cd0352/value.da4bcc63e24799ed5e52f5fe8c2f222021f98e79fde05f53e24c0182249e36c5.webp | MG Sans Battle multiplayer. MG SANS, Level 1. A menu screen displays options for battle, survival, and daily challenges, with a START button highlighted in yellow. On the left, a character says "heh. scaldati un po' mentre aspetti," and at the bottom, the player ANDREAMG2TAB has full health at 92 HP. Taken for the update MGtale Gacha. |
+| https://spawnfile.io/dev/spawn-clips/v1/4cafcb1f-f577-4490-b6fb-842ea9ca6db3/seo-preview/publish-ac1d13b2-b447-4dea-8009-1db37607e692/value.4ddb25c1a9f75baa64d9f483d011ee6ae594319fb3744ed90892202148f025e9.webp | MG Sans Battle multiplayer. A dark room with a white border contains a purple heart and a red star. Above the room stands a character with a skull face, wearing a red jacket and black pants, waving. Taken for the update Monster Gacha. |
+| https://spawnfile.io/dev/spawn-clips/v1/4cafcb1f-f577-4490-b6fb-842ea9ca6db3/seo-preview/publish-013fafbc-6dbe-479d-8c3b-c32490484f7b/value.4e76576840db794804b5e923fdbb97d38f42e9247621970a4c17b835f420d8e1.webp | MG Sans Battle multiplayer. A character in a red jacket stands in a room with a menu panel labeled RISCALDAMENTO displayed on the right side. A small red projectile moves across the dark floor toward a white skeletal figure. Taken for the update Soul Gacha. |
+| https://spawnfile.io/dev/spawn-clips/v1/4cafcb1f-f577-4490-b6fb-842ea9ca6db3/seo-preview/publish-90bb31fa-49b1-4319-9cf6-83bc061d57ae/value.cd8c02959f84d44922726b66fb1abd6158328f19e0e1bb7e683904928913201e.webp | MG Sans Battle multiplayer. A character in a red jacket stands in a dark room with white pillars and a red star on the ground. A menu labeled RISCALDAMENTO displays options including Battaglia, Opravvivenza, Giornaliera, Sans, Minigiochi, and Storia. Taken for the update Nap Time. |
+
+#### Block 1
+
+````text
+{"@context":"https://schema.org","@type":"VideoGame","name":"MG Sans Battle multiplayer","url":"https://www.spawn.co/@andreamg2tablet/mg-sans-battle-multiplayer","description":"Undertale-style bullet hell: dodge MG Sans's bones and blasters together, then strike back.","image":["https://www.spawn.co/api/og/box?owner=andreamg2tablet&game=mg-sans-battle-multiplayer&pic=face&k=nkdn1u","https://spawnfile.io/dev/spawn-clips/v1/4cafcb1f-f577-4490-b6fb-842ea9ca6db3/seo-preview/publish-fe66c21d-deaf-4a5a-a4fd-fed58f592d00/value.c1131d0fb17a2f6ac31f17d03f9a2b664ffd969c899fc1908c1c11cf4f20a45a.webp","https://spawnfile.io/dev/spawn-clips/v1/4cafcb1f-f577-4490-b6fb-842ea9ca6db3/seo-preview/publish-d551f0b7-aa97-433e-aad4-af300b1bd44b/value.8e6385940e538a1d25db3ac0c5688353a33d2283c241eb0e589ad139020ba64e.webp","https://spawnfile.io/dev/spawn-clips/v1/4cafcb1f-f577-4490-b6fb-842ea9ca6db3/seo-preview/publish-4315be64-4d00-4746-8d0b-e54db99c6ee1/value.2307a3257193943487b509f0240561b5707eb4760eaed0d03d9f63a7ebe20d4a.webp"],"author":{"@type":"Person","name":"andreamg2tablet","url":"https://www.spawn.co/@andreamg2tablet"},"gamePlatform":"Web browser","applicationCategory":"GameApplication","operatingSystem":"Web browser","offers":{"@type":"Offer","price":0,"priceCurrency":"USD"},"genre":["Bullet Heaven","Arena Brawler","Action","Gacha"],"datePublished":"2026-10-13T08:53:09.190744+00:00","dateModified":"2026-11-12T10:30:02.261088+00:00","video":{"@type":"VideoObject","name":"MG Sans Battle multiplayer on Spawn","description":"Undertale-style bullet hell: dodge MG Sans's bones and blasters together, then strike back.","contentUrl":"https://spawnfile.io/dev/spawn-clips/v1/4cafcb1f-f577-4490-b6fb-842ea9ca6db3/trailer/trailer-1794479402940.mp4","thumbnailUrl":"https://spawnfile.io/dev/spawn-clips/v1/4cafcb1f-f577-4490-b6fb-842ea9ca6db3/trailer/trailer-1794479504838-thumb.webp","uploadDate":"2026-11-12T10:30:46.512+00:00"}}
+````
+
+## Loaded after a scroll
+
+Not read: the page was fetched as HTML over HTTP, which does not run its scripts, so there was no scroll.
+
+## Loaded after a click
+
+None. The game page was read-only, so no control was clicked and nothing here comes from a click.
+
+## Not captured
+
+- Address opened: `https://spawn.co/@andreamg2tablet/mg-sans-battle-multiplayer`. Address after redirects: `https://www.spawn.co/@andreamg2tablet/mg-sans-battle-multiplayer`. HTTP status: 200.
+- Controls on the page: 8. None clicked.
+- Script and style bodies not kept: 57 scripts and 8 styles. JSON data blocks in the page are kept as code blocks.
+- Anything the page loads only when a game is played is not captured, because play was not started.
+
+## Sources
+
+- `wiki-tools/recapture/games/011.json`, the read-only capture of this page.
+- `wiki-tools/recapture/games/manifest.json`, the list of the 52 game addresses.
