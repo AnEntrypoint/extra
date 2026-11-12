@@ -18,7 +18,7 @@ The live game page https://www.spawn.co/@lanmower/game-16@dev was captured again
 | recapture-reference.md | 0 | 0 | 0 | 0 |
 | recapture-shapes.md | 0 | 0 | 328 | 87 |
 | recapture-mods.md | 0 | 0 | 0 | 0 |
-| recapture-pick-a-genre.md | 0 | 0 | 0 | 0 |
+| recapture-pick-a-genre.md | 0 | 0 | 864 | 9 |
 
 ## Not captured, and why
 
