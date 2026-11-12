@@ -400,3 +400,37 @@ Starting state: local main and origin/main at c6b058b, no tracked file modified.
 - Render, item 1: a playwriter CLI session loaded file:///workspace/extra/wiki-site/index.html. Status 200, title "Project wiki: how this wiki is organised · Wiki", the same first heading, 104 links, 0 broken images, 0 page or console errors. The screenshot matches wiki-tools/wiki-site-home.png in layout and content. The scrollbar thumb is shorter in the new render, so the built page is slightly taller than when the reference was taken.
 - Citation, item 2: wiki/jayzee/runs-findings.md has both citations marked absent on 2026-11-12, and the built page carries the same annotation.
 - Processes: the CLI session's browser and controller exited when the call ended. A process comparison against a snapshot taken before the call found no new process. Pre-existing processes belonging to other sessions were not touched.
+
+## Games pages, OPEN reflection and the games index (2026-11-12, Phase A of the 25bc03a pass)
+
+### Phase A changes
+
+- 349b3b7, wiki/cleetus/open-items.md: OPEN-022 now carries its tag, required in jayzee, as /workspace/savi/docs/OPEN-ITEMS.md does. Witness (Phase B): a read-only comparison of the 30 statuses and tags in the wiki page against the register prints 30 of 30 ok.
+- 9fdaf56, wiki-tools/gen-games.mjs: new generator. It reads wiki-tools/recapture/games/manifest.json and one capture per game (NNN.json), and writes wiki/reference-game-16/games/NNN-slug.md for each of the 148 games and wiki/reference-game-16/recapture-games.md as the index. It stops with an error when the manifest does not list 148 games in order, and when a token-shaped value appears in a page. Witness (Phase B): node wiki-tools/gen-games.mjs prints a JSON line with games 148, and 148 files exist under wiki/reference-game-16/games/.
+- 7cf7be4, wiki-tools/gen-recapture.mjs: the Games section is removed from the recapture generator, so it no longer writes the zero-count recapture-games page, and the index sentence about game pages now points at the games pass. Witness (Phase B): node wiki-tools/gen-recapture.mjs runs, and wiki/reference-game-16/recapture-index.md no longer says the game page was not opened.
+- 0968612, wiki/toc.md: lists wiki/reference-game-16/recapture-games.md. Witness (Phase B): check-links.mjs reports the entry and its target as present.
+
+### Not committed in game-16
+
+- game-16/.gitignore and game-16/.spawn/engine.yaml are not committed. Both carry a rename of the engine reference from spawn to jayzee: .gitignore changes .spawn/engine/ to .jayzee/engine/, and .spawn/engine.yaml changes the ref host from git.spawn.co to git.jayzee.co. They are not wiki files, so the owner's condition for a local commit inside game-16 is not met. The other 25 modified files in game-16 are not touched. Owner decision needed. game-16 is not pushed.
+
+### Savi and jayzee OPEN items (read-only)
+
+- Read: /workspace/savi/docs/OPEN-ITEMS.md (30 items, OPEN-001 to OPEN-030), and the OPEN references in /workspace/jayzee/docs/PARITY.md and IDEAL.md. Nothing was written into /workspace/savi or /workspace/jayzee.
+- Checked by reading: the status and the required-in-jayzee tag of each of the 30 items in wiki/cleetus/open-items.md match the register, after the OPEN-022 tag fix in 349b3b7. Eighteen other wiki pages cite OPEN IDs and agree with the register.
+
+### Phase B (one run, then one push)
+
+1. Discover the 148 game addresses from the Games section of the live game page, read-only in the playwriter CLI session, with no click beyond navigation. Open each game's address once, read-only. Write wiki-tools/recapture/games/manifest.json and wiki-tools/recapture/games/001.json to 148.json.
+2. Run node wiki-tools/gen-recapture.mjs, then node wiki-tools/gen-games.mjs.
+3. Run node wiki-tools/build.mjs wiki wiki-site once.
+4. Run node wiki-tools/check-links.mjs once. Fix each defect and rerun only what failed.
+5. Commit the rebuilt wiki-site and the Phase B witness lines to main, as lanmower with no trailer. Publish wiki-site to gh-pages as a fast-forward of origin gh-pages 5ba0be6, and record the gh-pages URL and the commit it publishes. Read the Pages settings with gh api repos/AnEntrypoint/extra/pages, read-only.
+6. One push: git push origin main gh-pages. No force push, no history rewrite.
+
+### Still held, not run
+
+- History rewrite and force push that remove token values from pushed commits (see the held list above).
+- The six untracked top-level entries stay untracked.
+- The 38 state-changing controls stay unclicked.
+- No writes into /workspace/savi or /workspace/jayzee.
