@@ -42,7 +42,7 @@ The findings below are the results and decisions that the runs recorded in their
 - The engine docs were kept as a documented reference (ENGINE.md, api-a, api-b, skills, world-usage, live-probe-results.md, internals-sources.md) under .spawn/reference/engine-deep in the game checkout and as cleetus notes. Runs 2026-11-04-20-43-01-2d070a, 2026-11-05-05-25-32-076881, 2026-11-05-11-06-51-2ebf3f.
 - The engine docs clone tracks only docs; its kernel source was not available. Kernel behaviour was taken from the runtime worker copy and from live probes. Runs 2026-11-04-23-15-52-66680b, 2026-11-05-15-26-41-6747b8, 2026-11-05-16-05-09-737327.
 - Upstream engine docs were merged fast-forward at each pin change, and the pin sha in engine.yaml was tracked: fb764b7 (run 2026-11-05-15-26-41-6747b8, 96 commits), 4134071 with partyCancel (2026-11-05-16-59-33-cc6077), 80552d3 (2026-11-05-17-21-50-5c2b99 and 2026-11-05-17-27-00-801a13), 819f547 (2026-11-05-18-53-51-ca16ef), 1a19114 (2026-11-05-18-58-26-42eddb, 2026-11-05-19-06-05-a8d170).
-- A reusable script /workspace/savi/.spawn/update-engine-pin.py (old name: savi) was built to refresh the pin documents. It first added duplicate README rows on repeat runs, which were fixed. Run 2026-11-05-18-58-26-42eddb.
+- A reusable script /workspace/savi/.spawn/update-engine-pin.py (old name: savi; absent from this workspace on 2026-11-12) was built to refresh the pin documents. It first added duplicate README rows on repeat runs, which were fixed. Run 2026-11-05-18-58-26-42eddb.
 - Pin-only commits from the engine docs repo are treated as a scripted refresh, not as new findings. Runs 2026-11-05-20-11-30-482eca, 2026-11-05-21-23-49-f64575, 2026-11-06-04-25-52-090cfe.
 
 ### Physics, optimisation and runtime internals
@@ -105,7 +105,7 @@ The open items that the decisions above leave unresolved are listed with their r
 
 - /workspace/spawn/runs/<run id>/log.jsonl (old name: spawn), end events and the witness and gaps fields
 - /workspace/spawn/runs/<run id>/task.json (old name: spawn), task settings
-- /workspace/savi/.spawn/update-engine-pin.py (old name: savi), named in 2026-11-05-18-58-26-42eddb
+- /workspace/savi/.spawn/update-engine-pin.py (old name: savi; absent from this workspace on 2026-11-12), named in 2026-11-05-18-58-26-42eddb
 - /workspace/savi/.spawn/kernel (old name: savi), named in 2026-11-05-23-11-17-63af29
 - /workspace/savi/.spawn/reference/engine-deep/live-probe-results.md (old name: savi), named in 2026-11-05-11-06-51-2ebf3f
 - /workspace/spawn/maps/witness (old name: spawn), named in 2026-11-07-15-44-55-5681d7

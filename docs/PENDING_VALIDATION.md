@@ -363,3 +363,31 @@ Nothing was committed for the six entries, because none of the planned changes i
 - Grep over the working tree, tracked and untracked, excluding .git, with the patterns in runs/2026-11-12-16-08-34-698b36/token-patterns.txt: GitHub authenticity_token, csrf-token and upload_token values of 40 or more characters; named session cookies with a value of 16 or more characters; frame grant values; invite keys with a value of 40 or more characters; sak_ tokens; Bearer values. Result: 0 files.
 - The grep was checked against a synthetic positive line before the run, and it matched.
 - Git history is not changed by this pass. Four old commits (31463f6, c3abe99, d0c93b1 and 2bbbca0) still hold GitHub authenticity_token values, and d0c93b1 is on origin/main. History removal stays with the owner.
+
+
+## Ranked remaining work for the extra wiki (2026-11-12, from c6b058b)
+
+Starting state: local main and origin/main at c6b058b, no tracked file modified. The six untracked top-level entries are .gitignore, .local/, game-16/, runs/, scripts/ and site/.
+
+### Reachable now, worked in this pass
+
+1. wiki-site/index.html renders and matches the wiki home reference, wiki-tools/wiki-site-home.png. Source: the Pending checks section above. Witness (Phase B): a playwriter CLI screenshot of the built index, read against the reference.
+2. Stale citation of a missing script. wiki/jayzee/runs-findings.md lines 45 and 108 cite /workspace/savi/.spawn/update-engine-pin.py, which is absent from this workspace. Witness (Phase B): the cited-path scan finds that path only on lines marked absent.
+3. This ranked list and the status of each item. Witness: the heading in this file.
+
+### Held, not run
+
+4. gh-pages publish. No clearance was found. This file has no clearance, the saved memory directory is empty, and no run log records an approval. The extra repository has no .github workflow. Held until the owner confirms the clearance and its scope.
+5. History rewrite and force push that remove token values from pushed commits. Held for the owner, not run. Commits that hold GitHub authenticity_token values: 31463f6, c3abe99, d0c93b1 (on origin/main) and 2bbbca0. Commits that hold session grant values: d78bf0b, 5ba0be6 and 5025920.
+6. The six untracked top-level entries stay untracked, by the decision recorded in c6b058b.
+7. game-16/ has two uncommitted changes, .gitignore and .spawn/engine.yaml. It is a nested repository with its own .git, outside this repository. Owner decision.
+8. Savi and jayzee open items (wiki/cleetus/open-items.md, OPEN-001 to OPEN-030, and wiki/index/open-gaps.md). Their sources are in /workspace/savi and /workspace/jayzee, which are other repositories outside this write scope. Some need live walks; OPEN-006 would take about nine million requests.
+9. Games entries: a game's own page was not opened (wiki/reference-game-16/coverage.md). Opening 148 pages needs an owner decision on scope.
+10. The play frame is a canvas, so its content cannot be captured as text. Platform limit.
+11. The walk control's hall action cannot be seen from the page. The control was not clicked again.
+12. 38 state-changing controls were not clicked. Owner policy.
+
+### Phase A changes
+
+- wiki/jayzee/runs-findings.md lines 45 and 108: the cited path /workspace/savi/.spawn/update-engine-pin.py is marked as absent from this workspace on 2026-11-12.
+- docs/PENDING_VALIDATION.md: this section.
