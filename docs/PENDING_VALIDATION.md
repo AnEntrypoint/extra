@@ -317,3 +317,27 @@ This pass closes the two open items of the earlier REPORT: the Spawn token and i
 - Processes stopped by PID: 3605443 (playwriter gate started by this session's run c6fa69; it no longer listened on port 9611) and its child 3605459. Both were gone after a plain kill. Not touched: 2791557 and 2791574 (jayzee project gate), 929361 and 929382 (another gm session), 307851 (playwriter-ws-server). No browser from this pass was left running.
 - Grant check after the rebuild: 30 placeholders. The only other matches are grep patterns in the tool-call records of this run's log (events 261 to 269).
 - The push of origin main is recorded in the run report, not here, because this record is committed before the push.
+
+
+## GitHub form tokens and session cookie values removed (2026-11-12, third pass)
+
+Phase A is the edit and the local commit. The rebuild, link check and push are recorded in the run report.
+
+### Changes
+
+- Untracked site/docs/wiki/files, site/docs/wiki/raw/sources and site/docs/wiki/raw-data/sources (18 files): the value of every hidden authenticity_token input was emptied, 216 values in all (18864 characters). The input elements and all other content are kept. The site/ tree is untracked, so these edits are in no commit.
+- Browser profile .playwriter/browser-profile/Default/Cookies (gitignored, not in any commit): six session cookie rows for www.spawn.co, .kiln.spawn.co and play.spawn.co had encrypted values. The values were emptied and the rows kept. Then VACUUM ran with secure_delete on, so no old ciphertext is left in the file: 20480 bytes after VACUUM, zero v10 or v11 prefixes.
+- docs/PENDING_VALIDATION.md: this section.
+
+### Search
+
+- Patterns: authenticity_token, csrf-token and upload_token followed by a value of 40 or more token characters; the session cookie names followed by a value of 16 or more characters; an invite key followed by a separator and a value of 40 or more characters; sak_ tokens; Bearer values.
+- Whole workspace, tracked and untracked, excluding .git: 0 files match. Tracked files: 0 match.
+- Node check of every authenticity_token value attribute in the workspace: 216 attributes, 0 non-empty.
+- The run logs name these keys in task text and tool output, with no values.
+- Git history: four commits hold GitHub authenticity_token values: 31463f6, c3abe99, d0c93b1 and 2bbbca0. d0c93b1 is on origin/main. Removing them needs a history rewrite and a force push, which were not done; that is a decision for the user.
+- Correction to the second pass of this section: its invite check was loose. A hyphenated game-text slug in wiki-site/reference-game-16/recapture-pick-a-genre.html matched it. The invite pattern now requires a key and a separator, and that slug no longer matches.
+
+### gm playwriter gate
+
+- gm playwriter_execute could not reach its gate on port 9611 (connect ECONNREFUSED; the executor kept a stale browser endpoint). The live check of the walk control was run through the playwriter CLI session instead (playwriter-project session, then -s 4 -e), as in the second pass. The stale gate from run c6fa69 was stopped by PID.
