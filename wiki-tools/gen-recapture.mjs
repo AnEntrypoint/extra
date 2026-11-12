@@ -19,6 +19,7 @@ const SECTIONS = [
   ['Reference', 'reference', 'Reference'],
   ['Shapes', 'shapes', 'Shapes'],
   ['Mods', 'mods', 'Mods'],
+  ['Games', 'games', 'Games'],
   ['Pick a genre', 'pick-a-genre', 'Pick A Genre'],
 ];
 
@@ -157,6 +158,7 @@ results.push(writePage('recapture-play-frame.md', {
 const WALK_NOTE = 'The control Walk into the animation hall was clicked once, before the travel verbs were added to the skip list. A live check on 2026-11-12, on a fresh load and without clicking it again, found it is an anchor with no href. Its inline click handler sends a hall action, so a click sends that action instead of following a link. The play session world id and address match the first baseline. What the hall action does on the server is not visible on the page, because the play frame is a canvas.';
 
 SECTIONS.forEach(([name, slug, label], idx) => {
+  if (slug === 'games') return;
   const states = sectionStates(idx);
   const s = summaryFor(idx);
   results.push(writePage('recapture-' + slug + '.md', {
