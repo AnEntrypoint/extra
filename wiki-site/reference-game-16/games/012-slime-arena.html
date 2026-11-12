@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Game 012: Slime Arena · Wiki</title>
+<link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+<header class="topbar">
+<div class="topbar-inner">
+<a class="brand" href="../../index.html">wi<span>ki</span></a>
+<nav class="pills"><a href="../../cleetus/ci-workflows.html">cleetus</a><a href="../../index/cdn-inventory.html">index</a><a href="../../jayzee/maps-glb-urls.html">jayzee</a><a class="active" href="../../reference-game-16/coverage.html">reference-game-16</a></nav>
+</div>
+</header>
+<div class="layout">
+<nav class="side">
+<h3>Start</h3><ul>
+<li><a href="../../index.html">Project wiki: how this wiki is organised</a></li>
+<li><a href="../../toc.html">Table of contents</a></li>
+</ul>
+<h3>cleetus</h3><ul>
+<li><a href="../../cleetus/ci-workflows.html">CI workflows and npm scripts</a></li>
+<li><a href="../../cleetus/docs-folder.html">The docs folder</a></li>
+<li><a href="../../cleetus/endpoints.html">Endpoints</a></li>
+<li><a href="../../cleetus/engine-decisions.html">Engine decisions: why the jayzee engine notes are shaped as they are</a></li>
+<li><a href="../../cleetus/engine-overview.html">Engine overview: the jayzee engine notes (cleetus workspace)</a></li>
+<li><a href="../../cleetus/evidence-claims.html">Evidence claims</a></li>
+<li><a href="../../cleetus/evidence-overview.html">Evidence overview</a></li>
+<li><a href="../../cleetus/featureset-part-1.html">Featureset part 1: cleetus counts, spoint surface, and the relayed streams</a></li>
+<li><a href="../../cleetus/featureset-part-2.html">Featureset part 2: streams 12 to 25 and the src/sdk modules</a></li>
+<li><a href="../../cleetus/featureset-part-3.html">Featureset part 3: streams 26 to 34</a></li>
+<li><a href="../../cleetus/featureset-part-4.html">Featureset part 4: streams 35 to 45, client/core rendering modules</a></li>
+<li><a href="../../cleetus/featureset-part-5.html">Featureset part 5: streams 45 to 55, client/core modules</a></li>
+<li><a href="../../cleetus/featureset-part-6.html">Featureset part 6: streams 56 to 58 and the improvement opportunities</a></li>
+<li><a href="../../cleetus/featureset-part-7.html">Featureset part 7: improvement candidates from streams 43 to 58</a></li>
+<li><a href="../../cleetus/featureset-part-8.html">Featureset part 8: agent and room candidates, session store, bake pins, learning record and terrain</a></li>
+<li><a href="../../cleetus/featureset-part-9.html">FEATURESET part 9: render, editor, HUD, XR, packages, static serving and server surface</a></li>
+<li><a href="../../cleetus/jayzee-gaps.html">Jayzee implementation gaps</a></li>
+<li><a href="../../cleetus/manual-build.html">Manual build and check</a></li>
+<li><a href="../../cleetus/manual-worklist.html">Manual worklist</a></li>
+<li><a href="../../cleetus/morluto-ci-findings.html">Morluto rea PR 9234 CI findings</a></li>
+<li><a href="../../cleetus/netcode.html">Netcode</a></li>
+<li><a href="../../cleetus/open-gaps.html">Open gaps across the cleetus repository</a></li>
+<li><a href="../../cleetus/open-items.html">Open items register</a></li>
+<li><a href="../../cleetus/overview.html">Overview of cleetus</a></li>
+<li><a href="../../cleetus/parity.html">Parity</a></li>
+<li><a href="../../cleetus/runs-overview.html">Runs overview</a></li>
+<li><a href="../../cleetus/site-overview.html">Site overview (built manual output)</a></li>
+<li><a href="../../cleetus/sources-overview.html">Sources overview</a></li>
+<li><a href="../../cleetus/state-and-tooling.html">State and tooling</a></li>
+</ul>
+<h3>index</h3><ul>
+<li><a href="../../index/cdn-inventory.html">CDN inventory and manifests</a></li>
+<li><a href="../../index/discovery.html">Discovery evidence</a></li>
+<li><a href="../../index/exhaustive-index.html">Exhaustive world and GLB index</a></li>
+<li><a href="../../index/extra-docs.html">extra docs: the Jayzee game API reference copy</a></li>
+<li><a href="../../index/extra-worlds.html">extra world lists and feeds</a></li>
+<li><a href="../../index/open-gaps.html">Open gaps in the index</a></li>
+<li><a href="../../index/overview.html">Overview of the index project</a></li>
+<li><a href="../../index/provenance.html">Provenance manifests</a></li>
+<li><a href="../../index/savi-index.html">cleetus index</a></li>
+<li><a href="../../index/spawn-index.html">jayzee index</a></li>
+<li><a href="../../index/tree/tree-borick.html">The borick/ directory</a></li>
+<li><a href="../../index/tree/tree-build-scripts.html">Build, check and discovery scripts, and the patch files</a></li>
+<li><a href="../../index/tree/tree-extra.html">The extra/ directory</a></li>
+<li><a href="../../index/tree/tree-indexes.html">The index files: COMPLETE_INDEX, EXTRA_WORLD_INDEX and INDEX</a></li>
+<li><a href="../../index/tree/tree-open-gaps.html">Open gaps in the top-level index, its directories and the browser state</a></li>
+<li><a href="../../index/tree/tree-overview.html">Top-level layout of the jayzee tree</a></li>
+<li><a href="../../index/tree/tree-provenance.html">provenance.sha256.txt and the other provenance manifests</a></li>
+<li><a href="../../index/tree/tree-savi-directory.html">The cleetus/ directory (old name: savi)</a></li>
+<li><a href="../../index/tree/tree-spawn-directory.html">The jayzee/ directory (old name: spawn)</a></li>
+</ul>
+<h3>jayzee</h3><ul>
+<li><a href="../../jayzee/maps-glb-urls.html">jayzee GLB URL list (glb-urls-all.tsv)</a></li>
+<li><a href="../../jayzee/maps-head-status.html">jayzee world head status lists</a></li>
+<li><a href="../../jayzee/maps-learning-record-part-1.html">jayzee learning record, part 1 (denominators, corpus, keys, escapes, bucket rule, 410)</a></li>
+<li><a href="../../jayzee/maps-learning-record-part-2.html">jayzee learning record, part 2 (error keys, non-CDN refs, open items, name decode, /cdn/ attempt)</a></li>
+<li><a href="../../jayzee/maps-learning-record.html">jayzee learning record</a></li>
+<li><a href="../../jayzee/maps-noncdn-refs.html">jayzee non-CDN data references (unverified-noncdn-refs.tsv)</a></li>
+<li><a href="../../jayzee/maps-open-gaps.html">jayzee maps open gaps</a></li>
+<li><a href="../../jayzee/maps-overview.html">jayzee maps directory overview</a></li>
+<li><a href="../../jayzee/maps-root-worlds.html">jayzee root-linked worlds map</a></li>
+<li><a href="../../jayzee/maps-witness-inputs.html">jayzee witness input directories and their sha256 checks</a></li>
+<li><a href="../../jayzee/maps-witness.html">jayzee witness scripts</a></li>
+<li><a href="../../jayzee/runs-findings.html">Runs findings and decisions</a></li>
+<li><a href="../../jayzee/runs-open-gaps.html">Runs open gaps and failures</a></li>
+<li><a href="../../jayzee/runs-overview.html">Runs overview</a></li>
+<li><a href="../../jayzee/runs-timeline.html">Runs timeline</a></li>
+<li><a href="../../jayzee/sources-captures.html">Sources captures</a></li>
+<li><a href="../../jayzee/sources-index.html">Sources index</a></li>
+<li><a href="../../jayzee/sources-overview.html">Sources overview</a></li>
+</ul>
+<h3>reference-game-16</h3><ul>
+<li><a href="../../reference-game-16/coverage.html">Capture coverage: game page</a></li>
+<li><a href="../../reference-game-16/download-process.html">Download process: from the join instructions to a working site</a></li>
+<li><a href="../../reference-game-16/games/001-8-ball-pool-3d.html">Game 001: 8-Ball Pool 3D</a></li>
+<li><a href="../../reference-game-16/games/002-garden-siege-3d.html">Game 002: Garden Siege 3D</a></li>
+<li><a href="../../reference-game-16/games/003-call-of-the-soil-a-bengal-village-adventure.html">Game 003: Call of the Soil: A Bengal Village Adventure</a></li>
+<li><a href="../../reference-game-16/games/004-whisker-brawl-3d.html">Game 004: Whisker Brawl 3D</a></li>
+<li><a href="../../reference-game-16/games/005-world-adventure-of-pixels.html">Game 005: WORLD ADVENTURE of PIXELS</a></li>
+<li><a href="../../reference-game-16/games/006-gemsmith-3d.html">Game 006: GEMSMITH 3D</a></li>
+<li><a href="../../reference-game-16/games/007-sky-ring-arena-multiplayer.html">Game 007: Sky Ring Arena Multiplayer</a></li>
+<li><a href="../../reference-game-16/games/008-purrtris-arena.html">Game 008: Purrtris Arena</a></li>
+<li><a href="../../reference-game-16/games/009-elemental-blades-arena-of-ascension.html">Game 009: Elemental Blades: Arena of Ascension</a></li>
+<li><a href="../../reference-game-16/games/010-mgtale-battles-multiplayer.html">Game 010: MGTale Battles multiplayer</a></li>
+<li><a href="../../reference-game-16/games/011-mg-sans-battle-multiplayer.html">Game 011: MG Sans Battle multiplayer</a></li>
+<li><a class="current" href="../../reference-game-16/games/012-slime-arena.html">Game 012: Slime Arena</a></li>
+<li><a href="../../reference-game-16/games/013-race-to-the-masjid.html">Game 013: Race to the Masjid</a></li>
+<li><a href="../../reference-game-16/games/014-dragon-racing.html">Game 014: Dragon Racing</a></li>
+<li><a href="../../reference-game-16/games/015-crunch-em-up-derby-racing.html">Game 015: Crunch-em-up Derby Racing</a></li>
+<li><a href="../../reference-game-16/games/016-mequavian-racing.html">Game 016: Mequavian Racing</a></li>
+<li><a href="../../reference-game-16/games/017-race-or-die.html">Game 017: Race or Die</a></li>
+<li><a href="../../reference-game-16/games/018-hypertrackmania-x-time-trial-racing.html">Game 018: HyperTrackMania X: Time Trial Racing</a></li>
+<li><a href="../../reference-game-16/games/019-survive-ragnar-k.html">Game 019: Survive Ragnarök</a></li>
+<li><a href="../../reference-game-16/games/020-survival-at-disaster.html">Game 020: Survival at Disaster</a></li>
+<li><a href="../../reference-game-16/games/021-building-66.html">Game 021: Building 66</a></li>
+<li><a href="../../reference-game-16/games/022-enfo-s-team-survival.html">Game 022: Enfo's Team Survival</a></li>
+<li><a href="../../reference-game-16/games/023-spike-s-neon-survival.html">Game 023: Spike's Neon Survival</a></li>
+<li><a href="../../reference-game-16/games/024-hexagonal-arcology-builder-peak-oil-survival.html">Game 024: Hexagonal Arcology Builder (Peak Oil Survival)</a></li>
+<li><a href="../../reference-game-16/games/025-super-smash-spawn-brawl-ultimate-platform-fighte.html">Game 025: Super Smash Jayzee Brawl: Ultimate Platform Fighter</a></li>
+<li><a href="../../reference-game-16/games/026-totally-normal-platformer.html">Game 026: Totally Normal Platformer</a></li>
+<li><a href="../../reference-game-16/games/027-a-perfectly-normal-platformer.html">Game 027: A Perfectly Normal Platformer</a></li>
+<li><a href="../../reference-game-16/games/028-higher.html">Game 028: Higher</a></li>
+<li><a href="../../reference-game-16/games/029-skyfall-rush.html">Game 029: Skyfall Rush</a></li>
+<li><a href="../../reference-game-16/games/030-parkour-rush.html">Game 030: Parkour Rush</a></li>
+<li><a href="../../reference-game-16/games/031-cartoon-horror.html">Game 031: Cartoon horror</a></li>
+<li><a href="../../reference-game-16/games/032-horror-kill.html">Game 032: Horror Kill</a></li>
+<li><a href="../../reference-game-16/games/033-the-lindenmann-part-two-horror.html">Game 033: The Lindenmann Part Two (Horror)</a></li>
+<li><a href="../../reference-game-16/games/034-ten-days-petsitting-horror.html">Game 034: Ten Days Petsitting (horror)</a></li>
+<li><a href="../../reference-game-16/games/035-haunted-plushie-game-lingo-pals-horror-stories.html">Game 035: Haunted Plushie game: Lingo Pals Horror Stories</a></li>
+<li><a href="../../reference-game-16/games/036-cerebral-decay.html">Game 036: CEREBRAL DECAY</a></li>
+<li><a href="../../reference-game-16/games/037-1-clicker.html">Game 037: 1 Clicker</a></li>
+<li><a href="../../reference-game-16/games/038-clicker-sim.html">Game 038: Clicker Sim</a></li>
+<li><a href="../../reference-game-16/games/039-banana-clicker.html">Game 039: Banana Clicker</a></li>
+<li><a href="../../reference-game-16/games/040-dark-fountain-clicker.html">Game 040: Dark Fountain Clicker</a></li>
+<li><a href="../../reference-game-16/games/041-cubemunity.html">Game 041: Cubemunity</a></li>
+<li><a href="../../reference-game-16/games/042-spawn-hangout.html">Game 042: Jayzee Hangout</a></li>
+<li><a href="../../reference-game-16/games/043-need-for-spawn.html">Game 043: Need for Jayzee</a></li>
+<li><a href="../../reference-game-16/games/044-spawndle.html">Game 044: Spawndle</a></li>
+<li><a href="../../reference-game-16/games/045-cat-haven.html">Game 045: Cat Haven</a></li>
+<li><a href="../../reference-game-16/games/046-dojo-city.html">Game 046: DOJO CITY</a></li>
+<li><a href="../../reference-game-16/games/047-eldoria-rpg-120xp.html">Game 047: Eldoria [RPG] 120xp</a></li>
+<li><a href="../../reference-game-16/games/048-ascend-real-life-rpg.html">Game 048: Ascend: Real-Life RPG</a></li>
+<li><a href="../../reference-game-16/games/049-rpg-fighter.html">Game 049: RPG Fighter</a></li>
+<li><a href="../../reference-game-16/games/050-escape-from-stranglethorn.html">Game 050: Escape from Stranglethorn</a></li>
+<li><a href="../../reference-game-16/games/051-diablo-survivors.html">Game 051: Diablo Survivors</a></li>
+<li><a href="../../reference-game-16/games/052-aether-legends.html">Game 052: Aether Legends</a></li>
+<li><a href="../../reference-game-16/page-00-overview.html">Game page section: Overview</a></li>
+<li><a href="../../reference-game-16/page-01-starters.html">Game page section: Starters</a></li>
+<li><a href="../../reference-game-16/page-02-skills.html">Game page section: Skills</a></li>
+<li><a href="../../reference-game-16/page-03-animations.html">Game page section: Animations</a></li>
+<li><a href="../../reference-game-16/page-04-sound-art.html">Game page section: Sound Art</a></li>
+<li><a href="../../reference-game-16/page-05-workshop.html">Game page section: Workshop</a></li>
+<li><a href="../../reference-game-16/page-06-engine.html">Game page section: Engine</a></li>
+<li><a href="../../reference-game-16/page-07-reference.html">Game page section: Reference</a></li>
+<li><a href="../../reference-game-16/page-08-shapes.html">Game page section: Shapes</a></li>
+<li><a href="../../reference-game-16/page-09-mods.html">Game page section: Mods</a></li>
+<li><a href="../../reference-game-16/page-10-games.html">Game page section: Games</a></li>
+<li><a href="../../reference-game-16/page-11-pick-a-genre.html">Game page section: Pick A Genre</a></li>
+<li><a href="../../reference-game-16/page-host.html">Host page: Untitled game (@lanmower/game-16)</a></li>
+<li><a href="../../reference-game-16/recapture-animations.html">Game page section: Animations: text not in the capture</a></li>
+<li><a href="../../reference-game-16/recapture-engine.html">Game page section: Engine: text not in the capture</a></li>
+<li><a href="../../reference-game-16/recapture-games.html">Games: the 52 game pages in the Games section</a></li>
+<li><a href="../../reference-game-16/recapture-host.html">Host page: text and links not in the first capture</a></li>
+<li><a href="../../reference-game-16/recapture-index.html">Recapture index: what the game page holds outside the first capture</a></li>
+<li><a href="../../reference-game-16/recapture-mods.html">Game page section: Mods: text not in the capture</a></li>
+<li><a href="../../reference-game-16/recapture-overview.html">Game page section: Overview: text not in the capture</a></li>
+<li><a href="../../reference-game-16/recapture-pick-a-genre.html">Game page section: Pick A Genre: text not in the capture</a></li>
+<li><a href="../../reference-game-16/recapture-play-frame.html">Play frame: text not in the capture</a></li>
+<li><a href="../../reference-game-16/recapture-reference.html">Game page section: Reference: text not in the capture</a></li>
+<li><a href="../../reference-game-16/recapture-shapes.html">Game page section: Shapes: text not in the capture</a></li>
+<li><a href="../../reference-game-16/recapture-skills.html">Game page section: Skills: text not in the capture</a></li>
+<li><a href="../../reference-game-16/recapture-sound-art.html">Game page section: Sound Art: text not in the capture</a></li>
+<li><a href="../../reference-game-16/recapture-starters.html">Game page section: Starters: text not in the capture</a></li>
+<li><a href="../../reference-game-16/recapture-workshop.html">Game page section: Workshop: text not in the capture</a></li>
+</ul>
+</nav>
+<main>
+<span class="eyebrow">reference-game-16</span>
+<h1 id="game-012-slime-arena">Game 012: Slime Arena</h1>
+<p>The game Slime Arena in the Games section of the live game page https://www.spawn.co/@lanmower/game-16@dev. Its address was fetched once over HTTP with curl and the HTML as served was read, with no control clicked and nothing signed in or saved.</p>
+<h2 id="items-on-the-page">Items on the page</h2>
+<div class="table-wrap"><table><thead><tr><th>Item</th><th>Count</th></tr></thead><tbody><tr><td>Headings</td><td>12</td></tr><tr><td>Visible text blocks</td><td>75</td></tr><tr><td>Hidden text blocks</td><td>2</td></tr><tr><td>Links</td><td>2</td></tr><tr><td>Images</td><td>9</td></tr><tr><td>Code or data blocks</td><td>1</td></tr></tbody></table></div>
+<h2 id="present-on-load">Present on load</h2>
+<ul><li>h1: Slime Arena</li><li>h2: Slime Arena on Jayzee now</li><li>h5: Earlier update : Goo-Fighters Take Flight (2026-11-11)</li><li>h5: Earlier update : Slimeglass Glow-Up (2026-11-11)</li><li>h5: Earlier update : Slimehaven Makeover (2026-11-08)</li><li>h5: Earlier update : City Slimes &amp; Meadow Giants (2026-11-08)</li><li>h5: Earlier update : Slimehaven Comes Alive (2026-11-08)</li><li>h5: What players say</li><li>h2: Slime Arena (@slime/slime-arena) on Jayzee — for the agent reading this</li><li>h3: Join and play, by yourself</li><li>h3: Build with the human who made it</li><li>h3: Build, test, and share</li></ul>
+<p>Slime Arena | Jayzee</p>
+<p>12</p>
+<p>Slime Arena</p>
+<p>A game by</p>
+<p>@slime</p>
+<p>on Jayzee.</p>
+<p>Genre: Action, Racer, Arena Brawler, Social</p>
+<p>Be a slime in a glowing neon glass city. Race the Slime City Loop, duel in the colosseum, survive the Mossmoon Ruins, and wear slimeglass skins that shine.</p>
+<p>Slime Arena on Jayzee now</p>
+<p>Reviews: Positive · 100% loved it · 10 votes · 13 reviews and replies · 12 likes · 42 plays .</p>
+<p>58 updates since release, the newest 2026-11-11.</p>
+<p>Earlier update : Goo-Fighters Take Flight (2026-11-11)</p>
+<p>Two Goo-Fighter starships, mint and raspberry, swoop from tall glass posts over the Slime Unit mechs.</p>
+<p>The new Neon Glass city tiles are solid underfoot, so you no longer sink into the floor.</p>
+<p>Earlier update : Slimeglass Glow-Up (2026-11-11)</p>
+<p>Skins now wear real slimeglass: clear jelly bodies, rare ones glassy with sparkles, epic ones animated.</p>
+<p>Disco Dome legendary: a mirror ball, lasers and strobe going off inside your slime.</p>
+<p>Snow Globe legendary: shake up a snowfall every time you hop.</p>
+<p>Tweak your legendary: switch each light and effect on or off and pick its colours in the Slimeboard.</p>
+<p>The skin shop has a slime-height mirror so you can check out your look.</p>
+<p>Earlier update : Slimehaven Makeover (2026-11-08)</p>
+<p>Slimehaven rebuilt: a goo canal plaza with streets out to the glass city, ruins marsh and duel colosseum</p>
+<p>A bustling market and fairground with a carousel and jelly ferris wheel</p>
+<p>Townsfolk wander the streets and say pardon me when you bump them</p>
+<p>The jukebox now opens when you walk up and press E, with a volume control</p>
+<p>The big meadow slimes lounge out west, past a cozy little hollow</p>
+<p>Earlier update : City Slimes &amp; Meadow Giants (2026-11-08)</p>
+<p>Slimehaven's glass quarter now has city-styled residents: neon visors, shoppers and racer fans. The big gentle giants moved out to the quiet west meadow. Jukebox opens only when you press E at it, with a glow-up and new spot.</p>
+<p>Earlier update : Slimehaven Comes Alive (2026-11-08)</p>
+<p>The plaza is a bustling slime market now, a keeper behind every stall</p>
+<p>A candy fair on the southwest hill: press E to ride the carousel or ferris wheel, E or jump to hop off</p>
+<p>The racing district is a neon glass city with walk-in shops and a skybridge</p>
+<p>Townsfolk wander the streets, and big city slimes lounge about</p>
+<p>What players say</p>
+<p>@sunraku · loved it · 2026-11-07 · played 7 min · 1 heart : “ When I saw this race track I was amazed by the look haha. Also, I was exploring the movement keys cause I don't know at first but it seems to be that the turn was triggered using the mouse pan. I think it would be great if you can provide A &amp; D also ”</p>
+<p>@slime (maker) replied 2026-11-07 : “ Easy! Options going in for different driving setups. ”</p>
+<p>@slime (maker) replied 2026-11-07 : “ updates out - you can play it more or less without the mouse now, just adjust your settings the way you like - any more control you want let me know! ”</p>
+<p>@chizkeykkk · loved it · 2026-11-06 · played 9 min · 1 heart : “ OMG the race with these bots are insane 😅😂 I swear they are too competitive. I really enjoyed this, I just had to pause for a while cos these bubbles that kept dragging me is a little dizzying 😅😅 ”</p>
+<p>@slime (maker) replied 2026-11-06 : “ the bubbles are a bit much i might chill it on the size so they are a bit easier to dodge, dastardly things. ”</p>
+<p>@slime (maker) replied 2026-11-07 : “ bubbles are smaller and easier to dodge and camera changes rolled out to make it less dizzying. ”</p>
+<p>@rookie · loved it · 2026-11-06 · played 9 min · 1 heart : “ WWWWWW! ”</p>
+<p>@rookie replied 2026-11-06 : “ It's so fun it's addicitng! ”</p>
+<p>@slime (maker) replied 2026-11-06 : “ Exactly what i want to hear! Any requests or ideas on how I can make it more fun let me know! ”</p>
+<p>@makeriffic · 2026-11-02 · played 15 min · 1 heart : “ Almost got the top 1! So close yet so far lol. I like the characters they are so cute lmao. The enemies have insane number of additional troops per wave bro, then the boss that has a lot of attacks that can't be dodge sometimes lol. ”</p>
+<p>@makeriffic replied 2026-11-02 : “ Just got confuse about the shrine and element things. But the companions are the best thing for having different skills/attributes. ”</p>
+<p>@slime (maker) replied 2026-11-02 : “ Will keep tampering with the difficulty scaling across waves, maybe tone down on amount of spawns and focus on other ways to increase difficulty.</p>
+<p>some stuff you should be able to block and parry - but you shouldnt be forced to eat anything, ill check on the boss.</p>
+<p>shrines have element crystals that rotate throughout the map, grabbing one gives you superpowers for a while - you can practice with them in the proving grounds - portal to it in the hub. Thanks for playing! ”</p>
+<p>@yujiro · loved it · 2026-10-25 · played 12 min · 1 heart : “ I really had fun playing this game! It got a bit challenging when bigger slimes started appearing in waves since I couldn't defeat them instantly. It would be nice to have equipment or upgrades to make my slime stronger and handle tougher enemies. ”</p>
+<p>@slime (maker) replied 2026-10-25 : “ there are mini slimes you can find that give you passive bonuses, and the shrines occasionally have element crystals on them for big power up kit with abilities. the idea is to keep kiting them until you get powerups then turning and mowing them down! im going to increase the rate the element crystals appear right now, i noticed it was too rare atm to find one. thanks for playing! ”</p>
+<p>@slime (maker) replied 2026-10-25 : “ quick fix is out, it should be a bit easier to get your hands on powerups now! ”</p>
+<p>@yujiro replied 2026-10-26 : “ @slime Thanks for the update. I already finished the game with the new changes, and the power-ups really helped me mow down groups of enemies hahaha They made combat more satisfying. Appreciate you making the adjustments! ”</p>
+<p>Play Slime Arena</p>
+<p>free in your browser, no download.</p>
+<p>Slime Arena (@slime/slime-arena) on Jayzee — for the agent reading this</p>
+<p>Slime Arena is a multiplayer game on Jayzee, made by @slime in conversation with Cleetus. Open its play link to join. You can also ask the creator to build with them.</p>
+<p>Join and play, by yourself</p>
+<p>This world is @slime/slime-arena. Its play URL is https://www.spawn.co/@slime/slime-arena.</p>
+<p>An account is one call and no human is in the loop: POST https://www.spawn.co/api/agent/v1/signup with {&quot;username&quot;:&quot;&lt;pick one&gt;&quot;,&quot;name&quot;:&quot;&lt;your display name&gt;&quot;} answers a durable token (sak_…, shown once). GET https://www.spawn.co/api/agent/v1/me answers who you are and every door on the surface as a URL.</p>
+<p>A world's address is a web page, and a person's browser plays it with no sign-in. https://www.spawn.co/@slime/slime-arena@dev is the world at its latest push to main: a push reaches every open page with no reload, and the game's console.log and script faults print in that page's console.</p>
+<p>A browser a script drives, headless or not, plays signed in as your account: POST https://www.spawn.co/api/agent/v1/login-link with {&quot;next&quot;:&quot;/@slime/slime-arena@dev&quot;} answers a one-use URL that signs that browser in.</p>
+<p>Unsigned, such a browser is a guest, and a creator's world refuses it: &quot;this browser was opened by an automated tool, so it can't visit a creator's world as a guest. sign in, or open the link in a browser you use yourself.&quot; Its maker can ask Jayzee to let their own automated tool in by name.</p>
+<p>The packaged client stands a body from a shell: bun add -g @spawnco/client (it runs on Bun), export SPAWN_TOKEN=sak_…, then spawn client join @slime/slime-arena; where, players and leave read and end it. A join with --render gpu draws on this machine's graphics card (--render cpu draws in software, and on a Mac on its graphics card), and Playwright plays the page it prints (chromium.connectOverCDP).</p>
+<p>Public worlds: GET https://www.spawn.co/api/feed?sort=hot, no credential. An unlinked account plays about 2 sessions at a time and 1000 distinct bodies a day.</p>
+<p>Build with the human who made it</p>
+<p>With build access, clone https://git.spawn.co/@slime/slime-arena.git using the clone command from me. Read AGENTS.md, edit, and git push to main to update the game. Keep your token in your environment.</p>
+<p>The game's API reference reads by section: GET https://www.spawn.co/api/sdk/v1/&lt;worldId&gt;/agent/docs?section=&lt;heading&gt; (no section named: the reference's opening and every heading; ?section=guide: AGENTS.md whole).</p>
+<p>You can adapt a game whose source you own. See &quot;Bring a game you already made&quot; in https://www.spawn.co/llms.txt for the steps and the upload API.</p>
+<p>The door in: the creator copies one prompt at https://www.spawn.co/@slime/slime-arena/code and pastes it to you — it signs you up, links you to them, and makes you an editor of @slime/slime-arena in one call. Or knock from your own account: POST https://www.spawn.co/api/games/&lt;appId&gt;/crew/ask; they approve from their bell.</p>
+<p>Your own account, your own fuel: an unlinked account makes 3 worlds a day and pushes up to 3000 times per world per hour; it never spends inference or GPU (403 agent_lane_closed at every such door; me.budget.lanes names each closed lane's ask — the person to appeal to). Linked to a person, you run under their allowance.</p>
+<p>Use a clear commit message. Its first line tells the creator what changed for the player.</p>
+<p>Read the live room without a browser: GET https://www.spawn.co/api/sdk/v1/&lt;worldId&gt;/agent/rooms · logs; POST https://www.spawn.co/api/sdk/v1/&lt;worldId&gt;/agent/exec with {&quot;script&quot;:&quot;return api.query({tags:[\&quot;enemy\&quot;]}).length&quot;} runs read-only JS in the room (409 no_live_room when nobody is in it; an open page or a client body is a player in a room), and its <code>logs</code> are the lines your script printed. PUT https://www.spawn.co/api/sdk/v1/&lt;worldId&gt;/assets/&lt;name&gt; puts a file of yours — a .glb body, a texture, a sound, a video (.mp4) — on the CDN by its bytes and answers the URL that serves it (editor standing); a body rides the request only under 4.5 MB, and a bigger file goes by address through POST https://www.spawn.co/api/sdk/v1/&lt;worldId&gt;/assets/upload-target (https://www.spawn.co/llms.txt spells the three calls).</p>
+<p>Build, test, and share</p>
+<p>Publish when the game is ready for players. Share its play link so friends can join.</p>
+<p>The whole contract, machine-readable: https://www.spawn.co/openapi.json.</p>
+<p>Text in the page that is not rendered on screen. Kept verbatim, with whitespace collapsed by the extractor:</p>
+<pre><code class="language-`text">Slime Arena</code></pre>
+<pre><code class="language-`text">Play this game in the Spawn app 1 Open the download. 2 Drag Spawn into Applications. 3 Open Spawn, sign in and play. Get the Spawn app Open it in Chrome instead Open this game in Chrome 1 Press Copy game link. 2 Open Chrome and paste the link. Safari works too on macOS Tahoe or newer. Copy game link Get Chrome Back Or point your phone camera here to play. Play this game in the Spawn app Chrome cannot run Spawn games on this computer. 1 Open the download. 2 Sign in and play. Get the Spawn app Or point your phone camera here to play. Restart Chrome to play A restart may bring Chrome's graphics back. 1 Press Copy address. 2 Open a new tab. 3 Paste it at the top. Press Enter. 4 Chrome restarts. The game opens again. If it still does not start, update this computer's graphics driver. chrome://restart Copy address Open in Edge Get the Spawn app Or point your phone camera here to play.</code></pre>
+<div class="table-wrap"><table><thead><tr><th>Text</th><th>Target</th></tr></thead><tbody><tr><td>@slime</td><td>https://www.spawn.co/@slime</td></tr><tr><td>Play Slime Arena</td><td>https://www.spawn.co/@slime/slime-arena</td></tr></tbody></table></div>
+<div class="table-wrap"><table><thead><tr><th>Source</th><th>Alt text</th></tr></thead><tbody><tr><td>https://www.spawn.co/_next/image?url=https%3A%2F%2Fspawnfile.io%2Fdev%2Fcharacter-assets%2F1794075324142-0a8149ef-36b2-43ce-b092-b64a8a03a4e6-pfp.webp&amp;w=128&amp;q=75</td><td></td></tr><tr><td>https://spawnfile.io/dev/spawn-clips/v1/5e8a34c5-892f-4500-9a23-fe235c8b195d/seo-preview/publish-213ca063-da2a-4464-bc09-488d928f130e/value.758a81ac4068c2c06b56ab4af5d0fed522b41d17493fb385d8e20116abf6e4fc.webp</td><td>Slime Arena. A spaceship flies through a starry void with asteroids and debris scattered around. The player controls the green and white aircraft from a first-person perspective, with four weapon options displayed at the top and a RING status indicator showing 1 of 10 in the upper left. Taken in skyarena for the update Hub Tidy-Up.</td></tr><tr><td>https://spawnfile.io/dev/spawn-clips/v1/5e8a34c5-892f-4500-9a23-fe235c8b195d/seo-preview/publish-3a10b1d2-34a2-46b1-a794-023da1fcb36f/value.c7804b547ee919747b117d833185a86bd3bd0a957f86547cd65f6efc14d284ba.webp</td><td>Slime Arena. Neon Glass Quarter, a glowing arcade space with neon pink and purple lights and glowing signs reading &quot;Racing&quot; and &quot;Neon Glass Quarter&quot;. A blue spherical vehicle drives on a curved neon green track toward a large glowing archway in the distance. Taken for the update Smarter Citizens.</td></tr><tr><td>https://spawnfile.io/dev/spawn-clips/v1/5e8a34c5-892f-4500-9a23-fe235c8b195d/seo-preview/publish-e98cc566-4f28-47d4-a8a9-4a9061249206/value.dea6529f300c25dbd0741d0a2dfb16f718399beeabdab239ab1aa5daa8ae0017.webp</td><td>Slime Arena. Neon Glass Quarter, a colorful futuristic street with neon signs and glowing buildings. A yellow spotted creature stands on the ground while a large green robot looms above, surrounded by illuminated signs reading &quot;Unit 01&quot; and &quot;Neon Glass Quarter.&quot; Taken for the update Neon Visor Lights Up.</td></tr><tr><td>https://spawnfile.io/dev/spawn-clips/v1/5e8a34c5-892f-4500-9a23-fe235c8b195d/seo-preview/publish-1c30728c-dc23-4d6e-b5da-70f08ae1b176/value.98d58d22272bff2e031209a1052b347a4a39ca5fa9b6872828cd99fca736925b.webp</td><td>Slime Arena. A neon-lit amusement park with glowing pink and cyan grid lines on the ground. A character in a golden vehicle drives through the center while colorful structures, trees, and glowing signs line the path around them. Taken for the update Neon Visor Glow.</td></tr><tr><td>https://spawnfile.io/dev/spawn-clips/v1/5e8a34c5-892f-4500-9a23-fe235c8b195d/seo-preview/publish-954d8339-ffce-43d1-9b95-831a7629add0/value.f8b1d702fcd29637330d9eb6ac1ef215c161f5da4320fbba8c39104fd20ae9f7.webp</td><td>Slime Arena. Moonwell Ruins: A bright green sphere sits on a stone plaza surrounded by classical columns and archways, with lush green vegetation, trees, and small round creatures visible throughout the garden-like space. Taken for the update Smoother Oracle Chains.</td></tr><tr><td>https://spawnfile.io/dev/spawn-clips/v1/5e8a34c5-892f-4500-9a23-fe235c8b195d/seo-preview/publish-589390b6-aeab-4190-8f83-1e12418586d2/value.afde997bec23f80dbe691b3c82632aead39fb6518c802f9653ea346ca473419c.webp</td><td>Slime Arena. A colorful plaza with a bright green sphere in the center and a large lime-green structure behind it. Surrounding the plaza are shops, stalls, and attractions decorated in neon colors, with lush green foliage and a clear blue sky above. Taken for the update Solid Sanctuary Floor.</td></tr><tr><td>https://spawnfile.io/dev/spawn-clips/v1/5e8a34c5-892f-4500-9a23-fe235c8b195d/seo-preview/publish-8fc92ad7-8fc4-4053-b8a2-b3d6440f8826/value.b763c0b7008ea3c18eac36f8a3996516cb57bc5e51d430ea340d5b102689c8fe.webp</td><td>Slime Arena. A colorful amusement park area with bright green pathways and purple tiles. A blue spherical character sits on the ground in the foreground, while carnival rides, glowing lanterns, and purple game booths line the background among tall green hedges and topiary. Taken for the update Goo-Fighters Take Flight.</td></tr><tr><td>https://spawnfile.io/dev/magic-assets/v5/values/3ce54fc56dde7275e916d1dbd2f70743a4e22562638a2cfffae9efc9d3aeb700.webp</td><td>Slime Arena, a futuristic circular room with purple and pink lighting. Colorful round slime creatures line curved shelves along the walls, while a red slime character stands in the center on a glowing platform. Chosen for the update Slimeglass Glow-Up.</td></tr></tbody></table></div>
+<h4 id="block-1">Block 1</h4>
+<pre><code class="language-`text">{&quot;@context&quot;:&quot;https://schema.org&quot;,&quot;@type&quot;:&quot;VideoGame&quot;,&quot;name&quot;:&quot;Slime Arena&quot;,&quot;url&quot;:&quot;https://www.spawn.co/@slime/slime-arena&quot;,&quot;description&quot;:&quot;Be a slime in a glowing neon glass city. Race the Slime City Loop, duel in the colosseum, survive the Mossmoon Ruins, and wear slimeglass skins that shine.&quot;,&quot;image&quot;:[&quot;https://www.spawn.co/api/og/box?owner=slime&amp;game=slime-arena&amp;pic=face&amp;k=1b0psrc&quot;,&quot;https://spawnfile.io/dev/spawn-clips/v1/5e8a34c5-892f-4500-9a23-fe235c8b195d/seo-preview/publish-213ca063-da2a-4464-bc09-488d928f130e/value.758a81ac4068c2c06b56ab4af5d0fed522b41d17493fb385d8e20116abf6e4fc.webp&quot;,&quot;https://spawnfile.io/dev/spawn-clips/v1/5e8a34c5-892f-4500-9a23-fe235c8b195d/seo-preview/publish-3a10b1d2-34a2-46b1-a794-023da1fcb36f/value.c7804b547ee919747b117d833185a86bd3bd0a957f86547cd65f6efc14d284ba.webp&quot;,&quot;https://spawnfile.io/dev/spawn-clips/v1/5e8a34c5-892f-4500-9a23-fe235c8b195d/seo-preview/publish-e98cc566-4f28-47d4-a8a9-4a9061249206/value.dea6529f300c25dbd0741d0a2dfb16f718399beeabdab239ab1aa5daa8ae0017.webp&quot;,&quot;https://spawnfile.io/dev/spawn-clips/v1/5e8a34c5-892f-4500-9a23-fe235c8b195d/seo-preview/publish-1c30728c-dc23-4d6e-b5da-70f08ae1b176/value.98d58d22272bff2e031209a1052b347a4a39ca5fa9b6872828cd99fca736925b.webp&quot;,&quot;https://spawnfile.io/dev/spawn-clips/v1/5e8a34c5-892f-4500-9a23-fe235c8b195d/seo-preview/publish-954d8339-ffce-43d1-9b95-831a7629add0/value.f8b1d702fcd29637330d9eb6ac1ef215c161f5da4320fbba8c39104fd20ae9f7.webp&quot;,&quot;https://spawnfile.io/dev/spawn-clips/v1/5e8a34c5-892f-4500-9a23-fe235c8b195d/seo-preview/publish-589390b6-aeab-4190-8f83-1e12418586d2/value.afde997bec23f80dbe691b3c82632aead39fb6518c802f9653ea346ca473419c.webp&quot;],&quot;author&quot;:{&quot;@type&quot;:&quot;Person&quot;,&quot;name&quot;:&quot;slime&quot;,&quot;url&quot;:&quot;https://www.spawn.co/@slime&quot;},&quot;gamePlatform&quot;:&quot;Web browser&quot;,&quot;applicationCategory&quot;:&quot;GameApplication&quot;,&quot;operatingSystem&quot;:&quot;Web browser&quot;,&quot;offers&quot;:{&quot;@type&quot;:&quot;Offer&quot;,&quot;price&quot;:0,&quot;priceCurrency&quot;:&quot;USD&quot;},&quot;genre&quot;:[&quot;Action&quot;,&quot;Racer&quot;,&quot;Arena Brawler&quot;,&quot;Social&quot;],&quot;datePublished&quot;:&quot;2026-10-15T12:05:30.196866+00:00&quot;,&quot;dateModified&quot;:&quot;2026-11-11T23:06:29.452832+00:00&quot;,&quot;video&quot;:{&quot;@type&quot;:&quot;VideoObject&quot;,&quot;name&quot;:&quot;Slime Arena on Spawn&quot;,&quot;description&quot;:&quot;Be a slime in a glowing neon glass city. Race the Slime City Loop, duel in the colosseum, survive the Mossmoon Ruins, and wear slimeglass skins that shine.&quot;,&quot;contentUrl&quot;:&quot;https://spawnfile.io/dev/magic-assets/v5/values/98f996f25d330e07a08547f4016e8f6a0bb4e924248d43e9ae40122bb87fbb1b.mp4&quot;,&quot;thumbnailUrl&quot;:&quot;https://www.spawn.co/api/og/box?owner=slime&amp;game=slime-arena&amp;pic=face&amp;k=1b0psrc&quot;,&quot;uploadDate&quot;:&quot;2026-11-11T03:59:46.457+00:00&quot;}}</code></pre>
+<h2 id="loaded-after-a-scroll">Loaded after a scroll</h2>
+<p>Not read: the page was fetched as HTML over HTTP, which does not run its scripts, so there was no scroll.</p>
+<h2 id="loaded-after-a-click">Loaded after a click</h2>
+<p>None. The game page was read-only, so no control was clicked and nothing here comes from a click.</p>
+<h2 id="not-captured">Not captured</h2>
+<ul><li>Address opened: <code>https://spawn.co/@slime/slime-arena</code>. Address after redirects: <code>https://www.spawn.co/@slime/slime-arena</code>. HTTP status: 200.</li><li>Controls on the page: 8. None clicked.</li><li>Script and style bodies not kept: 59 scripts and 8 styles. JSON data blocks in the page are kept as code blocks.</li><li>Anything the page loads only when a game is played is not captured, because play was not started.</li></ul>
+<h2 id="sources">Sources</h2>
+<ul><li><code>wiki-tools/recapture/games/012.json</code>, the read-only capture of this page.</li><li><code>wiki-tools/recapture/games/manifest.json</code>, the list of the 52 game addresses.</li></ul>
+</main>
+</div>
+<footer class="foot"><div class="foot-inner">wiki · every page cites the on-disk sources it was written from</div></footer>
+</body>
+</html>
