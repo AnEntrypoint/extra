@@ -2,7 +2,7 @@
 
 ## How it works
 
-/workspace/index holds nine Node ES-module scripts (.mjs) at top level, eight of them active tools and one of them a validator, plus nine one-shot patch scripts (.patch-*.cjs). The three .mjs scripts in exhaustive/ are described in [tree-exhaustive](tree-exhaustive.md). All scripts are run with node and take no arguments. They read saved evidence from disk, and the discovery scripts also call the public jayzee HTTP endpoints. They write only under /workspace/index. Their inputs in the cleetus repository (old name: savi) are read-only peer sources, and the index does not copy them.
+/workspace/index holds nine Node ES-module scripts (.mjs) at top level, eight of them active tools and one of them a validator, plus nine one-shot patch scripts (.patch-*.cjs). The three .mjs scripts in exhaustive/ are described in [exhaustive-index](../exhaustive-index.md). All scripts are run with node and take no arguments. They read saved evidence from disk, and the discovery scripts also call the public jayzee HTTP endpoints. They write only under /workspace/index. Their inputs in the cleetus repository (old name: savi) are read-only peer sources, and the index does not copy them.
 
 The dependency chain, from the scripts' own inputs and outputs:
 

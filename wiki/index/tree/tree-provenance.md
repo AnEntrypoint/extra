@@ -25,7 +25,7 @@ Result on this tree: every line of all four manifests reported OK when run from 
 ## Decisions
 
 - A manifest records the hashes of its outputs at the time it is written, and the checker fails when they drift, so a regenerated output needs a regenerated manifest. Evidence: the stale-provenance check in check-complete-index.mjs.
-- The top-level manifest covers the discovery JSON evidence but not the discovery logs, exit codes or pids, which are run artefacts. Evidence: the list of 31 top-level lines, and the discovery listing in [tree-discovery](tree-discovery.md).
+- The top-level manifest covers the discovery JSON evidence but not the discovery logs, exit codes or pids, which are run artefacts. Evidence: the list of 31 top-level lines, and the discovery listing in [discovery](../discovery.md).
 - The extra/ and borick/ manifests cover every file except themselves (82 lines for 83 files, and 2 lines for 3 files). The exhaustive/ manifest covers every file except the cdn-scan/ subdirectory. Evidence: the line counts and the listings in the directory pages.
 - Hashes are the only integrity record. No signature, timestamp or signing key is recorded.
 

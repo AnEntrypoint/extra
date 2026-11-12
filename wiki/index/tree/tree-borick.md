@@ -29,7 +29,7 @@ Totals: 5 projects, 5 with scan rows, 7 direct GLB links, 7 cdn-scan GLB rows an
 - The direct links use the play.jayzee.co host, while the current aggregate and the expanded index use play.spawn.co for the same content addresses. The two forms are not reconciled in any file. Sources: /workspace/index/borick/README.md, /workspace/index/exhaustive/direct-cdn-glb-links.json.
 - Four of the five projects have no GLB evidence at all (0 links, 0 scan rows, 0 GLB-map rows). Wisp Village has no references in its value tree (0 refs), and Fruit Jar has 12 references and no GLB. The reason is not recorded. Source: /workspace/index/borick/borick-projects.json.
 - The feed-worlds list used by the method is an input in the cleetus repository, not a copy in the index. Source: /workspace/savi/spawn-evidence/data/feed-worlds.json (old name: savi, and old name: spawn).
-- The project list is a snapshot from 2026-11-11T16:10:19Z. The feed has changed since then (see [tree-discovery](tree-discovery.md)), so the creator's current project count may differ. Source: /workspace/index/borick/borick-projects.json (generatedAt).
+- The project list is a snapshot from 2026-11-11T16:10:19Z. The feed has changed since then (see [discovery](../discovery.md)), so the creator's current project count may differ. Source: /workspace/index/borick/borick-projects.json (generatedAt).
 
 ## Sources
 

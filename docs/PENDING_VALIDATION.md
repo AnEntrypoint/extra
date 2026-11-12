@@ -127,9 +127,29 @@ Open for this download:
 - Run the link checker once (`node /workspace/extra/wiki-tools/check-links.mjs`), expecting `broken: 0`.
 - Open `/workspace/extra/wiki-site/index.html` in the playwriter browser and compare it with the reference screenshot.
 
+## Duplicate pages merged
+
+The two near-duplicate pairs were merged by section (How it works, Decisions, Open gaps, Sources), keeping every paragraph from both:
+
+- `wiki/index/discovery.md` now holds the former `discovery.md` and `tree/tree-discovery.md`. The `tree/` copy was deleted.
+- `wiki/index/exhaustive-index.md` now holds the former `exhaustive-index.md` and `tree/tree-exhaustive.md`. The `tree/` copy was deleted.
+- Links were repointed: `index/tree/*` links to `../discovery.md` and `../exhaustive-index.md`; the merged exhaustive page links to `tree/tree-build-scripts.md` and `tree/tree-provenance.md`.
+- Merged text: 16,463 bytes for discovery (from 16,547 bytes across the two pages, less their duplicate headings), and 16,737 bytes for exhaustive.
+
+## Build and link check
+
+- Build: `node wiki-tools/build.mjs wiki wiki-site`, output `built 83 pages into wiki-site`, wall time 0.157 s.
+- Link check: `node wiki-tools/check-links.mjs wiki-site`, output `pages: 83  internal links checked: 7655  broken: 0`, exit 0, wall time 0.144 s.
+- The first check after the merge reported two broken links (`exhaustive-index.html` to `tree-build-scripts.html` and `tree-provenance.html`), because the merged page moved up one directory. They were fixed to `tree/…`, and the build and check were run again. The green result above is from that second run.
+
+## Remote
+
+- `origin` is `https://github.com/AnEntrypoint/extra.git`, the remote the owner named.
+- Branch `main` is pushed once, after the build and link check were green.
+
 ## Pages in the wiki (Phase A)
 
-Each page below is in `wiki/` and listed in `wiki/toc.md`. Built into `wiki-site/`, 85 pages, 8005 internal links checked, 0 broken.
+Each page below is in `wiki/` and listed in `wiki/toc.md`.
 
 - [CDN inventory and manifests](`index/cdn-inventory.md`)
 - [Discovery evidence](`index/discovery.md`)
@@ -143,8 +163,6 @@ Each page below is in `wiki/` and listed in `wiki/toc.md`. Built into `wiki-site
 - [jayzee index](`index/spawn-index.md`)
 - [The borick/ directory](`index/tree/tree-borick.md`)
 - [Build, check and discovery scripts, and the patch files](`index/tree/tree-build-scripts.md`)
-- [The discovery/ directory](`index/tree/tree-discovery.md`)
-- [The exhaustive/ directory](`index/tree/tree-exhaustive.md`)
 - [The extra/ directory](`index/tree/tree-extra.md`)
 - [The index files: COMPLETE_INDEX, EXTRA_WORLD_INDEX and INDEX](`index/tree/tree-indexes.md`)
 - [Open gaps in the top-level index, its directories and the browser state](`index/tree/tree-open-gaps.md`)
@@ -214,3 +232,4 @@ Each page below is in `wiki/` and listed in `wiki/toc.md`. Built into `wiki-site
 - [Game page section: Games](`reference-game-16/page-10-games.md`)
 - [Game page section: Pick A Genre](`reference-game-16/page-11-pick-a-genre.md`)
 - [Host page: Untitled game (`@lanmower/game-16)](reference-game-16/page-host.md`)
+- [README](wiki/README.md) and [table of contents](wiki/toc.md) are the two pages not listed above; the build counts them, so 81 + 2 = 83.

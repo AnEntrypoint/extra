@@ -16,8 +16,6 @@ Every page of the wiki, grouped by project. Each entry links to the page; the fi
 - [jayzee index](index/spawn-index.md)
 - [The borick/ directory](index/tree/tree-borick.md)
 - [Build, check and discovery scripts, and the patch files](index/tree/tree-build-scripts.md)
-- [The discovery/ directory](index/tree/tree-discovery.md)
-- [The exhaustive/ directory](index/tree/tree-exhaustive.md)
 - [The extra/ directory](index/tree/tree-extra.md)
 - [The index files: COMPLETE_INDEX, EXTRA_WORLD_INDEX and INDEX](index/tree/tree-indexes.md)
 - [Open gaps in the top-level index, its directories and the browser state](index/tree/tree-open-gaps.md)

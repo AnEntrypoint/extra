@@ -24,8 +24,8 @@ Directories in /workspace/index in scope:
 | Directory | Files | Size | What it holds | Page |
 |---|---|---|---|---|
 | borick/ | 3 | 24 KB | Five-project index for one creator (borickk), with a README, a JSON record and a provenance file. | [tree-borick](tree-borick.md) |
-| discovery/ | 13 | 109 MB | Public feed, world-store, project-page and retry evidence, plus run logs, exit codes and pids. | [tree-discovery](tree-discovery.md) |
-| exhaustive/ | 29 (16 of them in cdn-scan/) | 48 MB | Direct CDN GLB aggregate, GLB map, CDN manifests, the cdn-scan JSONL rows, three verification scripts, a README and a provenance file. | [tree-exhaustive](tree-exhaustive.md) |
+| discovery/ | 13 | 109 MB | Public feed, world-store, project-page and retry evidence, plus run logs, exit codes and pids. | [discovery](../discovery.md) |
+| exhaustive/ | 29 (16 of them in cdn-scan/) | 48 MB | Direct CDN GLB aggregate, GLB map, CDN manifests, the cdn-scan JSONL rows, three verification scripts, a README and a provenance file. | [exhaustive-index](../exhaustive-index.md) |
 | extra/ | 83 | 776 KB | Documentation mirror of the jayzee game API (75 files in docs/), CDN inventory and manifest, root-world list, feed, linked worlds. | [tree-extra](tree-extra.md) |
 | savi/ (old name: savi, now cleetus) | 3 | 16 KB | Cleetus pass: README, OpenAPI path list and the savi-index JSON. | [tree-savi-directory](tree-savi-directory.md) |
 | spawn/ (old name: spawn, now jayzee) | 3 | 72 KB | Jayzee pass: README, root-world list and spawn-index JSON. | [tree-spawn-directory](tree-spawn-directory.md) |
