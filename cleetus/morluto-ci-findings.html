@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Morluto rea PR 9234 CI findings · Wiki</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="topbar">
+<div class="topbar-inner">
+<a class="brand" href="../index.html">wi<span>ki</span></a>
+<nav class="pills"><a class="active" href="../cleetus/ci-workflows.html">cleetus</a><a href="../index/cdn-inventory.html">index</a><a href="../jayzee/maps-glb-urls.html">jayzee</a><a href="../reference-game-16/coverage.html">reference-game-16</a></nav>
+</div>
+</header>
+<div class="layout">
+<nav class="side">
+<h3>Start</h3><ul>
+<li><a href="../index.html">Project wiki: how this wiki is organised</a></li>
+<li><a href="../toc.html">Table of contents</a></li>
+</ul>
+<h3>cleetus</h3><ul>
+<li><a href="../cleetus/ci-workflows.html">CI workflows and npm scripts</a></li>
+<li><a href="../cleetus/docs-folder.html">The docs folder</a></li>
+<li><a href="../cleetus/endpoints.html">Endpoints</a></li>
+<li><a href="../cleetus/engine-decisions.html">Engine decisions: why the jayzee engine notes are shaped as they are</a></li>
+<li><a href="../cleetus/engine-overview.html">Engine overview: the jayzee engine notes (cleetus workspace)</a></li>
+<li><a href="../cleetus/evidence-claims.html">Evidence claims</a></li>
+<li><a href="../cleetus/evidence-overview.html">Evidence overview</a></li>
+<li><a href="../cleetus/featureset-part-1.html">Featureset part 1: cleetus counts, spoint surface, and the relayed streams</a></li>
+<li><a href="../cleetus/featureset-part-2.html">Featureset part 2: streams 12 to 25 and the src/sdk modules</a></li>
+<li><a href="../cleetus/featureset-part-3.html">Featureset part 3: streams 26 to 34</a></li>
+<li><a href="../cleetus/featureset-part-4.html">Featureset part 4: streams 35 to 45, client/core rendering modules</a></li>
+<li><a href="../cleetus/featureset-part-5.html">Featureset part 5: streams 45 to 55, client/core modules</a></li>
+<li><a href="../cleetus/featureset-part-6.html">Featureset part 6: streams 56 to 58 and the improvement opportunities</a></li>
+<li><a href="../cleetus/featureset-part-7.html">Featureset part 7: improvement candidates from streams 43 to 58</a></li>
+<li><a href="../cleetus/featureset-part-8.html">Featureset part 8: agent and room candidates, session store, bake pins, learning record and terrain</a></li>
+<li><a href="../cleetus/featureset-part-9.html">FEATURESET part 9: render, editor, HUD, XR, packages, static serving and server surface</a></li>
+<li><a href="../cleetus/jayzee-gaps.html">Jayzee implementation gaps</a></li>
+<li><a href="../cleetus/manual-build.html">Manual build and check</a></li>
+<li><a href="../cleetus/manual-worklist.html">Manual worklist</a></li>
+<li><a class="current" href="../cleetus/morluto-ci-findings.html">Morluto rea PR 9234 CI findings</a></li>
+<li><a href="../cleetus/netcode.html">Netcode</a></li>
+<li><a href="../cleetus/open-gaps.html">Open gaps across the cleetus repository</a></li>
+<li><a href="../cleetus/open-items.html">Open items register</a></li>
+<li><a href="../cleetus/overview.html">Overview of cleetus</a></li>
+<li><a href="../cleetus/parity.html">Parity</a></li>
+<li><a href="../cleetus/runs-overview.html">Runs overview</a></li>
+<li><a href="../cleetus/site-overview.html">Site overview (built manual output)</a></li>
+<li><a href="../cleetus/sources-overview.html">Sources overview</a></li>
+<li><a href="../cleetus/state-and-tooling.html">State and tooling</a></li>
+</ul>
+<h3>index</h3><ul>
+<li><a href="../index/cdn-inventory.html">CDN inventory and manifests</a></li>
+<li><a href="../index/discovery.html">Discovery evidence</a></li>
+<li><a href="../index/exhaustive-index.html">Exhaustive world and GLB index</a></li>
+<li><a href="../index/extra-docs.html">extra docs: the Jayzee game API reference copy</a></li>
+<li><a href="../index/extra-worlds.html">extra world lists and feeds</a></li>
+<li><a href="../index/open-gaps.html">Open gaps in the index</a></li>
+<li><a href="../index/overview.html">Overview of the index project</a></li>
+<li><a href="../index/provenance.html">Provenance manifests</a></li>
+<li><a href="../index/savi-index.html">cleetus index</a></li>
+<li><a href="../index/spawn-index.html">jayzee index</a></li>
+<li><a href="../index/tree/tree-borick.html">The borick/ directory</a></li>
+<li><a href="../index/tree/tree-build-scripts.html">Build, check and discovery scripts, and the patch files</a></li>
+<li><a href="../index/tree/tree-extra.html">The extra/ directory</a></li>
+<li><a href="../index/tree/tree-indexes.html">The index files: COMPLETE_INDEX, EXTRA_WORLD_INDEX and INDEX</a></li>
+<li><a href="../index/tree/tree-open-gaps.html">Open gaps in the top-level index, its directories and the browser state</a></li>
+<li><a href="../index/tree/tree-overview.html">Top-level layout of the jayzee tree</a></li>
+<li><a href="../index/tree/tree-provenance.html">provenance.sha256.txt and the other provenance manifests</a></li>
+<li><a href="../index/tree/tree-savi-directory.html">The cleetus/ directory (old name: savi)</a></li>
+<li><a href="../index/tree/tree-spawn-directory.html">The jayzee/ directory (old name: spawn)</a></li>
+</ul>
+<h3>jayzee</h3><ul>
+<li><a href="../jayzee/maps-glb-urls.html">jayzee GLB URL list (glb-urls-all.tsv)</a></li>
+<li><a href="../jayzee/maps-head-status.html">jayzee world head status lists</a></li>
+<li><a href="../jayzee/maps-learning-record-part-1.html">jayzee learning record, part 1 (denominators, corpus, keys, escapes, bucket rule, 410)</a></li>
+<li><a href="../jayzee/maps-learning-record-part-2.html">jayzee learning record, part 2 (error keys, non-CDN refs, open items, name decode, /cdn/ attempt)</a></li>
+<li><a href="../jayzee/maps-learning-record.html">jayzee learning record</a></li>
+<li><a href="../jayzee/maps-noncdn-refs.html">jayzee non-CDN data references (unverified-noncdn-refs.tsv)</a></li>
+<li><a href="../jayzee/maps-open-gaps.html">jayzee maps open gaps</a></li>
+<li><a href="../jayzee/maps-overview.html">jayzee maps directory overview</a></li>
+<li><a href="../jayzee/maps-root-worlds.html">jayzee root-linked worlds map</a></li>
+<li><a href="../jayzee/maps-witness-inputs.html">jayzee witness input directories and their sha256 checks</a></li>
+<li><a href="../jayzee/maps-witness.html">jayzee witness scripts</a></li>
+<li><a href="../jayzee/runs-findings.html">Runs findings and decisions</a></li>
+<li><a href="../jayzee/runs-open-gaps.html">Runs open gaps and failures</a></li>
+<li><a href="../jayzee/runs-overview.html">Runs overview</a></li>
+<li><a href="../jayzee/runs-timeline.html">Runs timeline</a></li>
+<li><a href="../jayzee/sources-captures.html">Sources captures</a></li>
+<li><a href="../jayzee/sources-index.html">Sources index</a></li>
+<li><a href="../jayzee/sources-overview.html">Sources overview</a></li>
+</ul>
+<h3>reference-game-16</h3><ul>
+<li><a href="../reference-game-16/coverage.html">Capture coverage: game page</a></li>
+<li><a href="../reference-game-16/download-process.html">Download process: from the join instructions to a working site</a></li>
+<li><a href="../reference-game-16/page-00-overview.html">Game page section: Overview</a></li>
+<li><a href="../reference-game-16/page-01-starters.html">Game page section: Starters</a></li>
+<li><a href="../reference-game-16/page-02-skills.html">Game page section: Skills</a></li>
+<li><a href="../reference-game-16/page-03-animations.html">Game page section: Animations</a></li>
+<li><a href="../reference-game-16/page-04-sound-art.html">Game page section: Sound Art</a></li>
+<li><a href="../reference-game-16/page-05-workshop.html">Game page section: Workshop</a></li>
+<li><a href="../reference-game-16/page-06-engine.html">Game page section: Engine</a></li>
+<li><a href="../reference-game-16/page-07-reference.html">Game page section: Reference</a></li>
+<li><a href="../reference-game-16/page-08-shapes.html">Game page section: Shapes</a></li>
+<li><a href="../reference-game-16/page-09-mods.html">Game page section: Mods</a></li>
+<li><a href="../reference-game-16/page-10-games.html">Game page section: Games</a></li>
+<li><a href="../reference-game-16/page-11-pick-a-genre.html">Game page section: Pick A Genre</a></li>
+<li><a href="../reference-game-16/page-host.html">Host page: Untitled game (@lanmower/game-16)</a></li>
+</ul>
+</nav>
+<main>
+<span class="eyebrow">cleetus</span>
+<h1 id="morluto-rea-pr-9234-ci-findings">Morluto rea PR 9234 CI findings</h1>
+<h2 id="how-it-works">How it works</h2>
+<p>gaps/morluto-rea-pr-9234-ci-findings.md (old name: savi) is a read-only survey of the public repository morluto/rea for pull request 9234, titled &quot;fix(javascript): keep case-folded loader suffixes unknown&quot;. The local checkout was at 99db80a13 on main with a clean tree throughout. Each claim is marked verified (read from a log, a command result or code, with the source cited) or unverified (not run, or not established). The document states its status at the top: the CI failure's cause is confirmed in the cited observations, and the fix passes CI on 32df15f. The rea test output and root-cause interpretation remain open for independent review.</p>
+<p>The document is a validation record. Its own caveat says that a facts audit was not run (a retry fork hung through a bounded wait and was stopped without a result). A links, file-list and push-claim audit did pass: zero public URLs, zero markdown links, ten local path references checked, PR diff 4 of 4, head delta 3 of 3, commit, run and job references resolved, zero positive upstream push, ready or re-run claims, and zero Co-Authored-By lines. The words verified, confirmed, resolved and passed in the document record cited observations, not an independently audited pass.</p>
+<h3 id="pr-state">PR state</h3>
+<ul><li>PR 9234 is at head 32df15f1a2621a3fbb513c98833159981684d1fc, OPEN and not a draft (gh pr view). The merge state was BLOCKED while checks were pending and later CLEAN.</li><li>The diff touches four files: src/application/javascript/JavaScriptModuleRelationships.ts, src/domain/javascript/javascriptModuleResolutionMode.ts, src/domain/javascript/javascriptSourceParser.ts and src/domain/javascript/javascriptSourceParserContext.test.ts. Their base blobs match main at 99db80a13, so the diff applies cleanly.</li><li>PR 9230 (fix(desktop): skip directory symlinks during executable lookup, head 4d0ef65b638bf9b02225c5cb5e214360728874ec) is a draft, BLOCKED. Two readiness checks, Validate author declaration and Conventional PR title, were cancelled and not passed. It is not marked ready, and the checks have not been re-run.</li></ul>
+<h3 id="the-ci-failure-at-head-86dfb90365d248dbb286117c9e675b50a8897011-run-42340853942">The CI failure at head 86dfb90365d248dbb286117c9e675b50a8897011 (run 42340853942)</h3>
+<p>The CI required job reported that CI lanes did not pass: test, test-shard and test-source. Two jobs failed on the same root cause:</p>
+<ul><li>Source tests (job 128308633744): src/application/ReferenceSourceImportEntries.test.ts, &quot;resolves declared package mains and index fallback from source-owned fields&quot;. The assertion expected the entries to deep-equally contain { from_path: 'main.cts' }. The summary was 1 failed and 1322 passed.</li><li>Test shard 8/8 (job 128308845027): tests/boundary/cli/referenceSourceRuntimeAuthority.test.ts, &quot;preserves owned CommonJS factories through erased TypeScript syntax&quot;. The assertion expected a list of one main.cts entry to deeply equal []. The summary was 1 failed, 217 passed and 6 skipped.</li></ul>
+<h3 id="local-reproduction">Local reproduction</h3>
+<p>The environment was Node v24.22.0. rea's package.json requires ^24.22.1 for Node 24, so this was below the floor. Install was npm ci with --ignore-scripts and --engine-strict=false, which added 738 packages. One optional binary was added with npm install --no-save, so the lockfile is unchanged.</p>
+<ul><li>main at 99db80a13, before build: the entries file passed 14 of 14; the CLI boundary file passed 0 of 3, with the message that rea's compiled runtime is missing. This is an environment gap, not a code failure.</li><li>main after npm run build:cached: 17 of 17 pass.</li><li>PR 9234 applied at 32df15f: 44 of 44 pass. This run did not rebuild, so the CLI boundary file used main's build; the rebuilt result is in the later section.</li><li>Full source group, main: 1 file failed and 1322 passed; 2 tests failed and 24520 passed. Both failures were in src/setupEnvironment.test.ts.</li><li>Full source group, PR applied: the same two failures, 24525 passed; five new parser-context cases pass.</li></ul>
+<p>The PR tree was reverted with git apply -R, and the checkout was confirmed clean at 99db80a13. On head 32df15f, the two test files that failed in CI pass locally. The CI failure does not reproduce on the current head.</p>
+<h3 id="the-setupenvironment-failures">The setupEnvironment failures</h3>
+<p>Both tests in src/setupEnvironment.test.ts expect status &quot;planned&quot; and get &quot;needs_human&quot;. A probe outside the repository, in /tmp/probe, calls the same setup entry points and returns status needs_human with the remediation &quot;Install Node.js 22.x (&gt;=22.23.4), 24.x (&gt;=24.22.1), or 26.12.1+ and rerun setup.&quot; The cause is the local Node version. The setup path returns needs_human for an unsupported Node before it builds the dry-run plan. Rerunning on Node v24.22.1 (official linux-x64 tarball, SHA256 checked against the official SHASUMS256.txt, unpacked in /tmp and put first on PATH for one command, global Node unchanged) gives 14 of 14 passing.</p>
+<h3 id="the-cli-boundary-case">The cli-boundary case</h3>
+<ul><li>CI shard 8/8 did not build. It downloaded the rea-test-runtime artifact from the same run (42340853942, Build package job), and its SHA256 digest matched (790cc74d...b1ae800a). The runtime was neither missing nor stale.</li><li>The CI failure is a parse error: parse_failures for main.cts with the reason that import and export may appear only with sourceType &quot;module&quot; (1:0).</li><li>The earlier pass at 86dfb903 was invalid, because that test runs the compiled CLI (tests/support/cli/cliFixture.js) and the tree had not been rebuilt. Rebuilt at 86dfb903, the test fails with the same parse_failures error. Rebuilt at 32df15f, all three tests pass.</li></ul>
+<h3 id="head-86dfb903-versus-32df15f">Head 86dfb903 versus 32df15f</h3>
+<p>The compare (gh api repos/morluto/rea/compare/86dfb903...32df15f, read-only) adds two commits: 1874f8729 &quot;fix(javascript): keep the module grammar for .cts sources&quot; and 32df15f1a &quot;fix(javascript): keep case-insensitive TypeScript and declaration checks&quot;. The diff stat is 3 files changed, 16 insertions and 4 deletions across JavaScriptModuleRelationships.ts (+4 -1), javascriptModuleResolutionMode.ts (+4 -1) and javascriptSourceParser.ts (+8 -2).</p>
+<p>The change that matters: in javascriptSourceParser.ts, runtimeSourceTypeForPath used to return commonjs for any path that isCommonJsSourcePath matched, so main.cts was parsed with the CommonJS script grammar. The new code returns commonjs only for an exact .cjs suffix. .cts now keeps module grammar, which TypeScript import x = require() needs. The .cts loader mode still comes from the runtime context.</p>
+<p>Neither failing test file is in the diff. Both are unchanged between the heads, so the change affects them only through the parser they call. Rebuilt at 86dfb903, ReferenceSourceImportEntries fails with the same message as CI, and the cli-boundary test fails with the parse error. Both are confirmed, and the .cts grammar change is the cause.</p>
+<h3 id="full-source-group-under-node-v24221">Full source group under Node v24.22.1</h3>
+<p>With the same Node binary, after a runtime rebuild each time, the full source group gives: main 99db80a13, 1323 test files passed, 24522 tests passed and 16 skipped, exit 0; PR applied at 32df15f, 1323 files passed, 24527 tests passed and 16 skipped, exit 0. The PR adds five parser-context cases and passes all of them. On Node v24.22.0, main had two failures in setupEnvironment.test.ts, which pass on v24.22.1.</p>
+<h3 id="ci-on-head-32df15f">CI on head 32df15f</h3>
+<p>Run 42343646562 (workflow CI, pull_request) concluded success. Its jobs: Classify changes, Build package, Source tests, Test shards 1/8 through 8/8, Portable tests and CI required all succeeded. Source-built conformance fixtures were skipped. Other runs on the same head: 42343646499 (PR title) success, 42343643703 (pull_request_target) success, and 42343646532 (CodeQL production) skipped. PR 9234 is OPEN, not a draft, with mergeStateStatus CLEAN at head 32df15f.</p>
+<p>The rea checkout was reverted to 99db80a13 and confirmed clean, and the runtime was rebuilt for main afterwards. Nothing was committed or pushed.</p>
+<h2 id="decisions">Decisions</h2>
+<ul><li>Fix at the parser, not at the tests. The two failing tests are unchanged, and the diff changes only runtimeSourceTypeForPath, so the cause sits in the .cts grammar selection rather than the expectations.</li><li>Keep the .cts module grammar. TypeScript import x = require() needs module grammar, so the .cjs-only commonjs rule is the correct boundary.</li><li>Re-run only after a rebuild. The cli-boundary test runs the compiled CLI, so the earlier 86dfb903 pass was discarded as invalid and the result was re-run after npm run build:cached.</li><li>Treat the setup failures as environmental. The setup check's Node floor (24.22.1) explains the needs_human result, so the test failure is attributed to the local Node version and not to the code.</li><li>Do not act upstream. Marking PR 9230 ready and re-running its cancelled checks is left to the owner, and nothing was pushed or commented on morluto/rea.</li><li>Record the checks as observed. The facts audit did not run, so the words verified and confirmed carry the cited-observation meaning only.</li></ul>
+<h2 id="open-gaps">Open gaps</h2>
+<ul><li>Independent review of the rea test output and of the root-cause interpretation is open. The document says this review is needed.</li><li>The facts audit did not run. Its retry fork hung and was stopped without a result.</li><li>Owner decision: marking PR 9230 ready for review and re-running its cancelled readiness checks has not been done.</li><li>The cli-boundary failure at 86dfb903 was not reproduced on the first pass and was confirmed only after a rebuild; the interpretation rests on that rebuilt run.</li><li>The local Node version used for the first runs (v24.22.0) is below rea's required floor; the full results are reported on v24.22.1.</li><li>The rea test output on 32df15f was not interpreted independently; CI run 42343646562 passed.</li></ul>
+<h2 id="sources">Sources</h2>
+<ul><li>/workspace/savi/gaps/morluto-rea-pr-9234-ci-findings.md (old name: savi)</li><li>/workspace/savi/docs/FEATURESET.md (old name: savi), which cites morluto/rea; OPEN-ITEMS.md does not list this survey and is not a source for it</li><li>/workspace/savi/docs/PARITY-INPUTS.md (old name: savi), which names this file among the featureset sources</li><li>Repository morluto/rea (public, GitHub), read-only; its local checkout is not a cleetus path</li></ul>
+</main>
+</div>
+<footer class="foot"><div class="foot-inner">wiki · every page cites the on-disk sources it was written from</div></footer>
+</body>
+</html>

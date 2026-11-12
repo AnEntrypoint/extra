@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>jayzee learning record, part 2 (error keys, non-CDN refs, open items, name decode, /cdn/ attempt) · Wiki</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="topbar">
+<div class="topbar-inner">
+<a class="brand" href="../index.html">wi<span>ki</span></a>
+<nav class="pills"><a href="../cleetus/ci-workflows.html">cleetus</a><a href="../index/cdn-inventory.html">index</a><a class="active" href="../jayzee/maps-glb-urls.html">jayzee</a><a href="../reference-game-16/coverage.html">reference-game-16</a></nav>
+</div>
+</header>
+<div class="layout">
+<nav class="side">
+<h3>Start</h3><ul>
+<li><a href="../index.html">Project wiki: how this wiki is organised</a></li>
+<li><a href="../toc.html">Table of contents</a></li>
+</ul>
+<h3>cleetus</h3><ul>
+<li><a href="../cleetus/ci-workflows.html">CI workflows and npm scripts</a></li>
+<li><a href="../cleetus/docs-folder.html">The docs folder</a></li>
+<li><a href="../cleetus/endpoints.html">Endpoints</a></li>
+<li><a href="../cleetus/engine-decisions.html">Engine decisions: why the jayzee engine notes are shaped as they are</a></li>
+<li><a href="../cleetus/engine-overview.html">Engine overview: the jayzee engine notes (cleetus workspace)</a></li>
+<li><a href="../cleetus/evidence-claims.html">Evidence claims</a></li>
+<li><a href="../cleetus/evidence-overview.html">Evidence overview</a></li>
+<li><a href="../cleetus/featureset-part-1.html">Featureset part 1: cleetus counts, spoint surface, and the relayed streams</a></li>
+<li><a href="../cleetus/featureset-part-2.html">Featureset part 2: streams 12 to 25 and the src/sdk modules</a></li>
+<li><a href="../cleetus/featureset-part-3.html">Featureset part 3: streams 26 to 34</a></li>
+<li><a href="../cleetus/featureset-part-4.html">Featureset part 4: streams 35 to 45, client/core rendering modules</a></li>
+<li><a href="../cleetus/featureset-part-5.html">Featureset part 5: streams 45 to 55, client/core modules</a></li>
+<li><a href="../cleetus/featureset-part-6.html">Featureset part 6: streams 56 to 58 and the improvement opportunities</a></li>
+<li><a href="../cleetus/featureset-part-7.html">Featureset part 7: improvement candidates from streams 43 to 58</a></li>
+<li><a href="../cleetus/featureset-part-8.html">Featureset part 8: agent and room candidates, session store, bake pins, learning record and terrain</a></li>
+<li><a href="../cleetus/featureset-part-9.html">FEATURESET part 9: render, editor, HUD, XR, packages, static serving and server surface</a></li>
+<li><a href="../cleetus/jayzee-gaps.html">Jayzee implementation gaps</a></li>
+<li><a href="../cleetus/manual-build.html">Manual build and check</a></li>
+<li><a href="../cleetus/manual-worklist.html">Manual worklist</a></li>
+<li><a href="../cleetus/morluto-ci-findings.html">Morluto rea PR 9234 CI findings</a></li>
+<li><a href="../cleetus/netcode.html">Netcode</a></li>
+<li><a href="../cleetus/open-gaps.html">Open gaps across the cleetus repository</a></li>
+<li><a href="../cleetus/open-items.html">Open items register</a></li>
+<li><a href="../cleetus/overview.html">Overview of cleetus</a></li>
+<li><a href="../cleetus/parity.html">Parity</a></li>
+<li><a href="../cleetus/runs-overview.html">Runs overview</a></li>
+<li><a href="../cleetus/site-overview.html">Site overview (built manual output)</a></li>
+<li><a href="../cleetus/sources-overview.html">Sources overview</a></li>
+<li><a href="../cleetus/state-and-tooling.html">State and tooling</a></li>
+</ul>
+<h3>index</h3><ul>
+<li><a href="../index/cdn-inventory.html">CDN inventory and manifests</a></li>
+<li><a href="../index/discovery.html">Discovery evidence</a></li>
+<li><a href="../index/exhaustive-index.html">Exhaustive world and GLB index</a></li>
+<li><a href="../index/extra-docs.html">extra docs: the Jayzee game API reference copy</a></li>
+<li><a href="../index/extra-worlds.html">extra world lists and feeds</a></li>
+<li><a href="../index/open-gaps.html">Open gaps in the index</a></li>
+<li><a href="../index/overview.html">Overview of the index project</a></li>
+<li><a href="../index/provenance.html">Provenance manifests</a></li>
+<li><a href="../index/savi-index.html">cleetus index</a></li>
+<li><a href="../index/spawn-index.html">jayzee index</a></li>
+<li><a href="../index/tree/tree-borick.html">The borick/ directory</a></li>
+<li><a href="../index/tree/tree-build-scripts.html">Build, check and discovery scripts, and the patch files</a></li>
+<li><a href="../index/tree/tree-extra.html">The extra/ directory</a></li>
+<li><a href="../index/tree/tree-indexes.html">The index files: COMPLETE_INDEX, EXTRA_WORLD_INDEX and INDEX</a></li>
+<li><a href="../index/tree/tree-open-gaps.html">Open gaps in the top-level index, its directories and the browser state</a></li>
+<li><a href="../index/tree/tree-overview.html">Top-level layout of the jayzee tree</a></li>
+<li><a href="../index/tree/tree-provenance.html">provenance.sha256.txt and the other provenance manifests</a></li>
+<li><a href="../index/tree/tree-savi-directory.html">The cleetus/ directory (old name: savi)</a></li>
+<li><a href="../index/tree/tree-spawn-directory.html">The jayzee/ directory (old name: spawn)</a></li>
+</ul>
+<h3>jayzee</h3><ul>
+<li><a href="../jayzee/maps-glb-urls.html">jayzee GLB URL list (glb-urls-all.tsv)</a></li>
+<li><a href="../jayzee/maps-head-status.html">jayzee world head status lists</a></li>
+<li><a href="../jayzee/maps-learning-record-part-1.html">jayzee learning record, part 1 (denominators, corpus, keys, escapes, bucket rule, 410)</a></li>
+<li><a class="current" href="../jayzee/maps-learning-record-part-2.html">jayzee learning record, part 2 (error keys, non-CDN refs, open items, name decode, /cdn/ attempt)</a></li>
+<li><a href="../jayzee/maps-learning-record.html">jayzee learning record</a></li>
+<li><a href="../jayzee/maps-noncdn-refs.html">jayzee non-CDN data references (unverified-noncdn-refs.tsv)</a></li>
+<li><a href="../jayzee/maps-open-gaps.html">jayzee maps open gaps</a></li>
+<li><a href="../jayzee/maps-overview.html">jayzee maps directory overview</a></li>
+<li><a href="../jayzee/maps-root-worlds.html">jayzee root-linked worlds map</a></li>
+<li><a href="../jayzee/maps-witness-inputs.html">jayzee witness input directories and their sha256 checks</a></li>
+<li><a href="../jayzee/maps-witness.html">jayzee witness scripts</a></li>
+<li><a href="../jayzee/runs-findings.html">Runs findings and decisions</a></li>
+<li><a href="../jayzee/runs-open-gaps.html">Runs open gaps and failures</a></li>
+<li><a href="../jayzee/runs-overview.html">Runs overview</a></li>
+<li><a href="../jayzee/runs-timeline.html">Runs timeline</a></li>
+<li><a href="../jayzee/sources-captures.html">Sources captures</a></li>
+<li><a href="../jayzee/sources-index.html">Sources index</a></li>
+<li><a href="../jayzee/sources-overview.html">Sources overview</a></li>
+</ul>
+<h3>reference-game-16</h3><ul>
+<li><a href="../reference-game-16/coverage.html">Capture coverage: game page</a></li>
+<li><a href="../reference-game-16/download-process.html">Download process: from the join instructions to a working site</a></li>
+<li><a href="../reference-game-16/page-00-overview.html">Game page section: Overview</a></li>
+<li><a href="../reference-game-16/page-01-starters.html">Game page section: Starters</a></li>
+<li><a href="../reference-game-16/page-02-skills.html">Game page section: Skills</a></li>
+<li><a href="../reference-game-16/page-03-animations.html">Game page section: Animations</a></li>
+<li><a href="../reference-game-16/page-04-sound-art.html">Game page section: Sound Art</a></li>
+<li><a href="../reference-game-16/page-05-workshop.html">Game page section: Workshop</a></li>
+<li><a href="../reference-game-16/page-06-engine.html">Game page section: Engine</a></li>
+<li><a href="../reference-game-16/page-07-reference.html">Game page section: Reference</a></li>
+<li><a href="../reference-game-16/page-08-shapes.html">Game page section: Shapes</a></li>
+<li><a href="../reference-game-16/page-09-mods.html">Game page section: Mods</a></li>
+<li><a href="../reference-game-16/page-10-games.html">Game page section: Games</a></li>
+<li><a href="../reference-game-16/page-11-pick-a-genre.html">Game page section: Pick A Genre</a></li>
+<li><a href="../reference-game-16/page-host.html">Host page: Untitled game (@lanmower/game-16)</a></li>
+</ul>
+</nav>
+<main>
+<span class="eyebrow">jayzee</span>
+<h1 id="jayzee-learning-record-part-2-error-keys-non-cdn-refs-open-items-name-decode-cdn-attempt">jayzee learning record, part 2 (error keys, non-CDN refs, open items, name decode, /cdn/ attempt)</h1>
+<h2 id="how-it-works">How it works</h2>
+<p>This page is part 2 of the jayzee learning record. It carries sections 7 to 11 of /workspace/spawn/maps/spawn-learning-record.md (old name: spawn), in the record's order. Part 1 carries sections 1 to 6. The probes listed here are single requests, one class each, against the public world-store and CDN hosts (play.spawn.co, spawnfile.io, www.spawn.co). The record states that a probe result is a scoped observation and not a rule.</p>
+<h3 id="7-error-keys-on-world-store-scoped-observation">7. Error keys on world-store (scoped observation)</h3>
+<p>Re-witnessed in the audit with one GET each (<code>curl -sS -m 15</code>, base <code>https://play.spawn.co/world-store</code>).</p>
+<ul><li><code>value_not_found</code>, condition: absent hash. <code>GET /values/&lt;64 zeros&gt;</code> returns 404 application/json, 27 bytes, <code>{&quot;error&quot;:&quot;value_not_found&quot;}</code>. <code>GET /values/&lt;64 f&gt;</code> returns 404 application/json, 27 bytes, the same body. <code>GET /manifests/&lt;64 zeros&gt;</code> returns 404 application/json, 101 bytes, <code>{&quot;error&quot;:&quot;value_not_found&quot;,&quot;hash&quot;:&quot;0000…0&quot;}</code>. <code>GET /manifests/&lt;64 f&gt;</code> returns 404 application/json, 101 bytes, the same shape with the <code>f</code> hash echoed. Present controls: <code>GET /values/3fa9a434…</code> returns 200 application/octet-stream, 1266 bytes; <code>GET /manifests/5a526ee6…</code> returns 200 application/octet-stream, 513116 bytes. Scoped reading: two absent 64-hex hashes return <code>value_not_found</code> on both paths, so the key is not specific to the all-zero hash. Two absent hashes were tested; this is not a rule for all absent hashes.</li><li><code>unknown_world_store_key</code>, REPRODUCED once by a path-level probe. Class: a valid 32-hex world uuid with a non-existent resource name. <code>GET https://play.spawn.co/world-store/git/41cd46499614484ca9261ce32e257e22/head.jsn</code> returns 404 application/json, 35 bytes, <code>{&quot;error&quot;:&quot;unknown_world_store_key&quot;}</code>. Its control, the same world with the correct name, <code>GET …/41cd46499614484ca9261ce32e257e22/head.json</code>, returns 200 application/json, 1673 bytes, with <code>&quot;manifest&quot;:&quot;3fa9a434…&quot;</code>. One request each, one class. Scoped reading: a misspelled resource under a known world gives <code>unknown_world_store_key</code>. The original cleetus case (drifted head, manifest 3fa9a434…) is still NOT reproduced, so the condition for that case is OPEN. Do not generalise from one request.</li><li><code>unknown_world_store_key</code>, past observation, not reproduced: cleetus recorded one case (world <code>41cd4649…</code>, head naming manifest <code>3fa9a434…</code>, 404 <code>unknown_world_store_key</code>). In the audit, <code>GET /manifests/3fa9a434…</code> returned 200 application/octet-stream, 513116 bytes, on two GETs. <code>GET /git/41cd4649…/head.json</code> returned 200 with <code>&quot;manifest&quot;:&quot;3fa9a434…&quot;</code> and <code>&quot;seq&quot;:553</code>, so the head drift is still there but the 404 is not. The two saved bodies (/tmp/spawn-probe/r-8244be9f.bin (old name: spawn), /tmp/spawn-probe/mf-gta-earth-head.bin (old name: spawn)) hold only the error text and no URL, so the condition that selects this key cannot be characterised. Kept as one past observation.</li><li>Head drift on a second world: <code>GET /git/4e709464…/head.json</code> (GTA Earth) returns 200, <code>&quot;manifest&quot;:&quot;b0d8aa7e…&quot;</code>. The earlier scan used manifest <code>d0d3c548…</code>, which still returns 200 (186349 bytes). Scoped to one world; not a rule.</li><li><code>head_not_found</code>: <code>GET /git/&lt;uuid&gt;/head.json</code> returns 404 application/json, 26 bytes, <code>{&quot;error&quot;:&quot;head_not_found&quot;}</code> for <code>03ebf641…</code> and <code>040ed504…</code> (the first two entries of /workspace/spawn/maps/head404-confirmed-worlds.txt (old name: spawn)) and for the all-zero world <code>00000000…</code>. This key was not recorded before. The count of 256 is record-reported and was not re-counted; 3 were sampled.</li><li>The earlier note &quot;all-zero world head.json timed out (15 s)&quot; is superseded. The audit GET returned 404 <code>head_not_found</code> (26 bytes). The timeout observation is not reproduced.</li><li>/workspace/spawn/maps/head-present-manifest404-worlds.txt (old name: spawn) (3 worlds): the earlier record described these as head present, manifest 404. All 3 (<code>5db79de6…</code>, <code>fd80e9d9…</code>, <code>ffb0a8fb…</code>) return head.json 200 with <code>&quot;manifest&quot;:null</code> and <code>&quot;seq&quot;:0</code>. No manifest is named, so no manifest 404 is produced. The filename is kept for continuity; the description is corrected here.</li></ul>
+<h3 id="8-non-cdn-refs-2-open-81-resolved">8. Non-CDN refs (2 OPEN, 81 resolved)</h3>
+<ul><li>/workspace/spawn/maps/unverified-noncdn-refs.tsv (old name: spawn): 83 data rows. The record says 81 resolved with first-pass status 200. In the TSV itself the <code>first_pass_status</code> column is 0 for all 83 rows and the 200 values sit in the <code>retry_status</code> column; see maps-noncdn-refs.md for the class table.</li><li>ttf, world <code>c355fcf8468745feb0b2ba8254aa4dee</code>, sha <code>d5558cd4…</code>: retry status 401. OPEN. Recorded as is, not bypassed. The same world has a second ttf row (sha <code>39a77b90…</code>, first pass 200 font/ttf), counted in the 81 200s and in section 11's font/ttf 1. Re-counted in the audit from the TSV: 200 = 81, 401 = 1, UND_ERR_CONNECT_TIMEOUT = 1 (mp4), total 83.</li><li>mp4, world <code>b185f36d…</code>, sha <code>537d6321…</code>: first pass UND_ERR_CONNECT_TIMEOUT. Bounded retry (one GET, <code>curl -sS -m 60</code>, URL <code>https://play.spawn.co/cdn/value.537d6321e14ca1fec788632ca4dcce598c8c901bdf123681d0119caab7815a2c.mp4</code>): status 200, type video/mp4, 2350318 bytes received of 46469835 before the 60 s limit, first bytes <code>ftyp isom</code>. The connect timeout did not recur. Full body: 12 ranged GETs of 4194304 bytes (last chunk 332491), <code>curl -r</code>, 120 s per attempt, resumed with <code>curl -C</code>-style offsets for 3 chunks that hit the limit. Concatenated in order: 46469835 bytes (equal to the <code>content-range</code> total). sha256 = 537d6321e14ca1fec788632ca4dcce598c8c901bdf123681d0119caab7815a2c, which MATCHES the claimed sha. The mp4 full body and sha are CONFIRMED for this object (scoped to this one fetch). Also HEAD in the /cdn/ probe: 200 video/mp4.</li></ul>
+<h3 id="9-still-open-with-reasons">9. Still OPEN, with reasons</h3>
+<ul><li><code>/cdn/</code>-only: INFERRED. Scanned set only. The /cdn/ probe in section 11 shows named keys reach bytes through a 302 to a different origin path, so the claim is weakened for that family and is not promoted.</li><li>spawnfile.io bytes: UNCONFIRMED. No model bytes in four earlier probes. Bounded HEAD attempt on the FAULTS F3 path prefix (no leaf, so the elided timestamp is not needed): <code>https://spawnfile.io/</code> returns 200 text/html; <code>https://spawnfile.io/prod/</code> returns 404 text/plain; <code>https://spawnfile.io/prod/character-assets/</code> returns 404 text/plain (HEAD); one GET of the same prefix returns 404 text/plain, 10 bytes, body <code>Not Found\n</code>. No model bytes. Probe class 2 (GET, F3 prefix with no trailing slash, <code>https://spawnfile.io/prod/character-assets</code>) returns 404 text/plain, 10 bytes, body <code>Not Found\n</code>. Re-witnessed in the audit with the same status, type, size and bytes (<code>od -c</code>: <code>N o t _ F o u n d \n</code>). No model bytes; the leaf is still not reached. The leaf <code>&lt;unix-ms&gt;-savi-reduced-fitted.glb</code> is elided and was not guessed.</li><li>Spawnfile key path: ELIDED in cleetus FAULTS F3. Scoped negatives in section 4.</li><li>Bucket rule: UNDETERMINED (part 1, section 5).</li><li>Encoder: partial. <code>/</code> → <code>~2f</code> is witnessed on 307 keys and 11987 keys. <code>:</code> → <code>~3a</code> is witnessed only in FAULTS F3 text (elided). <code>~</code> → <code>~7e</code> is unwitnessed in data (encode code and a jayzee fixture only).</li><li>Gone 410: OPEN, 41 probes, no body-level 410 (part 1, section 6).</li><li>Two 404 error keys (section 7): <code>value_not_found</code> is reproduced for two absent hashes on two paths. <code>unknown_world_store_key</code> is reproduced once for a misspelled resource under a valid world (<code>head.jsn</code>), and not reproduced for the original drifted-head case (<code>3fa9a434…</code> now returns 200). The condition selecting the drifted-head case is OPEN. No rule is promoted.</li><li>Two non-CDN refs: section 8.</li><li>9 vs 308 named cdn keys: the 9 are the text-visible subset of the 308 decoded named keys. Not promoted beyond the observation.</li></ul>
+<h3 id="10-name-decode-direction-witnessed">10. Name decode direction (witnessed)</h3>
+<ul><li>Decode <code>~2f</code> → <code>/</code> and <code>~3a</code> → <code>:</code> (witnessed on keys; <code>~3a</code> only in text sources).</li><li>Encode <code>/</code> → <code>~2f</code> is witnessed on 307 text-visible keys (<code>node encoder-test.mjs</code>, roundTripEncodeOfDecode 307) and on all 11987 decoded keys (round trip <code>encode(decode(name)) === name</code>, 11987/11987, fails 0, run over <code>dt/keys-unique.txt</code>).</li><li>Re-run for this wiki: /workspace/spawn/maps/witness/encoder-bucket/encoder-test.mjs (old name: spawn) returns <code>distinctKeys 11987, escapes {&quot;~2f&quot;:23974}, roundTripEncodeOfDecode 11987, fails []</code>. Its inputs are the probe tree and the witness tree, so the 11987 figure reproduces only with /tmp/spawn-probe (old name: spawn) present. The <code>dt/keys-unique.txt</code> file named by the record is not in the maps tree.</li></ul>
+<h3 id="11-cdn-only-attempt-inferred-claim-probed-not-promoted">11. /cdn/-only attempt (INFERRED claim, probed, not promoted)</h3>
+<p>Claim under test: every GLB and asset is served from <code>https://play.spawn.co/cdn/</code>. Scope: 308 named <code>/cdn/</code> keys (no sha), 20 value-sha controls, 10 named controls with the <code>.yaml</code> suffix kept, and the 83 non-CDN data rows from /workspace/spawn/maps/unverified-noncdn-refs.tsv (old name: spawn). Method: HEAD with redirect not followed, 8-way concurrency, 15 s timeout. Script: /tmp/spawn-probe/probe-cdn-named.mjs (old name: spawn), ephemeral; output /tmp/spawn-probe/cdn-named/results.jsonl (old name: spawn). Tally: <code>{&quot;named-cdn-stripYaml 302&quot;:304, &quot;named-cdn-stripYaml error&quot;:4, &quot;named-cdn-withYaml-control 401&quot;:10, &quot;value-sha-control 200&quot;:20, &quot;noncdn-ref 200&quot;:82, &quot;noncdn-ref 401&quot;:1}</code>.</p>
+<ul><li>Named keys, <code>.yaml</code> stripped (the served form): 304 of 308 return 302. The 302 <code>location</code> is <code>https://play.spawn.co/value-origin/dev/magic-assets/v5/values/&lt;sha64&gt;.glb?_av=raw1</code>, which is not under <code>/cdn/</code>. HEAD of the 304 distinct locations: 302 return 200 model/gltf-binary, and 2 time out (15 s). The 4 first-pass timeouts were retried once: all 4 return 302. Bounded retry of the 2 timed-out targets (HEAD, then GET range 0-3): both HEAD 200 model/gltf-binary, and the range GET returns 206 with bytes <code>glTF</code>. Following the redirect for the 4 retried named URLs: all 4 HEAD 200 model/gltf-binary. Across all 308 named keys, every redirect target returns 200 model/gltf-binary on HEAD. Body check: range GET bytes=0-3 on all 308 distinct redirect targets returns 206 model/gltf-binary with magic <code>glTF</code> (308/308; 306 in the first pass, 2 first-pass TypeError then 206 on a sequential retry).</li><li>Named keys, <code>.yaml</code> kept (the file-map name, not the served form): 10 of 10 return 401 application/json. The file-map key is not a served path.</li><li>Value-sha controls: 20 of 20 return 200 model/gltf-binary directly under <code>/cdn/value.&lt;sha&gt;.glb</code>.</li><li>Non-CDN data rows: 82 return 200 (image/png 31, image/jpeg 15, audio/mpeg 11, video/mp4 12, model/gltf-binary 6, image/webp 4, image/gif 2, font/ttf 1). 1 returns 401: the ttf <code>value.d5558cd4…ttf</code> (world c355fcf8…), OPEN as a credentialed-looking refusal and not bypassed. The mp4 (world b185f36d…) returns 200 video/mp4 on HEAD.</li></ul>
+<p>Result: the <code>/cdn/</code> URL answers for named keys, but the bytes are served from <code>value-origin</code> through a redirect, so the URL path is not <code>/cdn/</code>-only for that family. The <code>/cdn/</code>-only claim is still INFERRED and is weakened for named keys. Of the 304 distinct redirect targets, 302 return 200 model/gltf-binary on the first pass and 2 time out. On retry those 2 return 200 model/gltf-binary with magic <code>glTF</code>, so the named-key redirect targets are all witnessed as 200 model/gltf-binary on HEAD (the earlier timeouts are no longer open).</p>
+<h2 id="decisions">Decisions</h2>
+<ul><li>Report error keys as scoped observations, one row per key with its class and its control. Evidence: section 7 gives a control request for each reproduced key (<code>head.json</code> 200 against <code>head.jsn</code> 404) and says &quot;do not generalise from one request&quot;.</li><li>Keep the non-CDN class 401 as OPEN and do not bypass it. Evidence: sections 8 and 11 record the 401 for the ttf <code>d5558cd4…</code> as &quot;not bypassed&quot;. The record uses the phrase &quot;credentialed-looking refusal&quot;.</li><li>Correct, rather than delete, the earlier head-present description. Evidence: section 7 says the filename is kept for continuity and the description is corrected.</li><li>Record the name decode direction as witnessed only where a script or count backs it. Evidence: section 10 gives the round-trip count 11987/11987 and the <code>~2f</code> escape count from encoder-test.mjs.</li><li>Keep the /cdn/-only claim as INFERRED. Evidence: section 11 shows the named-key redirect to value-origin, so the claim is not promoted.</li></ul>
+<h2 id="open-gaps">Open gaps</h2>
+<ul><li>The condition that selects the drifted-head <code>unknown_world_store_key</code> case is OPEN (section 7).</li><li>The 410 status is OPEN (part 1, section 6).</li><li>The ttf sha d5558cd4… returns 401 and is OPEN, not bypassed (section 8).</li><li>spawnfile.io model bytes are UNCONFIRMED (section 9). The leaf name is elided in cleetus FAULTS F3.</li><li>The <code>~7e</code> encoding is unwitnessed in data (section 9).</li><li>The <code>/cdn/</code>-only claim is INFERRED and weakened for named keys (section 11).</li><li>The probe scripts (/tmp/spawn-probe/probe-cdn-named.mjs (old name: spawn) and the others) and their outputs are ephemeral and are not in maps/.</li></ul>
+<h2 id="sources">Sources</h2>
+<ul><li>/workspace/spawn/maps/spawn-learning-record.md (old name: spawn), sections 7 to 11</li><li>/workspace/spawn/maps/head404-confirmed-worlds.txt (old name: spawn)</li><li>/workspace/spawn/maps/head-present-manifest404-worlds.txt (old name: spawn)</li><li>/workspace/spawn/maps/unverified-noncdn-refs.tsv (old name: spawn)</li><li>/workspace/spawn/maps/witness/encoder-bucket/encoder-test.mjs (old name: spawn)</li><li>/tmp/spawn-probe/probe-cdn-named.mjs (old name: spawn), ephemeral</li><li>/tmp/spawn-probe/cdn-named/results.jsonl (old name: spawn), ephemeral</li><li>/tmp/spawn-probe/r-8244be9f.bin (old name: spawn), ephemeral</li><li>/tmp/spawn-probe/mf-gta-earth-head.bin (old name: spawn), ephemeral</li></ul>
+</main>
+</div>
+<footer class="foot"><div class="foot-inner">wiki · every page cites the on-disk sources it was written from</div></footer>
+</body>
+</html>

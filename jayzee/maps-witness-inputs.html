@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>jayzee witness input directories and their sha256 checks · Wiki</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="topbar">
+<div class="topbar-inner">
+<a class="brand" href="../index.html">wi<span>ki</span></a>
+<nav class="pills"><a href="../cleetus/ci-workflows.html">cleetus</a><a href="../index/cdn-inventory.html">index</a><a class="active" href="../jayzee/maps-glb-urls.html">jayzee</a><a href="../reference-game-16/coverage.html">reference-game-16</a></nav>
+</div>
+</header>
+<div class="layout">
+<nav class="side">
+<h3>Start</h3><ul>
+<li><a href="../index.html">Project wiki: how this wiki is organised</a></li>
+<li><a href="../toc.html">Table of contents</a></li>
+</ul>
+<h3>cleetus</h3><ul>
+<li><a href="../cleetus/ci-workflows.html">CI workflows and npm scripts</a></li>
+<li><a href="../cleetus/docs-folder.html">The docs folder</a></li>
+<li><a href="../cleetus/endpoints.html">Endpoints</a></li>
+<li><a href="../cleetus/engine-decisions.html">Engine decisions: why the jayzee engine notes are shaped as they are</a></li>
+<li><a href="../cleetus/engine-overview.html">Engine overview: the jayzee engine notes (cleetus workspace)</a></li>
+<li><a href="../cleetus/evidence-claims.html">Evidence claims</a></li>
+<li><a href="../cleetus/evidence-overview.html">Evidence overview</a></li>
+<li><a href="../cleetus/featureset-part-1.html">Featureset part 1: cleetus counts, spoint surface, and the relayed streams</a></li>
+<li><a href="../cleetus/featureset-part-2.html">Featureset part 2: streams 12 to 25 and the src/sdk modules</a></li>
+<li><a href="../cleetus/featureset-part-3.html">Featureset part 3: streams 26 to 34</a></li>
+<li><a href="../cleetus/featureset-part-4.html">Featureset part 4: streams 35 to 45, client/core rendering modules</a></li>
+<li><a href="../cleetus/featureset-part-5.html">Featureset part 5: streams 45 to 55, client/core modules</a></li>
+<li><a href="../cleetus/featureset-part-6.html">Featureset part 6: streams 56 to 58 and the improvement opportunities</a></li>
+<li><a href="../cleetus/featureset-part-7.html">Featureset part 7: improvement candidates from streams 43 to 58</a></li>
+<li><a href="../cleetus/featureset-part-8.html">Featureset part 8: agent and room candidates, session store, bake pins, learning record and terrain</a></li>
+<li><a href="../cleetus/featureset-part-9.html">FEATURESET part 9: render, editor, HUD, XR, packages, static serving and server surface</a></li>
+<li><a href="../cleetus/jayzee-gaps.html">Jayzee implementation gaps</a></li>
+<li><a href="../cleetus/manual-build.html">Manual build and check</a></li>
+<li><a href="../cleetus/manual-worklist.html">Manual worklist</a></li>
+<li><a href="../cleetus/morluto-ci-findings.html">Morluto rea PR 9234 CI findings</a></li>
+<li><a href="../cleetus/netcode.html">Netcode</a></li>
+<li><a href="../cleetus/open-gaps.html">Open gaps across the cleetus repository</a></li>
+<li><a href="../cleetus/open-items.html">Open items register</a></li>
+<li><a href="../cleetus/overview.html">Overview of cleetus</a></li>
+<li><a href="../cleetus/parity.html">Parity</a></li>
+<li><a href="../cleetus/runs-overview.html">Runs overview</a></li>
+<li><a href="../cleetus/site-overview.html">Site overview (built manual output)</a></li>
+<li><a href="../cleetus/sources-overview.html">Sources overview</a></li>
+<li><a href="../cleetus/state-and-tooling.html">State and tooling</a></li>
+</ul>
+<h3>index</h3><ul>
+<li><a href="../index/cdn-inventory.html">CDN inventory and manifests</a></li>
+<li><a href="../index/discovery.html">Discovery evidence</a></li>
+<li><a href="../index/exhaustive-index.html">Exhaustive world and GLB index</a></li>
+<li><a href="../index/extra-docs.html">extra docs: the Jayzee game API reference copy</a></li>
+<li><a href="../index/extra-worlds.html">extra world lists and feeds</a></li>
+<li><a href="../index/open-gaps.html">Open gaps in the index</a></li>
+<li><a href="../index/overview.html">Overview of the index project</a></li>
+<li><a href="../index/provenance.html">Provenance manifests</a></li>
+<li><a href="../index/savi-index.html">cleetus index</a></li>
+<li><a href="../index/spawn-index.html">jayzee index</a></li>
+<li><a href="../index/tree/tree-borick.html">The borick/ directory</a></li>
+<li><a href="../index/tree/tree-build-scripts.html">Build, check and discovery scripts, and the patch files</a></li>
+<li><a href="../index/tree/tree-extra.html">The extra/ directory</a></li>
+<li><a href="../index/tree/tree-indexes.html">The index files: COMPLETE_INDEX, EXTRA_WORLD_INDEX and INDEX</a></li>
+<li><a href="../index/tree/tree-open-gaps.html">Open gaps in the top-level index, its directories and the browser state</a></li>
+<li><a href="../index/tree/tree-overview.html">Top-level layout of the jayzee tree</a></li>
+<li><a href="../index/tree/tree-provenance.html">provenance.sha256.txt and the other provenance manifests</a></li>
+<li><a href="../index/tree/tree-savi-directory.html">The cleetus/ directory (old name: savi)</a></li>
+<li><a href="../index/tree/tree-spawn-directory.html">The jayzee/ directory (old name: spawn)</a></li>
+</ul>
+<h3>jayzee</h3><ul>
+<li><a href="../jayzee/maps-glb-urls.html">jayzee GLB URL list (glb-urls-all.tsv)</a></li>
+<li><a href="../jayzee/maps-head-status.html">jayzee world head status lists</a></li>
+<li><a href="../jayzee/maps-learning-record-part-1.html">jayzee learning record, part 1 (denominators, corpus, keys, escapes, bucket rule, 410)</a></li>
+<li><a href="../jayzee/maps-learning-record-part-2.html">jayzee learning record, part 2 (error keys, non-CDN refs, open items, name decode, /cdn/ attempt)</a></li>
+<li><a href="../jayzee/maps-learning-record.html">jayzee learning record</a></li>
+<li><a href="../jayzee/maps-noncdn-refs.html">jayzee non-CDN data references (unverified-noncdn-refs.tsv)</a></li>
+<li><a href="../jayzee/maps-open-gaps.html">jayzee maps open gaps</a></li>
+<li><a href="../jayzee/maps-overview.html">jayzee maps directory overview</a></li>
+<li><a href="../jayzee/maps-root-worlds.html">jayzee root-linked worlds map</a></li>
+<li><a class="current" href="../jayzee/maps-witness-inputs.html">jayzee witness input directories and their sha256 checks</a></li>
+<li><a href="../jayzee/maps-witness.html">jayzee witness scripts</a></li>
+<li><a href="../jayzee/runs-findings.html">Runs findings and decisions</a></li>
+<li><a href="../jayzee/runs-open-gaps.html">Runs open gaps and failures</a></li>
+<li><a href="../jayzee/runs-overview.html">Runs overview</a></li>
+<li><a href="../jayzee/runs-timeline.html">Runs timeline</a></li>
+<li><a href="../jayzee/sources-captures.html">Sources captures</a></li>
+<li><a href="../jayzee/sources-index.html">Sources index</a></li>
+<li><a href="../jayzee/sources-overview.html">Sources overview</a></li>
+</ul>
+<h3>reference-game-16</h3><ul>
+<li><a href="../reference-game-16/coverage.html">Capture coverage: game page</a></li>
+<li><a href="../reference-game-16/download-process.html">Download process: from the join instructions to a working site</a></li>
+<li><a href="../reference-game-16/page-00-overview.html">Game page section: Overview</a></li>
+<li><a href="../reference-game-16/page-01-starters.html">Game page section: Starters</a></li>
+<li><a href="../reference-game-16/page-02-skills.html">Game page section: Skills</a></li>
+<li><a href="../reference-game-16/page-03-animations.html">Game page section: Animations</a></li>
+<li><a href="../reference-game-16/page-04-sound-art.html">Game page section: Sound Art</a></li>
+<li><a href="../reference-game-16/page-05-workshop.html">Game page section: Workshop</a></li>
+<li><a href="../reference-game-16/page-06-engine.html">Game page section: Engine</a></li>
+<li><a href="../reference-game-16/page-07-reference.html">Game page section: Reference</a></li>
+<li><a href="../reference-game-16/page-08-shapes.html">Game page section: Shapes</a></li>
+<li><a href="../reference-game-16/page-09-mods.html">Game page section: Mods</a></li>
+<li><a href="../reference-game-16/page-10-games.html">Game page section: Games</a></li>
+<li><a href="../reference-game-16/page-11-pick-a-genre.html">Game page section: Pick A Genre</a></li>
+<li><a href="../reference-game-16/page-host.html">Host page: Untitled game (@lanmower/game-16)</a></li>
+</ul>
+</nav>
+<main>
+<span class="eyebrow">jayzee</span>
+<h1 id="jayzee-witness-input-directories-and-their-sha256-checks">jayzee witness input directories and their sha256 checks</h1>
+<h2 id="how-it-works">How it works</h2>
+<p>The witness tree holds three kinds of input, each with its own check. None of them is an edited copy: each was copied byte for byte from a probe output, and each is named or listed by the sha256 of its bytes, so a changed input is detected.</p>
+<div class="table-wrap"><table><thead><tr><th>Input</th><th>Location (old name: spawn)</th><th>Count</th><th>Check</th></tr></thead><tbody><tr><td>Content-addressed text inputs</td><td>/workspace/spawn/maps/witness/text-visible-307-inputs/ (old name: spawn)</td><td>38 .bin files, 6773647 bytes in total</td><td>Each file's sha256 equals its file name. Checked by text-visible-307-derive-durable.mjs (<code>hashMismatches</code>).</td></tr><tr><td>Sha manifest for the 307 derivation</td><td>/workspace/spawn/maps/witness/text-visible-307-inputs.sha256.txt (old name: spawn)</td><td>67 lines, 38 unique hashes</td><td>Lists each contributing path with its sha256 and <code>keyMatches</code>. Checked by re-hashing the files.</td></tr><tr><td>Sampled manifests</td><td>/workspace/spawn/maps/witness/manifest-sample40/ (old name: spawn)</td><td>40 .bin files, picked by pick.json from 2580 distinct manifests</td><td>Each file is named by its manifest hash from the scan (not by the sha256 of its bytes). Checked by manifest-check.mjs (chain and ordering).</td></tr></tbody></table></div>
+<p>The three scanned manifests in the witness root (mf-bdabcf5a-scanned.bin, mf-gm-manhattan-scanned.bin, mf-gta-earth-scanned.bin) are a fourth input group. They are read by manifest-chain.mjs and manifest-hashmatch.mjs. Their names carry the world prefix and the scanned tag, and they are not named by their sha256.</p>
+<h3 id="1-text-visible-307-inputs-38-files">1. text-visible-307-inputs/ (38 files)</h3>
+<ul><li>What it is: the 38 unique contents of the text files that held the 307 text-visible <code>world.assets/&lt;xx&gt;/...yaml</code> keys. Each file is named <code>&lt;sha256 of its bytes&gt;.bin</code>, so a file's name is its own check. The directory is the durable input for the 307 count (see <a href="maps-witness.html">maps-witness.md</a>, script 6).</li><li>Sha256 check: all 38 files were re-hashed for this wiki. Each computed sha256 matched its file name, with 0 mismatches. The durable script reports <code>inputFiles:38, hashMismatches:0</code>.</li><li>Key content: the directory yields 307 distinct keys, of which 298 carry a value sha (<code>~2fcdn~2fvalue.&lt;sha&gt;.&lt;ext&gt;.yaml</code>) and 9 are named without a sha (<code>~2fcdn~2f&lt;name&gt;.&lt;ext&gt;.yaml</code>). It has 614 <code>~2f</code> occurrences and no <code>~3a</code> or <code>~7e</code>.</li><li>Sizes: the 38 files are 6773647 bytes in total. The largest is 886220 bytes and the smallest is 347 bytes. The record gives the total as 6.6 MB.</li><li>Some inputs are the same bytes as sampled manifests: the sha file lists 01a450bdc013b081b6cb93406885b9e3bff63cc8b44f755a2358db3967fb9ced for manifest-sample40/15b5aa7ff5b54123140b8c4eb8b304558f56f30efe08337b9a11f3502822d850.bin, and the three scanned manifests also have their sha256 among the 38 input names.</li></ul>
+<h3 id="2-text-visible-307-inputssha256txt-67-lines">2. text-visible-307-inputs.sha256.txt (67 lines)</h3>
+<ul><li>What it is: the record of how the 38 inputs were collected. Each line is three fields: the sha256 of the file, the path it was found at, and <code>keyMatches=N</code> (the number of key matches in that file).</li><li>Structure: 67 lines, 3 fields each. There are 38 distinct sha256 values, so some contents were found at more than one path. The <code>keyMatches</code> values sum to 739.</li><li>Paths: the rows point at ephemeral trees and at the durable tree. Counts by directory:</li><li>/tmp/spawn-probe/wide (old name: spawn): 21</li><li>/workspace/spawn/maps/witness/manifest-sample40 (old name: spawn): 21</li><li>/workspace/spawn/maps/witness (old name: spawn): 3</li><li>/tmp/spawn-probe/scan-&lt;world&gt; directories (old name: spawn): 14 (4 scan-41cd…, 4 scan-bdabcf5a…, 3 scan-26f64424…, 3 scan-4e709464…)</li><li>/tmp/spawn-probe/ (old name: spawn) (6 rows), /tmp/spawn-probe/ext (1), /tmp/spawn-probe/vals (1): 8 in total</li><li>Sha256 check: the rows under /tmp/spawn-probe (old name: spawn) (43 rows) cannot be re-hashed now because the tree is ephemeral. The 24 rows under /workspace/spawn/maps/witness/ (old name: spawn) (3 scanned manifests and 21 sample files) were re-hashed for this wiki, and all 24 match their listed sha256.</li><li>Relationship to the inputs directory: the 38 unique sha256 values in the list are exactly the 38 file names in text-visible-307-inputs/ (set equality checked for this wiki).</li></ul>
+<h3 id="3-text-visible-307-keystxt-307-lines">3. text-visible-307-keys.txt (307 lines)</h3>
+<p>The list of the 307 key names, one per line, with no duplicates (checked). Each name begins with <code>~2fcdn~2f</code>. The key set is the output of the durable derivation, and text-key-census.mjs over the inputs directory returns the same 307.</p>
+<h3 id="4-manifest-sample40-40-files">4. manifest-sample40/ (40 files)</h3>
+<ul><li>What it is: 40 manifest files picked from the 2580 distinct manifests. pick.json records <code>distinct: 2580</code> and lists 40 entries, each with <code>m</code> (the manifest hash, which is also the file name) and <code>u</code> (a world uuid, dashed).</li><li>Sha256 check: the file names are manifest ids from the scan, not the sha256 of the bytes. Re-hashing for this wiki gives 40 of 40 names that do not equal their content sha256, so no content check applies to this directory. The chain and ordering check is done by manifest-check.mjs: all 40 files pass (chain ends at EOF, frames ordered against the sheet, every body hash in the sheet).</li><li>Sizes: the 40 files total 6950059 bytes. Hash counts per manifest range from 3 to 421.</li><li>The sample is the input of the manifest-check run. The pick.json file is the record of the pick.</li></ul>
+<h3 id="5-the-scanned-manifests-witness-root">5. The scanned manifests (witness root)</h3>
+<ul><li>mf-bdabcf5a-scanned.bin: 645995 bytes, 274 sheet hashes, for world bdabcf5a (Need for Spawn).</li><li>mf-gm-manhattan-scanned.bin: 513116 bytes, 69 sheet hashes, for world 41cd4649 (GTA Manhattan). Its size matches the response of <code>GET /manifests/5a526ee6…</code> recorded in the learning record (513116 bytes); the bytes themselves were not compared, and the file's own sha256 is 38a87c836d57c7ce19c78b9828cab3b3f1ae68754d58741fd3c3a23574821abc.</li><li>mf-gta-earth-scanned.bin: 186349 bytes, 80 sheet hashes, for world 4e709464 (GTA Earth).</li></ul>
+<p>Each file's frame chain ends exactly at EOF, and each frame body hashes to a sheet entry (manifest-chain.mjs and manifest-hashmatch.mjs, see <a href="maps-witness.html">maps-witness.md</a>).</p>
+<h2 id="decisions">Decisions</h2>
+<ul><li>Name each content-addressed input by its own sha256, so the file name is the check. Evidence: text-visible-307-derive-durable.mjs computes sha256 of each file and compares it to <code>&lt;sha&gt;.bin</code>, and the run gives hashMismatches 0.</li><li>Keep the collection record (the sha256 list with paths) even though most paths are ephemeral. Evidence: the record says the completeness of the 67 contributing paths &quot;rests on&quot; the ephemeral scan recorded in this file.</li><li>Keep the sample of 40 manifests with pick.json. Evidence: the record's section 2 counts 2580 manifests, pick.json records distinct 2580 and 40 picks, and the sample is the set the manifest-check script reads.</li><li>Keep the three scanned manifests as inputs for the chain and hash checks, not as content-addressed files. Evidence: their names carry the world and the scanned tag, and the manifest scripts read them by path.</li></ul>
+<h2 id="open-gaps">Open gaps</h2>
+<ul><li>The 43 probe paths in text-visible-307-inputs.sha256.txt (old name: spawn) are ephemeral and cannot be re-hashed. Only the 24 witness-tree paths were checked.</li><li>The original 1173-file scope for the 307 count is not preserved; the 38 inputs are the durable reproduction (learning record section 1).</li><li>The record gives 6.6 MB for the inputs; the measured total is 6773647 bytes (about 6.46 MiB).</li><li>The record's statement that the 67 contributing paths are complete rests on an ephemeral mtime-cutoff scan (text-visible-307-derive.mjs, which gives 1154 files here).</li></ul>
+<h2 id="sources">Sources</h2>
+<ul><li>/workspace/spawn/maps/witness/text-visible-307-inputs/ (old name: spawn), 38 .bin files</li><li>/workspace/spawn/maps/witness/text-visible-307-inputs.sha256.txt (old name: spawn)</li><li>/workspace/spawn/maps/witness/text-visible-307-keys.txt (old name: spawn)</li><li>/workspace/spawn/maps/witness/manifest-sample40/ (old name: spawn), 40 .bin files, pick.json, manifest-check.mjs</li><li>/workspace/spawn/maps/witness/mf-bdabcf5a-scanned.bin (old name: spawn), mf-gm-manhattan-scanned.bin (old name: spawn), mf-gta-earth-scanned.bin (old name: spawn)</li><li>/workspace/spawn/maps/spawn-learning-record.md (old name: spawn), section 1 and section 2</li></ul>
+</main>
+</div>
+<footer class="foot"><div class="foot-inner">wiki · every page cites the on-disk sources it was written from</div></footer>
+</body>
+</html>

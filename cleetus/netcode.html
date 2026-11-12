@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Netcode · Wiki</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="topbar">
+<div class="topbar-inner">
+<a class="brand" href="../index.html">wi<span>ki</span></a>
+<nav class="pills"><a class="active" href="../cleetus/ci-workflows.html">cleetus</a><a href="../index/cdn-inventory.html">index</a><a href="../jayzee/maps-glb-urls.html">jayzee</a><a href="../reference-game-16/coverage.html">reference-game-16</a></nav>
+</div>
+</header>
+<div class="layout">
+<nav class="side">
+<h3>Start</h3><ul>
+<li><a href="../index.html">Project wiki: how this wiki is organised</a></li>
+<li><a href="../toc.html">Table of contents</a></li>
+</ul>
+<h3>cleetus</h3><ul>
+<li><a href="../cleetus/ci-workflows.html">CI workflows and npm scripts</a></li>
+<li><a href="../cleetus/docs-folder.html">The docs folder</a></li>
+<li><a href="../cleetus/endpoints.html">Endpoints</a></li>
+<li><a href="../cleetus/engine-decisions.html">Engine decisions: why the jayzee engine notes are shaped as they are</a></li>
+<li><a href="../cleetus/engine-overview.html">Engine overview: the jayzee engine notes (cleetus workspace)</a></li>
+<li><a href="../cleetus/evidence-claims.html">Evidence claims</a></li>
+<li><a href="../cleetus/evidence-overview.html">Evidence overview</a></li>
+<li><a href="../cleetus/featureset-part-1.html">Featureset part 1: cleetus counts, spoint surface, and the relayed streams</a></li>
+<li><a href="../cleetus/featureset-part-2.html">Featureset part 2: streams 12 to 25 and the src/sdk modules</a></li>
+<li><a href="../cleetus/featureset-part-3.html">Featureset part 3: streams 26 to 34</a></li>
+<li><a href="../cleetus/featureset-part-4.html">Featureset part 4: streams 35 to 45, client/core rendering modules</a></li>
+<li><a href="../cleetus/featureset-part-5.html">Featureset part 5: streams 45 to 55, client/core modules</a></li>
+<li><a href="../cleetus/featureset-part-6.html">Featureset part 6: streams 56 to 58 and the improvement opportunities</a></li>
+<li><a href="../cleetus/featureset-part-7.html">Featureset part 7: improvement candidates from streams 43 to 58</a></li>
+<li><a href="../cleetus/featureset-part-8.html">Featureset part 8: agent and room candidates, session store, bake pins, learning record and terrain</a></li>
+<li><a href="../cleetus/featureset-part-9.html">FEATURESET part 9: render, editor, HUD, XR, packages, static serving and server surface</a></li>
+<li><a href="../cleetus/jayzee-gaps.html">Jayzee implementation gaps</a></li>
+<li><a href="../cleetus/manual-build.html">Manual build and check</a></li>
+<li><a href="../cleetus/manual-worklist.html">Manual worklist</a></li>
+<li><a href="../cleetus/morluto-ci-findings.html">Morluto rea PR 9234 CI findings</a></li>
+<li><a class="current" href="../cleetus/netcode.html">Netcode</a></li>
+<li><a href="../cleetus/open-gaps.html">Open gaps across the cleetus repository</a></li>
+<li><a href="../cleetus/open-items.html">Open items register</a></li>
+<li><a href="../cleetus/overview.html">Overview of cleetus</a></li>
+<li><a href="../cleetus/parity.html">Parity</a></li>
+<li><a href="../cleetus/runs-overview.html">Runs overview</a></li>
+<li><a href="../cleetus/site-overview.html">Site overview (built manual output)</a></li>
+<li><a href="../cleetus/sources-overview.html">Sources overview</a></li>
+<li><a href="../cleetus/state-and-tooling.html">State and tooling</a></li>
+</ul>
+<h3>index</h3><ul>
+<li><a href="../index/cdn-inventory.html">CDN inventory and manifests</a></li>
+<li><a href="../index/discovery.html">Discovery evidence</a></li>
+<li><a href="../index/exhaustive-index.html">Exhaustive world and GLB index</a></li>
+<li><a href="../index/extra-docs.html">extra docs: the Jayzee game API reference copy</a></li>
+<li><a href="../index/extra-worlds.html">extra world lists and feeds</a></li>
+<li><a href="../index/open-gaps.html">Open gaps in the index</a></li>
+<li><a href="../index/overview.html">Overview of the index project</a></li>
+<li><a href="../index/provenance.html">Provenance manifests</a></li>
+<li><a href="../index/savi-index.html">cleetus index</a></li>
+<li><a href="../index/spawn-index.html">jayzee index</a></li>
+<li><a href="../index/tree/tree-borick.html">The borick/ directory</a></li>
+<li><a href="../index/tree/tree-build-scripts.html">Build, check and discovery scripts, and the patch files</a></li>
+<li><a href="../index/tree/tree-extra.html">The extra/ directory</a></li>
+<li><a href="../index/tree/tree-indexes.html">The index files: COMPLETE_INDEX, EXTRA_WORLD_INDEX and INDEX</a></li>
+<li><a href="../index/tree/tree-open-gaps.html">Open gaps in the top-level index, its directories and the browser state</a></li>
+<li><a href="../index/tree/tree-overview.html">Top-level layout of the jayzee tree</a></li>
+<li><a href="../index/tree/tree-provenance.html">provenance.sha256.txt and the other provenance manifests</a></li>
+<li><a href="../index/tree/tree-savi-directory.html">The cleetus/ directory (old name: savi)</a></li>
+<li><a href="../index/tree/tree-spawn-directory.html">The jayzee/ directory (old name: spawn)</a></li>
+</ul>
+<h3>jayzee</h3><ul>
+<li><a href="../jayzee/maps-glb-urls.html">jayzee GLB URL list (glb-urls-all.tsv)</a></li>
+<li><a href="../jayzee/maps-head-status.html">jayzee world head status lists</a></li>
+<li><a href="../jayzee/maps-learning-record-part-1.html">jayzee learning record, part 1 (denominators, corpus, keys, escapes, bucket rule, 410)</a></li>
+<li><a href="../jayzee/maps-learning-record-part-2.html">jayzee learning record, part 2 (error keys, non-CDN refs, open items, name decode, /cdn/ attempt)</a></li>
+<li><a href="../jayzee/maps-learning-record.html">jayzee learning record</a></li>
+<li><a href="../jayzee/maps-noncdn-refs.html">jayzee non-CDN data references (unverified-noncdn-refs.tsv)</a></li>
+<li><a href="../jayzee/maps-open-gaps.html">jayzee maps open gaps</a></li>
+<li><a href="../jayzee/maps-overview.html">jayzee maps directory overview</a></li>
+<li><a href="../jayzee/maps-root-worlds.html">jayzee root-linked worlds map</a></li>
+<li><a href="../jayzee/maps-witness-inputs.html">jayzee witness input directories and their sha256 checks</a></li>
+<li><a href="../jayzee/maps-witness.html">jayzee witness scripts</a></li>
+<li><a href="../jayzee/runs-findings.html">Runs findings and decisions</a></li>
+<li><a href="../jayzee/runs-open-gaps.html">Runs open gaps and failures</a></li>
+<li><a href="../jayzee/runs-overview.html">Runs overview</a></li>
+<li><a href="../jayzee/runs-timeline.html">Runs timeline</a></li>
+<li><a href="../jayzee/sources-captures.html">Sources captures</a></li>
+<li><a href="../jayzee/sources-index.html">Sources index</a></li>
+<li><a href="../jayzee/sources-overview.html">Sources overview</a></li>
+</ul>
+<h3>reference-game-16</h3><ul>
+<li><a href="../reference-game-16/coverage.html">Capture coverage: game page</a></li>
+<li><a href="../reference-game-16/download-process.html">Download process: from the join instructions to a working site</a></li>
+<li><a href="../reference-game-16/page-00-overview.html">Game page section: Overview</a></li>
+<li><a href="../reference-game-16/page-01-starters.html">Game page section: Starters</a></li>
+<li><a href="../reference-game-16/page-02-skills.html">Game page section: Skills</a></li>
+<li><a href="../reference-game-16/page-03-animations.html">Game page section: Animations</a></li>
+<li><a href="../reference-game-16/page-04-sound-art.html">Game page section: Sound Art</a></li>
+<li><a href="../reference-game-16/page-05-workshop.html">Game page section: Workshop</a></li>
+<li><a href="../reference-game-16/page-06-engine.html">Game page section: Engine</a></li>
+<li><a href="../reference-game-16/page-07-reference.html">Game page section: Reference</a></li>
+<li><a href="../reference-game-16/page-08-shapes.html">Game page section: Shapes</a></li>
+<li><a href="../reference-game-16/page-09-mods.html">Game page section: Mods</a></li>
+<li><a href="../reference-game-16/page-10-games.html">Game page section: Games</a></li>
+<li><a href="../reference-game-16/page-11-pick-a-genre.html">Game page section: Pick A Genre</a></li>
+<li><a href="../reference-game-16/page-host.html">Host page: Untitled game (@lanmower/game-16)</a></li>
+</ul>
+</nav>
+<main>
+<span class="eyebrow">cleetus</span>
+<h1 id="netcode">Netcode</h1>
+<h2 id="how-it-works">How it works</h2>
+<p>Two documents cover the netcode of the upstream platform, which is spoint (the read-only sibling at /workspace/spoint). gaps/netcode-optimization-gaps.md is the survey: a read-only pass over spoint at origin/main a85e9d8, with every claim cited as path and line. Each compression and lag-compensation claim is marked verified (read from the code, with the line cited) or unverified (not run or not located). docs/NETCODE-BRIEF-FOR-JAYZEE.md is the brief that turns the owner's decisions on that survey into work for jayzee (old name: spawn). cleetus documents spoint and instructs jayzee. It changes neither spoint nor jayzee and runs neither.</p>
+<h3 id="the-survey-gapsnetcode-optimization-gapsmd">The survey (gaps/netcode-optimization-gaps.md)</h3>
+<p>Section 1, coverage of src/netcode. The doc scan covered AGENTS.md, README.md, SKILL.md, docs/<em>.md (23 files) and plan/</em>.md. A module counts as documented when its file name appears in one of them. There are 35 modules in src/netcode, 11 named in some doc, and 24 named in none. The table gives each undocumented module with its exports and what the code shows, for example CollisionTileStreamer.js (streams collision tiles around a player), EventLog.js (append-only event log), Hitscan.js (server-side hit resolution, capsule hitbox centerHeight 0.9, radiusSq 0.36, height 1.8), InputGuard.js (rate-limits and clamps client input), LockstepChecksum.js, LockstepGameLoop.js and LockstepInputTransport.js, NetcodeProfile.js (profile selection), OutlierDetector.js (flags suspicious hit patterns), PeerSimSession.js and peerLoops.js (simulated peers for testing), ReplayFile.js, ReplayRecorder.js and ReplayPlayer.js (the replay format), RewindSpatialIndex.js (REWIND_SLOP 10, DEFAULT_REWIND_CELL_SIZE 16), RollbackGameLoop.js, RollbackInputTransport.js and RollbackLoop.js, SnapshotBinFormat.js and SnapshotPacker.js (binary snapshot format and packer), TeleportHold.js, TickSystemBase.js, WorkerBridgeProxy.js and controlFrame.js. The survey notes that nothing in the docs explains the control-frame prefixes, the replay file format, or how the three loops relate to the three netcode profiles beyond the headings of docs/netcode.md.</p>
+<p>Section 2, lag compensation (src/netcode/LagCompensator.js and Hitscan.js). The history ring holds HISTORY_CAPACITY = 256 samples per player (line 3), and writes past capacity overwrite the oldest sample (lines 74 to 80). historyWindow is in milliseconds, and windowTicks = round(historyWindow * tickRate / 1000) (line 51). The default window is 1000 ms (line 38), which is 60 ticks at 60 Hz (line 4). The environment variable SPOINT_LAG_HISTORY_WINDOW sets the window (line 15) and appears in no doc. A reported tick more than FUTURE_TOLERANCE_TICKS = 1 ahead of the current tick is rejected (line 97). A reported tick older than the window is clamped to the oldest allowed tick (lines 98 to 99). Rewinds are rate-limited by a token bucket per shooter, capacity 10 and refill 20 per second (lines 6 to 7 and 105 to 106). validateShotOrigin allows a client origin up to 2 m from the shooter by default (lines 8 and 138). Samples between two ticks are blended with nlerpQuat (lines 23 and 131).</p>
+<p>The survey also records a finding verified by running (/tmp/lag-overflow/run.mjs, an ephemeral probe). With 300 samples at 60 Hz:</p>
+<ul><li>Window 4000 ms (240 ticks): the ring is not full (242 samples). A rewind to tick 0 is clamped to 59, the clamp counter rises by 1, and the returned sample is the stored tick 58.</li><li>Window 5000 ms (300 ticks): the ring is full (256 samples), with the oldest stored tick at 44. A rewind to tick 0 resolves to 0, the clamp counter does not rise, and rewindAtTick returns the tick 44 sample. The overflow is silent.</li><li>Window 4267 ms (256 ticks): the ring is full with the oldest stored tick at 44. The clamp target is 43 and the counter rises by 1, but the returned sample is tick 44, one tick off the clamp target.</li><li>rewindAtTick returns the requested tick in its tick field, not the stored sample's tick, so the position shows the stored sample while the tick reports the request.</li></ul>
+<p>Undocumented items: the drift limit, the rewind bucket, the future tolerance and the environment override.</p>
+<p>Section 3, compression and wire format (src/netcode/SnapshotBinFormat.js and SnapshotEncoder.js). BIN_RECORD_BYTES = 29 (line 4) and PLAYER_BIN_RECORD_BYTES = 22 (line 78). packQuat is smallest-three: the largest component is a 2-bit index, the other three are 10-bit fields scaled by QSCALE = 511 * sqrt(2) (line 2), in a 32-bit word (lines 106 to 120, and line 21). Position is clamped to a signed 32-bit wire range (POS_I32_MAX, lines 5 and 18), velocity to i16 (line 17), and scale to u16 (lines 6 and 19). A non-finite or out-of-range value throws RangeError (lines 12 to 14). The reduced tier, PLAYER_TIER_REDUCED = 1 (line 40), has pose fields (REDUCED_POSE_FIELDS) and a height-absent flag (REDUCED_HEIGHT_ABSENT). Pitch is quantised to one byte over [-pi/2, pi/2] and yaw to one byte over a full turn, packed into one 16-bit field (SnapshotEncoder.js lines 24 to 27). The self block carries the viewer's own input sequence, input depth, ground normal and wall planes (SnapshotEncoder.js lines 30 to 39). snapshotHead probes the live packer once per type and memoises it for the process, so it is valid only while WIRE_STRUCTURES in src/protocol/msgpack.js is fixed (header comment in SnapshotPacker.js). Player records are packed once and copied into each viewer's bytes (the same header).</p>
+<p>WIRE_UNITS_PER_METER is defined at src/netcode/SnapshotBinFormat.js line 1 as 100. Its uses (lines 5 to 9, 13, 50, 51, 64, 66 and 101) are all in that one file. The survey notes that a gm grep over the whole spoint root returned no matches and so was unreliable; the per-directory searches are the valid ones.</p>
+<p>Wire record sizes were checked by running (/tmp/wire-layout/check.mjs, ephemeral): BIN_RECORD_BYTES 29, PLAYER_BIN_RECORD_BYTES 22, and both pack functions allocate the stated lengths. The result is PASS, five wire-layout assertions.</p>
+<p>The documentation coverage check: docs/performance-optimization.md Part 9 mentions unoptimised snapshots, and Part 6 Example 4 mentions snapshot compression for 20 or more players, but no doc gives the bit layouts or byte budgets.</p>
+<p>Section 4, systems optimization. docs/performance-optimization.md covers frame budget, profiling, physics pooling, LOD and snapshot size for creators, and docs/performance.md holds measured findings for one terrain case. Not documented: the per-player history ring and its 256-sample cap; SnapshotPacker's per-type memo and the rule that it is valid only while wire structures are fixed; the CollisionTileStreamer ring sizes (COLLISION_TILE_RING, COLLISION_TILE_FORGET_RING); the RewindSpatialIndex cell size (16) and slop (10); and the worker bridge (WorkerBridgeProxy.js) and tick base (TickSystemBase.js).</p>
+<p>Section 5, subagent concurrency. Spoint's docs have no mention of subagent concurrency (zero hits for subagent and maxInflight). The survey notes that gm's served skill and run events report maxInflight 8 by default, and that a body which runs past its budget becomes a background run. Neither is written in spoint. The concurrency rules live in gm, not in spoint.</p>
+<p>Section 6, open items for the owner. Five questions were put to the owner: whether docs/netcode.md gets a section for the 24 modules or a generated index is enough; whether to size the ring from the window or clamp the window to 255 ticks; whether to document the wire scale; whether the wire layouts belong in a doc or only in code comments; and whether to document the gm concurrency defaults in spoint or link to gm.</p>
+<h3 id="the-brief-docsnetcode-brief-for-jayzeemd">The brief (docs/NETCODE-BRIEF-FOR-JAYZEE.md)</h3>
+<p>The owner decided the five items on 2026-11-08, recorded as OPEN-024 in <a href="open-items.html">open-items.md</a>. The brief records the decisions:</p>
+<ul><li>Adopted J1 (owner item 2), sized from the window: the rewind ring capacity is windowTicks + 1, not a fixed 256, so the 1000 ms default still gives 61 slots at 60 Hz. rewindAtTick returns the stored sample's tick in its tick field. A clamp increments the clamp counter in every case where the requested tick is older than the oldest stored tick (spoint lines 98 to 99). Witness: a test drives 300 samples at 60 Hz with a 5000 ms window, rewinds to tick 0, and asserts the clamp counter rises by 1 and the returned sample tick equals the oldest stored tick. A second case at 4267 ms asserts the returned sample tick equals the clamp target.</li><li>Adopted J2 (owner items 3 and 4), wire layouts in a doc: jayzee writes docs/netcode-wire.md and states as prose WIRE_UNITS_PER_METER = 100, BIN_RECORD_BYTES = 29, PLAYER_BIN_RECORD_BYTES = 22, packQuat as smallest-three with QSCALE, the reduced tier, and the self block. Witness: a test packs one bin record and one player record and asserts the lengths 29 and 22, and a script asserts every constant in J2 appears in docs/netcode-wire.md.</li><li>Adopted J3 (owner item 1), generated module index: docs/netcode-modules.md is generated from src/netcode with one row per module, its exports and a one-line purpose. Witness: the script prints modules N documented N with equal numbers, and fails if any of the 24 named modules is missing.</li><li>Dropped: owner item 5 (document gm maxInflight 8) is not a jayzee change, because the default is a gm run setting. If the owner wants it documented, it belongs in gm.</li></ul>
+<p>The brief explains each change with its spoint reference. The reason for J1 is the spoint run in section 2 of the survey, where a 5000 ms window overflowed the 256-sample ring silently and a 4267 ms window clamped to tick 43 but returned the tick 44 sample. The brief rejects clamping the window to 255 ticks, because that changes the window the caller configured. The reason for J2 is the owner's comment rule: layouts go in the doc and the constants stay in code. Jayzee reports each item as built or open with its witness output, and cleetus records a brief item in OPEN-024 only when jayzee reports it. OPEN-024 stays OPEN until then.</p>
+<h2 id="decisions">Decisions</h2>
+<ul><li>Document spoint and instruct jayzee, rather than change spoint or jayzee directly (brief header). cleetus does not run either tree.</li><li>Size the rewind ring from the configured window, not clamp the window to 255 ticks, so the window the caller configured is kept (J1 rationale).</li><li>Put wire layouts in a prose doc (docs/netcode-wire.md) and keep the constants in code, because the owner's comment rule forbids comment prose (J2 rationale).</li><li>Generate the module index from src/netcode rather than hand-write it, so it does not drift (J3 rationale).</li><li>Drop the gm maxInflight item for jayzee, because the default belongs to gm (owner item 5).</li><li>Keep the spoint behaviours that jayzee found weaker documented as findings, and mark them verified or unverified, with the evidence cited.</li></ul>
+<h2 id="open-gaps">Open gaps</h2>
+<ul><li>OPEN-024 (OPEN): jayzee has not yet reported the witnesses for J1, J2 and J3. Owner item 5 is dropped for jayzee and has no owner record in cleetus beyond the drop.</li><li>The lag overflow was verified by an ephemeral probe in /tmp, which is not a committed source; the claim stands as recorded.</li><li>The crowd-dot decode bug in spoint (cx above 0 with cz below 0), recorded under jayzee row 17, is kept and pinned in jayzee, not fixed.</li><li>The environment override SPOINT_LAG_HISTORY_WINDOW and the drift limit are undocumented in spoint.</li><li>The 24 modules are not documented in spoint. The owner question (a section in docs/netcode.md or a generated index) is answered in favour of the generated index in J3.</li><li>The gm concurrency defaults (maxInflight 8) are not documented in spoint and are dropped for jayzee.</li></ul>
+<h2 id="sources">Sources</h2>
+<ul><li>/workspace/savi/gaps/netcode-optimization-gaps.md (old name: savi)</li><li>/workspace/savi/docs/NETCODE-BRIEF-FOR-JAYZEE.md (old name: savi)</li><li>/workspace/savi/docs/OPEN-ITEMS.md (old name: savi)</li><li>/workspace/savi/docs/JAYZEE-GAPS.md (old name: savi)</li><li>/workspace/spoint/src/netcode/LagCompensator.js</li><li>/workspace/spoint/src/netcode/Hitscan.js</li><li>/workspace/spoint/src/netcode/SnapshotBinFormat.js</li><li>/workspace/spoint/src/netcode/SnapshotEncoder.js</li><li>/workspace/spoint/src/netcode/SnapshotPacker.js</li><li>/workspace/spoint/src/netcode/RewindSpatialIndex.js</li><li>/workspace/spoint/src/netcode/TickSystemBase.js</li><li>/workspace/spoint/src/netcode/PeerSimSession.js</li><li>/workspace/spoint/src/netcode/peerLoops.js</li><li>/workspace/spoint/src/protocol/msgpack.js</li><li>/workspace/spoint/docs/performance-optimization.md</li><li>/workspace/spoint/docs/performance.md</li><li>/workspace/spoint/src/sdk/WorkerEntry.js</li><li>/workspace/spoint/src/sdk/Relocation.js</li><li>/workspace/jayzee/docs/netcode-wire.md (to be written by jayzee)</li><li>/workspace/jayzee/docs/netcode-modules.md (to be generated by jayzee)</li></ul>
+</main>
+</div>
+<footer class="foot"><div class="foot-inner">wiki · every page cites the on-disk sources it was written from</div></footer>
+</body>
+</html>

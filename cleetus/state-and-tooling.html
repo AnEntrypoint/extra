@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>State and tooling · Wiki</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="topbar">
+<div class="topbar-inner">
+<a class="brand" href="../index.html">wi<span>ki</span></a>
+<nav class="pills"><a class="active" href="../cleetus/ci-workflows.html">cleetus</a><a href="../index/cdn-inventory.html">index</a><a href="../jayzee/maps-glb-urls.html">jayzee</a><a href="../reference-game-16/coverage.html">reference-game-16</a></nav>
+</div>
+</header>
+<div class="layout">
+<nav class="side">
+<h3>Start</h3><ul>
+<li><a href="../index.html">Project wiki: how this wiki is organised</a></li>
+<li><a href="../toc.html">Table of contents</a></li>
+</ul>
+<h3>cleetus</h3><ul>
+<li><a href="../cleetus/ci-workflows.html">CI workflows and npm scripts</a></li>
+<li><a href="../cleetus/docs-folder.html">The docs folder</a></li>
+<li><a href="../cleetus/endpoints.html">Endpoints</a></li>
+<li><a href="../cleetus/engine-decisions.html">Engine decisions: why the jayzee engine notes are shaped as they are</a></li>
+<li><a href="../cleetus/engine-overview.html">Engine overview: the jayzee engine notes (cleetus workspace)</a></li>
+<li><a href="../cleetus/evidence-claims.html">Evidence claims</a></li>
+<li><a href="../cleetus/evidence-overview.html">Evidence overview</a></li>
+<li><a href="../cleetus/featureset-part-1.html">Featureset part 1: cleetus counts, spoint surface, and the relayed streams</a></li>
+<li><a href="../cleetus/featureset-part-2.html">Featureset part 2: streams 12 to 25 and the src/sdk modules</a></li>
+<li><a href="../cleetus/featureset-part-3.html">Featureset part 3: streams 26 to 34</a></li>
+<li><a href="../cleetus/featureset-part-4.html">Featureset part 4: streams 35 to 45, client/core rendering modules</a></li>
+<li><a href="../cleetus/featureset-part-5.html">Featureset part 5: streams 45 to 55, client/core modules</a></li>
+<li><a href="../cleetus/featureset-part-6.html">Featureset part 6: streams 56 to 58 and the improvement opportunities</a></li>
+<li><a href="../cleetus/featureset-part-7.html">Featureset part 7: improvement candidates from streams 43 to 58</a></li>
+<li><a href="../cleetus/featureset-part-8.html">Featureset part 8: agent and room candidates, session store, bake pins, learning record and terrain</a></li>
+<li><a href="../cleetus/featureset-part-9.html">FEATURESET part 9: render, editor, HUD, XR, packages, static serving and server surface</a></li>
+<li><a href="../cleetus/jayzee-gaps.html">Jayzee implementation gaps</a></li>
+<li><a href="../cleetus/manual-build.html">Manual build and check</a></li>
+<li><a href="../cleetus/manual-worklist.html">Manual worklist</a></li>
+<li><a href="../cleetus/morluto-ci-findings.html">Morluto rea PR 9234 CI findings</a></li>
+<li><a href="../cleetus/netcode.html">Netcode</a></li>
+<li><a href="../cleetus/open-gaps.html">Open gaps across the cleetus repository</a></li>
+<li><a href="../cleetus/open-items.html">Open items register</a></li>
+<li><a href="../cleetus/overview.html">Overview of cleetus</a></li>
+<li><a href="../cleetus/parity.html">Parity</a></li>
+<li><a href="../cleetus/runs-overview.html">Runs overview</a></li>
+<li><a href="../cleetus/site-overview.html">Site overview (built manual output)</a></li>
+<li><a href="../cleetus/sources-overview.html">Sources overview</a></li>
+<li><a class="current" href="../cleetus/state-and-tooling.html">State and tooling</a></li>
+</ul>
+<h3>index</h3><ul>
+<li><a href="../index/cdn-inventory.html">CDN inventory and manifests</a></li>
+<li><a href="../index/discovery.html">Discovery evidence</a></li>
+<li><a href="../index/exhaustive-index.html">Exhaustive world and GLB index</a></li>
+<li><a href="../index/extra-docs.html">extra docs: the Jayzee game API reference copy</a></li>
+<li><a href="../index/extra-worlds.html">extra world lists and feeds</a></li>
+<li><a href="../index/open-gaps.html">Open gaps in the index</a></li>
+<li><a href="../index/overview.html">Overview of the index project</a></li>
+<li><a href="../index/provenance.html">Provenance manifests</a></li>
+<li><a href="../index/savi-index.html">cleetus index</a></li>
+<li><a href="../index/spawn-index.html">jayzee index</a></li>
+<li><a href="../index/tree/tree-borick.html">The borick/ directory</a></li>
+<li><a href="../index/tree/tree-build-scripts.html">Build, check and discovery scripts, and the patch files</a></li>
+<li><a href="../index/tree/tree-extra.html">The extra/ directory</a></li>
+<li><a href="../index/tree/tree-indexes.html">The index files: COMPLETE_INDEX, EXTRA_WORLD_INDEX and INDEX</a></li>
+<li><a href="../index/tree/tree-open-gaps.html">Open gaps in the top-level index, its directories and the browser state</a></li>
+<li><a href="../index/tree/tree-overview.html">Top-level layout of the jayzee tree</a></li>
+<li><a href="../index/tree/tree-provenance.html">provenance.sha256.txt and the other provenance manifests</a></li>
+<li><a href="../index/tree/tree-savi-directory.html">The cleetus/ directory (old name: savi)</a></li>
+<li><a href="../index/tree/tree-spawn-directory.html">The jayzee/ directory (old name: spawn)</a></li>
+</ul>
+<h3>jayzee</h3><ul>
+<li><a href="../jayzee/maps-glb-urls.html">jayzee GLB URL list (glb-urls-all.tsv)</a></li>
+<li><a href="../jayzee/maps-head-status.html">jayzee world head status lists</a></li>
+<li><a href="../jayzee/maps-learning-record-part-1.html">jayzee learning record, part 1 (denominators, corpus, keys, escapes, bucket rule, 410)</a></li>
+<li><a href="../jayzee/maps-learning-record-part-2.html">jayzee learning record, part 2 (error keys, non-CDN refs, open items, name decode, /cdn/ attempt)</a></li>
+<li><a href="../jayzee/maps-learning-record.html">jayzee learning record</a></li>
+<li><a href="../jayzee/maps-noncdn-refs.html">jayzee non-CDN data references (unverified-noncdn-refs.tsv)</a></li>
+<li><a href="../jayzee/maps-open-gaps.html">jayzee maps open gaps</a></li>
+<li><a href="../jayzee/maps-overview.html">jayzee maps directory overview</a></li>
+<li><a href="../jayzee/maps-root-worlds.html">jayzee root-linked worlds map</a></li>
+<li><a href="../jayzee/maps-witness-inputs.html">jayzee witness input directories and their sha256 checks</a></li>
+<li><a href="../jayzee/maps-witness.html">jayzee witness scripts</a></li>
+<li><a href="../jayzee/runs-findings.html">Runs findings and decisions</a></li>
+<li><a href="../jayzee/runs-open-gaps.html">Runs open gaps and failures</a></li>
+<li><a href="../jayzee/runs-overview.html">Runs overview</a></li>
+<li><a href="../jayzee/runs-timeline.html">Runs timeline</a></li>
+<li><a href="../jayzee/sources-captures.html">Sources captures</a></li>
+<li><a href="../jayzee/sources-index.html">Sources index</a></li>
+<li><a href="../jayzee/sources-overview.html">Sources overview</a></li>
+</ul>
+<h3>reference-game-16</h3><ul>
+<li><a href="../reference-game-16/coverage.html">Capture coverage: game page</a></li>
+<li><a href="../reference-game-16/download-process.html">Download process: from the join instructions to a working site</a></li>
+<li><a href="../reference-game-16/page-00-overview.html">Game page section: Overview</a></li>
+<li><a href="../reference-game-16/page-01-starters.html">Game page section: Starters</a></li>
+<li><a href="../reference-game-16/page-02-skills.html">Game page section: Skills</a></li>
+<li><a href="../reference-game-16/page-03-animations.html">Game page section: Animations</a></li>
+<li><a href="../reference-game-16/page-04-sound-art.html">Game page section: Sound Art</a></li>
+<li><a href="../reference-game-16/page-05-workshop.html">Game page section: Workshop</a></li>
+<li><a href="../reference-game-16/page-06-engine.html">Game page section: Engine</a></li>
+<li><a href="../reference-game-16/page-07-reference.html">Game page section: Reference</a></li>
+<li><a href="../reference-game-16/page-08-shapes.html">Game page section: Shapes</a></li>
+<li><a href="../reference-game-16/page-09-mods.html">Game page section: Mods</a></li>
+<li><a href="../reference-game-16/page-10-games.html">Game page section: Games</a></li>
+<li><a href="../reference-game-16/page-11-pick-a-genre.html">Game page section: Pick A Genre</a></li>
+<li><a href="../reference-game-16/page-host.html">Host page: Untitled game (@lanmower/game-16)</a></li>
+</ul>
+</nav>
+<main>
+<span class="eyebrow">cleetus</span>
+<h1 id="state-and-tooling">State and tooling</h1>
+<h2 id="how-it-works">How it works</h2>
+<p>This page covers the local state and tooling directories in the cleetus checkout at <code>/workspace/savi</code> (old name: savi): <code>.spawn/</code> (old name: spawn), <code>.claude/</code>, <code>.playwriter/</code>, and the ignore rules in <code>/workspace/savi/.gitignore</code> (old name: savi). Publication rules are defined in <code>/workspace/savi/scripts/build-manual.mjs</code> (old name: savi) and described by <code>/workspace/savi/README.md</code> (old name: savi). The build publishes every file it walks except the excluded directory names and withheld path prefixes listed below.</p>
+<h3 id="spawn-old-name-savi-old-name-spawn"><code>.spawn/</code> (old name: savi, old name: spawn)</h3>
+<p>Holds reference material about the jayzee platform (old name: spawn) and the agent's view of it. Five entries:</p>
+<ul><li><code>agent-interface.md</code> (11.1K) (old name: savi, old name: spawn), at <code>/workspace/savi/.spawn/agent-interface.md</code> (old name: savi, old name: spawn). A note written from the point of view of an agent account linked to the lanmower owner. It describes the agent identity, the world it edits, the git host, the budget and lanes, and where the access token is kept (a token file outside the repository). The token itself is not in the file and is not reproduced here.</li><li><code>engine/</code> (29 files). The engine documentation set: <code>README.md</code>, <code>api-reference.md</code>, <code>engine.yaml</code>, <code>skills.md</code>, <code>probe.sh</code>, <code>keys.py</code>, and <code>skills/</code> with 23 Markdown files (for example <code>physics.md</code>, <code>voxel-terrain.md</code>, <code>rooms-and-matchmaking.md</code>, <code>spawn-engine.md</code>). <code>keys.py</code> and <code>probe.sh</code> are scripts; their contents were not read for this page.</li><li><code>kernel/</code> (2 binaries):</li><li><code>engine-client-runtime-worker.2792ef38e4f49eacedf6dd47091dc173fd2cd665de3b1cf1395654985e29b510.mjs</code>, 28,968,772 bytes. A JavaScript module (about 29 MB), not read.</li><li><code>mantle-core.cedc1a4a242dce3143f075fe3dc65da79c6a1cf425cbd16db602450be8fd3ec7.wasm</code>, 470,407 bytes. A WebAssembly binary, not read.</li><li><code>reference/</code> (596 files on disk, 563 tracked by git, 33 ignored). A mirror of the platform documentation, organised as:</li><li><code>cli/</code>: 347 files, the command-line help pages, API type pages (<code>api-*.txt</code>), client and mod command pages, and <code>INDEX.md</code>.</li><li><code>tome/</code>: 75 files, including a <code>sections/</code> subdirectory.</li><li><code>skills/</code>: 47 files, with <code>INDEX.md</code>.</li><li><code>engine/</code>: 27 files.</li><li><code>engine-deep/</code>: 40 files, including a <code>probes/</code> subdirectory.</li><li><code>guide/</code>: 5 files.</li><li><code>http/</code>: 51 files, of which 33 are under <code>http/raw/</code> and 18 are elsewhere in <code>http/</code>. The 33 raw files are the ignored and withheld set.</li><li>Four further files sit directly in <code>reference/</code>.</li><li><code>visual/</code> (5 binaries, all PNG):</li><li><code>spawn-dev.png</code>, 70,128 bytes.</li><li><code>spawn-dev-2.png</code>, 781,850 bytes.</li><li><code>spawn-published.png</code>, 65,971 bytes.</li><li><code>spawn-published-2.png</code>, 65,947 bytes.</li><li><code>spawn-published-3.png</code>, 62,098 bytes.</li><li>Paths are <code>/workspace/savi/.spawn/visual/...</code> (old name: savi, old name: spawn). These PNGs are not read; the build embeds them as inline images and also writes a hex dump of each.</li></ul>
+<p>Publication status of <code>.spawn/</code>:</p>
+<ul><li><code>.spawn/reference/http/raw/</code> is withheld by the build (<code>withheldPrefixes</code>), excluded by the check script, skipped by the endpoints scanner, and gitignored.</li><li>Everything else under <code>.spawn/</code> is published. The build does not exclude <code>.spawn/engine/</code>, <code>kernel/</code>, <code>visual/</code>, or the rest of <code>reference/</code>. This includes the 29 MB <code>.mjs</code> module, which is text and so is published as full text, and the two <code>kernel</code> and five <code>visual</code> binaries, which are published as hex dumps (the PNGs also appear as inline images).</li></ul>
+<h3 id="claude"><code>.claude/</code></h3>
+<p><code>/workspace/savi/.claude/</code> (old name: savi) is an empty directory. <code>ls -la</code> shows only <code>.</code> and <code>..</code>, so there are no hidden files. Git does not track empty directories, and the build walks files only, so nothing from this directory is published today. The build does not exclude <code>.claude/</code> by name, so any file added there later would be published.</p>
+<h3 id="playwriter"><code>.playwriter/</code></h3>
+<p>Local browser-automation state, created by the browser setup. It is excluded by name from the build (<code>excludedDirs</code>) and gitignored. Contents:</p>
+<ul><li><code>port</code>: contains <code>9734</code>. The port the playwriter gate listens on.</li><li><code>debug-port</code>: contains <code>10234</code>. The remote debugging port of the browser the gate starts.</li><li><code>gate.log</code>: lifecycle log, entries from 2026-11-06 to 2026-11-11. Each gate start states the port, debug port and an idle timeout of 300000 ms (5 minutes). Browser starts record the process id and the profile path. Exits read &quot;no leases, browser stopped&quot;, meaning the gate shuts the browser down when no client holds a lease.</li><li><code>browser.log</code>: stderr from the Chromium processes started by the gate, four starts on 2026-11-06 and 2026-11-11. Repeated lines report &quot;No usable sandbox&quot; (the Linux user-namespace sandbox is unavailable), which the log attributes to the zygote host.</li><li><code>browser-profile/</code>: the Chromium user-data directory. It holds four regular files, about 16 MB in total, and a set of profile subdirectories (including <code>BrowserMetrics/</code>). Its contents are browser profile state and are not reproduced here.</li></ul>
+<p>The sources do not state why the profile and logs are excluded. Browser profile state is local to the machine, and that is the reason inferred from the directory's contents.</p>
+<h3 id="workspacesavigitignore-old-name-savi"><code>/workspace/savi/.gitignore</code> (old name: savi)</h3>
+<p>Each rule, what it excludes, and how it relates to the build and README:</p>
+<div class="table-wrap"><table><thead><tr><th>Rule</th><th>What it excludes</th><th>Why it is kept out of publication</th></tr></thead><tbody><tr><td><code>node_modules/</code></td><td>Installed npm packages. The directory does not exist today.</td><td><code>package.json</code> declares no dependencies. The build excludes the directory name <code>node_modules</code>. The README says &quot;No npm packages are required.&quot;</td></tr><tr><td><code>site/</code></td><td>The generated site.</td><td>It is build output. The build deletes and recreates <code>site/</code>, and excludes the directory name <code>site</code> from the walk.</td></tr><tr><td><code>.playwriter/</code></td><td>Local browser state (see above).</td><td>Excluded by name in the build. It is not part of the repository content.</td></tr><tr><td><code>runs/</code></td><td>A <code>runs/</code> directory with 31 entries. Its contents were not read.</td><td>Excluded by name in the build. The sources do not state the purpose of <code>runs/</code>.</td></tr><tr><td><code>.spawn/engine/.git/</code></td><td>Git metadata of a nested engine repository. It is not present on disk.</td><td>The build excludes any directory named <code>.git</code>.</td></tr><tr><td><code>.spawn/reference/http/raw/</code></td><td>33 raw HTTP captures.</td><td>Withheld by the build (<code>withheldPrefixes</code>), refused by the check script's excluded list, and skipped by <code>endpoints.mjs</code>. The sources do not state the reason.</td></tr><tr><td><code>.DS_Store</code></td><td>macOS Finder metadata.</td><td>Not git content. The build does not exclude it, so a local copy would be published.</td></tr><tr><td><code>sources/</code></td><td>69 files (<code>.txt</code>) of source material.</td><td>Excluded by name in the build, excluded by prefix in the check script, and skipped by <code>endpoints.mjs</code>. The sources do not state the reason.</td></tr></tbody></table></div>
+<p>Cross-check against the build and README:</p>
+<ul><li>The README says &quot;Some files are not published and are left out of the build.&quot; It does not list them. The build and check scripts are the authoritative list.</li><li>The build excludes <code>.git</code>, <code>.playwriter</code>, <code>runs</code>, <code>site</code>, <code>node_modules</code>, and <code>sources</code> by directory name, and withholds three path prefixes: <code>.spawn/reference/http/raw/</code>, <code>spawn-evidence/data/</code>, and <code>spawn-evidence/maps/witness/</code>.</li><li><code>spawn-evidence/</code> is a top-level directory with 114 files. It is tracked by git (114 tracked files under that prefix). Its <code>data/</code> (21 files) and <code>maps/witness/</code> (23 files) subtrees are withheld by the build, but <code>.gitignore</code> does not list them. This means they are committed, not ignored, and still withheld from the site. The remaining <code>spawn-evidence/</code> files (<code>FINDINGS.md</code>, <code>README.md</code>, <code>maps/</code> top-level files such as <code>spawn-root-worlds-map.md</code> and <code>glb-urls-all.tsv</code>, and <code>probe-scripts/</code>) are published.</li><li>The check script's excluded list names <code>.spawn/reference/http/raw/</code>, <code>sources/</code>, and <code>WITHHELD.json</code>. The file <code>WITHHELD.json</code> does not exist, and the check does not name <code>spawn-evidence/data/</code> or <code>spawn-evidence/maps/witness/</code>, so the check would not catch those prefixes leaking.</li><li>The README says &quot;Every committed file is shown as exact text, or as a hex dump when binary&quot;. That is true only for files that are not withheld. The build walks the working tree and does not read <code>.gitignore</code>.</li></ul>
+<p>Summary of what is excluded from publication and why:</p>
+<ul><li>Not published: <code>.git</code>, <code>.playwriter/</code>, <code>runs/</code>, <code>site/</code>, <code>node_modules/</code>, <code>sources/</code>, <code>.spawn/reference/http/raw/</code>, <code>spawn-evidence/data/</code>, <code>spawn-evidence/maps/witness/</code>. Each of these is either generated, local state, or withheld content per the build script.</li><li>Gitignored rules that do not stop publication: <code>.DS_Store</code>, if a copy exists on disk, is published because the build does not apply <code>.gitignore</code>.</li><li>Published although not gitignored: <code>.spawn/engine/</code>, <code>.spawn/kernel/</code>, <code>.spawn/visual/</code>, the rest of <code>.spawn/reference/</code>, <code>spawn-evidence/</code> (excluding the two withheld subtrees), <code>.claude/</code> if populated, and all scripts and documentation outside the excluded set.</li></ul>
+<h2 id="decisions">Decisions</h2>
+<ul><li>The playwriter gate keeps the browser idle timeout at 300000 ms and shuts the browser down when no leases remain. This is visible in <code>/workspace/savi/.playwriter/gate.log</code> (old name: savi) and is the observed behaviour.</li><li>Browser profile, logs and port files live inside the checkout under <code>.playwriter/</code>, not elsewhere on the machine, and are excluded from both git and the build by name.</li><li>The build withholds three path prefixes by explicit list, and the check script repeats one of them (<code>.spawn/reference/http/raw/</code>) in its own list. The gitignore rule for <code>.spawn/reference/http/raw/</code> matches the build.</li><li>The engine's nested git metadata is ignored by path (<code>.spawn/engine/.git/</code>) and also by the build's directory-name exclusion of <code>.git</code>.</li><li>The reference material under <code>.spawn/reference/</code> is committed (563 of 596 files are tracked) and only its <code>http/raw/</code> subtree is ignored, so the rest of the reference set is published.</li></ul>
+<h2 id="open-gaps">Open gaps</h2>
+<ul><li>The reasons for withholding <code>.spawn/reference/http/raw/</code>, <code>spawn-evidence/data/</code>, <code>spawn-evidence/maps/witness/</code>, and <code>sources/</code> are not recorded in the sources. Source: <code>/workspace/savi/scripts/build-manual.mjs</code> (old name: savi) and <code>/workspace/savi/.gitignore</code> (old name: savi).</li><li><code>spawn-evidence/data/</code> and <code>spawn-evidence/maps/witness/</code> are withheld by the build but not gitignored, and they are tracked in git. Source: <code>/workspace/savi/.gitignore</code> (old name: savi) and <code>/workspace/savi/scripts/build-manual.mjs</code> (old name: savi).</li><li>The check script's excluded list names <code>WITHHELD.json</code>, which does not exist, and does not name <code>spawn-evidence/</code> withheld prefixes. Source: <code>/workspace/savi/scripts/check-manual.mjs</code> (old name: savi).</li><li><code>.spawn/engine/keys.py</code> and <code>.spawn/engine/probe.sh</code> are published as text. Their contents were not read, so their sensitivity is unknown. Source: <code>/workspace/savi/.spawn/engine/</code> (old name: savi, old name: spawn).</li><li>The <code>runs/</code> directory (31 entries) is gitignored and excluded from the build, and its purpose is not recorded in the sources. Source: <code>/workspace/savi/.gitignore</code> (old name: savi).</li><li>The <code>kernel/</code> module (28,968,772 bytes) and the five PNGs under <code>visual/</code> are published by the build (text and hex dump respectively), which the README does not mention. Source: <code>/workspace/savi/scripts/build-manual.mjs</code> (old name: savi) and <code>/workspace/savi/README.md</code> (old name: savi).</li><li>The purpose of the <code>.DS_Store</code> rule is not recorded in the sources. The build does not apply it. Source: <code>/workspace/savi/.gitignore</code> (old name: savi).</li><li>The <code>.claude/</code> directory is not excluded by the build, and the sources do not say whether it is meant to hold anything. Source: <code>/workspace/savi/scripts/build-manual.mjs</code> (old name: savi).</li><li><code>browser.log</code> reports &quot;No usable sandbox&quot; on each Chromium start, and the sources do not record a resolution. Source: <code>/workspace/savi/.playwriter/browser.log</code> (old name: savi).</li></ul>
+<h2 id="sources">Sources</h2>
+<ul><li>/workspace/savi/.spawn/agent-interface.md (old name: savi, old name: spawn)</li><li>/workspace/savi/.spawn/engine/ (old name: savi, old name: spawn)</li><li>/workspace/savi/.spawn/kernel/engine-client-runtime-worker.2792ef38e4f49eacedf6dd47091dc173fd2cd665de3b1cf1395654985e29b510.mjs (old name: savi, old name: spawn)</li><li>/workspace/savi/.spawn/kernel/mantle-core.cedc1a4a242dce3143f075fe3dc65da79c6a1cf425cbd16db602450be8fd3ec7.wasm (old name: savi, old name: spawn)</li><li>/workspace/savi/.spawn/reference/ (old name: savi, old name: spawn)</li><li>/workspace/savi/.spawn/reference/http/raw/ (old name: savi, old name: spawn)</li><li>/workspace/savi/.spawn/visual/ (old name: savi, old name: spawn)</li><li>/workspace/savi/.claude/ (old name: savi)</li><li>/workspace/savi/.playwriter/port (old name: savi)</li><li>/workspace/savi/.playwriter/debug-port (old name: savi)</li><li>/workspace/savi/.playwriter/gate.log (old name: savi)</li><li>/workspace/savi/.playwriter/browser.log (old name: savi)</li><li>/workspace/savi/.playwriter/browser-profile/ (old name: savi)</li><li>/workspace/savi/.gitignore (old name: savi)</li><li>/workspace/savi/README.md (old name: savi)</li><li>/workspace/savi/scripts/build-manual.mjs (old name: savi)</li><li>/workspace/savi/scripts/check-manual.mjs (old name: savi)</li><li>/workspace/savi/scripts/endpoints.mjs (old name: savi)</li><li>/workspace/savi/spawn-evidence/ (old name: savi, old name: spawn)</li><li>/workspace/savi/sources/ (old name: savi)</li><li>/workspace/savi/runs/ (old name: savi)</li></ul>
+<p>Related page: <a href="ci-workflows.html">CI workflows</a></p>
+</main>
+</div>
+<footer class="foot"><div class="foot-inner">wiki · every page cites the on-disk sources it was written from</div></footer>
+</body>
+</html>

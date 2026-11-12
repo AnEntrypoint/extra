@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>extra docs: the Jayzee game API reference copy · Wiki</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="topbar">
+<div class="topbar-inner">
+<a class="brand" href="../index.html">wi<span>ki</span></a>
+<nav class="pills"><a href="../cleetus/ci-workflows.html">cleetus</a><a class="active" href="../index/cdn-inventory.html">index</a><a href="../jayzee/maps-glb-urls.html">jayzee</a><a href="../reference-game-16/coverage.html">reference-game-16</a></nav>
+</div>
+</header>
+<div class="layout">
+<nav class="side">
+<h3>Start</h3><ul>
+<li><a href="../index.html">Project wiki: how this wiki is organised</a></li>
+<li><a href="../toc.html">Table of contents</a></li>
+</ul>
+<h3>cleetus</h3><ul>
+<li><a href="../cleetus/ci-workflows.html">CI workflows and npm scripts</a></li>
+<li><a href="../cleetus/docs-folder.html">The docs folder</a></li>
+<li><a href="../cleetus/endpoints.html">Endpoints</a></li>
+<li><a href="../cleetus/engine-decisions.html">Engine decisions: why the jayzee engine notes are shaped as they are</a></li>
+<li><a href="../cleetus/engine-overview.html">Engine overview: the jayzee engine notes (cleetus workspace)</a></li>
+<li><a href="../cleetus/evidence-claims.html">Evidence claims</a></li>
+<li><a href="../cleetus/evidence-overview.html">Evidence overview</a></li>
+<li><a href="../cleetus/featureset-part-1.html">Featureset part 1: cleetus counts, spoint surface, and the relayed streams</a></li>
+<li><a href="../cleetus/featureset-part-2.html">Featureset part 2: streams 12 to 25 and the src/sdk modules</a></li>
+<li><a href="../cleetus/featureset-part-3.html">Featureset part 3: streams 26 to 34</a></li>
+<li><a href="../cleetus/featureset-part-4.html">Featureset part 4: streams 35 to 45, client/core rendering modules</a></li>
+<li><a href="../cleetus/featureset-part-5.html">Featureset part 5: streams 45 to 55, client/core modules</a></li>
+<li><a href="../cleetus/featureset-part-6.html">Featureset part 6: streams 56 to 58 and the improvement opportunities</a></li>
+<li><a href="../cleetus/featureset-part-7.html">Featureset part 7: improvement candidates from streams 43 to 58</a></li>
+<li><a href="../cleetus/featureset-part-8.html">Featureset part 8: agent and room candidates, session store, bake pins, learning record and terrain</a></li>
+<li><a href="../cleetus/featureset-part-9.html">FEATURESET part 9: render, editor, HUD, XR, packages, static serving and server surface</a></li>
+<li><a href="../cleetus/jayzee-gaps.html">Jayzee implementation gaps</a></li>
+<li><a href="../cleetus/manual-build.html">Manual build and check</a></li>
+<li><a href="../cleetus/manual-worklist.html">Manual worklist</a></li>
+<li><a href="../cleetus/morluto-ci-findings.html">Morluto rea PR 9234 CI findings</a></li>
+<li><a href="../cleetus/netcode.html">Netcode</a></li>
+<li><a href="../cleetus/open-gaps.html">Open gaps across the cleetus repository</a></li>
+<li><a href="../cleetus/open-items.html">Open items register</a></li>
+<li><a href="../cleetus/overview.html">Overview of cleetus</a></li>
+<li><a href="../cleetus/parity.html">Parity</a></li>
+<li><a href="../cleetus/runs-overview.html">Runs overview</a></li>
+<li><a href="../cleetus/site-overview.html">Site overview (built manual output)</a></li>
+<li><a href="../cleetus/sources-overview.html">Sources overview</a></li>
+<li><a href="../cleetus/state-and-tooling.html">State and tooling</a></li>
+</ul>
+<h3>index</h3><ul>
+<li><a href="../index/cdn-inventory.html">CDN inventory and manifests</a></li>
+<li><a href="../index/discovery.html">Discovery evidence</a></li>
+<li><a href="../index/exhaustive-index.html">Exhaustive world and GLB index</a></li>
+<li><a class="current" href="../index/extra-docs.html">extra docs: the Jayzee game API reference copy</a></li>
+<li><a href="../index/extra-worlds.html">extra world lists and feeds</a></li>
+<li><a href="../index/open-gaps.html">Open gaps in the index</a></li>
+<li><a href="../index/overview.html">Overview of the index project</a></li>
+<li><a href="../index/provenance.html">Provenance manifests</a></li>
+<li><a href="../index/savi-index.html">cleetus index</a></li>
+<li><a href="../index/spawn-index.html">jayzee index</a></li>
+<li><a href="../index/tree/tree-borick.html">The borick/ directory</a></li>
+<li><a href="../index/tree/tree-build-scripts.html">Build, check and discovery scripts, and the patch files</a></li>
+<li><a href="../index/tree/tree-extra.html">The extra/ directory</a></li>
+<li><a href="../index/tree/tree-indexes.html">The index files: COMPLETE_INDEX, EXTRA_WORLD_INDEX and INDEX</a></li>
+<li><a href="../index/tree/tree-open-gaps.html">Open gaps in the top-level index, its directories and the browser state</a></li>
+<li><a href="../index/tree/tree-overview.html">Top-level layout of the jayzee tree</a></li>
+<li><a href="../index/tree/tree-provenance.html">provenance.sha256.txt and the other provenance manifests</a></li>
+<li><a href="../index/tree/tree-savi-directory.html">The cleetus/ directory (old name: savi)</a></li>
+<li><a href="../index/tree/tree-spawn-directory.html">The jayzee/ directory (old name: spawn)</a></li>
+</ul>
+<h3>jayzee</h3><ul>
+<li><a href="../jayzee/maps-glb-urls.html">jayzee GLB URL list (glb-urls-all.tsv)</a></li>
+<li><a href="../jayzee/maps-head-status.html">jayzee world head status lists</a></li>
+<li><a href="../jayzee/maps-learning-record-part-1.html">jayzee learning record, part 1 (denominators, corpus, keys, escapes, bucket rule, 410)</a></li>
+<li><a href="../jayzee/maps-learning-record-part-2.html">jayzee learning record, part 2 (error keys, non-CDN refs, open items, name decode, /cdn/ attempt)</a></li>
+<li><a href="../jayzee/maps-learning-record.html">jayzee learning record</a></li>
+<li><a href="../jayzee/maps-noncdn-refs.html">jayzee non-CDN data references (unverified-noncdn-refs.tsv)</a></li>
+<li><a href="../jayzee/maps-open-gaps.html">jayzee maps open gaps</a></li>
+<li><a href="../jayzee/maps-overview.html">jayzee maps directory overview</a></li>
+<li><a href="../jayzee/maps-root-worlds.html">jayzee root-linked worlds map</a></li>
+<li><a href="../jayzee/maps-witness-inputs.html">jayzee witness input directories and their sha256 checks</a></li>
+<li><a href="../jayzee/maps-witness.html">jayzee witness scripts</a></li>
+<li><a href="../jayzee/runs-findings.html">Runs findings and decisions</a></li>
+<li><a href="../jayzee/runs-open-gaps.html">Runs open gaps and failures</a></li>
+<li><a href="../jayzee/runs-overview.html">Runs overview</a></li>
+<li><a href="../jayzee/runs-timeline.html">Runs timeline</a></li>
+<li><a href="../jayzee/sources-captures.html">Sources captures</a></li>
+<li><a href="../jayzee/sources-index.html">Sources index</a></li>
+<li><a href="../jayzee/sources-overview.html">Sources overview</a></li>
+</ul>
+<h3>reference-game-16</h3><ul>
+<li><a href="../reference-game-16/coverage.html">Capture coverage: game page</a></li>
+<li><a href="../reference-game-16/download-process.html">Download process: from the join instructions to a working site</a></li>
+<li><a href="../reference-game-16/page-00-overview.html">Game page section: Overview</a></li>
+<li><a href="../reference-game-16/page-01-starters.html">Game page section: Starters</a></li>
+<li><a href="../reference-game-16/page-02-skills.html">Game page section: Skills</a></li>
+<li><a href="../reference-game-16/page-03-animations.html">Game page section: Animations</a></li>
+<li><a href="../reference-game-16/page-04-sound-art.html">Game page section: Sound Art</a></li>
+<li><a href="../reference-game-16/page-05-workshop.html">Game page section: Workshop</a></li>
+<li><a href="../reference-game-16/page-06-engine.html">Game page section: Engine</a></li>
+<li><a href="../reference-game-16/page-07-reference.html">Game page section: Reference</a></li>
+<li><a href="../reference-game-16/page-08-shapes.html">Game page section: Shapes</a></li>
+<li><a href="../reference-game-16/page-09-mods.html">Game page section: Mods</a></li>
+<li><a href="../reference-game-16/page-10-games.html">Game page section: Games</a></li>
+<li><a href="../reference-game-16/page-11-pick-a-genre.html">Game page section: Pick A Genre</a></li>
+<li><a href="../reference-game-16/page-host.html">Host page: Untitled game (@lanmower/game-16)</a></li>
+</ul>
+</nav>
+<main>
+<span class="eyebrow">index</span>
+<h1 id="extra-docs-the-jayzee-game-api-reference-copy">extra docs: the Jayzee game API reference copy</h1>
+<h2 id="how-it-works">How it works</h2>
+<p>The directory /workspace/index/extra/docs holds a copy of the Jayzee game API reference as it was pulled for world 02e941af-9db1-4d86-b1fa-f7bca802c4b1 (the game-16 world). The copy has 71 markdown files: 00-opening.md, 01 to 68 numbered files, guide.md and skills.md. Each numbered file is one section of the reference. Almost all files are JSON wrappers around the section text. The wrapper has the fields appId 1e04de61-4225-4d57-8a79-b8e9bcef1c6e, engineVersion 6.0.0, era 6.0, playUrl https://www.jayzee.co/@lanmower/game-16, gitUrl https://git.jayzee.co/@lanmower/game-16.git, codeUrl https://www.jayzee.co/@lanmower/game-16/code, specVersion 0, guide (null on the section files), tomeApi (the markdown text of the section) and sections (the 68 headings in order). Only 00-opening.md is plain markdown. guide.md and skills.md are also JSON, with the guide text in the guide field and an error body in skills.md. The section text is what each subsection below summarises.</p>
+<p>The reference is read by the docs door, a public API: ?section=&lt;heading&gt; answers one section, the list of headings is in sections, and ?section=all answers the whole reference. The guide says the same. The pull log is at extra/docs/pull-index.json (also extra/docs-pull-index.json, identical). It holds worldId 02e941af-9db1-4d86-b1fa-f7bca802c4b1, expectedSections 68, and 70 result rows. Each row records the section name, exit code, curl status, content type and byte count. Sixty-nine rows returned HTTP 200 with application/json. One row returned 404: section &quot;skills&quot;, 1915 bytes. The 70 rows are the 68 reference sections plus the guide row and the skills row, so only the skills row failed.</p>
+<p>The companion JSON files are in the same directory. sections.json and docs-sections.json are identical, 68 headings. skills.json holds the 23 skill entries (ids jayzee-engine, 2d-mode, buyables, cameras, fx, game-ui, geometry, heightmap-terrain, interactive-objects, jev, leaf-sprays, mobile-controls, physics, platform-systems, player-settings, pointer-raycasting, portals, projectiles, rooms-and-matchmaking, trees, uploaded-models, vehicles and voxel-terrain, each with a name and description). opening.json is the same wrapper as 01 with the skills list added.</p>
+<h3 id="00-openingmd-jayzee-game-api-plain-markdown">00-opening.md (Jayzee game API, plain markdown)</h3>
+<p>Coordinates are in meters, Y up, negative Z forward. Rotations are in degrees unless a field says otherwise. Hook dt is in seconds. ctx.now() is milliseconds on the world clock. Object hooks receive ctx first: onJayzee(ctx), update(ctx, dt), onCollide(ctx, other, contact). ctx.self is the object. ctx.getObject(id) reads another object, ctx.query(selector) selects objects, and assigning a property on a handle changes it. On a 6.0 world, ctx.jayzee(spec) creates an object and ctx.destroy(id) removes it. A behavior path names a module in the world scripts directory, and the named hooks are exported from that module. physics omitted gives no collider, &quot;static&quot; a fixed solid and &quot;dynamic&quot; a moving body. feetPosition is the bottom centre, and flat primitives use their centre. Parent-relative positions and rotations are local to the parent. Runtime behavior edits change the running game, while authored file edits and ctx.commit(message, fn) save to the tree. player.state is saved player data, ctx.world.state is shared within the room and ctx.session is local scratch. Use ctx.now() for deadlines and ctx.random() for randomness. ctx.after(seconds, exportName, payload) calls a named export later. Asset fields hold CDN names or uploaded references, and a reference to a file in the tree must name a file that exists. Functions are imported from builtin/&lt;module&gt;. The page ends with a timer example that sets ctx.self.state.startedAt in onJayzee and computes elapsedSeconds in update.</p>
+<h3 id="01-spawn-game-apimd-jayzee-game-api-json-wrapper">01-spawn-game-api.md (Jayzee game API, JSON wrapper)</h3>
+<p>This file carries the same text as 00-opening.md, wrapped in the JSON fields listed above, and its sections list has the 68 headings. Its file name keeps the old name spawn on disk.</p>
+<h3 id="02-identitymd">02-identity.md</h3>
+<p>Use player.userId for saved player records. The player entity id changes on each join. getObject returns null when the object does not exist. player.arrival.request holds { room, query } for the link the player opened. The query comes from the single linkQuery word of the link, so https://jayzee.co/@you/game?linkQuery=tab%3Dshop reads { tab: &quot;shop&quot; }, and no other query word reaches the game. It is read in onArrive(ctx, player). player.arrival.joining is the userId of the person who brought the player by a join or invite, and is absent for other arrivals. Listed members: ctx.self.id, player.userId, entity.objectId, entity.arrival with kind join, rejoin, link or rejayzee, entity.pocket and player.isLocal.</p>
+<h3 id="03-statemd">03-state.md</h3>
+<p>Assigning a whole state object replaces it. Assigning a field changes only that field, and deleting a field clears it. Changes through game handles are shared. player.state has no size cap, nests to any depth and loads whole at every join. A list or string is one value that every change sends and saves whole, so a large collection should be a record keyed by id. The page lists ctx.self.state, ctx.state, ctx.self.session, ctx.world (state, camera, inputs, assets, mode &quot;dev&quot; or &quot;live&quot;, version, id, address, players, playerCount, onlineCount, date, places, engine, passThrough, routing, ui, player, godMode, creatorTabs, defaultPlace, settling, files), ctx.session, ctx.files.read, write and delete, ctx.view.camera, ctx.quality, ctx.self and ctx.place.</p>
+<h3 id="04-propertiesmd">04-properties.md</h3>
+<p>Read and write ctx.self.&lt;prop&gt;. ctx.self.bounds is { min, max, size, center, obb, geometryPending? } or null.</p>
+<h3 id="05-movementmd">05-movement.md</h3>
+<p>Velocity is in meters per second. The forces object holds named forces until the key is cleared with null. Force is in newtons and torque in newton-metres on world axes. Dynamic bodies accept forces. A character standing on a moving kinematic platform rides it, and its velocity is relative to the platform. Members: grounded, touching.wallLeft and wallRight, touching.ceiling, velocity, angularVelocity, forces.&lt;key&gt;, liquid.in, liquid.level and overlapping.</p>
+<h3 id="06-terrainmd">06-terrain.md</h3>
+<p>Functions: ctx.getWaterLevelAt(x, z, place?), ctx.readField(name, x, z, place?) and ctx.getTerrainNormal(x, z, place?). Field chunks are read and written at ctx.place.fields[name].runtime[chunk] and .authored[chunk], with a grid and cells. A runtime chunk is deleted with delete. ctx.place.fields[name].changes(at) returns { chunks, at }.</p>
+<h3 id="07-splinesmd">07-splines.md</h3>
+<p>Attach an object to a spline with ctx.self.spline = { id, at, orient?, offset? }.</p>
+<h3 id="08-cameramd">08-camera.md</h3>
+<p>ctx.world.camera, with the live reads forward, fov, aspect and insetRight. aspect is the screen width divided by height. insetRight is the share of the width that the platform rail covers at the right edge, from 0 to 1. ctx.worldToScreen(position) returns { x, y, depth, onScreen } or null. Players have camera set to an object or null, isGodMode and isEditor.</p>
+<h3 id="09-selectionmd">09-selection.md</h3>
+<p>player.selection?.id reads the selection. Assign an entity or id to set it, and null to clear it. The guarded form clears the selection only when it still names the given id, and delete also clears it.</p>
+<h3 id="10-playermd">10-player.md</h3>
+<p>&lt;player&gt;.displayName is the only member listed.</p>
+<h3 id="11-timingmd">11-timing.md</h3>
+<p>ctx.after(seconds, hookExport, payload) returns a timer id, and the callback receives (ctx, payload). ctx.cancel(id) cancels it. ctx.now() returns milliseconds. ctx.getTimers(ownerId?) lists timers with id, ownerId, dueInTicks, dueInSeconds, engineOwned and hook. Timing values are dt, ctx.dtMs, ctx.gapMs and ctx.world.settling.</p>
+<h3 id="12-jobsmd">12-jobs.md</h3>
+<p>Engine jobs: llm:chat, llm:generate, llm:clear, jev:decide, mail:send, chat:send, chat:history, player:token, player:names, text:check, image:generate, image:segment and video:generate. image:generate paints one picture per player per game (args prompt, width, height, transparent, tile; 1536 by 1024 pixels unless set; a tile texture repeats seamlessly). A player's next ask answers paint_spent, so the url is kept in player.state. image:segment finds things in a picture from a prompt and points, and returns one black and white PNG mask per thing found with its box and score. video:generate makes an .mp4 of 5 to 15 seconds from words and an optional first frame. A clip takes minutes, so it is asked from a cron and awaited with ctx.awaitJob(id). The page lists ctx.job(jobId, args, callback or hookExport, options), ctx.awaitJob and ctx.proposePurchase(buyer, itemId). The JobOptions table in named types gives priority (low, normal or high), deadlineMs, dedupeKey, retries and room. A platform job (llm:, image:, jev:) waits at most 800000 ms.</p>
+<h3 id="13-databasemd">13-database.md</h3>
+<p>ctx.sql is the SqlAPI. Its members are size(), backup(label) and restore(target). The named types give the signatures.</p>
+<h3 id="14-clockmd">14-clock.md</h3>
+<p>ctx.now().</p>
+<h3 id="15-the-changed-cursor-sim-jsmd">15-the-changed-cursor-sim-js.md</h3>
+<p>ctx.changed(glob) returns { path, value, prev } for each change matching the glob.</p>
+<h3 id="16-randommd">16-random.md</h3>
+<p>ctx.random().</p>
+<h3 id="17-loggingmd">17-logging.md</h3>
+<p>ctx.log, ctx.warn and ctx.error, each taking any number of arguments.</p>
+<h3 id="18-eventsmd">18-events.md</h3>
+<p>ctx.emit(name, payload, options) sends an event, with an optional audience. ctx.on(name, handler, options) subscribes and returns an unsubscribe function. Options are place, to, via, audience, once.</p>
+<h3 id="19-spec-patches-scriptsmd">19-spec-patches-scripts.md</h3>
+<p>Writes to ctx.place.atmosphere, ctx.world.player, ctx.world.camera, ctx.world.inputs, ctx.world.ui.render (for example 'scripts/hud.js'), ctx.world.creatorTabs, ctx.world.engine, ctx.world.routing ({ script, maxPlayers } or null), ctx.world.buyables.&lt;id&gt; (name, priceSpoins, minSpoins, imageUrl, description, onPurchase), ctx.world.godMode (enabled, scope, behavior, brushes, movement.flySpeed, movement.sprintMultiplier, movement.verticalSpeed, camera.fov, visuals.disableFog), ctx.world.places.&lt;p&gt; and ctx.world.defaultPlace. A root value replaces and a leaf merges. ctx.resolveControls(surface?) returns the touch surface and diagnostics.</p>
+<h3 id="20-world-queriesmd">20-world-queries.md</h3>
+<p>ctx.query(opts) returns ids, crossing records or object views, depending on the options (select &quot;ids&quot;, scope &quot;crossings&quot; or the default). The query excludes the calling object unless ignoreSelf is false. ctx.place.players lists the place's players. This file repeats the &quot;World Queries&quot; heading and its body twice.</p>
+<h3 id="21-placesmd">21-places.md</h3>
+<p>ctx.enterPlace(options) or ctx.enterPlace(entityId, options) moves a player or object to a place. Options are place, at (&quot;last&quot;, &quot;default&quot; or a position) and createIfMissing. Members: &lt;entity&gt;.place, &lt;player&gt;.place and ctx.place.objects.</p>
+<h3 id="22-object-accessmd">22-object-access.md</h3>
+<p>ctx.world.places.&lt;p&gt;, ctx.getRoomId(), ctx.presence(userIds), ctx.world.mode, ctx.getObject(id), &lt;entity&gt;.state, ctx.self.audio.params, ctx.getVibeAudio(id), &lt;entity&gt;.&lt;prop&gt;, ctx.getObjectBoneNames(id), ctx.getObjectMorphTargetNames(id), ctx.getObjectSocket(id, name), &lt;entity&gt;.children, and ctx.place.tiles[x][y] set, cleared or deleted.</p>
+<h3 id="23-lifecyclemd">23-lifecycle.md</h3>
+<p>ctx.jayzee(spec) and ctx.jayzee(id, spec) create an object and return its id. ctx.destroy(id), ctx.destroy(ids) and ctx.destroy with options { force } remove objects.</p>
+<h3 id="24-spec-mutation-god-modemd">24-spec-mutation-god-mode.md</h3>
+<p>ctx.commit(message?, fn) runs fn and saves the change to the tree with an optional message.</p>
+<h3 id="25-controlmd-json-wrapper-tomeapi-holds-the-control-section">25-control.md (JSON wrapper, tomeApi holds the Control section)</h3>
+<p>&lt;entity&gt;.controller can be set to ctx.self.id, to a player id, or to null. ctx.self.controller and ctx.self.controlling read the link.</p>
+<h3 id="26-trademd">26-trade.md</h3>
+<p>ctx.trade(mine, { with, for } or null) returns a TradeReceipt. Offered trades return an id, and refused trades return one of unknown-target, not-held, not-mine, same-party or withdrawn.</p>
+<h3 id="27-jointsmd">27-joints.md</h3>
+<p>ctx.self.joints[id] = { to, type, ... }, removed with delete. motor is { velocity, maxForce } and limits is [min, max] or { min, max, stiffness, damping }.</p>
+<h3 id="28-ragdollmd">28-ragdoll.md</h3>
+<p>ctx.self.ragdoll = { ... } takes an object, and null releases it.</p>
+<h3 id="29-hierarchymd">29-hierarchy.md</h3>
+<p>ctx.self.parent reads the parent. ctx.attach(entity, parent or null, offset?) attaches or detaches, and the offset may carry position, rotation, scale, pivot, attachment and replaces. ctx.sleep(seconds?) pauses a behavior.</p>
+<h3 id="30-dm-hooksmd">30-dm-hooks.md</h3>
+<p>ctx.notifyDm(message, options) and ctx.notifyDmOnce(key, message, options) send a message to the creator. The options carry wake, to, link and a field named cleetus.</p>
+<h3 id="31-juicemd">31-juice.md</h3>
+<p>A look layer pushed on &lt;player&gt;.look fades in over fade seconds (0.25 by default) to its intensity (0 to 1, default 1), and fades out when it is removed or its duration ends. Other members: &lt;player&gt;.letterbox, &lt;player&gt;.vignette (intensity or { intensity, color }), &lt;player&gt;.effects.&lt;name&gt;, &lt;player&gt;.look.push(script or { look, intensity, duration, fade, priority, params }), &lt;player&gt;.hidden, &lt;player&gt;.atmosphere, ctx.stopFx(id), ctx.pulseFx(id, name, opts), ctx.getFxState(id), &lt;player&gt;.music, &lt;player&gt;.ambience and ctx.music.</p>
+<h3 id="32-animation-mixermd">32-animation-mixer.md</h3>
+<p>ctx.self.anim.&lt;ch&gt; = { ... } sets an animation channel, and reading it returns the channel.</p>
+<h3 id="33-selfmd">33-self.md</h3>
+<p>The ctx.self members: id, state, session, feetPosition, rotation, up, frame, target, view (yaw and pitch), pointerLock, fov, clip, orientation, sensitivity, minPitch, maxPitch, pixelSnap, hideLocalPlayer, projection (&quot;perspective&quot; or &quot;orthographic&quot;) and layers.</p>
+<h3 id="34-the-local-player-on-a-camera-rig-alonemd">34-the-local-player-on-a-camera-rig-alone.md</h3>
+<p>ctx.player is the local player when the object sits on a camera rig alone.</p>
+<h3 id="35-the-spine-the-same-members-every-behavior-ctx-carriesmd">35-the-spine-the-same-members-every-behavior-ctx-carries.md</h3>
+<p>Every behavior ctx carries ctx.place and ctx.world.</p>
+<h3 id="36-state-the-compat-spellings-of-ctx-self-statemd">36-state-the-compat-spellings-of-ctx-self-state.md</h3>
+<p>Compatible spellings of ctx.self.state: ctx.self.state, assignment of a whole object, and ctx.self.state.&lt;key&gt; = v.</p>
+<h3 id="37-properties-the-compat-spellings-of-ctx-self-feetposition-rotationmd">37-properties-the-compat-spellings-of-ctx-self-feetposition-rotation.md</h3>
+<p>Compatible spellings for ctx.self.feetPosition and ctx.self.rotation, readable and writable.</p>
+<h3 id="38-behavior-hooksmd">38-behavior-hooks.md</h3>
+<p>Exports from a behavior module: onJayzee, onDestroy, update(ctx, dt), lateUpdate, onInput(ctx, input), onCollide, onTriggerEnter, onTriggerExit, onCross, onRefuse, onLiquidEnter, onLiquidExit, onSay, onSoundEnd, onOutOfBounds, onControlBegin, onControlEnd, and the editor and visual hooks. onInput reads named axes and actions from the world inputs. pressed and released apply on the transition, and held stays true while the action is held. updateSchedule is a data export, not a hook: every (a count of ticks or { seconds }) and near ({ radius }). update() runs only while a player is near, by default within about 500 m. An object with no position always runs. The schedule replaces a hand-rolled tick gate, and the page says never to keep both. async functions and import() are described: the part before the first await runs in the tick, and a module that only import() names stays out of arrival. An ears example loads a seeder module on match:start.</p>
+<h3 id="39-objectpropertiesspec-fullmd">39-objectpropertiesspec-full.md</h3>
+<p>Full ObjectPropertiesSpec. It covers feetPosition, rotation (degrees, object or quaternion, or lookAt), yaw, scale, visible, shadows, primitive, sprite (texture, size, billboard, blend and more), room, path (tube with points or beziers), layout, material, physics (body kinds none, static, dynamic, kinematic and character; colliders; mass; friction; restitution; character controller fields; capsule height and radius), light (ambient, hemisphere, directional, point, spot, rect), audio (vibe, program or clip), interpolation, pivot, render, visibleRange, layers, visibleTo, vector, jiggle, morph, bones (rotate, offset, reach, aim, ground), wisp, boxart, collider2d, ui, air, press, fx, voice, model, mixer, attachment, spline and scatter. The note on physics.capsule says height and radius are in the object's own metres and scale multiplies them, and height is end to end including caps.</p>
+<h3 id="40-primitivespec-fullmd">40-primitivespec-full.md</h3>
+<p>PrimitiveSpec kinds: cube, box, sphere, cylinder, capsule, plane, torus, octahedron, tube, cone, ring, tetrahedron, icosahedron, dodecahedron, pyramid, lathe, extrude, circle, torusKnot, frustum, ellipsoid, superellipsoid, hollowCylinder, hemisphere, arch, archway, squareArch, wall, line, custom, scripted and points. PrimitiveBase has materialKey, overrides and sockets. A scripted primitive's collider() may return a heightfield.</p>
+<h3 id="41-atmospheredef-fullmd">41-atmospheredef-full.md</h3>
+<p>atmosphere members: sky (color, gradient, rayleigh, or realistic with model rayleigh or hosek), ground, fog (linear or exp2), sun (rotation, orbit, light and shadow), ambient, hemisphere, environmentIntensity, clouds, stars, moon, wind, wet, rain, timeOfDay (0 to 24), cycle (periodMs and epoch, a frozen hour, or lengthSeconds with anchors) and look (script, filter, toneMapping from aces, neutral, none, linear, reinhard, cineon or agx, params and cube).</p>
+<h3 id="42-terraindef-heightmap-fullmd">42-terraindef-heightmap-full.md</h3>
+<p>terrain kind &quot;heightmap&quot;: seed, materials (id, albedo, pbr, tint, normal, roughness, textureScale, metalness, antiTiling, filter, macro), generator script, verticalRange, marks (sea, lake, river, path, road, flatten, clear-scatter and hole, each with its own fields), water (one liquid spec or a list) and material.</p>
+<h3 id="43-inputs-fullmd">43-inputs-full.md</h3>
+<p>Key names are case-insensitive: a letter, a digit (the number row), a name (space, shift, ctrl, alt, enter, escape, backspace, delete, f1 to f12, the arrows) or a KeyboardEvent.code. Tab is reserved. Gamepad triggers are analog axes, Gamepad:LT and Gamepad:RT, from 0 to 1. InputAxisDef takes keys, mouse, gamepad and deadzone. InputActionDef takes keys, mouse, gamepad, modifiers, activeOn (&quot;keydown&quot;, &quot;hold&quot; or &quot;keyup&quot;), touch and active. Gamepads are read as one by bindings, and ui.js reads each controller separately.</p>
+<h3 id="44-objectspec-fullmd">44-objectspec-full.md</h3>
+<p>ObjectSpec adds id, tags, state, behavior (a script path or a list), parent, children, place, audience (&quot;near&quot;, &quot;all&quot; or &quot;local&quot;), visibility (&quot;owner&quot; or &quot;platform&quot;), lifetime and tick { phase &quot;pre&quot; or &quot;post&quot;, order } on top of ObjectPropertiesSpec.</p>
+<h3 id="45-parenting-fullmd">45-parenting-full.md</h3>
+<p>One example: ctx.jayzee with parent 'pole-0', a feetPosition of { x: 0, y: 3, z: 0 } and a sphere primitive of radius 0.25.</p>
+<h3 id="46-ui-rules-fullmd">46-ui-rules-full.md</h3>
+<p>In ui.js, document.documentElement.requestFullscreen() fills the screen with the game, HUD and rail, and document.exitFullscreen() leaves. document.fullscreenEnabled is true on computers and Android phones and never on an iPhone.</p>
+<h3 id="47-named-types-fullmd">47-named-types-full.md</h3>
+<p>The longest section, about 64 KB. It states that a world whose places all have mode &quot;ui&quot; draws nothing and so opens with no 3D graphics. highlightSet width is in pixels of a 1080p picture, defaulting to 2 for outline and about 16 for glow and pulse. It then gives the type tables: ActName and ActPayloads (damageNumber, playSound, stopSound, preload, fx, decal, slash, shockwave, screenShake, screenFlash, hitstop, cameraPunch, slowMo, replay, zoomTo, flash, shake, squash, impulse, highlightSet, highlightClear, outlinePage, uiEvent, haptic, milestone, stat, voxelMarkSet, voxelMarkClear, party and guild actions, openSettings, openAvatarEditor, openInvite and openShare), AnimationKeyframeValue, AssetMetadata, AtmosphereSunState, Audience, BehaviorHealth, BespokeGeometrySpec, CameraDef (custom and legacy), CreatorTabDef, CubicBezierSpec, EngineConfig, EngineInputAxes, EnterPlaceOptions, FieldChunkGrid, FilesAPI, FxState, InputPointer, InputState, InputsDef, JobError, JobOptions, JobResult, JointBreakEvent, JointOptions, JointType, JumpCheckResult, LightSpec, ObjectQueryOptions, ObjectQueryResult, ObjectView, OutOfBoundsEvent, OverlapResult, PlaceDef, PlaceMode (&quot;3d&quot;, &quot;2d-side&quot;, &quot;2d-top&quot; or &quot;ui&quot;), PlacePersistence (&quot;ephemeral&quot;, &quot;session&quot; or &quot;persistent&quot;), PlayerQueryResult, PlayerProfile, PositionSpec, RaycastHit, RaycastVerdict, RoadRoadsideSpec, RotationSpec, RoutingDef, SaidLine, ScatterBounds, ScriptedMaterialSpec, SoundEndEvent, SplineSpec (kinds road, pipe, fence, hedge, powerline, wall, guardrail, handrail, railway, streetlight, stringlight, bannerline, conveyor, canal, curb, stairs, boardwalk, bollard, barrier, zipline, aqueduct, coaster, data-only and scripted), SplineStyle, StandardMaterialSpec, TerrainBrush, TomeCameraState, TradeReceipt, TraverseCheckResult, UIDef, UpdateSchedule, Vec3, ViewAPI (fps, drawCalls, triangles, cpuMs, gpuMs, scriptMs, physicsMs, fxMs, memoryMB, netInBytes and others, all read-only), VoxelCoord, VoxelRaycastHit and WaterMaterialSpec. Some fields carry notes: timeScale on a place (0 stops, 1 normal), latencyMs (read-only ping), the wind wave and swell fields of water, and preload warmups. NotifyDmOptions has a field named cleetus.</p>
+<h3 id="48-builtin-physicsmd">48-builtin-physics.md</h3>
+<p>raycast defaults to 200 metres and ignores the caller. overlapPoint and overlapSegment return volumes. traverseCheck returns traversable, reason and detail, with a default step height of 0.3 m. jumpCheck and getInputRay are listed. createWorld(opts) makes a private physics world that moves only on step(dt), and save() and restore(bytes) snapshot it. The page says the world is deterministic on one engine build, so a rollback game can restore a save and step to the present. About 50 moving bodies cost about 1.5 ms on a phone.</p>
+<h3 id="49-builtin-tweenmd">49-builtin-tween.md</h3>
+<p>animate(ctx, target, keyframes, opts) with duration and delay in seconds, easing, direction (normal, reverse or alternate) and loop.</p>
+<h3 id="50-builtin-splinemd">50-builtin-spline.md</h3>
+<p>splineLength(ctx, id) returns metres, or 0 for a non-spline id. sampleSpline(ctx, id, at, opts) takes at from 0 to 1 by default, or distance in metres with space &quot;distance&quot;. projectToSpline(ctx, id, point, opts) returns the nearest sample.</p>
+<h3 id="51-builtin-mathmd">51-builtin-math.md</h3>
+<p>clamp, clamp01, lerp (for numbers and for OKLCH colour strings), smoothstep, inverseLerp, remap, shortestArc (degrees, in (-180, 180]), stepAngle (smoothing default 0.06 s, 0 turns at once), degToRad and radToDeg.</p>
+<h3 id="52-builtin-vec3md">52-builtin-vec3.md</h3>
+<p>Vector helpers add, sub, scale, dot, length, normalize, distance and cross, and rotation helpers directionFromYawPitch, rotate, rotationFromDirection (default axis -z), rotationFromEuler and eulerFromRotation. Vectors accept {x, y, z} or [x, y, z]. A number as a rotation means yaw. Euler order is yaw, pitch and roll about +Y, +X and +Z. Yaw 0 faces -Z.</p>
+<h3 id="53-builtin-easingmd">53-builtin-easing.md</h3>
+<p>Twenty-four easing functions, each taking t in [0, 1]: linear, easeOutBounce, and in, out and in-out forms of Quad, Cubic, Quart, Quint, Sine, Expo and Circ.</p>
+<h3 id="54-builtin-navmd">54-builtin-nav.md</h3>
+<p>findPath(ctx, from, to, opts) returns feet positions. ok false means a cut-off path ending at the reachable spot nearest the goal. partial true means the search is still reading the ground and should be asked again on a later tick. An empty list with no partial means no path. maxDrop defaults to 3 m and bodies to all.</p>
+<h3 id="55-builtin-pathmd">55-builtin-path.md</h3>
+<p>createPath(points, opts) with spacing default 2 m and optional closed and smooth. PathHandle has points, closed, length, distance(x, z, within), nearest(x, z, within) and at(arcLength). distance returns Infinity and nearest returns null beyond within. at wraps on a closed path and clamps on an open one.</p>
+<h3 id="56-builtin-ballisticsmd">56-builtin-ballistics.md</h3>
+<p>solveShot(from, to, speed, g, lead) returns { vel, time } or null for an unreachable target, with speed in m/s. elevation(speed, g, distance, rise) returns the low angle in radians or null.</p>
+<h3 id="57-builtin-room-routingmd">57-builtin-room-routing.md</h3>
+<p>Used only in a routing script that exports pickRoom(ctx). firstOpenRoom, mostFullWithSpace (null when none has space), nextRoomName and roomFor(key), which gives a stable room name for a key.</p>
+<h3 id="58-builtin-terrainmd">58-builtin-terrain.md</h3>
+<p>shore(height, level, opts) changes heights near a water level. Defaults: apron 6, berm 0.3, grade 0.06, rejoin 24, shelf 2.2, shelfReach 6, drop 20 and scale 1.</p>
+<h3 id="59-builtin-noisemd">59-builtin-noise.md</h3>
+<p>simplex2, simplex3, fbm2, ridged, billowed2, gradient2, domainWarp2, voronoi2, white2, and makeSeededRng with next, double, int32, uint32 and range.</p>
+<h3 id="60-builtin-voxelsmd">60-builtin-voxels.md</h3>
+<p>VoxelPart with set, fill, hollowBox, sphere, cylinder, cone, pyramid, torus, line, add, bounds and serialize (version 1 with a palette). Brushes: material(id), checker(a, b), random(ids, weights) and noise(ids, opts).</p>
+<h3 id="61-builtin-vibemd">61-builtin-vibe.md</h3>
+<p>The audio script exports pattern(ctx). ctx.params holds the audio parameters, and tempo is set with setBpm, setCps or setSwing. The default bus is Music. gain runs from 0 to 2, and paused true stops the transport. Sample names are listed at /cdn/vibe-samples/manifest.json. Banks are named as the manifest spells them, with pitched instrument sets, synths (sawtooth, square, sine, triangle), one-shot families and short words (bd, sn, hh, cp, kick, snare, hat, clap, ride, tom, piano, pad, bass, bell, pluck, resolve). An instrument word alone is a silent voice, and an unknown sample raises the vibe.sample.unknown DM. Pattern methods and helpers (note, s, stack, seq, silence, mini, arrange, scale, progression, arp, chord, smoothstep, mapRange) are listed.</p>
+<h3 id="62-builtin-fxmd">62-builtin-fx.md</h3>
+<p>Export effect(ctx) from the effect script, and return fx(...populations). Rate is particles per second, lifetime, delay and window are seconds, size is metres and rotation radians, alpha is 0 to 1. World space is the default and an omitted lifetime does not expire. Effects are emitted with emit(&quot;fx&quot;, ...), pulsed with ctx.pulseFx, and read with ctx.getFxState. Sinks are sprite, mesh, ribbon and light, with align options for sprites such as &quot;ground&quot;. Child populations use when(other.dies) and when(other.lives), and parent(name) reads the parent each tick.</p>
+<h3 id="63-builtin-tslmd">63-builtin-tsl.md</h3>
+<p>Shader time is (ctx.now() / 1000) % 3600 seconds. uv() reads the first UV set and uv(1) to uv(3) read the later sets. audioLevel and audioSpectrum(x) read the sound the player hears, from 0 to 1, with x from 20 Hz at 0 to 20 kHz at 1. objectWorldMatrix(id), objectPosition, objectScale and objectDirection read a thing's interpolated pose on screen, and a thing not drawn reads 0. The page lists the TSL inputs, math and noise functions, structure helpers, compute with instancedArray and atomics (atomicAdd, atomicSub, atomicMax, atomicMin, atomicAnd, atomicOr, atomicXor), and workgroup helpers.</p>
+<h3 id="64-builtin-threemd">64-builtin-three.md</h3>
+<p>Export material(ctx) from a material script, and return a three.js node material. ctx.param(name, default) is a declared parameter, scaled with .mul() and never JavaScript *. Opacity is 0 to 1, and transparent must be set for alpha. Line rows use LineBasicNodeMaterial or Line2NodeMaterial, where linewidth is in CSS pixels. PointsNodeMaterial draws round unlit points, and a crowd of dots a pixel or two wide should be a points row rather than copies of a tiny mesh. The page lists material constructors, blending, filter and wrap constants, StorageTexture, Storage3DTexture, DataTexture and Data3DTexture, and ctx.params, ctx.texture (including canvas://&lt;id&gt;), ctx.field, ctx.terrain, ctx.tile, ctx.sprite, ctx.view, ctx.portal, ctx.fx and ctx.device (class, quality levels low, medium, high and ultra).</p>
+<h3 id="65-builtin-lightingmd">65-builtin-lighting.md</h3>
+<p>Exports: sunDirection, sunRadiance, ambientRadiance, wet, rain, windDirection, windSpeed, windTravel, fogColor(toward), sunVisibility(P), lightsAt(P, { shadow }), lightCount(P), lightRadiance(P, i) and lightPosition(P, i).</p>
+<h3 id="66-builtin-watermd">66-builtin-water.md</h3>
+<p>Shader helpers for water: waterRippleSlope, waterFoam, waterFoamField, waterFoamFieldLod, waterFoamCoverage, waterTransmittance, waterMedium, waterUnderwaterDistortion, waterRayBoxDistance, waterCaustics, waterCausticsAt, waterCausticsRefracted and waterFresnel.</p>
+<h3 id="67-builtin-envmd">67-builtin-env.md</h3>
+<p>envAt(ctx, point) returns wind (flow), rain, light, charge, water { depth, flow }, and cloud at a point.</p>
+<h3 id="68-builtin-postfxmd">68-builtin-postfx.md</h3>
+<p>A look export returns the final colour and starts from ctx.scene. Colour functions are grade, vignette (defaults roundness 2 and feather 0.45), grain, film, tint, scanlines, dotScreen, chromaticAberration, dof (focusDistance and focusRange in metres, bokehScale in pixels), pixelate and blur (amount 0 to 1). bloom is configured by the look's bloomStrength, bloomRadius and bloomThreshold parameters. Antialiasing is a per-player setting in Settings and is not part of a look.</p>
+<h3 id="guidemd-the-world-guide-json-wrapper-guide-field">guide.md (the world guide, JSON wrapper, guide field)</h3>
+<p>The guide is the world's AGENTS.md text for the game-16 world. Its main points: the tree is the world, so a push to main reaches every open room with no build and no deploy. The game is three.js in files, with an object as a row of geometry and material fields, a behaviour as a module with update(ctx, dt), and the HUD as HTML in scripts/ui.js. The world tree is laid out as world.config.yaml, places/&lt;place&gt;/config.yaml, places/&lt;place&gt;/cells/x&lt;cx&gt;z&lt;cz&gt;.scene (128 m cells, cx equal to round(x / 128), with the header line &quot;# jayzee-scene v2 yaml &lt;cellKey&gt;&quot;), templates/&lt;name&gt;.js, scripts/**/<em>.js, sim.js (one copy per room), skills/&lt;name&gt;.md, commands/&lt;name&gt;.md, design.md, source/</em>* and the files AGENTS.md, CLAUDE.md, README.md and .jayzee/ which the room never receives. Art is referenced as a CDN name such as /cdn/model-knight.glb. Own art goes up by bytes through a PUT to /api/sdk/v1/&lt;worldId&gt;/assets/value.&lt;sha256&gt;.&lt;ext&gt; (about 4.5 MB request cap, with a 413 answer above it), or through upload-target and a storage PUT for larger files. A worked example places one cube in places/main/cells/x0z0.scene. The guide gives the eight verbs of ctx and the page rules. A push never publishes: POST /api/games/{appId}/publish publishes. The page section explains the html.jayzee-world-shown class, the data-jayzee-stood attribute, the kernel and game iframes, the WebGPU flags for a headless browser without a GPU, the navigator.webdriver marker and the JayzeeProbe user-agent suffix. It also covers the packaged client (@jayzeeco/client), the jayzee preview command, the rail that belongs to the platform, the commit message rule (the first line lands in the creator's chat) and the door list (agent me, worlds, agent/rooms, agent/logs, agent/exec, agent/docs, login-link and notifications). The guide shows token placeholders only, and no token is recorded here.</p>
+<h3 id="skillsmd-a-404-error-body">skills.md (a 404 error body)</h3>
+<p>The docs door answered the section name &quot;skills&quot; with HTTP 404 and JSON: error section_not_found, &quot;No section named \&quot;skills\&quot; in this world's API reference&quot;, with the nearest section Camera. The skill list is in skills.json, and no skill text is stored.</p>
+<h2 id="decisions">Decisions</h2>
+<ul><li>Keep the text of the reference as an exact copy. Each numbered file carries the reference text exactly as the door returned it (in tomeApi), with the same wrapper fields, so a reader can compare it with the live door.</li><li>Pull by section, not as one file. The docs door answers one section per request, so the pull log records each section and the index keeps one file per section. The pull log shows the status and byte count for every section.</li><li>Duplicate pull indexes kept. docs-pull-index.json and docs/pull-index.json are identical, and docs-sections.json and docs/sections.json are identical. The pull index is kept in both places, so each path can be found.</li><li>Guide content kept as text. The guide describes the reference and skills as served over HTTP. The index keeps the text itself and holds no links to live doors.</li><li>Names kept as the source wrote them. Field names such as cleetus in NotifyDmOptions are kept verbatim.</li></ul>
+<h2 id="open-gaps">Open gaps</h2>
+<ul><li>The skills section is not in the reference. The docs door returns 404 for it, so the skill text is not captured. skills.json lists 23 ids and descriptions, and no skill body.</li><li>The section 20-world-queries.md repeats its heading and body. The copy is kept as the door returned it.</li><li>The 00-opening.md file and the JSON wrappers hold the same text, so the same reference is stored in two forms.</li><li>The guide says the whole reference is also api-reference.md at the root of the engine repository at git.jayzee.co/engine/6.0.0.git. That repository is not in the index.</li><li>The reference says a section can be read with ?section=all. The index holds one file per section, and no whole-reference file.</li><li>The engine version is 6.0.0 with specVersion 0. The index does not record a later version.</li></ul>
+<h2 id="sources">Sources</h2>
+<ul><li>/workspace/index/extra/docs/00-opening.md</li><li>/workspace/index/extra/docs/01-spawn-game-api.md</li><li>/workspace/index/extra/docs/02-identity.md</li><li>/workspace/index/extra/docs/03-state.md</li><li>/workspace/index/extra/docs/04-properties.md</li><li>/workspace/index/extra/docs/05-movement.md</li><li>/workspace/index/extra/docs/06-terrain.md</li><li>/workspace/index/extra/docs/07-splines.md</li><li>/workspace/index/extra/docs/08-camera.md</li><li>/workspace/index/extra/docs/09-selection.md</li><li>/workspace/index/extra/docs/10-player.md</li><li>/workspace/index/extra/docs/11-timing.md</li><li>/workspace/index/extra/docs/12-jobs.md</li><li>/workspace/index/extra/docs/13-database.md</li><li>/workspace/index/extra/docs/14-clock.md</li><li>/workspace/index/extra/docs/15-the-changed-cursor-sim-js.md</li><li>/workspace/index/extra/docs/16-random.md</li><li>/workspace/index/extra/docs/17-logging.md</li><li>/workspace/index/extra/docs/18-events.md</li><li>/workspace/index/extra/docs/19-spec-patches-scripts.md</li><li>/workspace/index/extra/docs/20-world-queries.md</li><li>/workspace/index/extra/docs/21-places.md</li><li>/workspace/index/extra/docs/22-object-access.md</li><li>/workspace/index/extra/docs/23-lifecycle.md</li><li>/workspace/index/extra/docs/24-spec-mutation-god-mode.md</li><li>/workspace/index/extra/docs/25-control.md</li><li>/workspace/index/extra/docs/26-trade.md</li><li>/workspace/index/extra/docs/27-joints.md</li><li>/workspace/index/extra/docs/28-ragdoll.md</li><li>/workspace/index/extra/docs/29-hierarchy.md</li><li>/workspace/index/extra/docs/30-dm-hooks.md</li><li>/workspace/index/extra/docs/31-juice.md</li><li>/workspace/index/extra/docs/32-animation-mixer.md</li><li>/workspace/index/extra/docs/33-self.md</li><li>/workspace/index/extra/docs/34-the-local-player-on-a-camera-rig-alone.md</li><li>/workspace/index/extra/docs/35-the-spine-the-same-members-every-behavior-ctx-carries.md</li><li>/workspace/index/extra/docs/36-state-the-compat-spellings-of-ctx-self-state.md</li><li>/workspace/index/extra/docs/37-properties-the-compat-spellings-of-ctx-self-feetposition-rotation.md</li><li>/workspace/index/extra/docs/38-behavior-hooks.md</li><li>/workspace/index/extra/docs/39-objectpropertiesspec-full.md</li><li>/workspace/index/extra/docs/40-primitivespec-full.md</li><li>/workspace/index/extra/docs/41-atmospheredef-full.md</li><li>/workspace/index/extra/docs/42-terraindef-heightmap-full.md</li><li>/workspace/index/extra/docs/43-inputs-full.md</li><li>/workspace/index/extra/docs/44-objectspec-full.md</li><li>/workspace/index/extra/docs/45-parenting-full.md</li><li>/workspace/index/extra/docs/46-ui-rules-full.md</li><li>/workspace/index/extra/docs/47-named-types-full.md</li><li>/workspace/index/extra/docs/48-builtin-physics.md</li><li>/workspace/index/extra/docs/49-builtin-tween.md</li><li>/workspace/index/extra/docs/50-builtin-spline.md</li><li>/workspace/index/extra/docs/51-builtin-math.md</li><li>/workspace/index/extra/docs/52-builtin-vec3.md</li><li>/workspace/index/extra/docs/53-builtin-easing.md</li><li>/workspace/index/extra/docs/54-builtin-nav.md</li><li>/workspace/index/extra/docs/55-builtin-path.md</li><li>/workspace/index/extra/docs/56-builtin-ballistics.md</li><li>/workspace/index/extra/docs/57-builtin-room-routing.md</li><li>/workspace/index/extra/docs/58-builtin-terrain.md</li><li>/workspace/index/extra/docs/59-builtin-noise.md</li><li>/workspace/index/extra/docs/60-builtin-voxels.md</li><li>/workspace/index/extra/docs/61-builtin-vibe.md</li><li>/workspace/index/extra/docs/62-builtin-fx.md</li><li>/workspace/index/extra/docs/63-builtin-tsl.md</li><li>/workspace/index/extra/docs/64-builtin-three.md</li><li>/workspace/index/extra/docs/65-builtin-lighting.md</li><li>/workspace/index/extra/docs/66-builtin-water.md</li><li>/workspace/index/extra/docs/67-builtin-env.md</li><li>/workspace/index/extra/docs/68-builtin-postfx.md</li><li>/workspace/index/extra/docs/guide.md</li><li>/workspace/index/extra/docs/skills.md</li><li>/workspace/index/extra/docs/skills.json</li><li>/workspace/index/extra/docs/sections.json</li><li>/workspace/index/extra/docs/pull-index.json</li><li>/workspace/index/extra/docs/opening.json</li><li>/workspace/index/extra/docs-pull-index.json</li><li>/workspace/index/extra/docs-sections.json</li></ul>
+</main>
+</div>
+<footer class="foot"><div class="foot-inner">wiki · every page cites the on-disk sources it was written from</div></footer>
+</body>
+</html>

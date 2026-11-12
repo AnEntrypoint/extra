@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Game page section: Games · Wiki</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="topbar">
+<div class="topbar-inner">
+<a class="brand" href="../index.html">wi<span>ki</span></a>
+<nav class="pills"><a href="../cleetus/ci-workflows.html">cleetus</a><a href="../index/cdn-inventory.html">index</a><a href="../jayzee/maps-glb-urls.html">jayzee</a><a class="active" href="../reference-game-16/coverage.html">reference-game-16</a></nav>
+</div>
+</header>
+<div class="layout">
+<nav class="side">
+<h3>Start</h3><ul>
+<li><a href="../index.html">Project wiki: how this wiki is organised</a></li>
+<li><a href="../toc.html">Table of contents</a></li>
+</ul>
+<h3>cleetus</h3><ul>
+<li><a href="../cleetus/ci-workflows.html">CI workflows and npm scripts</a></li>
+<li><a href="../cleetus/docs-folder.html">The docs folder</a></li>
+<li><a href="../cleetus/endpoints.html">Endpoints</a></li>
+<li><a href="../cleetus/engine-decisions.html">Engine decisions: why the jayzee engine notes are shaped as they are</a></li>
+<li><a href="../cleetus/engine-overview.html">Engine overview: the jayzee engine notes (cleetus workspace)</a></li>
+<li><a href="../cleetus/evidence-claims.html">Evidence claims</a></li>
+<li><a href="../cleetus/evidence-overview.html">Evidence overview</a></li>
+<li><a href="../cleetus/featureset-part-1.html">Featureset part 1: cleetus counts, spoint surface, and the relayed streams</a></li>
+<li><a href="../cleetus/featureset-part-2.html">Featureset part 2: streams 12 to 25 and the src/sdk modules</a></li>
+<li><a href="../cleetus/featureset-part-3.html">Featureset part 3: streams 26 to 34</a></li>
+<li><a href="../cleetus/featureset-part-4.html">Featureset part 4: streams 35 to 45, client/core rendering modules</a></li>
+<li><a href="../cleetus/featureset-part-5.html">Featureset part 5: streams 45 to 55, client/core modules</a></li>
+<li><a href="../cleetus/featureset-part-6.html">Featureset part 6: streams 56 to 58 and the improvement opportunities</a></li>
+<li><a href="../cleetus/featureset-part-7.html">Featureset part 7: improvement candidates from streams 43 to 58</a></li>
+<li><a href="../cleetus/featureset-part-8.html">Featureset part 8: agent and room candidates, session store, bake pins, learning record and terrain</a></li>
+<li><a href="../cleetus/featureset-part-9.html">FEATURESET part 9: render, editor, HUD, XR, packages, static serving and server surface</a></li>
+<li><a href="../cleetus/jayzee-gaps.html">Jayzee implementation gaps</a></li>
+<li><a href="../cleetus/manual-build.html">Manual build and check</a></li>
+<li><a href="../cleetus/manual-worklist.html">Manual worklist</a></li>
+<li><a href="../cleetus/morluto-ci-findings.html">Morluto rea PR 9234 CI findings</a></li>
+<li><a href="../cleetus/netcode.html">Netcode</a></li>
+<li><a href="../cleetus/open-gaps.html">Open gaps across the cleetus repository</a></li>
+<li><a href="../cleetus/open-items.html">Open items register</a></li>
+<li><a href="../cleetus/overview.html">Overview of cleetus</a></li>
+<li><a href="../cleetus/parity.html">Parity</a></li>
+<li><a href="../cleetus/runs-overview.html">Runs overview</a></li>
+<li><a href="../cleetus/site-overview.html">Site overview (built manual output)</a></li>
+<li><a href="../cleetus/sources-overview.html">Sources overview</a></li>
+<li><a href="../cleetus/state-and-tooling.html">State and tooling</a></li>
+</ul>
+<h3>index</h3><ul>
+<li><a href="../index/cdn-inventory.html">CDN inventory and manifests</a></li>
+<li><a href="../index/discovery.html">Discovery evidence</a></li>
+<li><a href="../index/exhaustive-index.html">Exhaustive world and GLB index</a></li>
+<li><a href="../index/extra-docs.html">extra docs: the Jayzee game API reference copy</a></li>
+<li><a href="../index/extra-worlds.html">extra world lists and feeds</a></li>
+<li><a href="../index/open-gaps.html">Open gaps in the index</a></li>
+<li><a href="../index/overview.html">Overview of the index project</a></li>
+<li><a href="../index/provenance.html">Provenance manifests</a></li>
+<li><a href="../index/savi-index.html">cleetus index</a></li>
+<li><a href="../index/spawn-index.html">jayzee index</a></li>
+<li><a href="../index/tree/tree-borick.html">The borick/ directory</a></li>
+<li><a href="../index/tree/tree-build-scripts.html">Build, check and discovery scripts, and the patch files</a></li>
+<li><a href="../index/tree/tree-extra.html">The extra/ directory</a></li>
+<li><a href="../index/tree/tree-indexes.html">The index files: COMPLETE_INDEX, EXTRA_WORLD_INDEX and INDEX</a></li>
+<li><a href="../index/tree/tree-open-gaps.html">Open gaps in the top-level index, its directories and the browser state</a></li>
+<li><a href="../index/tree/tree-overview.html">Top-level layout of the jayzee tree</a></li>
+<li><a href="../index/tree/tree-provenance.html">provenance.sha256.txt and the other provenance manifests</a></li>
+<li><a href="../index/tree/tree-savi-directory.html">The cleetus/ directory (old name: savi)</a></li>
+<li><a href="../index/tree/tree-spawn-directory.html">The jayzee/ directory (old name: spawn)</a></li>
+</ul>
+<h3>jayzee</h3><ul>
+<li><a href="../jayzee/maps-glb-urls.html">jayzee GLB URL list (glb-urls-all.tsv)</a></li>
+<li><a href="../jayzee/maps-head-status.html">jayzee world head status lists</a></li>
+<li><a href="../jayzee/maps-learning-record-part-1.html">jayzee learning record, part 1 (denominators, corpus, keys, escapes, bucket rule, 410)</a></li>
+<li><a href="../jayzee/maps-learning-record-part-2.html">jayzee learning record, part 2 (error keys, non-CDN refs, open items, name decode, /cdn/ attempt)</a></li>
+<li><a href="../jayzee/maps-learning-record.html">jayzee learning record</a></li>
+<li><a href="../jayzee/maps-noncdn-refs.html">jayzee non-CDN data references (unverified-noncdn-refs.tsv)</a></li>
+<li><a href="../jayzee/maps-open-gaps.html">jayzee maps open gaps</a></li>
+<li><a href="../jayzee/maps-overview.html">jayzee maps directory overview</a></li>
+<li><a href="../jayzee/maps-root-worlds.html">jayzee root-linked worlds map</a></li>
+<li><a href="../jayzee/maps-witness-inputs.html">jayzee witness input directories and their sha256 checks</a></li>
+<li><a href="../jayzee/maps-witness.html">jayzee witness scripts</a></li>
+<li><a href="../jayzee/runs-findings.html">Runs findings and decisions</a></li>
+<li><a href="../jayzee/runs-open-gaps.html">Runs open gaps and failures</a></li>
+<li><a href="../jayzee/runs-overview.html">Runs overview</a></li>
+<li><a href="../jayzee/runs-timeline.html">Runs timeline</a></li>
+<li><a href="../jayzee/sources-captures.html">Sources captures</a></li>
+<li><a href="../jayzee/sources-index.html">Sources index</a></li>
+<li><a href="../jayzee/sources-overview.html">Sources overview</a></li>
+</ul>
+<h3>reference-game-16</h3><ul>
+<li><a href="../reference-game-16/coverage.html">Capture coverage: game page</a></li>
+<li><a href="../reference-game-16/download-process.html">Download process: from the join instructions to a working site</a></li>
+<li><a href="../reference-game-16/page-00-overview.html">Game page section: Overview</a></li>
+<li><a href="../reference-game-16/page-01-starters.html">Game page section: Starters</a></li>
+<li><a href="../reference-game-16/page-02-skills.html">Game page section: Skills</a></li>
+<li><a href="../reference-game-16/page-03-animations.html">Game page section: Animations</a></li>
+<li><a href="../reference-game-16/page-04-sound-art.html">Game page section: Sound Art</a></li>
+<li><a href="../reference-game-16/page-05-workshop.html">Game page section: Workshop</a></li>
+<li><a href="../reference-game-16/page-06-engine.html">Game page section: Engine</a></li>
+<li><a href="../reference-game-16/page-07-reference.html">Game page section: Reference</a></li>
+<li><a href="../reference-game-16/page-08-shapes.html">Game page section: Shapes</a></li>
+<li><a href="../reference-game-16/page-09-mods.html">Game page section: Mods</a></li>
+<li><a class="current" href="../reference-game-16/page-10-games.html">Game page section: Games</a></li>
+<li><a href="../reference-game-16/page-11-pick-a-genre.html">Game page section: Pick A Genre</a></li>
+<li><a href="../reference-game-16/page-host.html">Host page: Untitled game (@lanmower/game-16)</a></li>
+</ul>
+</nav>
+<main>
+<span class="eyebrow">reference-game-16</span>
+<h1 id="game-page-section-games">Game page section: Games</h1>
+<p>Section of the game page captured by clicking the &quot;games&quot; entry in the toolbox navigation. The text, headings, links, images and code below are the capture of that section.</p>
+<h2 id="coverage-of-this-capture">Coverage of this capture</h2>
+<div class="table-wrap"><table><thead><tr><th>Item</th><th>Count</th></tr></thead><tbody><tr><td>Characters of text</td><td>8771</td></tr><tr><td>Headings</td><td>63</td></tr><tr><td>Links</td><td>66</td></tr><tr><td>Images</td><td>0</td></tr><tr><td>Code or data blocks</td><td>0</td></tr><tr><td>Paragraph blocks</td><td>54</td></tr></tbody></table></div>
+<p>Source capture: <code>capture/10-games.json</code> (verbatim, before renames).</p>
+<h2 id="page-text-in-order">Page text in order</h2>
+<p>toolbox</p>
+<p>Overview</p>
+<p>Starters</p>
+<p>Skills</p>
+<p>Animations</p>
+<p>Sound &amp; Art</p>
+<p>Workshop</p>
+<p>Engine</p>
+<p>Reference</p>
+<p>Shapes</p>
+<p>Mods</p>
+<p>Games</p>
+<p>Pick a genre</p>
+<h3 id="games-made-on-jayzee">Games made on Jayzee</h3>
+<p>Real published games, by genre. Open one to play it and see what each kind of game looks like built here.</p>
+<h5 id="3d-action-adventure">3D ACTION &amp; ADVENTURE</h5>
+<p>play →</p>
+<h4 id="8-ball-pool-3d">8-Ball Pool 3D</h4>
+<p>3D 8-ball pool with AI save and resume, friend matches, practice and Five in Eight challenges.</p>
+<p>by tuanteku · 15 likes</p>
+<p>play →</p>
+<h4 id="garden-siege-3d">Garden Siege 3D</h4>
+<p>Peashooters vs the undead: hold the backyard and save the gnome from ten waves of zombies.</p>
+<p>by rexgaming_yt · 10 likes</p>
+<p>play →</p>
+<h4 id="call-of-the-soil-a-bengal-village-adventure">Call of the Soil: A Bengal Village Adventure</h4>
+<p>Roam a living Bangladeshi village: chat with neighbours, make friends, ride rickshaws and boats, race on the river, and join festivals. Play in English or Bangla.</p>
+<p>by ayon · 6 likes</p>
+<p>play →</p>
+<h4 id="whisker-brawl-3d">Whisker Brawl 3D</h4>
+<p>Pick a scrappy animal, grab absurd loot, and brawl your way through every rival in the arena.</p>
+<p>by tuanteku · 6 likes</p>
+<p>play →</p>
+<h4 id="world-adventure-of-pixels">WORLD ADVENTURE of PIXELS</h4>
+<p>Run, jump, stomp and bonk ? blocks across a pixel world to reach the flag.</p>
+<p>by pixelmg_dev · 5 likes</p>
+<p>play →</p>
+<h4 id="gemsmith-3d">GEMSMITH 3D</h4>
+<p>Turn the cube, find the match, forge your own puzzles — a new dimension of GEMSMITH.</p>
+<p>by match3lover · 5 likes</p>
+<h5 id="multiplayer-arenas">MULTIPLAYER ARENAS</h5>
+<p>play →</p>
+<h4 id="sky-ring-arena-multiplayer">Sky Ring Arena Multiplayer</h4>
+<p>First-person sword and shield fights with friends: 1v1 and 2v2. Roll, block, parry, riposte.</p>
+<p>by rexgaming_yt · 0 likes</p>
+<p>play →</p>
+<h4 id="purrtris-arena">Purrtris Arena</h4>
+<p>Pastel cat-cafe arcade in the clouds: walk up to a cat-eared cabinet and play Purrtris: Marathon, Sprint 40 and Versus.</p>
+<p>by chizkeykkk · 17 likes</p>
+<p>play →</p>
+<h4 id="elemental-blades-arena-of-ascension">Elemental Blades: Arena of Ascension</h4>
+<p>Anime blade &amp; sorcery arena: fight endless waves with your champions, summon rare heroes, and command them on the War Table.</p>
+<p>by shadow_ranger_62 · 15 likes</p>
+<p>play →</p>
+<h4 id="mgtale-battles-multiplayer">MGTale Battles multiplayer</h4>
+<p>Undertale-style co-op bullet hell: dodge Flowey, Frisk, Chara, Papyrus, Sans, Toriel, Undyne and Asgore together as hearts, then strike back. Plus endless Survival and a Daily Challenge.</p>
+<p>by andreamg2tablet · 15 likes</p>
+<p>play →</p>
+<h4 id="mg-sans-battle-multiplayer">MG Sans Battle multiplayer</h4>
+<p>Undertale-style bullet hell: dodge MG Sans's bones and blasters together, then strike back.</p>
+<p>by andreamg2tablet · 12 likes</p>
+<p>play →</p>
+<h4 id="slime-arena">Slime Arena</h4>
+<p>Be a slime in a glowing neon glass city. Race the Slime City Loop, duel in the colosseum, survive the Mossmoon Ruins, and wear slimeglass skins that shine.</p>
+<p>by slime · 11 likes</p>
+<h5 id="racing-vehicles">RACING &amp; VEHICLES</h5>
+<p>play →</p>
+<h4 id="race-to-the-masjid">Race to the Masjid</h4>
+<p>Thobe on, iqama in 55 seconds. Dodge carts and laundry lines down the street and make it to the masjid on time.</p>
+<p>by yunusdiallo · 8 likes</p>
+<p>play →</p>
+<h4 id="dragon-racing">Dragon Racing</h4>
+<p>Fly a drake across the Wyrmcrown Isles: five zones, 28 ring races in Normal and Advanced, zone crowns to earn and 48 hidden glyphs that grow your talent tree.</p>
+<p>by metalhorse233 · 6 likes</p>
+<p>play →</p>
+<h4 id="crunch-em-up-derby-racing">Crunch-em-up Derby Racing</h4>
+<p>Figure-8 wreck racing at the Hollis County speedway. Hit hard, roll em, keep moving.</p>
+<p>by nickyp · 3 likes</p>
+<p>play →</p>
+<h4 id="mequavian-racing">Mequavian Racing</h4>
+<p>Three Seven Speedway, full scale. Eight laps, one clock, the MEQUAVIS #41.</p>
+<p>by cybershrapnel · 3 likes</p>
+<p>play →</p>
+<h4 id="race-or-die">Race or Die</h4>
+<p>Ten cars, one floating neon track over a desert city, and a bomb that blows up last place every 30 seconds.</p>
+<p>by iiisandman · 2 likes</p>
+<p>play →</p>
+<h4 id="hypertrackmania-x-time-trial-racing">HyperTrackMania X: Time Trial Racing</h4>
+<p>Arcade time trial racing on 18 tracks: loops, wallrides and jumps. Chase ranked ghosts, top the season leaderboard, earn crates and build your own tracks to share.</p>
+<p>by hips · 0 likes</p>
+<h5 id="survival">SURVIVAL</h5>
+<p>play →</p>
+<h4 id="survive-ragnark">Survive Ragnarök</h4>
+<p>Ragnarok Online meets Vampire Survivors. The old-school MMO you grew up on, rebuilt as a horde survival hunt. Midgard is burning, and the monsters come in waves: hundreds at a time, wave after wave. Step out of Sanctuary</p>
+<p>by liiv · 18 likes</p>
+<p>play →</p>
+<h4 id="survival-at-disaster">Survival at Disaster</h4>
+<p>Floods, tornadoes, meteors and acid rain hit the island town. Survive the round.</p>
+<p>by vovafromttav · 6 likes</p>
+<p>play →</p>
+<h4 id="building-66">Building 66</h4>
+<p>Norilsk, 1994. Seven night shifts in Building 66. Find the fuses, bring the power back, and do not look behind you.</p>
+<p>by fracture · 4 likes</p>
+<p>play →</p>
+<h4 id="enfos-team-survival">Enfo's Team Survival</h4>
+<p>Elves vs the Scourge: up to 5 heroes hold Enfos against waves of undead.</p>
+<p>by marcelpachole · 4 likes</p>
+<p>play →</p>
+<h4 id="spikes-neon-survival">Spike's Neon Survival</h4>
+<p>A pygmy hedgehog crunches neon worms across ten glowing arenas.</p>
+<p>by 0toxika · 4 likes</p>
+<p>play →</p>
+<h4 id="hexagonal-arcology-builder-peak-oil-survival">Hexagonal Arcology Builder (Peak Oil Survival)</h4>
+<p>Build a hex arkology to 144,000 people before the oil runs out in 2040.</p>
+<p>by travelingtt · 3 likes</p>
+<h5 id="platformers">PLATFORMERS</h5>
+<p>play →</p>
+<h4 id="super-smash-jayzee-brawl-ultimate-platform-fighter">Super Smash Jayzee Brawl: Ultimate Platform Fighter</h4>
+<p>Knock your friends off a stained-glass stage. A fast platform fighter: smash, combo, tech and edgeguard across six stages, online or on the couch.</p>
+<p>by hips · 15 likes</p>
+<p>play →</p>
+<h4 id="totally-normal-platformer">Totally Normal Platformer</h4>
+<p>A cute little platformer. Nothing here is a trap. Probably.</p>
+<p>by yujiro · 3 likes</p>
+<p>play →</p>
+<h4 id="a-perfectly-normal-platformer">A Perfectly Normal Platformer</h4>
+<p>You navigate crumbling bridges, dodge incoming artillery, and face a hostile cube in a glitchy world that's falling apart. Every checkpoint, every choice, and every death shapes your path to the end.</p>
+<p>by bigyahu · 0 likes</p>
+<p>play →</p>
+<h4 id="higher">Higher</h4>
+<p>Race up disco towers, candy mountains, and alien peaks in this toon-bright climbing arcade. Chase personal bests, unlock epic bean characters, and climb your way to the leaderboard.</p>
+<p>by chucky · 79 likes</p>
+<p>play →</p>
+<h4 id="skyfall-rush">Skyfall Rush</h4>
+<p>Race across floating anime sky islands that crumble behind you. Dash, shove, and outrun the void.</p>
+<p>by tiger · 50 likes</p>
+<p>play →</p>
+<h4 id="parkour-rush">Parkour Rush</h4>
+<p>You're racing against time through dynamic urban environments, vaulting over obstacles and scaling walls to reach the finish. Feel the adrenaline as you master fluid parkour movement and discover the fastest route to vic</p>
+<p>by majid · 46 likes</p>
+<h5 id="horror">HORROR</h5>
+<p>play →</p>
+<h4 id="cartoon-horror">Cartoon horror</h4>
+<p>Find 8 film reels in the foggy woods before Cartoon Cat and Cartoon Dog find you.</p>
+<p>by lakaplay · 6 likes</p>
+<p>play →</p>
+<h4 id="horror-kill">Horror Kill</h4>
+<p>Hold the graveyard fire against waves of horrors crawling out of the moor fog.</p>
+<p>by nova_golem_79 · 3 likes</p>
+<p>play →</p>
+<h4 id="the-lindenmann-part-two-horror">The Lindenmann Part Two (Horror)</h4>
+<p>Part Two. The woods at night, a camcorder, a flashlight, a pistol, and the Lindenmann.</p>
+<p>by rexgaming_yt · 3 likes</p>
+<p>play →</p>
+<h4 id="ten-days-petsitting-horror">Ten Days Petsitting (horror)</h4>
+<p>Ten days pet-sitting the sweetest pet on the street. Something changes every day.</p>
+<p>by ghost_dragon · 2 likes</p>
+<p>play →</p>
+<h4 id="haunted-plushie-game-lingo-pals-horror-stories">Haunted Plushie game: Lingo Pals Horror Stories</h4>
+<p>Learn the Chinese word, pick the right door, or she finds you.</p>
+<p>by op_nico · 1 likes</p>
+<p>play →</p>
+<h4 id="cerebral-decay">CEREBRAL DECAY</h4>
+<p>A fungus hunts your mind. Leave Shelter-09, scavenge the dark, keep your sanity.</p>
+<p>by bomb_bo · 31 likes</p>
+<h5 id="clickers-idle">CLICKERS &amp; IDLE</h5>
+<p>play →</p>
+<h4 id="1-clicker">1 Clicker</h4>
+<p>Click the big 1, catch the golden 1, buy mines and super clickers, top the room.</p>
+<p>by 00ercruptedsupreme · 4 likes</p>
+<p>play →</p>
+<h4 id="clicker-sim">Clicker Sim</h4>
+<p>click the gem, buy upgrades, rebirth, get stupid rich</p>
+<p>by sharkyrex16 · 4 likes</p>
+<p>play →</p>
+<h4 id="banana-clicker">Banana Clicker</h4>
+<p>A giant banana in a field. Click it. Everyone's clicks count.</p>
+<p>by ohtheicee · 3 likes</p>
+<p>play →</p>
+<h4 id="dark-fountain-clicker">Dark Fountain Clicker</h4>
+<p>Feed the darkness, open fountains, and face the Roaring Knight and Titan in a Deltarune fan clicker.</p>
+<p>by 0liver · 2 likes</p>
+<p>play →</p>
+<h4 id="cubemunity">Cubemunity</h4>
+<p>A cozy community clicker. Break a giant cube together, one layer at a time.</p>
+<p>by longthunder · 25 likes</p>
+<h5 id="social-hangouts">SOCIAL HANGOUTS</h5>
+<p>play →</p>
+<h4 id="jayzee-hangout">Jayzee Hangout</h4>
+<p>A lakeside town to meet up, talk and play: ski, skate, bowl, shoot pool and fire yourself out of a cannon.</p>
+<p>by binxius · 2 likes</p>
+<p>play →</p>
+<h4 id="need-for-jayzee">Need for Jayzee</h4>
+<p>Build your street car in an underground garage, then run it hot on the night test track.</p>
+<p>by chucky · 39 likes</p>
+<p>play →</p>
+<h4 id="spawndle">Spawndle</h4>
+<p>Guess the Jayzee game from one screenshot, every day. Plus Wordlock, Fours, Threads and Culprits.</p>
+<p>by dreamcatcher · 26 likes</p>
+<p>play →</p>
+<h4 id="cat-haven">Cat Haven</h4>
+<p>A pink house in the clouds with a glass-domed cat yard. Carry the cats, pet them, run the cloud roads.</p>
+<p>by chizkeykkk · 25 likes</p>
+<p>play →</p>
+<h4 id="cubemunity">Cubemunity</h4>
+<p>A cozy community clicker. Break a giant cube together, one layer at a time.</p>
+<p>by longthunder · 25 likes</p>
+<p>play →</p>
+<h4 id="dojo-city">DOJO CITY</h4>
+<p>Games • Casino • Social Hangout. A Ninja Cat World.</p>
+<p>by ninjacatlive · 23 likes</p>
+<h5 id="rpg">RPG</h5>
+<p>play →</p>
+<h4 id="eldoria-rpg-120xp">Eldoria [RPG] 120xp</h4>
+<p>A top-down pixel RPG: wake in Trade Central, pick a vocation, hunt, loot and level across ten biomes.</p>
+<p>by gamex_feed · 2 likes</p>
+<p>play →</p>
+<h4 id="ascend-real-life-rpg">Ascend: Real-Life RPG</h4>
+<p>Every real rep is XP. Level 11 RuneScape-style skills, unlock gear, track sober days, and cash in points for rewards you set.</p>
+<p>by causey · 2 likes</p>
+<p>play →</p>
+<h4 id="rpg-fighter">RPG Fighter</h4>
+<p>Ten RPG heroes, knight to dragoon: pick one and fight best of three in a burning pixel-art keep.</p>
+<p>by majid · 1 likes</p>
+<p>play →</p>
+<h4 id="escape-from-stranglethorn">Escape from Stranglethorn</h4>
+<p>Nine Human classes. A jungle full of valuables. Make it back to Booby Bay.</p>
+<p>by izkimar · 591 likes</p>
+<p>play →</p>
+<h4 id="diablo-survivors">Diablo Survivors</h4>
+<p>Pick your hero at the camp fire, step through the portal, survive the horde.</p>
+<p>by izkimar · 177 likes</p>
+<p>play →</p>
+<h4 id="aether-legends">Aether Legends</h4>
+<p>Invoca héroes, forma tu escuadrón de seis y rompe al Vacío con cadenas de Brave Burst.</p>
+<p>by yisus · 67 likes</p>
+<p>toolbox · everything this world can build with</p>
+<h2 id="headings">Headings</h2>
+<ul><li>H2: Games made on Jayzee</li><li>H4: 3D ACTION &amp; ADVENTURE</li><li>H3: 8-Ball Pool 3D</li><li>H3: Garden Siege 3D</li><li>H3: Call of the Soil: A Bengal Village Adventure</li><li>H3: Whisker Brawl 3D</li><li>H3: WORLD ADVENTURE of PIXELS</li><li>H3: GEMSMITH 3D</li><li>H4: MULTIPLAYER ARENAS</li><li>H3: Sky Ring Arena Multiplayer</li><li>H3: Purrtris Arena</li><li>H3: Elemental Blades: Arena of Ascension</li><li>H3: MGTale Battles multiplayer</li><li>H3: MG Sans Battle multiplayer</li><li>H3: Slime Arena</li><li>H4: RACING &amp; VEHICLES</li><li>H3: Race to the Masjid</li><li>H3: Dragon Racing</li><li>H3: Crunch-em-up Derby Racing</li><li>H3: Mequavian Racing</li><li>H3: Race or Die</li><li>H3: HyperTrackMania X: Time Trial Racing</li><li>H4: SURVIVAL</li><li>H3: Survive Ragnarök</li><li>H3: Survival at Disaster</li><li>H3: Building 66</li><li>H3: Enfo's Team Survival</li><li>H3: Spike's Neon Survival</li><li>H3: Hexagonal Arcology Builder (Peak Oil Survival)</li><li>H4: PLATFORMERS</li><li>H3: Super Smash Jayzee Brawl: Ultimate Platform Fighter</li><li>H3: Totally Normal Platformer</li><li>H3: A Perfectly Normal Platformer</li><li>H3: Higher</li><li>H3: Skyfall Rush</li><li>H3: Parkour Rush</li><li>H4: HORROR</li><li>H3: Cartoon horror</li><li>H3: Horror Kill</li><li>H3: The Lindenmann Part Two (Horror)</li><li>H3: Ten Days Petsitting (horror)</li><li>H3: Haunted Plushie game: Lingo Pals Horror Stories</li><li>H3: CEREBRAL DECAY</li><li>H4: CLICKERS &amp; IDLE</li><li>H3: 1 Clicker</li><li>H3: Clicker Sim</li><li>H3: Banana Clicker</li><li>H3: Dark Fountain Clicker</li><li>H3: Cubemunity</li><li>H4: SOCIAL HANGOUTS</li><li>H3: Jayzee Hangout</li><li>H3: Need for Jayzee</li><li>H3: Spawndle</li><li>H3: Cat Haven</li><li>H3: Cubemunity</li><li>H3: DOJO CITY</li><li>H4: RPG</li><li>H3: Eldoria [RPG] 120xp</li><li>H3: Ascend: Real-Life RPG</li><li>H3: RPG Fighter</li><li>H3: Escape from Stranglethorn</li><li>H3: Diablo Survivors</li><li>H3: Aether Legends</li></ul>
+<h2 id="links">Links</h2>
+<div class="table-wrap"><table><thead><tr><th>Text</th><th>Target</th></tr></thead><tbody><tr><td>toolbox</td><td></td></tr><tr><td>Overview</td><td></td></tr><tr><td>Starters</td><td></td></tr><tr><td>Skills</td><td></td></tr><tr><td>Animations</td><td></td></tr><tr><td>Sound &amp; Art</td><td></td></tr><tr><td>Workshop</td><td></td></tr><tr><td>Engine</td><td></td></tr><tr><td>Reference</td><td></td></tr><tr><td>Shapes</td><td></td></tr><tr><td>Mods</td><td></td></tr><tr><td>Games</td><td></td></tr><tr><td>Pick a genre</td><td></td></tr><tr><td>play → 8-Ball Pool 3D 3D 8-ball pool with AI save and resume, friend matches, practice and Five in Eight challenges. by tuanteku · 15 likes</td><td></td></tr><tr><td>play → Garden Siege 3D Peashooters vs the undead: hold the backyard and save the gnome from ten waves of zombies. by rexgaming_yt · 10 likes</td><td></td></tr><tr><td>play → Call of the Soil: A Bengal Village Adventure Roam a living Bangladeshi village: chat with neighbours, make friends, ride rickshaws and boats, race on the river, and join festivals. Play in English or Bangla. by ayon · 6 likes</td><td></td></tr><tr><td>play → Whisker Brawl 3D Pick a scrappy animal, grab absurd loot, and brawl your way through every rival in the arena. by tuanteku · 6 likes</td><td></td></tr><tr><td>play → WORLD ADVENTURE of PIXELS Run, jump, stomp and bonk ? blocks across a pixel world to reach the flag. by pixelmg_dev · 5 likes</td><td></td></tr><tr><td>play → GEMSMITH 3D Turn the cube, find the match, forge your own puzzles — a new dimension of GEMSMITH. by match3lover · 5 likes</td><td></td></tr><tr><td>play → Sky Ring Arena Multiplayer First-person sword and shield fights with friends: 1v1 and 2v2. Roll, block, parry, riposte. by rexgaming_yt · 0 likes</td><td></td></tr><tr><td>play → Purrtris Arena Pastel cat-cafe arcade in the clouds: walk up to a cat-eared cabinet and play Purrtris: Marathon, Sprint 40 and Versus. by chizkeykkk · 17 likes</td><td></td></tr><tr><td>play → Elemental Blades: Arena of Ascension Anime blade &amp; sorcery arena: fight endless waves with your champions, summon rare heroes, and command them on the War Table. by shadow_ranger_62 · 15 likes</td><td></td></tr><tr><td>play → MGTale Battles multiplayer Undertale-style co-op bullet hell: dodge Flowey, Frisk, Chara, Papyrus, Sans, Toriel, Undyne and Asgore together as hearts, then strike back. Plus endless Survival and a Daily Challenge. by andreamg2tablet · 15 likes</td><td></td></tr><tr><td>play → MG Sans Battle multiplayer Undertale-style bullet hell: dodge MG Sans's bones and blasters together, then strike back. by andreamg2tablet · 12 likes</td><td></td></tr><tr><td>play → Slime Arena Be a slime in a glowing neon glass city. Race the Slime City Loop, duel in the colosseum, survive the Mossmoon Ruins, and wear slimeglass skins that shine. by slime · 11 likes</td><td></td></tr><tr><td>play → Race to the Masjid Thobe on, iqama in 55 seconds. Dodge carts and laundry lines down the street and make it to the masjid on time. by yunusdiallo · 8 likes</td><td></td></tr><tr><td>play → Dragon Racing Fly a drake across the Wyrmcrown Isles: five zones, 28 ring races in Normal and Advanced, zone crowns to earn and 48 hidden glyphs that grow your talent tree. by metalhorse233 · 6 likes</td><td></td></tr><tr><td>play → Crunch-em-up Derby Racing Figure-8 wreck racing at the Hollis County speedway. Hit hard, roll em, keep moving. by nickyp · 3 likes</td><td></td></tr><tr><td>play → Mequavian Racing Three Seven Speedway, full scale. Eight laps, one clock, the MEQUAVIS #41. by cybershrapnel · 3 likes</td><td></td></tr><tr><td>play → Race or Die Ten cars, one floating neon track over a desert city, and a bomb that blows up last place every 30 seconds. by iiisandman · 2 likes</td><td></td></tr><tr><td>play → HyperTrackMania X: Time Trial Racing Arcade time trial racing on 18 tracks: loops, wallrides and jumps. Chase ranked ghosts, top the season leaderboard, earn crates and build your own tracks to share. by hips · 0 likes</td><td></td></tr><tr><td>play → Survive Ragnarök Ragnarok Online meets Vampire Survivors. The old-school MMO you grew up on, rebuilt as a horde survival hunt. Midgard is burning, and the monsters come in waves: hundreds at a time, wave after wave. Step out of Sanctuary by liiv · 18 likes</td><td></td></tr><tr><td>play → Survival at Disaster Floods, tornadoes, meteors and acid rain hit the island town. Survive the round. by vovafromttav · 6 likes</td><td></td></tr><tr><td>play → Building 66 Norilsk, 1994. Seven night shifts in Building 66. Find the fuses, bring the power back, and do not look behind you. by fracture · 4 likes</td><td></td></tr><tr><td>play → Enfo's Team Survival Elves vs the Scourge: up to 5 heroes hold Enfos against waves of undead. by marcelpachole · 4 likes</td><td></td></tr><tr><td>play → Spike's Neon Survival A pygmy hedgehog crunches neon worms across ten glowing arenas. by 0toxika · 4 likes</td><td></td></tr><tr><td>play → Hexagonal Arcology Builder (Peak Oil Survival) Build a hex arkology to 144,000 people before the oil runs out in 2040. by travelingtt · 3 likes</td><td></td></tr><tr><td>play → Super Smash Jayzee Brawl: Ultimate Platform Fighter Knock your friends off a stained-glass stage. A fast platform fighter: smash, combo, tech and edgeguard across six stages, online or on the couch. by hips · 15 likes</td><td></td></tr><tr><td>play → Totally Normal Platformer A cute little platformer. Nothing here is a trap. Probably. by yujiro · 3 likes</td><td></td></tr><tr><td>play → A Perfectly Normal Platformer You navigate crumbling bridges, dodge incoming artillery, and face a hostile cube in a glitchy world that's falling apart. Every checkpoint, every choice, and every death shapes your path to the end. by bigyahu · 0 likes</td><td></td></tr><tr><td>play → Higher Race up disco towers, candy mountains, and alien peaks in this toon-bright climbing arcade. Chase personal bests, unlock epic bean characters, and climb your way to the leaderboard. by chucky · 79 likes</td><td></td></tr><tr><td>play → Skyfall Rush Race across floating anime sky islands that crumble behind you. Dash, shove, and outrun the void. by tiger · 50 likes</td><td></td></tr><tr><td>play → Parkour Rush You're racing against time through dynamic urban environments, vaulting over obstacles and scaling walls to reach the finish. Feel the adrenaline as you master fluid parkour movement and discover the fastest route to vic by majid · 46 likes</td><td></td></tr><tr><td>play → Cartoon horror Find 8 film reels in the foggy woods before Cartoon Cat and Cartoon Dog find you. by lakaplay · 6 likes</td><td></td></tr><tr><td>play → Horror Kill Hold the graveyard fire against waves of horrors crawling out of the moor fog. by nova_golem_79 · 3 likes</td><td></td></tr><tr><td>play → The Lindenmann Part Two (Horror) Part Two. The woods at night, a camcorder, a flashlight, a pistol, and the Lindenmann. by rexgaming_yt · 3 likes</td><td></td></tr><tr><td>play → Ten Days Petsitting (horror) Ten days pet-sitting the sweetest pet on the street. Something changes every day. by ghost_dragon · 2 likes</td><td></td></tr><tr><td>play → Haunted Plushie game: Lingo Pals Horror Stories Learn the Chinese word, pick the right door, or she finds you. by op_nico · 1 likes</td><td></td></tr><tr><td>play → CEREBRAL DECAY A fungus hunts your mind. Leave Shelter-09, scavenge the dark, keep your sanity. by bomb_bo · 31 likes</td><td></td></tr><tr><td>play → 1 Clicker Click the big 1, catch the golden 1, buy mines and super clickers, top the room. by 00ercruptedsupreme · 4 likes</td><td></td></tr><tr><td>play → Clicker Sim click the gem, buy upgrades, rebirth, get stupid rich by sharkyrex16 · 4 likes</td><td></td></tr><tr><td>play → Banana Clicker A giant banana in a field. Click it. Everyone's clicks count. by ohtheicee · 3 likes</td><td></td></tr><tr><td>play → Dark Fountain Clicker Feed the darkness, open fountains, and face the Roaring Knight and Titan in a Deltarune fan clicker. by 0liver · 2 likes</td><td></td></tr><tr><td>play → Cubemunity A cozy community clicker. Break a giant cube together, one layer at a time. by longthunder · 25 likes</td><td></td></tr><tr><td>play → Jayzee Hangout A lakeside town to meet up, talk and play: ski, skate, bowl, shoot pool and fire yourself out of a cannon. by binxius · 2 likes</td><td></td></tr><tr><td>play → Need for Jayzee Build your street car in an underground garage, then run it hot on the night test track. by chucky · 39 likes</td><td></td></tr><tr><td>play → Spawndle Guess the Jayzee game from one screenshot, every day. Plus Wordlock, Fours, Threads and Culprits. by dreamcatcher · 26 likes</td><td></td></tr><tr><td>play → Cat Haven A pink house in the clouds with a glass-domed cat yard. Carry the cats, pet them, run the cloud roads. by chizkeykkk · 25 likes</td><td></td></tr><tr><td>play → Cubemunity A cozy community clicker. Break a giant cube together, one layer at a time. by longthunder · 25 likes</td><td></td></tr><tr><td>play → DOJO CITY Games • Casino • Social Hangout. A Ninja Cat World. by ninjacatlive · 23 likes</td><td></td></tr><tr><td>play → Eldoria [RPG] 120xp A top-down pixel RPG: wake in Trade Central, pick a vocation, hunt, loot and level across ten biomes. by gamex_feed · 2 likes</td><td></td></tr><tr><td>play → Ascend: Real-Life RPG Every real rep is XP. Level 11 RuneScape-style skills, unlock gear, track sober days, and cash in points for rewards you set. by causey · 2 likes</td><td></td></tr><tr><td>play → RPG Fighter Ten RPG heroes, knight to dragoon: pick one and fight best of three in a burning pixel-art keep. by majid · 1 likes</td><td></td></tr><tr><td>play → Escape from Stranglethorn Nine Human classes. A jungle full of valuables. Make it back to Booby Bay. by izkimar · 591 likes</td><td></td></tr><tr><td>play → Diablo Survivors Pick your hero at the camp fire, step through the portal, survive the horde. by izkimar · 177 likes</td><td></td></tr><tr><td>play → Aether Legends Invoca héroes, forma tu escuadrón de seis y rompe al Vacío con cadenas de Brave Burst. by yisus · 67 likes</td><td></td></tr></tbody></table></div>
+<h2 id="images">Images</h2>
+<p>None on this page.</p>
+<h2 id="code-and-data">Code and data</h2>
+<p>None on this page.</p>
+</main>
+</div>
+<footer class="foot"><div class="foot-inner">wiki · every page cites the on-disk sources it was written from</div></footer>
+</body>
+</html>

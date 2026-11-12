@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>jayzee learning record, part 1 (denominators, corpus, keys, escapes, bucket rule, 410) · Wiki</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="topbar">
+<div class="topbar-inner">
+<a class="brand" href="../index.html">wi<span>ki</span></a>
+<nav class="pills"><a href="../cleetus/ci-workflows.html">cleetus</a><a href="../index/cdn-inventory.html">index</a><a class="active" href="../jayzee/maps-glb-urls.html">jayzee</a><a href="../reference-game-16/coverage.html">reference-game-16</a></nav>
+</div>
+</header>
+<div class="layout">
+<nav class="side">
+<h3>Start</h3><ul>
+<li><a href="../index.html">Project wiki: how this wiki is organised</a></li>
+<li><a href="../toc.html">Table of contents</a></li>
+</ul>
+<h3>cleetus</h3><ul>
+<li><a href="../cleetus/ci-workflows.html">CI workflows and npm scripts</a></li>
+<li><a href="../cleetus/docs-folder.html">The docs folder</a></li>
+<li><a href="../cleetus/endpoints.html">Endpoints</a></li>
+<li><a href="../cleetus/engine-decisions.html">Engine decisions: why the jayzee engine notes are shaped as they are</a></li>
+<li><a href="../cleetus/engine-overview.html">Engine overview: the jayzee engine notes (cleetus workspace)</a></li>
+<li><a href="../cleetus/evidence-claims.html">Evidence claims</a></li>
+<li><a href="../cleetus/evidence-overview.html">Evidence overview</a></li>
+<li><a href="../cleetus/featureset-part-1.html">Featureset part 1: cleetus counts, spoint surface, and the relayed streams</a></li>
+<li><a href="../cleetus/featureset-part-2.html">Featureset part 2: streams 12 to 25 and the src/sdk modules</a></li>
+<li><a href="../cleetus/featureset-part-3.html">Featureset part 3: streams 26 to 34</a></li>
+<li><a href="../cleetus/featureset-part-4.html">Featureset part 4: streams 35 to 45, client/core rendering modules</a></li>
+<li><a href="../cleetus/featureset-part-5.html">Featureset part 5: streams 45 to 55, client/core modules</a></li>
+<li><a href="../cleetus/featureset-part-6.html">Featureset part 6: streams 56 to 58 and the improvement opportunities</a></li>
+<li><a href="../cleetus/featureset-part-7.html">Featureset part 7: improvement candidates from streams 43 to 58</a></li>
+<li><a href="../cleetus/featureset-part-8.html">Featureset part 8: agent and room candidates, session store, bake pins, learning record and terrain</a></li>
+<li><a href="../cleetus/featureset-part-9.html">FEATURESET part 9: render, editor, HUD, XR, packages, static serving and server surface</a></li>
+<li><a href="../cleetus/jayzee-gaps.html">Jayzee implementation gaps</a></li>
+<li><a href="../cleetus/manual-build.html">Manual build and check</a></li>
+<li><a href="../cleetus/manual-worklist.html">Manual worklist</a></li>
+<li><a href="../cleetus/morluto-ci-findings.html">Morluto rea PR 9234 CI findings</a></li>
+<li><a href="../cleetus/netcode.html">Netcode</a></li>
+<li><a href="../cleetus/open-gaps.html">Open gaps across the cleetus repository</a></li>
+<li><a href="../cleetus/open-items.html">Open items register</a></li>
+<li><a href="../cleetus/overview.html">Overview of cleetus</a></li>
+<li><a href="../cleetus/parity.html">Parity</a></li>
+<li><a href="../cleetus/runs-overview.html">Runs overview</a></li>
+<li><a href="../cleetus/site-overview.html">Site overview (built manual output)</a></li>
+<li><a href="../cleetus/sources-overview.html">Sources overview</a></li>
+<li><a href="../cleetus/state-and-tooling.html">State and tooling</a></li>
+</ul>
+<h3>index</h3><ul>
+<li><a href="../index/cdn-inventory.html">CDN inventory and manifests</a></li>
+<li><a href="../index/discovery.html">Discovery evidence</a></li>
+<li><a href="../index/exhaustive-index.html">Exhaustive world and GLB index</a></li>
+<li><a href="../index/extra-docs.html">extra docs: the Jayzee game API reference copy</a></li>
+<li><a href="../index/extra-worlds.html">extra world lists and feeds</a></li>
+<li><a href="../index/open-gaps.html">Open gaps in the index</a></li>
+<li><a href="../index/overview.html">Overview of the index project</a></li>
+<li><a href="../index/provenance.html">Provenance manifests</a></li>
+<li><a href="../index/savi-index.html">cleetus index</a></li>
+<li><a href="../index/spawn-index.html">jayzee index</a></li>
+<li><a href="../index/tree/tree-borick.html">The borick/ directory</a></li>
+<li><a href="../index/tree/tree-build-scripts.html">Build, check and discovery scripts, and the patch files</a></li>
+<li><a href="../index/tree/tree-extra.html">The extra/ directory</a></li>
+<li><a href="../index/tree/tree-indexes.html">The index files: COMPLETE_INDEX, EXTRA_WORLD_INDEX and INDEX</a></li>
+<li><a href="../index/tree/tree-open-gaps.html">Open gaps in the top-level index, its directories and the browser state</a></li>
+<li><a href="../index/tree/tree-overview.html">Top-level layout of the jayzee tree</a></li>
+<li><a href="../index/tree/tree-provenance.html">provenance.sha256.txt and the other provenance manifests</a></li>
+<li><a href="../index/tree/tree-savi-directory.html">The cleetus/ directory (old name: savi)</a></li>
+<li><a href="../index/tree/tree-spawn-directory.html">The jayzee/ directory (old name: spawn)</a></li>
+</ul>
+<h3>jayzee</h3><ul>
+<li><a href="../jayzee/maps-glb-urls.html">jayzee GLB URL list (glb-urls-all.tsv)</a></li>
+<li><a href="../jayzee/maps-head-status.html">jayzee world head status lists</a></li>
+<li><a class="current" href="../jayzee/maps-learning-record-part-1.html">jayzee learning record, part 1 (denominators, corpus, keys, escapes, bucket rule, 410)</a></li>
+<li><a href="../jayzee/maps-learning-record-part-2.html">jayzee learning record, part 2 (error keys, non-CDN refs, open items, name decode, /cdn/ attempt)</a></li>
+<li><a href="../jayzee/maps-learning-record.html">jayzee learning record</a></li>
+<li><a href="../jayzee/maps-noncdn-refs.html">jayzee non-CDN data references (unverified-noncdn-refs.tsv)</a></li>
+<li><a href="../jayzee/maps-open-gaps.html">jayzee maps open gaps</a></li>
+<li><a href="../jayzee/maps-overview.html">jayzee maps directory overview</a></li>
+<li><a href="../jayzee/maps-root-worlds.html">jayzee root-linked worlds map</a></li>
+<li><a href="../jayzee/maps-witness-inputs.html">jayzee witness input directories and their sha256 checks</a></li>
+<li><a href="../jayzee/maps-witness.html">jayzee witness scripts</a></li>
+<li><a href="../jayzee/runs-findings.html">Runs findings and decisions</a></li>
+<li><a href="../jayzee/runs-open-gaps.html">Runs open gaps and failures</a></li>
+<li><a href="../jayzee/runs-overview.html">Runs overview</a></li>
+<li><a href="../jayzee/runs-timeline.html">Runs timeline</a></li>
+<li><a href="../jayzee/sources-captures.html">Sources captures</a></li>
+<li><a href="../jayzee/sources-index.html">Sources index</a></li>
+<li><a href="../jayzee/sources-overview.html">Sources overview</a></li>
+</ul>
+<h3>reference-game-16</h3><ul>
+<li><a href="../reference-game-16/coverage.html">Capture coverage: game page</a></li>
+<li><a href="../reference-game-16/download-process.html">Download process: from the join instructions to a working site</a></li>
+<li><a href="../reference-game-16/page-00-overview.html">Game page section: Overview</a></li>
+<li><a href="../reference-game-16/page-01-starters.html">Game page section: Starters</a></li>
+<li><a href="../reference-game-16/page-02-skills.html">Game page section: Skills</a></li>
+<li><a href="../reference-game-16/page-03-animations.html">Game page section: Animations</a></li>
+<li><a href="../reference-game-16/page-04-sound-art.html">Game page section: Sound Art</a></li>
+<li><a href="../reference-game-16/page-05-workshop.html">Game page section: Workshop</a></li>
+<li><a href="../reference-game-16/page-06-engine.html">Game page section: Engine</a></li>
+<li><a href="../reference-game-16/page-07-reference.html">Game page section: Reference</a></li>
+<li><a href="../reference-game-16/page-08-shapes.html">Game page section: Shapes</a></li>
+<li><a href="../reference-game-16/page-09-mods.html">Game page section: Mods</a></li>
+<li><a href="../reference-game-16/page-10-games.html">Game page section: Games</a></li>
+<li><a href="../reference-game-16/page-11-pick-a-genre.html">Game page section: Pick A Genre</a></li>
+<li><a href="../reference-game-16/page-host.html">Host page: Untitled game (@lanmower/game-16)</a></li>
+</ul>
+</nav>
+<main>
+<span class="eyebrow">jayzee</span>
+<h1 id="jayzee-learning-record-part-1-denominators-corpus-keys-escapes-bucket-rule-410">jayzee learning record, part 1 (denominators, corpus, keys, escapes, bucket rule, 410)</h1>
+<h2 id="how-it-works">How it works</h2>
+<p>This page is part 1 of the jayzee learning record. It carries sections 1 to 6 of /workspace/spawn/maps/spawn-learning-record.md (old name: spawn). The record states that every figure is jayzee-reported and scoped to what was reached, and that nothing in it is a universal claim. Each figure names its denominator, and the denominators are kept separate and never merged.</p>
+<p>The record's provenance paths under /tmp/spawn-probe (old name: spawn) are ephemeral. Durable copies of the 2580-row results and verify-v3.mjs are in /workspace/savi/spawn-evidence/ (old name: savi) (old name: spawn), at cleetus commit e88b95c.</p>
+<p>The witness scripts in /workspace/spawn/maps/witness/ (old name: spawn) were re-run for this wiki on the disk copy. Their outputs are recorded on the witness page, where each figure below that has a script can be checked.</p>
+<h3 id="1-denominators-keep-separate-never-merge">1. Denominators (keep separate, never merge)</h3>
+<div class="table-wrap"><table><thead><tr><th>Denominator</th><th>Value</th><th>Meaning</th><th>Witness</th></tr></thead><tbody><tr><td>Text-visible file-map keys</td><td>307</td><td>Distinct <code>world.assets/&lt;hh&gt;/...yaml</code> keys found in text files under /tmp/spawn-probe (old name: spawn) and the witness maps. Historical original: <code>encoder-test.mjs</code> over 1173 files, <code>distinctKeys:307</code>. Not reproducible from the original input, which is not preserved. Durable reproduction: <code>node witness/text-visible-307-derive-durable.mjs</code> reads only <code>witness/text-visible-307-inputs/</code> (38 content-addressed inputs, 6.6 MB, each file named by its sha256, <code>hashMismatches:0</code>) and prints <code>distinctKeys:307, valueSha:298, namedNoSha:9, tilde2fOccurrences:614, tilde3a:0, tilde7e:0</code>. The key list <code>witness/text-visible-307-keys.txt</code> is the same set. The original 1173-file scope is not reproduced. The completeness of the 67 contributing paths (38 unique contents) rests on an ephemeral mtime-cutoff scan of 1154 files (<code>witness/text-visible-307-derive.mjs</code>), recorded in <code>witness/text-visible-307-inputs.sha256.txt</code>.</td><td><code>witness/text-visible-307-keys.txt</code>, <code>witness/text-visible-307-derive.mjs</code></td></tr><tr><td>Unique decoded-frame keys</td><td>11987</td><td>Distinct <code>world.assets/&lt;hh&gt;/...yaml</code> keys matched in decoded frames of the 2580 manifests</td><td><code>node reconcile-gap.mjs</code> gives <code>kwUniqueAcrossAll:11987</code> (re-run in audit, same value)</td></tr><tr><td>Maps-only keys</td><td>288</td><td>Distinct <code>world.assets/&lt;hh&gt;/...yaml</code> keys in the maps tree, EXCLUDING <code>witness/text-visible-307-inputs/</code> (the 38 inputs of the 307 derivation). Re-run in audit: <code>{&quot;files&quot;:78,&quot;filesWithKeys&quot;:25,&quot;distinctKeys&quot;:288}</code>. The earlier figure &quot;77 files&quot; was a file-count of a different scope; the key count 288 held. Running <code>witness/text-key-census.mjs</code> over the whole maps tree returns 307, because it includes the inputs, so the exclusion is required.</td><td>Inline census over /workspace/spawn/maps (old name: spawn) minus the inputs directory (audit re-run)</td></tr><tr><td>Manifests</td><td>2580</td><td>World-store manifests reached (manifest hash from /cdn-scan pairs)</td><td>Durable: /workspace/savi/spawn-evidence/data/manifests-all-v3-results.jsonl (old name: savi) (old name: spawn), 2580 rows, 2580 unique <code>m</code> (re-counted in audit). Ephemeral: /tmp/spawn-probe/v3/results.jsonl (old name: spawn)</td></tr><tr><td>Worlds with /cdn/ GLB refs</td><td>399</td><td>Worlds with at least one <code>/cdn/</code> GLB ref</td><td>maps/glb-urls-all.tsv (old name: spawn), 2416 GLB rows, 399 distinct worlds (re-counted in audit)</td></tr></tbody></table></div>
+<p>Within the 11987: 11679 keys carry a value sha (<code>~2fcdn~2fvalue.&lt;sha64&gt;.&lt;ext&gt;.yaml</code>) and 308 are named (<code>~2fcdn~2f&lt;name&gt;.&lt;ext&gt;.yaml</code>, no sha). All 11987 start <code>~2fcdn~2f</code>. None fall outside <code>/cdn/</code>.</p>
+<h3 id="2-manifest-corpus-2580">2. Manifest corpus (2580)</h3>
+<ul><li>All 2580 manifests returned HTTP 200 on the scan. Witness: <code>SUMMARY {total:2580, rows:2580, status200:2580, nonOk:0}</code> from <code>verify-all-manifests.mjs</code> (run verify-magic-b, exit 0). This script is not in maps/; only its summary line is recorded.</li><li>Frames: 229921 in total.</li><li>Chain: every manifest's frame chain ends exactly at EOF (2580/2580). Frame count equals sheet hash count (2580/2580). Frames are ordered against sheet hashes (orderedFrames 229921).</li><li>Decode-before-hash: a frame is decoded only when it begins <code>1f 8b 08</code>. There is 1 gzip frame in the whole corpus (manifest <code>d048ad06…fca</code>, frame index 2, length 175). Its decoded sha256 equals <code>sheet.hashes[2]</code> (<code>13abafd8…9314</code>). Witness: <code>gzipFrames:1, gzipDecodedMatch:1, gzipFail:0, rawMatch:229920</code>. Scoped to the 2580 reached: 2580/2580 decode-before-hash.</li><li>Sibling passes over all 2580 sheets: raw hash <code>0016de86…9a132</code> is found in 0 sheets. Decoded hash <code>13abafd8…9314</code> is found only in its own exception sheet.</li></ul>
+<h3 id="3-key-occurrence-counts-and-the-three-2f-scopes">3. Key-occurrence counts and the three <code>~2f</code> scopes</h3>
+<ul><li>Raw key occurrences: 12259 (sum of <code>keyCount</code> over the 2580 rows; equals the sum of <code>worldAssets</code>).</li><li>Per-manifest unique key occurrences: 12186. The 73 difference is the same key repeated within one manifest, across 61 manifests (<code>withinManifestRepeatSum:73</code>, <code>negativeDiffs:0</code>).</li><li>Unique keys across the scope: 11987. The 199 difference from 12186 is cross-manifest duplicates.</li><li><code>~2f</code> scopes. Each key carries exactly two <code>~2f</code>:</li><li>24518 = 2 × 12259, raw occurrences across all decoded frames (frame-level TILDE regex over every decoded frame).</li><li>24372 = 2 × 12186, per-manifest unique key lines.</li><li>23974 = 2 × 11987, unique keys.</li><li>Frame-level tilde tokens over all decoded frames: <code>~2f</code> 24518, <code>~3a</code> 0, <code>~7e</code> 0. Other tilde-like tokens (about 89 in total) are not key escapes and are not classified.</li></ul>
+<h3 id="4-escape-and-spawnfile-negatives-scoped-not-universal">4. Escape and spawnfile negatives (SCOPED, not universal)</h3>
+<ul><li><code>~3a</code>: 0 of 307 text-visible keys; 0 of 11987 unique decoded keys; 0 frame-level tokens in decoded frames of the 2580.</li><li><code>~7e</code>: 0 reached occurrences in text-visible keys; 0 in unique decoded keys; 0 frame-level tokens.</li><li>Bare tilde in keys: 0 at both scopes.</li><li>spawnfile: <code>manifestsWithSpawnfile:0</code>, <code>spawnfileOccurrences:0</code> across decoded frames of the 2580. Seven candidate key classes, all 0 across 11987 decoded keys: <code>spawnfile</code>, <code>https~3a</code>, <code>~3a</code>, <code>character-assets</code>, <code>savi-reduced</code>, <code>fitted</code>, <code>prod~2f</code>.</li><li>These are negatives within the reached scope only. The 307-key census covers text-visible keys only, and the 11987-key scan covers decoded frames of 2580 manifests only.</li></ul>
+<h3 id="5-bucket-rule-for-worldassets">5. Bucket rule for <code>world.assets/&lt;xx&gt;/</code></h3>
+<p>Status: UNDETERMINED. Both families are falsified, not promoted.</p>
+<ul><li>Sha-only functions falsified: <code>19b737ea8843…</code> appears as <code>…jpeg.yaml</code> under bucket <code>87</code> and as <code>…jpg.yaml</code> under bucket <code>f6</code>. Ten sha-based and rest-based hypotheses are at chance. Denominator 11679 sha keys, except the two items marked &quot;of 11987&quot; (<code>sha256(rest)</code>, <code>sha256(key)</code>), which use all 11987 keys. Audit status: NOT re-run as the record's own figures. The counts are record-reported (see the re-run note below). The falsifier was re-witnessed in the audit. Counts: (<code>sha[0:2]</code> 47, <code>sha[-2:]</code> 53, <code>sha256(sha)[0:2]</code> 36, <code>md5(sha)[0:2]</code> 49, <code>sha1(sha)[0:2]</code> 40, <code>sha256(&quot;value.&quot;+sha+&quot;.&quot;+ext)[0:2]</code> 47, <code>sha256(rest)[0:2]</code> 51 of 11987, <code>sha256(key)[0:2]</code> 55 of 11987, <code>sha256(&quot;/cdn/value.&quot;+sha+&quot;.&quot;+ext)[0:2]</code> 50, <code>sha256(&quot;/cdn/value.&quot;+sha+&quot;.&quot;+ext+&quot;.yaml&quot;)[0:2]</code> 44). Chance 1/256 ≈ 0.00391.</li><li>World-identity hypotheses (11857 keys in one world, chance ≈ 46.3 hits): <code>uuid_nodash[0:2]</code> 54, <code>uuid_nodash[-2:]</code> 30, <code>sha256(uuid_nodash)[0:2]</code> 53, <code>sha256(uuid)[0:2]</code> 52, <code>md5(uuid_nodash)[0:2]</code> 38, <code>manifest[0:2]</code> 42, <code>sha256(manifest)[0:2]</code> 64 (+2.6σ on one of 15 tests, not promoted), <code>sha256(uuid_nodash+rest)[0:2]</code> 54, <code>sha256(uuid+&quot;/&quot;+rest)[0:2]</code> 48, <code>sha256(uuid_nodash+&quot;/&quot;+rest)[0:2]</code> 47, <code>sha256(rest+uuid_nodash)[0:2]</code> 60, <code>sha256(manifest+rest)[0:2]</code> 51, and with a sha (n=11552) <code>sha256(uuid_nodash+sha)[0:2]</code> 39, <code>sha256(sha+uuid_nodash)[0:2]</code> 36, <code>sha256(&quot;/cdn/&quot;+sha+&quot;.&quot;+ext)[0:2]</code> 47.</li><li>Observed: 130 keys appear in 2 to 5 worlds with a single bucket each (the bucket is in the key string, so this only shows that shared content keeps one bucket).</li><li>Re-run note for this wiki: /workspace/spawn/maps/witness/encoder-bucket/bucket-test.mjs (old name: spawn) was run on the disk copy. It walks /tmp/spawn-probe (old name: spawn) and the witness tree, finds 11679 distinct (bucket, sha, ext) pairs across 256 buckets, and returns scores <code>sha256_of_sha_hex_prefix</code> 47, <code>sha256_of_name</code> 50, <code>sha256_of_keyname</code> 54, <code>sha256_of_sha_bytes</code> 34, <code>sha256_of_sha_string</code> 36, <code>md5_of_name</code> 45, <code>sha1_of_name</code> 51, <code>sha256_of_ext</code> 34. Four record figures reproduce exactly (<code>sha[0:2]</code> 47, <code>sha256(sha)[0:2]</code> 36, the <code>/cdn/value.</code> name hash 50 and the key hash 54 on 11679 pairs, against the record's 55 on 11987). The md5 and sha1 entries do not match the record (45 and 51 against 49 and 40), because the script defines them over the &quot;/cdn/value.&quot; name, not over the bare sha. The record's ten-function list is therefore not fully reproduced by any script in the tree.</li><li>/workspace/spawn/maps/witness/encoder-bucket/bucket-test3.mjs (old name: spawn) tests frame-body, frame-whole, key-text and value-sha hypotheses over 279 distinct keys in decoded frames of the sample; all four counts are 0. This is consistent with the bucket being not a function of the frame body or of the key text.</li></ul>
+<h3 id="6-gone-410-open">6. Gone 410 (OPEN)</h3>
+<ul><li>41 probes, no body-level 410. The total of 41 is record-reported. Durable bodies exist only for the classes of probes 39 to 41 (<code>witness/ra-*.body</code>, <code>witness/rb-*.body</code>). Probe 41 class: resolve-adventure for a feed world absent from the 74-entry root map (<code>@maguer/astroimpero-blitz</code>, from /workspace/savi/spawn-evidence/data/feed-worlds.json (old name: savi) (old name: spawn), not in the root map). Result: status 200, 240 bytes, <code>type:found</code>, <code>worldId 60c01514-…</code>. Negative, stopped as instructed.</li><li>Probe 39 class: resolve-adventure with a bare world uuid as the address. Result: status 200, 41 bytes, body <code>{&quot;ok&quot;:true,&quot;result&quot;:{&quot;type&quot;:&quot;not_found&quot;}}</code>.</li><li>Probe 40 class: resolve-adventure with a percent-encoded address (<code>%40borickk%2Fgta-earth</code>, the found adventure from <code>witness/ra-0.body</code>). Result: status 200, 225 bytes, body <code>type:found</code>, the same as the plain form.</li><li>Earlier resolve-adventure probes returned found, not_found, 400 Invalid query, and 308/307 redirects with body &quot;Redirecting...&quot;.</li></ul>
+<p>The witness bodies match these descriptions: ra-0, ra-3 and ra-5 are <code>type:found</code> for worldId 4e709464-ecfc-408f-980a-c3b5b46b0ee3 (GTA Earth); ra-1, ra-2, ra-4, ra-6 and ra-7 are <code>type:not_found</code>; rb-0 and rb-1 are <code>{&quot;ok&quot;:false,&quot;error&quot;:&quot;Invalid query&quot;}</code>; rb-2 to rb-4 are the text &quot;Redirecting...&quot;; rb-5 is <code>type:found</code> for Deepfall (worldId 4b37bdd8-06b1-42e4-980a-443e48806c1f); rb-6 and rb-7 are <code>type:found</code> for GTA Earth. The 410 status itself is not present in any body, so the 410 status is OPEN.</p>
+<h2 id="decisions">Decisions</h2>
+<ul><li>Keep the denominators in separate rows and never merge them. Evidence: section 1 of the record lists five denominators (307, 11987, 288, 2580, 399), each with its own witness, and the record says &quot;keep separate, never merge&quot;.</li><li>Count the maps-only keys with the inputs excluded. Evidence: the census over the whole maps tree returns 307 (re-run for this wiki: <code>filesScanned 116, filesWithKeys 63, distinctKeys 307</code>), while the census over the inputs alone returns 307 (<code>filesScanned 38, filesWithKeys 38</code>). The 288 figure needs the exclusion, as the record states.</li><li>Decode a frame only when it begins with the gzip magic. Evidence: the record's section 2 gives the single gzip frame and its match, gzipFail 0.</li><li>Record the bucket rule as UNDETERMINED rather than promote any hypothesis. Evidence: section 5 gives 10 sha hypotheses and 15 world-identity hypotheses, all within chance or flagged +2.6σ on one of 15 tests, and the re-run in this wiki matches only some of them.</li><li>Report 410 as OPEN. Evidence: section 6 records 41 probes with no body-level 410, and the witness bodies contain no 410.</li></ul>
+<h2 id="open-gaps">Open gaps</h2>
+<ul><li>The 307 count is not reproducible from the original 1173-file input, which is not preserved (section 1).</li><li>The original 1173-file input and the ephemeral probe tree /tmp/spawn-probe (old name: spawn) are not in maps/.</li><li>Bucket rule: UNDETERMINED. The md5 and sha1 hypotheses in the record do not match the script in the tree (section 5).</li><li>The ten-function list of the bucket rule is not fully reproduced by a script in the tree (section 5).</li><li>Gone 410: OPEN. 41 probes, no body-level 410 (section 6).</li><li>The record's 41-probe total is record-reported; only the bodies of the classes listed above are in the tree.</li></ul>
+<h2 id="sources">Sources</h2>
+<ul><li>/workspace/spawn/maps/spawn-learning-record.md (old name: spawn), sections 1 to 6</li><li>/workspace/spawn/maps/witness/text-visible-307-keys.txt (old name: spawn)</li><li>/workspace/spawn/maps/witness/text-visible-307-derive-durable.mjs (old name: spawn)</li><li>/workspace/spawn/maps/witness/text-visible-307-derive.mjs (old name: spawn)</li><li>/workspace/spawn/maps/witness/text-visible-307-inputs.sha256.txt (old name: spawn)</li><li>/workspace/spawn/maps/witness/text-key-census.mjs (old name: spawn)</li><li>/workspace/spawn/maps/witness/encoder-bucket/encoder-test.mjs (old name: spawn)</li><li>/workspace/spawn/maps/witness/encoder-bucket/bucket-test.mjs (old name: spawn)</li><li>/workspace/spawn/maps/witness/encoder-bucket/bucket-test3.mjs (old name: spawn)</li><li>/workspace/spawn/maps/witness/manifest-chain.mjs (old name: spawn)</li><li>/workspace/spawn/maps/witness/manifest-hashmatch.mjs (old name: spawn)</li><li>/workspace/spawn/maps/witness/manifest-sample40/manifest-check.mjs (old name: spawn)</li><li>/workspace/spawn/maps/witness/ra-0.body (old name: spawn) to /workspace/spawn/maps/witness/ra-7.body (old name: spawn)</li><li>/workspace/spawn/maps/witness/rb-0.body (old name: spawn) to /workspace/spawn/maps/witness/rb-7.body (old name: spawn)</li><li>/workspace/spawn/maps/glb-urls-all.tsv (old name: spawn)</li><li>/workspace/savi/spawn-evidence/ (old name: savi) (old name: spawn), data/manifests-all-v3-results.jsonl and data/feed-worlds.json</li><li>/tmp/spawn-probe/ (old name: spawn), ephemeral</li></ul>
+</main>
+</div>
+<footer class="foot"><div class="foot-inner">wiki · every page cites the on-disk sources it was written from</div></footer>
+</body>
+</html>
