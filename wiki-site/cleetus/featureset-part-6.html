@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Featureset part 6: streams 56 to 58 and the improvement opportunities · Wiki</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="topbar">
+<div class="topbar-inner">
+<a class="brand" href="../index.html">wi<span>ki</span></a>
+<nav class="pills"><a class="active" href="../cleetus/ci-workflows.html">cleetus</a><a href="../index/cdn-inventory.html">index</a><a href="../jayzee/maps-glb-urls.html">jayzee</a><a href="../reference-game-16/coverage.html">reference-game-16</a></nav>
+</div>
+</header>
+<div class="layout">
+<nav class="side">
+<h3>Start</h3><ul>
+<li><a href="../index.html">Project wiki: how this wiki is organised</a></li>
+<li><a href="../toc.html">Table of contents</a></li>
+</ul>
+<h3>cleetus</h3><ul>
+<li><a href="../cleetus/ci-workflows.html">CI workflows and npm scripts</a></li>
+<li><a href="../cleetus/docs-folder.html">The docs folder</a></li>
+<li><a href="../cleetus/endpoints.html">Endpoints</a></li>
+<li><a href="../cleetus/engine-decisions.html">Engine decisions: why the jayzee engine notes are shaped as they are</a></li>
+<li><a href="../cleetus/engine-overview.html">Engine overview: the jayzee engine notes (cleetus workspace)</a></li>
+<li><a href="../cleetus/evidence-claims.html">Evidence claims</a></li>
+<li><a href="../cleetus/evidence-overview.html">Evidence overview</a></li>
+<li><a href="../cleetus/featureset-part-1.html">Featureset part 1: cleetus counts, spoint surface, and the relayed streams</a></li>
+<li><a href="../cleetus/featureset-part-2.html">Featureset part 2: streams 12 to 25 and the src/sdk modules</a></li>
+<li><a href="../cleetus/featureset-part-3.html">Featureset part 3: streams 26 to 34</a></li>
+<li><a href="../cleetus/featureset-part-4.html">Featureset part 4: streams 35 to 45, client/core rendering modules</a></li>
+<li><a href="../cleetus/featureset-part-5.html">Featureset part 5: streams 45 to 55, client/core modules</a></li>
+<li><a class="current" href="../cleetus/featureset-part-6.html">Featureset part 6: streams 56 to 58 and the improvement opportunities</a></li>
+<li><a href="../cleetus/featureset-part-7.html">Featureset part 7: improvement candidates from streams 43 to 58</a></li>
+<li><a href="../cleetus/featureset-part-8.html">Featureset part 8: agent and room candidates, session store, bake pins, learning record and terrain</a></li>
+<li><a href="../cleetus/featureset-part-9.html">FEATURESET part 9: render, editor, HUD, XR, packages, static serving and server surface</a></li>
+<li><a href="../cleetus/jayzee-gaps.html">Jayzee implementation gaps</a></li>
+<li><a href="../cleetus/manual-build.html">Manual build and check</a></li>
+<li><a href="../cleetus/manual-worklist.html">Manual worklist</a></li>
+<li><a href="../cleetus/morluto-ci-findings.html">Morluto rea PR 9234 CI findings</a></li>
+<li><a href="../cleetus/netcode.html">Netcode</a></li>
+<li><a href="../cleetus/open-gaps.html">Open gaps across the cleetus repository</a></li>
+<li><a href="../cleetus/open-items.html">Open items register</a></li>
+<li><a href="../cleetus/overview.html">Overview of cleetus</a></li>
+<li><a href="../cleetus/parity.html">Parity</a></li>
+<li><a href="../cleetus/runs-overview.html">Runs overview</a></li>
+<li><a href="../cleetus/site-overview.html">Site overview (built manual output)</a></li>
+<li><a href="../cleetus/sources-overview.html">Sources overview</a></li>
+<li><a href="../cleetus/state-and-tooling.html">State and tooling</a></li>
+</ul>
+<h3>index</h3><ul>
+<li><a href="../index/cdn-inventory.html">CDN inventory and manifests</a></li>
+<li><a href="../index/discovery.html">Discovery evidence</a></li>
+<li><a href="../index/exhaustive-index.html">Exhaustive world and GLB index</a></li>
+<li><a href="../index/extra-docs.html">extra docs: the Jayzee game API reference copy</a></li>
+<li><a href="../index/extra-worlds.html">extra world lists and feeds</a></li>
+<li><a href="../index/open-gaps.html">Open gaps in the index</a></li>
+<li><a href="../index/overview.html">Overview of the index project</a></li>
+<li><a href="../index/provenance.html">Provenance manifests</a></li>
+<li><a href="../index/savi-index.html">cleetus index</a></li>
+<li><a href="../index/spawn-index.html">jayzee index</a></li>
+<li><a href="../index/tree/tree-borick.html">The borick/ directory</a></li>
+<li><a href="../index/tree/tree-build-scripts.html">Build, check and discovery scripts, and the patch files</a></li>
+<li><a href="../index/tree/tree-discovery.html">The discovery/ directory</a></li>
+<li><a href="../index/tree/tree-exhaustive.html">The exhaustive/ directory</a></li>
+<li><a href="../index/tree/tree-extra.html">The extra/ directory</a></li>
+<li><a href="../index/tree/tree-indexes.html">The index files: COMPLETE_INDEX, EXTRA_WORLD_INDEX and INDEX</a></li>
+<li><a href="../index/tree/tree-open-gaps.html">Open gaps in the top-level index, its directories and the browser state</a></li>
+<li><a href="../index/tree/tree-overview.html">Top-level layout of the jayzee tree</a></li>
+<li><a href="../index/tree/tree-provenance.html">provenance.sha256.txt and the other provenance manifests</a></li>
+<li><a href="../index/tree/tree-savi-directory.html">The cleetus/ directory (old name: savi)</a></li>
+<li><a href="../index/tree/tree-spawn-directory.html">The jayzee/ directory (old name: spawn)</a></li>
+</ul>
+<h3>jayzee</h3><ul>
+<li><a href="../jayzee/maps-glb-urls.html">jayzee GLB URL list (glb-urls-all.tsv)</a></li>
+<li><a href="../jayzee/maps-head-status.html">jayzee world head status lists</a></li>
+<li><a href="../jayzee/maps-learning-record-part-1.html">jayzee learning record, part 1 (denominators, corpus, keys, escapes, bucket rule, 410)</a></li>
+<li><a href="../jayzee/maps-learning-record-part-2.html">jayzee learning record, part 2 (error keys, non-CDN refs, open items, name decode, /cdn/ attempt)</a></li>
+<li><a href="../jayzee/maps-learning-record.html">jayzee learning record</a></li>
+<li><a href="../jayzee/maps-noncdn-refs.html">jayzee non-CDN data references (unverified-noncdn-refs.tsv)</a></li>
+<li><a href="../jayzee/maps-open-gaps.html">jayzee maps open gaps</a></li>
+<li><a href="../jayzee/maps-overview.html">jayzee maps directory overview</a></li>
+<li><a href="../jayzee/maps-root-worlds.html">jayzee root-linked worlds map</a></li>
+<li><a href="../jayzee/maps-witness-inputs.html">jayzee witness input directories and their sha256 checks</a></li>
+<li><a href="../jayzee/maps-witness.html">jayzee witness scripts</a></li>
+<li><a href="../jayzee/runs-findings.html">Runs findings and decisions</a></li>
+<li><a href="../jayzee/runs-open-gaps.html">Runs open gaps and failures</a></li>
+<li><a href="../jayzee/runs-overview.html">Runs overview</a></li>
+<li><a href="../jayzee/runs-timeline.html">Runs timeline</a></li>
+<li><a href="../jayzee/sources-captures.html">Sources captures</a></li>
+<li><a href="../jayzee/sources-index.html">Sources index</a></li>
+<li><a href="../jayzee/sources-overview.html">Sources overview</a></li>
+</ul>
+<h3>reference-game-16</h3><ul>
+<li><a href="../reference-game-16/coverage.html">Capture coverage: game page</a></li>
+<li><a href="../reference-game-16/download-process.html">Download process: from the join instructions to a working site</a></li>
+<li><a href="../reference-game-16/page-00-overview.html">Game page section: Overview</a></li>
+<li><a href="../reference-game-16/page-01-starters.html">Game page section: Starters</a></li>
+<li><a href="../reference-game-16/page-02-skills.html">Game page section: Skills</a></li>
+<li><a href="../reference-game-16/page-03-animations.html">Game page section: Animations</a></li>
+<li><a href="../reference-game-16/page-04-sound-art.html">Game page section: Sound Art</a></li>
+<li><a href="../reference-game-16/page-05-workshop.html">Game page section: Workshop</a></li>
+<li><a href="../reference-game-16/page-06-engine.html">Game page section: Engine</a></li>
+<li><a href="../reference-game-16/page-07-reference.html">Game page section: Reference</a></li>
+<li><a href="../reference-game-16/page-08-shapes.html">Game page section: Shapes</a></li>
+<li><a href="../reference-game-16/page-09-mods.html">Game page section: Mods</a></li>
+<li><a href="../reference-game-16/page-10-games.html">Game page section: Games</a></li>
+<li><a href="../reference-game-16/page-11-pick-a-genre.html">Game page section: Pick A Genre</a></li>
+<li><a href="../reference-game-16/page-host.html">Host page: Untitled game (@lanmower/game-16)</a></li>
+</ul>
+</nav>
+<main>
+<span class="eyebrow">cleetus</span>
+<h1 id="featureset-part-6-streams-56-to-58-and-the-improvement-opportunities">Featureset part 6: streams 56 to 58 and the improvement opportunities</h1>
+<h2 id="how-it-works">How it works</h2>
+<p>This page covers lines 820 to 928 of docs/FEATURESET.md (old name: savi). It continues <a href="featureset-part-5.html">featureset-part-5.md</a> and is followed by <a href="featureset-part-7.html">featureset-part-7.md</a>. It has three parts: the edge Cloudflare Durable Object files and two src/sdk groups (streams 56 to 58), a list of improvement opportunities, and a set of grep-based candidates from streams 33 to 44 that the file itself says are not verified defects.</p>
+<p>The method is the same as the other parts. Each citation is path and line at spoint d5e3860 (read-only), re-read through git show. Coverage requires a witness script that names the module and prints RESULT. Importers, concept prose, claim strings in scripts/lib/verify-doc-claims.mjs, and source-text reads are disclosed and not counted as coverage.</p>
+<p>The owner rule quoted in the file says the documented featureset is a floor. Where spoint's design is weaker, jayzee should build the better version, and matching spoint's behaviour is not the requirement. The items on this page are therefore improvement opportunities for jayzee, not behaviours to reproduce. The relevant jayzee rows are in <a href="jayzee-gaps.html">jayzee-gaps.md</a> (rows 50, 60 and 39).</p>
+<h3 id="stream-56-edge-cloudflare-durable-object-files">Stream 56: edge Cloudflare Durable Object files</h3>
+<p>The four files total 272 lines (59, 102, 21 and 90). cleetus has no word hits for accept-request, do-client-probe, jolt-edge-init, spoint-do or SpointGameRoom.</p>
+<ul><li>edge/cf-do/accept-request.js line 29, acceptRoomRequest(request): 59 lines, 3 exports (acceptRoomRequest, acceptEdgeRequest and refuseResponse). Imported by edge/cf-do/spoint-do.js. No witness.</li><li>edge/cf-do/do-client-probe.mjs line 1, an import of the ws package: 102 lines, no exports. A top-level Node script with no importer. It is run by hand against a live Worker and prints a JSON result with an ok field. It prints no RESULT line, so it is not a witness.</li><li>edge/cf-do/jolt-edge-init.js line 8, initJoltForEdge(): 21 lines, 1 export. Imported by edge/cf-do/spoint-do.js. No witness.</li><li>edge/cf-do/spoint-do.js line 41, class SpointGameRoom: 90 lines, 2 exports (the class and the default Worker export at line 73). Imported by no module, as the Worker entry. No witness.</li></ul>
+<h3 id="stream-57-srcsdk-modules-with-no-per-file-citation">Stream 57: src/sdk modules with no per-file citation</h3>
+<p>The seven modules total 356 lines (39, 52, 30, 51, 58, 76 and 50). The citation test uses the full repository path, so a shorthand name in a list is not a citation.</p>
+<ul><li>src/sdk/WorldLocator.js line 7, worldRoots(project, sdkRoot): 39 lines, 5 exports (worldRoots, findWorldFile, readDefaultWorldName, locateWorld and loadWorldModule). Imported by 13 tracked files, including bin/router-boot.js, src/sdk/MinimapBake.js, src/sdk/RoomDirectory.js, src/sdk/ServerBoot.js and bake and harness scripts. Five RESULT-printing scripts import it and call loadWorldModule: scripts/chart-reanchor-wire-harness.mjs, scripts/cluster-world-harness.mjs, scripts/grass-seam-card-witness.mjs, scripts/planet-multiplayer-harness.mjs and scripts/shared-lattice-surface-witness.mjs. The last two load it through href(). All five are behavioural witnesses. So the stream's statement that no witness names this module for behaviour does not hold for WorldLocator. src/static/BakeCodeVersion.js lists it as a bake input, which is not coverage.</li><li>src/sdk/RoomHealth.js line 1, class RoomHealthError: 52 lines, 2 exports (RoomHealthError and createRoomHealth). No importer in the tracked tree. No witness.</li><li>src/sdk/RoomPick.js line 3, class RoomPickError: 30 lines, 2 exports (RoomPickError and selectRoomForJoin). Imported by src/sdk/RoomOrchestrator.js. No witness.</li><li>src/sdk/RoomRouting.js line 22, firstOpenRoom(rooms, options): 51 lines, 4 exports. No importer in src/. scripts/room-routing-witness.mjs imports the exports and prints RESULT, so it is the only behavioural witness.</li><li>src/sdk/SceneImport.js line 28, mapSceneObject(object, kindToTemplate, index): 58 lines, 2 exports (mapSceneObject and mapScene). No importer in the tracked tree. No witness.</li><li>src/sdk/TiledImport.js line 58, importTiledMap(map): 76 lines, 1 export. No importer. No witness.</li><li>src/sdk/scaffold.js line 34, scaffold(): 50 lines, 1 export. No importer. scripts/lib/verify-doc-claims.mjs names it in a claim string and imports nothing from it, so that is not a witness. No witness.</li></ul>
+<p>Disclosed, not coverage: the cleetus lists in docs/PARITY-INPUTS.md and docs/FEATURESET.md name these modules as shorthand list items. docs/JAYZEE-GAPS.md row 50 names RoomHealth, RoomPick and RoomRouting in concept-level prose. docs/FEATURESET.md names WorldLocator only as an importer of worldPresets.js.</p>
+<h3 id="stream-58-server-presence-room-directory-agent-authoring-and-nostr-auth">Stream 58: server presence, room directory, agent authoring and nostr auth</h3>
+<p>The four modules total 510 lines (109, 102, 126 and 173). ServerWeather.js is held by spoint and is not in this stream.</p>
+<ul><li>src/sdk/NostrAuthServer.js line 27, createNostrAuthServer({ enableChallenge, challengeTimeoutMs }): 109 lines, 1 export. Imported by src/sdk/ServerHandlers.js. No witness.</li><li>src/sdk/ServerPresence.js line 37, createServerPresence(opts): 102 lines, 1 export. Imported by src/sdk/ServerBoot.js. No witness.</li><li>src/sdk/RoomDirectory.js line 6, class RoomDirectory: 126 lines, 1 export. Imported by bin/room-worker-boot.js and by the src/sdk process worker covered in stream 25 part 2. No witness. The importer-only citation in that section is not coverage.</li><li>src/sdk/AgentAuthoringAPI.js line 51, createAgentAuthoringHandler(): 173 lines, 1 export. Imported by src/sdk/ServerAPI.js and routed for /agent/ paths. scripts/verify-app.mjs calls the read routes /agent/apps and /agent/entities over HTTP against a live server and prints RESULT. That is a live behavioural witness of the read routes only. The module is not imported there, and no tracked witness covers the write routes.</li></ul>
+<p>Disclosed, not coverage: docs/PARITY-INPUTS.md, docs/FEATURESET.md and docs/JAYZEE-GAPS.md row 50 list all four as concept-level prose. docs/FEATURESET.md line 580 records that AgentAuthoringAPI.js names create-app.js, a reference from another module that is not coverage of this one.</p>
+<h3 id="improvement-opportunities-not-behaviour-to-match">Improvement opportunities (not behaviour to match)</h3>
+<p>The owner rule makes the documented featureset a floor. Each item is spoint's weaker design, recorded for jayzee to build better:</p>
+<ul><li>src/connection/SessionStore.js line 11, this.ttl = options.ttl || 30000: a silent default for the session time-to-live. A missing or zero option falls back to 30000 without a warning.</li><li>src/game/StatsSystem.js line 8, spec.xpPerLevel else 100: a silent experience-per-level default of 100 when the spec does not give a positive number.</li><li>src/sdk/SESCompartmentEvaluator.js line 125, endowments.__checkBudget: the budget check is defined here and has no caller anywhere in the repository at d5e3860, so the step budget is not enforced through it.</li><li>src/static/BakeCodeVersion.js line 147, inputs: BAKE_INPUTS_GLB_TRANSFORM: the GLB transform pin lists a named set of inputs, not the import closure of its entry, so an edit to an unlisted import does not change the pin.</li></ul>
+<p>The next items come from streams 33 to 35. They are grep-based candidates, not verified defects, and they are not behaviours jayzee must reproduce:</p>
+<ul><li>src/shared/SpawnSurface.js line 68: a non-finite terrainY silently takes the branch that ignores it. The argument check validates pose[1] but not terrainY.</li><li>src/shared/colliderLattice.js lines 10 and 19: an invalid physics.extent or physics.resolution returns null, which the ?? replaces with a literal default, so no refusal is raised.</li><li>src/shared/MinimapBiome.js line 38: a non-finite height zero-fills the output and returns null, a sentinel for absence.</li><li>bin/room-orchestrator-boot.js line 14 and bin/room-worker-boot.js line 59: numeric environment values are parsed with no finite check, so an invalid value becomes NaN rather than a refusal.</li><li>bin/router-boot.js line 25: a 0 or NaN from the shard cell size becomes undefined without a refusal.</li><li>bin/marketplace-registry.js line 7: PORT has no finite check.</li><li>bin/marketplace-install.js line 17: the registry URL silently defaults to localhost.</li><li>client/core/GrassTSL.js line 33 and client/core/GrassMaterial.js line 152: any falsy density, including 0, silently becomes the default.</li><li>client/core/GrassClump.js lines 73 and 74: an invalid segments or cards value becomes a literal default without a refusal.</li><li>client/core/GrassWindField.js line 137: an invalid reach silently takes the default.</li><li>client/core/GrassMaterial.js line 117: a silent fallback.</li><li>The grass law is held in one place, GRASS_DENSITY from src/terrain/GrassPlacement.js, but the shader-side fade is written in both GrassTSL and GrassMaterial. A change to one side alone can desynchronise them. This is a design candidate.</li></ul>
+<p>The next items come from streams 36 to 40, again grep-based candidates:</p>
+<ul><li>client/core/WetnessTint.js line 54 and client/core/WetnessTintTSL.js line 36: an absent or invalid wetness silently becomes 0, a sentinel for absence.</li><li>client/core/UnderwaterTint.js line 89: an invalid planetRadius is skipped silently, which leaves the previous uniform in place.</li><li>client/core/UnderwaterTintTSL.js line 51: a non-finite seaY is a silent no-op.</li><li>client/core/PostFxLook.js line 38: a silent default for an optional exposure field.</li><li>client/core/CullingHub.js lines 15, 17 and 18: a null sentinel, and non-finite values skipped silently.</li><li>client/core/TerrainOcclusion.js lines 8, 9 and 24: silent defaults for absent options. Line 25 drops an invalid setMaxQueriesPerFrame value without a refusal.</li><li>client/core/TerrainOcclusion.js lines 135, 178 and 207: silent literal defaults with || 1.</li><li>client/core/WebGPUCullingHubIntegration.js line 35: an invalid view-projection is silently replaced. Line 93 turns an absent count into 0.</li><li>client/core/WebGPUCullingHubIntegration.js line 141: a failed GPU compute cull is reported on a fail-open path. The file cites AGENTS.md for the rule that a GPU and CPU divergence culls the wrong cells. This is a candidate, not a verified defect.</li><li>client/core/Bloom.js line 100 and client/core/BloomWebGPU.js line 62: a stored 0 for bloomResolutionScale silently becomes 0.5.</li><li>client/core/Bloom.js line 157 and client/core/BloomWebGPU.js line 122: a stored 0 for bloomBlurPasses becomes 1, and a non-finite value is not refused.</li><li>client/core/FSR1.js lines 216 and 217: a literal default for an absent device pixel ratio.</li><li>client/core/Bloom.js line 87 and client/core/FSR1.js line 83: RenderControls values are read straight into uniforms at construction, with no validation at that boundary.</li><li>client/core/SSR.js line 212 and client/core/SSRWebGPU.js line 218: an absent wetness and a zero wetness are not distinguished.</li><li>client/core/SSR.js line 272 and client/core/SSRWebGPU.js line 277: a missing weather reading becomes 0 silently, the same class as WetnessTint.js line 54.</li><li>client/core/SSR.js line 243 and client/core/SSRWebGPU.js line 250: a null sentinel for an absent G-buffer.</li><li>client/core/SSRWebGPU.js line 292: a global read of window.__underwaterTint with a null fallback, not an injected dependency.</li><li>client/core/PlayerLOD.js lines 81 to 83, repeated at lines 135 to 137: literal defaults in two places, so a zero is replaced silently and the two copies can drift.</li><li>client/core/PlayerVAT.js lines 137 and 141: a zero nominalSpeed becomes 4.0. Line 120 derives blendHighSpeed from the same literal.</li><li>client/core/PlayerVAT.js line 202: a failed uniform write is dropped without a report.</li><li>client/core/PlayerVAT.js lines 293 and 295: null is the sentinel for an absent renderer or mesh.</li><li>client/core/PlayerVATBake.js lines 77 and 148: a literal maxTexSize default, and a null sentinel for baked[0].</li></ul>
+<p>The next items come from stream 41, grep-based candidates:</p>
+<ul><li>client/core/Rocks.js line 89: a non-finite seed is coerced to 0 silently.</li><li>client/core/Rocks.js lines 92 and 97: a non-finite config value falls back to a literal (renderDistance 320, MAX_INSTANCES 12000), and a zero value is silently replaced.</li><li>client/core/Rocks.js lines 102 and 118: a failed geometry build becomes null or -1 with a console.error, and the build continues.</li><li>client/core/Rocks.js line 276: a non-finite position returns a count of 0.</li><li>client/core/VegetationAmbientTSL.js lines 50, 54 and 61: a silent fallback; muS is set to 1 when elevation is non-finite; the ambient update is skipped silently.</li><li>client/core/VegetationTSL.js line 9: the window.__vegWind global is written to a uniform with no finite check first.</li></ul>
+<p>The next items come from stream 42, grep-based candidates:</p>
+<ul><li>client/core/Vegetation.js line 75: a failed load of the ez-tree package skips all vegetation for the session and logs an error. The rest of the client continues. This is a fail-soft choice to weigh.</li><li>client/core/Vegetation.js line 79 and lines through 116: invalid config becomes a literal default at one boundary, with no refusal.</li><li>client/core/Vegetation.js lines 115 and 116: a non-numeric ?vegVariants= URL value falls back silently.</li><li>client/core/Vegetation.js lines 199 and 254: an impostor bake failure falls back to mesh LOD only, with a warning.</li><li>client/core/Vegetation.js line 378: a placement failure is swallowed and the list becomes null.</li><li>client/core/VegetationBuild.js line 90: a decode failure is swallowed, and a size check takes over.</li><li>client/core/VegetationBuild.js lines 493 and 516: silent literal defaults for an absent name or height.</li><li>client/core/VegImpostorTier.js line 91: silent literal defaults for absent options.</li><li>client/core/VegImpostorTier.js lines 147, 158, 185, 222 and 231: addLOD, setUniformAt, removeInstances, setAttributeAt and releaseId are wrapped in try and catch with no report, so a failed write is dropped.</li><li>client/core/Vegetation.js line 262 logs and rethrows a species failure, which is consistent with the AGENTS.md rule, so it is not a candidate.</li></ul>
+<p>A documentation improvement opportunity, scoped to one example: cleetus's reference gives new LineBasicNodeMaterial({ color, linewidth: 3 }) at .spawn/reference/engine/api-reference.md line 2201, and .spawn/reference/engine-deep/api-b.md line 309 says linewidth is in CSS pixels at every distance. jayzee's gate at commit 37bd320 accepts the example as written (scripts/check-upstream-builtin-three.mjs line 93), and jayzee keeps this note OPEN in its AGENTS.md. The reviewer's claim that three's public docs give a width of 1 on most WebGL platforms, so Line2NodeMaterial may be needed for every-distance width, is not verified here, because three is not installed in the repository.</p>
+<p>The final group, from streams 43 and 44, starts with client/core/WebGPULodInstancer.js line 139 (a non-finite hysteresis option silently takes a default), and lines 140 and 141 (shadowDistance uses -1 as a no-shadow sentinel without a refusal). The items continue on the next page, <a href="featureset-part-7.html">featureset-part-7.md</a>.</p>
+<h2 id="decisions">Decisions</h2>
+<ul><li>Coverage is per file, with a witness script that names the module and prints RESULT. Importers, prose and claim strings do not count.</li><li>The file treats silent defaults and sentinel values as a class of improvement opportunity, not as defects, and says each is a grep candidate that jayzee need not reproduce.</li><li>The three-line width claim is kept as the reviewer's statement, with the reason it cannot be checked here (three is not installed).</li><li>Routes and read-only behaviour are witnessed by live scripts only where the script calls them (verify-app.mjs reads the read routes, not the write routes).</li></ul>
+<h2 id="open-gaps">Open gaps</h2>
+<ul><li>Stream 56: all four Durable Object files have no witness; do-client-probe.mjs prints no RESULT line.</li><li>Stream 57: RoomHealth, RoomPick, SceneImport, TiledImport and scaffold have no witness; RoomRouting has one; WorldLocator has five.</li><li>Stream 58: NostrAuthServer, ServerPresence and RoomDirectory have no witness; AgentAuthoringAPI has a live witness of read routes only, not the write routes.</li><li>The four spoint design items (SessionStore ttl, StatsSystem default, the unused __checkBudget, the BakeCodeVersion input list) are recorded, not fixed.</li><li>The grep candidates above are unverified; each needs a check before it is treated as a defect.</li><li>The LineBasicNodeMaterial linewidth note is OPEN in jayzee's AGENTS.md, and the three-line width claim is unverified.</li><li>The grass density law is duplicated in shader and material code, so the two copies can drift.</li></ul>
+<h2 id="sources">Sources</h2>
+<ul><li>/workspace/savi/docs/FEATURESET.md (old name: savi), lines 820 to 928</li><li>/workspace/savi/docs/JAYZEE-GAPS.md (old name: savi), row 50</li><li>/workspace/savi/docs/PARITY-INPUTS.md (old name: savi)</li><li>/workspace/savi/.spawn/reference/engine/api-reference.md (old name: cleetus, old name: spawn), line 2201</li><li>/workspace/savi/.spawn/reference/engine-deep/api-b.md (old name: cleetus, old name: spawn), line 309</li><li>/workspace/spoint/edge/cf-do/accept-request.js</li><li>/workspace/spoint/edge/cf-do/do-client-probe.mjs</li><li>/workspace/spoint/edge/cf-do/jolt-edge-init.js</li><li>/workspace/spoint/edge/cf-do/spoint-do.js</li><li>/workspace/spoint/src/sdk/WorldLocator.js</li><li>/workspace/spoint/src/sdk/RoomHealth.js</li><li>/workspace/spoint/src/sdk/RoomPick.js</li><li>/workspace/spoint/src/sdk/RoomRouting.js</li><li>/workspace/spoint/src/sdk/SceneImport.js</li><li>/workspace/spoint/src/sdk/TiledImport.js</li><li>/workspace/spoint/src/sdk/scaffold.js</li><li>/workspace/spoint/src/sdk/NostrAuthServer.js</li><li>/workspace/spoint/src/sdk/ServerPresence.js</li><li>/workspace/spoint/src/sdk/RoomDirectory.js</li><li>/workspace/spoint/src/sdk/AgentAuthoringAPI.js</li><li>/workspace/spoint/src/sdk/SESCompartmentEvaluator.js</li><li>/workspace/spoint/src/connection/SessionStore.js</li><li>/workspace/spoint/src/game/StatsSystem.js</li><li>/workspace/spoint/src/static/BakeCodeVersion.js</li><li>/workspace/spoint/src/shared/SpawnSurface.js</li><li>/workspace/spoint/src/shared/colliderLattice.js</li><li>/workspace/spoint/src/shared/MinimapBiome.js</li><li>/workspace/spoint/bin/room-orchestrator-boot.js</li><li>/workspace/spoint/bin/room-worker-boot.js</li><li>/workspace/spoint/bin/router-boot.js</li><li>/workspace/spoint/bin/marketplace-registry.js</li><li>/workspace/spoint/bin/marketplace-install.js</li><li>/workspace/spoint/client/core/ (Grass, Wetness, Underwater, PostFx, Culling, Terrain, WebGPU, Bloom, FSR1, SSR, PlayerLOD, PlayerVAT, Rocks, Vegetation, VegetationAmbientTSL, VegetationTSL, VegetationBuild, VegImpostorTier and WebGPULodInstancer modules cited above)</li><li>/workspace/spoint/scripts/room-routing-witness.mjs</li><li>/workspace/spoint/scripts/verify-app.mjs</li><li>/workspace/spoint/scripts/lib/verify-doc-claims.mjs</li><li>/workspace/jayzee/scripts/check-upstream-builtin-three.mjs (jayzee, at jayzee commit 37bd320)</li></ul>
+</main>
+</div>
+<footer class="foot"><div class="foot-inner">wiki · every page cites the on-disk sources it was written from</div></footer>
+</body>
+</html>

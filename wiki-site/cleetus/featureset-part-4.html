@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Featureset part 4: streams 35 to 45, client/core rendering modules · Wiki</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="topbar">
+<div class="topbar-inner">
+<a class="brand" href="../index.html">wi<span>ki</span></a>
+<nav class="pills"><a class="active" href="../cleetus/ci-workflows.html">cleetus</a><a href="../index/cdn-inventory.html">index</a><a href="../jayzee/maps-glb-urls.html">jayzee</a><a href="../reference-game-16/coverage.html">reference-game-16</a></nav>
+</div>
+</header>
+<div class="layout">
+<nav class="side">
+<h3>Start</h3><ul>
+<li><a href="../index.html">Project wiki: how this wiki is organised</a></li>
+<li><a href="../toc.html">Table of contents</a></li>
+</ul>
+<h3>cleetus</h3><ul>
+<li><a href="../cleetus/ci-workflows.html">CI workflows and npm scripts</a></li>
+<li><a href="../cleetus/docs-folder.html">The docs folder</a></li>
+<li><a href="../cleetus/endpoints.html">Endpoints</a></li>
+<li><a href="../cleetus/engine-decisions.html">Engine decisions: why the jayzee engine notes are shaped as they are</a></li>
+<li><a href="../cleetus/engine-overview.html">Engine overview: the jayzee engine notes (cleetus workspace)</a></li>
+<li><a href="../cleetus/evidence-claims.html">Evidence claims</a></li>
+<li><a href="../cleetus/evidence-overview.html">Evidence overview</a></li>
+<li><a href="../cleetus/featureset-part-1.html">Featureset part 1: cleetus counts, spoint surface, and the relayed streams</a></li>
+<li><a href="../cleetus/featureset-part-2.html">Featureset part 2: streams 12 to 25 and the src/sdk modules</a></li>
+<li><a href="../cleetus/featureset-part-3.html">Featureset part 3: streams 26 to 34</a></li>
+<li><a class="current" href="../cleetus/featureset-part-4.html">Featureset part 4: streams 35 to 45, client/core rendering modules</a></li>
+<li><a href="../cleetus/featureset-part-5.html">Featureset part 5: streams 45 to 55, client/core modules</a></li>
+<li><a href="../cleetus/featureset-part-6.html">Featureset part 6: streams 56 to 58 and the improvement opportunities</a></li>
+<li><a href="../cleetus/featureset-part-7.html">Featureset part 7: improvement candidates from streams 43 to 58</a></li>
+<li><a href="../cleetus/featureset-part-8.html">Featureset part 8: agent and room candidates, session store, bake pins, learning record and terrain</a></li>
+<li><a href="../cleetus/featureset-part-9.html">FEATURESET part 9: render, editor, HUD, XR, packages, static serving and server surface</a></li>
+<li><a href="../cleetus/jayzee-gaps.html">Jayzee implementation gaps</a></li>
+<li><a href="../cleetus/manual-build.html">Manual build and check</a></li>
+<li><a href="../cleetus/manual-worklist.html">Manual worklist</a></li>
+<li><a href="../cleetus/morluto-ci-findings.html">Morluto rea PR 9234 CI findings</a></li>
+<li><a href="../cleetus/netcode.html">Netcode</a></li>
+<li><a href="../cleetus/open-gaps.html">Open gaps across the cleetus repository</a></li>
+<li><a href="../cleetus/open-items.html">Open items register</a></li>
+<li><a href="../cleetus/overview.html">Overview of cleetus</a></li>
+<li><a href="../cleetus/parity.html">Parity</a></li>
+<li><a href="../cleetus/runs-overview.html">Runs overview</a></li>
+<li><a href="../cleetus/site-overview.html">Site overview (built manual output)</a></li>
+<li><a href="../cleetus/sources-overview.html">Sources overview</a></li>
+<li><a href="../cleetus/state-and-tooling.html">State and tooling</a></li>
+</ul>
+<h3>index</h3><ul>
+<li><a href="../index/cdn-inventory.html">CDN inventory and manifests</a></li>
+<li><a href="../index/discovery.html">Discovery evidence</a></li>
+<li><a href="../index/exhaustive-index.html">Exhaustive world and GLB index</a></li>
+<li><a href="../index/extra-docs.html">extra docs: the Jayzee game API reference copy</a></li>
+<li><a href="../index/extra-worlds.html">extra world lists and feeds</a></li>
+<li><a href="../index/open-gaps.html">Open gaps in the index</a></li>
+<li><a href="../index/overview.html">Overview of the index project</a></li>
+<li><a href="../index/provenance.html">Provenance manifests</a></li>
+<li><a href="../index/savi-index.html">cleetus index</a></li>
+<li><a href="../index/spawn-index.html">jayzee index</a></li>
+<li><a href="../index/tree/tree-borick.html">The borick/ directory</a></li>
+<li><a href="../index/tree/tree-build-scripts.html">Build, check and discovery scripts, and the patch files</a></li>
+<li><a href="../index/tree/tree-discovery.html">The discovery/ directory</a></li>
+<li><a href="../index/tree/tree-exhaustive.html">The exhaustive/ directory</a></li>
+<li><a href="../index/tree/tree-extra.html">The extra/ directory</a></li>
+<li><a href="../index/tree/tree-indexes.html">The index files: COMPLETE_INDEX, EXTRA_WORLD_INDEX and INDEX</a></li>
+<li><a href="../index/tree/tree-open-gaps.html">Open gaps in the top-level index, its directories and the browser state</a></li>
+<li><a href="../index/tree/tree-overview.html">Top-level layout of the jayzee tree</a></li>
+<li><a href="../index/tree/tree-provenance.html">provenance.sha256.txt and the other provenance manifests</a></li>
+<li><a href="../index/tree/tree-savi-directory.html">The cleetus/ directory (old name: savi)</a></li>
+<li><a href="../index/tree/tree-spawn-directory.html">The jayzee/ directory (old name: spawn)</a></li>
+</ul>
+<h3>jayzee</h3><ul>
+<li><a href="../jayzee/maps-glb-urls.html">jayzee GLB URL list (glb-urls-all.tsv)</a></li>
+<li><a href="../jayzee/maps-head-status.html">jayzee world head status lists</a></li>
+<li><a href="../jayzee/maps-learning-record-part-1.html">jayzee learning record, part 1 (denominators, corpus, keys, escapes, bucket rule, 410)</a></li>
+<li><a href="../jayzee/maps-learning-record-part-2.html">jayzee learning record, part 2 (error keys, non-CDN refs, open items, name decode, /cdn/ attempt)</a></li>
+<li><a href="../jayzee/maps-learning-record.html">jayzee learning record</a></li>
+<li><a href="../jayzee/maps-noncdn-refs.html">jayzee non-CDN data references (unverified-noncdn-refs.tsv)</a></li>
+<li><a href="../jayzee/maps-open-gaps.html">jayzee maps open gaps</a></li>
+<li><a href="../jayzee/maps-overview.html">jayzee maps directory overview</a></li>
+<li><a href="../jayzee/maps-root-worlds.html">jayzee root-linked worlds map</a></li>
+<li><a href="../jayzee/maps-witness-inputs.html">jayzee witness input directories and their sha256 checks</a></li>
+<li><a href="../jayzee/maps-witness.html">jayzee witness scripts</a></li>
+<li><a href="../jayzee/runs-findings.html">Runs findings and decisions</a></li>
+<li><a href="../jayzee/runs-open-gaps.html">Runs open gaps and failures</a></li>
+<li><a href="../jayzee/runs-overview.html">Runs overview</a></li>
+<li><a href="../jayzee/runs-timeline.html">Runs timeline</a></li>
+<li><a href="../jayzee/sources-captures.html">Sources captures</a></li>
+<li><a href="../jayzee/sources-index.html">Sources index</a></li>
+<li><a href="../jayzee/sources-overview.html">Sources overview</a></li>
+</ul>
+<h3>reference-game-16</h3><ul>
+<li><a href="../reference-game-16/coverage.html">Capture coverage: game page</a></li>
+<li><a href="../reference-game-16/download-process.html">Download process: from the join instructions to a working site</a></li>
+<li><a href="../reference-game-16/page-00-overview.html">Game page section: Overview</a></li>
+<li><a href="../reference-game-16/page-01-starters.html">Game page section: Starters</a></li>
+<li><a href="../reference-game-16/page-02-skills.html">Game page section: Skills</a></li>
+<li><a href="../reference-game-16/page-03-animations.html">Game page section: Animations</a></li>
+<li><a href="../reference-game-16/page-04-sound-art.html">Game page section: Sound Art</a></li>
+<li><a href="../reference-game-16/page-05-workshop.html">Game page section: Workshop</a></li>
+<li><a href="../reference-game-16/page-06-engine.html">Game page section: Engine</a></li>
+<li><a href="../reference-game-16/page-07-reference.html">Game page section: Reference</a></li>
+<li><a href="../reference-game-16/page-08-shapes.html">Game page section: Shapes</a></li>
+<li><a href="../reference-game-16/page-09-mods.html">Game page section: Mods</a></li>
+<li><a href="../reference-game-16/page-10-games.html">Game page section: Games</a></li>
+<li><a href="../reference-game-16/page-11-pick-a-genre.html">Game page section: Pick A Genre</a></li>
+<li><a href="../reference-game-16/page-host.html">Host page: Untitled game (@lanmower/game-16)</a></li>
+</ul>
+</nav>
+<main>
+<span class="eyebrow">cleetus</span>
+<h1 id="featureset-part-4-streams-35-to-45-clientcore-rendering-modules">Featureset part 4: streams 35 to 45, client/core rendering modules</h1>
+<h2 id="how-it-works">How it works</h2>
+<p>This page covers lines 591 to 710 of docs/FEATURESET.md (old name: savi). It continues <a href="featureset-part-3.html">featureset-part-3.md</a>. The streams cover client/core rendering modules of spoint (read-only at d5e3860), which have no mention in cleetus's docs or scripts. Each line gives the path and line of the first export, re-read through git show d5e3860. Line counts are wc -l. Export counts are the ^export lines. A module counts as covered only when a witness script names it and prints a RESULT line. An importer that is itself a module, or a script that only reads source text, is disclosed as an importer and is not coverage. The spoint rows these streams feed are jayzee row 39 (client rendering, shadows, post-fx and grass), row 40 (editor, hot reload and HUD) and row 59 (client rendering and tools). See <a href="jayzee-gaps.html">jayzee-gaps.md</a>.</p>
+<p>Later pages are <a href="featureset-part-5.html">featureset-part-5.md</a> and <a href="featureset-part-6.html">featureset-part-6.md</a> for lines 711 onward.</p>
+<h3 id="stream-35-clientcore-grass-family">Stream 35: client/core grass family</h3>
+<p>The four modules total 832 lines and 44 export lines. cleetus's docs name none of the four basenames outside this stream. The grass mentions in cleetus's docs are family-level (docs/JAYZEE-GAPS.md row 39) or other files.</p>
+<ul><li>client/core/GrassClump.js line 38, makeClumpAlphaTexture(): 100 lines, 2 exports. Imported by client/core/Grass.js and client/core/GrassMaterial.js. No witness.</li><li>client/core/GrassMaterial.js line 14, MAX_BENDERS = 8: 323 lines, 15 exports. Imported by client/core/Grass.js and client/core/GrassTSL.js. No witness.</li><li>client/core/GrassTSL.js line 17, a re-export of MAX_BENDERS, MAX_DECALS, UNUSED_BENDER_SLOT_XZ and makeWind: 226 lines, 3 exports. Imported by client/core/Grass.js. No witness.</li><li>client/core/GrassWindField.js line 3, GRASS_WIND_FIELD_CELLS = 64: 183 lines, 24 exports. Imported by client/core/GrassMaterial.js. Witnessed by scripts/grass-wind-field-seam-witness.mjs, the only witnessed module in this family.</li></ul>
+<p>No witness exists for GrassClump, GrassMaterial or GrassTSL.</p>
+<h3 id="stream-36-clientcore-environment-tint-and-weather">Stream 36: client/core environment tint and weather</h3>
+<p>The eight modules total 682 lines. cleetus's docs have no word hits for these basenames, for wetness, underwater or weather material.</p>
+<ul><li>client/core/WeatherGpu.js line 3, makeSeedAttributes(capacity, fillSeed): 44 lines, 5 exports. Imported by client/core/Weather.js. No witness.</li><li>client/core/WeatherMaterials.js line 3, makeStreakGeo(): 206 lines, 8 exports. Imported by client/core/Weather.js. No witness.</li><li>client/core/WeatherMaterialsTSL.js line 11, makeRainMaterialTSL(): 99 lines, 4 exports. Imported by client/core/Weather.js. No witness.</li><li>client/core/WetnessTint.js line 6, installWetnessTint(): 63 lines, 3 exports. Imported by client/app.js, client/core/SSR.js and client/core/SSRWebGPU.js. No witness.</li><li>client/core/WetnessTintTSL.js line 6, wetnessUniform: 39 lines, 4 exports. Imported by client/ModelPoolAdapter.js. No witness.</li><li>client/core/UnderwaterTint.js line 11, SEA_SURFACE_GLSL: 99 lines, 4 exports. Imported by client/core/SSR.js and client/core/SceneSetup.js. No witness.</li><li>client/core/UnderwaterTintTSL.js line 10, seaUniform: 62 lines, 5 exports. Imported by client/ModelPoolAdapter.js. No witness.</li><li>client/core/PostFxLook.js line 1, PostFxLookError: 70 lines, 5 exports. No importer in code. Witnessed by scripts/postfx-graph-structure-witness.mjs, scripts/postfx-look-witness.mjs and scripts/postfx-render-graph-witness.mjs, the only witnessed module in this stream.</li></ul>
+<h3 id="stream-37-culling-occlusion-and-terrain-occlusion">Stream 37: culling, occlusion and terrain occlusion</h3>
+<p>This stream covers four modules and two held files, OcclusionPolicy and OcclusionQueryBudget. Those two were held before this stream and are accepted as covered by this per-file entry, rather than by the family-level prose in docs/JAYZEE-GAPS.md row 39. None of the six has a witness script.</p>
+<ul><li>client/core/CullingHub.js line 1, createCullingHub(): 25 lines, 1 export. Imported by client/app.js.</li><li>client/core/TerrainOcclusion.js line 6, createTerrainOcclusion(gl, opts): 228 lines, 1 export. Imported by client/core/TerrainBackdrop.js.</li><li>client/core/WebGPUCullingHubIntegration.js line 34, runVegetationScalePerfAB({ counts, ... }): 193 lines, 2 exports. Imported by client/app.js.</li><li>client/core/WebGPUCullingProbe.js line 1, probeWebGPU(): 176 lines, 3 exports. Imported by client/core/SceneSetup.js and client/core/WebGPUCullingHubIntegration.js.</li><li>client/core/OcclusionPolicy.js line 1, createOcclusionPolicy(config): 110 lines, 1 export. Imported by client/core/SceneOcclusion.js and client/core/TerrainOcclusion.js.</li><li>client/core/OcclusionQueryBudget.js line 1, createOcclusionQueryBudget(opts): 79 lines, 1 export. Imported by client/app.js.</li></ul>
+<p>The four modules total 622 lines and the two held files total 189, so the stream is 811 lines. SceneOcclusion.js is covered by its own citation earlier in docs/FEATURESET.md and is not part of this stream.</p>
+<h3 id="stream-38-bloom-and-fsr1">Stream 38: bloom and FSR1</h3>
+<p>The four modules total 790 lines. cleetus's docs have no hits for Bloom, BloomWebGPU, FSR1, FSR1WebGPU, bloom, FSR or fsr1. The upscal substring appears only in scripts/openapi.json, which is unrelated.</p>
+<ul><li>client/core/Bloom.js line 55, class Bloom: 247 lines, 4 exports. Imported by client/app.js. No witness.</li><li>client/core/BloomWebGPU.js line 38, class BloomWebGPU: 155 lines, 1 export. Imported by client/app.js. No witness.</li><li>client/core/FSR1.js line 65, class FSR1: 241 lines, 4 exports. Imported by client/app.js. No witness.</li><li>client/core/FSR1WebGPU.js line 52, class FSR1WebGPU: 147 lines, 1 export. Imported by client/app.js. No witness.</li></ul>
+<h3 id="stream-39-ssao-and-ssr">Stream 39: SSAO and SSR</h3>
+<p>The four modules total 1175 lines. cleetus's docs have no word hits for SSAO, SSAOWebGPU, SSR, SSRWebGPU, ssao, ambient occlusion, screen-space or reflection. Substring hits of ssr inside other words are not module mentions.</p>
+<ul><li>client/core/SSAO.js line 113, class SSAO: 289 lines, 4 exports. Imported by client/app.js. No witness.</li><li>client/core/SSAOWebGPU.js line 81, class SSAOWebGPU: 194 lines, 1 export. Imported by client/app.js. No witness.</li><li>client/core/SSR.js line 114, class SSR: 361 lines, 4 exports. Imported by client/app.js. No witness.</li><li>client/core/SSRWebGPU.js line 127, class SSRWebGPU: 331 lines, 1 export. Imported by client/app.js. No witness.</li></ul>
+<h3 id="stream-40-player-lod-and-vertex-animation-texture">Stream 40: player LOD and vertex animation texture</h3>
+<p>The five modules total 807 lines. cleetus's docs have no word hits for these basenames, PlayerLOD, VAT, vertex animation or animation texture.</p>
+<ul><li>client/core/PlayerLOD.js line 6, PLAYER_LOD_FULL_COUNT = 30: 248 lines, 10 exports. Imported by client/app.js. No witness.</li><li>client/core/PlayerLODTSL.js line 5, createDotMaterialTSL(matrixNode): 21 lines, 1 export. Imported by client/core/PlayerLOD.js. No witness.</li><li>client/core/PlayerVAT.js line 7, a re-export of bakeVAT and bakeVATMultiClip: 301 lines, 5 exports. Imported by client/app.js. No witness.</li><li>client/core/PlayerVATBake.js line 62, bakeVAT(skinnedMesh, mixerRoot, clip, opts): 155 lines, 2 exports. Imported by client/core/PlayerVAT.js and client/core/PlayerVATTSL.js. No witness.</li><li>client/core/PlayerVATTSL.js line 6, a re-export of bakeVAT and bakeVATMultiClip: 82 lines, 2 exports. Imported by client/core/PlayerVAT.js. No witness.</li></ul>
+<h3 id="stream-41-rocks-and-vegetation-shading">Stream 41: rocks and vegetation shading</h3>
+<p>The four modules total 496 lines. cleetus's docs have no hits for Rocks, RocksTSL, VegetationTSL or VegetationAmbientTSL. The substring rock in docs/JAYZEE-GAPS.md is RockPhysics, a different module.</p>
+<ul><li>client/core/Rocks.js line 83, createRocks(opts): 342 lines, 1 export. Imported by client/app.js. Its only script mention is scripts/rock-model-exclusion-witness.mjs, which reads client/core/Rocks.js as source text and does not import it. That is a source-text witness, not an import witness, and it is disclosed as such.</li><li>client/core/RocksTSL.js line 22, applyRockTextureTSL(material): 39 lines, 2 exports. Imported by client/core/Rocks.js. No witness.</li><li>client/core/VegetationTSL.js line 3, makeWindUniformsTSL(): 35 lines, 5 exports. Imported by client/core/Vegetation.js. No witness.</li><li>client/core/VegetationAmbientTSL.js line 10, vegAmbientUniforms: 80 lines, 3 exports. Imported by client/core/Vegetation.js. No witness.</li></ul>
+<h3 id="stream-42-vegetation-core-build-and-impostor-tier">Stream 42: vegetation core, build and impostor tier</h3>
+<p>The three modules total 1731 lines: client/core/Vegetation.js (917), client/core/VegetationBuild.js (581) and client/core/VegImpostorTier.js (233).</p>
+<ul><li>client/core/Vegetation.js line 55, createVegetation(opts): 917 lines, 1 export. Imported by client/app.js and apps/world/_shared/worldDefParse.js (the second through a string readBy reference). cleetus names it in docs/FEATURESET.md line 344, where it is an importer of one atlas module only. That is importer-only, so it is not coverage of this module. Three scripts name it: scripts/lib/verify-doc-claims.mjs, scripts/lint/comment-lint.mjs (a lint scope) and scripts/rock-model-exclusion-witness.mjs (a source-text read). None is recorded as a behavioural witness.</li><li>client/core/VegetationBuild.js line 110, treeTextureHalveRefusals(): 581 lines, 5 exports. Imported by client/core/Vegetation.js. No witness.</li><li>client/core/VegImpostorTier.js line 10, IMPOSTOR_DISSOLVE_FADE_BAND_M = 3.0: 233 lines, 5 exports. Imported by client/core/Vegetation.js and client/core/VegetationBuild.js. No witness.</li></ul>
+<p>No witness exists for VegetationBuild or VegImpostorTier.</p>
+<h3 id="stream-43-webgpu-instancing-pair">Stream 43: WebGPU instancing pair</h3>
+<p>The two modules total 1247 lines: client/core/WebGPULodInstancer.js (970) and client/core/WebGPUInstancing.js (277). cleetus's docs have no hits for either basename, WebGPU instancing or instancing.</p>
+<ul><li>client/core/WebGPULodInstancer.js line 7, LOD_REEVAL_MOVE_M = 0.5: 970 lines, 2 exports. Imported by client/core/Vegetation.js (stream 42) and scripts/.veg-lod-mismatch-probe.mjs. Three scripts name it: scripts/.veg-lod-mismatch-probe.mjs, scripts/.veg-lod-path-probe.mjs and scripts/.veg-lod-stream-control.mjs. None of the three prints a RESULT line, so none is a witness under the check rule (exit 0 plus RESULT: PASS). The stream-control script defines its own copy of the instancer and does not import this module, so it exercises a copy, not the module.</li><li>client/core/WebGPUInstancing.js line 8, isWebGPUInstancingSupported(renderer): 277 lines, 5 exports. Imported by nine client/core modules already cited in streams 35, 36, 40 and 42: Grass.js, GrassTSL.js, PlayerLOD.js, PlayerLODTSL.js, PlayerVAT.js, PlayerVATTSL.js, VegImpostorTier.js, Weather.js and WeatherMaterialsTSL.js. Those are importer-only citations and are not coverage. No witness.</li></ul>
+<h3 id="stream-44-render-graph-and-program-readiness">Stream 44: render graph and program readiness</h3>
+<p>The three modules total 789 lines: client/core/RenderGraph.js (273), client/core/RenderGraph.nodes.js (234) and client/core/ProgramReadiness.js (282). cleetus's docs have no hits for the basenames, render graph, rendergraph, render node or program readiness. The word readiness appears in unrelated PR and terrain text.</p>
+<ul><li>client/core/RenderGraph.js line 1, createRenderGraph(nodes, opts): 273 lines, 1 export. Imported by client/app.js. Witnessed by two behavioural scripts, scripts/postfx-graph-structure-witness.mjs and scripts/postfx-render-graph-witness.mjs, which import it and print RESULT.</li><li>client/core/RenderGraph.nodes.js line 29, buildRenderSectionNodes(): 234 lines, 1 export. Imported by client/app.js. No witness.</li><li>client/core/ProgramReadiness.js line 3, renderDeferringUnreadyPrograms(renderer, scene, camera): 282 lines, 8 exports. Imported by client/app.js, Grass.js, PlacementScheduler.js, RenderGraph.nodes.js, Rocks.js, SSAO.js, SSR.js, SceneSetup.js, ThreeVdrs.js and Vegetation.js. Most of those are cited in streams 35, 39, 41 and 42 and are importer-only, so they are not coverage. Witnessed by scripts/program-readiness-render-witness.mjs, which imports the module and prints RESULT. scripts/lint/comment-lint.mjs also names it, as a lint scope, which is not a behavioural witness.</li></ul>
+<h3 id="stream-45-diagnostics-and-profiling-probes">Stream 45: diagnostics and profiling probes</h3>
+<p>The five modules total 1135 lines. cleetus's docs have no hits for the basenames, profiler, overdraw, runtime stats, collider debug or debug overlay outside this stream.</p>
+<ul><li>client/core/PerformanceProfiler.js line 8, createPerformanceProfiler(renderer, scene): 395 lines, 1 export. Imported by client/core/DevToolsIntegration.js, an unsent client/core module. client/app.js does not import it. No witness.</li><li>client/core/RuntimeStats.js line 52, createRuntimeStats(): 185 lines, 2 exports. Imported by client/app.js. No witness.</li></ul>
+<p>The remaining three modules of stream 45 are listed at lines 711 onward, in <a href="featureset-part-5.html">featureset-part-5.md</a>.</p>
+<h2 id="decisions">Decisions</h2>
+<ul><li>A module is covered only when a witness script names it and prints RESULT, which is the check rule the stream uses (exit 0 with RESULT: PASS). Importers and source-text reads are disclosed and not counted.</li><li>Held files (OcclusionPolicy, OcclusionQueryBudget) are accepted as covered by a per-file entry, because the family-level prose was judged too loose.</li><li>Two scripts that import a copy rather than the module (the veg-lod stream control) are not counted as exercising the module.</li><li>Each stream gives wc -l totals so a reader can verify size, and states which exports were counted.</li></ul>
+<h2 id="open-gaps">Open gaps</h2>
+<ul><li>Stream 35: GrassClump, GrassMaterial and GrassTSL have no witness; GrassWindField has one.</li><li>Stream 36: seven of eight tint and weather modules have no witness; PostFxLook has three.</li><li>Stream 37: all six culling and occlusion modules have no witness.</li><li>Stream 38: all four bloom and FSR1 modules have no witness.</li><li>Stream 39: all four SSAO and SSR modules have no witness.</li><li>Stream 40: all five player LOD and VAT modules have no witness.</li><li>Stream 41: RocksTSL, VegetationTSL and VegetationAmbientTSL have no witness; Rocks.js is read as source text only.</li><li>Stream 42: VegetationBuild and VegImpostorTier have no witness; Vegetation.js (917 lines) has no behavioural witness.</li><li>Stream 43: WebGPULodInstancer has three probe scripts and no behavioural witness, since none prints RESULT; WebGPUInstancing has none.</li><li>Stream 44: RenderGraph.nodes has no witness.</li><li>Stream 45: PerformanceProfiler and RuntimeStats have no witness.</li></ul>
+<h2 id="sources">Sources</h2>
+<ul><li>/workspace/savi/docs/FEATURESET.md (old name: savi), lines 591 to 710</li><li>/workspace/savi/docs/JAYZEE-GAPS.md (old name: savi)</li><li>/workspace/savi/docs/FEATURESET.md (old name: savi), line 344 (the Vegetation.js atlas importer mention)</li><li>/workspace/spoint/client/core/GrassClump.js</li><li>/workspace/spoint/client/core/GrassMaterial.js</li><li>/workspace/spoint/client/core/GrassTSL.js</li><li>/workspace/spoint/client/core/GrassWindField.js</li><li>/workspace/spoint/client/core/WeatherGpu.js</li><li>/workspace/spoint/client/core/WeatherMaterials.js</li><li>/workspace/spoint/client/core/WeatherMaterialsTSL.js</li><li>/workspace/spoint/client/core/WetnessTint.js</li><li>/workspace/spoint/client/core/WetnessTintTSL.js</li><li>/workspace/spoint/client/core/UnderwaterTint.js</li><li>/workspace/spoint/client/core/UnderwaterTintTSL.js</li><li>/workspace/spoint/client/core/PostFxLook.js</li><li>/workspace/spoint/client/core/CullingHub.js</li><li>/workspace/spoint/client/core/TerrainOcclusion.js</li><li>/workspace/spoint/client/core/WebGPUCullingHubIntegration.js</li><li>/workspace/spoint/client/core/WebGPUCullingProbe.js</li><li>/workspace/spoint/client/core/OcclusionPolicy.js</li><li>/workspace/spoint/client/core/OcclusionQueryBudget.js</li><li>/workspace/spoint/client/core/Bloom.js</li><li>/workspace/spoint/client/core/BloomWebGPU.js</li><li>/workspace/spoint/client/core/FSR1.js</li><li>/workspace/spoint/client/core/FSR1WebGPU.js</li><li>/workspace/spoint/client/core/SSAO.js</li><li>/workspace/spoint/client/core/SSAOWebGPU.js</li><li>/workspace/spoint/client/core/SSR.js</li><li>/workspace/spoint/client/core/SSRWebGPU.js</li><li>/workspace/spoint/client/core/PlayerLOD.js</li><li>/workspace/spoint/client/core/PlayerLODTSL.js</li><li>/workspace/spoint/client/core/PlayerVAT.js</li><li>/workspace/spoint/client/core/PlayerVATBake.js</li><li>/workspace/spoint/client/core/PlayerVATTSL.js</li><li>/workspace/spoint/client/core/Rocks.js</li><li>/workspace/spoint/client/core/RocksTSL.js</li><li>/workspace/spoint/client/core/VegetationTSL.js</li><li>/workspace/spoint/client/core/VegetationAmbientTSL.js</li><li>/workspace/spoint/client/core/Vegetation.js</li><li>/workspace/spoint/client/core/VegetationBuild.js</li><li>/workspace/spoint/client/core/VegImpostorTier.js</li><li>/workspace/spoint/client/core/WebGPULodInstancer.js</li><li>/workspace/spoint/client/core/WebGPUInstancing.js</li><li>/workspace/spoint/client/core/RenderGraph.js</li><li>/workspace/spoint/client/core/RenderGraph.nodes.js</li><li>/workspace/spoint/client/core/ProgramReadiness.js</li><li>/workspace/spoint/client/core/PerformanceProfiler.js</li><li>/workspace/spoint/client/core/RuntimeStats.js</li><li>/workspace/spoint/scripts/rock-model-exclusion-witness.mjs</li><li>/workspace/spoint/scripts/postfx-graph-structure-witness.mjs</li><li>/workspace/spoint/scripts/program-readiness-render-witness.mjs</li><li>/workspace/spoint/scripts/grass-wind-field-seam-witness.mjs</li><li>/workspace/spoint/scripts/postfx-look-witness.mjs</li><li>/workspace/spoint/scripts/postfx-render-graph-witness.mjs</li></ul>
+</main>
+</div>
+<footer class="foot"><div class="foot-inner">wiki · every page cites the on-disk sources it was written from</div></footer>
+</body>
+</html>

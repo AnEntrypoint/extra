@@ -1,0 +1,160 @@
+{
+  "title": "",
+  "text": "toolbox\nOverview\nStarters\nSkills\nAnimations\nSound & Art\nWorkshop\nEngine\nReference\nShapes\nMods\nGames\nPick a genre\nWorkshop\n\nThe bench behind every build: the tools that make the models, pictures, sounds, tests and helpers that go into a game. Open one to see how it works.\n\nread →\nThe workshop at a glance\n\nThe making bench behind every build: Blender models, painted pictures, sound and voices, uploaded models, video, playtests and helper wisps, and when each is reached for.\n\nread →\nBlender: hero models\n\nBlender builds the pieces that need real shape: a statue with centuries eaten off its rim, a sagging rope bridge, a creature or a rigged character, each from one re-runnable script.\n\nread →\nPainting pictures\n\nPainted pictures in seconds: icons, posters, portraits, mock screens, wall paintings, seamless textures and cutouts, each a picture address the game shows.\n\nread →\nSound, music & voices\n\nSounds, music tracks, songs and voice lines are named into being: the filename is the prompt. How they are made, placed, mixed and kept from getting too loud.\n\nread →\nUploaded & built models\n\nA .glb you upload or a wisp exports arrives with a spec sheet, then gets fitted and dressed: textures on named slots, a lantern in a fist, a cape that moves, sockets and swappable parts.\n\nread →\nVideo, trailers & clips\n\nTrailers filmed from real play, short scenes made from a sentence or a still, looping backdrops and speaking portraits, and where each one plays in your game.\n\nread →\nTesters, eyes & playtests\n\nHow your helpers see and play what they build: camera looks at the world, a body that plays your game in a real browser page, tester players in their own room, and live rounds.\n\nread →\nWisps & weaves\n\nWisps are helpers that build pieces of your world at the same time. A weave plans them: a brief each, a lane each, then reviewers, critics and players to check the work.\n\nread →\nWorld files, versions & undo\n\nYour world is a folder of files, and every save is a version. Read the history, film old versions, undo a change whole, and keep several builders from stepping on each other.\n\nread →\nPlatform reads\n\nWhat your helper can read about your game as players meet it: errors and render faults from their devices, frame rate and performance tables, bug reports, and the publish and launch steps.\n\ntoolbox · everything this world can build with",
+  "headings": [
+    {
+      "level": "H2",
+      "text": "Workshop"
+    },
+    {
+      "level": "H3",
+      "text": "The workshop at a glance"
+    },
+    {
+      "level": "H3",
+      "text": "Blender: hero models"
+    },
+    {
+      "level": "H3",
+      "text": "Painting pictures"
+    },
+    {
+      "level": "H3",
+      "text": "Sound, music & voices"
+    },
+    {
+      "level": "H3",
+      "text": "Uploaded & built models"
+    },
+    {
+      "level": "H3",
+      "text": "Video, trailers & clips"
+    },
+    {
+      "level": "H3",
+      "text": "Testers, eyes & playtests"
+    },
+    {
+      "level": "H3",
+      "text": "Wisps & weaves"
+    },
+    {
+      "level": "H3",
+      "text": "World files, versions & undo"
+    },
+    {
+      "level": "H3",
+      "text": "Platform reads"
+    }
+  ],
+  "blocks": [
+    "The bench behind every build: the tools that make the models, pictures, sounds, tests and helpers that go into a game. Open one to see how it works.",
+    "The making bench behind every build: Blender models, painted pictures, sound and voices, uploaded models, video, playtests and helper wisps, and when each is reached for.",
+    "Blender builds the pieces that need real shape: a statue with centuries eaten off its rim, a sagging rope bridge, a creature or a rigged character, each from one re-runnable script.",
+    "Painted pictures in seconds: icons, posters, portraits, mock screens, wall paintings, seamless textures and cutouts, each a picture address the game shows.",
+    "Sounds, music tracks, songs and voice lines are named into being: the filename is the prompt. How they are made, placed, mixed and kept from getting too loud.",
+    "A .glb you upload or a wisp exports arrives with a spec sheet, then gets fitted and dressed: textures on named slots, a lantern in a fist, a cape that moves, sockets and swappable parts.",
+    "Trailers filmed from real play, short scenes made from a sentence or a still, looping backdrops and speaking portraits, and where each one plays in your game.",
+    "How your helpers see and play what they build: camera looks at the world, a body that plays your game in a real browser page, tester players in their own room, and live rounds.",
+    "Wisps are helpers that build pieces of your world at the same time. A weave plans them: a brief each, a lane each, then reviewers, critics and players to check the work.",
+    "Your world is a folder of files, and every save is a version. Read the history, film old versions, undo a change whole, and keep several builders from stepping on each other.",
+    "What your helper can read about your game as players meet it: errors and render faults from their devices, frame rate and performance tables, bug reports, and the publish and launch steps."
+  ],
+  "links": [
+    {
+      "text": "toolbox",
+      "href": null
+    },
+    {
+      "text": "Overview",
+      "href": null
+    },
+    {
+      "text": "Starters",
+      "href": null
+    },
+    {
+      "text": "Skills",
+      "href": null
+    },
+    {
+      "text": "Animations",
+      "href": null
+    },
+    {
+      "text": "Sound & Art",
+      "href": null
+    },
+    {
+      "text": "Workshop",
+      "href": null
+    },
+    {
+      "text": "Engine",
+      "href": null
+    },
+    {
+      "text": "Reference",
+      "href": null
+    },
+    {
+      "text": "Shapes",
+      "href": null
+    },
+    {
+      "text": "Mods",
+      "href": null
+    },
+    {
+      "text": "Games",
+      "href": null
+    },
+    {
+      "text": "Pick a genre",
+      "href": null
+    },
+    {
+      "text": "read →\nThe workshop at a glance\n\nThe making bench behind every build: Blender models, painted pictures, sound and voices, uploaded models, video, playtests and helper wisps, and when each is reached for.",
+      "href": null
+    },
+    {
+      "text": "read →\nBlender: hero models\n\nBlender builds the pieces that need real shape: a statue with centuries eaten off its rim, a sagging rope bridge, a creature or a rigged character, each from one re-runnable script.",
+      "href": null
+    },
+    {
+      "text": "read →\nPainting pictures\n\nPainted pictures in seconds: icons, posters, portraits, mock screens, wall paintings, seamless textures and cutouts, each a picture address the game shows.",
+      "href": null
+    },
+    {
+      "text": "read →\nSound, music & voices\n\nSounds, music tracks, songs and voice lines are named into being: the filename is the prompt. How they are made, placed, mixed and kept from getting too loud.",
+      "href": null
+    },
+    {
+      "text": "read →\nUploaded & built models\n\nA .glb you upload or a wisp exports arrives with a spec sheet, then gets fitted and dressed: textures on named slots, a lantern in a fist, a cape that moves, sockets and swappable parts.",
+      "href": null
+    },
+    {
+      "text": "read →\nVideo, trailers & clips\n\nTrailers filmed from real play, short scenes made from a sentence or a still, looping backdrops and speaking portraits, and where each one plays in your game.",
+      "href": null
+    },
+    {
+      "text": "read →\nTesters, eyes & playtests\n\nHow your helpers see and play what they build: camera looks at the world, a body that plays your game in a real browser page, tester players in their own room, and live rounds.",
+      "href": null
+    },
+    {
+      "text": "read →\nWisps & weaves\n\nWisps are helpers that build pieces of your world at the same time. A weave plans them: a brief each, a lane each, then reviewers, critics and players to check the work.",
+      "href": null
+    },
+    {
+      "text": "read →\nWorld files, versions & undo\n\nYour world is a folder of files, and every save is a version. Read the history, film old versions, undo a change whole, and keep several builders from stepping on each other.",
+      "href": null
+    },
+    {
+      "text": "read →\nPlatform reads\n\nWhat your helper can read about your game as players meet it: errors and render faults from their devices, frame rate and performance tables, bug reports, and the publish and launch steps.",
+      "href": null
+    }
+  ],
+  "images": [],
+  "code": [],
+  "inputs": []
+}

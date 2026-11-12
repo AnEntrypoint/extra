@@ -1,0 +1,295 @@
+{
+  "title": "",
+  "text": "toolbox\nOverview\nStarters\nSkills\nAnimations\nSound & Art\nWorkshop\nEngine\nReference\nShapes\nMods\nGames\nPick a genre\nSkills\n\n41 engine playbooks. Each is the craft for one territory. Open any card to read it whole.\n\nWORLD & LOOK\nread →\ngeometry\n\nBuildings, creatures, characters, vehicles: anything 3D built in code, rigged with bones.\n\nread →\nheightmap-terrain\n\nHills, islands, rivers, coasts, swimming, dug ground.\n\nread →\nvoxel-terrain\n\nBlock worlds, dig and place, caves.\n\nread →\n2d-mode\n\nSide-scrollers and top-down: tiles, drawn sprites, parallax.\n\nread →\natmosphere\n\nSky, sun, fog, clouds, day and night, weather.\n\nread →\nlooks\n\nColour grade, toon shading, lived-in grime decals, custom shaders.\n\nread →\ntrees\n\nForests, woods, parks.\n\nread →\nleaf-sprays\n\nBushes, hedges, ivy, leaves.\n\nread →\nmeadow-grass\n\nGrass, lawns, tall fields, tufts.\n\nread →\nfx\n\nParticles and lights: impacts, beams, explosions, fire, rain, auras.\n\nPLAY & FEEL\nread →\ngame-feel\n\nContact juice: hits, coins, landings, screen shake, hitstop, lasting marks.\n\nread →\nphysics\n\nRagdolls, limbs on joints, forces.\n\nread →\nbodies\n\nWhat passes through what: ghosts, teammates, walking on walls and tiny planets.\n\nread →\nprojectiles\n\nGuns, arrows, fireballs, cannons.\n\nread →\nvehicles\n\nCars, trucks, karts, tanks.\n\nread →\ninteractive-objects\n\nPickups, levers, doors.\n\nread →\nanimations\n\nPlaying the 61 humanoid clips, plus custom motion.\n\nread →\ncameras\n\nFirst person, third person, top-down, cinematic rigs.\n\nread →\npointer-raycasting\n\nClick to place, cursor aim, touch tap and hold.\n\nread →\njev\n\nMinds for bosses, NPCs, crowds, shopkeepers and puzzles.\n\nSCREENS & SOUND\nread →\ngame-ui\n\nHUDs, menus, signs, mic and webcam, X posts.\n\nread →\nmobile-controls\n\nTouch controls, automatic and hand-made.\n\nread →\naudio\n\nSoundtracks, stems, mixing, voice casts, acoustics, synth voices.\n\nread →\nvideo\n\nTrailers, gameplay clips, time-lapses, cutscenes, talking portraits.\n\nread →\nheadset\n\nVR play.\n\nMULTIPLAYER & SYSTEMS\nread →\nrooms-and-matchmaking\n\nInvites, parties, matches, player caps.\n\nread →\nsocial\n\nWorld chat as code: channels, nameplates, earshot, letters between players.\n\nread →\nplatform-systems\n\nCheat-proof saves, SQL leaderboards, timers, AI text jobs, notifications.\n\nread →\nbuyables\n\nShops and spoins.\n\nread →\nportals\n\nDoors to other places or worlds, mirrors, monitors, minimaps.\n\nread →\nplayer-settings\n\nProtections and control locks.\n\nASSETS & SHARING\nread →\nworkshop\n\nThe build bench: headless Blender, renders, bakes and playing your game as a tester.\n\nread →\nweaves\n\nHelpers that build pieces in parallel: how a crew is briefed and checked.\n\nread →\nuploaded-models\n\nYour own .glb models or a picture turned into a model: placed, dressed, talking.\n\nread →\nblender-game-assets\n\nHero models built in Blender by helpers.\n\nread →\nbring-a-game\n\nA game made elsewhere, rebuilt Spawn-native.\n\nread →\nmods\n\nInstall and publish shared mods.\n\nread →\nborrowing\n\nReusing other creators' work, credited.\n\nread →\npublish\n\nCovers, publishing, unpublishing.\n\nread →\ngod-mode\n\nYour own build tools: rigs, brushes, gizmos.\n\nread →\ndebugging\n\nLag, stutter, freezes, slow loads.\n\ntoolbox · everything this world can build with",
+  "headings": [
+    {
+      "level": "H2",
+      "text": "Skills"
+    },
+    {
+      "level": "H4",
+      "text": "WORLD & LOOK"
+    },
+    {
+      "level": "H4",
+      "text": "PLAY & FEEL"
+    },
+    {
+      "level": "H4",
+      "text": "SCREENS & SOUND"
+    },
+    {
+      "level": "H4",
+      "text": "MULTIPLAYER & SYSTEMS"
+    },
+    {
+      "level": "H4",
+      "text": "ASSETS & SHARING"
+    }
+  ],
+  "blocks": [
+    "41 engine playbooks. Each is the craft for one territory. Open any card to read it whole.",
+    "Buildings, creatures, characters, vehicles: anything 3D built in code, rigged with bones.",
+    "Hills, islands, rivers, coasts, swimming, dug ground.",
+    "Block worlds, dig and place, caves.",
+    "Side-scrollers and top-down: tiles, drawn sprites, parallax.",
+    "Sky, sun, fog, clouds, day and night, weather.",
+    "Colour grade, toon shading, lived-in grime decals, custom shaders.",
+    "Forests, woods, parks.",
+    "Bushes, hedges, ivy, leaves.",
+    "Grass, lawns, tall fields, tufts.",
+    "Particles and lights: impacts, beams, explosions, fire, rain, auras.",
+    "Contact juice: hits, coins, landings, screen shake, hitstop, lasting marks.",
+    "Ragdolls, limbs on joints, forces.",
+    "What passes through what: ghosts, teammates, walking on walls and tiny planets.",
+    "Guns, arrows, fireballs, cannons.",
+    "Cars, trucks, karts, tanks.",
+    "Pickups, levers, doors.",
+    "Playing the 61 humanoid clips, plus custom motion.",
+    "First person, third person, top-down, cinematic rigs.",
+    "Click to place, cursor aim, touch tap and hold.",
+    "Minds for bosses, NPCs, crowds, shopkeepers and puzzles.",
+    "HUDs, menus, signs, mic and webcam, X posts.",
+    "Touch controls, automatic and hand-made.",
+    "Soundtracks, stems, mixing, voice casts, acoustics, synth voices.",
+    "Trailers, gameplay clips, time-lapses, cutscenes, talking portraits.",
+    "VR play.",
+    "Invites, parties, matches, player caps.",
+    "World chat as code: channels, nameplates, earshot, letters between players.",
+    "Cheat-proof saves, SQL leaderboards, timers, AI text jobs, notifications.",
+    "Shops and spoins.",
+    "Doors to other places or worlds, mirrors, monitors, minimaps.",
+    "Protections and control locks.",
+    "The build bench: headless Blender, renders, bakes and playing your game as a tester.",
+    "Helpers that build pieces in parallel: how a crew is briefed and checked.",
+    "Your own .glb models or a picture turned into a model: placed, dressed, talking.",
+    "Hero models built in Blender by helpers.",
+    "A game made elsewhere, rebuilt Spawn-native.",
+    "Install and publish shared mods.",
+    "Reusing other creators' work, credited.",
+    "Covers, publishing, unpublishing.",
+    "Your own build tools: rigs, brushes, gizmos.",
+    "Lag, stutter, freezes, slow loads."
+  ],
+  "links": [
+    {
+      "text": "toolbox",
+      "href": null
+    },
+    {
+      "text": "Overview",
+      "href": null
+    },
+    {
+      "text": "Starters",
+      "href": null
+    },
+    {
+      "text": "Skills",
+      "href": null
+    },
+    {
+      "text": "Animations",
+      "href": null
+    },
+    {
+      "text": "Sound & Art",
+      "href": null
+    },
+    {
+      "text": "Workshop",
+      "href": null
+    },
+    {
+      "text": "Engine",
+      "href": null
+    },
+    {
+      "text": "Reference",
+      "href": null
+    },
+    {
+      "text": "Shapes",
+      "href": null
+    },
+    {
+      "text": "Mods",
+      "href": null
+    },
+    {
+      "text": "Games",
+      "href": null
+    },
+    {
+      "text": "Pick a genre",
+      "href": null
+    },
+    {
+      "text": "read →\ngeometry\n\nBuildings, creatures, characters, vehicles: anything 3D built in code, rigged with bones.",
+      "href": null
+    },
+    {
+      "text": "read →\nheightmap-terrain\n\nHills, islands, rivers, coasts, swimming, dug ground.",
+      "href": null
+    },
+    {
+      "text": "read →\nvoxel-terrain\n\nBlock worlds, dig and place, caves.",
+      "href": null
+    },
+    {
+      "text": "read →\n2d-mode\n\nSide-scrollers and top-down: tiles, drawn sprites, parallax.",
+      "href": null
+    },
+    {
+      "text": "read →\natmosphere\n\nSky, sun, fog, clouds, day and night, weather.",
+      "href": null
+    },
+    {
+      "text": "read →\nlooks\n\nColour grade, toon shading, lived-in grime decals, custom shaders.",
+      "href": null
+    },
+    {
+      "text": "read →\ntrees\n\nForests, woods, parks.",
+      "href": null
+    },
+    {
+      "text": "read →\nleaf-sprays\n\nBushes, hedges, ivy, leaves.",
+      "href": null
+    },
+    {
+      "text": "read →\nmeadow-grass\n\nGrass, lawns, tall fields, tufts.",
+      "href": null
+    },
+    {
+      "text": "read →\nfx\n\nParticles and lights: impacts, beams, explosions, fire, rain, auras.",
+      "href": null
+    },
+    {
+      "text": "read →\ngame-feel\n\nContact juice: hits, coins, landings, screen shake, hitstop, lasting marks.",
+      "href": null
+    },
+    {
+      "text": "read →\nphysics\n\nRagdolls, limbs on joints, forces.",
+      "href": null
+    },
+    {
+      "text": "read →\nbodies\n\nWhat passes through what: ghosts, teammates, walking on walls and tiny planets.",
+      "href": null
+    },
+    {
+      "text": "read →\nprojectiles\n\nGuns, arrows, fireballs, cannons.",
+      "href": null
+    },
+    {
+      "text": "read →\nvehicles\n\nCars, trucks, karts, tanks.",
+      "href": null
+    },
+    {
+      "text": "read →\ninteractive-objects\n\nPickups, levers, doors.",
+      "href": null
+    },
+    {
+      "text": "read →\nanimations\n\nPlaying the 61 humanoid clips, plus custom motion.",
+      "href": null
+    },
+    {
+      "text": "read →\ncameras\n\nFirst person, third person, top-down, cinematic rigs.",
+      "href": null
+    },
+    {
+      "text": "read →\npointer-raycasting\n\nClick to place, cursor aim, touch tap and hold.",
+      "href": null
+    },
+    {
+      "text": "read →\njev\n\nMinds for bosses, NPCs, crowds, shopkeepers and puzzles.",
+      "href": null
+    },
+    {
+      "text": "read →\ngame-ui\n\nHUDs, menus, signs, mic and webcam, X posts.",
+      "href": null
+    },
+    {
+      "text": "read →\nmobile-controls\n\nTouch controls, automatic and hand-made.",
+      "href": null
+    },
+    {
+      "text": "read →\naudio\n\nSoundtracks, stems, mixing, voice casts, acoustics, synth voices.",
+      "href": null
+    },
+    {
+      "text": "read →\nvideo\n\nTrailers, gameplay clips, time-lapses, cutscenes, talking portraits.",
+      "href": null
+    },
+    {
+      "text": "read →\nheadset\n\nVR play.",
+      "href": null
+    },
+    {
+      "text": "read →\nrooms-and-matchmaking\n\nInvites, parties, matches, player caps.",
+      "href": null
+    },
+    {
+      "text": "read →\nsocial\n\nWorld chat as code: channels, nameplates, earshot, letters between players.",
+      "href": null
+    },
+    {
+      "text": "read →\nplatform-systems\n\nCheat-proof saves, SQL leaderboards, timers, AI text jobs, notifications.",
+      "href": null
+    },
+    {
+      "text": "read →\nbuyables\n\nShops and spoins.",
+      "href": null
+    },
+    {
+      "text": "read →\nportals\n\nDoors to other places or worlds, mirrors, monitors, minimaps.",
+      "href": null
+    },
+    {
+      "text": "read →\nplayer-settings\n\nProtections and control locks.",
+      "href": null
+    },
+    {
+      "text": "read →\nworkshop\n\nThe build bench: headless Blender, renders, bakes and playing your game as a tester.",
+      "href": null
+    },
+    {
+      "text": "read →\nweaves\n\nHelpers that build pieces in parallel: how a crew is briefed and checked.",
+      "href": null
+    },
+    {
+      "text": "read →\nuploaded-models\n\nYour own .glb models or a picture turned into a model: placed, dressed, talking.",
+      "href": null
+    },
+    {
+      "text": "read →\nblender-game-assets\n\nHero models built in Blender by helpers.",
+      "href": null
+    },
+    {
+      "text": "read →\nbring-a-game\n\nA game made elsewhere, rebuilt Spawn-native.",
+      "href": null
+    },
+    {
+      "text": "read →\nmods\n\nInstall and publish shared mods.",
+      "href": null
+    },
+    {
+      "text": "read →\nborrowing\n\nReusing other creators' work, credited.",
+      "href": null
+    },
+    {
+      "text": "read →\npublish\n\nCovers, publishing, unpublishing.",
+      "href": null
+    },
+    {
+      "text": "read →\ngod-mode\n\nYour own build tools: rigs, brushes, gizmos.",
+      "href": null
+    },
+    {
+      "text": "read →\ndebugging\n\nLag, stutter, freezes, slow loads.",
+      "href": null
+    }
+  ],
+  "images": [],
+  "code": [],
+  "inputs": []
+}

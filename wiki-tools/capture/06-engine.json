@@ -1,0 +1,223 @@
+{
+  "title": "",
+  "text": "toolbox\nOverview\nStarters\nSkills\nAnimations\nSound & Art\nWorkshop\nEngine\nReference\nShapes\nMods\nGames\nPick a genre\nEngine\n\nWhat every world gets before a line of game code, area by area. Open one to read how it works and what it means for the game.\n\nread →\nMultiplayer & rooms\n\nEvery Spawn world is multiplayer out of the box: rooms, the 64-player place view, who simulates what, and how a referee keeps a match fair.\n\nread →\nPlaces & portals\n\nA world is one game with many places: a town, a dungeon, an arena. Doors between them, instanced copies, and portals to other creators' worlds.\n\nread →\nTerrain & ground\n\nRolling heightmap hills, diggable voxel blocks, or no terrain at all: the ground, its materials, and the seas, lakes, rivers and paths marked on it.\n\nread →\nObjects, shapes & templates\n\nEverything you see is an object: built-in shapes, scripted geometry, models, lights, signs, children and templates that stamp out fifty goblins from one.\n\nread →\nPhysics & collision\n\nStatic walls, tumbling crates, moving lifts, walking characters, trigger zones, pass-through teams, raycasts, joints and ragdolls.\n\nread →\nScripts, hooks & the sim\n\nHow a game's rules are written: behaviors, the hooks the engine calls, events, timers, and sim.js, the 30 Hz referee.\n\nread →\nState, saves & SQL\n\nWhere a game remembers things: the player's own save, room and object state, scratch space, and a world-wide SQL database for all-time boards.\n\nread →\nHUD & screens\n\nHow the screen over the game works: ui.js returns HTML each time state moves, buttons send actions, and panels can hang on objects in the world.\n\nread →\nSound & music\n\nSounds named into being, spatial audio on objects, one-shot playSound, and the shared jukebox for music: how a game is heard.\n\nread →\nLight, sky, looks & effects\n\nSky, sun, fog and time of day, lights on objects, whole-screen looks, and the particle effects grammar for fire, dust and impacts.\n\nread →\nCameras\n\nA camera is a script: third-person orbits, first-person, top-down and cinematic shots, and how the camera reads the player's look.\n\nread →\nControls, phones & devices\n\nDeclaring axes and actions, reading them in onInput, and how phones, gamepads and headsets get controls without extra work.\n\nread →\nCharacters & animation\n\nPlayer bodies, avatars, the 61-clip humanoid library, animation channels, and scripted creatures with their own skeletons.\n\nread →\nNPC minds & AI jobs\n\nHow NPCs think: one manager stepping a crowd, hearing noise, pathfinding, and off-loop jobs that call AI text models.\n\nread →\nMaking art, sound & models\n\nWhere everything seen and heard comes from: scripted geometry, Blender models, painted pictures, seamless textures, uploads and named sounds.\n\nread →\nPublishing, players & social\n\nPosting a game, rooms and matchmaking, singleplayer vs multiplayer, saves, parties, guilds and what Spawn handles for every player.\n\nread →\nPerformance & scale\n\nHolding 60fps on phones: what the engine does for you, where your scripts cost, the 500 m simulation radius, and how to measure.\n\ntoolbox · everything this world can build with",
+  "headings": [
+    {
+      "level": "H2",
+      "text": "Engine"
+    },
+    {
+      "level": "H3",
+      "text": "Multiplayer & rooms"
+    },
+    {
+      "level": "H3",
+      "text": "Places & portals"
+    },
+    {
+      "level": "H3",
+      "text": "Terrain & ground"
+    },
+    {
+      "level": "H3",
+      "text": "Objects, shapes & templates"
+    },
+    {
+      "level": "H3",
+      "text": "Physics & collision"
+    },
+    {
+      "level": "H3",
+      "text": "Scripts, hooks & the sim"
+    },
+    {
+      "level": "H3",
+      "text": "State, saves & SQL"
+    },
+    {
+      "level": "H3",
+      "text": "HUD & screens"
+    },
+    {
+      "level": "H3",
+      "text": "Sound & music"
+    },
+    {
+      "level": "H3",
+      "text": "Light, sky, looks & effects"
+    },
+    {
+      "level": "H3",
+      "text": "Cameras"
+    },
+    {
+      "level": "H3",
+      "text": "Controls, phones & devices"
+    },
+    {
+      "level": "H3",
+      "text": "Characters & animation"
+    },
+    {
+      "level": "H3",
+      "text": "NPC minds & AI jobs"
+    },
+    {
+      "level": "H3",
+      "text": "Making art, sound & models"
+    },
+    {
+      "level": "H3",
+      "text": "Publishing, players & social"
+    },
+    {
+      "level": "H3",
+      "text": "Performance & scale"
+    }
+  ],
+  "blocks": [
+    "What every world gets before a line of game code, area by area. Open one to read how it works and what it means for the game.",
+    "Every Spawn world is multiplayer out of the box: rooms, the 64-player place view, who simulates what, and how a referee keeps a match fair.",
+    "A world is one game with many places: a town, a dungeon, an arena. Doors between them, instanced copies, and portals to other creators' worlds.",
+    "Rolling heightmap hills, diggable voxel blocks, or no terrain at all: the ground, its materials, and the seas, lakes, rivers and paths marked on it.",
+    "Everything you see is an object: built-in shapes, scripted geometry, models, lights, signs, children and templates that stamp out fifty goblins from one.",
+    "Static walls, tumbling crates, moving lifts, walking characters, trigger zones, pass-through teams, raycasts, joints and ragdolls.",
+    "How a game's rules are written: behaviors, the hooks the engine calls, events, timers, and sim.js, the 30 Hz referee.",
+    "Where a game remembers things: the player's own save, room and object state, scratch space, and a world-wide SQL database for all-time boards.",
+    "How the screen over the game works: ui.js returns HTML each time state moves, buttons send actions, and panels can hang on objects in the world.",
+    "Sounds named into being, spatial audio on objects, one-shot playSound, and the shared jukebox for music: how a game is heard.",
+    "Sky, sun, fog and time of day, lights on objects, whole-screen looks, and the particle effects grammar for fire, dust and impacts.",
+    "A camera is a script: third-person orbits, first-person, top-down and cinematic shots, and how the camera reads the player's look.",
+    "Declaring axes and actions, reading them in onInput, and how phones, gamepads and headsets get controls without extra work.",
+    "Player bodies, avatars, the 61-clip humanoid library, animation channels, and scripted creatures with their own skeletons.",
+    "How NPCs think: one manager stepping a crowd, hearing noise, pathfinding, and off-loop jobs that call AI text models.",
+    "Where everything seen and heard comes from: scripted geometry, Blender models, painted pictures, seamless textures, uploads and named sounds.",
+    "Posting a game, rooms and matchmaking, singleplayer vs multiplayer, saves, parties, guilds and what Spawn handles for every player.",
+    "Holding 60fps on phones: what the engine does for you, where your scripts cost, the 500 m simulation radius, and how to measure."
+  ],
+  "links": [
+    {
+      "text": "toolbox",
+      "href": null
+    },
+    {
+      "text": "Overview",
+      "href": null
+    },
+    {
+      "text": "Starters",
+      "href": null
+    },
+    {
+      "text": "Skills",
+      "href": null
+    },
+    {
+      "text": "Animations",
+      "href": null
+    },
+    {
+      "text": "Sound & Art",
+      "href": null
+    },
+    {
+      "text": "Workshop",
+      "href": null
+    },
+    {
+      "text": "Engine",
+      "href": null
+    },
+    {
+      "text": "Reference",
+      "href": null
+    },
+    {
+      "text": "Shapes",
+      "href": null
+    },
+    {
+      "text": "Mods",
+      "href": null
+    },
+    {
+      "text": "Games",
+      "href": null
+    },
+    {
+      "text": "Pick a genre",
+      "href": null
+    },
+    {
+      "text": "read →\nMultiplayer & rooms\n\nEvery Spawn world is multiplayer out of the box: rooms, the 64-player place view, who simulates what, and how a referee keeps a match fair.",
+      "href": null
+    },
+    {
+      "text": "read →\nPlaces & portals\n\nA world is one game with many places: a town, a dungeon, an arena. Doors between them, instanced copies, and portals to other creators' worlds.",
+      "href": null
+    },
+    {
+      "text": "read →\nTerrain & ground\n\nRolling heightmap hills, diggable voxel blocks, or no terrain at all: the ground, its materials, and the seas, lakes, rivers and paths marked on it.",
+      "href": null
+    },
+    {
+      "text": "read →\nObjects, shapes & templates\n\nEverything you see is an object: built-in shapes, scripted geometry, models, lights, signs, children and templates that stamp out fifty goblins from one.",
+      "href": null
+    },
+    {
+      "text": "read →\nPhysics & collision\n\nStatic walls, tumbling crates, moving lifts, walking characters, trigger zones, pass-through teams, raycasts, joints and ragdolls.",
+      "href": null
+    },
+    {
+      "text": "read →\nScripts, hooks & the sim\n\nHow a game's rules are written: behaviors, the hooks the engine calls, events, timers, and sim.js, the 30 Hz referee.",
+      "href": null
+    },
+    {
+      "text": "read →\nState, saves & SQL\n\nWhere a game remembers things: the player's own save, room and object state, scratch space, and a world-wide SQL database for all-time boards.",
+      "href": null
+    },
+    {
+      "text": "read →\nHUD & screens\n\nHow the screen over the game works: ui.js returns HTML each time state moves, buttons send actions, and panels can hang on objects in the world.",
+      "href": null
+    },
+    {
+      "text": "read →\nSound & music\n\nSounds named into being, spatial audio on objects, one-shot playSound, and the shared jukebox for music: how a game is heard.",
+      "href": null
+    },
+    {
+      "text": "read →\nLight, sky, looks & effects\n\nSky, sun, fog and time of day, lights on objects, whole-screen looks, and the particle effects grammar for fire, dust and impacts.",
+      "href": null
+    },
+    {
+      "text": "read →\nCameras\n\nA camera is a script: third-person orbits, first-person, top-down and cinematic shots, and how the camera reads the player's look.",
+      "href": null
+    },
+    {
+      "text": "read →\nControls, phones & devices\n\nDeclaring axes and actions, reading them in onInput, and how phones, gamepads and headsets get controls without extra work.",
+      "href": null
+    },
+    {
+      "text": "read →\nCharacters & animation\n\nPlayer bodies, avatars, the 61-clip humanoid library, animation channels, and scripted creatures with their own skeletons.",
+      "href": null
+    },
+    {
+      "text": "read →\nNPC minds & AI jobs\n\nHow NPCs think: one manager stepping a crowd, hearing noise, pathfinding, and off-loop jobs that call AI text models.",
+      "href": null
+    },
+    {
+      "text": "read →\nMaking art, sound & models\n\nWhere everything seen and heard comes from: scripted geometry, Blender models, painted pictures, seamless textures, uploads and named sounds.",
+      "href": null
+    },
+    {
+      "text": "read →\nPublishing, players & social\n\nPosting a game, rooms and matchmaking, singleplayer vs multiplayer, saves, parties, guilds and what Spawn handles for every player.",
+      "href": null
+    },
+    {
+      "text": "read →\nPerformance & scale\n\nHolding 60fps on phones: what the engine does for you, where your scripts cost, the 500 m simulation radius, and how to measure.",
+      "href": null
+    }
+  ],
+  "images": [],
+  "code": [],
+  "inputs": []
+}

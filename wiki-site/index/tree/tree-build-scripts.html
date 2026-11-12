@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Build, check and discovery scripts, and the patch files · Wiki</title>
+<link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+<header class="topbar">
+<div class="topbar-inner">
+<a class="brand" href="../../index.html">wi<span>ki</span></a>
+<nav class="pills"><a href="../../cleetus/ci-workflows.html">cleetus</a><a class="active" href="../../index/cdn-inventory.html">index</a><a href="../../jayzee/maps-glb-urls.html">jayzee</a><a href="../../reference-game-16/coverage.html">reference-game-16</a></nav>
+</div>
+</header>
+<div class="layout">
+<nav class="side">
+<h3>Start</h3><ul>
+<li><a href="../../index.html">Project wiki: how this wiki is organised</a></li>
+<li><a href="../../toc.html">Table of contents</a></li>
+</ul>
+<h3>cleetus</h3><ul>
+<li><a href="../../cleetus/ci-workflows.html">CI workflows and npm scripts</a></li>
+<li><a href="../../cleetus/docs-folder.html">The docs folder</a></li>
+<li><a href="../../cleetus/endpoints.html">Endpoints</a></li>
+<li><a href="../../cleetus/engine-decisions.html">Engine decisions: why the jayzee engine notes are shaped as they are</a></li>
+<li><a href="../../cleetus/engine-overview.html">Engine overview: the jayzee engine notes (cleetus workspace)</a></li>
+<li><a href="../../cleetus/evidence-claims.html">Evidence claims</a></li>
+<li><a href="../../cleetus/evidence-overview.html">Evidence overview</a></li>
+<li><a href="../../cleetus/featureset-part-1.html">Featureset part 1: cleetus counts, spoint surface, and the relayed streams</a></li>
+<li><a href="../../cleetus/featureset-part-2.html">Featureset part 2: streams 12 to 25 and the src/sdk modules</a></li>
+<li><a href="../../cleetus/featureset-part-3.html">Featureset part 3: streams 26 to 34</a></li>
+<li><a href="../../cleetus/featureset-part-4.html">Featureset part 4: streams 35 to 45, client/core rendering modules</a></li>
+<li><a href="../../cleetus/featureset-part-5.html">Featureset part 5: streams 45 to 55, client/core modules</a></li>
+<li><a href="../../cleetus/featureset-part-6.html">Featureset part 6: streams 56 to 58 and the improvement opportunities</a></li>
+<li><a href="../../cleetus/featureset-part-7.html">Featureset part 7: improvement candidates from streams 43 to 58</a></li>
+<li><a href="../../cleetus/featureset-part-8.html">Featureset part 8: agent and room candidates, session store, bake pins, learning record and terrain</a></li>
+<li><a href="../../cleetus/featureset-part-9.html">FEATURESET part 9: render, editor, HUD, XR, packages, static serving and server surface</a></li>
+<li><a href="../../cleetus/jayzee-gaps.html">Jayzee implementation gaps</a></li>
+<li><a href="../../cleetus/manual-build.html">Manual build and check</a></li>
+<li><a href="../../cleetus/manual-worklist.html">Manual worklist</a></li>
+<li><a href="../../cleetus/morluto-ci-findings.html">Morluto rea PR 9234 CI findings</a></li>
+<li><a href="../../cleetus/netcode.html">Netcode</a></li>
+<li><a href="../../cleetus/open-gaps.html">Open gaps across the cleetus repository</a></li>
+<li><a href="../../cleetus/open-items.html">Open items register</a></li>
+<li><a href="../../cleetus/overview.html">Overview of cleetus</a></li>
+<li><a href="../../cleetus/parity.html">Parity</a></li>
+<li><a href="../../cleetus/runs-overview.html">Runs overview</a></li>
+<li><a href="../../cleetus/site-overview.html">Site overview (built manual output)</a></li>
+<li><a href="../../cleetus/sources-overview.html">Sources overview</a></li>
+<li><a href="../../cleetus/state-and-tooling.html">State and tooling</a></li>
+</ul>
+<h3>index</h3><ul>
+<li><a href="../../index/cdn-inventory.html">CDN inventory and manifests</a></li>
+<li><a href="../../index/discovery.html">Discovery evidence</a></li>
+<li><a href="../../index/exhaustive-index.html">Exhaustive world and GLB index</a></li>
+<li><a href="../../index/extra-docs.html">extra docs: the Jayzee game API reference copy</a></li>
+<li><a href="../../index/extra-worlds.html">extra world lists and feeds</a></li>
+<li><a href="../../index/open-gaps.html">Open gaps in the index</a></li>
+<li><a href="../../index/overview.html">Overview of the index project</a></li>
+<li><a href="../../index/provenance.html">Provenance manifests</a></li>
+<li><a href="../../index/savi-index.html">cleetus index</a></li>
+<li><a href="../../index/spawn-index.html">jayzee index</a></li>
+<li><a href="../../index/tree/tree-borick.html">The borick/ directory</a></li>
+<li><a class="current" href="../../index/tree/tree-build-scripts.html">Build, check and discovery scripts, and the patch files</a></li>
+<li><a href="../../index/tree/tree-discovery.html">The discovery/ directory</a></li>
+<li><a href="../../index/tree/tree-exhaustive.html">The exhaustive/ directory</a></li>
+<li><a href="../../index/tree/tree-extra.html">The extra/ directory</a></li>
+<li><a href="../../index/tree/tree-indexes.html">The index files: COMPLETE_INDEX, EXTRA_WORLD_INDEX and INDEX</a></li>
+<li><a href="../../index/tree/tree-open-gaps.html">Open gaps in the top-level index, its directories and the browser state</a></li>
+<li><a href="../../index/tree/tree-overview.html">Top-level layout of the jayzee tree</a></li>
+<li><a href="../../index/tree/tree-provenance.html">provenance.sha256.txt and the other provenance manifests</a></li>
+<li><a href="../../index/tree/tree-savi-directory.html">The cleetus/ directory (old name: savi)</a></li>
+<li><a href="../../index/tree/tree-spawn-directory.html">The jayzee/ directory (old name: spawn)</a></li>
+</ul>
+<h3>jayzee</h3><ul>
+<li><a href="../../jayzee/maps-glb-urls.html">jayzee GLB URL list (glb-urls-all.tsv)</a></li>
+<li><a href="../../jayzee/maps-head-status.html">jayzee world head status lists</a></li>
+<li><a href="../../jayzee/maps-learning-record-part-1.html">jayzee learning record, part 1 (denominators, corpus, keys, escapes, bucket rule, 410)</a></li>
+<li><a href="../../jayzee/maps-learning-record-part-2.html">jayzee learning record, part 2 (error keys, non-CDN refs, open items, name decode, /cdn/ attempt)</a></li>
+<li><a href="../../jayzee/maps-learning-record.html">jayzee learning record</a></li>
+<li><a href="../../jayzee/maps-noncdn-refs.html">jayzee non-CDN data references (unverified-noncdn-refs.tsv)</a></li>
+<li><a href="../../jayzee/maps-open-gaps.html">jayzee maps open gaps</a></li>
+<li><a href="../../jayzee/maps-overview.html">jayzee maps directory overview</a></li>
+<li><a href="../../jayzee/maps-root-worlds.html">jayzee root-linked worlds map</a></li>
+<li><a href="../../jayzee/maps-witness-inputs.html">jayzee witness input directories and their sha256 checks</a></li>
+<li><a href="../../jayzee/maps-witness.html">jayzee witness scripts</a></li>
+<li><a href="../../jayzee/runs-findings.html">Runs findings and decisions</a></li>
+<li><a href="../../jayzee/runs-open-gaps.html">Runs open gaps and failures</a></li>
+<li><a href="../../jayzee/runs-overview.html">Runs overview</a></li>
+<li><a href="../../jayzee/runs-timeline.html">Runs timeline</a></li>
+<li><a href="../../jayzee/sources-captures.html">Sources captures</a></li>
+<li><a href="../../jayzee/sources-index.html">Sources index</a></li>
+<li><a href="../../jayzee/sources-overview.html">Sources overview</a></li>
+</ul>
+<h3>reference-game-16</h3><ul>
+<li><a href="../../reference-game-16/coverage.html">Capture coverage: game page</a></li>
+<li><a href="../../reference-game-16/download-process.html">Download process: from the join instructions to a working site</a></li>
+<li><a href="../../reference-game-16/page-00-overview.html">Game page section: Overview</a></li>
+<li><a href="../../reference-game-16/page-01-starters.html">Game page section: Starters</a></li>
+<li><a href="../../reference-game-16/page-02-skills.html">Game page section: Skills</a></li>
+<li><a href="../../reference-game-16/page-03-animations.html">Game page section: Animations</a></li>
+<li><a href="../../reference-game-16/page-04-sound-art.html">Game page section: Sound Art</a></li>
+<li><a href="../../reference-game-16/page-05-workshop.html">Game page section: Workshop</a></li>
+<li><a href="../../reference-game-16/page-06-engine.html">Game page section: Engine</a></li>
+<li><a href="../../reference-game-16/page-07-reference.html">Game page section: Reference</a></li>
+<li><a href="../../reference-game-16/page-08-shapes.html">Game page section: Shapes</a></li>
+<li><a href="../../reference-game-16/page-09-mods.html">Game page section: Mods</a></li>
+<li><a href="../../reference-game-16/page-10-games.html">Game page section: Games</a></li>
+<li><a href="../../reference-game-16/page-11-pick-a-genre.html">Game page section: Pick A Genre</a></li>
+<li><a href="../../reference-game-16/page-host.html">Host page: Untitled game (@lanmower/game-16)</a></li>
+</ul>
+</nav>
+<main>
+<span class="eyebrow">index</span>
+<h1 id="build-check-and-discovery-scripts-and-the-patch-files">Build, check and discovery scripts, and the patch files</h1>
+<h2 id="how-it-works">How it works</h2>
+<p>/workspace/index holds nine Node ES-module scripts (.mjs) at top level, eight of them active tools and one of them a validator, plus nine one-shot patch scripts (.patch-*.cjs). The three .mjs scripts in exhaustive/ are described in <a href="tree-exhaustive.html">tree-exhaustive</a>. All scripts are run with node and take no arguments. They read saved evidence from disk, and the discovery scripts also call the public jayzee HTTP endpoints. They write only under /workspace/index. Their inputs in the cleetus repository (old name: savi) are read-only peer sources, and the index does not copy them.</p>
+<p>The dependency chain, from the scripts' own inputs and outputs:</p>
+<ol><li>discover-spawn-worlds.mjs (old name: spawn) reads the public feed on www.spawn.co, and the baseline list of worlds and links, then writes discovery/feed-evidence.json, discovery/world-store-evidence.json and discovery/DISCOVERY.json.</li><li>scan-discovery-worlds.mjs reads discovery/feed-evidence.json and writes a compacted feed-evidence.json, the world-store evidence, DISCOVERY.json and DISCOVERY.md, under a 900,000 ms wall budget.</li><li>reenumerate-full-feed.mjs reads the live feed with full row metadata and writes discovery/full-feed-evidence.json.</li><li>probe-project-pages.mjs reads discovery/full-feed-evidence.json and a local feed list, and writes discovery/project-page-evidence.json.</li><li>retry-all-remaining-worlds.mjs reads the feed and world-store evidence and writes discovery/retry-outcomes.json, then overwrites discovery/world-store-evidence.json with the merged result.</li><li>build-complete-index.mjs (earliest, BASELINE only), then build-expanded-index.mjs (BASELINE plus DISCOVERY), then build-full-surface-index.mjs (latest, adds the full feed and project pages) each write the exhaustive aggregates, COMPLETE_INDEX.json, COMPLETE_INDEX.md and ALL_WORLD_GLB_LINKS.tsv. Only the last one is correct for the current data.</li><li>check-complete-index.mjs validates everything offline and prints one PASS line.</li></ol>
+<p>Each script, with its inputs, outputs, run command and decisions:</p>
+<p><strong>build-complete-index.mjs</strong> (BASELINE builder). Reads the cdn-scan JSONL files under /workspace/savi/spawn-evidence/data (old name: savi, and old name: spawn), and /workspace/index/exhaustive/source-glb-urls-all.tsv. Writes exhaustive/direct-cdn-glb-links.json and .tsv, rewrites exhaustive/worlds-and-glbs.json, writes COMPLETE_INDEX.json (schema index.complete-world-glb-links.v1), COMPLETE_INDEX.md and ALL_WORLD_GLB_LINKS.tsv. Run: <code>node /workspace/index/build-complete-index.mjs</code>. Prints a PASS line with worlds, directGlbUrls and tsvRows. Decisions: a GLB is a cdn entry with ext &quot;glb&quot; whose sha is 64 hex characters (anything else throws); the direct URL is built on the play.jayzee.co host with the legacy play.spawn.co host kept beside it, which is the reverse of the later builders. Superseded: running it after the expanded builders overwrites them with the 2,848-world content.</p>
+<p><strong>build-expanded-index.mjs</strong> (BASELINE plus DISCOVERY). Reads the same cdn-scan and TSV inputs, plus discovery/feed-evidence.json, discovery/world-store-evidence.json, discovery/DISCOVERY.json and exhaustive/worlds-and-glbs.json. Writes the same outputs as above, with an origin column added to ALL_WORLD_GLB_LINKS.tsv (schema versions bumped to v2 and v3). Run: <code>node /workspace/index/build-expanded-index.mjs</code>. Decisions: each world carries an origin (BASELINE, DISCOVERY, or BASELINE+DISCOVERY); direct URLs use the play.spawn.co host; discovery links are added from the world-store evidence's links array. Superseded by the full-surface builder because it has no project-page or published-feed metadata.</p>
+<p><strong>build-full-surface-index.mjs</strong> (current builder). Reads the cdn-scan and TSV inputs, plus discovery/full-feed-evidence.json, discovery/world-store-evidence.json, discovery/DISCOVERY.json, discovery/project-page-evidence.json, and discovery/retry-outcomes.json (the last is loaded into a variable the rest of the script does not use). Writes exhaustive/direct-cdn-glb-links.json (schema v3), exhaustive/direct-cdn-glb-links.tsv, exhaustive/worlds-and-glbs.json (v4), COMPLETE_INDEX.json (index.complete-world-glb-links.v3), COMPLETE_INDEX.md and ALL_WORLD_GLB_LINKS.tsv. Run: <code>node /workspace/index/build-full-surface-index.mjs</code>. Decisions: published feed metadata (owner, name, address, engine, plays, likes) is attached to each world; the feed's sort and offset values are kept as source tags with the prefixes feed-sort, feed-offset and feed-url; project-page GLB-capable hashes are kept only when the extension is glb, gltf or yaml; git URLs are listed once in extractedUrlInventory and are not fanned out to every world (this was the outcome of patches build3 and build4); the discovery summary is compacted into counts, blocker totals and a blockerBreakdown object. Its last run is the one the checker confirms.</p>
+<p><strong>check-complete-index.mjs</strong> (validator). Reads the cdn-scan inputs, the feed, full-feed, world-store, project-page and retry evidence, COMPLETE_INDEX.json, exhaustive/direct-cdn-glb-links.json, exhaustive/worlds-and-glbs.json, ALL_WORLD_GLB_LINKS.tsv, exhaustive/direct-cdn-glb-links.tsv, and the four provenance files (top level, exhaustive, borick, extra). Writes nothing. Run: <code>node /workspace/index/check-complete-index.mjs</code>. Last result on this tree: <code>check:complete-index PASS</code> with scanFiles 16, scanRows 2,848, uniqueManifestHashes 2,580, uniqueWorldUuids 21,716, directGlbUrls 5,783, newWorlds 18,868, newGlbLinks 3,421, fullFeedProjects 3,951, projectPageUrlsAttempted 6,604, projectPageHttp200 959, projectPageUnreachable 5,645, tsvRows 27,499, exit 0. Checks: the full feed has 288 pages, 11,853 rows, 3,951 projects and 1,262 owners; the project-page counts match; the retry attempted 9,224 with zero not attempted; every world and URL from the derivation is present in each surface and in both TSV files; each listed provenance hash matches its file; no binary extension exists under /workspace/index. Decision: validation is offline and re-derives sets from saved evidence, so no network is needed.</p>
+<p><strong>discover-spawn-worlds.mjs (old name: spawn)</strong> (old name: spawn; first discovery pass). Reads the public feed on https://www.spawn.co/api/feed for sorts hot, top and recent (limit 48, offsets up to 4800, 2 retries, 10 s timeout), the cdn-scan JSONL under /workspace/savi/spawn-evidence/data (old name: savi, and old name: spawn), and exhaustive/direct-cdn-glb-links.json. Calls the world-store on play.spawn.co: head.json, the manifest, and each value. Writes discovery/feed-evidence.json, discovery/world-store-evidence.json and discovery/DISCOVERY.json. Run: <code>node /workspace/index/discover-spawn-worlds.mjs (old name: spawn)</code> (old name: spawn). Decisions: pages stop after two empty pages in a row or after 101 pages per sort; value bodies are read only to extract references (the regular expressions for the ~2fcdn~2fvalue and cdn/value patterns) and are not retained; the requested play-host feed URL is recorded with status 404 as a constant, not a measurement. Superseded by the later passes for the feed (www host only).</p>
+<p><strong>scan-discovery-worlds.mjs</strong> (world-store scan). Reads discovery/feed-evidence.json, the cdn-scan JSONL and the baseline aggregate. Writes discovery/world-store-evidence.json, rewrites discovery/feed-evidence.json without its game rows (keeping gameRows as a count), and writes discovery/DISCOVERY.json and discovery/DISCOVERY.md. Run: <code>node /workspace/index/scan-discovery-worlds.mjs</code>. Configuration: timeout 5 s, one retry, concurrency 24, wall budget 900,000 ms. Decisions: candidates are feed world IDs that are not in the baseline; a world whose scan starts after the budget is recorded as not_scanned_due_to_wall_budget (5,151 such blockers in this tree); the per-world result keeps HTTP evidence and derived GLB links only.</p>
+<p><strong>reenumerate-full-feed.mjs</strong> (full feed). No local input. Calls https://www.spawn.co/api/feed for the three sorts, 48 rows per page, offsets 0 to 4800, 12 pages in parallel, two empty pages end a sort, 101 pages maximum per sort. Writes discovery/full-feed-evidence.json. Run: <code>node /workspace/index/reenumerate-full-feed.mjs</code>. Decisions: the raw row is kept beside the normalised project (owner, name, address, engine, plays, likes); projects are unique on app_id plus world_id; each project records every sort and offset it appeared in. Result on this tree: 288 pages, 11,853 rows, 3,951 projects, 1,262 owners.</p>
+<p><strong>probe-project-pages.mjs</strong> (project pages). Reads discovery/full-feed-evidence.json and the local feed list at /workspace/savi/spawn-engine/data/feed-projects.json (old name: savi, and old name: spawn). Requests https://www.spawn.co/@owner/slug and the same with @dev appended, for up to three slug candidates per project. Writes discovery/project-page-evidence.json. Run: <code>node /workspace/index/probe-project-pages.mjs</code>. Decisions: slug candidates come from the address or name, normalised; extraction records UUIDs, dev session IDs, git URLs, CDN URLs, spawnfile.io URLs, GLB-capable hashes and direct GLB links; the wall budget is 1,500,000 ms. Limitation, recorded in the output: the URL counter is incremented before the budget check, so 5,600 URLs that were never requested are still counted in urlsAttempted (6,604). Only 1,004 were requested.</p>
+<p><strong>retry-all-remaining-worlds.mjs</strong> (retry). Reads discovery/feed-evidence.json, discovery/world-store-evidence.json and discovery/DISCOVERY.json. Writes discovery/retry-outcomes.json and overwrites discovery/world-store-evidence.json with a merged v2 record. Run: <code>node /workspace/index/retry-all-remaining-worlds.mjs</code>. Configuration: timeout 8 s, two retries, concurrency 32, wall budget 1,800,000 ms. Decisions: the candidate set is the union of worlds not attempted because of the budget and worlds that were unreachable before (head status not 200, or a wall_budget, head_unreachable or head_manifest_missing error); the retry result replaces the earlier per-world result, and earlier successes outside the set are kept (343 preserved). Result: 9,224 attempted (5,151 unscanned plus 4,073 previously unreachable); 407 newly reachable scanned worlds; 8,799 head_not_found_json; 14 network errors; 3 head_manifest_missing; 1 manifest_unreachable; no rate limits; zero not attempted.</p>
+<p><strong>Patch files.</strong> Each .cjs file reads one script, replaces fixed strings and writes it back. None is imported by a script. For the patches whose target strings were checked by grep (discover-spawn-worlds.mjs (old name: spawn), build-full-surface-index.mjs, retry-all-remaining-worlds.mjs, check-complete-index.mjs), the removed strings are absent and the added strings are present, so the patches have been applied. Re-running them is not needed.</p>
+<ul><li>.patch-discovery.cjs: removes the line containing the text &quot;short page&quot; from discover-spawn-worlds.mjs (old name: spawn). Throws if the line is absent.</li><li>.patch-retry.cjs: builds the retry candidate union, removes the progress output, adds unscannedRetried and priorUnreachableRetried to the counts.</li><li>.patch-checkers.cjs: adds retry, merged reachable and per-world coverage assertions to check-complete-index.mjs and exhaustive/check-world-glb-completeness.mjs, and adds retry-outcomes.json and retry-all-remaining-worlds.mjs to the provenance list checks.</li><li>.patch-top-checker.cjs and .patch-top-checker2.cjs: fix how a SHA-256 is extracted from a direct link in check-complete-index.mjs. The second version replaces the helper line by line.</li><li>.patch-full-surface-build.cjs: replaces the full-feed and project-page summaries in build-full-surface-index.mjs with a compact form and prefixes source tags.</li><li>.patch-full-surface-build2.cjs: adds the compact discovery block, blocker totals and blockerBreakdown.</li><li>.patch-full-surface-build3.cjs: removes the global git URL fan-out and adds extractedUrlInventory.</li><li>.patch-full-surface-build4.cjs: repeats the build3 change by line filtering, because the first attempt's string did not match.</li></ul>
+<h2 id="decisions">Decisions</h2>
+<ul><li>Each stage writes its own evidence file so that later stages can re-derive the output without the network (check-complete-index.mjs, exhaustive/check-world-glb-completeness.mjs). Evidence: the checkers read only local files.</li><li>Fetches are bounded by retries, timeouts and wall budgets, and every skipped item is recorded rather than dropped (scan-discovery-worlds.mjs blockers, retry-all-remaining-worlds.mjs categories). Evidence: retry-outcomes.json has zero wallBudgetNotAttempted.</li><li>The latest builder replaces the earlier ones instead of editing them, and the patch files record the edits as separate one-shot changes (.patch-full-surface-build*.cjs). Evidence: the file names and the patch contents.</li><li>Values are read only for reference extraction; no GLB, texture or audio body is kept (every discovery script's policy string says so).</li></ul>
+<h2 id="open-gaps">Open gaps</h2>
+<ul><li>The one-shot patches have no record of when they were run; the only evidence is that their effects are present in the current scripts. Source: /workspace/index/.patch-*.cjs.</li><li>discover-spawn-worlds.mjs (old name: spawn) hard-codes the play-host feed result (status 404) rather than measuring it. Source: /workspace/index/discover-spawn-worlds.mjs (old name: spawn).</li><li>probe-project-pages.mjs counts URLs that were skipped by the wall budget as attempted. Source: /workspace/index/probe-project-pages.mjs and /workspace/index/discovery/project-page-evidence.json.</li><li>build-full-surface-index.mjs loads retry-outcomes.json without using it. Source: /workspace/index/build-full-surface-index.mjs.</li><li>Three of the builders (build-complete-index.mjs, build-expanded-index.mjs and the current one) write the same output paths. Only the current one is safe to run; no script or note says so. Source: the three builder files.</li><li>The inputs under /workspace/savi/spawn-evidence/data (old name: savi; old name: spawn) and /workspace/savi/spawn-engine/data (old name: savi, and old name: spawn) are outside /workspace/index, and no copy is kept in the index. Rebuilding requires the cleetus repository to be present. Sources: the constants at the top of each builder.</li></ul>
+<h2 id="sources">Sources</h2>
+<ul><li>/workspace/index/build-complete-index.mjs</li><li>/workspace/index/build-expanded-index.mjs</li><li>/workspace/index/build-full-surface-index.mjs</li><li>/workspace/index/check-complete-index.mjs</li><li>/workspace/index/discover-spawn-worlds.mjs (old name: spawn)</li><li>/workspace/index/scan-discovery-worlds.mjs</li><li>/workspace/index/reenumerate-full-feed.mjs</li><li>/workspace/index/probe-project-pages.mjs</li><li>/workspace/index/retry-all-remaining-worlds.mjs</li><li>/workspace/index/.patch-discovery.cjs</li><li>/workspace/index/.patch-retry.cjs</li><li>/workspace/index/.patch-checkers.cjs</li><li>/workspace/index/.patch-top-checker.cjs</li><li>/workspace/index/.patch-top-checker2.cjs</li><li>/workspace/index/.patch-full-surface-build.cjs</li><li>/workspace/index/.patch-full-surface-build2.cjs</li><li>/workspace/index/.patch-full-surface-build3.cjs</li><li>/workspace/index/.patch-full-surface-build4.cjs</li><li>/workspace/index/discovery/feed-evidence.json</li><li>/workspace/index/discovery/full-feed-evidence.json</li><li>/workspace/index/discovery/world-store-evidence.json</li><li>/workspace/index/discovery/project-page-evidence.json</li><li>/workspace/index/discovery/retry-outcomes.json</li><li>/workspace/index/discovery/DISCOVERY.json</li><li>/workspace/index/discovery/DISCOVERY.md</li><li>/workspace/index/exhaustive/direct-cdn-glb-links.json</li><li>/workspace/index/exhaustive/worlds-and-glbs.json</li><li>/workspace/savi/spawn-evidence/data (old name: savi; old name: spawn)</li><li>/workspace/savi/spawn-engine/data/feed-projects.json (old name: savi; old name: spawn)</li></ul>
+</main>
+</div>
+<footer class="foot"><div class="foot-inner">wiki · every page cites the on-disk sources it was written from</div></footer>
+</body>
+</html>

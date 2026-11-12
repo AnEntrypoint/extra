@@ -1,0 +1,115 @@
+{
+  "title": "",
+  "text": "toolbox\nOverview\nStarters\nSkills\nAnimations\nSound & Art\nWorkshop\nEngine\nReference\nShapes\nMods\nGames\nPick a genre\nStarters\n\nOne-move foundations. Swapping onto one replaces the world's scripts in a single step, and one undo brings the old one back.\n\nfiles →\n3d\n3D world\n\nFirst-person body, mouse look, jump, open sky, placeholder ground and grass.\n\nGood for Exploration, shooters, adventure, racing, sandbox\nfiles →\n3d-voxels\nBlock world\n\nSolid voxel field, left click digs, right click places. Biomes, ore and caves come from its generator.\n\nGood for Survival, crafting, building, mining\nfiles →\n2d-top\nTop-down 2D\n\nDrawn pixel hero, tile ground with wang edges, no gravity, solid trees.\n\nGood for RPGs, farming, zelda-likes, twin-stick\nfiles →\n2d-side\nSide-scroller\n\nDrawn hero, platform ground, gravity on, parallax backdrops.\n\nGood for Platformers, metroidvanias, runners\nfiles →\nui-game\nScreen-first\n\nThe screen is HTML, no 3D drawn. Rules run behind buttons. This site runs on it.\n\nGood for Clickers, card games, idle, quizzes, dashboards\ntoolbox · everything this world can build with",
+  "headings": [
+    {
+      "level": "H2",
+      "text": "Starters"
+    },
+    {
+      "level": "H3",
+      "text": "3D world"
+    },
+    {
+      "level": "H3",
+      "text": "Block world"
+    },
+    {
+      "level": "H3",
+      "text": "Top-down 2D"
+    },
+    {
+      "level": "H3",
+      "text": "Side-scroller"
+    },
+    {
+      "level": "H3",
+      "text": "Screen-first"
+    }
+  ],
+  "blocks": [
+    "One-move foundations. Swapping onto one replaces the world's scripts in a single step, and one undo brings the old one back.",
+    "First-person body, mouse look, jump, open sky, placeholder ground and grass.",
+    "Solid voxel field, left click digs, right click places. Biomes, ore and caves come from its generator.",
+    "Drawn pixel hero, tile ground with wang edges, no gravity, solid trees.",
+    "Drawn hero, platform ground, gravity on, parallax backdrops.",
+    "The screen is HTML, no 3D drawn. Rules run behind buttons. This site runs on it."
+  ],
+  "links": [
+    {
+      "text": "toolbox",
+      "href": null
+    },
+    {
+      "text": "Overview",
+      "href": null
+    },
+    {
+      "text": "Starters",
+      "href": null
+    },
+    {
+      "text": "Skills",
+      "href": null
+    },
+    {
+      "text": "Animations",
+      "href": null
+    },
+    {
+      "text": "Sound & Art",
+      "href": null
+    },
+    {
+      "text": "Workshop",
+      "href": null
+    },
+    {
+      "text": "Engine",
+      "href": null
+    },
+    {
+      "text": "Reference",
+      "href": null
+    },
+    {
+      "text": "Shapes",
+      "href": null
+    },
+    {
+      "text": "Mods",
+      "href": null
+    },
+    {
+      "text": "Games",
+      "href": null
+    },
+    {
+      "text": "Pick a genre",
+      "href": null
+    },
+    {
+      "text": "files →\n3d\n3D world\n\nFirst-person body, mouse look, jump, open sky, placeholder ground and grass.\n\nGood for Exploration, shooters, adventure, racing, sandbox",
+      "href": null
+    },
+    {
+      "text": "files →\n3d-voxels\nBlock world\n\nSolid voxel field, left click digs, right click places. Biomes, ore and caves come from its generator.\n\nGood for Survival, crafting, building, mining",
+      "href": null
+    },
+    {
+      "text": "files →\n2d-top\nTop-down 2D\n\nDrawn pixel hero, tile ground with wang edges, no gravity, solid trees.\n\nGood for RPGs, farming, zelda-likes, twin-stick",
+      "href": null
+    },
+    {
+      "text": "files →\n2d-side\nSide-scroller\n\nDrawn hero, platform ground, gravity on, parallax backdrops.\n\nGood for Platformers, metroidvanias, runners",
+      "href": null
+    },
+    {
+      "text": "files →\nui-game\nScreen-first\n\nThe screen is HTML, no 3D drawn. Rules run behind buttons. This site runs on it.\n\nGood for Clickers, card games, idle, quizzes, dashboards",
+      "href": null
+    }
+  ],
+  "images": [],
+  "code": [],
+  "inputs": []
+}

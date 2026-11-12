@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Engine decisions: why the jayzee engine notes are shaped as they are · Wiki</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="topbar">
+<div class="topbar-inner">
+<a class="brand" href="../index.html">wi<span>ki</span></a>
+<nav class="pills"><a class="active" href="../cleetus/ci-workflows.html">cleetus</a><a href="../index/cdn-inventory.html">index</a><a href="../jayzee/maps-glb-urls.html">jayzee</a><a href="../reference-game-16/coverage.html">reference-game-16</a></nav>
+</div>
+</header>
+<div class="layout">
+<nav class="side">
+<h3>Start</h3><ul>
+<li><a href="../index.html">Project wiki: how this wiki is organised</a></li>
+<li><a href="../toc.html">Table of contents</a></li>
+</ul>
+<h3>cleetus</h3><ul>
+<li><a href="../cleetus/ci-workflows.html">CI workflows and npm scripts</a></li>
+<li><a href="../cleetus/docs-folder.html">The docs folder</a></li>
+<li><a href="../cleetus/endpoints.html">Endpoints</a></li>
+<li><a class="current" href="../cleetus/engine-decisions.html">Engine decisions: why the jayzee engine notes are shaped as they are</a></li>
+<li><a href="../cleetus/engine-overview.html">Engine overview: the jayzee engine notes (cleetus workspace)</a></li>
+<li><a href="../cleetus/evidence-claims.html">Evidence claims</a></li>
+<li><a href="../cleetus/evidence-overview.html">Evidence overview</a></li>
+<li><a href="../cleetus/featureset-part-1.html">Featureset part 1: cleetus counts, spoint surface, and the relayed streams</a></li>
+<li><a href="../cleetus/featureset-part-2.html">Featureset part 2: streams 12 to 25 and the src/sdk modules</a></li>
+<li><a href="../cleetus/featureset-part-3.html">Featureset part 3: streams 26 to 34</a></li>
+<li><a href="../cleetus/featureset-part-4.html">Featureset part 4: streams 35 to 45, client/core rendering modules</a></li>
+<li><a href="../cleetus/featureset-part-5.html">Featureset part 5: streams 45 to 55, client/core modules</a></li>
+<li><a href="../cleetus/featureset-part-6.html">Featureset part 6: streams 56 to 58 and the improvement opportunities</a></li>
+<li><a href="../cleetus/featureset-part-7.html">Featureset part 7: improvement candidates from streams 43 to 58</a></li>
+<li><a href="../cleetus/featureset-part-8.html">Featureset part 8: agent and room candidates, session store, bake pins, learning record and terrain</a></li>
+<li><a href="../cleetus/featureset-part-9.html">FEATURESET part 9: render, editor, HUD, XR, packages, static serving and server surface</a></li>
+<li><a href="../cleetus/jayzee-gaps.html">Jayzee implementation gaps</a></li>
+<li><a href="../cleetus/manual-build.html">Manual build and check</a></li>
+<li><a href="../cleetus/manual-worklist.html">Manual worklist</a></li>
+<li><a href="../cleetus/morluto-ci-findings.html">Morluto rea PR 9234 CI findings</a></li>
+<li><a href="../cleetus/netcode.html">Netcode</a></li>
+<li><a href="../cleetus/open-gaps.html">Open gaps across the cleetus repository</a></li>
+<li><a href="../cleetus/open-items.html">Open items register</a></li>
+<li><a href="../cleetus/overview.html">Overview of cleetus</a></li>
+<li><a href="../cleetus/parity.html">Parity</a></li>
+<li><a href="../cleetus/runs-overview.html">Runs overview</a></li>
+<li><a href="../cleetus/site-overview.html">Site overview (built manual output)</a></li>
+<li><a href="../cleetus/sources-overview.html">Sources overview</a></li>
+<li><a href="../cleetus/state-and-tooling.html">State and tooling</a></li>
+</ul>
+<h3>index</h3><ul>
+<li><a href="../index/cdn-inventory.html">CDN inventory and manifests</a></li>
+<li><a href="../index/discovery.html">Discovery evidence</a></li>
+<li><a href="../index/exhaustive-index.html">Exhaustive world and GLB index</a></li>
+<li><a href="../index/extra-docs.html">extra docs: the Jayzee game API reference copy</a></li>
+<li><a href="../index/extra-worlds.html">extra world lists and feeds</a></li>
+<li><a href="../index/open-gaps.html">Open gaps in the index</a></li>
+<li><a href="../index/overview.html">Overview of the index project</a></li>
+<li><a href="../index/provenance.html">Provenance manifests</a></li>
+<li><a href="../index/savi-index.html">cleetus index</a></li>
+<li><a href="../index/spawn-index.html">jayzee index</a></li>
+<li><a href="../index/tree/tree-borick.html">The borick/ directory</a></li>
+<li><a href="../index/tree/tree-build-scripts.html">Build, check and discovery scripts, and the patch files</a></li>
+<li><a href="../index/tree/tree-discovery.html">The discovery/ directory</a></li>
+<li><a href="../index/tree/tree-exhaustive.html">The exhaustive/ directory</a></li>
+<li><a href="../index/tree/tree-extra.html">The extra/ directory</a></li>
+<li><a href="../index/tree/tree-indexes.html">The index files: COMPLETE_INDEX, EXTRA_WORLD_INDEX and INDEX</a></li>
+<li><a href="../index/tree/tree-open-gaps.html">Open gaps in the top-level index, its directories and the browser state</a></li>
+<li><a href="../index/tree/tree-overview.html">Top-level layout of the jayzee tree</a></li>
+<li><a href="../index/tree/tree-provenance.html">provenance.sha256.txt and the other provenance manifests</a></li>
+<li><a href="../index/tree/tree-savi-directory.html">The cleetus/ directory (old name: savi)</a></li>
+<li><a href="../index/tree/tree-spawn-directory.html">The jayzee/ directory (old name: spawn)</a></li>
+</ul>
+<h3>jayzee</h3><ul>
+<li><a href="../jayzee/maps-glb-urls.html">jayzee GLB URL list (glb-urls-all.tsv)</a></li>
+<li><a href="../jayzee/maps-head-status.html">jayzee world head status lists</a></li>
+<li><a href="../jayzee/maps-learning-record-part-1.html">jayzee learning record, part 1 (denominators, corpus, keys, escapes, bucket rule, 410)</a></li>
+<li><a href="../jayzee/maps-learning-record-part-2.html">jayzee learning record, part 2 (error keys, non-CDN refs, open items, name decode, /cdn/ attempt)</a></li>
+<li><a href="../jayzee/maps-learning-record.html">jayzee learning record</a></li>
+<li><a href="../jayzee/maps-noncdn-refs.html">jayzee non-CDN data references (unverified-noncdn-refs.tsv)</a></li>
+<li><a href="../jayzee/maps-open-gaps.html">jayzee maps open gaps</a></li>
+<li><a href="../jayzee/maps-overview.html">jayzee maps directory overview</a></li>
+<li><a href="../jayzee/maps-root-worlds.html">jayzee root-linked worlds map</a></li>
+<li><a href="../jayzee/maps-witness-inputs.html">jayzee witness input directories and their sha256 checks</a></li>
+<li><a href="../jayzee/maps-witness.html">jayzee witness scripts</a></li>
+<li><a href="../jayzee/runs-findings.html">Runs findings and decisions</a></li>
+<li><a href="../jayzee/runs-open-gaps.html">Runs open gaps and failures</a></li>
+<li><a href="../jayzee/runs-overview.html">Runs overview</a></li>
+<li><a href="../jayzee/runs-timeline.html">Runs timeline</a></li>
+<li><a href="../jayzee/sources-captures.html">Sources captures</a></li>
+<li><a href="../jayzee/sources-index.html">Sources index</a></li>
+<li><a href="../jayzee/sources-overview.html">Sources overview</a></li>
+</ul>
+<h3>reference-game-16</h3><ul>
+<li><a href="../reference-game-16/coverage.html">Capture coverage: game page</a></li>
+<li><a href="../reference-game-16/download-process.html">Download process: from the join instructions to a working site</a></li>
+<li><a href="../reference-game-16/page-00-overview.html">Game page section: Overview</a></li>
+<li><a href="../reference-game-16/page-01-starters.html">Game page section: Starters</a></li>
+<li><a href="../reference-game-16/page-02-skills.html">Game page section: Skills</a></li>
+<li><a href="../reference-game-16/page-03-animations.html">Game page section: Animations</a></li>
+<li><a href="../reference-game-16/page-04-sound-art.html">Game page section: Sound Art</a></li>
+<li><a href="../reference-game-16/page-05-workshop.html">Game page section: Workshop</a></li>
+<li><a href="../reference-game-16/page-06-engine.html">Game page section: Engine</a></li>
+<li><a href="../reference-game-16/page-07-reference.html">Game page section: Reference</a></li>
+<li><a href="../reference-game-16/page-08-shapes.html">Game page section: Shapes</a></li>
+<li><a href="../reference-game-16/page-09-mods.html">Game page section: Mods</a></li>
+<li><a href="../reference-game-16/page-10-games.html">Game page section: Games</a></li>
+<li><a href="../reference-game-16/page-11-pick-a-genre.html">Game page section: Pick A Genre</a></li>
+<li><a href="../reference-game-16/page-host.html">Host page: Untitled game (@lanmower/game-16)</a></li>
+</ul>
+</nav>
+<main>
+<span class="eyebrow">cleetus</span>
+<h1 id="engine-decisions-why-the-jayzee-engine-notes-are-shaped-as-they-are">Engine decisions: why the jayzee engine notes are shaped as they are</h1>
+<h2 id="how-it-works">How it works</h2>
+<p>The research behind the jayzee engine (old name: spawn) notes in /workspace/savi/spawn-engine/ (old name: savi) was carried out under a small set of working rules, which are visible in the notes themselves. The engine-overview page at /workspace/extra/wiki/cleetus/engine-overview.md describes each file. This page records the choices those files make and the text that supports each choice. The choices fall into five groups: how the work touched the live system, how claims are labelled, how the public feed was enumerated, how assets and manifests were checked, and how errors were recorded.</p>
+<h2 id="decisions">Decisions</h2>
+<h3 id="1-probe-the-live-system-read-only-and-write-nothing-to-a-world">1. Probe the live system read-only, and write nothing to a world</h3>
+<ul><li>Decision: all live access is GET or HEAD, docs-door reads, and reads of the client join log. Nothing is written.</li><li>Evidence: /workspace/savi/spawn-engine/FAULTS.md (old name: savi) line 3 says &quot;Read-only probes only (GET/HEAD, docs doors, the client join log)&quot;. /workspace/savi/spawn-engine/ASSETS.md (old name: savi) line 3 says &quot;Nothing here was written to a world.&quot; /workspace/savi/spawn-engine/GIT_HOST.md (old name: savi) line 4 says &quot;No POST was sent in this section&quot; and that a tree fetch needs a POST, &quot;which is not a GET door, so no tree was fetched&quot; in the same section.</li><li>Consequence: the git tree and the world manifest are described from logs and discovery answers, not from clone or body reads (MANIFESTS.md section 4 says &quot;clone not run, since it is not a GET door&quot;).</li></ul>
+<h3 id="2-label-every-claim-with-its-evidence-level">2. Label every claim with its evidence level</h3>
+<ul><li>Decision: each fact carries one of four tags, so that a reader can see whether it was read, taken from documentation, seen once, or inferred.</li><li>Evidence: /workspace/savi/spawn-engine/ASSETS.md (old name: savi) line 3 defines [verified] as &quot;read live with a GET/HEAD, or seen in the live client log&quot; and [documented] as &quot;from the public spec (openapi.json), llms.txt, a docs door section, or a skill door&quot;. /workspace/savi/spawn-engine/FAULTS.md (old name: savi) line 3 defines [observed] as &quot;seen once in a log, cause not known&quot;. /workspace/savi/spawn-engine/FEED_SCOPE.md (old name: savi) line 26 uses [inferred] for the claim that game-10 is unpublished.</li><li>Consequence: where a mapping was not read from an endpoint, the notes say so, for example the lodpack mapping in ASSETS.md &quot;[inferred from the names and the log, not read from an endpoint]&quot;.</li></ul>
+<h3 id="3-treat-counts-from-public-pages-as-a-floor-not-a-complete-list">3. Treat counts from public pages as a floor, not a complete list</h3>
+<ul><li>Decision: asset counts taken from public project pages are reported as distinct URLs seen on the page, and the complete asset list is left to the project's tree.</li><li>Evidence: /workspace/savi/spawn-engine/PROJECT_ASSETS.md (old name: savi) line 6 says &quot;Counts are distinct URLs on the page, not the project's full file list&quot;. Line 8 says &quot;these counts are a floor. The project's own tree (world.assets/) is the complete list and is not readable with our token&quot;.</li></ul>
+<h3 id="4-enumerate-the-public-feed-by-offset-and-replace-a-sample-with-the-full-walk">4. Enumerate the public feed by offset, and replace a sample with the full walk</h3>
+<ul><li>Decision: the feed is walked with offset stepped by 22, because page= and cursor= are ignored, and the walk stops after two empty pages.</li><li>Evidence: /workspace/savi/spawn-engine/FEED_SCOPE.md (old name: savi) lines 7 to 10 record that offset is &quot;honoured in steps&quot;, that page=2 &quot;returned the same 22 rows as page 1&quot;, that limit=100 &quot;answers 44 rows (capped)&quot;, and that &quot;The walk stepped offset by 22 until two empty pages in a row.&quot;</li><li>Decision: the earlier 22-row sample is corrected rather than kept as the whole picture.</li><li>Evidence: /workspace/savi/spawn-engine/PROJECTS.md (old name: savi) line 1 is a correction that the file &quot;covers only the first feed block (22 rows, all engine 6.0.0)&quot;. /workspace/savi/spawn-engine/FEED_SCOPE.md (old name: savi) line 16 says the earlier coverage &quot;was a sample, not the feed&quot;.</li><li>Decision: the full feed is kept as a data file rather than a summary table.</li><li>Evidence: /workspace/savi/spawn-engine/FEED_SCOPE.md (old name: savi) line 21 says the list is in data/feed-projects.json &quot;3421 records&quot;.</li></ul>
+<h3 id="5-keep-the-two-data-files-separate-in-purpose">5. Keep the two data files separate in purpose</h3>
+<ul><li>Decision: the feed list (all 3421 projects, feed fields only) and the asset inventory (one row per fetched project page, with each asset URL classified by kind) are separate files.</li><li>Evidence: the schema of /workspace/savi/spawn-engine/data/feed-projects.json (old name: savi) is the feed fields only, and /workspace/savi/spawn-engine/data/feed-asset-inventory.jsonl (old name: savi) rows carry the assets array with url, ext and kind. The inventory note in PROJECT_ASSETS.md (old name: savi) line 1 is a correction that &quot;this inventory covers only the 22 first-block projects&quot;, so the inventory was extended beyond the first block in the JSONL file.</li></ul>
+<h3 id="6-verify-a-content-address-by-hashing-the-bytes">6. Verify a content address by hashing the bytes</h3>
+<ul><li>Decision: a name that claims to be a sha256 is checked by downloading the bytes and hashing them, and an ETag is checked against an md5.</li><li>Evidence: /workspace/savi/spawn-engine/PROJECT_ASSETS.md (old name: savi) lines 45 to 53 give the table &quot;GET then sha256sum&quot; with &quot;Match&quot; yes/no. Lines 57 to 58 state that the character GLB ETag &quot;equals md5sum of the bytes&quot; and &quot;The name does not hash the bytes&quot;.</li><li>Consequence: the conclusion that character-assets are timestamp+uuid named while magic assets are sha256 named is drawn from these checks (line 58).</li></ul>
+<h3 id="7-uploads-are-write-once-and-content-named">7. Uploads are write-once and content-named</h3>
+<ul><li>Decision: uploaded assets are named by the sha256 of their bytes, and the server enforces the match.</li><li>Evidence: /workspace/savi/spawn-engine/ASSETS.md (old name: savi) line 7 gives the path value.&lt;sha256&gt;.&lt;ext&gt;, line 8 says &quot;200 'exists' when the same bytes are already carried (write-once)&quot;, and line 9 says &quot;a name that does not match is 422 content_mismatch&quot;.</li><li>Decision: a large upload goes through a signed temporary path, because the single request is capped at 4.5 MB.</li><li>Evidence: /workspace/savi/spawn-engine/ASSETS.md (old name: savi) line 10 &quot;Body limit 4.5 MB for the whole request; over it 413&quot;, and line 11 the three steps through upload-target.</li></ul>
+<h3 id="8-the-client-not-the-name-is-the-integrity-check-for-the-runtime">8. The client, not the name, is the integrity check for the runtime</h3>
+<ul><li>Decision: the notes treat the client manifest SRI values as the integrity check for engine code, and do not treat a prod GLB name as a checksum.</li><li>Evidence: /workspace/savi/spawn-engine/ASSETS.md (old name: savi) line 58 says &quot;The name is not a content hash for prod character GLBs, so a client cannot verify the bytes from the name. The engine runtime is checked by SRI (sha256, base64) from the client manifest.&quot; /workspace/savi/spawn-engine/MANIFESTS.md (old name: savi) line 9 onward shows the files map with sha256-&lt;base64&gt; values.</li></ul>
+<h3 id="9-read-the-client-manifest-together-with-its-hash">9. Read the client manifest together with its hash</h3>
+<ul><li>Decision: the no-query manifest pointer is not treated as stable, and every reading is recorded with its target hash.</li><li>Evidence: /workspace/savi/spawn-engine/FAULTS.md (old name: savi) F5 says &quot;Not an error by itself; noted so that the manifest is always read with its hash.&quot; /workspace/savi/spawn-engine/MANIFESTS.md (old name: savi) line 35 says the world query &quot;currently returns the newer hash for all 24 worlds&quot;.</li></ul>
+<h3 id="10-treat-the-redirect-as-one-pointer-and-correct-earlier-claims">10. Treat the redirect as one pointer, and correct earlier claims</h3>
+<ul><li>Decision: the engine manifest redirect is one current pointer shared across engines, and an earlier per-engine claim is retracted.</li><li>Evidence: /workspace/savi/spawn-engine/MANIFESTS.md (old name: savi) line 80 says &quot;So the redirect is one current pointer, not one manifest per engine.&quot; Line 82 is &quot;Correction to section 1 above: 'the same for every world on one engine' held only for the 6.0.0 worlds I had&quot;.</li></ul>
+<h3 id="11-use-local-fixes-that-do-not-touch-the-service">11. Use local fixes that do not touch the service</h3>
+<ul><li>Decision: when the client could not start a browser, the fix was local and no Spawn write was made.</li><li>Evidence: /workspace/savi/spawn-engine/FAULTS.md (old name: savi) F2 line 17 is headed &quot;Local fix (no Spawn write)&quot; and describes a Playwright install into the client cache, after which &quot;the third join succeeded&quot;.</li></ul>
+<h3 id="12-use-the-public-surface-not-private-trees-for-other-projects">12. Use the public surface, not private trees, for other projects</h3>
+<ul><li>Decision: other projects are read only through what is public (the feed and the public pages), because their trees are not reachable with the token used.</li><li>Evidence: /workspace/savi/spawn-engine/GIT_HOST.md (old name: savi) line 34 says &quot;For the 22 feed projects, the tree is not reachable with it (404).&quot; Line 35 says &quot;Public pages and the feed are the only outside view&quot;. /workspace/savi/spawn-engine/PROJECTS.md (old name: savi) line 53 says &quot;Other projects' public pages can be read through the feed only.&quot;</li></ul>
+<h3 id="13-record-expected-answers-so-they-are-not-reported-as-faults">13. Record expected answers so they are not reported as faults</h3>
+<ul><li>Decision: expected refusals (405 on a PUT-only path, 403 on other worlds, 403 not_your_kit) are listed separately from faults.</li><li>Evidence: /workspace/savi/spawn-engine/FAULTS.md (old name: savi) section &quot;Not faults (expected, recorded so they are not re-reported)&quot; lists these three answers, each noted as documented.</li></ul>
+<h3 id="14-use-the-engines-own-type-list-as-the-shape-source">14. Use the engine's own type list as the shape source</h3>
+<ul><li>Decision: asset shapes are taken from the engine API type endpoint, one type at a time, and each type is marked as fetched live.</li><li>Evidence: /workspace/savi/spawn-engine/ASSET_SHAPES.md (old name: savi) line 3 says &quot;each type below was fetched live, 200&quot;. Line 5 of the same file gives the type count of 308.</li></ul>
+<h3 id="15-name-the-accounts-own-world-by-the-address-the-git-host-uses">15. Name the account's own world by the address the git host uses</h3>
+<ul><li>Decision: the canonical address for the account's worlds is the owner handle used by the git host and the join log, not the handle the games door returns.</li><li>Evidence: /workspace/savi/spawn-engine/FAULTS.md (old name: savi) F4 line 33 says &quot;The world's real address is under lanmower (git URL and the join log use @lanmower).&quot;</li></ul>
+<h2 id="open-gaps">Open gaps</h2>
+<ul><li>The reason the games route returns game: null (F1) is not recorded. Source: /workspace/savi/spawn-engine/FAULTS.md (old name: savi).</li><li>Whether the no-query manifest pointer move was deliberate is not recorded (F5). Source: /workspace/savi/spawn-engine/FAULTS.md (old name: savi).</li><li>The reason a ledger read answered &quot;no head this copy heard carries it&quot; (F3) is not recorded, and no later settle line was found. Source: /workspace/savi/spawn-engine/FAULTS.md (old name: savi).</li><li>No decision is recorded for how the texture ledger is read, because no texture row was seen. Source: /workspace/savi/spawn-engine/ASSETS.md (old name: savi).</li><li>No decision on whether to continue the walk past 3421 projects or the 66 engine versions beyond the sample is recorded. Source: /workspace/savi/spawn-engine/FEED_SCOPE.md (old name: savi).</li></ul>
+<h2 id="sources">Sources</h2>
+<ul><li>/workspace/savi/spawn-engine/PROJECTS.md (old name: savi)</li><li>/workspace/savi/spawn-engine/ASSETS.md (old name: savi)</li><li>/workspace/savi/spawn-engine/MANIFESTS.md (old name: savi)</li><li>/workspace/savi/spawn-engine/FAULTS.md (old name: savi)</li><li>/workspace/savi/spawn-engine/PROJECT_ASSETS.md (old name: savi)</li><li>/workspace/savi/spawn-engine/ASSET_SHAPES.md (old name: savi)</li><li>/workspace/savi/spawn-engine/GIT_HOST.md (old name: savi)</li><li>/workspace/savi/spawn-engine/FEED_SCOPE.md (old name: savi)</li><li>/workspace/savi/spawn-engine/data/feed-projects.json (old name: savi)</li><li>/workspace/savi/spawn-engine/data/feed-asset-inventory.jsonl (old name: savi)</li></ul>
+</main>
+</div>
+<footer class="foot"><div class="foot-inner">wiki · every page cites the on-disk sources it was written from</div></footer>
+</body>
+</html>

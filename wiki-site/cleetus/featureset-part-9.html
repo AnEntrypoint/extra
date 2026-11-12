@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FEATURESET part 9: render, editor, HUD, XR, packages, static serving and server surface · Wiki</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="topbar">
+<div class="topbar-inner">
+<a class="brand" href="../index.html">wi<span>ki</span></a>
+<nav class="pills"><a class="active" href="../cleetus/ci-workflows.html">cleetus</a><a href="../index/cdn-inventory.html">index</a><a href="../jayzee/maps-glb-urls.html">jayzee</a><a href="../reference-game-16/coverage.html">reference-game-16</a></nav>
+</div>
+</header>
+<div class="layout">
+<nav class="side">
+<h3>Start</h3><ul>
+<li><a href="../index.html">Project wiki: how this wiki is organised</a></li>
+<li><a href="../toc.html">Table of contents</a></li>
+</ul>
+<h3>cleetus</h3><ul>
+<li><a href="../cleetus/ci-workflows.html">CI workflows and npm scripts</a></li>
+<li><a href="../cleetus/docs-folder.html">The docs folder</a></li>
+<li><a href="../cleetus/endpoints.html">Endpoints</a></li>
+<li><a href="../cleetus/engine-decisions.html">Engine decisions: why the jayzee engine notes are shaped as they are</a></li>
+<li><a href="../cleetus/engine-overview.html">Engine overview: the jayzee engine notes (cleetus workspace)</a></li>
+<li><a href="../cleetus/evidence-claims.html">Evidence claims</a></li>
+<li><a href="../cleetus/evidence-overview.html">Evidence overview</a></li>
+<li><a href="../cleetus/featureset-part-1.html">Featureset part 1: cleetus counts, spoint surface, and the relayed streams</a></li>
+<li><a href="../cleetus/featureset-part-2.html">Featureset part 2: streams 12 to 25 and the src/sdk modules</a></li>
+<li><a href="../cleetus/featureset-part-3.html">Featureset part 3: streams 26 to 34</a></li>
+<li><a href="../cleetus/featureset-part-4.html">Featureset part 4: streams 35 to 45, client/core rendering modules</a></li>
+<li><a href="../cleetus/featureset-part-5.html">Featureset part 5: streams 45 to 55, client/core modules</a></li>
+<li><a href="../cleetus/featureset-part-6.html">Featureset part 6: streams 56 to 58 and the improvement opportunities</a></li>
+<li><a href="../cleetus/featureset-part-7.html">Featureset part 7: improvement candidates from streams 43 to 58</a></li>
+<li><a href="../cleetus/featureset-part-8.html">Featureset part 8: agent and room candidates, session store, bake pins, learning record and terrain</a></li>
+<li><a class="current" href="../cleetus/featureset-part-9.html">FEATURESET part 9: render, editor, HUD, XR, packages, static serving and server surface</a></li>
+<li><a href="../cleetus/jayzee-gaps.html">Jayzee implementation gaps</a></li>
+<li><a href="../cleetus/manual-build.html">Manual build and check</a></li>
+<li><a href="../cleetus/manual-worklist.html">Manual worklist</a></li>
+<li><a href="../cleetus/morluto-ci-findings.html">Morluto rea PR 9234 CI findings</a></li>
+<li><a href="../cleetus/netcode.html">Netcode</a></li>
+<li><a href="../cleetus/open-gaps.html">Open gaps across the cleetus repository</a></li>
+<li><a href="../cleetus/open-items.html">Open items register</a></li>
+<li><a href="../cleetus/overview.html">Overview of cleetus</a></li>
+<li><a href="../cleetus/parity.html">Parity</a></li>
+<li><a href="../cleetus/runs-overview.html">Runs overview</a></li>
+<li><a href="../cleetus/site-overview.html">Site overview (built manual output)</a></li>
+<li><a href="../cleetus/sources-overview.html">Sources overview</a></li>
+<li><a href="../cleetus/state-and-tooling.html">State and tooling</a></li>
+</ul>
+<h3>index</h3><ul>
+<li><a href="../index/cdn-inventory.html">CDN inventory and manifests</a></li>
+<li><a href="../index/discovery.html">Discovery evidence</a></li>
+<li><a href="../index/exhaustive-index.html">Exhaustive world and GLB index</a></li>
+<li><a href="../index/extra-docs.html">extra docs: the Jayzee game API reference copy</a></li>
+<li><a href="../index/extra-worlds.html">extra world lists and feeds</a></li>
+<li><a href="../index/open-gaps.html">Open gaps in the index</a></li>
+<li><a href="../index/overview.html">Overview of the index project</a></li>
+<li><a href="../index/provenance.html">Provenance manifests</a></li>
+<li><a href="../index/savi-index.html">cleetus index</a></li>
+<li><a href="../index/spawn-index.html">jayzee index</a></li>
+<li><a href="../index/tree/tree-borick.html">The borick/ directory</a></li>
+<li><a href="../index/tree/tree-build-scripts.html">Build, check and discovery scripts, and the patch files</a></li>
+<li><a href="../index/tree/tree-discovery.html">The discovery/ directory</a></li>
+<li><a href="../index/tree/tree-exhaustive.html">The exhaustive/ directory</a></li>
+<li><a href="../index/tree/tree-extra.html">The extra/ directory</a></li>
+<li><a href="../index/tree/tree-indexes.html">The index files: COMPLETE_INDEX, EXTRA_WORLD_INDEX and INDEX</a></li>
+<li><a href="../index/tree/tree-open-gaps.html">Open gaps in the top-level index, its directories and the browser state</a></li>
+<li><a href="../index/tree/tree-overview.html">Top-level layout of the jayzee tree</a></li>
+<li><a href="../index/tree/tree-provenance.html">provenance.sha256.txt and the other provenance manifests</a></li>
+<li><a href="../index/tree/tree-savi-directory.html">The cleetus/ directory (old name: savi)</a></li>
+<li><a href="../index/tree/tree-spawn-directory.html">The jayzee/ directory (old name: spawn)</a></li>
+</ul>
+<h3>jayzee</h3><ul>
+<li><a href="../jayzee/maps-glb-urls.html">jayzee GLB URL list (glb-urls-all.tsv)</a></li>
+<li><a href="../jayzee/maps-head-status.html">jayzee world head status lists</a></li>
+<li><a href="../jayzee/maps-learning-record-part-1.html">jayzee learning record, part 1 (denominators, corpus, keys, escapes, bucket rule, 410)</a></li>
+<li><a href="../jayzee/maps-learning-record-part-2.html">jayzee learning record, part 2 (error keys, non-CDN refs, open items, name decode, /cdn/ attempt)</a></li>
+<li><a href="../jayzee/maps-learning-record.html">jayzee learning record</a></li>
+<li><a href="../jayzee/maps-noncdn-refs.html">jayzee non-CDN data references (unverified-noncdn-refs.tsv)</a></li>
+<li><a href="../jayzee/maps-open-gaps.html">jayzee maps open gaps</a></li>
+<li><a href="../jayzee/maps-overview.html">jayzee maps directory overview</a></li>
+<li><a href="../jayzee/maps-root-worlds.html">jayzee root-linked worlds map</a></li>
+<li><a href="../jayzee/maps-witness-inputs.html">jayzee witness input directories and their sha256 checks</a></li>
+<li><a href="../jayzee/maps-witness.html">jayzee witness scripts</a></li>
+<li><a href="../jayzee/runs-findings.html">Runs findings and decisions</a></li>
+<li><a href="../jayzee/runs-open-gaps.html">Runs open gaps and failures</a></li>
+<li><a href="../jayzee/runs-overview.html">Runs overview</a></li>
+<li><a href="../jayzee/runs-timeline.html">Runs timeline</a></li>
+<li><a href="../jayzee/sources-captures.html">Sources captures</a></li>
+<li><a href="../jayzee/sources-index.html">Sources index</a></li>
+<li><a href="../jayzee/sources-overview.html">Sources overview</a></li>
+</ul>
+<h3>reference-game-16</h3><ul>
+<li><a href="../reference-game-16/coverage.html">Capture coverage: game page</a></li>
+<li><a href="../reference-game-16/download-process.html">Download process: from the join instructions to a working site</a></li>
+<li><a href="../reference-game-16/page-00-overview.html">Game page section: Overview</a></li>
+<li><a href="../reference-game-16/page-01-starters.html">Game page section: Starters</a></li>
+<li><a href="../reference-game-16/page-02-skills.html">Game page section: Skills</a></li>
+<li><a href="../reference-game-16/page-03-animations.html">Game page section: Animations</a></li>
+<li><a href="../reference-game-16/page-04-sound-art.html">Game page section: Sound Art</a></li>
+<li><a href="../reference-game-16/page-05-workshop.html">Game page section: Workshop</a></li>
+<li><a href="../reference-game-16/page-06-engine.html">Game page section: Engine</a></li>
+<li><a href="../reference-game-16/page-07-reference.html">Game page section: Reference</a></li>
+<li><a href="../reference-game-16/page-08-shapes.html">Game page section: Shapes</a></li>
+<li><a href="../reference-game-16/page-09-mods.html">Game page section: Mods</a></li>
+<li><a href="../reference-game-16/page-10-games.html">Game page section: Games</a></li>
+<li><a href="../reference-game-16/page-11-pick-a-genre.html">Game page section: Pick A Genre</a></li>
+<li><a href="../reference-game-16/page-host.html">Host page: Untitled game (@lanmower/game-16)</a></li>
+</ul>
+</nav>
+<main>
+<span class="eyebrow">cleetus</span>
+<h1 id="featureset-part-9-render-editor-hud-xr-packages-static-serving-and-server-surface">FEATURESET part 9: render, editor, HUD, XR, packages, static serving and server surface</h1>
+<h2 id="how-it-works">How it works</h2>
+<p>This part covers FEATURESET.md lines 1164 to 1288, the last part of the file. It holds three groups of facts. Each line gives <code>path:line</code> and the snippet as it stood at spoint commit <code>d5e3860</code>. The citations were re-read with <code>git -C /workspace/spoint show d5e3860:&lt;path&gt;</code> before this part was written, and nothing was written into spoint.</p>
+<p>Client render (stream 20), at <code>d5e3860</code>:</p>
+<ul><li>Shadows: cascade 0 never renders when the sun does not cast shadows (<code>client/core/ShadowPipeline.js:19</code>), which fixes the cascade count (<code>client/core/ShadowPipeline.js:20</code>). The forced update is at <code>client/core/ShadowPipeline.js:152</code>.</li><li>Shadow cost probe: it reports a per-light-pass backend with split support off (<code>client/core/ShadowCostProbe.js:139</code>). Its public entry is <code>client/core/ShadowCostProbe.js:195</code> (<code>installShadowCostProbe</code>).</li><li>Occlusion: <code>client/core/SceneOcclusion.js:3</code> imports <code>WebGpuHizTier</code> from <code>streaming-gltf/webgpu-hiz-tier</code>. The tier is selected only on a WebGPU renderer (<code>client/core/SceneOcclusion.js:10</code>). The package export is <code>packages/streaming-gltf/package.json:16</code>, and the class is at <code>packages/streaming-gltf/src/webgpu-hiz-tier.js:64</code>.</li><li>Cull freeze: <code>client/core/CullFreeze.js:4</code> and <code>:11</code> switch instanced and batched meshes to manual cull, and <code>client/core/CullFreeze.js:14</code> marks visibility changed.</li><li>Cluster LOD: <code>packages/streaming-gltf/src/cluster-lod-mesh.js:213</code> to <code>:215</code> allow a cluster LOD mesh to render at most once per frame.</li><li>Progressive LOD: <code>packages/streaming-gltf/src/model-pool.js:191</code> reads the <code>EP_progressive_lod</code> extension or the local extras key.</li></ul>
+<p>XR, editor and HUD:</p>
+<ul><li>Teleport arc bounds use a BVH only above 2000 triangles (<code>client/xr/XRWidgets.js:11</code> and <code>:141</code>).</li><li>XR pointers are excluded through a user-data flag (<code>client/xr/XRSystem.js:52</code>).</li><li>Editor and HUD exports: <code>client/editor/EditorShell.js:21</code> (<code>createEditPanel</code>), <code>client/hud/PeerHostUI.js:27</code> (<code>createRoomCodeUI</code>) and <code>client/hud/PeerHostUI.js:43</code> (<code>createPeerHostUI</code>).</li></ul>
+<p>Quality governor and tiers: the frame budget is 16.67 ms (<code>client/core/QualityGovernor.js:3</code>). The tier choice is resolved against the creator's maximum (<code>client/core/QualityTierChoice.js:10</code>). The presets object is at <code>client/core/QualityPresets.js:153</code>.</p>
+<p>Packages: the ECS package re-exports <code>createWorld</code> and <code>createQuery</code> (<code>packages/ecs/src/index.js:1</code> and <code>:2</code>). The mapspinner package exports <code>createRenderer</code> and <code>createPlanet</code> (<code>packages/mapspinner/src/index.js:10</code> and <code>:15</code>). The Rust crate is named <code>spoint-core</code> (<code>packages/spoint-core/Cargo.toml:2</code>).</p>
+<p>Negatives (<code>git grep</code>, <code>git cat-file</code> or <code>git ls-tree</code> at <code>d5e3860</code>):</p>
+<ul><li><code>client/core/WebGpuHizTier.js</code> does not exist. A second copy of the class sits in <code>packages/streaming-gltf/examples/local-progressive/webgpu-hiz-tier.js:10</code>, which client code does not import.</li><li>The modules <code>ShadowCostProbe</code>, <code>QualityGovernor</code>, <code>SceneOcclusion</code>, <code>EditorShell</code> and <code>PeerHostUI</code> each match 0 files under <code>scripts</code>.</li><li><code>packages/spoint-core</code> has 0 <code>.js</code> files. It holds <code>Cargo.toml</code>, <code>Cargo.lock</code> and <code>src/lib.rs</code>.</li><li><code>EP_progressive_lod</code> is read in one file only, <code>packages/streaming-gltf/src/model-pool.js</code>.</li></ul>
+<p>Static serving and server surface (stream 18), at <code>d5e3860</code>, with each line checked against its source. A self-check re-read all 25 snippets and matched 25 of 25.</p>
+<ul><li>Static serving: COEP is <code>require-corp</code> (<code>src/sdk/StaticHandler.js:101</code>) and is sent with COOP (<code>src/sdk/StaticHandler.js:108</code>). A baked path containing <code>..</code> is refused (<code>src/sdk/StaticHandler.js:146</code>). Files are contained to the served root after realpath resolution (<code>src/sdk/StaticHandler.js:227</code>).</li><li>Token comparison: <code>timingSafeTokenEqual</code> (<code>src/sdk/authCompare.js:10</code>) uses <code>crypto.timingSafeEqual</code> on Node (<code>src/sdk/authCompare.js:2</code>). A length mismatch still runs a dummy compare before returning false (<code>src/sdk/authCompare.js:15</code>).</li><li>The editor token is checked on the upload route (<code>src/sdk/ServerAPIRoutes.js:48</code>). That file has three call sites, at lines 48, 57 and 148. The socket message token is checked at <code>src/sdk/ServerHandlers.js:454</code>.</li><li>Some routes require a loopback remote address (<code>src/sdk/ServerAPIRoutes.js:97</code>). The API sends a wildcard CORS origin (<code>src/sdk/ServerAPIRoutes.js:137</code>). The server API entry is <code>src/sdk/ServerAPI.js:26</code>.</li><li>Sandbox, upload, minimap, persistence, room orchestration, cron and LLM jobs: the SES preflight is at <code>src/sdk/SESCompartmentEvaluator.js:34</code>, and a failed lockdown returns a reason code rather than throwing (<code>src/sdk/SESCompartmentEvaluator.js:44</code>). The upload cap is 50 MiB (<code>src/sdk/UploadHandler.js:6</code> and <code>:55</code>). On-demand minimap bakes are capped at 64 (<code>src/sdk/MinimapBake.js:10</code>). The world snapshot format is version 1 (<code>src/sdk/WorldPersistence.js:8</code>). The room orchestrator router is at <code>src/sdk/RoomOrchestratorHttp.js:55</code>. Cron rejects a non-positive step (<code>src/sdk/cronSchedule.js:25</code>). LLM jobs cap messages at 32 and prompts at 8000 characters (<code>src/sdk/llmJobs.js:12</code> and <code>:28</code>).</li></ul>
+<p>Negatives in static serving (<code>git grep</code> at <code>d5e3860</code>, scoped to <code>src</code>): no CSP or HSTS header is set; no <code>Cross-Origin-Resource-Policy</code> header is set; the only <code>Access-Control-Allow-Origin</code> line is <code>src/sdk/ServerAPIRoutes.js:137</code>; none of <code>UploadHandler.js</code>, <code>StaticHandler.js</code> or <code>llmJobs.js</code> contains a rate limit. <code>timingSafeTokenEqual(</code> appears 3 times in <code>ServerAPIRoutes.js</code>, once in <code>ServerHandlers.js</code> and once in <code>authCompare.js</code>.</p>
+<p>Scoped jayzee decoded-frame token scan (reported by jayzee, aggregates re-derived here): the inputs are jayzee's scan output, which lives only in jayzee's ephemeral directory. Its files are <code>dt/results.jsonl</code> (2580 rows) and <code>dt/keys.txt</code>. The four denominators are kept separate:</p>
+<ul><li>307 text-visible keys, reported by jayzee as historical and durable from 38 content-addressed contributor contents. A re-run on 2026-11-07 of <code>text-visible-307-derive-durable.mjs</code> in jayzee's <code>maps/witness</code> returns 307 distinct keys (298 value keys and 9 named keys). The 38 contents are not proven to be the complete contributor set, and the encoder-test script returns 11987 at the current inputs, so the 307 scope is held open.</li><li>11987 unique decoded-frame <code>world.assets</code> keys. <code>keys.txt</code> has 12186 lines, which is 11987 unique keys plus 199 duplicate lines.</li><li>2580 manifests reached. All returned status 200. 1240 have <code>world.assets</code> keys, and 1584 have a <code>/cdn/</code> slash.</li><li>399 worlds with <code>/cdn/</code> GLB references. This is the census denominator used elsewhere in FEATURESET and is not compared with the rows above.</li></ul>
+<p>Scoped results, decoded-frame scope only: frames 229921, gzip frames 1, decode failures 0. Key occurrences total 12259. Unique keys are 11987, of which 11679 are <code>~2fcdn~2fvalue.&lt;sha&gt;</code> and 308 are <code>~2fcdn~2f&lt;name&gt;</code> with no sha. Each key carries exactly two <code>~2f</code>. <code>~3a</code> and <code>~7e</code> appear 0 times across unique keys, and no key contains <code>spawnfile</code>, <code>https~3a</code> or a bare tilde. <code>spawnfile</code> occurs 0 times across the decoded frames.</p>
+<p>The 73-line gap between 12259 and the per-manifest unique sum 12186 is closed as a witnessed resolution. jayzee's <code>reconcile-gap.mjs</code> gives dtRawKeyCountSum 12259, kwPerManifestUniqueSum 12186, withinManifestRepeatSum 73, manifestsWithRepeats 61, negativeDiffs 0, kwUniqueAcrossAll 11987 and missing 0. Cleetus re-derived the arithmetic from <code>kw/key-world.jsonl</code> and jayzee's <code>dt/results.jsonl</code>. The mechanism, repeats within one manifest in the raw scan, is jayzee's and is not re-derived here.</p>
+<p>Scoped jayzee body witnesses: these are body-level witnesses from jayzee. They do not change any OPEN status. Witness copies are at <code>/workspace/spawn/maps/witness/</code> (old name: spawn), with the checkers <code>manifest-chain.mjs</code> and <code>manifest-hashmatch.mjs</code>.</p>
+<ul><li>Three manifests examined in full: the manifest chain is exact to EOF, and each frame body sha256 equals <code>sheet.hashes[i]</code>, for 69 of 69, 80 of 80 and 274 of 274 frames.</li><li>A sample of 40 further manifests, taken evenly from 2580 distinct, also matched. Combined, 43 of 43 were reached.</li><li>Corpus result over the 2580 distinct manifests reached: HTTP 200 for 2580, the chain ends at EOF for 2580, frames equal hashes for 2580, parse errors 0. Ordered frame i equals sheet hashes[i] for 2579 of 2580. The exception, <code>d048ad0665b46944dea920d8daed8dbe85874fb4a9d8809339e88223cd853fca</code>, has frame 2 gzip-wrapped. Its decoded body matches sheet hashes[2], but the raw gzip bytes do not. Status: EXPLAINED. The sheet hashes decoded content for gzip-wrapped frames, for the 2580 reached only.</li><li>Head drift, a single observed case, UNVERIFIED as a rule: for world <code>41cd4649…</code>, head.json (seq 553) names manifest <code>3fa9a434…</code>. On 2026-11-07 that manifest returned 200, so the earlier 404 <code>unknown_world_store_key</code> is not reproduced. A misspelled resource name under the same world (<code>head.jsn</code>) returns 404 with <code>{&quot;error&quot;:&quot;unknown_world_store_key&quot;}</code>. The condition that selects the drifted-head error is OPEN.</li><li>Head presence: for <code>5db79de6dae84ceca2ddb9b9a0e216d9</code>, <code>fd80e9d941624c2fbc48fc89193a7417</code> and <code>ffb0a8fbdca948a5933be7bd62fb44b5</code>, head returns 200 with <code>&quot;manifest&quot;:null</code> and <code>&quot;seq&quot;:0</code>.</li><li><code>head_not_found</code> is witnessed for <code>03ebf64172574b90ba8805e0f8a9b6d5</code> and the all-zero id. jayzee also reports <code>040ed504…</code> with the same body, which was not re-fetched.</li><li><code>value_not_found</code> is a scoped observation of two absent hashes, not a rule.</li><li>Resolve-adventure is partial. A trailing slash returns 308, and <code>http://www</code> returns 308 to https. <code>https://spawn.co</code> returns 307 to the www host. Missing or empty addresses return 400. Found and not_found return 200 with <code>result.type</code> set. Gone (410) was NOT reached in 22 probes, so the gone half stays OPEN.</li></ul>
+<p>Scoped jayzee encoder and bucket witnesses: these are partial and do not close OPEN-010 or OPEN-015. Copies are in <code>/workspace/spawn/maps/witness/encoder-bucket/</code> (old name: spawn).</p>
+<ul><li>Encoder <code>/</code> to <code>~2f</code>: <code>encoder-test.mjs</code> gives 307 distinct keys, 614 <code>~2f</code> escapes, round trip 307 and no failures. At current inputs the same script returns 11987, so this is scoped to 307.</li><li>Encoder <code>:</code> to <code>~3a</code> is witnessed only in the FAULTS F3 sample (<code>spawn-engine/FAULTS.md</code>), not in the 307. OPEN.</li><li>Encoder <code>~</code> to <code>~7e</code> is unwitnessed. OPEN.</li><li>Bucket <code>world.assets/&lt;xx&gt;/</code>: <code>bucket-test.mjs</code> gives 1163 files, 298 distinct (xx, sha) pairs and 135 buckets. The best of 8 hash rules scores 2 matches, which is chance-level, so those rules are NEGATIVE. The rule stays OPEN (OPEN-015). <code>bucket-test3.mjs</code> over 279 keys gives 0 matches for <code>frameBody</code>, <code>frameWhole</code>, <code>keyText</code> and <code>valueSha</code>, which are NEGATIVE.</li><li>Five reconciled denominators, reported by jayzee and kept separate: 2580 manifests, 399 worlds, 11987 unique decoded keys, 288 maps-only keys and 307 text-visible keys (historical). The set relation is 288 inside 307 inside 11987, with 19 keys in 307 that are not in the 288. The ten sha-based bucket counts in jayzee's audit have no script re-run and are not independently verified.</li></ul>
+<p>Jayzee gap register: the per-row implementation gaps are in <code>docs/JAYZEE-GAPS.md</code>. Rows 13 and 36 are UNVERIFIED as closed, because jayzee's PARITY.md still says partial at <code>2db34a0</code>. Rows 62 to 65 are catalogs and are open.</p>
+<p>Feature-support contract: the contract is not duplicated here. It lives in <code>docs/OPEN-ITEMS.md</code> under &quot;Required feature support&quot;, which is extended with the jayzee learnings from this document.</p>
+<h2 id="decisions">Decisions</h2>
+<ul><li>The facts in this part are static facts about spoint at <code>d5e3860</code>. The GPU and XR runtime behaviour is not exercised, so any runtime question goes to the owner.</li><li>The four denominators (307, 11987, 2580, 399) are kept separate and are never added or merged. The three <code>~2f</code> scopes are kept separate in the same way.</li><li>The 73-line gap is recorded as closed, but only for the arithmetic. The mechanism that produces repeats inside one manifest is not claimed.</li><li>Negatives are recorded as scoped to the decoded-frame scope of the 2580 manifests reached. They are not a universal absence.</li><li>Body witnesses for the sample and the corpus do not change any OPEN status.</li><li>Static negatives (no CSP, no HSTS, no CORP, no rate limit) are recorded as facts. They do not change any jayzee row, and jayzee may idealize these parts as the owner's clarification allows.</li></ul>
+<h2 id="open-gaps">Open gaps</h2>
+<ul><li>GPU and XR runtime behaviour of shadows, occlusion, Hi-Z and teleport arcs is not exercised. Owner question.</li><li>Whether 307 text-visible keys are the complete contributor set is not proven. The 1173-file original input is not reproduced.</li><li>The condition that selects the drifted-head <code>unknown_world_store_key</code> error is OPEN.</li><li>Gone (410) for resolve-adventure is not reached, so the gone half stays OPEN.</li><li>Encoder <code>:</code> to <code>~3a</code> and <code>~</code> to <code>~7e</code> are OPEN, with no witness in the 307 keys.</li><li>The bucket rule is OPEN (OPEN-015). The ten sha-based bucket counts are not independently verified.</li><li>The spawnfile key path stays ELIDED, and the bucket rule stays UNDETERMINED.</li><li>The mechanism behind repeats within one manifest in the raw scan is jayzee's and is not re-derived.</li><li>Missing security headers (CSP, HSTS, CORP), wildcard CORS on the API, and absence of rate limits on upload, static and LLM routes are recorded facts without a decision. See the agent-route authentication candidate in featureset-part-7.md.</li><li>Rows 13 and 36 in JAYZEE-GAPS are UNVERIFIED as closed. Rows 62 to 65 are open catalogs.</li></ul>
+<h2 id="sources">Sources</h2>
+<ul><li>/workspace/savi/docs/FEATURESET.md lines 1164 to 1288 (old name: savi).</li><li>/workspace/spoint at commit <code>d5e3860</code>, read with <code>git -C /workspace/spoint show d5e3860:&lt;path&gt;</code>, and <code>git grep</code> and <code>git cat-file</code> at that commit.</li><li>/workspace/spawn/maps/witness/ and /workspace/spawn/maps/witness/encoder-bucket/ (old name: spawn).</li><li>/workspace/spawn/maps/witness/manifest-sample40/ (old name: spawn).</li><li>/workspace/savi/spawn-evidence/data/manifests-all-results.jsonl and /workspace/savi/spawn-evidence/probe-scripts/verify-v3.mjs (old name: savi).</li><li>/workspace/savi/docs/JAYZEE-GAPS.md and /workspace/savi/docs/OPEN-ITEMS.md (old name: savi).</li></ul>
+</main>
+</div>
+<footer class="foot"><div class="foot-inner">wiki · every page cites the on-disk sources it was written from</div></footer>
+</body>
+</html>

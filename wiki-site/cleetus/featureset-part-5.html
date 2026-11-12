@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Featureset part 5: streams 45 to 55, client/core modules · Wiki</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="topbar">
+<div class="topbar-inner">
+<a class="brand" href="../index.html">wi<span>ki</span></a>
+<nav class="pills"><a class="active" href="../cleetus/ci-workflows.html">cleetus</a><a href="../index/cdn-inventory.html">index</a><a href="../jayzee/maps-glb-urls.html">jayzee</a><a href="../reference-game-16/coverage.html">reference-game-16</a></nav>
+</div>
+</header>
+<div class="layout">
+<nav class="side">
+<h3>Start</h3><ul>
+<li><a href="../index.html">Project wiki: how this wiki is organised</a></li>
+<li><a href="../toc.html">Table of contents</a></li>
+</ul>
+<h3>cleetus</h3><ul>
+<li><a href="../cleetus/ci-workflows.html">CI workflows and npm scripts</a></li>
+<li><a href="../cleetus/docs-folder.html">The docs folder</a></li>
+<li><a href="../cleetus/endpoints.html">Endpoints</a></li>
+<li><a href="../cleetus/engine-decisions.html">Engine decisions: why the jayzee engine notes are shaped as they are</a></li>
+<li><a href="../cleetus/engine-overview.html">Engine overview: the jayzee engine notes (cleetus workspace)</a></li>
+<li><a href="../cleetus/evidence-claims.html">Evidence claims</a></li>
+<li><a href="../cleetus/evidence-overview.html">Evidence overview</a></li>
+<li><a href="../cleetus/featureset-part-1.html">Featureset part 1: cleetus counts, spoint surface, and the relayed streams</a></li>
+<li><a href="../cleetus/featureset-part-2.html">Featureset part 2: streams 12 to 25 and the src/sdk modules</a></li>
+<li><a href="../cleetus/featureset-part-3.html">Featureset part 3: streams 26 to 34</a></li>
+<li><a href="../cleetus/featureset-part-4.html">Featureset part 4: streams 35 to 45, client/core rendering modules</a></li>
+<li><a class="current" href="../cleetus/featureset-part-5.html">Featureset part 5: streams 45 to 55, client/core modules</a></li>
+<li><a href="../cleetus/featureset-part-6.html">Featureset part 6: streams 56 to 58 and the improvement opportunities</a></li>
+<li><a href="../cleetus/featureset-part-7.html">Featureset part 7: improvement candidates from streams 43 to 58</a></li>
+<li><a href="../cleetus/featureset-part-8.html">Featureset part 8: agent and room candidates, session store, bake pins, learning record and terrain</a></li>
+<li><a href="../cleetus/featureset-part-9.html">FEATURESET part 9: render, editor, HUD, XR, packages, static serving and server surface</a></li>
+<li><a href="../cleetus/jayzee-gaps.html">Jayzee implementation gaps</a></li>
+<li><a href="../cleetus/manual-build.html">Manual build and check</a></li>
+<li><a href="../cleetus/manual-worklist.html">Manual worklist</a></li>
+<li><a href="../cleetus/morluto-ci-findings.html">Morluto rea PR 9234 CI findings</a></li>
+<li><a href="../cleetus/netcode.html">Netcode</a></li>
+<li><a href="../cleetus/open-gaps.html">Open gaps across the cleetus repository</a></li>
+<li><a href="../cleetus/open-items.html">Open items register</a></li>
+<li><a href="../cleetus/overview.html">Overview of cleetus</a></li>
+<li><a href="../cleetus/parity.html">Parity</a></li>
+<li><a href="../cleetus/runs-overview.html">Runs overview</a></li>
+<li><a href="../cleetus/site-overview.html">Site overview (built manual output)</a></li>
+<li><a href="../cleetus/sources-overview.html">Sources overview</a></li>
+<li><a href="../cleetus/state-and-tooling.html">State and tooling</a></li>
+</ul>
+<h3>index</h3><ul>
+<li><a href="../index/cdn-inventory.html">CDN inventory and manifests</a></li>
+<li><a href="../index/discovery.html">Discovery evidence</a></li>
+<li><a href="../index/exhaustive-index.html">Exhaustive world and GLB index</a></li>
+<li><a href="../index/extra-docs.html">extra docs: the Jayzee game API reference copy</a></li>
+<li><a href="../index/extra-worlds.html">extra world lists and feeds</a></li>
+<li><a href="../index/open-gaps.html">Open gaps in the index</a></li>
+<li><a href="../index/overview.html">Overview of the index project</a></li>
+<li><a href="../index/provenance.html">Provenance manifests</a></li>
+<li><a href="../index/savi-index.html">cleetus index</a></li>
+<li><a href="../index/spawn-index.html">jayzee index</a></li>
+<li><a href="../index/tree/tree-borick.html">The borick/ directory</a></li>
+<li><a href="../index/tree/tree-build-scripts.html">Build, check and discovery scripts, and the patch files</a></li>
+<li><a href="../index/tree/tree-discovery.html">The discovery/ directory</a></li>
+<li><a href="../index/tree/tree-exhaustive.html">The exhaustive/ directory</a></li>
+<li><a href="../index/tree/tree-extra.html">The extra/ directory</a></li>
+<li><a href="../index/tree/tree-indexes.html">The index files: COMPLETE_INDEX, EXTRA_WORLD_INDEX and INDEX</a></li>
+<li><a href="../index/tree/tree-open-gaps.html">Open gaps in the top-level index, its directories and the browser state</a></li>
+<li><a href="../index/tree/tree-overview.html">Top-level layout of the jayzee tree</a></li>
+<li><a href="../index/tree/tree-provenance.html">provenance.sha256.txt and the other provenance manifests</a></li>
+<li><a href="../index/tree/tree-savi-directory.html">The cleetus/ directory (old name: savi)</a></li>
+<li><a href="../index/tree/tree-spawn-directory.html">The jayzee/ directory (old name: spawn)</a></li>
+</ul>
+<h3>jayzee</h3><ul>
+<li><a href="../jayzee/maps-glb-urls.html">jayzee GLB URL list (glb-urls-all.tsv)</a></li>
+<li><a href="../jayzee/maps-head-status.html">jayzee world head status lists</a></li>
+<li><a href="../jayzee/maps-learning-record-part-1.html">jayzee learning record, part 1 (denominators, corpus, keys, escapes, bucket rule, 410)</a></li>
+<li><a href="../jayzee/maps-learning-record-part-2.html">jayzee learning record, part 2 (error keys, non-CDN refs, open items, name decode, /cdn/ attempt)</a></li>
+<li><a href="../jayzee/maps-learning-record.html">jayzee learning record</a></li>
+<li><a href="../jayzee/maps-noncdn-refs.html">jayzee non-CDN data references (unverified-noncdn-refs.tsv)</a></li>
+<li><a href="../jayzee/maps-open-gaps.html">jayzee maps open gaps</a></li>
+<li><a href="../jayzee/maps-overview.html">jayzee maps directory overview</a></li>
+<li><a href="../jayzee/maps-root-worlds.html">jayzee root-linked worlds map</a></li>
+<li><a href="../jayzee/maps-witness-inputs.html">jayzee witness input directories and their sha256 checks</a></li>
+<li><a href="../jayzee/maps-witness.html">jayzee witness scripts</a></li>
+<li><a href="../jayzee/runs-findings.html">Runs findings and decisions</a></li>
+<li><a href="../jayzee/runs-open-gaps.html">Runs open gaps and failures</a></li>
+<li><a href="../jayzee/runs-overview.html">Runs overview</a></li>
+<li><a href="../jayzee/runs-timeline.html">Runs timeline</a></li>
+<li><a href="../jayzee/sources-captures.html">Sources captures</a></li>
+<li><a href="../jayzee/sources-index.html">Sources index</a></li>
+<li><a href="../jayzee/sources-overview.html">Sources overview</a></li>
+</ul>
+<h3>reference-game-16</h3><ul>
+<li><a href="../reference-game-16/coverage.html">Capture coverage: game page</a></li>
+<li><a href="../reference-game-16/download-process.html">Download process: from the join instructions to a working site</a></li>
+<li><a href="../reference-game-16/page-00-overview.html">Game page section: Overview</a></li>
+<li><a href="../reference-game-16/page-01-starters.html">Game page section: Starters</a></li>
+<li><a href="../reference-game-16/page-02-skills.html">Game page section: Skills</a></li>
+<li><a href="../reference-game-16/page-03-animations.html">Game page section: Animations</a></li>
+<li><a href="../reference-game-16/page-04-sound-art.html">Game page section: Sound Art</a></li>
+<li><a href="../reference-game-16/page-05-workshop.html">Game page section: Workshop</a></li>
+<li><a href="../reference-game-16/page-06-engine.html">Game page section: Engine</a></li>
+<li><a href="../reference-game-16/page-07-reference.html">Game page section: Reference</a></li>
+<li><a href="../reference-game-16/page-08-shapes.html">Game page section: Shapes</a></li>
+<li><a href="../reference-game-16/page-09-mods.html">Game page section: Mods</a></li>
+<li><a href="../reference-game-16/page-10-games.html">Game page section: Games</a></li>
+<li><a href="../reference-game-16/page-11-pick-a-genre.html">Game page section: Pick A Genre</a></li>
+<li><a href="../reference-game-16/page-host.html">Host page: Untitled game (@lanmower/game-16)</a></li>
+</ul>
+</nav>
+<main>
+<span class="eyebrow">cleetus</span>
+<h1 id="featureset-part-5-streams-45-to-55-clientcore-modules">Featureset part 5: streams 45 to 55, client/core modules</h1>
+<h2 id="how-it-works">How it works</h2>
+<p>This page covers lines 711 to 819 of docs/FEATURESET.md (old name: savi). It continues <a href="featureset-part-4.html">featureset-part-4.md</a>, which ends in the middle of stream 45, and is followed by <a href="featureset-part-6.html">featureset-part-6.md</a>. The method is the same as the earlier parts: spoint at d5e3860, each line re-read with git show, wc -l totals, and a module counted as covered only when a witness script names it and prints RESULT. Importers, prose in the cleetus docs, and source-text reads are disclosed as not coverage. Rows fed: jayzee row 39 (client rendering), row 40 (editor, hot reload and HUD), and row 59 (client rendering and tools). See <a href="jayzee-gaps.html">jayzee-gaps.md</a>.</p>
+<h3 id="stream-45-continued-diagnostics-and-profiling-probes">Stream 45 (continued): diagnostics and profiling probes</h3>
+<ul><li>client/core/OverdrawProbe.js line 49, createOverdrawProbe({ renderer, scene, camera, readIntervalMs }): 292 lines, 1 export. Imported by client/app.js. No witness.</li><li>client/core/MeshDebug.js line 58, installMeshDebug({ maxTicks }): 155 lines, 1 export. Imported by client/app.js and by one client/hud module. No witness.</li><li>client/core/ColliderDebug.js line 44, createColliderDebug({ scene, frame, cfg }): 108 lines, 1 export. Imported by client/app.js. No witness.</li><li>client/core/FrameMetrics.js line 4, createPerfTracker(): 233 lines, 5 exports. Imported by client/app.js. No witness. This is the explicit per-file mention for the held module. The phrase &quot;the frame metrics&quot; in docs/JAYZEE-GAPS.md row 59 is prose and is not the coverage; this entry is.</li></ul>
+<p>The six modules of stream 45 have no witness script at d5e3860.</p>
+<h3 id="stream-46-scheduling-yield-load-gate-and-band-modules">Stream 46: scheduling, yield, load gate and band modules</h3>
+<p>The six modules total 335 lines (161, 99, 13, 38, 15 and 9). cleetus's docs have no hits for StreamingScheduler, PlacementScheduler, macrotaskYield, TileExtent or drawBands. modelLoadGate is the exception and is covered below.</p>
+<ul><li>client/core/StreamingScheduler.js line 4, scoreRequest(features): 161 lines, 3 exports. Imported by client/app.js and client/core/CacheRevalidationSweep.js. No witness.</li><li>client/core/PlacementScheduler.js line 13, resolveCameraPose(camera, out): 99 lines, 3 exports. Imported by client/app.js and client/core/RenderGraph.nodes.js. No witness.</li><li>client/core/macrotaskYield.js line 1, macrotaskYield(): 13 lines, 1 export. Imported by client/core/Grass.js, client/core/Rocks.js, client/core/Vegetation.js and client/dev/HmrRuntime.js. No witness import. scripts/lib/verify-doc-claims.mjs names it inside a claim string about the Grass prewarm at line 521. That is docs-claim text, not a witness, and is not coverage.</li><li>client/core/modelLoadGate.js line 10, prefetchModel(url, load): 38 lines, 3 exports, the third being runModelLoadGate at line 20. Imported by client/EntityLoader.js and client/app.js. Witnessed by three behavioural scripts, each importing it and printing RESULT: scripts/model-gate-failure-witness.mjs, scripts/model-load-gate-witness.mjs and scripts/singleplayer-model-gate-witness.mjs. These were checked directly at d5e3860. The importer-only hit at docs/FEATURESET.md line 568 (stream 33, modelLoadErrors) cites modelLoadGate.js as an importer of src/shared/modelLoadErrors.js, and is not coverage for modelLoadGate.</li><li>client/core/TileExtent.js line 4, commitTileExtent(where, heightFn, sampleXZ, bounds, minY, maxY, padM): 15 lines, 1 export. Imported by client/core/Grass.js, Rocks.js and Vegetation.js. No witness.</li><li>client/core/drawBands.js line 1, WATER_TRANSPARENT_DRAW_BAND = -1: 9 lines, 9 exports. Imported by client/core/Weather.js. No witness.</li></ul>
+<p>Five of the six have no witness. modelLoadGate has three behavioural witnesses. The git grep hit for macrotaskYield is the claim string above.</p>
+<h3 id="stream-47-touch-and-keybinding-input">Stream 47: touch and keybinding input</h3>
+<p>The four modules total 497 lines (286, 35, 46 and 130). cleetus's docs, gaps and scripts have no word hits for TouchDraft, TouchSurfaceSpec or keybindings. MobileControls has one importer-only mention in the stream 27 section (docs/FEATURESET.md line 410), which is not coverage.</p>
+<ul><li>client/core/MobileControls.js line 7, class MobileControls: 286 lines, 2 exports. Imported by client/app.js. No witness.</li><li>client/core/TouchDraft.js line 4, touchDraftFromBindings(bindings, layout, responsive): 35 lines, 1 export. Imported by client/core/MobileControls.js. No witness.</li><li>client/core/TouchSurfaceSpec.js line 1, TouchSurfaceSpecError: 46 lines, 4 exports. No importer in src, client, apps, packages, scripts, bin or edge. No witness.</li><li>client/core/keybindings.js line 1, DEFAULT_KEY_BINDINGS (frozen): 130 lines, 5 exports. No importer. No witness.</li></ul>
+<p>All four have no witness.</p>
+<h3 id="stream-48-client-boot-connection-and-loading-state">Stream 48: client boot, connection and loading state</h3>
+<p>The four modules total 423 lines (158, 148, 94 and 23). cleetus has no word hits for ClientMachine, ConnectionStatus, LoadingMachine or PreviewReload.</p>
+<ul><li>client/core/ClientMachine.js line 4, clientMachine = createMachine({...}): 158 lines, 2 exports. Imported by client/app.js. No witness import. scripts/lib/verify-doc-claims.mjs names it inside a claim string at line 489, which says TOGGLE_EDITOR is sent in client/app.js. That is docs-claim text and is not coverage.</li><li>client/core/ConnectionStatus.js line 56, createConnectionStatus(): 148 lines, 1 export. Imported by client/app.js. No witness.</li><li>client/core/LoadingMachine.js line 7, notModelFailure({ context }): 94 lines, 8 exports. Imported by client/app.js. Witnessed by two behavioural scripts, each importing it and printing RESULT: scripts/force-ready-model-failure-witness.mjs and scripts/loading-machine-model-failure-witness.mjs. Both were checked at d5e3860 with an import regex and a RESULT check.</li><li>client/core/PreviewReload.js line 4, startPreviewReload({...}): 23 lines, 1 export. Imported by client/app.js. No witness.</li></ul>
+<p>Only LoadingMachine is witnessed.</p>
+<h3 id="stream-49-relocation-transform-lerp-and-floating-origin">Stream 49: relocation, transform lerp and floating origin</h3>
+<p>The three relocation and lerp modules total 301 lines (100, 85 and 116), plus FloatingOrigin.js. cleetus's docs have no hits for RelocationSearch, RelocationSettle or TransformLerp. The relocation family appears only at docs/FEATURESET.md line 562 (stream 33, bookmarks), which names client/core/Relocation.js as an importer of src/shared/bookmarks.js and is not coverage for these two modules.</p>
+<ul><li>client/core/RelocationSearch.js line 90, searchBookmark(kind, ctx): 100 lines, 1 export. Imported by client/core/Relocation.js. No witness.</li><li>client/core/RelocationSettle.js line 45, whenSettled({ idleFrames, ... }): 85 lines, 1 export. Imported by client/core/Relocation.js. No witness.</li><li>client/core/TransformLerp.js line 3, STRIDE = 17: 116 lines, 5 exports. Imported by client/core/SceneGraph.js. No witness.</li><li>client/core/FloatingOrigin.js line 3, REBASE_THRESHOLD_M = 8000: 61 lines, 2 exports. Imported by client/app.js. No witness. This is the explicit per-file mention that releases the hold on FloatingOrigin.js. The phrase &quot;floating origin&quot; in docs/JAYZEE-GAPS.md row 39 (line 72) is prose and is not coverage. scripts/lib/verify-doc-claims.mjs names the rebase claim at line 462, but imports nothing from the module, so it is not a witness.</li></ul>
+<h3 id="stream-50-decal-cache-sweep-exact-patch-frame-and-multi-viewport">Stream 50: decal, cache sweep, exact patch frame and multi viewport</h3>
+<p>The four modules total 400 lines (104, 131, 93 and 72). cleetus has no hits for DecalSystem, ExactPatchFrame or MultiViewport. CacheRevalidationSweep appears only in the stream 46 section, as an importer of StreamingScheduler.js.</p>
+<ul><li>client/core/DecalSystem.js line 10, createDecalSystem(scene, THREE): 104 lines, 1 export. Imported by client/app.js. No witness.</li><li>client/core/CacheRevalidationSweep.js line 12, createCacheRevalidationSweep(opts): 131 lines, 2 exports. Imported by client/app.js. No witness.</li><li>client/core/ExactPatchFrame.js line 47, createExactPatchFrame(frame): 93 lines, 1 export. Imported by client/core/Grass.js, Rocks.js and Vegetation.js. Behavioural witnesses: scripts/grass-seam-card-witness.mjs and scripts/shared-lattice-surface-witness.mjs. Each loads the module with await import(href('client/core/ExactPatchFrame.js')) and prints RESULT twice. Both were checked at d5e3860.</li><li>client/core/MultiViewport.js line 9, createMultiViewport(renderer, scene): 72 lines, 1 export. Imported by client/app.js. No witness.</li></ul>
+<h3 id="stream-51-expression-tree-texture-replay-grid-shadow-and-editor-kit">Stream 51: expression, tree texture, replay, grid, shadow and editor kit</h3>
+<p>The seven modules total 347 lines (67, 112, 75, 35, 51, 1 and 6). These names appear in the concept prose of docs/JAYZEE-GAPS.md rows 39 and 59, which is not per-file coverage. Each module has its own entry here.</p>
+<ul><li>client/core/ExpressionCodes.js line 1, EXPR_NEUTRAL = 0: 67 lines, 15 exports. Imported by client/app.js. No witness.</li><li>client/core/TreeTextureBudget.js line 2, TREE_TEXTURE_SOURCE_PX = 1024: 112 lines, 14 exports. Imported by client/core/Vegetation.js and VegetationBuild.js. No witness.</li><li>client/core/ReplayBuffer.js line 1, createReplayBuffer({...}): 75 lines, 2 exports. Imported by client/app.js. No witness.</li><li>client/core/GroundNodeGrid.js line 9, createGroundNodeGrid(sampleExact): 35 lines, 1 export. Imported by client/core/Weather.js. No witness.</li><li>client/core/CascadeShadowSelectTSL.js line 4, installCascadeShadowSelectTSL(cascadeLights, splitExtents): 51 lines, 3 exports. Imported by client/core/ShadowPipeline.js. No witness.</li><li>client/core/ShadowLayers.js line 1, SHADOW_CASTER_ONLY_LAYER = 30: 1 line, 1 export. Imported by client/core/ShadowPipeline.js and client/core/WebGPULodInstancer.js. scripts/.veg-lod-stream-control.mjs imports it through an absolute file:///C:/dev/spoint/ path and prints no RESULT line, so it is not a witness. No witness.</li><li>client/core/EditorKit.js line 1, editorKit = import('game-editor-kit'): 6 lines, 1 export. Imported by client/app.js and client/editor/EditorShell.js. No witness.</li></ul>
+<h3 id="stream-52-dev-tools-scene-graph-spectator-debug-log-frame-capture-and-sculpt-overlay">Stream 52: dev tools, scene graph, spectator, debug log, frame capture and sculpt overlay</h3>
+<p>The six modules total 454 lines (50, 158, 90, 37, 13 and 106). cleetus's docs and scripts name DevToolsIntegration, SceneGraph and SculptOverlay only in lines that are not coverage.</p>
+<ul><li>client/core/DevToolsIntegration.js line 7, installDevTools(renderer, scene, networkClient): 50 lines, 1 export. Imported by client/app.js. No witness. The importer-only citation in the stream 45 section names it as an importer of PerformanceProfiler.js, which is not coverage.</li><li>client/core/SceneGraph.js line 5, createSceneGraph(scene, floatingOrigin): 158 lines, 1 export. Imported by client/app.js. scripts/netcode-conditioner-harness.mjs loads it dynamically, but that script prints no RESULT line, so it is not a witness. No witness. The importer-only citation in the stream 49 section names it as the importer of TransformLerp.js, which is not coverage.</li><li>client/core/SpectatorMode.js line 1, createSpectatorMode({...}): 90 lines, 1 export. Imported by client/app.js. No witness.</li><li>client/core/debug-log.js line 26, dbg(namespace): 37 lines, 1 export. Imported by client/app.js, Grass.js, Rocks.js, SceneOcclusion.js, TerrainBackdrop.js, VegImpostorTier.js, Vegetation.js and VegetationBuild.js. client/core/RenderControls.js names the path as a readAt string at line 346, which is not an import and not coverage. No witness.</li><li>client/core/frameCapture.js line 1, captureHudFreeFrame({...}): 13 lines, 1 export. No importer. git grep -lw captureHudFreeFrame finds only the module, so the export is unreferenced. No witness.</li><li>client/core/SculptOverlay.js line 7, createSculptOverlay(terrainBackdrop): 106 lines, 1 export. Imported by client/app.js. No witness.</li></ul>
+<h3 id="stream-53-worker-render-protocol-time-of-day-and-world-panels">Stream 53: worker render protocol, time of day and world panels</h3>
+<p>The three modules total 348 lines (78, 140 and 130). cleetus has no word hits for these basenames.</p>
+<ul><li>client/core/WorkerRenderProtocol.js line 1, WORKER_MESSAGE (frozen): 78 lines, 14 exports. Imported by client/workers/OffscreenRenderWorker.js as a namespace import. No witness.</li><li>client/core/TimeOfDay.js line 52, createTimeOfDay(sun, ambient, opts): 140 lines, 1 export. Imported by client/app.js. No witness. Its state is read through the globals window.__timeOfDay and window.__timeOfDayApi. scripts/tsl-parity/bodies.mjs drives window.__timeOfDayApi, which makes it a consumer of the global. That is not a per-file mention of the module.</li><li>client/core/WorldPanels.js line 83, createWorldPanels(THREE, scene): 130 lines, 2 exports (WorldPanelError and createWorldPanels). Imported by client/AppModuleSystem.js. No witness.</li></ul>
+<h3 id="stream-54-fluid-surface-mapspinner-feasibility-probe-and-static-instance-store">Stream 54: fluid surface, mapspinner feasibility probe and static instance store</h3>
+<p>The three modules total 613 lines (237, 195 and 181). cleetus has no word hits for FluidSurface, MapspinnerWebGPUFeasibility or StaticInstanceStore.</p>
+<ul><li>client/core/FluidSurface.js line 10, sampleScalarField(positions, count, minX, minZ, maxX, maxZ, smoothingRadius, cellSize): 237 lines, 4 exports (sampleScalarField, marchingSquares, findBoundaryEdges and buildFluidSurfaceMesh). Imported by client/EntityLoaderMeshBuild.js, which takes buildFluidSurfaceMesh. No witness.</li><li>client/core/MapspinnerWebGPUFeasibility.js line 154, runFeasibilityProbe(): 195 lines, 1 export. No importer and no scripts/ reference. No witness.</li><li>client/core/StaticInstanceStore.js line 8, createStaticInstanceStore(opts): 181 lines, 1 export. Imported by client/EntityLoader.js. No witness.</li></ul>
+<h3 id="stream-55-three-vdrs-terrain-backdrop-and-scene-setup">Stream 55: three VDRS, terrain backdrop and scene setup</h3>
+<p>The three modules total 1035 lines (259, 310 and 466). cleetus names each only as an importer of other modules, which is not coverage.</p>
+<ul><li>client/core/ThreeVdrs.js line 80, class ThreeVdrs: 259 lines, 4 exports (ThreeVdrs, createThreeVdrsController, THREE_VDRS_WEBGPU_UNSUPPORTED and installThreeVdrs). Imported by client/app.js. No witness. The importer-only citation in the stream 44 section names it as an importer of ProgramReadiness.js, which is not coverage.</li><li>client/core/TerrainBackdrop.js line 35, createTerrainBackdrop(renderer, scene, cfg): 310 lines, 2 exports (prewarmMapspinnerPlanetModules and createTerrainBackdrop). Imported by client/app.js. No witness. scripts/lib/verify-doc-claims.mjs names the module only in line-keyed claim maps; it is a doc-claim checker, not a behavioural witness. The importer-only citations in the stream 33 and 37 sections are not coverage either.</li><li>client/core/SceneSetup.js line 14, createScene(): 466 lines, 21 export statements. Imported by client/app.js. scripts/three-loader-error-witness.mjs reads client/core/SceneSetup.js as source text at its line 15 and prints RESULT. That is a source-text witness of the file's text, not a runtime witness of its behaviour. The importer-only citations in the stream 33, 36, 37 and 44 sections are not coverage.</li></ul>
+<h2 id="decisions">Decisions</h2>
+<ul><li>Prose in the jayzee rows (for example &quot;the frame metrics&quot; and &quot;floating origin&quot;) is treated as family-level, and each file gets its own entry so that coverage is per file.</li><li>A source-text read (three-loader-error-witness on SceneSetup.js) is disclosed as a text witness and is not counted as a runtime witness.</li><li>A dynamic load that prints no RESULT line (netcode-conditioner-harness on SceneGraph) is not counted as a witness, because the check rule requires a RESULT line.</li><li>Importer citations are repeatedly declared &quot;not coverage&quot; so that a module cited only as an importer is not counted as covered.</li></ul>
+<h2 id="open-gaps">Open gaps</h2>
+<ul><li>Stream 45: OverdrawProbe, MeshDebug, ColliderDebug and FrameMetrics have no witness.</li><li>Stream 46: five of six modules have no witness; modelLoadGate is witnessed by three scripts.</li><li>Stream 47: all four touch and keybinding modules have no witness; TouchSurfaceSpec and keybindings have no importer.</li><li>Stream 48: three of four boot and state modules have no witness; ClientMachine is named only by a claim string.</li><li>Stream 49: RelocationSearch, RelocationSettle, TransformLerp and FloatingOrigin have no witness.</li><li>Stream 50: DecalSystem, CacheRevalidationSweep and MultiViewport have no witness; ExactPatchFrame has two.</li><li>Stream 51: all seven modules have no witness; ShadowLayers is named by a non-witness script that uses an absolute Windows path.</li><li>Stream 52: all six modules have no witness; frameCapture.js is unreferenced in the tree.</li><li>Stream 53: all three modules have no witness.</li><li>Stream 54: FluidSurface, MapspinnerWebGPUFeasibility and StaticInstanceStore have no witness; the feasibility probe has no importer.</li><li>Stream 55: ThreeVdrs and TerrainBackdrop have no witness; SceneSetup has only a source-text witness.</li></ul>
+<h2 id="sources">Sources</h2>
+<ul><li>/workspace/savi/docs/FEATURESET.md (old name: savi), lines 711 to 819</li><li>/workspace/savi/docs/JAYZEE-GAPS.md (old name: savi), rows 39 and 59 and line 72</li><li>/workspace/spoint/client/core/OverdrawProbe.js</li><li>/workspace/spoint/client/core/MeshDebug.js</li><li>/workspace/spoint/client/core/ColliderDebug.js</li><li>/workspace/spoint/client/core/FrameMetrics.js</li><li>/workspace/spoint/client/core/StreamingScheduler.js</li><li>/workspace/spoint/client/core/PlacementScheduler.js</li><li>/workspace/spoint/client/core/macrotaskYield.js</li><li>/workspace/spoint/client/core/modelLoadGate.js</li><li>/workspace/spoint/client/core/TileExtent.js</li><li>/workspace/spoint/client/core/drawBands.js</li><li>/workspace/spoint/client/core/MobileControls.js</li><li>/workspace/spoint/client/core/TouchDraft.js</li><li>/workspace/spoint/client/core/TouchSurfaceSpec.js</li><li>/workspace/spoint/client/core/keybindings.js</li><li>/workspace/spoint/client/core/ClientMachine.js</li><li>/workspace/spoint/client/core/ConnectionStatus.js</li><li>/workspace/spoint/client/core/LoadingMachine.js</li><li>/workspace/spoint/client/core/PreviewReload.js</li><li>/workspace/spoint/client/core/RelocationSearch.js</li><li>/workspace/spoint/client/core/RelocationSettle.js</li><li>/workspace/spoint/client/core/TransformLerp.js</li><li>/workspace/spoint/client/core/FloatingOrigin.js</li><li>/workspace/spoint/client/core/DecalSystem.js</li><li>/workspace/spoint/client/core/CacheRevalidationSweep.js</li><li>/workspace/spoint/client/core/ExactPatchFrame.js</li><li>/workspace/spoint/client/core/MultiViewport.js</li><li>/workspace/spoint/client/core/ExpressionCodes.js</li><li>/workspace/spoint/client/core/TreeTextureBudget.js</li><li>/workspace/spoint/client/core/ReplayBuffer.js</li><li>/workspace/spoint/client/core/GroundNodeGrid.js</li><li>/workspace/spoint/client/core/CascadeShadowSelectTSL.js</li><li>/workspace/spoint/client/core/ShadowLayers.js</li><li>/workspace/spoint/client/core/EditorKit.js</li><li>/workspace/spoint/client/core/DevToolsIntegration.js</li><li>/workspace/spoint/client/core/SceneGraph.js</li><li>/workspace/spoint/client/core/SpectatorMode.js</li><li>/workspace/spoint/client/core/debug-log.js</li><li>/workspace/spoint/client/core/frameCapture.js</li><li>/workspace/spoint/client/core/SculptOverlay.js</li><li>/workspace/spoint/client/core/WorkerRenderProtocol.js</li><li>/workspace/spoint/client/core/TimeOfDay.js</li><li>/workspace/spoint/client/core/WorldPanels.js</li><li>/workspace/spoint/client/core/FluidSurface.js</li><li>/workspace/spoint/client/core/MapspinnerWebGPUFeasibility.js</li><li>/workspace/spoint/client/core/StaticInstanceStore.js</li><li>/workspace/spoint/client/core/ThreeVdrs.js</li><li>/workspace/spoint/client/core/TerrainBackdrop.js</li><li>/workspace/spoint/client/core/SceneSetup.js</li><li>/workspace/spoint/scripts/model-gate-failure-witness.mjs</li><li>/workspace/spoint/scripts/model-load-gate-witness.mjs</li><li>/workspace/spoint/scripts/singleplayer-model-gate-witness.mjs</li><li>/workspace/spoint/scripts/force-ready-model-failure-witness.mjs</li><li>/workspace/spoint/scripts/loading-machine-model-failure-witness.mjs</li><li>/workspace/spoint/scripts/grass-seam-card-witness.mjs</li><li>/workspace/spoint/scripts/shared-lattice-surface-witness.mjs</li><li>/workspace/spoint/scripts/three-loader-error-witness.mjs</li><li>/workspace/spoint/scripts/netcode-conditioner-harness.mjs</li><li>/workspace/spoint/scripts/lib/verify-doc-claims.mjs</li><li>/workspace/spoint/scripts/tsl-parity/bodies.mjs</li></ul>
+</main>
+</div>
+<footer class="foot"><div class="foot-inner">wiki · every page cites the on-disk sources it was written from</div></footer>
+</body>
+</html>

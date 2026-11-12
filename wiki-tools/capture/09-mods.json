@@ -1,0 +1,90 @@
+{
+  "title": "",
+  "text": "toolbox\nOverview\nStarters\nSkills\nAnimations\nSound & Art\nWorkshop\nEngine\nReference\nShapes\nMods\nGames\nPick a genre\nMods\n\nShared kits other creators published: skills, systems and tools any world can install. Most-installed first.\n\naaa-quality-kit@2.2.0\n\nHonest scope: scripts + skills only — the skills ARE the training; no model, brain, or engine is changed, and the 'mode' brain skills alter zero appearance by themselves.\n\n1255 installs · 34 likes\nsavi-fast-af@1.2.0\n\nBatched tool calls, no double-checking, straight answers, one defensible move instead of menus, plus 40 Engine 6 rules: dot writes, stepped numbers, ears over polling, waitUntil proofs, perf and room hygiene. /fastaf audit makes her grade herself.\n\n335 installs · 13 likes\ngavi@1.9.1\n\nMaximum reasoning comes first (raciocinio-maximo: the investigation budget per request type in numbers, every hypothesis born in the same sentence as the probe that kills it, reading the WHOLE file because this engine links scripts by string and the import...\n\n225 installs · 19 likes\ncustom-animations@1.1.0\n\nFull custom animation system for player characters, NPCs, and enemies. Model-only architecture with semantic profiles, ability systems with animation chaining, interruptible casts, per-spell tuning, conditional idles, prejump anticipation, patrol NPCs, and...\n\n161 installs · 4 likes\nawakening@1.9.0\n\nHigh-fidelity rendering for 3D worlds: production PBR lighting, a film-grade post stack (sharpen, AO, sun-lit mist, filmic grade), volumetric clouds, realistic wind-blown grass, 2K PBR ground textures, river-eroded mountains, a procedural forest planner...\n\n160 installs · 13 likes\nabsolute-cinema@1.16.0\n\nA visual cinematic camera toolkit — place camera nodes, build timelines, and play back smooth blends and hard cuts. A filmmaking studio inside the game engine.\n\n159 installs · 5 likes\nui-builder@1.0.0\n\nNo description\n\n159 installs · 1 likes\nstream-vault@1.2.0\n\nGrabs everything your game streams and bakes it at load, so nothing streams in after. One manifest as the directory of record, a /bake command that sweeps the codebase to restock it, and a live recorder that catches anything missed so it never cold-fetches...\n\n148 installs · 4 likes\ncombat-cookbook@1.0.0\n\nMelee, ranged, hitscan, enemy AI, wave spawners, damage zones, and auto-shooter patterns.\n\n146 installs · 1 likes\ncodex@1.2.0\n\nThe Codex is a living design document Savi keeps for you, in a god-mode tab: thirteen pages-and-tabs across Overview, Features, Lore, Characters, NPCs, Level Design, UI, SFX, VFX, Open Questions, Invariants, Build Order and Notes — plus a left rail of...\n\n139 installs · 7 likes\natmosphere-kitchen@1.0.0\n\n12 ready-to-use atmosphere presets plus day/night cycles, weather transitions, and lighting rules. Copy-paste any mood from sunny day to horror fog to neon night.\n\n135 installs · 0 likes\nsound-design-guide@1.0.0\n\nVolume mixing, spatial audio, pitch variation, music transitions, genre-specific sound palettes, and voice line patterns.\n\n116 installs · 0 likes\nslate@1.10.1\n\nSlate — your game studio, inside your world. Catch an idea before it disappears. Turn a screenshot into a task. Keep your plans, stories, assets and conversations together while you build with Savi. Slate is a floating tablet for creators, from the first...\n\n112 installs · 6 likes\nanimacao-viva@1.0.0\n\nUnreal Engine 5's animation toolkit, translated for bodies with NO skeleton — characters built from primitives, geometry creatures, ships, turrets. State machine with cross-fade, 1D/2D blend spaces, per-region layered animation (run and attack at once),...\n\n109 installs · 4 likes\ncustom-glb-animations@1.0.0\n\nTeaches the Puppet Pattern for using custom uploaded GLB model animations on player characters.\n\n105 installs · 1 likes\nmaterials-database@3.1.0\n\n80+ real-world materials with physical, acoustic, mechanical, and visual properties. Universal data layer for any project needing material science.\n\n101 installs · 1 likes\nraytraced-lighting@1.0.0\n\nReal ray-marched lighting for any world: screen-space traced reflections with a temporal denoiser, traced contact shadows, and a separable bloom. Point a place's atmosphere look at it and floors, walls, metal and water start reflecting the room around them.\n\n87 installs · 7 likes\nmodeling-studio@1.4.0\n\nTurn a sentence or a picture into a clean, high-detail 3D model in your world. Open the 🎨 Studio tab in god mode, or press M (the 🎨 3D studio button) without god mode, describe what you want, add a reference picture, and press Paint or Build 3D: Savi...\n\n84 installs · 14 likes\nsoftware-devs-playbook@1.9.0\n\nNo description\n\n82 installs · 0 likes\nthe-spoin-purse@1.4.1\n\nLet players toss spoins to the maker of your world — donation tip tiers via native buyables (game owner receives, 50% cut) plus a creator links panel (linktree, patreon, your other worlds) edited from a god-mode tab. Ships with a ready-made HUD button +...\n\n77 installs · 4 likes\ntoolbox · everything this world can build with",
+  "headings": [
+    {
+      "level": "H2",
+      "text": "Mods"
+    }
+  ],
+  "blocks": [
+    "Shared kits other creators published: skills, systems and tools any world can install. Most-installed first.",
+    "Honest scope: scripts + skills only — the skills ARE the training; no model, brain, or engine is changed, and the 'mode' brain skills alter zero appearance by themselves.",
+    "Batched tool calls, no double-checking, straight answers, one defensible move instead of menus, plus 40 Engine 6 rules: dot writes, stepped numbers, ears over polling, waitUntil proofs, perf and room hygiene. /fastaf audit makes her grade herself.",
+    "Maximum reasoning comes first (raciocinio-maximo: the investigation budget per request type in numbers, every hypothesis born in the same sentence as the probe that kills it, reading the WHOLE file because this engine links scripts by string and the import...",
+    "Full custom animation system for player characters, NPCs, and enemies. Model-only architecture with semantic profiles, ability systems with animation chaining, interruptible casts, per-spell tuning, conditional idles, prejump anticipation, patrol NPCs, and...",
+    "High-fidelity rendering for 3D worlds: production PBR lighting, a film-grade post stack (sharpen, AO, sun-lit mist, filmic grade), volumetric clouds, realistic wind-blown grass, 2K PBR ground textures, river-eroded mountains, a procedural forest planner...",
+    "A visual cinematic camera toolkit — place camera nodes, build timelines, and play back smooth blends and hard cuts. A filmmaking studio inside the game engine.",
+    "No description",
+    "Grabs everything your game streams and bakes it at load, so nothing streams in after. One manifest as the directory of record, a /bake command that sweeps the codebase to restock it, and a live recorder that catches anything missed so it never cold-fetches...",
+    "Melee, ranged, hitscan, enemy AI, wave spawners, damage zones, and auto-shooter patterns.",
+    "The Codex is a living design document Savi keeps for you, in a god-mode tab: thirteen pages-and-tabs across Overview, Features, Lore, Characters, NPCs, Level Design, UI, SFX, VFX, Open Questions, Invariants, Build Order and Notes — plus a left rail of...",
+    "12 ready-to-use atmosphere presets plus day/night cycles, weather transitions, and lighting rules. Copy-paste any mood from sunny day to horror fog to neon night.",
+    "Volume mixing, spatial audio, pitch variation, music transitions, genre-specific sound palettes, and voice line patterns.",
+    "Slate — your game studio, inside your world. Catch an idea before it disappears. Turn a screenshot into a task. Keep your plans, stories, assets and conversations together while you build with Savi. Slate is a floating tablet for creators, from the first...",
+    "Unreal Engine 5's animation toolkit, translated for bodies with NO skeleton — characters built from primitives, geometry creatures, ships, turrets. State machine with cross-fade, 1D/2D blend spaces, per-region layered animation (run and attack at once),...",
+    "Teaches the Puppet Pattern for using custom uploaded GLB model animations on player characters.",
+    "80+ real-world materials with physical, acoustic, mechanical, and visual properties. Universal data layer for any project needing material science.",
+    "Real ray-marched lighting for any world: screen-space traced reflections with a temporal denoiser, traced contact shadows, and a separable bloom. Point a place's atmosphere look at it and floors, walls, metal and water start reflecting the room around them.",
+    "Turn a sentence or a picture into a clean, high-detail 3D model in your world. Open the 🎨 Studio tab in god mode, or press M (the 🎨 3D studio button) without god mode, describe what you want, add a reference picture, and press Paint or Build 3D: Savi...",
+    "No description",
+    "Let players toss spoins to the maker of your world — donation tip tiers via native buyables (game owner receives, 50% cut) plus a creator links panel (linktree, patreon, your other worlds) edited from a god-mode tab. Ships with a ready-made HUD button +..."
+  ],
+  "links": [
+    {
+      "text": "toolbox",
+      "href": null
+    },
+    {
+      "text": "Overview",
+      "href": null
+    },
+    {
+      "text": "Starters",
+      "href": null
+    },
+    {
+      "text": "Skills",
+      "href": null
+    },
+    {
+      "text": "Animations",
+      "href": null
+    },
+    {
+      "text": "Sound & Art",
+      "href": null
+    },
+    {
+      "text": "Workshop",
+      "href": null
+    },
+    {
+      "text": "Engine",
+      "href": null
+    },
+    {
+      "text": "Reference",
+      "href": null
+    },
+    {
+      "text": "Shapes",
+      "href": null
+    },
+    {
+      "text": "Mods",
+      "href": null
+    },
+    {
+      "text": "Games",
+      "href": null
+    },
+    {
+      "text": "Pick a genre",
+      "href": null
+    }
+  ],
+  "images": [],
+  "code": [],
+  "inputs": []
+}

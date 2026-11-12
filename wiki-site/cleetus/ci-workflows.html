@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CI workflows and npm scripts · Wiki</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="topbar">
+<div class="topbar-inner">
+<a class="brand" href="../index.html">wi<span>ki</span></a>
+<nav class="pills"><a class="active" href="../cleetus/ci-workflows.html">cleetus</a><a href="../index/cdn-inventory.html">index</a><a href="../jayzee/maps-glb-urls.html">jayzee</a><a href="../reference-game-16/coverage.html">reference-game-16</a></nav>
+</div>
+</header>
+<div class="layout">
+<nav class="side">
+<h3>Start</h3><ul>
+<li><a href="../index.html">Project wiki: how this wiki is organised</a></li>
+<li><a href="../toc.html">Table of contents</a></li>
+</ul>
+<h3>cleetus</h3><ul>
+<li><a class="current" href="../cleetus/ci-workflows.html">CI workflows and npm scripts</a></li>
+<li><a href="../cleetus/docs-folder.html">The docs folder</a></li>
+<li><a href="../cleetus/endpoints.html">Endpoints</a></li>
+<li><a href="../cleetus/engine-decisions.html">Engine decisions: why the jayzee engine notes are shaped as they are</a></li>
+<li><a href="../cleetus/engine-overview.html">Engine overview: the jayzee engine notes (cleetus workspace)</a></li>
+<li><a href="../cleetus/evidence-claims.html">Evidence claims</a></li>
+<li><a href="../cleetus/evidence-overview.html">Evidence overview</a></li>
+<li><a href="../cleetus/featureset-part-1.html">Featureset part 1: cleetus counts, spoint surface, and the relayed streams</a></li>
+<li><a href="../cleetus/featureset-part-2.html">Featureset part 2: streams 12 to 25 and the src/sdk modules</a></li>
+<li><a href="../cleetus/featureset-part-3.html">Featureset part 3: streams 26 to 34</a></li>
+<li><a href="../cleetus/featureset-part-4.html">Featureset part 4: streams 35 to 45, client/core rendering modules</a></li>
+<li><a href="../cleetus/featureset-part-5.html">Featureset part 5: streams 45 to 55, client/core modules</a></li>
+<li><a href="../cleetus/featureset-part-6.html">Featureset part 6: streams 56 to 58 and the improvement opportunities</a></li>
+<li><a href="../cleetus/featureset-part-7.html">Featureset part 7: improvement candidates from streams 43 to 58</a></li>
+<li><a href="../cleetus/featureset-part-8.html">Featureset part 8: agent and room candidates, session store, bake pins, learning record and terrain</a></li>
+<li><a href="../cleetus/featureset-part-9.html">FEATURESET part 9: render, editor, HUD, XR, packages, static serving and server surface</a></li>
+<li><a href="../cleetus/jayzee-gaps.html">Jayzee implementation gaps</a></li>
+<li><a href="../cleetus/manual-build.html">Manual build and check</a></li>
+<li><a href="../cleetus/manual-worklist.html">Manual worklist</a></li>
+<li><a href="../cleetus/morluto-ci-findings.html">Morluto rea PR 9234 CI findings</a></li>
+<li><a href="../cleetus/netcode.html">Netcode</a></li>
+<li><a href="../cleetus/open-gaps.html">Open gaps across the cleetus repository</a></li>
+<li><a href="../cleetus/open-items.html">Open items register</a></li>
+<li><a href="../cleetus/overview.html">Overview of cleetus</a></li>
+<li><a href="../cleetus/parity.html">Parity</a></li>
+<li><a href="../cleetus/runs-overview.html">Runs overview</a></li>
+<li><a href="../cleetus/site-overview.html">Site overview (built manual output)</a></li>
+<li><a href="../cleetus/sources-overview.html">Sources overview</a></li>
+<li><a href="../cleetus/state-and-tooling.html">State and tooling</a></li>
+</ul>
+<h3>index</h3><ul>
+<li><a href="../index/cdn-inventory.html">CDN inventory and manifests</a></li>
+<li><a href="../index/discovery.html">Discovery evidence</a></li>
+<li><a href="../index/exhaustive-index.html">Exhaustive world and GLB index</a></li>
+<li><a href="../index/extra-docs.html">extra docs: the Jayzee game API reference copy</a></li>
+<li><a href="../index/extra-worlds.html">extra world lists and feeds</a></li>
+<li><a href="../index/open-gaps.html">Open gaps in the index</a></li>
+<li><a href="../index/overview.html">Overview of the index project</a></li>
+<li><a href="../index/provenance.html">Provenance manifests</a></li>
+<li><a href="../index/savi-index.html">cleetus index</a></li>
+<li><a href="../index/spawn-index.html">jayzee index</a></li>
+<li><a href="../index/tree/tree-borick.html">The borick/ directory</a></li>
+<li><a href="../index/tree/tree-build-scripts.html">Build, check and discovery scripts, and the patch files</a></li>
+<li><a href="../index/tree/tree-discovery.html">The discovery/ directory</a></li>
+<li><a href="../index/tree/tree-exhaustive.html">The exhaustive/ directory</a></li>
+<li><a href="../index/tree/tree-extra.html">The extra/ directory</a></li>
+<li><a href="../index/tree/tree-indexes.html">The index files: COMPLETE_INDEX, EXTRA_WORLD_INDEX and INDEX</a></li>
+<li><a href="../index/tree/tree-open-gaps.html">Open gaps in the top-level index, its directories and the browser state</a></li>
+<li><a href="../index/tree/tree-overview.html">Top-level layout of the jayzee tree</a></li>
+<li><a href="../index/tree/tree-provenance.html">provenance.sha256.txt and the other provenance manifests</a></li>
+<li><a href="../index/tree/tree-savi-directory.html">The cleetus/ directory (old name: savi)</a></li>
+<li><a href="../index/tree/tree-spawn-directory.html">The jayzee/ directory (old name: spawn)</a></li>
+</ul>
+<h3>jayzee</h3><ul>
+<li><a href="../jayzee/maps-glb-urls.html">jayzee GLB URL list (glb-urls-all.tsv)</a></li>
+<li><a href="../jayzee/maps-head-status.html">jayzee world head status lists</a></li>
+<li><a href="../jayzee/maps-learning-record-part-1.html">jayzee learning record, part 1 (denominators, corpus, keys, escapes, bucket rule, 410)</a></li>
+<li><a href="../jayzee/maps-learning-record-part-2.html">jayzee learning record, part 2 (error keys, non-CDN refs, open items, name decode, /cdn/ attempt)</a></li>
+<li><a href="../jayzee/maps-learning-record.html">jayzee learning record</a></li>
+<li><a href="../jayzee/maps-noncdn-refs.html">jayzee non-CDN data references (unverified-noncdn-refs.tsv)</a></li>
+<li><a href="../jayzee/maps-open-gaps.html">jayzee maps open gaps</a></li>
+<li><a href="../jayzee/maps-overview.html">jayzee maps directory overview</a></li>
+<li><a href="../jayzee/maps-root-worlds.html">jayzee root-linked worlds map</a></li>
+<li><a href="../jayzee/maps-witness-inputs.html">jayzee witness input directories and their sha256 checks</a></li>
+<li><a href="../jayzee/maps-witness.html">jayzee witness scripts</a></li>
+<li><a href="../jayzee/runs-findings.html">Runs findings and decisions</a></li>
+<li><a href="../jayzee/runs-open-gaps.html">Runs open gaps and failures</a></li>
+<li><a href="../jayzee/runs-overview.html">Runs overview</a></li>
+<li><a href="../jayzee/runs-timeline.html">Runs timeline</a></li>
+<li><a href="../jayzee/sources-captures.html">Sources captures</a></li>
+<li><a href="../jayzee/sources-index.html">Sources index</a></li>
+<li><a href="../jayzee/sources-overview.html">Sources overview</a></li>
+</ul>
+<h3>reference-game-16</h3><ul>
+<li><a href="../reference-game-16/coverage.html">Capture coverage: game page</a></li>
+<li><a href="../reference-game-16/download-process.html">Download process: from the join instructions to a working site</a></li>
+<li><a href="../reference-game-16/page-00-overview.html">Game page section: Overview</a></li>
+<li><a href="../reference-game-16/page-01-starters.html">Game page section: Starters</a></li>
+<li><a href="../reference-game-16/page-02-skills.html">Game page section: Skills</a></li>
+<li><a href="../reference-game-16/page-03-animations.html">Game page section: Animations</a></li>
+<li><a href="../reference-game-16/page-04-sound-art.html">Game page section: Sound Art</a></li>
+<li><a href="../reference-game-16/page-05-workshop.html">Game page section: Workshop</a></li>
+<li><a href="../reference-game-16/page-06-engine.html">Game page section: Engine</a></li>
+<li><a href="../reference-game-16/page-07-reference.html">Game page section: Reference</a></li>
+<li><a href="../reference-game-16/page-08-shapes.html">Game page section: Shapes</a></li>
+<li><a href="../reference-game-16/page-09-mods.html">Game page section: Mods</a></li>
+<li><a href="../reference-game-16/page-10-games.html">Game page section: Games</a></li>
+<li><a href="../reference-game-16/page-11-pick-a-genre.html">Game page section: Pick A Genre</a></li>
+<li><a href="../reference-game-16/page-host.html">Host page: Untitled game (@lanmower/game-16)</a></li>
+</ul>
+</nav>
+<main>
+<span class="eyebrow">cleetus</span>
+<h1 id="ci-workflows-and-npm-scripts">CI workflows and npm scripts</h1>
+<h2 id="how-it-works">How it works</h2>
+<p>The only workflow is <code>/workspace/savi/.github/workflows/publish.yml</code> (old name: savi). Its <code>name</code> is <code>publish-manual</code>. It rebuilds the static manual, checks the generated site, and deploys it to GitHub Pages. The published URL is https://anentrypoint.github.io/savi/ (stated in <code>/workspace/savi/README.md</code>, old name: savi).</p>
+<h3 id="triggers">Triggers</h3>
+<ul><li><code>push:</code> with no branch or tag filter, so every push to any branch starts the workflow.</li><li><code>workflow_dispatch:</code> for a manual run from the Actions tab.</li></ul>
+<h3 id="permissions">Permissions</h3>
+<p>Set at workflow level, so every job inherits them:</p>
+<ul><li><code>contents: read</code></li><li><code>pages: write</code></li><li><code>id-token: write</code></li></ul>
+<h3 id="concurrency">Concurrency</h3>
+<ul><li>Group <code>pages</code>, <code>cancel-in-progress: false</code>. Runs that share the group queue behind each other and an in-flight deployment is never cancelled.</li></ul>
+<h3 id="job-build">Job <code>build</code></h3>
+<p>Runs on <code>ubuntu-latest</code>. Steps in order:</p>
+<ol><li><code>checkout</code>, <code>actions/checkout@v4</code>, with <code>fetch-depth: 0</code>. The full history is fetched because <code>scripts/build-manual.mjs</code> reads the commit hash, branch and log through <code>git</code> (<code>rev-parse</code>, <code>branch --show-current</code>, <code>log</code>). Without full history the manifest history would be incomplete.</li><li><code>setup-node</code>, <code>actions/setup-node@v4</code>, Node 20. No <code>npm ci</code> step exists, because <code>/workspace/savi/package.json</code> (old name: savi) declares no dependencies and the scripts are plain <code>node</code> invocations.</li><li><code>build</code>: <code>node scripts/build-manual.mjs .</code></li><li><code>check</code>: <code>node scripts/check-manual.mjs .</code></li><li><code>configure-pages</code>, <code>actions/configure-pages@v5</code>, with <code>enablement: true</code>, which asks Pages to be enabled for the repository if it is not.</li><li><code>upload-pages-artifact</code>, <code>actions/upload-pages-artifact@v3</code>, with <code>path: site</code> and <code>include-hidden-files: true</code>. The hidden flag is needed because the build writes <code>site/.nojekyll</code>, which stops GitHub Pages running Jekyll.</li></ol>
+<h3 id="job-deploy">Job <code>deploy</code></h3>
+<ul><li><code>if: github.ref == 'refs/heads/main'</code>, so only a push to <code>main</code>, or a manual dispatch whose selected ref is <code>main</code>, deploys.</li><li><code>needs: build</code>.</li><li><code>environment</code> named <code>github-pages</code>, with <code>url: ${{ steps.deployment.outputs.page_url }}</code>.</li><li>Runs on <code>ubuntu-latest</code>. One step, <code>deploy-pages</code> (id <code>deployment</code>), uses <code>actions/deploy-pages@v5</code>.</li></ul>
+<h3 id="what-the-build-script-does-scriptsbuild-manualmjs-old-name-savi">What the build script does (<code>scripts/build-manual.mjs</code>, old name: savi)</h3>
+<p>Called as <code>node scripts/build-manual.mjs .</code>, the script:</p>
+<ul><li>Resolves the root and sets <code>site</code> to <code>&lt;root&gt;/site</code>. Excluded directory names: <code>.git</code>, <code>.playwriter</code>, <code>runs</code>, <code>site</code>, <code>node_modules</code>, <code>sources</code>. Withheld path prefixes: <code>.spawn/reference/http/raw/</code>, <code>spawn-evidence/data/</code>, <code>spawn-evidence/maps/witness/</code>. Note that the walk uses the working tree (<code>readdir</code>), not <code>git ls-files</code>.</li><li>Walks the tree, sorted by name, and reads every remaining file. A file is text when it has no NUL byte. For text files the page shows the exact content; for binary files it shows a 16-byte-per-line hex dump with an ASCII column. Line count, byte count and SHA-256 are recorded for every file.</li><li>Deletes and recreates <code>site/</code>, then writes <code>site/raw/</code> (a byte-exact copy of each file, with the top-level <code>.github</code> directory renamed to <code>_github</code>), <code>site/files/</code> (one HTML page per file, named by the hex of its relative path plus <code>.html</code>), <code>site/style.css</code>, <code>site/index.html</code> (file list grouped by top-level directory, plus the git history table), <code>site/404.html</code>, <code>site/manifest.json</code> (per-file path, bytes, lines, hash, text flag, page name, and the history), and an empty <code>site/.nojekyll</code>.</li><li>Embeds an <code>&lt;img&gt;</code> for image files (<code>.png</code>, <code>.jpg</code>, <code>.jpeg</code>, <code>.gif</code>, <code>.webp</code>) that are binary.</li><li>Prints one JSON line with commit, branch, file count, bytes, text count and binary count.</li></ul>
+<h3 id="what-the-check-script-does-scriptscheck-manualmjs-old-name-savi">What the check script does (<code>scripts/check-manual.mjs</code>, old name: savi)</h3>
+<p>Called as <code>node scripts/check-manual.mjs .</code>, the script reads <code>site/manifest.json</code> and <code>site/index.html</code> and collects failures:</p>
+<ul><li>For every manifest entry: the source file must exist, the raw copy must exist and match the recorded SHA-256, the file page must exist, the index must link to the page, and for text files the text inside <code>&lt;pre&gt;</code> must decode to exactly the source. It also fails if any file under <code>.spawn/reference/http/raw/</code>, <code>sources/</code>, or a path named <code>WITHHELD.json</code> appears in the manifest.</li><li>Walks every HTML file under <code>site/</code> and checks every relative <code>href</code> and <code>src</code> target resolves on disk. Absolute, <code>http(s)</code>, <code>mailto</code>, <code>data</code>, and protocol-relative targets are skipped.</li><li>Requires <code>site/.nojekyll</code>.</li><li>Greps <code>.github/workflows/publish.yml</code> for markers: <code>push:</code>, <code>workflow_dispatch:</code>, the build and check commands, <code>configure-pages@v5</code>, <code>upload-pages-artifact@v3</code>, <code>deploy-pages@v5</code>.</li><li>Requires the manifest kind counts (text plus binary) to equal the file count.</li><li>If <code>git rev-parse HEAD</code> succeeds, requires the manifest commit to equal HEAD.</li><li>Requires <code>/workspace/savi/ENDPOINTS.md</code> (old name: savi) to equal the output of <code>buildEndpointsPage</code> in <code>scripts/endpoints.mjs</code> (old name: savi), which is imported directly.</li><li>Prints one JSON result line and sets exit code 1 on any failure. The first 20 failure messages are listed.</li></ul>
+<h3 id="the-endpoints-generator-scriptsendpointsmjs-old-name-savi">The endpoints generator (<code>scripts/endpoints.mjs</code>, old name: savi)</h3>
+<p>Used by <code>check-manual.mjs</code> and by <code>npm run endpoints</code>. It scans text files for strings beginning <code>/api/</code>, normalises them (trailing punctuation removed, UUIDs replaced with <code>{id}</code>, rejected when braces are unbalanced or contain <code>&lt;</code>/<code>&gt;</code>), and classifies each against the paths in <code>scripts/openapi.json</code> (old name: savi) as <code>listed</code>, <code>per-game</code>, <code>partial</code> or <code>absent</code>. It writes <code>ENDPOINTS.md</code>. Directories <code>scripts</code>, <code>spawn-evidence</code>, <code>.git</code>, <code>.playwriter</code>, <code>runs</code>, <code>site</code>, <code>node_modules</code> and <code>sources</code> are skipped, and so is <code>.spawn/reference/http/raw/</code>. At the time of this review, <code>buildEndpointsPage</code> output matched the committed <code>ENDPOINTS.md</code>.</p>
+<h3 id="npm-scripts-workspacesavipackagejson-old-name-savi">npm scripts (<code>/workspace/savi/package.json</code>, old name: savi)</h3>
+<p>The package is <code>private</code>, <code>type: module</code>, with no dependencies. Its scripts and their relation to CI:</p>
+<div class="table-wrap"><table><thead><tr><th>Script</th><th>Command</th><th>In CI</th></tr></thead><tbody><tr><td><code>build</code></td><td><code>node scripts/build-manual.mjs .</code></td><td>Same as the <code>build</code> step.</td></tr><tr><td><code>check</code></td><td><code>node scripts/check-manual.mjs . &amp;&amp; node scripts/check-ideal-coverage.mjs</code></td><td>Only the first half runs in CI (the <code>check</code> step).</td></tr><tr><td><code>check:ideal-coverage</code></td><td><code>node scripts/check-ideal-coverage.mjs</code></td><td>No.</td></tr><tr><td><code>check:ideal-witnesses</code></td><td><code>node scripts/check-ideal-witnesses.mjs</code></td><td>No.</td></tr><tr><td><code>endpoints</code></td><td><code>node scripts/endpoints.mjs .</code></td><td>No. Only the file's output is compared, by <code>check-manual.mjs</code>.</td></tr><tr><td><code>verify</code></td><td><code>node scripts/verify-publish.mjs .</code></td><td>No.</td></tr><tr><td><code>check:featureset</code></td><td><code>node scripts/check-featureset.mjs</code></td><td>No.</td></tr></tbody></table></div>
+<p>Other scripts in <code>/workspace/savi/scripts/</code> (old name: savi) not named in <code>package.json</code>: <code>check-open-items.mjs</code>.</p>
+<p>What the non-CI scripts do:</p>
+<ul><li><code>scripts/check-ideal-coverage.mjs</code> (old name: savi) reads <code>docs/JAYZEE-GAPS.md</code> in the checkout (old name: savi) and requires every numbered row to be named as <code>row &lt;id&gt;</code> in <code>../jayzee/docs/IDEAL.md</code>, a file in the sibling jayzee checkout.</li><li><code>scripts/check-ideal-witnesses.mjs</code> (old name: savi) reads the same sibling file, and for each <code>partial</code> row requires a <code>scripts/*.mjs</code> witness path that exists under the jayzee checkout.</li><li><code>scripts/check-featureset.mjs</code> (old name: savi) checks <code>docs/FEATURESET.md</code>, <code>docs/JAYZEE-GAPS.md</code> and <code>docs/OPEN-ITEMS.md</code> against the <code>.spawn/reference</code> tree and the hard-coded path <code>/workspace/jayzee</code>, and against files under <code>spawn-evidence/</code>.</li><li><code>scripts/verify-publish.mjs</code> (old name: savi) runs <code>gh run list --workflow publish.yml --branch main --limit 20</code>, finds the run whose <code>headSha</code> equals <code>git rev-parse HEAD</code>, and passes only if that run is completed with conclusion <code>success</code>.</li><li><code>scripts/check-open-items.mjs</code> (old name: savi) parses <code>docs/OPEN-ITEMS.md</code> for <code>### OPEN-nnn</code> headings, checks ids are unique and statuses are in the allowed set (<code>OPEN</code>, <code>RESOLVED</code>, <code>INFERRED</code>, <code>UNVERIFIED</code>, <code>BEHAVIOUR</code>, <code>DIFFERENT-DATASET</code>, <code>HELD-OWNER</code>).</li></ul>
+<h2 id="decisions">Decisions</h2>
+<ul><li>Build and check run as plain <code>node</code> commands rather than <code>npm run</code>, so the workflow has no npm install step. This follows from the absence of dependencies in <code>package.json</code> (old name: savi).</li><li><code>fetch-depth: 0</code> is set because the build reads git history for the commit, branch and history table.</li><li>The check step compares the manifest commit to HEAD and the ENDPOINTS.md file to its generator output, so a built site and its checked-in endpoint page must match the checkout exactly.</li><li><code>cancel-in-progress: false</code> on the <code>pages</code> group means a queued deployment waits instead of being cancelled, so a newer run cannot abort a deployment in progress.</li><li>Deployment is gated on <code>refs/heads/main</code>. Other branches build and check but never deploy.</li><li>Hidden files are included in the Pages artifact so that <code>.nojekyll</code> reaches the site.</li><li>Withheld content is excluded in the build script (<code>withheldPrefixes</code>, <code>excludedDirs</code>) and rejected by the check script's excluded list, so a withheld file that reached the manifest would fail CI.</li><li><code>scripts/check-manual.mjs</code> imports the endpoints generator, so an out-of-date <code>ENDPOINTS.md</code> fails the CI check even though CI never runs <code>npm run endpoints</code>.</li></ul>
+<h2 id="open-gaps">Open gaps</h2>
+<ul><li>The CI check step runs only <code>check-manual.mjs</code>, not the full <code>npm run check</code>. <code>check-ideal-coverage.mjs</code> is absent from CI. Source: <code>/workspace/savi/.github/workflows/publish.yml</code> (old name: savi) and <code>/workspace/savi/package.json</code> (old name: savi).</li><li><code>check-ideal-coverage.mjs</code> and <code>check-ideal-witnesses.mjs</code> depend on <code>../jayzee/docs/IDEAL.md</code>, a sibling checkout that does not exist in a CI runner. Adding them to CI would fail. Source: <code>/workspace/savi/scripts/check-ideal-coverage.mjs</code> (old name: savi) and <code>/workspace/savi/scripts/check-ideal-witnesses.mjs</code> (old name: savi).</li><li><code>check-featureset.mjs</code> hard-codes <code>/workspace/jayzee</code>. Source: <code>/workspace/savi/scripts/check-featureset.mjs</code> (old name: savi).</li><li><code>npm run endpoints</code> is not run in CI, while the README instructs running it before <code>npm run check</code>. CI relies on a checked-in <code>ENDPOINTS.md</code> being current. Source: <code>/workspace/savi/README.md</code> (old name: savi) and <code>/workspace/savi/.github/workflows/publish.yml</code> (old name: savi).</li><li>The README says &quot;Every push to main runs&quot; the workflow. The trigger is <code>push:</code> without a branch filter, so every branch build runs. Source: <code>/workspace/savi/README.md</code> (old name: savi) and <code>/workspace/savi/.github/workflows/publish.yml</code> (old name: savi).</li><li>The README says &quot;Every committed file is shown&quot;. The build walks the working tree, not <code>git ls-files</code>, so an uncommitted, non-ignored file would also be published. Source: <code>/workspace/savi/scripts/build-manual.mjs</code> (old name: savi).</li><li><code>spawn-evidence/data/</code> and <code>spawn-evidence/maps/witness/</code> are withheld by the build, but they are not in <code>/workspace/savi/.gitignore</code> (old name: savi). They are tracked in git (114 tracked files under <code>spawn-evidence/</code>). The check script's excluded list does not name them. Source: <code>/workspace/savi/scripts/build-manual.mjs</code> (old name: savi) and <code>/workspace/savi/scripts/check-manual.mjs</code> (old name: savi).</li><li><code>.DS_Store</code> is gitignored, but the build walks the disk and does not apply <code>.gitignore</code>, so a local <code>.DS_Store</code> would be published as a hex dump. Source: <code>/workspace/savi/.gitignore</code> (old name: savi) and <code>/workspace/savi/scripts/build-manual.mjs</code> (old name: savi).</li><li><code>.claude/</code> is not excluded by the build. It is empty today. Source: <code>/workspace/savi/scripts/build-manual.mjs</code> (old name: savi).</li><li><code>scripts/check-open-items.mjs</code> is not listed in <code>package.json</code> and is not run in CI. Source: <code>/workspace/savi/package.json</code> (old name: savi).</li><li>The rationale for the concurrency settings, the deploy gate, and the exclusions is not recorded in the sources. Source: <code>/workspace/savi/.github/workflows/publish.yml</code> (old name: savi).</li></ul>
+<h2 id="sources">Sources</h2>
+<ul><li>/workspace/savi/.github/workflows/publish.yml (old name: savi)</li><li>/workspace/savi/package.json (old name: savi)</li><li>/workspace/savi/README.md (old name: savi)</li><li>/workspace/savi/.gitignore (old name: savi)</li><li>/workspace/savi/ENDPOINTS.md (old name: savi)</li><li>/workspace/savi/scripts/build-manual.mjs (old name: savi)</li><li>/workspace/savi/scripts/check-manual.mjs (old name: savi)</li><li>/workspace/savi/scripts/endpoints.mjs (old name: savi)</li><li>/workspace/savi/scripts/check-ideal-coverage.mjs (old name: savi)</li><li>/workspace/savi/scripts/check-ideal-witnesses.mjs (old name: savi)</li><li>/workspace/savi/scripts/check-featureset.mjs (old name: savi)</li><li>/workspace/savi/scripts/check-open-items.mjs (old name: savi)</li><li>/workspace/savi/scripts/verify-publish.mjs (old name: savi)</li><li>/workspace/savi/scripts/openapi.json (old name: savi)</li></ul>
+<p>Related page: <a href="state-and-tooling.html">State and tooling</a></p>
+</main>
+</div>
+<footer class="foot"><div class="foot-inner">wiki · every page cites the on-disk sources it was written from</div></footer>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Manual build and check · Wiki</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<header class="topbar">
+<div class="topbar-inner">
+<a class="brand" href="../index.html">wi<span>ki</span></a>
+<nav class="pills"><a class="active" href="../cleetus/ci-workflows.html">cleetus</a><a href="../index/cdn-inventory.html">index</a><a href="../jayzee/maps-glb-urls.html">jayzee</a><a href="../reference-game-16/coverage.html">reference-game-16</a></nav>
+</div>
+</header>
+<div class="layout">
+<nav class="side">
+<h3>Start</h3><ul>
+<li><a href="../index.html">Project wiki: how this wiki is organised</a></li>
+<li><a href="../toc.html">Table of contents</a></li>
+</ul>
+<h3>cleetus</h3><ul>
+<li><a href="../cleetus/ci-workflows.html">CI workflows and npm scripts</a></li>
+<li><a href="../cleetus/docs-folder.html">The docs folder</a></li>
+<li><a href="../cleetus/endpoints.html">Endpoints</a></li>
+<li><a href="../cleetus/engine-decisions.html">Engine decisions: why the jayzee engine notes are shaped as they are</a></li>
+<li><a href="../cleetus/engine-overview.html">Engine overview: the jayzee engine notes (cleetus workspace)</a></li>
+<li><a href="../cleetus/evidence-claims.html">Evidence claims</a></li>
+<li><a href="../cleetus/evidence-overview.html">Evidence overview</a></li>
+<li><a href="../cleetus/featureset-part-1.html">Featureset part 1: cleetus counts, spoint surface, and the relayed streams</a></li>
+<li><a href="../cleetus/featureset-part-2.html">Featureset part 2: streams 12 to 25 and the src/sdk modules</a></li>
+<li><a href="../cleetus/featureset-part-3.html">Featureset part 3: streams 26 to 34</a></li>
+<li><a href="../cleetus/featureset-part-4.html">Featureset part 4: streams 35 to 45, client/core rendering modules</a></li>
+<li><a href="../cleetus/featureset-part-5.html">Featureset part 5: streams 45 to 55, client/core modules</a></li>
+<li><a href="../cleetus/featureset-part-6.html">Featureset part 6: streams 56 to 58 and the improvement opportunities</a></li>
+<li><a href="../cleetus/featureset-part-7.html">Featureset part 7: improvement candidates from streams 43 to 58</a></li>
+<li><a href="../cleetus/featureset-part-8.html">Featureset part 8: agent and room candidates, session store, bake pins, learning record and terrain</a></li>
+<li><a href="../cleetus/featureset-part-9.html">FEATURESET part 9: render, editor, HUD, XR, packages, static serving and server surface</a></li>
+<li><a href="../cleetus/jayzee-gaps.html">Jayzee implementation gaps</a></li>
+<li><a class="current" href="../cleetus/manual-build.html">Manual build and check</a></li>
+<li><a href="../cleetus/manual-worklist.html">Manual worklist</a></li>
+<li><a href="../cleetus/morluto-ci-findings.html">Morluto rea PR 9234 CI findings</a></li>
+<li><a href="../cleetus/netcode.html">Netcode</a></li>
+<li><a href="../cleetus/open-gaps.html">Open gaps across the cleetus repository</a></li>
+<li><a href="../cleetus/open-items.html">Open items register</a></li>
+<li><a href="../cleetus/overview.html">Overview of cleetus</a></li>
+<li><a href="../cleetus/parity.html">Parity</a></li>
+<li><a href="../cleetus/runs-overview.html">Runs overview</a></li>
+<li><a href="../cleetus/site-overview.html">Site overview (built manual output)</a></li>
+<li><a href="../cleetus/sources-overview.html">Sources overview</a></li>
+<li><a href="../cleetus/state-and-tooling.html">State and tooling</a></li>
+</ul>
+<h3>index</h3><ul>
+<li><a href="../index/cdn-inventory.html">CDN inventory and manifests</a></li>
+<li><a href="../index/discovery.html">Discovery evidence</a></li>
+<li><a href="../index/exhaustive-index.html">Exhaustive world and GLB index</a></li>
+<li><a href="../index/extra-docs.html">extra docs: the Jayzee game API reference copy</a></li>
+<li><a href="../index/extra-worlds.html">extra world lists and feeds</a></li>
+<li><a href="../index/open-gaps.html">Open gaps in the index</a></li>
+<li><a href="../index/overview.html">Overview of the index project</a></li>
+<li><a href="../index/provenance.html">Provenance manifests</a></li>
+<li><a href="../index/savi-index.html">cleetus index</a></li>
+<li><a href="../index/spawn-index.html">jayzee index</a></li>
+<li><a href="../index/tree/tree-borick.html">The borick/ directory</a></li>
+<li><a href="../index/tree/tree-build-scripts.html">Build, check and discovery scripts, and the patch files</a></li>
+<li><a href="../index/tree/tree-discovery.html">The discovery/ directory</a></li>
+<li><a href="../index/tree/tree-exhaustive.html">The exhaustive/ directory</a></li>
+<li><a href="../index/tree/tree-extra.html">The extra/ directory</a></li>
+<li><a href="../index/tree/tree-indexes.html">The index files: COMPLETE_INDEX, EXTRA_WORLD_INDEX and INDEX</a></li>
+<li><a href="../index/tree/tree-open-gaps.html">Open gaps in the top-level index, its directories and the browser state</a></li>
+<li><a href="../index/tree/tree-overview.html">Top-level layout of the jayzee tree</a></li>
+<li><a href="../index/tree/tree-provenance.html">provenance.sha256.txt and the other provenance manifests</a></li>
+<li><a href="../index/tree/tree-savi-directory.html">The cleetus/ directory (old name: savi)</a></li>
+<li><a href="../index/tree/tree-spawn-directory.html">The jayzee/ directory (old name: spawn)</a></li>
+</ul>
+<h3>jayzee</h3><ul>
+<li><a href="../jayzee/maps-glb-urls.html">jayzee GLB URL list (glb-urls-all.tsv)</a></li>
+<li><a href="../jayzee/maps-head-status.html">jayzee world head status lists</a></li>
+<li><a href="../jayzee/maps-learning-record-part-1.html">jayzee learning record, part 1 (denominators, corpus, keys, escapes, bucket rule, 410)</a></li>
+<li><a href="../jayzee/maps-learning-record-part-2.html">jayzee learning record, part 2 (error keys, non-CDN refs, open items, name decode, /cdn/ attempt)</a></li>
+<li><a href="../jayzee/maps-learning-record.html">jayzee learning record</a></li>
+<li><a href="../jayzee/maps-noncdn-refs.html">jayzee non-CDN data references (unverified-noncdn-refs.tsv)</a></li>
+<li><a href="../jayzee/maps-open-gaps.html">jayzee maps open gaps</a></li>
+<li><a href="../jayzee/maps-overview.html">jayzee maps directory overview</a></li>
+<li><a href="../jayzee/maps-root-worlds.html">jayzee root-linked worlds map</a></li>
+<li><a href="../jayzee/maps-witness-inputs.html">jayzee witness input directories and their sha256 checks</a></li>
+<li><a href="../jayzee/maps-witness.html">jayzee witness scripts</a></li>
+<li><a href="../jayzee/runs-findings.html">Runs findings and decisions</a></li>
+<li><a href="../jayzee/runs-open-gaps.html">Runs open gaps and failures</a></li>
+<li><a href="../jayzee/runs-overview.html">Runs overview</a></li>
+<li><a href="../jayzee/runs-timeline.html">Runs timeline</a></li>
+<li><a href="../jayzee/sources-captures.html">Sources captures</a></li>
+<li><a href="../jayzee/sources-index.html">Sources index</a></li>
+<li><a href="../jayzee/sources-overview.html">Sources overview</a></li>
+</ul>
+<h3>reference-game-16</h3><ul>
+<li><a href="../reference-game-16/coverage.html">Capture coverage: game page</a></li>
+<li><a href="../reference-game-16/download-process.html">Download process: from the join instructions to a working site</a></li>
+<li><a href="../reference-game-16/page-00-overview.html">Game page section: Overview</a></li>
+<li><a href="../reference-game-16/page-01-starters.html">Game page section: Starters</a></li>
+<li><a href="../reference-game-16/page-02-skills.html">Game page section: Skills</a></li>
+<li><a href="../reference-game-16/page-03-animations.html">Game page section: Animations</a></li>
+<li><a href="../reference-game-16/page-04-sound-art.html">Game page section: Sound Art</a></li>
+<li><a href="../reference-game-16/page-05-workshop.html">Game page section: Workshop</a></li>
+<li><a href="../reference-game-16/page-06-engine.html">Game page section: Engine</a></li>
+<li><a href="../reference-game-16/page-07-reference.html">Game page section: Reference</a></li>
+<li><a href="../reference-game-16/page-08-shapes.html">Game page section: Shapes</a></li>
+<li><a href="../reference-game-16/page-09-mods.html">Game page section: Mods</a></li>
+<li><a href="../reference-game-16/page-10-games.html">Game page section: Games</a></li>
+<li><a href="../reference-game-16/page-11-pick-a-genre.html">Game page section: Pick A Genre</a></li>
+<li><a href="../reference-game-16/page-host.html">Host page: Untitled game (@lanmower/game-16)</a></li>
+</ul>
+</nav>
+<main>
+<span class="eyebrow">cleetus</span>
+<h1 id="manual-build-and-check">Manual build and check</h1>
+<h2 id="how-it-works">How it works</h2>
+<p>The static manual is generated by scripts/build-manual.mjs (old name: savi) and proven by scripts/check-manual.mjs (old name: savi). Both take the repository root as their argument, and the npm scripts pass &quot;.&quot;. The build writes everything under site/ and the check reads site/ back and compares it with the source tree. The optional checkers scripts/check-ideal-coverage.mjs, scripts/check-ideal-witnesses.mjs, scripts/check-open-items.mjs and scripts/check-featureset.mjs cover the gap registers, and are described on their own pages.</p>
+<h3 id="build-scriptsbuild-manualmjs">Build (scripts/build-manual.mjs)</h3>
+<ol><li>Reads the commit (git rev-parse HEAD, or NO_COMMIT), the branch (or DETACHED), and the log as tab-separated history rows (short hash, date, subject).</li><li>Walks the root. It skips the directories .git, .playwriter, runs, site, node_modules and sources. It skips the files under .spawn/reference/http/raw/, jayzee-evidence/data/ and jayzee-evidence/maps/witness/. Every other file is a source.</li><li>For each source it records bytes, lines, sha256, whether it is text (no NUL byte), a page name, and the body. Text bodies are the file text. Binary bodies are a 16-byte-per-row hex dump with an ASCII column.</li><li>Removes site/, then recreates site/raw/ and site/files/ and writes site/.nojekyll (an empty file, so GitHub Pages does not run Jekyll).</li><li>Writes site/style.css: a monochrome, monospace stylesheet with a dark colour scheme under prefers-color-scheme dark. Borders are solid, with no rounded corners and no images.</li><li>Copies each source byte-for-byte to site/raw/, with the directory named .github rewritten to _github so it is served.</li><li>Writes one display page per source at site/files/&lt;hex of the path&gt;.html. The page shows the path, the byte and line counts, TEXT or BINARY, HEX, links to INDEX and RAW, and the file body inside a pre element, HTML-escaped. Image files that are binary get an img element that points to the raw copy.</li><li>Writes site/index.html, which groups the files by their top-level directory (or (root)) with a count and byte size for each, followed by the history table. Writes site/404.html.</li><li>Writes site/manifest.json with site name Cleetus Manual, commit, branch, sourceCount, textCount, binaryCount, sourceBytes, the per-file records (path, bytes, lines, sha256, text, page) and the history.</li><li>Prints one JSON line with commit, branch, files, bytes, text and binary counts.</li></ol>
+<p>The page footer reads &quot;REBUILT ON EVERY PUSH TO MAIN&quot; and shows the first seven characters of the commit.</p>
+<h3 id="check-scriptscheck-manualmjs">Check (scripts/check-manual.mjs)</h3>
+<p>The check collects failures and prints one JSON line with ok, sources, text, binary, pages, linksChecked, commit, failures (the first 20) and failureCount. It exits non-zero when any failure exists. For every manifest file it requires:</p>
+<ul><li>the source exists in the tree;</li><li>the raw copy exists under site/raw/, with the same sha256 as the manifest;</li><li>the display page exists, and for text files the text inside its pre element decodes (&amp;lt; &amp;gt; &amp;quot; &amp;#39; &amp;amp;) to exactly the source text;</li><li>the index page links to the display page;</li><li>no excluded path is published. The excluded prefixes in the check are .spawn/reference/http/raw/, sources/, and the name WITHHELD.json.</li></ul>
+<p>It then walks every .html file under site/ and resolves each href and src that is relative (absolute paths, http, https, mailto, data and protocol-relative links are skipped). It counts linksChecked and reports each target that does not exist.</p>
+<p>It requires site/.nojekyll. It requires .github/workflows/publish.yml to contain these seven markers: push:, workflow_dispatch:, node scripts/build-manual.mjs ., node scripts/check-manual.mjs ., configure-pages@v5, upload-pages-artifact@v3, deploy-pages@v5. It requires the manifest's text count plus binary count to equal the file count. When git reports a HEAD, it requires the manifest commit to equal HEAD. It requires ENDPOINTS.md to equal the output of buildEndpointsPage, so a stale endpoint page fails the check.</p>
+<h3 id="workflow-githubworkflowspublishyml">Workflow (.github/workflows/publish.yml)</h3>
+<p>The workflow is named publish-manual and runs on every push and on workflow_dispatch. It uses read contents, write pages and id-token write permissions, and a pages concurrency group that does not cancel in-progress runs. The build job checks out with fetch-depth 0, sets up Node version 20, runs the build and the check, then runs configure-pages with enablement true and uploads site/ as a Pages artifact with hidden files included. The deploy job runs only when the ref is refs/heads/main, needs build, and runs deploy-pages.</p>
+<h3 id="other-checks">Other checks</h3>
+<ul><li>check-ideal-coverage.mjs reads docs/JAYZEE-GAPS.md, takes every table row whose first cell is a number, and requires each number to appear as &quot;row N&quot; in ../jayzee/docs/IDEAL.md. It prints the count, the missing IDs, and PASS or FAIL.</li><li>check-ideal-witnesses.mjs reads ../jayzee/docs/IDEAL.md above its section 5 totals, takes each table row whose cells include partial, and requires each row to name at least one scripts/*.mjs witness that exists under the jayzee root. It prints the count of rows and each error.</li><li>check-open-items.mjs reads docs/OPEN-ITEMS.md. It requires each &quot;### OPEN-NNN&quot; heading to be unique and sequential from OPEN-001, a Status line with an allowed value (OPEN, RESOLVED, INFERRED, UNVERIFIED, BEHAVIOUR, DIFFERENT-DATASET, HELD-OWNER), a Witness line and a Source paths line. It requires every /workspace/ path cited in the register to exist. It requires every commit id in a Resolution line to exist in the git history of the repository, and it runs a negative witness that a made-up commit is refused. It checks /workspace/gm/closes/ pointers the same way.</li><li>check-featureset.mjs is the largest checker (about 120 KB). It checks docs/FEATURESET.md against the tree. See <a href="featureset-part-1.html">featureset-part-1.md</a> for its scope.</li><li>verify-publish.mjs runs git rev-parse HEAD and gh run list for the publish-manual workflow on main, and passes only when the run for HEAD is completed with conclusion success.</li></ul>
+<h3 id="commands">Commands</h3>
+<ul><li>npm run build</li><li>npm run endpoints</li><li>npm run check (check-manual, then check-ideal-coverage)</li><li>npm run check:ideal-coverage</li><li>npm run check:ideal-witnesses</li><li>npm run check:featureset</li><li>npm run verify (needs the gh CLI and network access)</li></ul>
+<p>check-open-items.mjs has no npm script in package.json, so it is run directly with node.</p>
+<h2 id="decisions">Decisions</h2>
+<ul><li>The manual is static and dependency-free. The sources say &quot;No npm packages are required&quot;, and the scripts import only Node built-ins.</li><li>The manual shows exact bytes. Each file is copied to raw/ and its text is compared with the display page. This is the completeness proof: the check fails if a display page differs from the source by a single character.</li><li>Raw copies and display pages use an encoded path. Display pages are named by the hex of the path, so no path separator or case issue reaches the file system.</li><li>The .github directory is served as _github in raw/ (build-manual.mjs rewrites that segment). The sources do not state the reason. .nojekyll is also written, which the check requires.</li><li>Some paths are withheld by exclusion: runs/, sources/, .playwriter/, the raw HTTP captures and the jayzee-evidence data and witness maps. The README says only that some files are not published. The withholding is by path, not by content scanning, and the lists are in scripts/build-manual.mjs and scripts/check-manual.mjs.</li><li>The check deliberately verifies that the site commit equals HEAD, so a stale site cannot be published silently.</li><li>The site is rebuilt on each push, not on a schedule. The publish workflow is the only deployment.</li><li>The ideal-coverage and ideal-witness checks read a document outside this repository (../jayzee/docs/IDEAL.md). They fail when it is missing, which is recorded as an explicit FAIL, not a skip.</li></ul>
+<h2 id="open-gaps">Open gaps</h2>
+<ul><li>The check does not compare the site with a fresh build for every file. It checks the manifest sha256 against the raw copy and the display page text against the source, which together prove the committed content, but it does not rebuild and diff.</li><li>The withheld lists in build-manual.mjs and check-manual.mjs differ: the build also excludes jayzee-evidence/data/ and jayzee-evidence/maps/witness/, while the check does not list them. The check verifies only that they are absent from the site, so an extra exclusion in the build would not be caught by the check.</li><li>check-open-items.mjs is not wired into package.json or the workflow, so it runs only by hand.</li><li>verify-publish.mjs needs the gh CLI and a network connection; nothing in the sources records a run of it.</li><li>The two ideal checks depend on /workspace/jayzee/docs/IDEAL.md, which exists at the time of writing (167.2 KB) but is outside this repository, so a clone without the jayzee checkout will fail them.</li></ul>
+<h2 id="sources">Sources</h2>
+<ul><li>/workspace/savi/scripts/build-manual.mjs (old name: savi)</li><li>/workspace/savi/scripts/check-manual.mjs (old name: savi)</li><li>/workspace/savi/scripts/check-ideal-coverage.mjs (old name: savi)</li><li>/workspace/savi/scripts/check-ideal-witnesses.mjs (old name: savi)</li><li>/workspace/savi/scripts/check-open-items.mjs (old name: savi)</li><li>/workspace/savi/scripts/check-featureset.mjs (old name: savi)</li><li>/workspace/savi/scripts/verify-publish.mjs (old name: savi)</li><li>/workspace/savi/scripts/endpoints.mjs (old name: savi)</li><li>/workspace/savi/package.json (old name: savi)</li><li>/workspace/savi/.github/workflows/publish.yml (old name: savi)</li><li>/workspace/savi/README.md (old name: savi)</li><li>/workspace/savi/site/manifest.json (old name: savi)</li><li>/workspace/jayzee/docs/IDEAL.md</li></ul>
+</main>
+</div>
+<footer class="foot"><div class="foot-inner">wiki · every page cites the on-disk sources it was written from</div></footer>
+</body>
+</html>

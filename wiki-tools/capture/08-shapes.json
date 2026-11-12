@@ -1,0 +1,426 @@
+{
+  "title": "",
+  "text": "toolbox\nOverview\nStarters\nSkills\nAnimations\nSound & Art\nWorkshop\nEngine\nReference\nShapes\nMods\nGames\nPick a genre\nObject shapes\n\nEvery field each kind of thing takes, exactly as the engine types it. Open one to read it whole.\n\nObjectProperties\nObjectSpec\nPrimitiveSpec\nScriptedPrimitiveSpec\nMaterialSpec\nScriptedMaterialSpec\nLightSpec\nFxSpec\nScatterSpec\nScatterTemplate\nScatterBounds\nPathSpec\nRoadLampPostsSpec\nRoadSidewalksSpec\nRoadMarkingsSpec\nRoadHedgesSpec\nObjectPhysics\nObjectAttachmentSpec\nLayoutSpec\nBoxartSpec\nPlaceDef\nAtmosphereDef\nCameraDef\nCustomCameraDef\nInputsDef\nInputActionDef\nInputAxisDef\nPlayerDef\nRoutingDef\nEngineConfig\nGameUIDef\nLeaderboardDef\nAchievementDef\nBuyableDef\nMusicAPI\nMusicPlayOptions\nRaycastOptions\nRaycastHit\nObjectQueryOptions\nJointOptions\nRagdollOptions\nNotifyDmOptions\nActPayloads\nAudience\nJobOptions\nsprite\nwisp\nspline\nscatter\nbuiltin/postfx\nbuiltin/vibe\nBespokeGeometrySpec\nBrushDef\nCameraAttachPositionSpec\nCameraOrientationDef\nCreatorTabDef\nCubicBezierSpec\nCustomPrimitiveSpec\nForceEntrySpec\nGameSpec\nGodModeVisualSpec\nInputActionTouchDef\nLinePrimitiveSpec\nMaterialOverridesSpec\nModelPartStateSpec\nObjectDef\nPivotSpec\nPointsPrimitiveSpec\nPressContactSpec\nRectangleSplineShapeSpec\nRoadRoadsideSpec\nRoomSpec\nRotationSpec\nSplineLightStripsSpec\nSprite2DMetaSpec\nStandardMaterialSpec\nTerrainDef\nTerrainRoomsCeilingDef\nTerrainRoomsLightingDef\nTerrainRoomsWallTrimDef\nTerrainVoxelBlockTicksDef\nUIDef\nUnderwaterSpec\nVoxelMaterialBlockBehaviorDef\nVoxelMaterialDef\nVoxelPlacementDef\nVoxelStructureDef\nVoxelTemplateDef\nWorldBoundsDef\ntoolbox · everything this world can build with",
+  "headings": [
+    {
+      "level": "H2",
+      "text": "Object shapes"
+    }
+  ],
+  "blocks": [
+    "Every field each kind of thing takes, exactly as the engine types it. Open one to read it whole."
+  ],
+  "links": [
+    {
+      "text": "toolbox",
+      "href": null
+    },
+    {
+      "text": "Overview",
+      "href": null
+    },
+    {
+      "text": "Starters",
+      "href": null
+    },
+    {
+      "text": "Skills",
+      "href": null
+    },
+    {
+      "text": "Animations",
+      "href": null
+    },
+    {
+      "text": "Sound & Art",
+      "href": null
+    },
+    {
+      "text": "Workshop",
+      "href": null
+    },
+    {
+      "text": "Engine",
+      "href": null
+    },
+    {
+      "text": "Reference",
+      "href": null
+    },
+    {
+      "text": "Shapes",
+      "href": null
+    },
+    {
+      "text": "Mods",
+      "href": null
+    },
+    {
+      "text": "Games",
+      "href": null
+    },
+    {
+      "text": "Pick a genre",
+      "href": null
+    },
+    {
+      "text": "ObjectProperties",
+      "href": null
+    },
+    {
+      "text": "ObjectSpec",
+      "href": null
+    },
+    {
+      "text": "PrimitiveSpec",
+      "href": null
+    },
+    {
+      "text": "ScriptedPrimitiveSpec",
+      "href": null
+    },
+    {
+      "text": "MaterialSpec",
+      "href": null
+    },
+    {
+      "text": "ScriptedMaterialSpec",
+      "href": null
+    },
+    {
+      "text": "LightSpec",
+      "href": null
+    },
+    {
+      "text": "FxSpec",
+      "href": null
+    },
+    {
+      "text": "ScatterSpec",
+      "href": null
+    },
+    {
+      "text": "ScatterTemplate",
+      "href": null
+    },
+    {
+      "text": "ScatterBounds",
+      "href": null
+    },
+    {
+      "text": "PathSpec",
+      "href": null
+    },
+    {
+      "text": "RoadLampPostsSpec",
+      "href": null
+    },
+    {
+      "text": "RoadSidewalksSpec",
+      "href": null
+    },
+    {
+      "text": "RoadMarkingsSpec",
+      "href": null
+    },
+    {
+      "text": "RoadHedgesSpec",
+      "href": null
+    },
+    {
+      "text": "ObjectPhysics",
+      "href": null
+    },
+    {
+      "text": "ObjectAttachmentSpec",
+      "href": null
+    },
+    {
+      "text": "LayoutSpec",
+      "href": null
+    },
+    {
+      "text": "BoxartSpec",
+      "href": null
+    },
+    {
+      "text": "PlaceDef",
+      "href": null
+    },
+    {
+      "text": "AtmosphereDef",
+      "href": null
+    },
+    {
+      "text": "CameraDef",
+      "href": null
+    },
+    {
+      "text": "CustomCameraDef",
+      "href": null
+    },
+    {
+      "text": "InputsDef",
+      "href": null
+    },
+    {
+      "text": "InputActionDef",
+      "href": null
+    },
+    {
+      "text": "InputAxisDef",
+      "href": null
+    },
+    {
+      "text": "PlayerDef",
+      "href": null
+    },
+    {
+      "text": "RoutingDef",
+      "href": null
+    },
+    {
+      "text": "EngineConfig",
+      "href": null
+    },
+    {
+      "text": "GameUIDef",
+      "href": null
+    },
+    {
+      "text": "LeaderboardDef",
+      "href": null
+    },
+    {
+      "text": "AchievementDef",
+      "href": null
+    },
+    {
+      "text": "BuyableDef",
+      "href": null
+    },
+    {
+      "text": "MusicAPI",
+      "href": null
+    },
+    {
+      "text": "MusicPlayOptions",
+      "href": null
+    },
+    {
+      "text": "RaycastOptions",
+      "href": null
+    },
+    {
+      "text": "RaycastHit",
+      "href": null
+    },
+    {
+      "text": "ObjectQueryOptions",
+      "href": null
+    },
+    {
+      "text": "JointOptions",
+      "href": null
+    },
+    {
+      "text": "RagdollOptions",
+      "href": null
+    },
+    {
+      "text": "NotifyDmOptions",
+      "href": null
+    },
+    {
+      "text": "ActPayloads",
+      "href": null
+    },
+    {
+      "text": "Audience",
+      "href": null
+    },
+    {
+      "text": "JobOptions",
+      "href": null
+    },
+    {
+      "text": "sprite",
+      "href": null
+    },
+    {
+      "text": "wisp",
+      "href": null
+    },
+    {
+      "text": "spline",
+      "href": null
+    },
+    {
+      "text": "scatter",
+      "href": null
+    },
+    {
+      "text": "builtin/postfx",
+      "href": null
+    },
+    {
+      "text": "builtin/vibe",
+      "href": null
+    },
+    {
+      "text": "BespokeGeometrySpec",
+      "href": null
+    },
+    {
+      "text": "BrushDef",
+      "href": null
+    },
+    {
+      "text": "CameraAttachPositionSpec",
+      "href": null
+    },
+    {
+      "text": "CameraOrientationDef",
+      "href": null
+    },
+    {
+      "text": "CreatorTabDef",
+      "href": null
+    },
+    {
+      "text": "CubicBezierSpec",
+      "href": null
+    },
+    {
+      "text": "CustomPrimitiveSpec",
+      "href": null
+    },
+    {
+      "text": "ForceEntrySpec",
+      "href": null
+    },
+    {
+      "text": "GameSpec",
+      "href": null
+    },
+    {
+      "text": "GodModeVisualSpec",
+      "href": null
+    },
+    {
+      "text": "InputActionTouchDef",
+      "href": null
+    },
+    {
+      "text": "LinePrimitiveSpec",
+      "href": null
+    },
+    {
+      "text": "MaterialOverridesSpec",
+      "href": null
+    },
+    {
+      "text": "ModelPartStateSpec",
+      "href": null
+    },
+    {
+      "text": "ObjectDef",
+      "href": null
+    },
+    {
+      "text": "PivotSpec",
+      "href": null
+    },
+    {
+      "text": "PointsPrimitiveSpec",
+      "href": null
+    },
+    {
+      "text": "PressContactSpec",
+      "href": null
+    },
+    {
+      "text": "RectangleSplineShapeSpec",
+      "href": null
+    },
+    {
+      "text": "RoadRoadsideSpec",
+      "href": null
+    },
+    {
+      "text": "RoomSpec",
+      "href": null
+    },
+    {
+      "text": "RotationSpec",
+      "href": null
+    },
+    {
+      "text": "SplineLightStripsSpec",
+      "href": null
+    },
+    {
+      "text": "Sprite2DMetaSpec",
+      "href": null
+    },
+    {
+      "text": "StandardMaterialSpec",
+      "href": null
+    },
+    {
+      "text": "TerrainDef",
+      "href": null
+    },
+    {
+      "text": "TerrainRoomsCeilingDef",
+      "href": null
+    },
+    {
+      "text": "TerrainRoomsLightingDef",
+      "href": null
+    },
+    {
+      "text": "TerrainRoomsWallTrimDef",
+      "href": null
+    },
+    {
+      "text": "TerrainVoxelBlockTicksDef",
+      "href": null
+    },
+    {
+      "text": "UIDef",
+      "href": null
+    },
+    {
+      "text": "UnderwaterSpec",
+      "href": null
+    },
+    {
+      "text": "VoxelMaterialBlockBehaviorDef",
+      "href": null
+    },
+    {
+      "text": "VoxelMaterialDef",
+      "href": null
+    },
+    {
+      "text": "VoxelPlacementDef",
+      "href": null
+    },
+    {
+      "text": "VoxelStructureDef",
+      "href": null
+    },
+    {
+      "text": "VoxelTemplateDef",
+      "href": null
+    },
+    {
+      "text": "WorldBoundsDef",
+      "href": null
+    }
+  ],
+  "images": [],
+  "code": [],
+  "inputs": []
+}
