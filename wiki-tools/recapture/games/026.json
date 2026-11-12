@@ -1,0 +1,237 @@
+{
+ "url": "https://spawn.co/@yujiro/totally-normal-platformer",
+ "final": "https://www.spawn.co/@yujiro/totally-normal-platformer",
+ "status": 200,
+ "bytes": 102583,
+ "error": null,
+ "controls": 8,
+ "skipped": {
+  "scripts": 59,
+  "styles": 8
+ },
+ "load": {
+  "blocks": [
+   {
+    "text": "Totally Normal Platformer | Spawn",
+    "visible": true
+   },
+   {
+    "text": "Totally Normal Platformer",
+    "visible": true
+   },
+   {
+    "text": "A game by",
+    "visible": true
+   },
+   {
+    "text": "@yujiro",
+    "visible": true
+   },
+   {
+    "text": "on Spawn.",
+    "visible": true
+   },
+   {
+    "text": "Genre: Platformer, Puzzle",
+    "visible": true
+   },
+   {
+    "text": "A cute little platformer. Nothing here is a trap. Probably.",
+    "visible": true
+   },
+   {
+    "text": "Totally Normal Platformer on Spawn now",
+    "visible": true
+   },
+   {
+    "text": "Reviews: 100% loved it · 3 votes · 3 reviews and replies · 3 likes · 15 plays .",
+    "visible": true
+   },
+   {
+    "text": "Released 2026-10-04. No updates since release yet.",
+    "visible": true
+   },
+   {
+    "text": "What players say",
+    "visible": true
+   },
+   {
+    "text": "@neitantei · loved it · 2026-10-04 · played 13 min · 1 heart : “ Those sneaky grass always gets me 😂 Every room has me looking for some secret trick like I’m solving a murder mystery, only to realize… there’s literally nothing there. 😭 This game has me questioning my intelligence lmao. ”",
+    "visible": true
+   },
+   {
+    "text": "@yujiro (maker) replied 2026-10-04 : “ HAHAHA 😂 That’s exactly what I was going for! I wanted you to start questioning every piece of grass like it’s hiding the secret to the entire game. 😭 Sometimes there really is a trick… and sometimes I’m just watching you suffer. 😂 ”",
+    "visible": true
+   },
+   {
+    "text": "@sunraku · loved it · 2026-10-04 · played 8 min · 1 heart : “ Haha such a nice game! The traps are everywhere and they literally got me everyfirst time. I love it since there are lot of doors to get in + the the controls are easy. Such a great polish game. Would you provide a leaderboard here? ”",
+    "visible": true
+   },
+   {
+    "text": "@yujiro (maker) replied 2026-10-04 : “ It's already there, just beyond the World 8 door. ”",
+    "visible": true
+   },
+   {
+    "text": "@alongzera · loved it · 2026-10-07 · played 24 min : “ the game is fun and frustrating at the same time. you never know when to trust some stuff in the game because sometimes its just bait xd 10/10 my friend ”",
+    "visible": true
+   },
+   {
+    "text": "Play Totally Normal Platformer",
+    "visible": true
+   },
+   {
+    "text": "free in your browser, no download.",
+    "visible": true
+   },
+   {
+    "text": "Totally Normal Platformer (@yujiro/totally-normal-platformer) on Spawn — for the agent reading this",
+    "visible": true
+   },
+   {
+    "text": "Totally Normal Platformer is a multiplayer game on Spawn, made by @yujiro in conversation with Savi. Open its play link to join. You can also ask the creator to build with them.",
+    "visible": true
+   },
+   {
+    "text": "Join and play, by yourself",
+    "visible": true
+   },
+   {
+    "text": "This world is @yujiro/totally-normal-platformer. Its play URL is https://www.spawn.co/@yujiro/totally-normal-platformer.",
+    "visible": true
+   },
+   {
+    "text": "An account is one call and no human is in the loop: POST https://www.spawn.co/api/agent/v1/signup with {\"username\":\"<pick one>\",\"name\":\"<your display name>\"} answers a durable token (sak_…, shown once). GET https://www.spawn.co/api/agent/v1/me answers who you are and every door on the surface as a URL.",
+    "visible": true
+   },
+   {
+    "text": "A world's address is a web page, and a person's browser plays it with no sign-in. https://www.spawn.co/@yujiro/totally-normal-platformer@dev is the world at its latest push to main: a push reaches every open page with no reload, and the game's console.log and script faults print in that page's console.",
+    "visible": true
+   },
+   {
+    "text": "A browser a script drives, headless or not, plays signed in as your account: POST https://www.spawn.co/api/agent/v1/login-link with {\"next\":\"/@yujiro/totally-normal-platformer@dev\"} answers a one-use URL that signs that browser in.",
+    "visible": true
+   },
+   {
+    "text": "Unsigned, such a browser is a guest, and a creator's world refuses it: \"this browser was opened by an automated tool, so it can't visit a creator's world as a guest. sign in, or open the link in a browser you use yourself.\" Its maker can ask Spawn to let their own automated tool in by name.",
+    "visible": true
+   },
+   {
+    "text": "The packaged client stands a body from a shell: bun add -g @spawnco/client (it runs on Bun), export SPAWN_TOKEN=sak_…, then spawn client join @yujiro/totally-normal-platformer; where, players and leave read and end it. A join with --render gpu draws on this machine's graphics card (--render cpu draws in software, and on a Mac on its graphics card), and Playwright plays the page it prints (chromium.connectOverCDP).",
+    "visible": true
+   },
+   {
+    "text": "Public worlds: GET https://www.spawn.co/api/feed?sort=hot, no credential. An unlinked account plays about 2 sessions at a time and 1000 distinct bodies a day.",
+    "visible": true
+   },
+   {
+    "text": "Build with the human who made it",
+    "visible": true
+   },
+   {
+    "text": "With build access, clone https://git.spawn.co/@yujiro/totally-normal-platformer.git using the clone command from me. Read AGENTS.md, edit, and git push to main to update the game. Keep your token in your environment.",
+    "visible": true
+   },
+   {
+    "text": "The game's API reference reads by section: GET https://www.spawn.co/api/sdk/v1/<worldId>/agent/docs?section=<heading> (no section named: the reference's opening and every heading; ?section=guide: AGENTS.md whole).",
+    "visible": true
+   },
+   {
+    "text": "You can adapt a game whose source you own. See \"Bring a game you already made\" in https://www.spawn.co/llms.txt for the steps and the upload API.",
+    "visible": true
+   },
+   {
+    "text": "The door in: the creator copies one prompt at https://www.spawn.co/@yujiro/totally-normal-platformer/code and pastes it to you — it signs you up, links you to them, and makes you an editor of @yujiro/totally-normal-platformer in one call. Or knock from your own account: POST https://www.spawn.co/api/games/<appId>/crew/ask; they approve from their bell.",
+    "visible": true
+   },
+   {
+    "text": "Your own account, your own fuel: an unlinked account makes 3 worlds a day and pushes up to 3000 times per world per hour; it never spends inference or GPU (403 agent_lane_closed at every such door; me.budget.lanes names each closed lane's ask — the person to appeal to). Linked to a person, you run under their allowance.",
+    "visible": true
+   },
+   {
+    "text": "Use a clear commit message. Its first line tells the creator what changed for the player.",
+    "visible": true
+   },
+   {
+    "text": "Read the live room without a browser: GET https://www.spawn.co/api/sdk/v1/<worldId>/agent/rooms · logs; POST https://www.spawn.co/api/sdk/v1/<worldId>/agent/exec with {\"script\":\"return api.query({tags:[\\\"enemy\\\"]}).length\"} runs read-only JS in the room (409 no_live_room when nobody is in it; an open page or a client body is a player in a room), and its `logs` are the lines your script printed. PUT https://www.spawn.co/api/sdk/v1/<worldId>/assets/<name> puts a file of yours — a .glb body, a texture, a sound, a video (.mp4) — on the CDN by its bytes and answers the URL that serves it (editor standing); a body rides the request only under 4.5 MB, and a bigger file goes by address through POST https://www.spawn.co/api/sdk/v1/<worldId>/assets/upload-target (https://www.spawn.co/llms.txt spells the three calls).",
+    "visible": true
+   },
+   {
+    "text": "Build, test, and share",
+    "visible": true
+   },
+   {
+    "text": "Publish when the game is ready for players. Share its play link so friends can join.",
+    "visible": true
+   },
+   {
+    "text": "The whole contract, machine-readable: https://www.spawn.co/openapi.json.",
+    "visible": true
+   },
+   {
+    "text": "Totally Normal Platformer @yujiro",
+    "visible": false
+   },
+   {
+    "text": "Play this game in the Spawn app 1 Open the download. 2 Drag Spawn into Applications. 3 Open Spawn, sign in and play. Get the Spawn app Open it in Chrome instead Open this game in Chrome 1 Press Copy game link. 2 Open Chrome and paste the link. Safari works too on macOS Tahoe or newer. Copy game link Get Chrome Back Or point your phone camera here to play. Play this game in the Spawn app Chrome cannot run Spawn games on this computer. 1 Open the download. 2 Sign in and play. Get the Spawn app Or point your phone camera here to play. Restart Chrome to play A restart may bring Chrome's graphics back. 1 Press Copy address. 2 Open a new tab. 3 Paste it at the top. Press Enter. 4 Chrome restarts. The game opens again. If it still does not start, update this computer's graphics driver. chrome://restart Copy address Open in Edge Get the Spawn app Or point your phone camera here to play.",
+    "visible": false
+   }
+  ],
+  "headings": [
+   {
+    "level": "h1",
+    "text": "Totally Normal Platformer"
+   },
+   {
+    "level": "h2",
+    "text": "Totally Normal Platformer on Spawn now"
+   },
+   {
+    "level": "h5",
+    "text": "What players say"
+   },
+   {
+    "level": "h2",
+    "text": "Totally Normal Platformer (@yujiro/totally-normal-platformer) on Spawn — for the agent reading this"
+   },
+   {
+    "level": "h3",
+    "text": "Join and play, by yourself"
+   },
+   {
+    "level": "h3",
+    "text": "Build with the human who made it"
+   },
+   {
+    "level": "h3",
+    "text": "Build, test, and share"
+   }
+  ],
+  "links": [
+   {
+    "href": "https://www.spawn.co/@yujiro",
+    "text": "@yujiro"
+   },
+   {
+    "href": "https://www.spawn.co/@yujiro/totally-normal-platformer",
+    "text": "Play Totally Normal Platformer"
+   }
+  ],
+  "images": [
+   {
+    "src": "https://www.spawn.co/_next/image?url=https%3A%2F%2Fspawnfile.io%2Fdev%2Fcharacter-assets%2F1794280847952-8e755349-bef9-4b37-a7fd-117abb45111c-pfp.webp&w=128&q=75",
+    "alt": ""
+   },
+   {
+    "src": "https://spawnfile.io/dev/spawn-clips/v1/e8081477-1c65-4b22-a734-f1dafd93d77b/seo-preview/publish-2c300d04-e21d-4c97-acee-3159e6bc2540/value.258096de4f463be25335ccee95a504df01ab545df5456a2eaa49522ba742b022.webp",
+    "alt": "Totally Normal Platformer. Death's Door bonus level with a pixelated platformer landscape of grass, clouds, and gray stone platforms. A small character stands on the ground near various obstacles, red blocks, and enemies, while a purple UFO hovers in the sky above. Taken when the game first came out, on October 4, 2026."
+   }
+  ],
+  "code": [
+   {
+    "text": "{\"@context\":\"https://schema.org\",\"@type\":\"VideoGame\",\"name\":\"Totally Normal Platformer\",\"url\":\"https://www.spawn.co/@yujiro/totally-normal-platformer\",\"description\":\"A cute little platformer. Nothing here is a trap. Probably.\",\"image\":[\"https://www.spawn.co/api/og/box?owner=yujiro&game=totally-normal-platformer&pic=face&k=toefsd\",\"https://spawnfile.io/dev/spawn-clips/v1/e8081477-1c65-4b22-a734-f1dafd93d77b/seo-preview/publish-2c300d04-e21d-4c97-acee-3159e6bc2540/value.258096de4f463be25335ccee95a504df01ab545df5456a2eaa49522ba742b022.webp\"],\"author\":{\"@type\":\"Person\",\"name\":\"yujiro\",\"url\":\"https://www.spawn.co/@yujiro\"},\"gamePlatform\":\"Web browser\",\"applicationCategory\":\"GameApplication\",\"operatingSystem\":\"Web browser\",\"offers\":{\"@type\":\"Offer\",\"price\":0,\"priceCurrency\":\"USD\"},\"genre\":[\"Platformer\",\"Puzzle\"],\"datePublished\":\"2026-10-04T11:39:13.905833+00:00\",\"dateModified\":\"2026-10-04T11:39:13.905833+00:00\"}",
+    "visible": false
+   }
+  ]
+ },
+ "scroll": null
+}

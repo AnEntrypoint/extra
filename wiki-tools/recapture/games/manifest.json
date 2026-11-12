@@ -1,0 +1,321 @@
+{
+ "section": "Games",
+ "url": "https://www.spawn.co/@lanmower/game-16@dev",
+ "method": "HTTP GET with curl; the HTML as served, scripts not run",
+ "cardsInSection": 53,
+ "planned": 52,
+ "games": [
+  {
+   "n": 1,
+   "label": "8-Ball Pool 3D",
+   "url": "https://spawn.co/@tuanteku/8-ball-pool-3d",
+   "file": "001.json"
+  },
+  {
+   "n": 2,
+   "label": "Garden Siege 3D",
+   "url": "https://spawn.co/@rexgaming_yt/garden-siege-3d",
+   "file": "002.json"
+  },
+  {
+   "n": 3,
+   "label": "Call of the Soil: A Bengal Village Adventure",
+   "url": "https://spawn.co/@ayon/call-of-the-soil-a-bengal-village-adventure",
+   "file": "003.json"
+  },
+  {
+   "n": 4,
+   "label": "Whisker Brawl 3D",
+   "url": "https://spawn.co/@tuanteku/whisker-brawl-3d",
+   "file": "004.json"
+  },
+  {
+   "n": 5,
+   "label": "WORLD ADVENTURE of PIXELS",
+   "url": "https://spawn.co/@pixelmg_dev/world-adventure-of-pixels",
+   "file": "005.json"
+  },
+  {
+   "n": 6,
+   "label": "GEMSMITH 3D",
+   "url": "https://spawn.co/@match3lover/gemsmith-3d",
+   "file": "006.json"
+  },
+  {
+   "n": 7,
+   "label": "Sky Ring Arena Multiplayer",
+   "url": "https://spawn.co/@rexgaming_yt/sky-ring-arena-multiplayer",
+   "file": "007.json"
+  },
+  {
+   "n": 8,
+   "label": "Purrtris Arena",
+   "url": "https://spawn.co/@chizkeykkk/purrtris-arena",
+   "file": "008.json"
+  },
+  {
+   "n": 9,
+   "label": "Elemental Blades: Arena of Ascension",
+   "url": "https://spawn.co/@shadow_ranger_62/elemental-blades-arena-of-ascension",
+   "file": "009.json"
+  },
+  {
+   "n": 10,
+   "label": "MGTale Battles multiplayer",
+   "url": "https://spawn.co/@andreamg2tablet/mgtale-battles-multiplayer",
+   "file": "010.json"
+  },
+  {
+   "n": 11,
+   "label": "MG Sans Battle multiplayer",
+   "url": "https://spawn.co/@andreamg2tablet/mg-sans-battle-multiplayer",
+   "file": "011.json"
+  },
+  {
+   "n": 12,
+   "label": "Slime Arena",
+   "url": "https://spawn.co/@slime/slime-arena",
+   "file": "012.json"
+  },
+  {
+   "n": 13,
+   "label": "Race to the Masjid",
+   "url": "https://spawn.co/@yunusdiallo/race-to-the-masjid",
+   "file": "013.json"
+  },
+  {
+   "n": 14,
+   "label": "Dragon Racing",
+   "url": "https://spawn.co/@metalhorse233/dragon-racing",
+   "file": "014.json"
+  },
+  {
+   "n": 15,
+   "label": "Crunch-em-up Derby Racing",
+   "url": "https://spawn.co/@nickyp/crunch-em-up-derby-racing",
+   "file": "015.json"
+  },
+  {
+   "n": 16,
+   "label": "Mequavian Racing",
+   "url": "https://spawn.co/@cybershrapnel/mequavian-racing",
+   "file": "016.json"
+  },
+  {
+   "n": 17,
+   "label": "Race or Die",
+   "url": "https://spawn.co/@iiisandman/race-or-die",
+   "file": "017.json"
+  },
+  {
+   "n": 18,
+   "label": "HyperTrackMania X: Time Trial Racing",
+   "url": "https://spawn.co/@hips/hypertrackmania-x-time-trial-racing",
+   "file": "018.json"
+  },
+  {
+   "n": 19,
+   "label": "Survive Ragnarök",
+   "url": "https://spawn.co/@liiv/survive-ragnarok",
+   "file": "019.json"
+  },
+  {
+   "n": 20,
+   "label": "Survival at Disaster",
+   "url": "https://spawn.co/@vovafromttav/survival-at-disaster",
+   "file": "020.json"
+  },
+  {
+   "n": 21,
+   "label": "Building 66",
+   "url": "https://spawn.co/@fracture/building-66",
+   "file": "021.json"
+  },
+  {
+   "n": 22,
+   "label": "Enfo's Team Survival",
+   "url": "https://spawn.co/@marcelpachole/enfo-s-team-survival",
+   "file": "022.json"
+  },
+  {
+   "n": 23,
+   "label": "Spike's Neon Survival",
+   "url": "https://spawn.co/@0toxika/spike-s-neon-survival",
+   "file": "023.json"
+  },
+  {
+   "n": 24,
+   "label": "Hexagonal Arcology Builder (Peak Oil Survival)",
+   "url": "https://spawn.co/@travelingtt/hexagonal-arcology-builder-peak-oil-survival",
+   "file": "024.json"
+  },
+  {
+   "n": 25,
+   "label": "Super Smash Spawn Brawl: Ultimate Platform Fighter",
+   "url": "https://spawn.co/@hips/super-smash-spawn-brawl-ultimate-platform-fighter",
+   "file": "025.json"
+  },
+  {
+   "n": 26,
+   "label": "Totally Normal Platformer",
+   "url": "https://spawn.co/@yujiro/totally-normal-platformer",
+   "file": "026.json"
+  },
+  {
+   "n": 27,
+   "label": "A Perfectly Normal Platformer",
+   "url": "https://spawn.co/@bigyahu/a-perfectly-normal-platformer",
+   "file": "027.json"
+  },
+  {
+   "n": 28,
+   "label": "Higher",
+   "url": "https://spawn.co/@chucky/higher",
+   "file": "028.json"
+  },
+  {
+   "n": 29,
+   "label": "Skyfall Rush",
+   "url": "https://spawn.co/@tiger/skyfall-rush",
+   "file": "029.json"
+  },
+  {
+   "n": 30,
+   "label": "Parkour Rush",
+   "url": "https://spawn.co/@majid/parkour-rush",
+   "file": "030.json"
+  },
+  {
+   "n": 31,
+   "label": "Cartoon horror",
+   "url": "https://spawn.co/@lakaplay/cartoon-horror",
+   "file": "031.json"
+  },
+  {
+   "n": 32,
+   "label": "Horror Kill",
+   "url": "https://spawn.co/@nova_golem_79/horror-kill",
+   "file": "032.json"
+  },
+  {
+   "n": 33,
+   "label": "The Lindenmann Part Two (Horror)",
+   "url": "https://spawn.co/@rexgaming_yt/the-lindenmann-part-two-horror",
+   "file": "033.json"
+  },
+  {
+   "n": 34,
+   "label": "Ten Days Petsitting (horror)",
+   "url": "https://spawn.co/@ghost_dragon/ten-days-petsitting-horror",
+   "file": "034.json"
+  },
+  {
+   "n": 35,
+   "label": "Haunted Plushie game: Lingo Pals Horror Stories",
+   "url": "https://spawn.co/@op_nico/haunted-plushie-game-lingo-pals-horror-stories",
+   "file": "035.json"
+  },
+  {
+   "n": 36,
+   "label": "CEREBRAL DECAY",
+   "url": "https://spawn.co/@bomb_bo/cerebral-decay",
+   "file": "036.json"
+  },
+  {
+   "n": 37,
+   "label": "1 Clicker",
+   "url": "https://spawn.co/@00ercruptedsupreme/1-clicker",
+   "file": "037.json"
+  },
+  {
+   "n": 38,
+   "label": "Clicker Sim",
+   "url": "https://spawn.co/@sharkyrex16/clicker-sim",
+   "file": "038.json"
+  },
+  {
+   "n": 39,
+   "label": "Banana Clicker",
+   "url": "https://spawn.co/@ohtheicee/banana-clicker",
+   "file": "039.json"
+  },
+  {
+   "n": 40,
+   "label": "Dark Fountain Clicker",
+   "url": "https://spawn.co/@0liver/dark-fountain-clicker",
+   "file": "040.json"
+  },
+  {
+   "n": 41,
+   "label": "Cubemunity",
+   "url": "https://spawn.co/@longthunder/cubemunity",
+   "file": "041.json"
+  },
+  {
+   "n": 42,
+   "label": "Spawn Hangout",
+   "url": "https://spawn.co/@binxius/spawn-hangout",
+   "file": "042.json"
+  },
+  {
+   "n": 43,
+   "label": "Need for Spawn",
+   "url": "https://spawn.co/@chucky/need-for-spawn",
+   "file": "043.json"
+  },
+  {
+   "n": 44,
+   "label": "Spawndle",
+   "url": "https://spawn.co/@dreamcatcher/spawndle",
+   "file": "044.json"
+  },
+  {
+   "n": 45,
+   "label": "Cat Haven",
+   "url": "https://spawn.co/@chizkeykkk/cat-haven",
+   "file": "045.json"
+  },
+  {
+   "n": 46,
+   "label": "DOJO CITY",
+   "url": "https://spawn.co/@ninjacatlive/dojo-city",
+   "file": "046.json"
+  },
+  {
+   "n": 47,
+   "label": "Eldoria [RPG] 120xp",
+   "url": "https://spawn.co/@gamex_feed/eldoria-rpg-120xp",
+   "file": "047.json"
+  },
+  {
+   "n": 48,
+   "label": "Ascend: Real-Life RPG",
+   "url": "https://spawn.co/@causey/ascend-real-life-rpg",
+   "file": "048.json"
+  },
+  {
+   "n": 49,
+   "label": "RPG Fighter",
+   "url": "https://spawn.co/@majid/rpg-fighter",
+   "file": "049.json"
+  },
+  {
+   "n": 50,
+   "label": "Escape from Stranglethorn",
+   "url": "https://spawn.co/@izkimar/escape-from-stranglethorn",
+   "file": "050.json"
+  },
+  {
+   "n": 51,
+   "label": "Diablo Survivors",
+   "url": "https://spawn.co/@izkimar/diablo-survivors",
+   "file": "051.json"
+  },
+  {
+   "n": 52,
+   "label": "Aether Legends",
+   "url": "https://spawn.co/@yisus/aether-legends",
+   "file": "052.json"
+  }
+ ]
+}

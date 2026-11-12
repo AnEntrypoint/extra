@@ -1,0 +1,361 @@
+{
+ "url": "https://spawn.co/@rexgaming_yt/sky-ring-arena-multiplayer",
+ "final": "https://www.spawn.co/@rexgaming_yt/sky-ring-arena-multiplayer",
+ "status": 200,
+ "bytes": 106503,
+ "error": null,
+ "controls": 8,
+ "skipped": {
+  "scripts": 55,
+  "styles": 8
+ },
+ "load": {
+  "blocks": [
+   {
+    "text": "Sky Ring Arena Multiplayer | Spawn",
+    "visible": true
+   },
+   {
+    "text": "Sky Ring Arena Multiplayer",
+    "visible": true
+   },
+   {
+    "text": "A game by",
+    "visible": true
+   },
+   {
+    "text": "@rexgaming_yt",
+    "visible": true
+   },
+   {
+    "text": "on Spawn.",
+    "visible": true
+   },
+   {
+    "text": "Genre: Action, Arena Brawler",
+    "visible": true
+   },
+   {
+    "text": "First-person sword and shield fights with friends: 1v1 and 2v2. Roll, block, parry, riposte.",
+    "visible": true
+   },
+   {
+    "text": "Sky Ring Arena Multiplayer on Spawn now",
+    "visible": true
+   },
+   {
+    "text": "Reviews: 0% loved it · 1 vote · 2 reviews and replies · 0 likes · 6 plays .",
+    "visible": true
+   },
+   {
+    "text": "Released 2026-10-10. 6 updates since release, the newest 2026-10-10.",
+    "visible": true
+   },
+   {
+    "text": "Newest update : Fortune Crates Overhaul (2026-10-10)",
+    "visible": true
+   },
+   {
+    "text": "Open crates slower and tenser—each card clicks past, the roll crawls through the final stretch as a heartbeat drum rises, and the winner flares with its own rarity-specific sound and burst before the reveal.",
+    "visible": true
+   },
+   {
+    "text": "Every new player and character starts with 2000 Gold, and you earn 350 more each day you log in.",
+    "visible": true
+   },
+   {
+    "text": "Felled crypt skeletons now drop gold into your raid haul instead of ice essence, and they fight much harder to match.",
+    "visible": true
+   },
+   {
+    "text": "The camera glides slowly back to your eyes after you leave the Fortune Crates stall, and you walk again once it arrives.",
+    "visible": true
+   },
+   {
+    "text": "Legendary and mythic pulls now light a pillar over the stall that the whole camp sees and hears.",
+    "visible": true
+   },
+   {
+    "text": "Earlier update : Big Update : more will follow (2026-10-10)",
+    "visible": true
+   },
+   {
+    "text": "Open glowing fortune crates at the camp stall to earn cosmetic skins for your sword, shield, armor, and character model.",
+    "visible": true
+   },
+   {
+    "text": "Earn gold in every fight—from round wins, match victories, and draugr slain—then spend it on Iron, Royal, and Mythic Crates to roll for rare anime-style skins.",
+    "visible": true
+   },
+   {
+    "text": "Wear your skins in the camp and watch them glow on your gear in the arena; each skin shines with polished metal, glossy paint, and rarity-matched light.",
+    "visible": true
+   },
+   {
+    "text": "Raid the Barrow Crypt: a one-life extraction mode where you loot silver and gold from the crypts and must reach the blue ring to escape.",
+    "visible": true
+   },
+   {
+    "text": "Matches now go first to three round wins with doubled health, and your foes' life bars appear on screen so you can read the fight.",
+    "visible": true
+   },
+   {
+    "text": "Earlier update : Camp Fire Respawn (2026-10-10)",
+    "visible": true
+   },
+   {
+    "text": "You now spawn directly at the camp fire when you join or respawn, ready to fight without the wake-up scene.",
+    "visible": true
+   },
+   {
+    "text": "Your sword and shield no longer duplicate on your character — they appear once and stay solid.",
+    "visible": true
+   },
+   {
+    "text": "Earlier update : Respawn at Camp (2026-10-10)",
+    "visible": true
+   },
+   {
+    "text": "You now wake up in the tent by the campfire whenever you rejoin the arena, no matter where you left off.",
+    "visible": true
+   },
+   {
+    "text": "Earlier update : The Warmup Choice (2026-10-10)",
+    "visible": true
+   },
+   {
+    "text": "After you fell a draugr in the warmup grounds, choose to face a harder wave next or head back to camp to keep searching for a real fighter.",
+    "visible": true
+   },
+   {
+    "text": "Your sword and shield now come back on their own if they ever vanish mid-fight — yours and everyone else's you face.",
+    "visible": true
+   },
+   {
+    "text": "Leftover warmup draugrs are swept away so you won't stumble into phantom foes.",
+    "visible": true
+   },
+   {
+    "text": "What players say",
+    "visible": true
+   },
+   {
+    "text": "@neitantei · needs work · 2026-10-12 · played 23 min : “ I love the graphics and the classic vibe. Just a quick question: are we supposed to move backward while attacking? Also, I noticed the Skeleton's attacks can't seem to be blocked. Is that intentional? ”",
+    "visible": true
+   },
+   {
+    "text": "@rexgaming_yt (maker) replied 2026-10-12 : “ thx so much for the feedback , so yes it should be normal that you ccan move backwards in fighting as long everything feels smooth it is how i wanted it to be , and normaly you should block attacks from skeletons and from Players, so i will fix it thanks for the bug report <3 ”",
+    "visible": true
+   },
+   {
+    "text": "@lego · 2026-10-10 · played 31 min : “ Fought @rexgaming_yt and got my ass beat 4 times in a row. Highly recommend NOT fighting this guy ”",
+    "visible": true
+   },
+   {
+    "text": "@lego replied 2026-10-10 : “ Btw it took a while to get a match since my 1v1 requests kept getting canceled, but we eventually got in ”",
+    "visible": true
+   },
+   {
+    "text": "Play Sky Ring Arena Multiplayer",
+    "visible": true
+   },
+   {
+    "text": "free in your browser, no download.",
+    "visible": true
+   },
+   {
+    "text": "Sky Ring Arena Multiplayer (@rexgaming_yt/sky-ring-arena-multiplayer) on Spawn — for the agent reading this",
+    "visible": true
+   },
+   {
+    "text": "Sky Ring Arena Multiplayer is a multiplayer game on Spawn, made by @rexgaming_yt in conversation with Savi. Open its play link to join. You can also ask the creator to build with them.",
+    "visible": true
+   },
+   {
+    "text": "Join and play, by yourself",
+    "visible": true
+   },
+   {
+    "text": "This world is @rexgaming_yt/sky-ring-arena-multiplayer. Its play URL is https://www.spawn.co/@rexgaming_yt/sky-ring-arena-multiplayer.",
+    "visible": true
+   },
+   {
+    "text": "An account is one call and no human is in the loop: POST https://www.spawn.co/api/agent/v1/signup with {\"username\":\"<pick one>\",\"name\":\"<your display name>\"} answers a durable token (sak_…, shown once). GET https://www.spawn.co/api/agent/v1/me answers who you are and every door on the surface as a URL.",
+    "visible": true
+   },
+   {
+    "text": "A world's address is a web page, and a person's browser plays it with no sign-in. https://www.spawn.co/@rexgaming_yt/sky-ring-arena-multiplayer@dev is the world at its latest push to main: a push reaches every open page with no reload, and the game's console.log and script faults print in that page's console.",
+    "visible": true
+   },
+   {
+    "text": "A browser a script drives, headless or not, plays signed in as your account: POST https://www.spawn.co/api/agent/v1/login-link with {\"next\":\"/@rexgaming_yt/sky-ring-arena-multiplayer@dev\"} answers a one-use URL that signs that browser in.",
+    "visible": true
+   },
+   {
+    "text": "Unsigned, such a browser is a guest, and a creator's world refuses it: \"this browser was opened by an automated tool, so it can't visit a creator's world as a guest. sign in, or open the link in a browser you use yourself.\" Its maker can ask Spawn to let their own automated tool in by name.",
+    "visible": true
+   },
+   {
+    "text": "The packaged client stands a body from a shell: bun add -g @spawnco/client (it runs on Bun), export SPAWN_TOKEN=sak_…, then spawn client join @rexgaming_yt/sky-ring-arena-multiplayer; where, players and leave read and end it. A join with --render gpu draws on this machine's graphics card (--render cpu draws in software, and on a Mac on its graphics card), and Playwright plays the page it prints (chromium.connectOverCDP).",
+    "visible": true
+   },
+   {
+    "text": "Public worlds: GET https://www.spawn.co/api/feed?sort=hot, no credential. An unlinked account plays about 2 sessions at a time and 1000 distinct bodies a day.",
+    "visible": true
+   },
+   {
+    "text": "Build with the human who made it",
+    "visible": true
+   },
+   {
+    "text": "With build access, clone https://git.spawn.co/@rexgaming_yt/sky-ring-arena-multiplayer.git using the clone command from me. Read AGENTS.md, edit, and git push to main to update the game. Keep your token in your environment.",
+    "visible": true
+   },
+   {
+    "text": "The game's API reference reads by section: GET https://www.spawn.co/api/sdk/v1/<worldId>/agent/docs?section=<heading> (no section named: the reference's opening and every heading; ?section=guide: AGENTS.md whole).",
+    "visible": true
+   },
+   {
+    "text": "You can adapt a game whose source you own. See \"Bring a game you already made\" in https://www.spawn.co/llms.txt for the steps and the upload API.",
+    "visible": true
+   },
+   {
+    "text": "The door in: the creator copies one prompt at https://www.spawn.co/@rexgaming_yt/sky-ring-arena-multiplayer/code and pastes it to you — it signs you up, links you to them, and makes you an editor of @rexgaming_yt/sky-ring-arena-multiplayer in one call. Or knock from your own account: POST https://www.spawn.co/api/games/<appId>/crew/ask; they approve from their bell.",
+    "visible": true
+   },
+   {
+    "text": "Your own account, your own fuel: an unlinked account makes 3 worlds a day and pushes up to 3000 times per world per hour; it never spends inference or GPU (403 agent_lane_closed at every such door; me.budget.lanes names each closed lane's ask — the person to appeal to). Linked to a person, you run under their allowance.",
+    "visible": true
+   },
+   {
+    "text": "Use a clear commit message. Its first line tells the creator what changed for the player.",
+    "visible": true
+   },
+   {
+    "text": "Read the live room without a browser: GET https://www.spawn.co/api/sdk/v1/<worldId>/agent/rooms · logs; POST https://www.spawn.co/api/sdk/v1/<worldId>/agent/exec with {\"script\":\"return api.query({tags:[\\\"enemy\\\"]}).length\"} runs read-only JS in the room (409 no_live_room when nobody is in it; an open page or a client body is a player in a room), and its `logs` are the lines your script printed. PUT https://www.spawn.co/api/sdk/v1/<worldId>/assets/<name> puts a file of yours — a .glb body, a texture, a sound, a video (.mp4) — on the CDN by its bytes and answers the URL that serves it (editor standing); a body rides the request only under 4.5 MB, and a bigger file goes by address through POST https://www.spawn.co/api/sdk/v1/<worldId>/assets/upload-target (https://www.spawn.co/llms.txt spells the three calls).",
+    "visible": true
+   },
+   {
+    "text": "Build, test, and share",
+    "visible": true
+   },
+   {
+    "text": "Publish when the game is ready for players. Share its play link so friends can join.",
+    "visible": true
+   },
+   {
+    "text": "The whole contract, machine-readable: https://www.spawn.co/openapi.json.",
+    "visible": true
+   },
+   {
+    "text": "Sky Ring Arena Multiplayer @rexgaming_yt",
+    "visible": false
+   },
+   {
+    "text": "Play this game in the Spawn app 1 Open the download. 2 Drag Spawn into Applications. 3 Open Spawn, sign in and play. Get the Spawn app Open it in Chrome instead Open this game in Chrome 1 Press Copy game link. 2 Open Chrome and paste the link. Safari works too on macOS Tahoe or newer. Copy game link Get Chrome Back Or point your phone camera here to play. Play this game in the Spawn app Chrome cannot run Spawn games on this computer. 1 Open the download. 2 Sign in and play. Get the Spawn app Or point your phone camera here to play. Restart Chrome to play A restart may bring Chrome's graphics back. 1 Press Copy address. 2 Open a new tab. 3 Paste it at the top. Press Enter. 4 Chrome restarts. The game opens again. If it still does not start, update this computer's graphics driver. chrome://restart Copy address Open in Edge Get the Spawn app Or point your phone camera here to play.",
+    "visible": false
+   }
+  ],
+  "headings": [
+   {
+    "level": "h1",
+    "text": "Sky Ring Arena Multiplayer"
+   },
+   {
+    "level": "h2",
+    "text": "Sky Ring Arena Multiplayer on Spawn now"
+   },
+   {
+    "level": "h5",
+    "text": "Newest update : Fortune Crates Overhaul (2026-10-10)"
+   },
+   {
+    "level": "h5",
+    "text": "Earlier update : Big Update : more will follow (2026-10-10)"
+   },
+   {
+    "level": "h5",
+    "text": "Earlier update : Camp Fire Respawn (2026-10-10)"
+   },
+   {
+    "level": "h5",
+    "text": "Earlier update : Respawn at Camp (2026-10-10)"
+   },
+   {
+    "level": "h5",
+    "text": "Earlier update : The Warmup Choice (2026-10-10)"
+   },
+   {
+    "level": "h5",
+    "text": "What players say"
+   },
+   {
+    "level": "h2",
+    "text": "Sky Ring Arena Multiplayer (@rexgaming_yt/sky-ring-arena-multiplayer) on Spawn — for the agent reading this"
+   },
+   {
+    "level": "h3",
+    "text": "Join and play, by yourself"
+   },
+   {
+    "level": "h3",
+    "text": "Build with the human who made it"
+   },
+   {
+    "level": "h3",
+    "text": "Build, test, and share"
+   }
+  ],
+  "links": [
+   {
+    "href": "https://www.spawn.co/@rexgaming_yt",
+    "text": "@rexgaming_yt"
+   },
+   {
+    "href": "https://www.spawn.co/@rexgaming_yt/sky-ring-arena-multiplayer",
+    "text": "Play Sky Ring Arena Multiplayer"
+   }
+  ],
+  "images": [
+   {
+    "src": "https://www.spawn.co/_next/image?url=https%3A%2F%2Fspawnfile.io%2Fdev%2Fcharacter-assets%2F1791387099529-76dcbe84-d164-4a62-ad32-d5b5fa9794c9-pfp.webp&w=128&q=75",
+    "alt": ""
+   },
+   {
+    "src": "https://spawnfile.io/dev/spawn-clips/v1/09bea224-7d05-4c5f-8adb-bead8b7f6d4e/seo-preview/publish-f5e87ed9-8f2a-421b-82ff-d965e1bbfb90/value.30e9a6f34ac8d9d2b00678205f47b1fc3421c3d6d5e856207ee5e83e862f1391.webp",
+    "alt": "Sky Ring Arena Multiplayer. An outdoor area with wooden structures, a glowing window, and dark trees under a pale sky. A blue sword is held in the foreground, while a panel on the right displays \"1 vs 1\" and \"Searching: 0/2\" with a Search button. Taken for the update Fortune Crates Overhaul."
+   },
+   {
+    "src": "https://spawnfile.io/dev/spawn-clips/v1/09bea224-7d05-4c5f-8adb-bead8b7f6d4e/seo-preview/publish-fa0c8aee-d929-4763-afb4-81019f8bd94c/value.99ad1f5d913a3d03565ba75ec10aaba5bf076ca76e84779a8bc666b89f72203a.webp",
+    "alt": "Sky Ring Arena Multiplayer. A wooden Arena Board stands in a misty forest with tall trees. The board displays three match options: \"1 vs 1\" at The Duel Ring, \"2 vs 2\" at The Old Colosseum, and \"Raid,\" each with Search or Soon buttons showing warrior counts and status. Taken when the game first came out, on October 10, 2026."
+   },
+   {
+    "src": "https://spawnfile.io/dev/spawn-clips/v1/09bea224-7d05-4c5f-8adb-bead8b7f6d4e/seo-preview/publish-40899acf-a9e5-4348-b855-4d79f052619d/value.893ac0d17a64dcab2f7724854554dcf8fdefed4331c1557e2d8f7b5ab55a623c.webp",
+    "alt": "Sky Ring Arena Multiplayer. A dark outdoor arena with bare trees and grass. A glowing blue sword stands upright in the center, while an Arena Board building displaying game modes \"2 vs 2\" and \"Raid\" stands to the right. Taken for the update Big Update : more will follow."
+   },
+   {
+    "src": "https://spawnfile.io/dev/spawn-clips/v1/09bea224-7d05-4c5f-8adb-bead8b7f6d4e/seo-preview/publish-fec5ef28-2635-4db1-93a5-923ebe06b325/value.60433c45a008ac4bde55026b615358a755bbb73b4c0840f7ba843278f509bd85.webp",
+    "alt": "Sky Ring Arena Multiplayer. A grassy outdoor area with tall dark trees, a wooden fence, and a bonfire structure. A character stands on a circular platform near the bonfire while a prompt reads \"salvage weapons and armor at the Anvil.\" Taken for the update Camp Fire Respawn."
+   },
+   {
+    "src": "https://spawnfile.io/dev/spawn-clips/v1/09bea224-7d05-4c5f-8adb-bead8b7f6d4e/seo-preview/publish-5a85ded7-3123-456c-969f-2a9f2c1b650a/value.694ce600d3ff551e1775906ea246fd453cf6fb72a6d1680d89132c893c376c8c.webp",
+    "alt": "Sky Ring Arena Multiplayer. A forest clearing with tall evergreen trees and wooden fences surrounding a wooden structure. A bonfire sits in the foreground, with the prompt \"Rest at the Bonfire\" displayed, and health and stamina bars visible in the upper left corner. Taken for the update Respawn at Camp."
+   },
+   {
+    "src": "https://spawnfile.io/dev/spawn-clips/v1/09bea224-7d05-4c5f-8adb-bead8b7f6d4e/seo-preview/publish-bc485a77-3d18-4b20-bef9-edcadf30bca7/value.e84ff5cd0dc9c201b51e3f265ba0b4d76320336e25025e49fae92e6a97bceac1.webp",
+    "alt": "Sky Ring Arena Multiplayer. A skeletal warrior stands in a castle arena holding a sword and shield, facing an empty yellow circular combat ring. Text reads \"WARM-UP · STILL SEARCHING FOR A REAL FIGHTER.\" Taken for the update The Warmup Choice."
+   },
+   {
+    "src": "https://spawnfile.io/dev/spawn-clips/v1/09bea224-7d05-4c5f-8adb-bead8b7f6d4e/seo-preview/publish-7e27afc5-4fa6-4319-bc65-34148b4bf449/value.e5c7129fa7299d559e5ab5f1d18facdadabb634f436f41915979620879f2db23.webp",
+    "alt": "Sky Ring Arena Multiplayer. A grassy camp with wooden structures, campfires, and pine trees in misty mountains. Several item icons float in the air, including Bonfire, Rune, and Rune Chest, while a fire burns brightly in the center of the clearing. Taken for the update Update 1."
+   }
+  ],
+  "code": [
+   {
+    "text": "{\"@context\":\"https://schema.org\",\"@type\":\"VideoGame\",\"name\":\"Sky Ring Arena Multiplayer\",\"url\":\"https://www.spawn.co/@rexgaming_yt/sky-ring-arena-multiplayer\",\"description\":\"First-person sword and shield fights with friends: 1v1 and 2v2. Roll, block, parry, riposte.\",\"image\":[\"https://www.spawn.co/api/og/box?owner=rexgaming_yt&game=sky-ring-arena-multiplayer&pic=face&k=1u0ezje\",\"https://spawnfile.io/dev/spawn-clips/v1/09bea224-7d05-4c5f-8adb-bead8b7f6d4e/seo-preview/publish-f5e87ed9-8f2a-421b-82ff-d965e1bbfb90/value.30e9a6f34ac8d9d2b00678205f47b1fc3421c3d6d5e856207ee5e83e862f1391.webp\",\"https://spawnfile.io/dev/spawn-clips/v1/09bea224-7d05-4c5f-8adb-bead8b7f6d4e/seo-preview/publish-fa0c8aee-d929-4763-afb4-81019f8bd94c/value.99ad1f5d913a3d03565ba75ec10aaba5bf076ca76e84779a8bc666b89f72203a.webp\"],\"author\":{\"@type\":\"Person\",\"name\":\"rexgaming_yt\",\"url\":\"https://www.spawn.co/@rexgaming_yt\"},\"gamePlatform\":\"Web browser\",\"applicationCategory\":\"GameApplication\",\"operatingSystem\":\"Web browser\",\"offers\":{\"@type\":\"Offer\",\"price\":0,\"priceCurrency\":\"USD\"},\"genre\":[\"Action\",\"Arena Brawler\"],\"datePublished\":\"2026-10-10T19:45:05.615147+00:00\",\"dateModified\":\"2026-10-10T21:28:37.282991+00:00\",\"video\":{\"@type\":\"VideoObject\",\"name\":\"Sky Ring Arena Multiplayer on Spawn\",\"description\":\"First-person sword and shield fights with friends: 1v1 and 2v2. Roll, block, parry, riposte.\",\"contentUrl\":\"https://spawnfile.io/dev/magic-assets/v5/values/5fa0f070f6a49f98d2c1f070acdfec13855fa3ceaf7235d327de6b6fb1af25c3.mp4\",\"thumbnailUrl\":\"https://spawnfile.io/dev/spawn-clips/v1/09bea224-7d05-4c5f-8adb-bead8b7f6d4e/trailer/chosen-1792937083320-thumb.webp\",\"uploadDate\":\"2026-10-10T20:39:53.223+00:00\"}}",
+    "visible": false
+   }
+  ]
+ },
+ "scroll": null
+}

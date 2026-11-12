@@ -1,0 +1,369 @@
+{
+ "count": 53,
+ "cards": [
+  {
+   "n": 1,
+   "href": "https://spawn.co/@tuanteku/8-ball-pool-3d",
+   "label": "8-Ball Pool 3D",
+   "desc": "3D 8-ball pool with AI save and resume, friend matches, practice and Five in Eight challenges.",
+   "meta": "by tuanteku · 15 likes"
+  },
+  {
+   "n": 2,
+   "href": "https://spawn.co/@rexgaming_yt/garden-siege-3d",
+   "label": "Garden Siege 3D",
+   "desc": "Peashooters vs the undead: hold the backyard and save the gnome from ten waves of zombies.",
+   "meta": "by rexgaming_yt · 10 likes"
+  },
+  {
+   "n": 3,
+   "href": "https://spawn.co/@ayon/call-of-the-soil-a-bengal-village-adventure",
+   "label": "Call of the Soil: A Bengal Village Adventure",
+   "desc": "Roam a living Bangladeshi village: chat with neighbours, make friends, ride rickshaws and boats, race on the river, and join festivals. Play in English or Bangla.",
+   "meta": "by ayon · 6 likes"
+  },
+  {
+   "n": 4,
+   "href": "https://spawn.co/@tuanteku/whisker-brawl-3d",
+   "label": "Whisker Brawl 3D",
+   "desc": "Pick a scrappy animal, grab absurd loot, and brawl your way through every rival in the arena.",
+   "meta": "by tuanteku · 6 likes"
+  },
+  {
+   "n": 5,
+   "href": "https://spawn.co/@pixelmg_dev/world-adventure-of-pixels",
+   "label": "WORLD ADVENTURE of PIXELS",
+   "desc": "Run, jump, stomp and bonk ? blocks across a pixel world to reach the flag.",
+   "meta": "by pixelmg_dev · 5 likes"
+  },
+  {
+   "n": 6,
+   "href": "https://spawn.co/@match3lover/gemsmith-3d",
+   "label": "GEMSMITH 3D",
+   "desc": "Turn the cube, find the match, forge your own puzzles — a new dimension of GEMSMITH.",
+   "meta": "by match3lover · 5 likes"
+  },
+  {
+   "n": 7,
+   "href": "https://spawn.co/@rexgaming_yt/sky-ring-arena-multiplayer",
+   "label": "Sky Ring Arena Multiplayer",
+   "desc": "First-person sword and shield fights with friends: 1v1 and 2v2. Roll, block, parry, riposte.",
+   "meta": "by rexgaming_yt · 0 likes"
+  },
+  {
+   "n": 8,
+   "href": "https://spawn.co/@chizkeykkk/purrtris-arena",
+   "label": "Purrtris Arena",
+   "desc": "Pastel cat-cafe arcade in the clouds: walk up to a cat-eared cabinet and play Purrtris: Marathon, Sprint 40 and Versus.",
+   "meta": "by chizkeykkk · 17 likes"
+  },
+  {
+   "n": 9,
+   "href": "https://spawn.co/@shadow_ranger_62/elemental-blades-arena-of-ascension",
+   "label": "Elemental Blades: Arena of Ascension",
+   "desc": "Anime blade & sorcery arena: fight endless waves with your champions, summon rare heroes, and command them on the War Table.",
+   "meta": "by shadow_ranger_62 · 15 likes"
+  },
+  {
+   "n": 10,
+   "href": "https://spawn.co/@andreamg2tablet/mgtale-battles-multiplayer",
+   "label": "MGTale Battles multiplayer",
+   "desc": "Undertale-style co-op bullet hell: dodge Flowey, Frisk, Chara, Papyrus, Sans, Toriel, Undyne and Asgore together as hearts, then strike back. Plus endless Survival and a Daily Challenge.",
+   "meta": "by andreamg2tablet · 15 likes"
+  },
+  {
+   "n": 11,
+   "href": "https://spawn.co/@andreamg2tablet/mg-sans-battle-multiplayer",
+   "label": "MG Sans Battle multiplayer",
+   "desc": "Undertale-style bullet hell: dodge MG Sans's bones and blasters together, then strike back.",
+   "meta": "by andreamg2tablet · 12 likes"
+  },
+  {
+   "n": 12,
+   "href": "https://spawn.co/@slime/slime-arena",
+   "label": "Slime Arena",
+   "desc": "Be a slime in a glowing neon glass city. Race the Slime City Loop, duel in the colosseum, survive the Mossmoon Ruins, and wear slimeglass skins that shine.",
+   "meta": "by slime · 11 likes"
+  },
+  {
+   "n": 13,
+   "href": "https://spawn.co/@yunusdiallo/race-to-the-masjid",
+   "label": "Race to the Masjid",
+   "desc": "Thobe on, iqama in 55 seconds. Dodge carts and laundry lines down the street and make it to the masjid on time.",
+   "meta": "by yunusdiallo · 8 likes"
+  },
+  {
+   "n": 14,
+   "href": "https://spawn.co/@metalhorse233/dragon-racing",
+   "label": "Dragon Racing",
+   "desc": "Fly a drake across the Wyrmcrown Isles: five zones, 28 ring races in Normal and Advanced, zone crowns to earn and 48 hidden glyphs that grow your talent tree.",
+   "meta": "by metalhorse233 · 6 likes"
+  },
+  {
+   "n": 15,
+   "href": "https://spawn.co/@nickyp/crunch-em-up-derby-racing",
+   "label": "Crunch-em-up Derby Racing",
+   "desc": "Figure-8 wreck racing at the Hollis County speedway. Hit hard, roll em, keep moving.",
+   "meta": "by nickyp · 3 likes"
+  },
+  {
+   "n": 16,
+   "href": "https://spawn.co/@cybershrapnel/mequavian-racing",
+   "label": "Mequavian Racing",
+   "desc": "Three Seven Speedway, full scale. Eight laps, one clock, the MEQUAVIS #41.",
+   "meta": "by cybershrapnel · 3 likes"
+  },
+  {
+   "n": 17,
+   "href": "https://spawn.co/@iiisandman/race-or-die",
+   "label": "Race or Die",
+   "desc": "Ten cars, one floating neon track over a desert city, and a bomb that blows up last place every 30 seconds.",
+   "meta": "by iiisandman · 2 likes"
+  },
+  {
+   "n": 18,
+   "href": "https://spawn.co/@hips/hypertrackmania-x-time-trial-racing",
+   "label": "HyperTrackMania X: Time Trial Racing",
+   "desc": "Arcade time trial racing on 18 tracks: loops, wallrides and jumps. Chase ranked ghosts, top the season leaderboard, earn crates and build your own tracks to share.",
+   "meta": "by hips · 0 likes"
+  },
+  {
+   "n": 19,
+   "href": "https://spawn.co/@liiv/survive-ragnarok",
+   "label": "Survive Ragnarök",
+   "desc": "Ragnarok Online meets Vampire Survivors. The old-school MMO you grew up on, rebuilt as a horde survival hunt. Midgard is burning, and the monsters come in waves: hundreds at a time, wave after wave. Step out of Sanctuary",
+   "meta": "by liiv · 18 likes"
+  },
+  {
+   "n": 20,
+   "href": "https://spawn.co/@vovafromttav/survival-at-disaster",
+   "label": "Survival at Disaster",
+   "desc": "Floods, tornadoes, meteors and acid rain hit the island town. Survive the round.",
+   "meta": "by vovafromttav · 6 likes"
+  },
+  {
+   "n": 21,
+   "href": "https://spawn.co/@fracture/building-66",
+   "label": "Building 66",
+   "desc": "Norilsk, 1994. Seven night shifts in Building 66. Find the fuses, bring the power back, and do not look behind you.",
+   "meta": "by fracture · 4 likes"
+  },
+  {
+   "n": 22,
+   "href": "https://spawn.co/@marcelpachole/enfo-s-team-survival",
+   "label": "Enfo's Team Survival",
+   "desc": "Elves vs the Scourge: up to 5 heroes hold Enfos against waves of undead.",
+   "meta": "by marcelpachole · 4 likes"
+  },
+  {
+   "n": 23,
+   "href": "https://spawn.co/@0toxika/spike-s-neon-survival",
+   "label": "Spike's Neon Survival",
+   "desc": "A pygmy hedgehog crunches neon worms across ten glowing arenas.",
+   "meta": "by 0toxika · 4 likes"
+  },
+  {
+   "n": 24,
+   "href": "https://spawn.co/@travelingtt/hexagonal-arcology-builder-peak-oil-survival",
+   "label": "Hexagonal Arcology Builder (Peak Oil Survival)",
+   "desc": "Build a hex arkology to 144,000 people before the oil runs out in 2040.",
+   "meta": "by travelingtt · 3 likes"
+  },
+  {
+   "n": 25,
+   "href": "https://spawn.co/@hips/super-smash-spawn-brawl-ultimate-platform-fighter",
+   "label": "Super Smash Spawn Brawl: Ultimate Platform Fighter",
+   "desc": "Knock your friends off a stained-glass stage. A fast platform fighter: smash, combo, tech and edgeguard across six stages, online or on the couch.",
+   "meta": "by hips · 15 likes"
+  },
+  {
+   "n": 26,
+   "href": "https://spawn.co/@yujiro/totally-normal-platformer",
+   "label": "Totally Normal Platformer",
+   "desc": "A cute little platformer. Nothing here is a trap. Probably.",
+   "meta": "by yujiro · 3 likes"
+  },
+  {
+   "n": 27,
+   "href": "https://spawn.co/@bigyahu/a-perfectly-normal-platformer",
+   "label": "A Perfectly Normal Platformer",
+   "desc": "You navigate crumbling bridges, dodge incoming artillery, and face a hostile cube in a glitchy world that's falling apart. Every checkpoint, every choice, and every death shapes your path to the end.",
+   "meta": "by bigyahu · 0 likes"
+  },
+  {
+   "n": 28,
+   "href": "https://spawn.co/@chucky/higher",
+   "label": "Higher",
+   "desc": "Race up disco towers, candy mountains, and alien peaks in this toon-bright climbing arcade. Chase personal bests, unlock epic bean characters, and climb your way to the leaderboard.",
+   "meta": "by chucky · 79 likes"
+  },
+  {
+   "n": 29,
+   "href": "https://spawn.co/@tiger/skyfall-rush",
+   "label": "Skyfall Rush",
+   "desc": "Race across floating anime sky islands that crumble behind you. Dash, shove, and outrun the void.",
+   "meta": "by tiger · 50 likes"
+  },
+  {
+   "n": 30,
+   "href": "https://spawn.co/@majid/parkour-rush",
+   "label": "Parkour Rush",
+   "desc": "You're racing against time through dynamic urban environments, vaulting over obstacles and scaling walls to reach the finish. Feel the adrenaline as you master fluid parkour movement and discover the fastest route to vic",
+   "meta": "by majid · 46 likes"
+  },
+  {
+   "n": 31,
+   "href": "https://spawn.co/@lakaplay/cartoon-horror",
+   "label": "Cartoon horror",
+   "desc": "Find 8 film reels in the foggy woods before Cartoon Cat and Cartoon Dog find you.",
+   "meta": "by lakaplay · 6 likes"
+  },
+  {
+   "n": 32,
+   "href": "https://spawn.co/@nova_golem_79/horror-kill",
+   "label": "Horror Kill",
+   "desc": "Hold the graveyard fire against waves of horrors crawling out of the moor fog.",
+   "meta": "by nova_golem_79 · 3 likes"
+  },
+  {
+   "n": 33,
+   "href": "https://spawn.co/@rexgaming_yt/the-lindenmann-part-two-horror",
+   "label": "The Lindenmann Part Two (Horror)",
+   "desc": "Part Two. The woods at night, a camcorder, a flashlight, a pistol, and the Lindenmann.",
+   "meta": "by rexgaming_yt · 3 likes"
+  },
+  {
+   "n": 34,
+   "href": "https://spawn.co/@ghost_dragon/ten-days-petsitting-horror",
+   "label": "Ten Days Petsitting (horror)",
+   "desc": "Ten days pet-sitting the sweetest pet on the street. Something changes every day.",
+   "meta": "by ghost_dragon · 2 likes"
+  },
+  {
+   "n": 35,
+   "href": "https://spawn.co/@op_nico/haunted-plushie-game-lingo-pals-horror-stories",
+   "label": "Haunted Plushie game: Lingo Pals Horror Stories",
+   "desc": "Learn the Chinese word, pick the right door, or she finds you.",
+   "meta": "by op_nico · 1 likes"
+  },
+  {
+   "n": 36,
+   "href": "https://spawn.co/@bomb_bo/cerebral-decay",
+   "label": "CEREBRAL DECAY",
+   "desc": "A fungus hunts your mind. Leave Shelter-09, scavenge the dark, keep your sanity.",
+   "meta": "by bomb_bo · 31 likes"
+  },
+  {
+   "n": 37,
+   "href": "https://spawn.co/@00ercruptedsupreme/1-clicker",
+   "label": "1 Clicker",
+   "desc": "Click the big 1, catch the golden 1, buy mines and super clickers, top the room.",
+   "meta": "by 00ercruptedsupreme · 4 likes"
+  },
+  {
+   "n": 38,
+   "href": "https://spawn.co/@sharkyrex16/clicker-sim",
+   "label": "Clicker Sim",
+   "desc": "click the gem, buy upgrades, rebirth, get stupid rich",
+   "meta": "by sharkyrex16 · 4 likes"
+  },
+  {
+   "n": 39,
+   "href": "https://spawn.co/@ohtheicee/banana-clicker",
+   "label": "Banana Clicker",
+   "desc": "A giant banana in a field. Click it. Everyone's clicks count.",
+   "meta": "by ohtheicee · 3 likes"
+  },
+  {
+   "n": 40,
+   "href": "https://spawn.co/@0liver/dark-fountain-clicker",
+   "label": "Dark Fountain Clicker",
+   "desc": "Feed the darkness, open fountains, and face the Roaring Knight and Titan in a Deltarune fan clicker.",
+   "meta": "by 0liver · 2 likes"
+  },
+  {
+   "n": 41,
+   "href": "https://spawn.co/@longthunder/cubemunity",
+   "label": "Cubemunity",
+   "desc": "A cozy community clicker. Break a giant cube together, one layer at a time.",
+   "meta": "by longthunder · 25 likes"
+  },
+  {
+   "n": 42,
+   "href": "https://spawn.co/@binxius/spawn-hangout",
+   "label": "Spawn Hangout",
+   "desc": "A lakeside town to meet up, talk and play: ski, skate, bowl, shoot pool and fire yourself out of a cannon.",
+   "meta": "by binxius · 2 likes"
+  },
+  {
+   "n": 43,
+   "href": "https://spawn.co/@chucky/need-for-spawn",
+   "label": "Need for Spawn",
+   "desc": "Build your street car in an underground garage, then run it hot on the night test track.",
+   "meta": "by chucky · 39 likes"
+  },
+  {
+   "n": 44,
+   "href": "https://spawn.co/@dreamcatcher/spawndle",
+   "label": "Spawndle",
+   "desc": "Guess the Spawn game from one screenshot, every day. Plus Wordlock, Fours, Threads and Culprits.",
+   "meta": "by dreamcatcher · 26 likes"
+  },
+  {
+   "n": 45,
+   "href": "https://spawn.co/@chizkeykkk/cat-haven",
+   "label": "Cat Haven",
+   "desc": "A pink house in the clouds with a glass-domed cat yard. Carry the cats, pet them, run the cloud roads.",
+   "meta": "by chizkeykkk · 25 likes"
+  },
+  {
+   "n": 46,
+   "href": "https://spawn.co/@ninjacatlive/dojo-city",
+   "label": "DOJO CITY",
+   "desc": "Games • Casino • Social Hangout. A Ninja Cat World.",
+   "meta": "by ninjacatlive · 23 likes"
+  },
+  {
+   "n": 47,
+   "href": "https://spawn.co/@gamex_feed/eldoria-rpg-120xp",
+   "label": "Eldoria [RPG] 120xp",
+   "desc": "A top-down pixel RPG: wake in Trade Central, pick a vocation, hunt, loot and level across ten biomes.",
+   "meta": "by gamex_feed · 2 likes"
+  },
+  {
+   "n": 48,
+   "href": "https://spawn.co/@causey/ascend-real-life-rpg",
+   "label": "Ascend: Real-Life RPG",
+   "desc": "Every real rep is XP. Level 11 RuneScape-style skills, unlock gear, track sober days, and cash in points for rewards you set.",
+   "meta": "by causey · 2 likes"
+  },
+  {
+   "n": 49,
+   "href": "https://spawn.co/@majid/rpg-fighter",
+   "label": "RPG Fighter",
+   "desc": "Ten RPG heroes, knight to dragoon: pick one and fight best of three in a burning pixel-art keep.",
+   "meta": "by majid · 1 likes"
+  },
+  {
+   "n": 50,
+   "href": "https://spawn.co/@izkimar/escape-from-stranglethorn",
+   "label": "Escape from Stranglethorn",
+   "desc": "Nine Human classes. A jungle full of valuables. Make it back to Booby Bay.",
+   "meta": "by izkimar · 591 likes"
+  },
+  {
+   "n": 51,
+   "href": "https://spawn.co/@izkimar/diablo-survivors",
+   "label": "Diablo Survivors",
+   "desc": "Pick your hero at the camp fire, step through the portal, survive the horde.",
+   "meta": "by izkimar · 177 likes"
+  },
+  {
+   "n": 52,
+   "href": "https://spawn.co/@yisus/aether-legends",
+   "label": "Aether Legends",
+   "desc": "Invoca héroes, forma tu escuadrón de seis y rompe al Vacío con cadenas de Brave Burst.",
+   "meta": "by yisus · 67 likes"
+  }
+ ]
+}

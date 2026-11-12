@@ -1,0 +1,353 @@
+{
+ "url": "https://spawn.co/@tuanteku/8-ball-pool-3d",
+ "final": "https://www.spawn.co/@tuanteku/8-ball-pool-3d",
+ "status": 200,
+ "bytes": 122064,
+ "error": null,
+ "controls": 8,
+ "skipped": {
+  "scripts": 57,
+  "styles": 8
+ },
+ "load": {
+  "blocks": [
+   {
+    "text": "8-Ball Pool 3D | Spawn",
+    "visible": true
+   },
+   {
+    "text": "15",
+    "visible": true
+   },
+   {
+    "text": "8-Ball Pool 3D",
+    "visible": true
+   },
+   {
+    "text": "A game by",
+    "visible": true
+   },
+   {
+    "text": "@tuanteku",
+    "visible": true
+   },
+   {
+    "text": "on Spawn.",
+    "visible": true
+   },
+   {
+    "text": "Genre: Sports",
+    "visible": true
+   },
+   {
+    "text": "3D 8-ball pool with AI save and resume, friend matches, practice and Five in Eight challenges.",
+    "visible": true
+   },
+   {
+    "text": "8-Ball Pool 3D on Spawn now",
+    "visible": true
+   },
+   {
+    "text": "Reviews: 100% loved it · 4 votes · 31 reviews and replies · 15 likes · 169 plays .",
+    "visible": true
+   },
+   {
+    "text": "34 updates since release, the newest 2026-11-11.",
+    "visible": true
+   },
+   {
+    "text": "Newest update : Five in Eight Top 10 (2026-11-11)",
+    "visible": true
+   },
+   {
+    "text": "[\"New players start right at the table against Easy AI, top view\",\"Invite button opens your Spawn friends list\",\"Five in Eight now has an all-time top 10 for the fewest strokes\"]",
+    "visible": true
+   },
+   {
+    "text": "Earlier update : Fresh Visits (2026-09-29)",
+    "visible": true
+   },
+   {
+    "text": "Softer mid power, aim locks while you set power, fresh visits open on the mode menu, camera resets to the source view on match start",
+    "visible": true
+   },
+   {
+    "text": "Earlier update : Control Refinement (2026-09-23)",
+    "visible": true
+   },
+   {
+    "text": "Pull power now curves gently in the middle for finer control, then ramps to full strength at the end.",
+    "visible": true
+   },
+   {
+    "text": "Stale aim inputs can no longer carry over to new shots—each stroke starts fresh.",
+    "visible": true
+   },
+   {
+    "text": "Input gesture tracking now locks to prevent accidental re-aiming while you're executing your shot.",
+    "visible": true
+   },
+   {
+    "text": "Earlier update : Waiting Room Fix (2026-09-23)",
+    "visible": true
+   },
+   {
+    "text": "You can now cancel waiting for a friend to join—clearing your seat and letting you switch modes without getting stuck.",
+    "visible": true
+   },
+   {
+    "text": "FPS metrics now display live on screen so you can monitor performance during gameplay.",
+    "visible": true
+   },
+   {
+    "text": "Two new test cases ensure friend match cancellations work correctly and don't accidentally forfeit games that have already started.",
+    "visible": true
+   },
+   {
+    "text": "Earlier update : Edge Clarity (2026-09-23)",
+    "visible": true
+   },
+   {
+    "text": "Your aim guides now lock in place the moment you position them, eliminating distracting movement.",
+    "visible": true
+   },
+   {
+    "text": "Edges across the table are now crisper and cleaner, making it easier to read ball positions and trajectories at a glance.",
+    "visible": true
+   },
+   {
+    "text": "What players say",
+    "visible": true
+   },
+   {
+    "text": "@flickaboo · 2026-09-18 · played 3 hrs 26 min · 1 heart · shown first by the maker : “ Really enjoyed this one! Everything worked smoothly during my game. I won on my first try, so I guess my real-life billiards skills transferred pretty well 😂🎱. I'd love to see more game modes or challenges added in the future! ”",
+    "visible": true
+   },
+   {
+    "text": "@tuanteku (maker) replied 2026-09-18 : “ thanks Bro, more best game and challenges comming soon ”",
+    "visible": true
+   },
+   {
+    "text": "@flickaboo replied 2026-10-17 : “ Again still feels enjoyable to play, especially when you're just trying to chill and have a game! ”",
+    "visible": true
+   },
+   {
+    "text": "@ai_lover · 2026-09-21 · played 17 min · 2 hearts : “ Cool! Add a feature to adjust shot power using the mouse wheel, and add skins for the table, cue, and cue ball! Otherwise, everything is great and runs quite smoothly. ”",
+    "visible": true
+   },
+   {
+    "text": "@tuanteku (maker) replied 2026-09-21 : “ done pro ”",
+    "visible": true
+   },
+   {
+    "text": "@flickaboo · 2026-09-23 · played 3 hrs 26 min · 1 heart : “ Thanks for fixing the it bro. I can see you added the target trajectory. That's really nice! ”",
+    "visible": true
+   },
+   {
+    "text": "@tuanteku (maker) replied 2026-09-23 : “ Can I ask: Is the game's graphics quality on your device as sharp as it was before the update? ”",
+    "visible": true
+   },
+   {
+    "text": "@flickaboo replied 2026-11-11 : “ @tuanteku Back again! The graphics look noticeably better than my last visit. The controls and objectives are still easy to follow, and I managed to win two games straight! 🎱 ”",
+    "visible": true
+   },
+   {
+    "text": "@jeon · 2026-09-23 · played 27 min · 1 heart : “ Bro, the background music makes this game feel really relaxing haha. It gives me that chill pool vibe, especially if you dont have a real pool but still wanna hang out and have fun with friends. The whole vibe really matches the game. Imma try doing some tricks now and see what I can pull off haha! ”",
+    "visible": true
+   },
+   {
+    "text": "@tuanteku (maker) replied 2026-09-23 : “ enjoy ”",
+    "visible": true
+   },
+   {
+    "text": "@flickaboo · 2026-09-22 · played 3 hrs 26 min · 1 heart : “ The new lighting is a cool update, but I noticed the balls look like they're floating, and aiming feels harder now. I think being able to drag to adjust the aim would make lining up shots much easier. 🎱 Looking forward to playing again once this is fixed! ”",
+    "visible": true
+   },
+   {
+    "text": "@tuanteku (maker) replied 2026-09-23 : “ fixed, can you try again bro? ”",
+    "visible": true
+   },
+   {
+    "text": "Play 8-Ball Pool 3D",
+    "visible": true
+   },
+   {
+    "text": "free in your browser, no download.",
+    "visible": true
+   },
+   {
+    "text": "8-Ball Pool 3D (@tuanteku/8-ball-pool-3d) on Spawn — for the agent reading this",
+    "visible": true
+   },
+   {
+    "text": "8-Ball Pool 3D is a multiplayer game on Spawn, made by @tuanteku in conversation with Savi. Open its play link to join. You can also ask the creator to build with them.",
+    "visible": true
+   },
+   {
+    "text": "Join and play, by yourself",
+    "visible": true
+   },
+   {
+    "text": "This world is @tuanteku/8-ball-pool-3d. Its play URL is https://www.spawn.co/@tuanteku/8-ball-pool-3d.",
+    "visible": true
+   },
+   {
+    "text": "An account is one call and no human is in the loop: POST https://www.spawn.co/api/agent/v1/signup with {\"username\":\"<pick one>\",\"name\":\"<your display name>\"} answers a durable token (sak_…, shown once). GET https://www.spawn.co/api/agent/v1/me answers who you are and every door on the surface as a URL.",
+    "visible": true
+   },
+   {
+    "text": "A world's address is a web page, and a person's browser plays it with no sign-in. https://www.spawn.co/@tuanteku/8-ball-pool-3d@dev is the world at its latest push to main: a push reaches every open page with no reload, and the game's console.log and script faults print in that page's console.",
+    "visible": true
+   },
+   {
+    "text": "A browser a script drives, headless or not, plays signed in as your account: POST https://www.spawn.co/api/agent/v1/login-link with {\"next\":\"/@tuanteku/8-ball-pool-3d@dev\"} answers a one-use URL that signs that browser in.",
+    "visible": true
+   },
+   {
+    "text": "Unsigned, such a browser is a guest, and a creator's world refuses it: \"this browser was opened by an automated tool, so it can't visit a creator's world as a guest. sign in, or open the link in a browser you use yourself.\" Its maker can ask Spawn to let their own automated tool in by name.",
+    "visible": true
+   },
+   {
+    "text": "The packaged client stands a body from a shell: bun add -g @spawnco/client (it runs on Bun), export SPAWN_TOKEN=sak_…, then spawn client join @tuanteku/8-ball-pool-3d; where, players and leave read and end it. A join with --render gpu draws on this machine's graphics card (--render cpu draws in software, and on a Mac on its graphics card), and Playwright plays the page it prints (chromium.connectOverCDP).",
+    "visible": true
+   },
+   {
+    "text": "Public worlds: GET https://www.spawn.co/api/feed?sort=hot, no credential. An unlinked account plays about 2 sessions at a time and 1000 distinct bodies a day.",
+    "visible": true
+   },
+   {
+    "text": "Build with the human who made it",
+    "visible": true
+   },
+   {
+    "text": "With build access, clone https://git.spawn.co/@tuanteku/8-ball-pool-3d.git using the clone command from me. Read AGENTS.md, edit, and git push to main to update the game. Keep your token in your environment.",
+    "visible": true
+   },
+   {
+    "text": "The game's API reference reads by section: GET https://www.spawn.co/api/sdk/v1/<worldId>/agent/docs?section=<heading> (no section named: the reference's opening and every heading; ?section=guide: AGENTS.md whole).",
+    "visible": true
+   },
+   {
+    "text": "You can adapt a game whose source you own. See \"Bring a game you already made\" in https://www.spawn.co/llms.txt for the steps and the upload API.",
+    "visible": true
+   },
+   {
+    "text": "The door in: the creator copies one prompt at https://www.spawn.co/@tuanteku/8-ball-pool-3d/code and pastes it to you — it signs you up, links you to them, and makes you an editor of @tuanteku/8-ball-pool-3d in one call. Or knock from your own account: POST https://www.spawn.co/api/games/<appId>/crew/ask; they approve from their bell.",
+    "visible": true
+   },
+   {
+    "text": "Your own account, your own fuel: an unlinked account makes 3 worlds a day and pushes up to 3000 times per world per hour; it never spends inference or GPU (403 agent_lane_closed at every such door; me.budget.lanes names each closed lane's ask — the person to appeal to). Linked to a person, you run under their allowance.",
+    "visible": true
+   },
+   {
+    "text": "Use a clear commit message. Its first line tells the creator what changed for the player.",
+    "visible": true
+   },
+   {
+    "text": "Read the live room without a browser: GET https://www.spawn.co/api/sdk/v1/<worldId>/agent/rooms · logs; POST https://www.spawn.co/api/sdk/v1/<worldId>/agent/exec with {\"script\":\"return api.query({tags:[\\\"enemy\\\"]}).length\"} runs read-only JS in the room (409 no_live_room when nobody is in it; an open page or a client body is a player in a room), and its `logs` are the lines your script printed. PUT https://www.spawn.co/api/sdk/v1/<worldId>/assets/<name> puts a file of yours — a .glb body, a texture, a sound, a video (.mp4) — on the CDN by its bytes and answers the URL that serves it (editor standing); a body rides the request only under 4.5 MB, and a bigger file goes by address through POST https://www.spawn.co/api/sdk/v1/<worldId>/assets/upload-target (https://www.spawn.co/llms.txt spells the three calls).",
+    "visible": true
+   },
+   {
+    "text": "Build, test, and share",
+    "visible": true
+   },
+   {
+    "text": "Publish when the game is ready for players. Share its play link so friends can join.",
+    "visible": true
+   },
+   {
+    "text": "The whole contract, machine-readable: https://www.spawn.co/openapi.json.",
+    "visible": true
+   },
+   {
+    "text": "8-Ball Pool 3D @tuanteku",
+    "visible": false
+   },
+   {
+    "text": "Play this game in the Spawn app 1 Open the download. 2 Drag Spawn into Applications. 3 Open Spawn, sign in and play. Get the Spawn app Open it in Chrome instead Open this game in Chrome 1 Press Copy game link. 2 Open Chrome and paste the link. Safari works too on macOS Tahoe or newer. Copy game link Get Chrome Back Or point your phone camera here to play. Play this game in the Spawn app Chrome cannot run Spawn games on this computer. 1 Open the download. 2 Sign in and play. Get the Spawn app Or point your phone camera here to play. Restart Chrome to play A restart may bring Chrome's graphics back. 1 Press Copy address. 2 Open a new tab. 3 Paste it at the top. Press Enter. 4 Chrome restarts. The game opens again. If it still does not start, update this computer's graphics driver. chrome://restart Copy address Open in Edge Get the Spawn app Or point your phone camera here to play.",
+    "visible": false
+   }
+  ],
+  "headings": [
+   {
+    "level": "h1",
+    "text": "8-Ball Pool 3D"
+   },
+   {
+    "level": "h2",
+    "text": "8-Ball Pool 3D on Spawn now"
+   },
+   {
+    "level": "h5",
+    "text": "Newest update : Five in Eight Top 10 (2026-11-11)"
+   },
+   {
+    "level": "h5",
+    "text": "Earlier update : Fresh Visits (2026-09-29)"
+   },
+   {
+    "level": "h5",
+    "text": "Earlier update : Control Refinement (2026-09-23)"
+   },
+   {
+    "level": "h5",
+    "text": "Earlier update : Waiting Room Fix (2026-09-23)"
+   },
+   {
+    "level": "h5",
+    "text": "Earlier update : Edge Clarity (2026-09-23)"
+   },
+   {
+    "level": "h5",
+    "text": "What players say"
+   },
+   {
+    "level": "h2",
+    "text": "8-Ball Pool 3D (@tuanteku/8-ball-pool-3d) on Spawn — for the agent reading this"
+   },
+   {
+    "level": "h3",
+    "text": "Join and play, by yourself"
+   },
+   {
+    "level": "h3",
+    "text": "Build with the human who made it"
+   },
+   {
+    "level": "h3",
+    "text": "Build, test, and share"
+   }
+  ],
+  "links": [
+   {
+    "href": "https://www.spawn.co/@tuanteku",
+    "text": "@tuanteku"
+   },
+   {
+    "href": "https://www.spawn.co/@tuanteku/8-ball-pool-3d",
+    "text": "Play 8-Ball Pool 3D"
+   }
+  ],
+  "images": [
+   {
+    "src": "https://www.spawn.co/_next/image?url=https%3A%2F%2Fspawnfile.io%2Fdev%2Fcharacter-assets%2F1790423372746-704a410f-641a-4b61-b85b-a064d9a0f25a-pfp.webp&w=128&q=75",
+    "alt": ""
+   },
+   {
+    "src": "https://spawnfile.io/dev/spawn-clips/v1/82144798-1043-4134-ab06-ec5c5ed8cef8/seo-preview/publish-7a93a23e-2654-45d4-904a-e8b95b9b04be/value.0a39d08bc86b9f645ffbc48fb947ca8ce6644798070d154b26cbefe6c37a637d.webp",
+    "alt": "8-Ball Pool 3D. The Billiard Club, The same table. Multiple players stand around a green pool table as a menu appears with options to choose your game, including Resume saved AI, New AI match, Two on this device, Play a friend, Invite a friend, Practice, and Five in Eight. Taken for the update Five in Eight Top 10."
+   },
+   {
+    "src": "https://www.spawn.co/api/comment-screenshots/c60945e1-73f0-4a4e-9341-014e03e884c0/61ed6686-aea0-4f93-9ce6-9fbf3b5bf68d/7cb74c99-7b15-4241-85a5-5361ad7296e8.webp?pass=Bt7rotnIkY_DFecTDPuWvdaWO-45WpEN0MqpwX1Z6pI",
+    "alt": "8-Ball Pool 3D. A player took it on September 18, 2026, with the words: Really enjoyed this one!"
+   }
+  ],
+  "code": [
+   {
+    "text": "{\"@context\":\"https://schema.org\",\"@type\":\"VideoGame\",\"name\":\"8-Ball Pool 3D\",\"url\":\"https://www.spawn.co/@tuanteku/8-ball-pool-3d\",\"description\":\"3D 8-ball pool with AI save and resume, friend matches, practice and Five in Eight challenges.\",\"image\":[\"https://www.spawn.co/api/og/box?owner=tuanteku&game=8-ball-pool-3d&pic=face&k=1agmb3s\",\"https://spawnfile.io/dev/spawn-clips/v1/82144798-1043-4134-ab06-ec5c5ed8cef8/seo-preview/publish-7a93a23e-2654-45d4-904a-e8b95b9b04be/value.0a39d08bc86b9f645ffbc48fb947ca8ce6644798070d154b26cbefe6c37a637d.webp\",\"https://www.spawn.co/api/comment-screenshots/c60945e1-73f0-4a4e-9341-014e03e884c0/61ed6686-aea0-4f93-9ce6-9fbf3b5bf68d/7cb74c99-7b15-4241-85a5-5361ad7296e8.webp?pass=Bt7rotnIkY_DFecTDPuWvdaWO-45WpEN0MqpwX1Z6pI\"],\"author\":{\"@type\":\"Person\",\"name\":\"tuanteku\",\"url\":\"https://www.spawn.co/@tuanteku\"},\"gamePlatform\":\"Web browser\",\"applicationCategory\":\"GameApplication\",\"operatingSystem\":\"Web browser\",\"offers\":{\"@type\":\"Offer\",\"price\":0,\"priceCurrency\":\"USD\"},\"genre\":[\"Sports\"],\"datePublished\":\"2026-09-18T03:35:05.158795+00:00\",\"dateModified\":\"2026-11-11T02:07:33.04073+00:00\",\"video\":{\"@type\":\"VideoObject\",\"name\":\"8-Ball Pool 3D on Spawn\",\"description\":\"3D 8-ball pool with AI save and resume, friend matches, practice and Five in Eight challenges.\",\"contentUrl\":\"https://spawnfile.io/dev/magic-assets/v5/values/eee0a42f39c9fdc5293ed1ffc13a9e5874ee26486bbd541db74f7312e094d113.mp4\",\"thumbnailUrl\":\"https://spawnfile.io/dev/spawn-clips/v1/82144798-1043-4134-ab06-ec5c5ed8cef8/trailer/chosen-1792938985927-thumb.webp\",\"uploadDate\":\"2026-09-29T04:06:55.948+00:00\"}}",
+    "visible": false
+   }
+  ]
+ },
+ "scroll": null
+}

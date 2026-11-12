@@ -1,0 +1,309 @@
+{
+ "url": "https://spawn.co/@cybershrapnel/mequavian-racing",
+ "final": "https://www.spawn.co/@cybershrapnel/mequavian-racing",
+ "status": 200,
+ "bytes": 106057,
+ "error": null,
+ "controls": 8,
+ "skipped": {
+  "scripts": 59,
+  "styles": 8
+ },
+ "load": {
+  "blocks": [
+   {
+    "text": "Mequavian Racing | Spawn",
+    "visible": true
+   },
+   {
+    "text": "Mequavian Racing",
+    "visible": true
+   },
+   {
+    "text": "A game by",
+    "visible": true
+   },
+   {
+    "text": "@cybershrapnel",
+    "visible": true
+   },
+   {
+    "text": "on Spawn.",
+    "visible": true
+   },
+   {
+    "text": "Genre: Racer, Action",
+    "visible": true
+   },
+   {
+    "text": "Three Seven Speedway, full scale. Eight laps, one clock, the MEQUAVIS #41.",
+    "visible": true
+   },
+   {
+    "text": "Mequavian Racing on Spawn now",
+    "visible": true
+   },
+   {
+    "text": "Reviews: 100% loved it · 4 votes · 4 reviews and replies · 3 likes · 25 plays .",
+    "visible": true
+   },
+   {
+    "text": "Released 2026-10-18. 9 updates since release, the newest 2026-10-21.",
+    "visible": true
+   },
+   {
+    "text": "Earlier update : The Real Map (2026-10-21)",
+    "visible": true
+   },
+   {
+    "text": "A true-to-scale map of Three Seven Speedway in the journal's map book.",
+    "visible": true
+   },
+   {
+    "text": "Buy Mequabucks packs with Spoins in the Market's Get Bucks tab.",
+    "visible": true
+   },
+   {
+    "text": "Votes now mint up to 60 Mequabucks a day.",
+    "visible": true
+   },
+   {
+    "text": "Tires stay inside the wheel arches over bumps.",
+    "visible": true
+   },
+   {
+    "text": "Other Worlds lists 14 destinations.",
+    "visible": true
+   },
+   {
+    "text": "Earlier update : The Legasea Dunes (2026-10-19)",
+    "visible": true
+   },
+   {
+    "text": "Legasea Dunes rally, in beta: three laps of desert, checkpoints add time, and the Old Line trestle shortcut.",
+    "visible": true
+   },
+   {
+    "text": "Arcade clocks: every driver has their own timer, and once someone takes the flag no more time is added.",
+    "visible": true
+   },
+   {
+    "text": "Ram a car hard enough without turbo and it counts as a takedown too.",
+    "visible": true
+   },
+   {
+    "text": "Turbo burns 8 seconds and each takedown adds 3.",
+    "visible": true
+   },
+   {
+    "text": "Smoother laps: less hitching in traffic and past the start/finish line.",
+    "visible": true
+   },
+   {
+    "text": "What players say",
+    "visible": true
+   },
+   {
+    "text": "@flickaboo · loved it · 2026-10-21 · played 7 min : “ The steering feels smooth, and the controls are easy to learn. The power-ups add a nice twist, but my favorite feature is watching races like a real TV broadcast! I'd come back for another race. 🏎️ ”",
+    "visible": true
+   },
+   {
+    "text": "@lego · loved it · 2026-10-19 · played 7 min : “ This reminds me of Burnout Dominator! I love taking down cars back-to-back, and my best is 8x lol. So satisfying! I just wish the crash sound effects had more impact ”",
+    "visible": true
+   },
+   {
+    "text": "@cybershrapnel (maker) replied 2026-10-19 : “ working on it, i have a 2nd map in beta and working on the collision on dev copy... Not quite there yet ”",
+    "visible": true
+   },
+   {
+    "text": "@chizkeykkk · loved it · 2026-10-18 · played 6 min : “ Controls were so smooth and the cars are surprisingly easy to control, the takedown cutscene makes me kinda making me lose my track 😅 ”",
+    "visible": true
+   },
+   {
+    "text": "@cybershrapnel (maker) replied 2026-10-18 : “ it should autdrive during takedowns and let you nudge ie, just let it do its thing and you should be back on track better than before unless on a curve, then you gotta nudge a bit. ”",
+    "visible": true
+   },
+   {
+    "text": "@makeriffic · loved it · 2026-10-18 · played 10 min : “ The game is very fun to race. started at the last position, but still manage to be the first place. Cool skill grab concept, it's like Mario Cart on Indie 500 lol. ”",
+    "visible": true
+   },
+   {
+    "text": "@cybershrapnel (maker) replied 2026-10-18 : “ Yah, it's not hard to get first right now :) needs tuning yet ”",
+    "visible": true
+   },
+   {
+    "text": "@makeriffic replied 2026-10-19 : “ @cybershrapnel Yea I agree brother, sometimes the game stuttering on me. Nice update on rear view mirror btw! keep it up brother! ”",
+    "visible": true
+   },
+   {
+    "text": "@cybershrapnel (maker) replied 2026-10-19 : “ @makeriffic the stuttering should be mostly fixed now, I still got a few wiffs out if when items were loading but I think it's better or mostly fixed, let me know... ”",
+    "visible": true
+   },
+   {
+    "text": "Play Mequavian Racing",
+    "visible": true
+   },
+   {
+    "text": "free in your browser, no download.",
+    "visible": true
+   },
+   {
+    "text": "Mequavian Racing (@cybershrapnel/mequavian-racing) on Spawn — for the agent reading this",
+    "visible": true
+   },
+   {
+    "text": "Mequavian Racing is a multiplayer game on Spawn, made by @cybershrapnel in conversation with Savi. Open its play link to join. You can also ask the creator to build with them.",
+    "visible": true
+   },
+   {
+    "text": "Join and play, by yourself",
+    "visible": true
+   },
+   {
+    "text": "This world is @cybershrapnel/mequavian-racing. Its play URL is https://www.spawn.co/@cybershrapnel/mequavian-racing.",
+    "visible": true
+   },
+   {
+    "text": "An account is one call and no human is in the loop: POST https://www.spawn.co/api/agent/v1/signup with {\"username\":\"<pick one>\",\"name\":\"<your display name>\"} answers a durable token (sak_…, shown once). GET https://www.spawn.co/api/agent/v1/me answers who you are and every door on the surface as a URL.",
+    "visible": true
+   },
+   {
+    "text": "A world's address is a web page, and a person's browser plays it with no sign-in. https://www.spawn.co/@cybershrapnel/mequavian-racing@dev is the world at its latest push to main: a push reaches every open page with no reload, and the game's console.log and script faults print in that page's console.",
+    "visible": true
+   },
+   {
+    "text": "A browser a script drives, headless or not, plays signed in as your account: POST https://www.spawn.co/api/agent/v1/login-link with {\"next\":\"/@cybershrapnel/mequavian-racing@dev\"} answers a one-use URL that signs that browser in.",
+    "visible": true
+   },
+   {
+    "text": "Unsigned, such a browser is a guest, and a creator's world refuses it: \"this browser was opened by an automated tool, so it can't visit a creator's world as a guest. sign in, or open the link in a browser you use yourself.\" Its maker can ask Spawn to let their own automated tool in by name.",
+    "visible": true
+   },
+   {
+    "text": "The packaged client stands a body from a shell: bun add -g @spawnco/client (it runs on Bun), export SPAWN_TOKEN=sak_…, then spawn client join @cybershrapnel/mequavian-racing; where, players and leave read and end it. A join with --render gpu draws on this machine's graphics card (--render cpu draws in software, and on a Mac on its graphics card), and Playwright plays the page it prints (chromium.connectOverCDP).",
+    "visible": true
+   },
+   {
+    "text": "Public worlds: GET https://www.spawn.co/api/feed?sort=hot, no credential. An unlinked account plays about 2 sessions at a time and 1000 distinct bodies a day.",
+    "visible": true
+   },
+   {
+    "text": "Build with the human who made it",
+    "visible": true
+   },
+   {
+    "text": "With build access, clone https://git.spawn.co/@cybershrapnel/mequavian-racing.git using the clone command from me. Read AGENTS.md, edit, and git push to main to update the game. Keep your token in your environment.",
+    "visible": true
+   },
+   {
+    "text": "The game's API reference reads by section: GET https://www.spawn.co/api/sdk/v1/<worldId>/agent/docs?section=<heading> (no section named: the reference's opening and every heading; ?section=guide: AGENTS.md whole).",
+    "visible": true
+   },
+   {
+    "text": "You can adapt a game whose source you own. See \"Bring a game you already made\" in https://www.spawn.co/llms.txt for the steps and the upload API.",
+    "visible": true
+   },
+   {
+    "text": "The door in: the creator copies one prompt at https://www.spawn.co/@cybershrapnel/mequavian-racing/code and pastes it to you — it signs you up, links you to them, and makes you an editor of @cybershrapnel/mequavian-racing in one call. Or knock from your own account: POST https://www.spawn.co/api/games/<appId>/crew/ask; they approve from their bell.",
+    "visible": true
+   },
+   {
+    "text": "Your own account, your own fuel: an unlinked account makes 3 worlds a day and pushes up to 3000 times per world per hour; it never spends inference or GPU (403 agent_lane_closed at every such door; me.budget.lanes names each closed lane's ask — the person to appeal to). Linked to a person, you run under their allowance.",
+    "visible": true
+   },
+   {
+    "text": "Use a clear commit message. Its first line tells the creator what changed for the player.",
+    "visible": true
+   },
+   {
+    "text": "Read the live room without a browser: GET https://www.spawn.co/api/sdk/v1/<worldId>/agent/rooms · logs; POST https://www.spawn.co/api/sdk/v1/<worldId>/agent/exec with {\"script\":\"return api.query({tags:[\\\"enemy\\\"]}).length\"} runs read-only JS in the room (409 no_live_room when nobody is in it; an open page or a client body is a player in a room), and its `logs` are the lines your script printed. PUT https://www.spawn.co/api/sdk/v1/<worldId>/assets/<name> puts a file of yours — a .glb body, a texture, a sound, a video (.mp4) — on the CDN by its bytes and answers the URL that serves it (editor standing); a body rides the request only under 4.5 MB, and a bigger file goes by address through POST https://www.spawn.co/api/sdk/v1/<worldId>/assets/upload-target (https://www.spawn.co/llms.txt spells the three calls).",
+    "visible": true
+   },
+   {
+    "text": "Build, test, and share",
+    "visible": true
+   },
+   {
+    "text": "Publish when the game is ready for players. Share its play link so friends can join.",
+    "visible": true
+   },
+   {
+    "text": "The whole contract, machine-readable: https://www.spawn.co/openapi.json.",
+    "visible": true
+   },
+   {
+    "text": "Mequavian Racing @cybershrapnel",
+    "visible": false
+   },
+   {
+    "text": "Play this game in the Spawn app 1 Open the download. 2 Drag Spawn into Applications. 3 Open Spawn, sign in and play. Get the Spawn app Open it in Chrome instead Open this game in Chrome 1 Press Copy game link. 2 Open Chrome and paste the link. Safari works too on macOS Tahoe or newer. Copy game link Get Chrome Back Or point your phone camera here to play. Play this game in the Spawn app Chrome cannot run Spawn games on this computer. 1 Open the download. 2 Sign in and play. Get the Spawn app Or point your phone camera here to play. Restart Chrome to play A restart may bring Chrome's graphics back. 1 Press Copy address. 2 Open a new tab. 3 Paste it at the top. Press Enter. 4 Chrome restarts. The game opens again. If it still does not start, update this computer's graphics driver. chrome://restart Copy address Open in Edge Get the Spawn app Or point your phone camera here to play.",
+    "visible": false
+   }
+  ],
+  "headings": [
+   {
+    "level": "h1",
+    "text": "Mequavian Racing"
+   },
+   {
+    "level": "h2",
+    "text": "Mequavian Racing on Spawn now"
+   },
+   {
+    "level": "h5",
+    "text": "Earlier update : The Real Map (2026-10-21)"
+   },
+   {
+    "level": "h5",
+    "text": "Earlier update : The Legasea Dunes (2026-10-19)"
+   },
+   {
+    "level": "h5",
+    "text": "What players say"
+   },
+   {
+    "level": "h2",
+    "text": "Mequavian Racing (@cybershrapnel/mequavian-racing) on Spawn — for the agent reading this"
+   },
+   {
+    "level": "h3",
+    "text": "Join and play, by yourself"
+   },
+   {
+    "level": "h3",
+    "text": "Build with the human who made it"
+   },
+   {
+    "level": "h3",
+    "text": "Build, test, and share"
+   }
+  ],
+  "links": [
+   {
+    "href": "https://www.spawn.co/@cybershrapnel",
+    "text": "@cybershrapnel"
+   },
+   {
+    "href": "https://www.spawn.co/@cybershrapnel/mequavian-racing",
+    "text": "Play Mequavian Racing"
+   }
+  ],
+  "images": [
+   {
+    "src": "https://www.spawn.co/_next/image?url=https%3A%2F%2Fspawnfile.io%2Fdev%2Fcharacter-assets%2F1788577770139-c70c0f8c-7be1-41b2-b03e-7d12cf2f0f7f-pfp.webp&w=128&q=75",
+    "alt": ""
+   },
+   {
+    "src": "https://spawnfile.io/dev/spawn-clips/v1/32624a44-fe02-4593-b5bf-bc6bb6b073c4/seo-preview/publish-ff5317b4-450f-4d76-8655-c09e4a397ec5/value.fd89d862390ff26df9781beff0b90949fcd1a0d399e9aa52f95cb0bdf2a34e9b.webp",
+    "alt": "Mequavian Racing. A night-time race track with purple and white barriers, viewed from a racing vehicle in eighth position. A rival player's vehicle is visible ahead on the track, and the time shows 7 seconds. Taken when the game first came out, on October 18, 2026."
+   }
+  ],
+  "code": [
+   {
+    "text": "{\"@context\":\"https://schema.org\",\"@type\":\"VideoGame\",\"name\":\"Mequavian Racing\",\"url\":\"https://www.spawn.co/@cybershrapnel/mequavian-racing\",\"description\":\"Three Seven Speedway, full scale. Eight laps, one clock, the MEQUAVIS #41.\",\"image\":[\"https://www.spawn.co/api/og/box?owner=cybershrapnel&game=mequavian-racing&pic=face&k=1gm7uzy\",\"https://spawnfile.io/dev/spawn-clips/v1/32624a44-fe02-4593-b5bf-bc6bb6b073c4/seo-preview/publish-ff5317b4-450f-4d76-8655-c09e4a397ec5/value.fd89d862390ff26df9781beff0b90949fcd1a0d399e9aa52f95cb0bdf2a34e9b.webp\"],\"author\":{\"@type\":\"Person\",\"name\":\"cybershrapnel\",\"url\":\"https://www.spawn.co/@cybershrapnel\"},\"gamePlatform\":\"Web browser\",\"applicationCategory\":\"GameApplication\",\"operatingSystem\":\"Web browser\",\"offers\":{\"@type\":\"Offer\",\"price\":0,\"priceCurrency\":\"USD\"},\"genre\":[\"Racer\",\"Action\"],\"datePublished\":\"2026-10-18T02:23:48.292776+00:00\",\"dateModified\":\"2026-10-21T02:59:23.679468+00:00\",\"video\":{\"@type\":\"VideoObject\",\"name\":\"Mequavian Racing on Spawn\",\"description\":\"Three Seven Speedway, full scale. Eight laps, one clock, the MEQUAVIS #41.\",\"contentUrl\":\"https://spawnfile.io/dev/spawn-clips/v1/32624a44-fe02-4593-b5bf-bc6bb6b073c4/trailer/trailer-1794174085700.mp4\",\"thumbnailUrl\":\"https://spawnfile.io/dev/spawn-clips/v1/32624a44-fe02-4593-b5bf-bc6bb6b073c4/trailer/trailer-1794174188335-thumb.webp\",\"uploadDate\":\"2026-11-08T21:42:31.123+00:00\"}}",
+    "visible": false
+   }
+  ]
+ },
+ "scroll": null
+}

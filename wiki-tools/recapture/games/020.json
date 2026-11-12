@@ -1,0 +1,253 @@
+{
+ "url": "https://spawn.co/@vovafromttav/survival-at-disaster",
+ "final": "https://www.spawn.co/@vovafromttav/survival-at-disaster",
+ "status": 200,
+ "bytes": 104810,
+ "error": null,
+ "controls": 8,
+ "skipped": {
+  "scripts": 58,
+  "styles": 8
+ },
+ "load": {
+  "blocks": [
+   {
+    "text": "Survival at Disaster | Spawn",
+    "visible": true
+   },
+   {
+    "text": "Survival at Disaster",
+    "visible": true
+   },
+   {
+    "text": "A game by",
+    "visible": true
+   },
+   {
+    "text": "@vovafromttav",
+    "visible": true
+   },
+   {
+    "text": "on Spawn.",
+    "visible": true
+   },
+   {
+    "text": "Genre: Action, Survivors",
+    "visible": true
+   },
+   {
+    "text": "Floods, tornadoes, meteors and acid rain hit the island town. Survive the round.",
+    "visible": true
+   },
+   {
+    "text": "Survival at Disaster on Spawn now",
+    "visible": true
+   },
+   {
+    "text": "Reviews: 87% loved it · 8 votes · 8 reviews and replies · 7 likes · 18 plays .",
+    "visible": true
+   },
+   {
+    "text": "Released 2026-11-08. 1 update since release, the newest 2026-11-11.",
+    "visible": true
+   },
+   {
+    "text": "Newest update : Upside Down (2026-11-11)",
+    "visible": true
+   },
+   {
+    "text": "New disaster: the Upside Down tornado. The funnel stands on its head, the sky turns to dirt, and it throws you up into the air.",
+    "visible": true
+   },
+   {
+    "text": "Ice Fun now opens with the ice pop cutscene before the twister lands. Tap SKIP to jump back in early.",
+    "visible": true
+   },
+   {
+    "text": "What players say",
+    "visible": true
+   },
+   {
+    "text": "@parz1val · loved it · 2026-11-11 · played 9 min : “ Really enjoyed the game but some of the disasters kept targeting me because I was the only player T-T. Hope you add bots to make the game more lively. ”",
+    "visible": true
+   },
+   {
+    "text": "@neitantei · loved it · 2026-11-08 · played 6 min : “ This is a fun disaster survival game!😂 It would be even more fun with more players, but adding bots for solo players would also be great. Looking forward to seeing more disasters and improvements! ”",
+    "visible": true
+   },
+   {
+    "text": "@vovafromttav · 2026-11-08 · played 7 hrs 20 min : “ OLD GAME IS BACK FOREVER! ”",
+    "visible": true
+   },
+   {
+    "text": "@yzykyl · loved it · 2026-11-07 · played 8 min : “ Pretty cool disaster survival game. I think it's better for a bigger crowd of players. Btw when you win, it shows some long file name for the coin png 😂 Speaking of coins, what do I spend them on? Can't seem to interact with the item shop. ”",
+    "visible": true
+   },
+   {
+    "text": "@lego · loved it · 2026-11-06 · played 7 min : “ Nice disaster game! Tho some disasters are a bit too easy to survive, and some areas feel kinda empty. Would be nice if you could add bots for solo players too ”",
+    "visible": true
+   },
+   {
+    "text": "Play Survival at Disaster",
+    "visible": true
+   },
+   {
+    "text": "free in your browser, no download.",
+    "visible": true
+   },
+   {
+    "text": "Survival at Disaster (@vovafromttav/survival-at-disaster) on Spawn — for the agent reading this",
+    "visible": true
+   },
+   {
+    "text": "Survival at Disaster is a multiplayer game on Spawn, made by @vovafromttav in conversation with Savi. Open its play link to join. You can also ask the creator to build with them.",
+    "visible": true
+   },
+   {
+    "text": "Join and play, by yourself",
+    "visible": true
+   },
+   {
+    "text": "This world is @vovafromttav/survival-at-disaster. Its play URL is https://www.spawn.co/@vovafromttav/survival-at-disaster.",
+    "visible": true
+   },
+   {
+    "text": "An account is one call and no human is in the loop: POST https://www.spawn.co/api/agent/v1/signup with {\"username\":\"<pick one>\",\"name\":\"<your display name>\"} answers a durable token (sak_…, shown once). GET https://www.spawn.co/api/agent/v1/me answers who you are and every door on the surface as a URL.",
+    "visible": true
+   },
+   {
+    "text": "A world's address is a web page, and a person's browser plays it with no sign-in. https://www.spawn.co/@vovafromttav/survival-at-disaster@dev is the world at its latest push to main: a push reaches every open page with no reload, and the game's console.log and script faults print in that page's console.",
+    "visible": true
+   },
+   {
+    "text": "A browser a script drives, headless or not, plays signed in as your account: POST https://www.spawn.co/api/agent/v1/login-link with {\"next\":\"/@vovafromttav/survival-at-disaster@dev\"} answers a one-use URL that signs that browser in.",
+    "visible": true
+   },
+   {
+    "text": "Unsigned, such a browser is a guest, and a creator's world refuses it: \"this browser was opened by an automated tool, so it can't visit a creator's world as a guest. sign in, or open the link in a browser you use yourself.\" Its maker can ask Spawn to let their own automated tool in by name.",
+    "visible": true
+   },
+   {
+    "text": "The packaged client stands a body from a shell: bun add -g @spawnco/client (it runs on Bun), export SPAWN_TOKEN=sak_…, then spawn client join @vovafromttav/survival-at-disaster; where, players and leave read and end it. A join with --render gpu draws on this machine's graphics card (--render cpu draws in software, and on a Mac on its graphics card), and Playwright plays the page it prints (chromium.connectOverCDP).",
+    "visible": true
+   },
+   {
+    "text": "Public worlds: GET https://www.spawn.co/api/feed?sort=hot, no credential. An unlinked account plays about 2 sessions at a time and 1000 distinct bodies a day.",
+    "visible": true
+   },
+   {
+    "text": "Build with the human who made it",
+    "visible": true
+   },
+   {
+    "text": "With build access, clone https://git.spawn.co/@vovafromttav/survival-at-disaster.git using the clone command from me. Read AGENTS.md, edit, and git push to main to update the game. Keep your token in your environment.",
+    "visible": true
+   },
+   {
+    "text": "The game's API reference reads by section: GET https://www.spawn.co/api/sdk/v1/<worldId>/agent/docs?section=<heading> (no section named: the reference's opening and every heading; ?section=guide: AGENTS.md whole).",
+    "visible": true
+   },
+   {
+    "text": "You can adapt a game whose source you own. See \"Bring a game you already made\" in https://www.spawn.co/llms.txt for the steps and the upload API.",
+    "visible": true
+   },
+   {
+    "text": "The door in: the creator copies one prompt at https://www.spawn.co/@vovafromttav/survival-at-disaster/code and pastes it to you — it signs you up, links you to them, and makes you an editor of @vovafromttav/survival-at-disaster in one call. Or knock from your own account: POST https://www.spawn.co/api/games/<appId>/crew/ask; they approve from their bell.",
+    "visible": true
+   },
+   {
+    "text": "Your own account, your own fuel: an unlinked account makes 3 worlds a day and pushes up to 3000 times per world per hour; it never spends inference or GPU (403 agent_lane_closed at every such door; me.budget.lanes names each closed lane's ask — the person to appeal to). Linked to a person, you run under their allowance.",
+    "visible": true
+   },
+   {
+    "text": "Use a clear commit message. Its first line tells the creator what changed for the player.",
+    "visible": true
+   },
+   {
+    "text": "Read the live room without a browser: GET https://www.spawn.co/api/sdk/v1/<worldId>/agent/rooms · logs; POST https://www.spawn.co/api/sdk/v1/<worldId>/agent/exec with {\"script\":\"return api.query({tags:[\\\"enemy\\\"]}).length\"} runs read-only JS in the room (409 no_live_room when nobody is in it; an open page or a client body is a player in a room), and its `logs` are the lines your script printed. PUT https://www.spawn.co/api/sdk/v1/<worldId>/assets/<name> puts a file of yours — a .glb body, a texture, a sound, a video (.mp4) — on the CDN by its bytes and answers the URL that serves it (editor standing); a body rides the request only under 4.5 MB, and a bigger file goes by address through POST https://www.spawn.co/api/sdk/v1/<worldId>/assets/upload-target (https://www.spawn.co/llms.txt spells the three calls).",
+    "visible": true
+   },
+   {
+    "text": "Build, test, and share",
+    "visible": true
+   },
+   {
+    "text": "Publish when the game is ready for players. Share its play link so friends can join.",
+    "visible": true
+   },
+   {
+    "text": "The whole contract, machine-readable: https://www.spawn.co/openapi.json.",
+    "visible": true
+   },
+   {
+    "text": "Survival at Disaster @vovafromttav",
+    "visible": false
+   },
+   {
+    "text": "Play this game in the Spawn app 1 Open the download. 2 Drag Spawn into Applications. 3 Open Spawn, sign in and play. Get the Spawn app Open it in Chrome instead Open this game in Chrome 1 Press Copy game link. 2 Open Chrome and paste the link. Safari works too on macOS Tahoe or newer. Copy game link Get Chrome Back Or point your phone camera here to play. Play this game in the Spawn app Chrome cannot run Spawn games on this computer. 1 Open the download. 2 Sign in and play. Get the Spawn app Or point your phone camera here to play. Restart Chrome to play A restart may bring Chrome's graphics back. 1 Press Copy address. 2 Open a new tab. 3 Paste it at the top. Press Enter. 4 Chrome restarts. The game opens again. If it still does not start, update this computer's graphics driver. chrome://restart Copy address Open in Edge Get the Spawn app Or point your phone camera here to play.",
+    "visible": false
+   }
+  ],
+  "headings": [
+   {
+    "level": "h1",
+    "text": "Survival at Disaster"
+   },
+   {
+    "level": "h2",
+    "text": "Survival at Disaster on Spawn now"
+   },
+   {
+    "level": "h5",
+    "text": "Newest update : Upside Down (2026-11-11)"
+   },
+   {
+    "level": "h5",
+    "text": "What players say"
+   },
+   {
+    "level": "h2",
+    "text": "Survival at Disaster (@vovafromttav/survival-at-disaster) on Spawn — for the agent reading this"
+   },
+   {
+    "level": "h3",
+    "text": "Join and play, by yourself"
+   },
+   {
+    "level": "h3",
+    "text": "Build with the human who made it"
+   },
+   {
+    "level": "h3",
+    "text": "Build, test, and share"
+   }
+  ],
+  "links": [
+   {
+    "href": "https://www.spawn.co/@vovafromttav",
+    "text": "@vovafromttav"
+   },
+   {
+    "href": "https://www.spawn.co/@vovafromttav/survival-at-disaster",
+    "text": "Play Survival at Disaster"
+   }
+  ],
+  "images": [
+   {
+    "src": "https://www.spawn.co/_next/image?url=https%3A%2F%2Fspawnfile.io%2Fdev%2Fcharacter-assets%2F1792495466916-146884d2-ce7b-4468-bc29-58881f646e24-pfp.webp&w=128&q=75",
+    "alt": ""
+   },
+   {
+    "src": "https://spawnfile.io/dev/spawn-clips/v1/c207216b-0dce-497c-aee4-45d4825afd14/seo-preview/seo-thumbnail/value.03b4341dbd9922d227cb553109b8e8e6ab952993b3ddc8d90afcbe6ee7d04a46.webp",
+    "alt": "Survival at Disaster. A game room interior displays two spinning wheels labeled \"Spin da Wheel\" and \"Spin da Map,\" with a countdown timer reading \"Next Disaster In 6\" above them. The interface shows health, wins, and currency indicators on the sides. Taken while its maker played, on November 11, 2026."
+   }
+  ],
+  "code": [
+   {
+    "text": "{\"@context\":\"https://schema.org\",\"@type\":\"VideoGame\",\"name\":\"Survival at Disaster\",\"url\":\"https://www.spawn.co/@vovafromttav/survival-at-disaster\",\"description\":\"Floods, tornadoes, meteors and acid rain hit the island town. Survive the round.\",\"image\":[\"https://www.spawn.co/api/og/box?owner=vovafromttav&game=survival-at-disaster&pic=face&k=9xc8te\",\"https://spawnfile.io/dev/spawn-clips/v1/c207216b-0dce-497c-aee4-45d4825afd14/seo-preview/seo-thumbnail/value.03b4341dbd9922d227cb553109b8e8e6ab952993b3ddc8d90afcbe6ee7d04a46.webp\"],\"author\":{\"@type\":\"Person\",\"name\":\"vovafromttav\",\"url\":\"https://www.spawn.co/@vovafromttav\"},\"gamePlatform\":\"Web browser\",\"applicationCategory\":\"GameApplication\",\"operatingSystem\":\"Web browser\",\"offers\":{\"@type\":\"Offer\",\"price\":0,\"priceCurrency\":\"USD\"},\"genre\":[\"Action\",\"Survivors\"],\"datePublished\":\"2026-11-08T15:40:09.540567+00:00\",\"dateModified\":\"2026-11-11T15:26:01.450801+00:00\",\"video\":{\"@type\":\"VideoObject\",\"name\":\"Survival at Disaster on Spawn\",\"description\":\"Floods, tornadoes, meteors and acid rain hit the island town. Survive the round.\",\"contentUrl\":\"https://spawnfile.io/dev/spawn-clips/v1/c207216b-0dce-497c-aee4-45d4825afd14/trailer/trailer-1794410762649.mp4\",\"thumbnailUrl\":\"https://spawnfile.io/dev/spawn-clips/v1/c207216b-0dce-497c-aee4-45d4825afd14/trailer/trailer-1794410885654-thumb.webp\",\"uploadDate\":\"2026-11-11T15:27:00.472+00:00\"}}",
+    "visible": false
+   }
+  ]
+ },
+ "scroll": null
+}
