@@ -1,5 +1,0 @@
-SqlStatementResult = {
-  rows: Record<string, unknown>[]
-  changes: number
-  lastInsertRowid: number | null
-}

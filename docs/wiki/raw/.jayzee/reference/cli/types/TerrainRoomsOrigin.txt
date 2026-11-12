@@ -1,4 +1,0 @@
-TerrainRoomsOrigin =
-  | "center"
-  | "corner"
-  | { x: number; z: number }

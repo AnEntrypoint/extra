@@ -1,7 +1,0 @@
-CreatorTabDef = {
-  id: string
-  title: string
-  icon: string
-  script: ScriptRef
-  shortcut?: string
-}

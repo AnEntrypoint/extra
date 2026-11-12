@@ -1,6 +1,0 @@
-ReplaceAcrossScriptsChange = {
-  script: string
-  line: number
-  before?: string
-  after?: string
-}

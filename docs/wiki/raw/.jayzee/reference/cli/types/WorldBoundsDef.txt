@@ -1,3 +1,0 @@
-WorldBoundsDef = {
-  bottom?: number | false
-}

@@ -1,5 +1,0 @@
-DestroyObjectsVerdict = {
-  id: string
-  verdict: "destroyed" | "not_found" | "refused"
-  reason?: string
-}

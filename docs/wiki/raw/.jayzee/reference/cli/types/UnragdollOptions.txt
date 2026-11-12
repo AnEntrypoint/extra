@@ -1,3 +1,0 @@
-UnragdollOptions = {
-  blendSeconds?: number
-}

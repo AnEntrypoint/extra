@@ -1,1 +1,0 @@
-CompiledTouchActiveSelector = (ctx: TouchActiveSelectorContext) => unknown

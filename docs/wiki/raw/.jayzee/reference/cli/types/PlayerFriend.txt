@@ -1,5 +1,0 @@
-PlayerFriend = {
-  userId: string
-  displayName: string
-  portraitUrl: string | null
-}

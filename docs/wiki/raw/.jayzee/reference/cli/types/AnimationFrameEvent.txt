@@ -1,5 +1,0 @@
-AnimationFrameEvent = {
-  name: string
-  animation: string
-  frame: number
-}

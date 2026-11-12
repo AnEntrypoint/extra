@@ -1,4 +1,0 @@
-UpdateScheduleNearRule = {
-  tag?: string
-  radius: number
-}

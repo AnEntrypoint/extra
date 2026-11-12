@@ -1,4 +1,0 @@
-UpdateSchedule = {
-  every?: number | { seconds: number }
-  near?: UpdateScheduleNearRule | readonly UpdateScheduleNearRule[]
-}

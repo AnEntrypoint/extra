@@ -1,6 +1,0 @@
-AudioCensus = {
-  music: MusicNowInfo | null
-  loops: AudioCensusLoop[]
-  emitters: AudioCensusEmitter[]
-  shifts: AudioCensusShift[]
-}

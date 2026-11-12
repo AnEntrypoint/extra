@@ -1,6 +1,0 @@
-MusicNowEntry = {
-  ref: string
-  layer: string
-  positionMs: number
-  since: number
-}

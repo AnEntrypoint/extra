@@ -1,1 +1,0 @@
-SplineSampleSpace = "normalized" | "distance"

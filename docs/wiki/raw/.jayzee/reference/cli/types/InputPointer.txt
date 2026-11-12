@@ -1,7 +1,0 @@
-InputPointer = {
-  x: number
-  y: number
-  ndcX: number
-  ndcY: number
-  overUi: boolean
-}

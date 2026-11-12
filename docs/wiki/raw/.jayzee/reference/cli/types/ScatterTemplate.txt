@@ -1,4 +1,0 @@
-ScatterTemplate = Partial<ObjectSpec> & {
-  weight?: number
-  wind?: { force?: number; scale?: number; speed?: number }
-}

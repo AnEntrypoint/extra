@@ -1,5 +1,0 @@
-OverlapResult = {
-  objects: string[]
-  approximate: string[]
-  terrain: boolean | null
-}

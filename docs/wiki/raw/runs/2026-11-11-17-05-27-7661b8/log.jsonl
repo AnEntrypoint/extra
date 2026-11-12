@@ -1,8 +1,0 @@
-{"seq":1,"t":"2026-11-11T17:05:27.326Z","mono":0.048,"inFlight":0,"kind":"start","mode":"mcp","maxSteps":50,"maxInflight":8,"taskFrom":"session prompt"}
-{"seq":2,"t":"2026-11-11T17:05:27.326Z","mono":0.348,"inFlight":0,"kind":"tools","sha":"0c8cdf9642a24f08431e2c716266fad3ee6e62405bd24264fc84a195ecebeaa1","count":3}
-{"seq":3,"t":"2026-11-11T17:05:33.527Z","mono":6201.07,"inFlight":0,"kind":"mcp-server","server":"playwriter","state":"connected","tools":3,"protocolVersion":"2025-11-25"}
-{"seq":4,"t":"2026-11-11T17:05:33.527Z","mono":6201.288,"inFlight":0,"kind":"mcp-tool-skipped","server":"playwriter","tool":"reset","verb":"playwriter_reset","reason":"the server entry denies it"}
-{"seq":5,"t":"2026-11-11T17:28:29.439Z","mono":6201.795,"inFlight":0,"kind":"restart","reason":"build 640d5432ffd0-dev -> ec035e227fb9-dev","skillRead":false,"skillChanged":false,"skillSha":"sha256:c2d177e518b0d98be464c3c090e00c126bcd14b46bb17ccfde298fe7de2f9b0d","skillWas":null}
-{"seq":6,"t":"2026-11-11T17:28:29.439Z","mono":6202.039,"inFlight":0,"kind":"tools","sha":"0c8cdf9642a24f08431e2c716266fad3ee6e62405bd24264fc84a195ecebeaa1","count":3}
-{"seq":7,"t":"2026-11-11T17:28:34.609Z","mono":11371.452,"inFlight":0,"kind":"mcp-server","server":"playwriter","state":"connected","tools":3,"protocolVersion":"2025-11-25"}
-{"seq":8,"t":"2026-11-11T17:28:34.609Z","mono":11371.687,"inFlight":0,"kind":"mcp-tool-skipped","server":"playwriter","tool":"reset","verb":"playwriter_reset","reason":"the server entry denies it"}

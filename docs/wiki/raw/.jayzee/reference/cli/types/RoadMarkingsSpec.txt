@@ -1,8 +1,0 @@
-RoadMarkingsSpec = {
-  centerLine?: boolean
-  edgeLines?: boolean
-  dashLength?: number
-  gapLength?: number
-  width?: number
-  color?: Color
-}

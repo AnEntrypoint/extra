@@ -1,5 +1,0 @@
-## Player
-
-```ts
-<player>.displayName
-```

@@ -1,8 +1,0 @@
-NoiseEvent = {
-  position: Vec3
-  radius: number
-  kind: string
-  sourceId: string
-  tick: number
-  data?: unknown
-}

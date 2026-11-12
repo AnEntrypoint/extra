@@ -1,3 +1,0 @@
-FieldLayerHandle = {
-  [chunkKey: string]: FieldChunkHandle | undefined
-}

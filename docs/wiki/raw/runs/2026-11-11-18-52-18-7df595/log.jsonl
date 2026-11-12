@@ -1,3 +1,0 @@
-{"seq":1,"t":"2026-11-11T18:52:18.751Z","mono":0.063,"inFlight":0,"kind":"start","mode":"mcp","maxSteps":50,"maxInflight":8,"taskFrom":"session prompt"}
-{"seq":2,"t":"2026-11-11T18:52:18.751Z","mono":0.148,"inFlight":0,"kind":"mcp-tool-skipped","server":"playwriter","tool":"reset","verb":"playwriter_reset","reason":"the server entry denies it"}
-{"seq":3,"t":"2026-11-11T18:52:18.751Z","mono":0.479,"inFlight":0,"kind":"tools","sha":"36ab0fe0e391ec4f557eee590f8677407a95caa69d8cc223f403dc7f999e57ce","count":3}

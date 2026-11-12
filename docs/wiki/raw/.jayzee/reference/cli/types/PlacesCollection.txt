@@ -1,3 +1,0 @@
-PlacesCollection = Iterable<PlaceScopeHandle> & {
-  [placeName: string]: PlaceScopeHandle | undefined
-}

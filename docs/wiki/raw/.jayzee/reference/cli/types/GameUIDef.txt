@@ -1,3 +1,0 @@
-GameUIDef = UIDef & {
-  startScreen?: boolean
-}

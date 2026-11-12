@@ -1,6 +1,0 @@
-SerializedVoxelTemplate = {
-  version: 1
-  bounds: [[number, number, number], [number, number, number]]
-  palette: string[]
-  voxels: Array<[number, number, number, number] | [number, number, number, number, number]>
-}

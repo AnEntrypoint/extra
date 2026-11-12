@@ -1,5 +1,0 @@
-PointsPrimitiveSpec = {
-  kind: "points"
-  count: number
-  bounds?: { min: [number, number, number]; max: [number, number, number] }
-}

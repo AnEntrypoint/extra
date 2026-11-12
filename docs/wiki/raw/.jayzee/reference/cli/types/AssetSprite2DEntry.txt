@@ -1,4 +1,0 @@
-AssetSprite2DEntry = {
-  version: number
-  meta: null | Sprite2DMetaSpec
-}

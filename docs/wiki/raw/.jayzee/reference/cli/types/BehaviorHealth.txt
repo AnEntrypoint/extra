@@ -1,3 +1,0 @@
-BehaviorHealth = {
-  broken: BehaviorHookHealth[]
-}

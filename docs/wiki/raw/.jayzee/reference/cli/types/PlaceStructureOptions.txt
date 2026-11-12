@@ -1,5 +1,0 @@
-PlaceStructureOptions = {
-  place?: string
-  author?: boolean
-  id?: string
-}

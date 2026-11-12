@@ -1,6 +1,0 @@
-PlaceFieldHandle = {
-  runtime: FieldLayerHandle
-  authored: FieldLayerHandle
-  grid: FieldChunkGrid
-  changes(at?: number): { readonly chunks: string[]; readonly at: number }
-}

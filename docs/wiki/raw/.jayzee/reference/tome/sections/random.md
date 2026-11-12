@@ -1,5 +1,0 @@
-## Random
-
-```ts
-ctx.random()
-```

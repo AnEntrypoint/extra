@@ -1,7 +1,0 @@
-CameraAttachPositionSpec = {
-  attach: "camera"
-  x?: number
-  y?: number
-  depth?: number
-  fov?: number
-}

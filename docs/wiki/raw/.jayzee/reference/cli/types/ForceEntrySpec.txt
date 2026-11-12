@@ -1,5 +1,0 @@
-ForceEntrySpec = {
-  force?: Vec3
-  position?: Vec3
-  torque?: Vec3
-}

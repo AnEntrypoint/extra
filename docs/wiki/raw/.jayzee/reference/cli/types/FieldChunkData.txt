@@ -1,4 +1,0 @@
-FieldChunkData = {
-  grid: FieldChunkGrid
-  cells: number[]
-}

@@ -1,7 +1,0 @@
-SplineShapeSpec = {
-  kind: "rectangle"
-  center: SplinePointSpec
-  width: number
-  depth: number
-  yaw?: number
-}

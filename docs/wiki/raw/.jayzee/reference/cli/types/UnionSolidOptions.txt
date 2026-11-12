@@ -1,3 +1,0 @@
-UnionSolidOptions = {
-  id?: string
-}

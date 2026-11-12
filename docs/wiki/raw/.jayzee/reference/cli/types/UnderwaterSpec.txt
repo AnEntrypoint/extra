@@ -1,8 +1,0 @@
-UnderwaterSpec = {
-  enabled?: boolean
-  depth?: number
-  color?: Color
-  visibility?: number
-  scatter?: number
-  distortion?: number
-}

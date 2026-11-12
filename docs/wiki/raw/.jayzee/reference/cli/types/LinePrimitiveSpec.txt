@@ -1,7 +1,0 @@
-LinePrimitiveSpec = {
-  kind: "line"
-  points?: [number, number, number][]
-  segments?: boolean
-  count?: number
-  bounds?: { min: [number, number, number]; max: [number, number, number] }
-}

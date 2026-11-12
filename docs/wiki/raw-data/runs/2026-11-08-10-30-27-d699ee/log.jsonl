@@ -1,4 +1,0 @@
-{"seq":1,"t":"2026-11-08T10:30:27.693Z","mono":0.016,"inFlight":0,"kind":"start","mode":"mcp","maxSteps":50,"maxInflight":8,"taskFrom":"session prompt"}
-{"seq":2,"t":"2026-11-08T10:30:27.694Z","mono":0.29,"inFlight":0,"kind":"tools","sha":"e6760a40a5d63491c92c5652903566ecf080a6ca3e1245861c0938986e6250f8","count":3}
-{"seq":3,"t":"2026-11-08T10:31:42.742Z","mono":75049.129,"inFlight":0,"kind":"mcp-server","server":"playwriter","state":"connected","tools":3,"protocolVersion":"2025-11-25"}
-{"seq":4,"t":"2026-11-08T10:31:42.743Z","mono":75049.442,"inFlight":0,"kind":"mcp-tool-skipped","server":"playwriter","tool":"reset","verb":"playwriter_reset","reason":"the server entry denies it"}

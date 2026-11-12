@@ -1,3 +1,0 @@
-ModelPartStateSpec = (Omit<StandardMaterialSpec, "time" | "timeAt" | "paused" | "speed"> | ScriptedMaterialSpec) & {
-  visible?: boolean
-}

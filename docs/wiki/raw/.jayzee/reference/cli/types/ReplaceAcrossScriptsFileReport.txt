@@ -1,5 +1,0 @@
-ReplaceAcrossScriptsFileReport = {
-  script: string
-  matches: number
-  applied: boolean
-}

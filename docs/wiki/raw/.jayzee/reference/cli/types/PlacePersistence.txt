@@ -1,1 +1,0 @@
-PlacePersistence = "ephemeral" | "session" | "persistent"

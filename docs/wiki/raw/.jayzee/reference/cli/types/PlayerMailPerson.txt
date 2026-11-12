@@ -1,4 +1,0 @@
-PlayerMailPerson = {
-  userId: string
-  displayName: string
-}

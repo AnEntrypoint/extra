@@ -1,1 +1,0 @@
-FieldRetention = "durable" | "session"

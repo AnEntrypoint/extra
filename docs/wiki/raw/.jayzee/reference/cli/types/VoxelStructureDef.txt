@@ -1,6 +1,0 @@
-VoxelStructureDef = {
-  id: string
-  priority?: number
-  placement: VoxelPlacementDef
-  template: VoxelTemplateDef
-}

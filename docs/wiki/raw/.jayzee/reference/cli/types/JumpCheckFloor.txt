@@ -1,4 +1,0 @@
-JumpCheckFloor = {
-  top: number
-  by: string
-}

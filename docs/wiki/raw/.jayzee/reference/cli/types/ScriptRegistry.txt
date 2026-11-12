@@ -1,1 +1,0 @@
-ScriptRegistry = Record<string, string>

@@ -1,5 +1,0 @@
-VoxelMarkOutlineOptions = {
-  color?: Color
-  opacity?: number = 1
-  inflate?: number = 0.03
-}

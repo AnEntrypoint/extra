@@ -1,3 +1,0 @@
-PlaceFieldsHandle = {
-  [fieldName: string]: PlaceFieldHandle
-}

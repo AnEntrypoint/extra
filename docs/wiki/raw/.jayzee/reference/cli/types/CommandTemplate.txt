@@ -1,8 +1,0 @@
-CommandTemplate = {
-  name: string
-  description: string
-  content: string
-  requiresArgs?: boolean
-  argsPlaceholder?: string
-  modName?: string
-}

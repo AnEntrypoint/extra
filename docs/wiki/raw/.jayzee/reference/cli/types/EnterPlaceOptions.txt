@@ -1,5 +1,0 @@
-EnterPlaceOptions = {
-  place: string
-  at?: PositionSpec | "last" | "default"
-  createIfMissing?: PlaceCreateOptions
-}

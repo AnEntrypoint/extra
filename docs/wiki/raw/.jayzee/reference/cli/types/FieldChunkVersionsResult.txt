@@ -1,4 +1,0 @@
-FieldChunkVersionsResult = {
-  changed: { kx: number; kz: number }[]
-  token: string
-}

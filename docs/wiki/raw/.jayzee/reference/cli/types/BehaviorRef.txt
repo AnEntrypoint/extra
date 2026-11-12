@@ -1,1 +1,0 @@
-BehaviorRef = ScriptRef | ScriptRef[]

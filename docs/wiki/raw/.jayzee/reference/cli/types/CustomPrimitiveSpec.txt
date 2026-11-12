@@ -1,6 +1,0 @@
-CustomPrimitiveSpec = {
-  kind: "custom"
-  geometry: BespokeGeometrySpec
-  forward?: ForwardAxis
-  sockets?: PrimitiveSockets
-}

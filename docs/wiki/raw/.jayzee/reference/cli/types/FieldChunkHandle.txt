@@ -1,7 +1,0 @@
-FieldChunkHandle = {
-  cellSize: number
-  chunkCells: number
-  quant: number
-  cells: number[]
-  version: number
-}

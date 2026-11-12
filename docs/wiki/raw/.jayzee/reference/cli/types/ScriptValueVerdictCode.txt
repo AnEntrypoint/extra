@@ -1,1 +1,0 @@
-ScriptValueVerdictCode = "not_plain_data" | "assign_to_id" | "not_a_vector"

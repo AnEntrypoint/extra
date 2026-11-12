@@ -1,3 +1,0 @@
-PurchaseHookCtx = ObjectAPI & {
-  purchase: BuyablePurchaseContext
-}

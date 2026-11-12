@@ -1,6 +1,0 @@
-DestroyedJayzeeProvenance = {
-  ownerEntityId: string
-  behaviorScripts: string[]
-  destroyedIds: string[]
-  destroyedCount: number
-}

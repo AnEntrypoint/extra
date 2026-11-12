@@ -1,6 +1,0 @@
-NotifyDmOptions = {
-  wake?: boolean
-  to?: string | { userId?: string | null }
-  link?: string
-  cleetus?: string | { userId?: string | null }
-}

@@ -1,5 +1,0 @@
-UnionSolidBlocker = {
-  id: string
-  reason: UnionSolidBlockReason
-  message: string
-}

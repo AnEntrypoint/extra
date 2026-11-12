@@ -1,7 +1,0 @@
-PropertyWriteReceipt = {
-  id: string
-  key: string
-  value?: unknown
-  gone?: true
-  unsimulatedPlace?: string
-}

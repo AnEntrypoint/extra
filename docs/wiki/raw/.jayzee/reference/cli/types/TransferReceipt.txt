@@ -1,3 +1,0 @@
-TransferReceipt =
-  | { transferred: true; from: string; to: string; path: string; at: string }
-  | { transferred: false; refused: "unknown-target" | "bad-path" | "item-absent" | "occupied"; message: string }

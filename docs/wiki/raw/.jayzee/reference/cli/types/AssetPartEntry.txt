@@ -1,8 +1,0 @@
-AssetPartEntry = {
-  center: [number, number, number]
-  size: [number, number, number]
-  groundOffsetY?: number
-  tris: number
-  confidence: number
-  version: number
-}

@@ -1,1 +1,0 @@
-JointType = "revolute" | "fixed" | "spherical" | "prismatic" | "spring"

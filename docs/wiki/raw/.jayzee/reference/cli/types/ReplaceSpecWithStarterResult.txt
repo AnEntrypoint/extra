@@ -1,6 +1,0 @@
-ReplaceSpecWithStarterResult = {
-  ok: true
-  starterId: StarterId
-  swappedFrom?: StarterId
-  wiped?: true
-}

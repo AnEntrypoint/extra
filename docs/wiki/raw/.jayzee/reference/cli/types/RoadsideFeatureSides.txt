@@ -1,1 +1,0 @@
-RoadsideFeatureSides = "left" | "right" | "both"

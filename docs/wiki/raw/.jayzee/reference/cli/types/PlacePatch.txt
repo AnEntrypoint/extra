@@ -1,4 +1,0 @@
-PlacePatch = Omit<Partial<PlaceDef>, "fields" | "arrival"> & {
-  fields?: Record<string, SerializedField | null> | null
-  arrival?: string | null
-}

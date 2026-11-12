@@ -1,4 +1,0 @@
-TextureScript = {
-  texture(ctx: TextureScriptContext): void
-  meta?: TextureScriptMetaExport
-}

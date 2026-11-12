@@ -1,4 +1,0 @@
-SplineSampleOptions = {
-  space?: SplineSampleSpace
-  tangentAxis?: "x" | "z"
-}
