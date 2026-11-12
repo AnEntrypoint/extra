@@ -181,18 +181,1163 @@
 <h1 id="game-page-section-pick-a-genre-text-not-in-the-capture">Game page section: Pick A Genre: text not in the capture</h1>
 <p>The Pick a genre section of the toolbox, read on load, after a scroll, and after a click on each control that does not change state. Only text, headings, links, images and code that the first capture does not hold are listed.</p>
 <h2 id="items-not-in-the-capture">Items not in the capture</h2>
-<div class="table-wrap"><table><thead><tr><th>Item</th><th>Count</th></tr></thead><tbody><tr><td>Headings</td><td>0</td></tr><tr><td>Visible text blocks</td><td>0</td></tr><tr><td>Hidden text blocks</td><td>0</td></tr><tr><td>Links</td><td>0</td></tr><tr><td>Images</td><td>0</td></tr><tr><td>Code or data blocks</td><td>0</td></tr></tbody></table></div>
+<div class="table-wrap"><table><thead><tr><th>Item</th><th>Count</th></tr></thead><tbody><tr><td>Headings</td><td>9</td></tr><tr><td>Visible text blocks</td><td>700</td></tr><tr><td>Hidden text blocks</td><td>0</td></tr><tr><td>Links</td><td>0</td></tr><tr><td>Images</td><td>0</td></tr><tr><td>Code or data blocks</td><td>155</td></tr></tbody></table></div>
 <h2 id="present-on-load-not-in-the-capture">Present on load, not in the capture</h2>
 <p>None found on load.</p>
 <h2 id="loaded-after-a-scroll-not-in-the-capture">Loaded after a scroll, not in the capture</h2>
 <p>None found after the scroll.</p>
 <h2 id="loaded-after-a-click-not-in-the-capture">Loaded after a click, not in the capture</h2>
-<p>None found after a click.</p>
+<h3 id="after-clicking-read">After clicking &quot;read →&quot;</h3>
+<ul><li>H3: What it is here</li><li>H3: Which starter and why</li><li>H3: Skills it leans on</li><li>H3: Animations it uses</li><li>H3: Style families that suit it</li><li>H3: Multiplayer shape</li><li>H3: Games already made on Jayzee like it</li><li>H3: What makes it hard</li><li>H3: A taste of the code</li></ul>
+<p>← all genres</p>
+<p>What it is here</p>
+<p>A 3D action-adventure on Jayzee is a body you steer through a real place: hills from a heightmap, buildings built in code, enemies that notice you and come. You run, jump, roll and swing; things you hit squash, flash and drop; the camera kicks once on a hard blow and the world freezes for a heartbeat. The engine already carries the hard parts (physics, a walking character body, 61 humanoid animation clips, multiplayer by default), so the work is the adventure itself: where the player goes, what stands in the way, and how good it feels to win a fight. Think a short quest through a valley, a wave defence in a backyard, or a dungeon crawl with friends.</p>
+<p>The player arrives at the jayzee point, sees the goal on the horizon (a tower, a lit gate, a glowing shrine) and gets one line of HUD text telling them what to do.</p>
+<p>They walk out with WASD and the mouse, jump, and meet the first easy enemy within thirty seconds.</p>
+<p>A fight: attack, block or roll, take a hit, land the finishing blow. The enemy dies with a burst, a sound and a damage number.</p>
+<p>A reward: a pickup, a key, a new ability, a door that opens.</p>
+<p>A harder stretch: more enemies, a hazard, a climb.</p>
+<p>A boss or a final room, then a victory beat and a choice: go again, or carry on to the next area.</p>
+<p>Which starter and why</p>
+<p>3d (&quot;3D world&quot;: first-person body, mouse look, jump, open sky, placeholder ground and grass). It is listed for exploration, shooters, adventure, racing and sandbox, and it is the right base here: the body, the camera, the jump and the gravity (-24 in the 3D starter) are already wired. You reshape it into third person with the cameras skill if you want to see your hero, and you replace the placeholder ground with real terrain. The block-world starter (3d-voxels) only suits an adventure where digging is the point.</p>
+<p>Skills it leans on</p>
+<p>cameras: first person, third person over the shoulder, or a fixed cinematic rig. Most action games want third person so the swing reads.</p>
+<p>animations: plays the humanoid clips on your body and on enemies, by channel and weight, so an attack can play over a run.</p>
+<p>game-feel: the difference between a hit and a tap. Squash on the struck thing, a burst from the contact point, one cameraPunch or screenShake, a tiny hitstop. A coin gets a chime and a &quot;+1&quot;, never a camera kick.</p>
+<p>projectiles: guns, arrows, fireballs. The shot is visible from muzzle to mark, the gun kicks and settles.</p>
+<p>jev: minds for bosses and NPCs: patrol, notice, chase, telegraph an attack.</p>
+<p>fx: sparks, slashes, explosions, fire and the light that rides them, within the particle budgets.</p>
+<p>heightmap-terrain and geometry: the valley, the ruins, the gate, the creatures, all built in code.</p>
+<p>interactive-objects: pickups, levers, doors and chests.</p>
+<p>physics: ragdolls on a death, forces for a knockback.</p>
+<p>Animations it uses</p>
+<p>From the library: idle, walk, run, sprint, jump, fall, land for movement; attack, kick, throw, roll, block, cast, hit react and die for combat; climb, climb wall up, pickup for traversal and loot; victory, cheer and thumbs up for the win. Each plays from a file named after its id, like cdn/clip-attack.glb, on a named channel of the body:</p>
+<p>cdn/clip-attack.glb</p>
+<p>ctx.self.anim.main = { clip: &quot;cdn/clip-run-loop.glb&quot;, loop: true, weight: 1 }; ctx.self.anim.swing = { clip: &quot;cdn/clip-attack.glb&quot;, loop: false, weight: 1 }; // over the run</p>
+<p>Style families that suit it</p>
+<p>painterly-fantasy: soft greens and stone for a quest through old lands; the sound family carries swords and spells.</p>
+<p>toon-vibrant: bright, punchy, readable at a glance; hits feel cartoon-big.</p>
+<p>realistic-gritty: muted browns for a grounded survival-action or a war story.</p>
+<p>scifi-neon: glowing blades and blasters, a city at night.</p>
+<p>lowpoly-cozy: for a gentle adventure where fights are light and the world is the reward.</p>
+<p>Multiplayer shape</p>
+<p>Every Jayzee world is multiplayer by default: one room, main, that holds nearly unlimited players, and friends arrive by Jayzee's own invite. For co-op adventure that is often all you need: four friends in the same valley. If you want a dungeon run just for a party, a place with instance: party opens a private copy for the players standing at the door, and persistence: ephemeral lets it vanish when the last one leaves. A hit is judged on the striker's machine (target.state.hp -= d), so swings feel instant for whoever swings. If you want a solo story, set engine.networking.mode to singleplayer and no one else joins. Enemies are not bots filling seats; they are NPCs one manager script steps together.</p>
+<p>instance: party</p>
+<p>persistence: ephemeral</p>
+<p>target.state.hp -= d</p>
+<p>engine.networking.mode</p>
+<p>The touch layout builds itself from your inputs: a stick from axes literally named moveX and moveZ, drag-to-look from lookX/lookY, and every key or mouse action becomes a chip, capped at four, ranked jump first. So declare jump, attack, block and roll and you have a playable phone layout. For aiming, the mobile-controls skill puts the aim on the fire chip itself: hold to aim, release to fire. Keep the verbs to four; a fifth one drops off the phone.</p>
+<p>moveX</p>
+<p>moveZ</p>
+<p>Games already made on Jayzee like it</p>
+<p>Whisker Brawl 3D (spawn.co/@tuanteku/whisker-brawl-3d): Pick a scrappy animal, grab absurd loot and brawl through every rival in the arena.</p>
+<p>spawn.co/@tuanteku/whisker-brawl-3d</p>
+<p>Garden Siege 3D (spawn.co/@rexgaming_yt/garden-siege-3d): Peashooters vs the undead: hold the backyard against ten waves of zombies.</p>
+<p>spawn.co/@rexgaming_yt/garden-siege-3d</p>
+<p>Call of the Soil (spawn.co/@ayon/call-of-the-soil-a-bengal-village-adventure): Roam a living Bangladeshi village, chat with neighbours, ride rickshaws and boats.</p>
+<p>spawn.co/@ayon/call-of-the-soil-a-bengal-village-adventure</p>
+<p>WORLD ADVENTURE of PIXELS (spawn.co/@pixelmg_dev/world-adventure-of-pixels): Run, jump, stomp and bonk blocks across a pixel world to reach the flag.</p>
+<p>spawn.co/@pixelmg_dev/world-adventure-of-pixels</p>
+<p>Escape from Stranglethorn (spawn.co/@izkimar/escape-from-stranglethorn): Nine classes, a jungle full of valuables, make it back alive (591 likes).</p>
+<p>spawn.co/@izkimar/escape-from-stranglethorn</p>
+<p>One session can stand up a whole small adventure:</p>
+<p>The place: one valley from the heightmap-terrain skill, a path marked through it, trees and grass scattered, a ruined gate at the far end. Morning light from the atmosphere skill.</p>
+<p>The hero: the 3d starter's body in third person, with an attack action on the left mouse and a roll on shift.</p>
+<p>The hero</p>
+<p>The enemies: one template (say a goblin, built as one scripted geometry with bones) placed in three camps. One manager script moves them all: idle, notice within 18 m, run at you, swing.</p>
+<p>The enemies</p>
+<p>Win and lose: clear the three camps and the gate opens to a boss; the boss falls and a victory banner plays. Your hp in player.state.hp; at zero you respawn at the last camp you cleared.</p>
+<p>Win and lose</p>
+<p>player.state.hp</p>
+<p>HUD: an hp bar, the camps left, a one-line objective, all in ui.js reading the player's state.</p>
+<p>Sound: a looping music bed, a swing whoosh, a meaty hit, a death grunt, a fanfare, named from one family, e.g. /cdn/moodboard-painterly-fantasy/sfx-sword-hit.mp3.</p>
+<p>/cdn/moodboard-painterly-fantasy/sfx-sword-hit.mp3</p>
+<p>Effects: a slash on each swing, a burst and a damage number on each hit, a short hitstop, a shockwave and a slowMo when the boss dies.</p>
+<p>What makes it hard</p>
+<p>Feel is the game. A fight with no squash, no hitstop and no sound reads as two capsules touching. Budget time for the game-feel pass.</p>
+<p>Feel is the game.</p>
+<p>Enemies need minds. Chasing in a straight line looks dumb next to a wall; findPath from builtin/nav gives them a real path, and a telegraph (a wind-up before a swing) makes them fair.</p>
+<p>Enemies need minds.</p>
+<p>Content is expensive. Every area, enemy and boss is built. Start with one valley and three enemy types, not a world map.</p>
+<p>Content is expensive.</p>
+<p>Phones. Four verbs fit on the screen, so design combat around four.</p>
+<p>Performance. Dozens of enemies each running their own script cost frames; one manager stepping them all is the pattern the engine expects.</p>
+<p>Performance.</p>
+<p>A taste of the code</p>
+<p>A sword swing on the player's own body: it plays the attack clip, finds enemies a step ahead, and lands the hit on the striker's machine with the full contact deck. attack must be declared under inputs.actions in world.config.yaml (for example attack: { mouse: &quot;left&quot; }).</p>
+<p>inputs.actions</p>
+<p>attack: { mouse: &quot;left&quot; }</p>
+<p>// scripts/sword.js: rides the player's body beside the starter's movement import { add, rotate } from &quot;builtin/vec3&quot;; export function onInput(ctx, input) { if (!input.pressed.attack) return; ctx.self.anim.swing = { clip: &quot;cdn/clip-attack.glb&quot;, loop: false, weight: 1 }; const ahead = add(ctx.self.feetPosition, rotate(ctx.self.rotation, { x: 0, y: 1, z: -1.5 })); for (const foe of ctx.query({ tags: [&quot;enemy&quot;], center: ahead, radius: 1.5 })) { foe.state.hp -= 2; // stepped in place, never assigned ctx.emit(&quot;damageNumber&quot;, { position: foe.feetPosition, value: 2 }); ctx.emit(&quot;squash&quot;, { target: foe.id, intensity: 0.3, duration: 0.15 }); ctx.emit(&quot;hitstop&quot;, { duration: 0.06 }); } }</p>
+<p>The enemy's own update reads hp &lt;= 0 and sets dead = true once, plays die, and drops its loot.</p>
+<p>hp &lt;= 0</p>
+<p>dead = true</p>
+<p>Want this one? Tell me and I'll start building it.</p>
+<h4 id="block-1">Block 1</h4>
+<pre><code class="language-`text">cdn/clip-attack.glb</code></pre>
+<h4 id="block-2">Block 2</h4>
+<pre><code class="language-`text">ctx.self.anim.main = { clip: &quot;cdn/clip-run-loop.glb&quot;, loop: true, weight: 1 };
+ctx.self.anim.swing = { clip: &quot;cdn/clip-attack.glb&quot;, loop: false, weight: 1 }; // over the run</code></pre>
+<h4 id="block-3">Block 3</h4>
+<pre><code class="language-`text">instance: party</code></pre>
+<h4 id="block-4">Block 4</h4>
+<pre><code class="language-`text">persistence: ephemeral</code></pre>
+<h4 id="block-5">Block 5</h4>
+<pre><code class="language-`text">target.state.hp -= d</code></pre>
+<h4 id="block-6">Block 6</h4>
+<pre><code class="language-`text">engine.networking.mode</code></pre>
+<h4 id="block-7">Block 7</h4>
+<pre><code class="language-`text">moveX</code></pre>
+<h4 id="block-8">Block 8</h4>
+<pre><code class="language-`text">moveZ</code></pre>
+<h4 id="block-9">Block 9</h4>
+<pre><code class="language-`text">spawn.co/@tuanteku/whisker-brawl-3d</code></pre>
+<h4 id="block-10">Block 10</h4>
+<pre><code class="language-`text">spawn.co/@rexgaming_yt/garden-siege-3d</code></pre>
+<h4 id="block-11">Block 11</h4>
+<pre><code class="language-`text">spawn.co/@ayon/call-of-the-soil-a-bengal-village-adventure</code></pre>
+<h4 id="block-12">Block 12</h4>
+<pre><code class="language-`text">spawn.co/@pixelmg_dev/world-adventure-of-pixels</code></pre>
+<h4 id="block-13">Block 13</h4>
+<pre><code class="language-`text">spawn.co/@izkimar/escape-from-stranglethorn</code></pre>
+<h4 id="block-14">Block 14</h4>
+<pre><code class="language-`text">player.state.hp</code></pre>
+<h4 id="block-15">Block 15</h4>
+<pre><code class="language-`text">/cdn/moodboard-painterly-fantasy/sfx-sword-hit.mp3</code></pre>
+<h4 id="block-16">Block 16</h4>
+<pre><code class="language-`text">inputs.actions</code></pre>
+<h4 id="block-17">Block 17</h4>
+<pre><code class="language-`text">attack: { mouse: &quot;left&quot; }</code></pre>
+<h4 id="block-18">Block 18</h4>
+<pre><code class="language-`text">// scripts/sword.js: rides the player's body beside the starter's movement
+import { add, rotate } from &quot;builtin/vec3&quot;;
+
+export function onInput(ctx, input) {
+  if (!input.pressed.attack) return;
+  ctx.self.anim.swing = { clip: &quot;cdn/clip-attack.glb&quot;, loop: false, weight: 1 };
+  const ahead = add(ctx.self.feetPosition, rotate(ctx.self.rotation, { x: 0, y: 1, z: -1.5 }));
+  for (const foe of ctx.query({ tags: [&quot;enemy&quot;], center: ahead, radius: 1.5 })) {
+    foe.state.hp -= 2; // stepped in place, never assigned
+    ctx.emit(&quot;damageNumber&quot;, { position: foe.feetPosition, value: 2 });
+    ctx.emit(&quot;squash&quot;, { target: foe.id, intensity: 0.3, duration: 0.15 });
+    ctx.emit(&quot;hitstop&quot;, { duration: 0.06 });
+  }
+}</code></pre>
+<h4 id="block-19">Block 19</h4>
+<pre><code class="language-`text">hp &lt;= 0</code></pre>
+<h4 id="block-20">Block 20</h4>
+<pre><code class="language-`text">dead = true</code></pre>
+<h3 id="after-clicking-read-multiplayer-arenas-party-games-friends-in-one-arena-rounds-a-referee-a-winner-lit-up-at-the-end-jayzees-rooms-invites-and-shared-clock-carry-the-networking-you-build-the-rules-and-the-fun">After clicking &quot;read → Multiplayer arenas &amp; party games Friends in one arena: rounds, a referee, a winner lit up at the end. Jayzee's rooms, invites and shared clock carry the networking; you build the rules and the fun.&quot;</h3>
+<p>An arena or party game is a short, loud round with other people: a sword duel on a floating ring, a dodge-the-bullets co-op fight, a free-for-all brawl, a silly minigame where the last one standing wins. On Jayzee every world is already multiplayer: friends arrive by Jayzee's invite or a portal, everyone in the room shares one clock (ctx.now() is the same on every machine), and a referee program, sim.js, runs the match on Jayzee's server once two people share the room. What you build is the arena, the rules of a round, and the moment at the end when the winner is lit up and everyone laughs.</p>
+<p>A player arrives in the room and sees the arena and who else is here.</p>
+<p>Enough players are present (or the creator's minimum is met), and a countdown starts with the world in view.</p>
+<p>The round plays: fight, dodge, grab, score. Each hit, knock-out or point is felt and shown.</p>
+<p>Someone wins, or a team, or the clock runs out. The referee writes the phase as ending and every screen plays the same moment: the winner highlighted, a burst at their feet, a slow-motion beat.</p>
+<p>ending</p>
+<p>Scores update, maybe a leaderboard row, and the next round starts by itself after a few seconds.</p>
+<p>3d for anything with bodies in a space: duels, brawls, tag, king of the hill. It brings the walking body, jump and camera. 2d-side if you want a platform fighter where knocking people off the stage is the point. ui-game (&quot;Screen-first&quot;, the starter this site runs on) for party games that are all buttons: quizzes, drawing guesses, card rounds. Pick by what players do with their hands.</p>
+<p>rooms-and-matchmaking: the heart of it. One room (main) holds nearly unlimited players; routing with maxPlayers caps a room; a place with instance: party opens a private arena copy for whoever stands at the door. No lobby, no room code, no match list: Jayzee's invite and share buttons do that (ctx.emit(&quot;openInvite&quot;, {})).</p>
+<p>ctx.emit(&quot;openInvite&quot;, {})</p>
+<p>game-feel: the end of a round is the longest beat; hits get squash, burst, one camera kick; points get a chime and a &quot;+1&quot;.</p>
+<p>projectiles: blasters, arrows, thrown objects, bullet-hell patterns.</p>
+<p>physics and bodies: knockback forces, ragdolls, and who passes through whom (teammates, ghosts).</p>
+<p>game-ui: the scoreboard, the countdown, the round banner.</p>
+<p>platform-systems: SQL leaderboards that span every room, timers, cheat-proof saves.</p>
+<p>social: chat channels, team nameplates, earshot.</p>
+<p>fx: auras, impacts, the confetti on a win.</p>
+<p>Combat clips carry the fighting: attack, kick, block, roll, throw, cast, hit react, die. Movement uses idle, run, sprint, jump, fall, land. Party games live on the social and emote rows: victory, cheer, dance, chicken dance, backflip, thumbs up, clap, laugh, angry, shrug, and the hip hop dances (locking hip hop, slide hip hop, step hip hop, wave hip hop) for a winner's podium.</p>
+<p>toon-vibrant: the default party look; bright, loud, every player readable at a glance.</p>
+<p>scifi-neon: arenas at night, glowing blades, a glass colosseum.</p>
+<p>pixel-bright: retro arcade and bullet-hell energy.</p>
+<p>voxel-bright: blocky brawls and building battles.</p>
+<p>painterly-fantasy: sword-and-sorcery duels on a floating ring.</p>
+<p>How many: duels are 2, team fights 4 (2v2) or 10, free-for-all brawls 8 to 20. Cap the room with routing: { script, maxPlayers } in world.config.yaml; the cap counts player bodies only.</p>
+<p>routing: { script, maxPlayers }</p>
+<p>Rooms: the default single main room suits a drop-in party; your pickRoom can use mostFullWithSpace from builtin/room-routing to fill rooms before opening new ones. For private matches, a +arena place with instance: party gives each group its own copy, and ctx.cross(ctx.self, &quot;+arena&quot;) takes the group there.</p>
+<p>+arena</p>
+<p>ctx.cross(ctx.self, &quot;+arena&quot;)</p>
+<p>One referee: sim.js reads what changed in players (ctx.changed(&quot;place.players.*.state.hp&quot;)) and writes ctx.place.state (phase, round, winner). Behaviors write their own state; only the referee writes the match.</p>
+<p>One referee</p>
+<p>ctx.changed(&quot;place.players.*.state.hp&quot;)</p>
+<p>ctx.place.state</p>
+<p>Bots filling seats: a human against bots is still multiplayer. An empty seat can be a bot body driven by the same script players use, with its input coming from a little mind (the jev skill) instead of a hand. Start rounds with bots when one person is in, so the arena never reads empty.</p>
+<p>Bots filling seats</p>
+<p>The automatic layout puts a stick under the left thumb (from moveX/moveZ) and up to four action chips under the right, jump first. A fighting game lives within four: attack, block, roll, jump. A shooter puts the aim on the fire chip: hold to aim, release to fire. Party games built on ui-game are buttons already and play perfectly on a phone; make them big.</p>
+<p>Sky Ring Arena Multiplayer (spawn.co/@rexgaming_yt/sky-ring-arena-multiplayer): first-person sword and shield fights, 1v1 and 2v2, with roll, block, parry and riposte.</p>
+<p>spawn.co/@rexgaming_yt/sky-ring-arena-multiplayer</p>
+<p>Slime Arena (spawn.co/@slime/slime-arena): be a slime in a neon glass city; race the loop, duel in the colosseum.</p>
+<p>spawn.co/@slime/slime-arena</p>
+<p>MGTale Battles multiplayer (spawn.co/@andreamg2tablet/mgtale-battles-multiplayer): Undertale-style co-op bullet hell against a cast of bosses.</p>
+<p>spawn.co/@andreamg2tablet/mgtale-battles-multiplayer</p>
+<p>Elemental Blades: Arena of Ascension (spawn.co/@shadow_ranger_62/elemental-blades-arena-of-ascension): anime blade and sorcery arena, endless waves, summonable heroes.</p>
+<p>spawn.co/@shadow_ranger_62/elemental-blades-arena-of-ascension</p>
+<p>Purrtris Arena (spawn.co/@chizkeykkk/purrtris-arena): a pastel cat-cafe in the clouds with arcade cabinets to play together.</p>
+<p>spawn.co/@chizkeykkk/purrtris-arena</p>
+<p>Super Smash Jayzee Brawl (spawn.co/@hips/super-smash-spawn-brawl-ultimate-platform-fighter): knock friends off a stained-glass stage.</p>
+<p>spawn.co/@hips/super-smash-spawn-brawl-ultimate-platform-fighter</p>
+<p>The place: one round arena, about 30 m across, on a floating island or in a glowing pit, with a fall-off edge (worldBounds.bottom catches fallers and onOutOfBounds turns a fall into a knock-out).</p>
+<p>The loop: sim.js with phases waiting, countdown, fight, ending. Two or more players (or one player and a bot) start a 3-second countdown; last one standing wins; six seconds later the next round.</p>
+<p>Win and lose: hp 10 per round; a hit takes 2; a fall is out. The winner gets a point in player.state.wins and, if you like, a row in an SQL leaderboard.</p>
+<p>player.state.wins</p>
+<p>HUD: the phase banner, the countdown in big numbers, each player's hp and wins, all read from ctx.place.state and the player rows in ui.js.</p>
+<p>Sound: one punchy music loop with ctx.music.play(ref, { fade }), a countdown beep, a hit, a knock-out, a crowd cheer for the winner.</p>
+<p>ctx.music.play(ref, { fade })</p>
+<p>Effects: hit sparks and damage numbers, a shockwave on a knock-out, and the win beat: highlightSet on the winner, an fx burst at their feet, one slowMo.</p>
+<p>It needs people. A two-player game with one player is no game. Plan bots or a solo mode from day one.</p>
+<p>It needs people.</p>
+<p>Fairness across the network. Hits are judged on the striker's machine, which feels great to the striker; a parry or dodge is judged on the target's machine through its ears.hurt. Design around that split rather than fighting it.</p>
+<p>Fairness across the network.</p>
+<p>ears.hurt</p>
+<p>One writer per fact. Two scripts both deciding the round leads to ping-pong. The referee owns the match.</p>
+<p>One writer per fact.</p>
+<p>Round-transition bugs. A death vignette or a frozen body left over from the last round welds onto the next. Reset every per-round value on every path into a new round.</p>
+<p>Round-transition bugs.</p>
+<p>Balance. The first weapon you make will be too strong. Play it with friends early.</p>
+<p>Balance.</p>
+<p>The referee: a last-one-standing round in sim.js, reading players and writing the place's state that every HUD draws.</p>
+<p>// sim.js: the referee, on Jayzee's server once two share the room export const cadence = &quot;250ms&quot;; export function tick(ctx) { const s = ctx.place.state, players = ctx.place.players; if (s.phase !== &quot;fight&quot;) { if (players.length &gt;= 2 &amp;&amp; ctx.now() &gt; (s.nextAt ?? 0)) { s.round = (s.round ?? 0) + 1; s.phase = &quot;fight&quot;; s.winner = null; } return; } const alive = players.filter((p) =&gt; p.state.round === s.round &amp;&amp; (p.state.hp ?? 10) &gt; 0); if (alive.length &lt;= 1) { s.phase = &quot;ending&quot;; s.winner = alive[0]?.id ?? null; s.nextAt = ctx.now() + 6000; } }</p>
+<p>Each player's own behavior sees a new round number, resets its own hp to 10 and writes state.round: behaviors write their own state, the referee only reads it.</p>
+<p>hp</p>
+<p>state.round</p>
+<h4 id="block-1">Block 1</h4>
+<pre><code class="language-`text">ending</code></pre>
+<h4 id="block-2">Block 2</h4>
+<pre><code class="language-`text">ctx.emit(&quot;openInvite&quot;, {})</code></pre>
+<h4 id="block-3">Block 3</h4>
+<pre><code class="language-`text">routing: { script, maxPlayers }</code></pre>
+<h4 id="block-4">Block 4</h4>
+<pre><code class="language-`text">+arena</code></pre>
+<h4 id="block-5">Block 5</h4>
+<pre><code class="language-`text">ctx.cross(ctx.self, &quot;+arena&quot;)</code></pre>
+<h4 id="block-6">Block 6</h4>
+<pre><code class="language-`text">ctx.changed(&quot;place.players.*.state.hp&quot;)</code></pre>
+<h4 id="block-7">Block 7</h4>
+<pre><code class="language-`text">ctx.place.state</code></pre>
+<h4 id="block-8">Block 8</h4>
+<pre><code class="language-`text">spawn.co/@rexgaming_yt/sky-ring-arena-multiplayer</code></pre>
+<h4 id="block-9">Block 9</h4>
+<pre><code class="language-`text">spawn.co/@slime/slime-arena</code></pre>
+<h4 id="block-10">Block 10</h4>
+<pre><code class="language-`text">spawn.co/@andreamg2tablet/mgtale-battles-multiplayer</code></pre>
+<h4 id="block-11">Block 11</h4>
+<pre><code class="language-`text">spawn.co/@shadow_ranger_62/elemental-blades-arena-of-ascension</code></pre>
+<h4 id="block-12">Block 12</h4>
+<pre><code class="language-`text">spawn.co/@chizkeykkk/purrtris-arena</code></pre>
+<h4 id="block-13">Block 13</h4>
+<pre><code class="language-`text">spawn.co/@hips/super-smash-spawn-brawl-ultimate-platform-fighter</code></pre>
+<h4 id="block-14">Block 14</h4>
+<pre><code class="language-`text">player.state.wins</code></pre>
+<h4 id="block-15">Block 15</h4>
+<pre><code class="language-`text">ctx.music.play(ref, { fade })</code></pre>
+<h4 id="block-16">Block 16</h4>
+<pre><code class="language-`text">ears.hurt</code></pre>
+<h4 id="block-17">Block 17</h4>
+<pre><code class="language-`text">// sim.js: the referee, on Spawn's server once two share the room
+export const cadence = &quot;250ms&quot;;
+export function tick(ctx) {
+  const s = ctx.place.state, players = ctx.place.players;
+  if (s.phase !== &quot;fight&quot;) {
+    if (players.length &gt;= 2 &amp;&amp; ctx.now() &gt; (s.nextAt ?? 0)) {
+      s.round = (s.round ?? 0) + 1; s.phase = &quot;fight&quot;; s.winner = null;
+    }
+    return;
+  }
+  const alive = players.filter((p) =&gt; p.state.round === s.round &amp;&amp; (p.state.hp ?? 10) &gt; 0);
+  if (alive.length &lt;= 1) { s.phase = &quot;ending&quot;; s.winner = alive[0]?.id ?? null; s.nextAt = ctx.now() + 6000; }
+}</code></pre>
+<h4 id="block-18">Block 18</h4>
+<pre><code class="language-`text">hp</code></pre>
+<h4 id="block-19">Block 19</h4>
+<pre><code class="language-`text">state.round</code></pre>
+<h3 id="after-clicking-read-exploration-atmosphere-a-place-worth-wandering-light-weather-sound-and-secrets-the-world-is-the-game-and-jayzees-sky-terrain-trees-and-grass-make-it-beautiful-from-the-first-hour">After clicking &quot;read → Exploration &amp; atmosphere A place worth wandering: light, weather, sound and secrets. The world is the game, and Jayzee's sky, terrain, trees and grass make it beautiful from the first hour.&quot;</h3>
+<p>An exploration game is a place you want to stand in. A valley at golden hour, a fog-soaked forest, an island that turns blue at night, a cliff with a lighthouse you can see from everywhere. There may be no enemy at all: the player's reward is the next view, a hidden shrine, a note left in a ruin, the moment the sun drops and the lanterns come on. On Jayzee this is one of the strongest genres, because the engine already draws a procedural sky that lights the world from the hour, a day and night cycle with no script, real terrain with rivers and coasts you can swim in, and forests, hedges and meadows grown by their own skills. You spend your time on composition and secrets, not on plumbing.</p>
+<p>The player arrives looking at something: a landmark framed on the horizon by defaultSpawnRotation.</p>
+<p>They walk toward it, and on the way the land offers a fork: a path, a glint off the trail, a sound from the trees.</p>
+<p>Each discovery (a shrine, a view point, a collectible, a character) gives a soft reward: a chime, a journal entry, a counter going up.</p>
+<p>The day turns. What they saw at noon looks different at dusk; something only appears at night.</p>
+<p>A final place, reachable once enough is found, closes the story; or there is no end, and the world simply keeps rewarding a return visit.</p>
+<p>3d (&quot;3D world&quot;: first-person body, mouse look, jump, open sky, placeholder ground and grass). Exploration is the first thing it is listed for. First person suits quiet wandering and horror-tinged walks; switch to third person (the cameras skill) if the character is part of the charm. 2d-top suits a pixel-art exploration in the zelda-like tradition, and 3d-voxels suits exploring caves and generated biomes.</p>
+<p>atmosphere: sky, sun, fog, clouds, day and night, weather. The sun is fixed to the clock: on the horizon at 6 and 18, 65 degrees high at noon; 17.5 is golden hour; from about 18.45 the moon takes over. A turning day is two numbers, never a script.</p>
+<p>looks: the colour grade, toon shading, grime decals and custom shaders that give the place its signature.</p>
+<p>heightmap-terrain: hills, islands, rivers, coasts, swimming. Marks like sea, lake, river, path and flatten shape the ground.</p>
+<p>trees, leaf-sprays, meadow-grass: forests, hedges, ivy, tall fields; the green that makes a place feel alive.</p>
+<p>audio: a quiet ambient bed (gain around 0.15), wind, birds, water, a music cue on a discovery.</p>
+<p>fx: fireflies, falling leaves, rain, mist, a campfire with its own flickering light.</p>
+<p>geometry: the ruins, bridges, towers and lighthouses that become landmarks.</p>
+<p>interactive-objects and portals: collectibles, doors, and doors to other places.</p>
+<p>Movement is most of it: idle, walk, run, sprint, jump, fall, land, plus swim idle and swim for water, climb, climb wall up, climb wall down for cliffs, crouch idle and crouch walk for tight places. Quiet moments use sit, sit on floor and sleep (a bench at a view point, a campfire). NPCs met on the road use wave, talk, point, nod yes, shake no. A found treasure takes pickup.</p>
+<p>painterly-fantasy: soft light, stone and moss; a storybook to walk through.</p>
+<p>lowpoly-cozy: warm, simple, calm; perfect for a gentle walk with friends.</p>
+<p>realistic-gritty: weathered and lonely; a wasteland or a northern coast.</p>
+<p>gothic-horror: fog, dusk, something watching from the trees.</p>
+<p>pixel-moody: blue-violet nights for a 2D top-down wander.</p>
+<p>Exploration is lovely with a friend and fine alone. The default single main room lets anyone drop in and wander together, and Jayzee's own chat, voice and nameplates are already there. Progress like &quot;places found&quot; belongs in player.state, which is the player's own save and follows them across rooms. The weather and hour belong to the place, so everyone in a room sees the same dusk. There are no seats to fill; NPCs who live in the world (a fisherman, a guide) are the company when nobody else is on.</p>
+<p>The automatic layout is ideal here: a move stick under the left thumb from moveX/moveZ, drag anywhere to look (from lookX/lookY), and a jump chip. If there is one more verb (interact, photo, lantern), it becomes a second chip. Keep it to two or three; an exploration game should never feel like a cockpit. Atmosphere scales by ctx.quality, so the phone sees the same place with lighter effects.</p>
+<p>There is no exploration shelf in the catalog yet; these are the closest wanderable worlds:</p>
+<p>Call of the Soil: A Bengal Village Adventure (spawn.co/@ayon/call-of-the-soil-a-bengal-village-adventure): roam a living village, chat with neighbours, ride rickshaws and boats.</p>
+<p>Escape from Stranglethorn (spawn.co/@izkimar/escape-from-stranglethorn): a jungle full of valuables, and the long road back to Booby Bay.</p>
+<p>Cat Haven (spawn.co/@chizkeykkk/cat-haven): a pink house in the clouds with a glass-domed cat yard and a cloud road to run.</p>
+<p>spawn.co/@chizkeykkk/cat-haven</p>
+<p>Jayzee Hangout (spawn.co/@binxius/spawn-hangout): a lakeside town to meet up and play.</p>
+<p>spawn.co/@binxius/spawn-hangout</p>
+<p>Dragon Racing (spawn.co/@metalhorse233/dragon-racing): fly a drake across the Wyrmcrown Isles, five zones to see from the air.</p>
+<p>spawn.co/@metalhorse233/dragon-racing</p>
+<p>Cartoon horror (spawn.co/@lakaplay/cartoon-horror): find 8 film reels in the foggy woods; exploration with something hunting you.</p>
+<p>spawn.co/@lakaplay/cartoon-horror</p>
+<p>The place: one island or valley, about 400 m across, from the heightmap-terrain skill: a coast with a sea mark you can swim in, a river, a hill. Forest on one side, meadow on the other, a path between.</p>
+<p>Landmarks: three built pieces visible from far away (a lighthouse, a broken bridge, a stone circle) and five small secrets (a shrine in the woods, a cave mouth, a bench with a view).</p>
+<p>Landmarks</p>
+<p>The loop: find the secrets; each one ticks a counter in player.state.found. All five light the lighthouse, which is the ending.</p>
+<p>player.state.found</p>
+<p>The day: a turning day with atmosphere.cycle, about twenty minutes long, so a visit sees a dusk. The stone circle glows only at night.</p>
+<p>The day</p>
+<p>atmosphere.cycle</p>
+<p>HUD: almost nothing. A small &quot;3 / 5&quot; in a corner and a one-line toast on a discovery. No minimap unless you want one (the portals skill does minimaps).</p>
+<p>Sound: an ambient bed of wind and sea, birds by day and crickets by night, a soft chime on each find, one music swell at the lighthouse.</p>
+<p>Effects: fireflies in the meadow at dusk, mist on the river, a glow and a light over each found shrine.</p>
+<p>Empty is easy, interesting is hard. A huge world with nothing in it is a walk. Smaller and denser beats bigger.</p>
+<p>Empty is easy, interesting is hard.</p>
+<p>Guiding without arrows. Use light, landmarks and paths to pull the eye; a lamp or a bright window says &quot;come here&quot; better than a marker.</p>
+<p>Guiding without arrows.</p>
+<p>Night must stay readable. A night keeps its blacks, but what matters gets a lamp, a window or the moon.</p>
+<p>Night must stay readable.</p>
+<p>Performance. Grass, trees, fog and particles all cost frames, most of all on phones. Effects step down by ctx.quality; keep particle counts inside the fx budgets.</p>
+<p>No obvious goal. Some players want one. A counter of secrets and an ending give them one without spoiling the wander.</p>
+<p>No obvious goal.</p>
+<p>The two signature moves: a day that turns by itself, and a secret that remembers you found it. The day is pure config:</p>
+<h1 id="placesmainconfigyaml-a-turning-day-no-script-atmosphere-timeofday-17-cycle-periodms-1200000-epoch-0">places/main/config.yaml: a turning day, no script atmosphere: timeOfDay: 17 cycle: { periodMs: 1200000, epoch: 0 }</h1>
+<p>A secret is an invisible trigger box with physics: { body: &quot;static&quot;, collider: &quot;box&quot;, trigger: true } and this behavior:</p>
+<p>physics: { body: &quot;static&quot;, collider: &quot;box&quot;, trigger: true }</p>
+<p>// scripts/secret.js: one behavior for every secret; state.name tells them apart export function onTriggerEnter(ctx, other) { const p = ctx.place.players.find((row) =&gt; row.id === other.id); if (!p) return; const found = p.state.found ?? [], name = ctx.self.state.name; if (found.includes(name)) return; p.state.found = [...found, name]; // the player's own save ctx.emit(&quot;milestone&quot;, { step: found.length + 1, name }, { audience: { player: p.id } }); ctx.emit(&quot;playSound&quot;, { clip: &quot;/cdn/moodboard-painterly-fantasy/sfx-discovery-chime.mp3&quot;, position: ctx.self.feetPosition, volume: 0.6 }); }</p>
+<h4 id="block-1">Block 1</h4>
+<pre><code class="language-`text">spawn.co/@chizkeykkk/cat-haven</code></pre>
+<h4 id="block-2">Block 2</h4>
+<pre><code class="language-`text">spawn.co/@binxius/spawn-hangout</code></pre>
+<h4 id="block-3">Block 3</h4>
+<pre><code class="language-`text">spawn.co/@metalhorse233/dragon-racing</code></pre>
+<h4 id="block-4">Block 4</h4>
+<pre><code class="language-`text">spawn.co/@lakaplay/cartoon-horror</code></pre>
+<h4 id="block-5">Block 5</h4>
+<pre><code class="language-`text">player.state.found</code></pre>
+<h4 id="block-6">Block 6</h4>
+<pre><code class="language-`text">atmosphere.cycle</code></pre>
+<h4 id="block-7">Block 7</h4>
+<pre><code class="language-`text"># places/main/config.yaml: a turning day, no script
+atmosphere:
+  timeOfDay: 17
+  cycle: { periodMs: 1200000, epoch: 0 }</code></pre>
+<h4 id="block-8">Block 8</h4>
+<pre><code class="language-`text">physics: { body: &quot;static&quot;, collider: &quot;box&quot;, trigger: true }</code></pre>
+<h4 id="block-9">Block 9</h4>
+<pre><code class="language-`text">// scripts/secret.js: one behavior for every secret; state.name tells them apart
+export function onTriggerEnter(ctx, other) {
+  const p = ctx.place.players.find((row) =&gt; row.id === other.id);
+  if (!p) return;
+  const found = p.state.found ?? [], name = ctx.self.state.name;
+  if (found.includes(name)) return;
+  p.state.found = [...found, name]; // the player's own save
+  ctx.emit(&quot;milestone&quot;, { step: found.length + 1, name }, { audience: { player: p.id } });
+  ctx.emit(&quot;playSound&quot;, { clip: &quot;/cdn/moodboard-painterly-fantasy/sfx-discovery-chime.mp3&quot;, position: ctx.self.feetPosition, volume: 0.6 });
+}</code></pre>
+<h3 id="after-clicking-racing-vehicles">After clicking &quot;Racing &amp; vehicles&quot;</h3>
+<p>A racing game on Jayzee is a vehicle that feels like a vehicle: it leans into corners, lands heavy off a jump, drifts when you push it, and the engine note climbs with the revs. The engine's rule is simple and important: every vehicle (kart, car, truck, motorcycle, tank, ship, plane, helicopter) is one dynamic hull the player sits in. Held forces push it; the engine adds gravity, collisions, slopes, landings and pushes. A walking character body with a hand-written speed slides like a toy, so racing is built the physical way from the start. Around that hull you build a track, checkpoints, rivals and a clock: a street sprint, a figure-8 wreck derby, a ring race on dragon-back, a time trial with ghosts.</p>
+<p>The player arrives at the grid and is seated in a car (the game sets controller = player.id on the hull).</p>
+<p>controller = player.id</p>
+<p>A countdown runs with the world in view; pressing gas is how a racer joins.</p>
+<p>The race: hold gas, steer, brake into corners, pass checkpoints in order. Laps count in the hull's state.</p>
+<p>Collisions, jumps and hazards (a bomb, a wall, a rival) push things around.</p>
+<p>The finish: a time, a place, a results screen; the referee resets to the grid.</p>
+<p>Again: a better line, a better time, a leaderboard row.</p>
+<p>3d (&quot;3D world&quot;), which lists racing among its uses: it brings the 3D place, the gravity (-24 in the 3D starter, which every vehicle force reads) and a camera you swap for a chase rig while driving. You add the hull from the vehicles skill. For a top-down micro-machines racer, 2d-top works too, but the physical feel lives in 3D.</p>
+<p>vehicles: the core. A car is a ray per wheel with a spring and damper, grip that peaks and clamps, steering that fades with speed, wheels as hub children that steer by yaw and spin by pitch. An arcade kart is the same hull with a box collider and friction: 0. Planes, helicopters, boats, tanks and two-wheelers each have their own recipe. The skill also builds a procedural engine voice: exhaust pulses through pipes, not a tone.</p>
+<p>friction: 0</p>
+<p>cameras: the chase camera whose yaw follows the hull.</p>
+<p>heightmap-terrain: real ground to race over, with road and flatten marks.</p>
+<p>geometry: the car body as one scripted shell with an interior, and the track pieces.</p>
+<p>audio: the engine voice, tyre squeal, impact sounds from contact.impulse, music.</p>
+<p>contact.impulse</p>
+<p>fx: dust and smoke past peak grip, sparks on a scrape, boost flames.</p>
+<p>mobile-controls: a wheel under the left thumb, pedals under the right.</p>
+<p>platform-systems: leaderboards for best laps across every room, cheat-proof saves.</p>
+<p>game-feel: the landing thump, the screen shake on a crash, the win beat at the line.</p>
+<p>Vehicles carry the motion, but the driver is a humanoid: enter car, drive and exit car are in the library for exactly this. Hands go on the wheel's grips (bones.LeftHand.reach = { object: &lt;grip-l id&gt; }). Around the race, victory, cheer, thumbs up and dance for the podium, idle and walk in the pits.</p>
+<p>bones.LeftHand.reach = { object: &lt;grip-l id&gt; }</p>
+<p>toon-vibrant: arcade karts, loud colours, cartoon crashes.</p>
+<p>scifi-neon: floating neon tracks at night, glowing barriers, synth music.</p>
+<p>realistic-gritty: a muddy speedway, a derby of dented sedans.</p>
+<p>lowpoly-cozy: a gentle countryside drive or a delivery game.</p>
+<p>painterly-fantasy: dragon races, boats between islands.</p>
+<p>How many: 4 to 10 racers is a good grid; a time trial is one player against ghosts.</p>
+<p>Rooms: one main room for a drop-in track; or a place with instance: party so a group gets a private race copy.</p>
+<p>The referee: one sim.js runs grid, countdown, race, results. Laps are checkpoints in order, kept in each hull's state. A racer who never pressed gas since the grid sits the race out, past every hazard.</p>
+<p>The referee</p>
+<p>Bots filling seats: rivals are the same hull and the same script, with gas and steer from a racing-line driver instead of onInput. The racing line is data: the driver follows it and progress is measured along it. So a solo player still gets a full grid, and a human taking a seat simply replaces a bot.</p>
+<p>Who simulates: a mounted hull simulates on its driver's machine, so your own car always feels instant.</p>
+<p>The mobile-controls skill describes the driving layout exactly: a steering pad in the left zone (pads: [{ x: steer, mode: absolute, zone: left, label: STEER }]), a big GAS button and a BRAKE button on the right bound to axes, and an exit chip. Switching from feet to driving swaps the whole layout the moment the door closes, using a surface selector. The look-drag turns off while driving (look: false) so the chase camera holds.</p>
+<p>pads: [{ x: steer, mode: absolute, zone: left, label: STEER }]</p>
+<p>look: false</p>
+<p>Race to the Masjid (spawn.co/@yunusdiallo/race-to-the-masjid): 55 seconds to dodge carts and laundry lines down the street.</p>
+<p>spawn.co/@yunusdiallo/race-to-the-masjid</p>
+<p>Dragon Racing (spawn.co/@metalhorse233/dragon-racing): fly a drake across five zones, 28 ring races, Normal and Advanced.</p>
+<p>Crunch-em-up Derby Racing (spawn.co/@nickyp/crunch-em-up-derby-racing): figure-8 wreck racing at a county speedway.</p>
+<p>spawn.co/@nickyp/crunch-em-up-derby-racing</p>
+<p>Mequavian Racing (spawn.co/@cybershrapnel/mequavian-racing): a full-scale speedway, eight laps, one clock.</p>
+<p>spawn.co/@cybershrapnel/mequavian-racing</p>
+<p>Race or Die (spawn.co/@iiisandman/race-or-die): ten cars on a floating neon track and a bomb that blows up last place every 30 seconds.</p>
+<p>spawn.co/@iiisandman/race-or-die</p>
+<p>HyperTrackMania X (spawn.co/@hips/hypertrackmania-x-time-trial-racing): 18 arcade tracks with loops, wallrides, jumps and ranked ghosts.</p>
+<p>spawn.co/@hips/hypertrackmania-x-time-trial-racing</p>
+<p>The place: one closed circuit about 1 km around, laid as a road over heightmap terrain with a gentle hill and a jump, collider barriers along the edges, a grid and a finish arch.</p>
+<p>The car: one arcade kart (the simpler recipe: box hull, friction: 0, held force along the nose), with a body from the geometry skill, spinning wheels, headlights, brake lights that change when you brake, and the procedural engine voice.</p>
+<p>The car</p>
+<p>The loop: sim.js with grid, countdown, race (3 laps), results. Eight checkpoints in order; a missed one does not count the lap.</p>
+<p>Rivals: five bot karts on the racing line, so the grid is full alone.</p>
+<p>Rivals</p>
+<p>Win and lose: finishing position and total time; best lap saved to an SQL leaderboard.</p>
+<p>HUD: speed, lap 2/3, position 3rd/6, the countdown big in the centre, read from player.controlling.state while driving.</p>
+<p>player.controlling.state</p>
+<p>Sound: engine voice, squeal past peak grip, a hit sound scaled by contact.impulse, a countdown beep, a race music track.</p>
+<p>Effects: dust behind the wheels, sparks on wall scrapes, a burst and slowMo beat at the finish line.</p>
+<p>Handling is a craft. Grip, steering lock, weight and suspension take many test drives. Start from the skill's numbers and change one at a time.</p>
+<p>Handling is a craft.</p>
+<p>Bot drivers. A racing line that cuts corners or gets stuck on a wall breaks the race. Test the line at speed.</p>
+<p>Bot drivers.</p>
+<p>Fast things and the network. A hull jumping more than 2 m in a tick warps (interpolation: { teleportThreshold }); very fast vehicles need care.</p>
+<p>Fast things and the network.</p>
+<p>interpolation: { teleportThreshold }</p>
+<p>Tracks are big. A good circuit is many pieces: road, barriers, scenery, landmarks to read the next corner by.</p>
+<p>Tracks are big.</p>
+<p>Phones. Steering by touch is less precise; arcade handling forgives more than simulation.</p>
+<p>An arcade kart: the hull hears its driver's keys and holds two forces, a push along the nose and a turn. Keys go in session memory; only real intent changes go in state.</p>
+<p>// scripts/kart.js on the hull: physics { body: &quot;dynamic&quot;, collider: &quot;box&quot;, mass: 300, friction: 0 } import { rotate } from &quot;builtin/vec3&quot;; export function onInput(ctx, input) { ctx.self.session.gas = input.axes.moveZ ?? 0; ctx.self.session.steer = -(input.axes.moveX ?? 0); // yaw is +left: steer = -moveX } export function update(ctx, dt) { const nose = rotate(ctx.self.rotation, { x: 0, y: 0, z: -1 }); const push = 4000 * (ctx.self.session.gas ?? 0); ctx.self.forces.drive = { force: { x: nose.x * push, y: 0, z: nose.z * push } }; ctx.self.forces.turn = { torque: { x: 0, y: 1500 * (ctx.self.session.steer ?? 0), z: 0 } }; }</p>
+<p>Mounting is one line from the rider's side: hull.controller = player.id; setting it to null hands the player back their feet.</p>
+<p>hull.controller = player.id</p>
+<h4 id="block-1">Block 1</h4>
+<pre><code class="language-`text">controller = player.id</code></pre>
+<h4 id="block-2">Block 2</h4>
+<pre><code class="language-`text">friction: 0</code></pre>
+<h4 id="block-3">Block 3</h4>
+<pre><code class="language-`text">contact.impulse</code></pre>
+<h4 id="block-4">Block 4</h4>
+<pre><code class="language-`text">bones.LeftHand.reach = { object: &lt;grip-l id&gt; }</code></pre>
+<h4 id="block-5">Block 5</h4>
+<pre><code class="language-`text">pads: [{ x: steer, mode: absolute, zone: left, label: STEER }]</code></pre>
+<h4 id="block-6">Block 6</h4>
+<pre><code class="language-`text">look: false</code></pre>
+<h4 id="block-7">Block 7</h4>
+<pre><code class="language-`text">spawn.co/@yunusdiallo/race-to-the-masjid</code></pre>
+<h4 id="block-8">Block 8</h4>
+<pre><code class="language-`text">spawn.co/@nickyp/crunch-em-up-derby-racing</code></pre>
+<h4 id="block-9">Block 9</h4>
+<pre><code class="language-`text">spawn.co/@cybershrapnel/mequavian-racing</code></pre>
+<h4 id="block-10">Block 10</h4>
+<pre><code class="language-`text">spawn.co/@iiisandman/race-or-die</code></pre>
+<h4 id="block-11">Block 11</h4>
+<pre><code class="language-`text">spawn.co/@hips/hypertrackmania-x-time-trial-racing</code></pre>
+<h4 id="block-12">Block 12</h4>
+<pre><code class="language-`text">player.controlling.state</code></pre>
+<h4 id="block-13">Block 13</h4>
+<pre><code class="language-`text">interpolation: { teleportThreshold }</code></pre>
+<h4 id="block-14">Block 14</h4>
+<pre><code class="language-`text">// scripts/kart.js on the hull: physics { body: &quot;dynamic&quot;, collider: &quot;box&quot;, mass: 300, friction: 0 }
+import { rotate } from &quot;builtin/vec3&quot;;
+
+export function onInput(ctx, input) {
+  ctx.self.session.gas = input.axes.moveZ ?? 0;
+  ctx.self.session.steer = -(input.axes.moveX ?? 0); // yaw is +left: steer = -moveX
+}
+
+export function update(ctx, dt) {
+  const nose = rotate(ctx.self.rotation, { x: 0, y: 0, z: -1 });
+  const push = 4000 * (ctx.self.session.gas ?? 0);
+  ctx.self.forces.drive = { force: { x: nose.x * push, y: 0, z: nose.z * push } };
+  ctx.self.forces.turn = { torque: { x: 0, y: 1500 * (ctx.self.session.steer ?? 0), z: 0 } };
+}</code></pre>
+<h4 id="block-15">Block 15</h4>
+<pre><code class="language-`text">hull.controller = player.id</code></pre>
+<h3 id="after-clicking-survival-building">After clicking &quot;Survival &amp; building&quot;</h3>
+<p>A survival and building game is about making a place yours while the world tries to take it back. You dig and gather, you build a shelter, you keep warm and fed, and when night comes or the disaster hits, what you built is what saves you. On Jayzee the block world comes ready: a solid voxel field where left click digs and right click places, with biomes, ore and caves from its generator. The engine also brings a day and night cycle with no script, persistent state for what players own, and SQL for saves that span rooms. You add the pressure (hunger, cold, waves, storms) and the reasons to build (walls, light, crafting stations). The genre also stretches to wave survival without building (hold the fort against hordes) and to city or colony builders where the threat is a clock.</p>
+<p>The player arrives with nothing at the edge of a generated land, in daylight.</p>
+<p>They gather: dig stone, chop wood, find ore in bands underground.</p>
+<p>They build: a shelter, a campfire, a wall, a light, a crafting bench.</p>
+<p>Pressure rises: warmth or hunger drains, the sun sets, a wave or a storm comes.</p>
+<p>They survive the night, or they don't and respawn, keeping some of what they made.</p>
+<p>Each new day is longer reach: deeper caves, better tools, bigger bases, harder nights. Progress persists.</p>
+<p>3d-voxels (&quot;Block world&quot;: solid voxel field, left click digs, right click places; listed for survival, crafting, building, mining). Building is already the core verb, so the first session goes straight to the survival layer. For wave survival without digging (hold a graveyard, a backyard, a fortress) choose 3d with heightmap terrain. For a city or colony builder played from above, 3d with a top-down camera, or ui-game for a pure numbers builder.</p>
+<p>voxel-terrain: the block world itself. A block world is a volume before it is a skin: caves you stand inside, ore in 3D bands, an island with a stone belly. ctx.place.voxels[x][y][z] reads and writes blocks by integer cell; = &quot;stone&quot; places one, = null breaks it. Block scripts can react to ticks, neighbours and interaction.</p>
+<p>ctx.place.voxels[x][y][z]</p>
+<p>= &quot;stone&quot;</p>
+<p>atmosphere: the day and night that drive the danger. Full light runs about 6.75 to 17.25; the moon owns the scene from about 18.9.</p>
+<p>jev: minds for the things that come at night: notice, chase, attack walls.</p>
+<p>interactive-objects: pickups, chests, doors and levers.</p>
+<p>pointer-raycasting: click to place, cursor aim, touch tap and hold for building.</p>
+<p>platform-systems: cheat-proof saves, timers, leaderboards (longest survived).</p>
+<p>fx: campfires with their own light, torches, rain, sparks from a pickaxe.</p>
+<p>game-ui: the hotbar, the warmth and hunger bars, the crafting menu.</p>
+<p>buyables: an optional shop for cosmetics.</p>
+<p>Work and travel: idle, walk, run, sprint, jump, fall, land, crouch idle, crouch walk, climb, swim. Gathering and building: attack for a pickaxe or axe swing, pickup for collecting, throw. Danger: block, roll, hit react, die. Rest: sit, sit on floor, sleep by the fire. A survived night: cheer or victory.</p>
+<p>voxel-bright: the natural fit for a block world: sunny, readable, friendly.</p>
+<p>lowpoly-cozy: gentle survival, farming and homesteading.</p>
+<p>realistic-gritty: a harsh winter, a wasteland, scarcity you can feel.</p>
+<p>gothic-horror: nights that are truly frightening.</p>
+<p>scifi-neon: a colony on a hostile planet.</p>
+<p>Survival is great co-op. The default main room holds everyone, and every room is a whole game of its own: its blocks and buildings are that room's. What a player owns (inventory, progression, prizes) lives in player.state, their own save that follows them across rooms, or in SQL when it must be cheat-proof. For a server feel, cap rooms with routing: { maxPlayers }; for a private base for a group, a place with instance: party and persistence: session or a solo copy with persistence: persistent that keeps a player's own world as they left it. Night waves can scale with ctx.place.playerCount. There are no seats to fill; the threats are NPCs one manager script steps together.</p>
+<p>routing: { maxPlayers }</p>
+<p>persistence: session</p>
+<p>persistence: persistent</p>
+<p>ctx.place.playerCount</p>
+<p>Move stick from moveX/moveZ, drag to look, and up to four chips: jump, dig, place, and one more (eat, open inventory). The pointer-raycasting skill covers tap and hold, so a tap can place and a hold can dig. Keep the hotbar in ui.js large enough to hit with a thumb, at the top or side so it clears the stick.</p>
+<p>Survive Ragnarok (spawn.co/@liiv/survive-ragnarok): Ragnarok Online meets Vampire Survivors; an old-school MMO as a horde survival.</p>
+<p>Survive Ragnarok</p>
+<p>spawn.co/@liiv/survive-ragnarok</p>
+<p>Survival at Disaster (spawn.co/@vovafromttav/survival-at-disaster): floods, tornadoes, meteors and acid rain hit the island town; survive the round.</p>
+<p>spawn.co/@vovafromttav/survival-at-disaster</p>
+<p>Building 66 (spawn.co/@fracture/building-66): seven night shifts; find the fuses, bring the power back.</p>
+<p>spawn.co/@fracture/building-66</p>
+<p>Enfo's Team Survival (spawn.co/@marcelpachole/enfo-s-team-survival): up to 5 heroes hold Enfos against waves of undead.</p>
+<p>spawn.co/@marcelpachole/enfo-s-team-survival</p>
+<p>Spike's Neon Survival (spawn.co/@0toxika/spike-s-neon-survival): a pygmy hedgehog crunches neon worms across ten glowing arenas.</p>
+<p>spawn.co/@0toxika/spike-s-neon-survival</p>
+<p>Hexagonal Arcology Builder (spawn.co/@travelingtt/hexagonal-arcology-builder-peak-oil-survival): build a hex arcology to 144,000 people before the oil runs out.</p>
+<p>spawn.co/@travelingtt/hexagonal-arcology-builder-peak-oil-survival</p>
+<p>The place: the 3d-voxels starter's generated land, with its seed picked for a good jayzee: a meadow by a forest, a cliff with a cave mouth, ore bands below.</p>
+<p>The loop: a twenty-minute day with atmosphere.cycle. By day, gather and build. At dusk a warning; at night, creatures come from the dark and go for the player and their walls.</p>
+<p>Survival stats: warmth drains slowly by day and fast at night, and refills by a campfire. At zero, health drains. Death respawns you at your bed with your blocks, losing what you carried.</p>
+<p>Survival stats</p>
+<p>Building: digging fills a small inventory by block type; placing spends it. A campfire and a torch are craftable from wood.</p>
+<p>Win and lose: no final win; the score is nights survived, in a leaderboard. A milestone at nights 1, 3 and 7.</p>
+<p>HUD: warmth and health bars, a hotbar of five block types with counts, the night counter, a clock showing time to dusk.</p>
+<p>Sound: a calm day loop, a darker night loop crossfaded with ctx.music.play(ref, { fade }), dig and place sounds per material, the crackle of fire, a growl in the dark.</p>
+<p>Effects: a campfire with flame, embers, smoke and one light whose brightness follows the flame; block-break dust; a red edge (the player's vignette) when warmth is gone.</p>
+<p>Saves and fairness. What a player owns must survive leaving and must not be easy to fake. Inventory in player.state is simple; SQL is cheat-proof. Decide early.</p>
+<p>Saves and fairness.</p>
+<p>Shared worlds get messy. In a shared room one player can dig through another's base. Decide on protection (claims, a party copy) before it happens.</p>
+<p>Shared worlds get messy.</p>
+<p>Pacing. Too gentle is boring; too hard on night one and players leave. Make the first night survivable by anyone who built anything.</p>
+<p>Pacing.</p>
+<p>Write budget. A stat that changes every frame must not be written to state every frame; ration writes to a few a second.</p>
+<p>Write budget.</p>
+<p>Performance. Big voxel worlds, many creatures and many lights cost frames. One manager for creatures; lights only where they matter.</p>
+<p>The heart of survival: a warmth stat that drains with the night and refills by a fire. It runs once a second on the player's body and writes only when the rounded value changes.</p>
+<p>// scripts/warmth.js: rides the player's body export const updateSchedule = { every: { seconds: 1 } }; export function update(ctx) { const hour = ctx.place.atmosphere.timeOfDay; const night = hour &gt; 19 || hour &lt; 6; const fire = ctx.query({ tags: [&quot;campfire&quot;], radius: 6 }).length &gt; 0; const w = ctx.self.state.warmth ?? 100; const next = Math.max(0, Math.min(100, w + (fire ? 5 : night ? -2 : -0.5))); if (Math.round(next) !== Math.round(w)) ctx.self.state.warmth = next; ctx.self.vignette = next &lt; 20 ? 0.3 : 0; // derived each tick, never left on }</p>
+<p>Placing a campfire block is one write: ctx.place.voxels[x][y][z] = &quot;campfire&quot;, where campfire is a material you define in the place's terrain materials.</p>
+<p>ctx.place.voxels[x][y][z] = &quot;campfire&quot;</p>
+<h4 id="block-1">Block 1</h4>
+<pre><code class="language-`text">ctx.place.voxels[x][y][z]</code></pre>
+<h4 id="block-2">Block 2</h4>
+<pre><code class="language-`text">= &quot;stone&quot;</code></pre>
+<h4 id="block-3">Block 3</h4>
+<pre><code class="language-`text">routing: { maxPlayers }</code></pre>
+<h4 id="block-4">Block 4</h4>
+<pre><code class="language-`text">persistence: session</code></pre>
+<h4 id="block-5">Block 5</h4>
+<pre><code class="language-`text">persistence: persistent</code></pre>
+<h4 id="block-6">Block 6</h4>
+<pre><code class="language-`text">ctx.place.playerCount</code></pre>
+<h4 id="block-7">Block 7</h4>
+<pre><code class="language-`text">spawn.co/@liiv/survive-ragnarok</code></pre>
+<h4 id="block-8">Block 8</h4>
+<pre><code class="language-`text">spawn.co/@vovafromttav/survival-at-disaster</code></pre>
+<h4 id="block-9">Block 9</h4>
+<pre><code class="language-`text">spawn.co/@fracture/building-66</code></pre>
+<h4 id="block-10">Block 10</h4>
+<pre><code class="language-`text">spawn.co/@marcelpachole/enfo-s-team-survival</code></pre>
+<h4 id="block-11">Block 11</h4>
+<pre><code class="language-`text">spawn.co/@0toxika/spike-s-neon-survival</code></pre>
+<h4 id="block-12">Block 12</h4>
+<pre><code class="language-`text">spawn.co/@travelingtt/hexagonal-arcology-builder-peak-oil-survival</code></pre>
+<h4 id="block-13">Block 13</h4>
+<pre><code class="language-`text">// scripts/warmth.js: rides the player's body
+export const updateSchedule = { every: { seconds: 1 } };
+
+export function update(ctx) {
+  const hour = ctx.place.atmosphere.timeOfDay;
+  const night = hour &gt; 19 || hour &lt; 6;
+  const fire = ctx.query({ tags: [&quot;campfire&quot;], radius: 6 }).length &gt; 0;
+  const w = ctx.self.state.warmth ?? 100;
+  const next = Math.max(0, Math.min(100, w + (fire ? 5 : night ? -2 : -0.5)));
+  if (Math.round(next) !== Math.round(w)) ctx.self.state.warmth = next;
+  ctx.self.vignette = next &lt; 20 ? 0.3 : 0; // derived each tick, never left on
+}</code></pre>
+<h4 id="block-14">Block 14</h4>
+<pre><code class="language-`text">ctx.place.voxels[x][y][z] = &quot;campfire&quot;</code></pre>
+<h3 id="after-clicking-read-2d-platformers-top-down-rpgs-side-scrollers-with-jumps-and-parallax-top-down-adventures-with-tiles-quests-and-loot-drawn-heroes-fast-loading-and-great-on-phones">After clicking &quot;read → 2D platformers &amp; top-down RPGs Side-scrollers with jumps and parallax, top-down adventures with tiles, quests and loot: drawn heroes, fast loading and great on phones.&quot;</h3>
+<p>A 2D game on Jayzee is still a real place with depth behind it, drawn flat. A side-scroller (2d-side) has gravity, a hero that runs and jumps across a band of solid ground, and painted backdrops that slide past at their own speed. A top-down game (2d-top) has no gravity at all: the hero walks across tile ground in eight directions, bumps into trees and rocks at their feet, and the world reads like a map you live in. Every pixel is drawn in code: the tiles, the hero's walk cycle, the slime that hops toward you, the sky strip behind it all. That gives the genre its charm here: one palette, one pixel size, one light direction across everything, so the whole screen reads as one drawing that plays. And because a 2D place is just a place in a world, it can sit next to 3D places and players can walk between them.</p>
+<p>For a platformer:</p>
+<p>The player lands at the start of a level, the hero idling on solid ground with the backdrop behind.</p>
+<p>They run right, jump gaps, climb onto platforms, and grab coins that chime and float a little &quot;+1&quot;.</p>
+<p>Hazards and enemies push back: a spike, a pit, a slime on patrol. Touching one costs a life or sends them to the last checkpoint.</p>
+<p>They reach the flag or door at the end; the level lights up, a time and coin count shows on a plate, and the next level opens.</p>
+<p>Between runs they chase a better time on a board everyone in the game can see.</p>
+<p>For a top-down RPG:</p>
+<p>The player wakes in a town square drawn in tiles, with a few people to talk to.</p>
+<p>They take a task (bring three mushrooms, clear the cave), walk out past the fence into wilder ground.</p>
+<p>They fight or avoid creatures, pick up loot into a bag, and gain experience.</p>
+<p>They come back, hand the task in, level up, buy better gear, and go further out.</p>
+<p>Their bag, level and gold are saved on their own player record, so tomorrow they pick up where they left off, in any room.</p>
+<p>There are two starters, and you pick by the camera you want:</p>
+<p>2d-side (Side-scroller): a drawn hero, platform ground, gravity on, parallax backdrops. This is the start for platformers, metroidvanias and runners.</p>
+<p>2d-top (Top-down 2D): a drawn pixel hero, tile ground with wang edges (the corner tiles that make grass blend into sand), no gravity, solid trees. This is the start for RPGs, farming games, zelda-likes and twin-stick shooters.</p>
+<p>Either one is the first call on a young world: jayzee starter 2d-top or jayzee starter 2d-side. It sets the place's mode and gravity, draws a player sprite (scripts/tex-hero.js, with its ?facing= poses), sets up the camera rig and draws a ground. You reshape from there instead of building movement and a camera from nothing.</p>
+<p>jayzee starter 2d-top</p>
+<p>jayzee starter 2d-side</p>
+<p>scripts/tex-hero.js</p>
+<p>?facing=</p>
+<p>If you want stairs and cliffs a character can walk up and down while it still looks like pixel art, that needs a 3D place with the pixel-art camera instead (the cameras skill and engine.graphics.perfectPixelArt).</p>
+<p>engine.graphics.perfectPixelArt</p>
+<p>2d-mode: the heart of it. Tiles (tileAt, solidTiles, painting a cell for everyone with ctx.place.tiles[x][y] = id), drawn sprites, animation atlases, parallax strips, and the collision rules for each mode.</p>
+<p>tileAt</p>
+<p>solidTiles</p>
+<p>cameras: the 2D rig and its numbers (orthoSize, heightOffset, distance), and pixelSnap so pixels stay crisp while the camera follows.</p>
+<p>heightOffset</p>
+<p>game-feel: what makes a coin feel good (a pitch-stepped chime, a sparkle, a floating &quot;+1&quot;, no hitstop) and what makes a hit feel heavy (a short hitstop of 0.02 to 0.04 seconds, a squash, one screen shake).</p>
+<p>fx: dust when you land, sparkles on a coin, embers from a torch, all drawn as sprites in the same pixel style.</p>
+<p>interactive-objects: chests, levers, doors, pressure plates and pickups.</p>
+<p>jev: minds for enemies and townsfolk, so a boss picks whom to chase and shopkeepers go about their errands.</p>
+<p>platform-systems: the player's saved bag, gold and level in player.state, and an all-time best-time board in SQL.</p>
+<p>game-ui: a crisp HUD in the pixel face (Jersey 10 or Geist Pixel Square), hearts and coin counts as vectors.</p>
+<p>Jersey 10</p>
+<p>Geist Pixel Square</p>
+<p>audio: a chiptune loop and named sound effects.</p>
+<p>mobile-controls: the touch stick and buttons.</p>
+<p>Mostly none from the humanoid library, and that is the point: a 2D hero's motion is drawn frame by frame in its own texture script with ctx.atlas({ frameSize, animations: { idle: 2, walk: 4 }, fps, draw(g, f) }), and played by name, ctx.self.anim.locomotion = { clip: &quot;walk&quot;, weight: 1 }. You decide the frames: idle, walk, jump, hurt, attack.</p>
+<p>ctx.atlas({ frameSize, animations: { idle: 2, walk: 4 }, fps, draw(g, f) })</p>
+<p>ctx.self.anim.locomotion = { clip: &quot;walk&quot;, weight: 1 }</p>
+<p>The library's clip names are still the right shopping list for what your drawn frames should cover, because they are the moves players expect: idle, walk, run, jump, fall, land for movement; attack, roll, hit react, die for a fight; climb for ladders; pickup for loot; victory at the flag. If a 2D place sits beside a 3D place in the same world, a player who hops into the 3D place wears the avatar there and those library clips play on it for real.</p>
+<p>pixel-bright: the natural fit for a platformer. Its sample music is an upbeat 8-bit platformer loop and its sample sound is an 8-bit coin pickup. Bright, readable, fun.</p>
+<p>pixel-moody: for a quieter RPG, a rainy town, a melancholy dungeon. Its sample music is a melancholy lofi chiptune with rain, and its sound is an 8-bit door unlock.</p>
+<p>voxel-bright: a cheerful chiptune adventure loop and a block-break crunch, good for a chunky, colourful top-down world.</p>
+<p>painterly-fantasy: if you would rather paint the art than draw it in pixels (the 2d-mode skill allows painted sprites when you ask for finished painted pieces), its wistful strings and harp suit a storybook RPG.</p>
+<p>Every Jayzee world is a shared room from the first minute, and that includes 2D. Up to 64 players can stand in a place at once, and the main room holds nearly unlimited players.</p>
+<p>A platformer usually works best as many people running the same course at the same time: everyone sees each other's heroes, but each runs alone, and the shared part is the board and the bragging.</p>
+<p>A top-down RPG is naturally social: a town square full of other players, parties heading into the same cave. A party is a ready-made team (player.party).</p>
+<p>player.party</p>
+<p>When a dungeon or boss fight should belong to one group, a place can open a private copy per party or per player (instance: party or instance: solo in that place's config).</p>
+<p>instance: solo</p>
+<p>Ground a player changes for everyone (a dug tile, a farm plot) reads from world.state, so it is shared by everyone in that room.</p>
+<p>Enemies fill the world when other players don't: they are just entities with a behavior, and for dozens of them one manager script steps them all.</p>
+<p>Phones get controls automatically from your game's own inputs. The stick appears only for axes named exactly moveX and moveZ (or moveY in 2D), so keep those names. Every action becomes a round button (a chip of 56 or 48 px), up to four of them, with jump ranked first.</p>
+<p>moveY</p>
+<p>Platformer: stick under the left thumb, a big jump button under the right, maybe an attack chip beside it.</p>
+<p>Runner: you can drop the stick entirely and make the whole screen the button: orientation: portrait, sticks: [], gestures: { tap: jump, hold: slide }.</p>
+<p>orientation: portrait</p>
+<p>sticks: []</p>
+<p>gestures: { tap: jump, hold: slide }</p>
+<p>Top-down RPG: stick on the left, attack and interact chips on the right. The interact chip carries the action's own word, INTERACT.</p>
+<p>Keep HUD plates clear of the right edge where Jayzee's rail sits, and make them fit a 390 px wide phone.</p>
+<p>spawn.co/@gamex_feed/eldoria-rpg-120xp, Eldoria [RPG] 120xp: a top-down pixel RPG where you wake in Trade Central, pick a vocation, hunt, loot and level across ten biomes.</p>
+<p>spawn.co/@gamex_feed/eldoria-rpg-120xp</p>
+<p>spawn.co/@majid/rpg-fighter, RPG Fighter: ten RPG heroes, knight to dragoon; pick one and fight best of three in a burning pixel-art keep.</p>
+<p>spawn.co/@majid/rpg-fighter</p>
+<p>spawn.co/@pixelmg_dev/world-adventure-of-pixels, WORLD ADVENTURE of PIXELS: run, jump, stomp and bonk ? blocks across a pixel world to reach the flag.</p>
+<p>spawn.co/@yujiro/totally-normal-platformer, Totally Normal Platformer: a cute little platformer where nothing is a trap. Probably.</p>
+<p>spawn.co/@yujiro/totally-normal-platformer</p>
+<p>spawn.co/@chucky/higher, Higher: race up disco towers, candy mountains and alien peaks in a toon-bright climbing arcade with a leaderboard.</p>
+<p>spawn.co/@chucky/higher</p>
+<p>spawn.co/@izkimar/diablo-survivors, Diablo Survivors: pick your hero at the camp fire, step through the portal, survive the horde.</p>
+<p>spawn.co/@izkimar/diablo-survivors</p>
+<p>One session can stand up a complete, playable first level. For a platformer it looks like this:</p>
+<p>Place: jayzee starter 2d-side, then a tile ground of about 60 tiles across with a surface band, three or four floating platforms, two pits, and a parallax sky strip behind (sprite.parallax: [0.25, 1], repeatX: true).</p>
+<p>sprite.parallax: [0.25, 1]</p>
+<p>repeatX: true</p>
+<p>Hero: the starter's drawn hero, given idle, walk and jump frames in its atlas (hero frames are 32 by 40 texels in top-down, 56 by 64 in side view).</p>
+<p>Loop: run, jump, collect twelve coins, reach the flag.</p>
+<p>Win and lose: falling into a pit returns you to the last checkpoint flag; reaching the end flag is the win, played as a moment first (a burst of sparkles, a sting of music, your time large on screen) and then a plate with your time, your coins and a button to go again.</p>
+<p>HUD: coins top-left and the run clock top-right, each on a small plate in the pixel face, the clock big.</p>
+<p>Sound: a pixel-bright music loop through ctx.music.play, a coin chime that steps up in pitch with each coin in a row, a jump boing, a thud on landing.</p>
+<p>ctx.music.play</p>
+<p>Effects: a little dust puff at the feet on landing, a sparkle on each coin, a burst at the flag.</p>
+<p>Saved: your best time in player.state, and the top ten times on a board.</p>
+<p>For a top-down RPG the first session is a village of about 40 by 30 tiles with grass, paths and water edges, a fence with a gate, three townsfolk with a line each, a field outside with four slimes, a quest to clear them, and a bag and gold counter that save.</p>
+<p>Art consistency is everything. One palette, one texel density (the starter ground is 32 texels a metre), one light direction. A box floor under pixel sprites, a stretched sprite, or one hand-drawn character next to one painted one breaks the illusion immediately.</p>
+<p>Art consistency is everything.</p>
+<p>Every facing is drawn. A top-down hero has up to eight facings and each is its own drawn pose (never a mirror flip), times every animation. Plan a small set and grow it.</p>
+<p>Every facing is drawn.</p>
+<p>Collision rules are opposite in the two modes. In top-down, world objects are solid and collide at their feet (a tree trunk blocks, its canopy doesn't); in side view, background dressing is not solid and only the playable band is. Mixing them up gives invisible walls or ghost platforms.</p>
+<p>Collision rules are opposite in the two modes.</p>
+<p>Gravity is yours in side view. The controller adds none: every body's script bends its own vertical speed each tick, or it floats.</p>
+<p>Gravity is yours in side view.</p>
+<p>Platformer feel is fiddly. Jump height, how fast you fall, how much control you have in the air: these numbers decide whether the game feels good, and they take tuning by playing.</p>
+<p>Platformer feel is fiddly.</p>
+<p>Content is the real work in an RPG. Movement and combat are a session; quests, items, maps and dialogue are weeks.</p>
+<p>Content is the real work in an RPG.</p>
+<p>The signature mechanic of a side-scroller is the run and jump. The engine adds no gravity in 2d-side, so the hero's own script reads the input, bends its vertical speed every tick, and picks which drawn animation plays:</p>
+<p>// scripts/hero.js: on the player in a 2d-side place; its sprite's atlas has idle, walk and jump const GRAVITY = -30, RUN = 6, JUMP = 11; export function onInput(ctx, input) { ctx.self.session.run = input.axes.moveX ?? 0; if (input.pressed.jump &amp;&amp; ctx.self.grounded) ctx.self.session.jump = true; } export function update(ctx, dt) { const s = ctx.self.session, v = ctx.self.velocity; let vy = v.y + GRAVITY * dt; // gravity is ours to add if (s.jump) { vy = JUMP; s.jump = false; } ctx.self.velocity = { x: (s.run ?? 0) * RUN, y: vy, z: 0 }; const clip = !ctx.self.grounded ? &quot;jump&quot; : s.run ? &quot;walk&quot; : &quot;idle&quot;; ctx.self.anim.locomotion = { clip, weight: 1 }; }</p>
+<p>And a top-down world changes its ground for everyone with one line: ctx.place.tiles[x][y] = id paints a tile, = 0 carves it, and delete returns it to whatever the ground generator says.</p>
+<h4 id="block-1">Block 1</h4>
+<pre><code class="language-`text">spawn starter 2d-top</code></pre>
+<h4 id="block-2">Block 2</h4>
+<pre><code class="language-`text">spawn starter 2d-side</code></pre>
+<h4 id="block-3">Block 3</h4>
+<pre><code class="language-`text">scripts/tex-hero.js</code></pre>
+<h4 id="block-4">Block 4</h4>
+<pre><code class="language-`text">?facing=</code></pre>
+<h4 id="block-5">Block 5</h4>
+<pre><code class="language-`text">engine.graphics.perfectPixelArt</code></pre>
+<h4 id="block-6">Block 6</h4>
+<pre><code class="language-`text">tileAt</code></pre>
+<h4 id="block-7">Block 7</h4>
+<pre><code class="language-`text">solidTiles</code></pre>
+<h4 id="block-8">Block 8</h4>
+<pre><code class="language-`text">heightOffset</code></pre>
+<h4 id="block-9">Block 9</h4>
+<pre><code class="language-`text">Jersey 10</code></pre>
+<h4 id="block-10">Block 10</h4>
+<pre><code class="language-`text">Geist Pixel Square</code></pre>
+<h4 id="block-11">Block 11</h4>
+<pre><code class="language-`text">ctx.atlas({ frameSize, animations: { idle: 2, walk: 4 }, fps, draw(g, f) })</code></pre>
+<h4 id="block-12">Block 12</h4>
+<pre><code class="language-`text">ctx.self.anim.locomotion = { clip: &quot;walk&quot;, weight: 1 }</code></pre>
+<h4 id="block-13">Block 13</h4>
+<pre><code class="language-`text">player.party</code></pre>
+<h4 id="block-14">Block 14</h4>
+<pre><code class="language-`text">instance: solo</code></pre>
+<h4 id="block-15">Block 15</h4>
+<pre><code class="language-`text">moveY</code></pre>
+<h4 id="block-16">Block 16</h4>
+<pre><code class="language-`text">orientation: portrait</code></pre>
+<h4 id="block-17">Block 17</h4>
+<pre><code class="language-`text">sticks: []</code></pre>
+<h4 id="block-18">Block 18</h4>
+<pre><code class="language-`text">gestures: { tap: jump, hold: slide }</code></pre>
+<h4 id="block-19">Block 19</h4>
+<pre><code class="language-`text">spawn.co/@gamex_feed/eldoria-rpg-120xp</code></pre>
+<h4 id="block-20">Block 20</h4>
+<pre><code class="language-`text">spawn.co/@majid/rpg-fighter</code></pre>
+<h4 id="block-21">Block 21</h4>
+<pre><code class="language-`text">spawn.co/@yujiro/totally-normal-platformer</code></pre>
+<h4 id="block-22">Block 22</h4>
+<pre><code class="language-`text">spawn.co/@chucky/higher</code></pre>
+<h4 id="block-23">Block 23</h4>
+<pre><code class="language-`text">spawn.co/@izkimar/diablo-survivors</code></pre>
+<h4 id="block-24">Block 24</h4>
+<pre><code class="language-`text">sprite.parallax: [0.25, 1]</code></pre>
+<h4 id="block-25">Block 25</h4>
+<pre><code class="language-`text">repeatX: true</code></pre>
+<h4 id="block-26">Block 26</h4>
+<pre><code class="language-`text">ctx.music.play</code></pre>
+<h4 id="block-27">Block 27</h4>
+<pre><code class="language-`text">// scripts/hero.js: on the player in a 2d-side place; its sprite's atlas has idle, walk and jump
+const GRAVITY = -30, RUN = 6, JUMP = 11;
+
+export function onInput(ctx, input) {
+  ctx.self.session.run = input.axes.moveX ?? 0;
+  if (input.pressed.jump &amp;&amp; ctx.self.grounded) ctx.self.session.jump = true;
+}
+
+export function update(ctx, dt) {
+  const s = ctx.self.session, v = ctx.self.velocity;
+  let vy = v.y + GRAVITY * dt;            // gravity is ours to add
+  if (s.jump) { vy = JUMP; s.jump = false; }
+  ctx.self.velocity = { x: (s.run ?? 0) * RUN, y: vy, z: 0 };
+  const clip = !ctx.self.grounded ? &quot;jump&quot; : s.run ? &quot;walk&quot; : &quot;idle&quot;;
+  ctx.self.anim.locomotion = { clip, weight: 1 };
+}</code></pre>
+<h3 id="after-clicking-clickers-card-board-games">After clicking &quot;Clickers, card &amp; board games&quot;</h3>
+<p>These are the games where the rules matter more than the running around: tap the big thing and watch the number climb, play a hand of cards against three friends, move pieces on a board, guess today's puzzle. On Jayzee most of them run screen-first: the whole game is a web page made of buttons, numbers and cards, with no 3D drawn at all, and the rules run quietly behind the buttons. This very site runs that way. It means fast loading, crisp text, and a game that feels at home on a phone. What makes them special here is that they are shared from the first minute: a clicker can be one giant number everyone in the room pushes up together, a card table fills with real people at a link, and the board of best scores spans every room the game has ever had.</p>
+<p>For a clicker or idle game:</p>
+<p>The player arrives to one big thing to tap and a number at zero.</p>
+<p>Each tap adds to the number, with a little pop and a chime.</p>
+<p>The number buys upgrades: more per tap, then helpers that earn on their own.</p>
+<p>Upgrades get expensive faster than income grows, so the player keeps choosing what to buy next.</p>
+<p>Eventually they &quot;rebirth&quot;: start over with a permanent bonus, and climb faster.</p>
+<p>Their total sits on a board, and in a shared clicker, everyone's taps count toward one goal for the room.</p>
+<p>For a card or board game:</p>
+<p>Players gather at a table (a seat, or a table that fills when enough people arrive).</p>
+<p>The game deals: each player sees only their own hand.</p>
+<p>Turns go round: play a card, move a piece, roll, draw. The game checks what is legal.</p>
+<p>Someone wins the hand or the game; it is shown to everyone, then the table offers another round.</p>
+<p>For a daily puzzle or quiz:</p>
+<p>One puzzle a day, the same for everyone.</p>
+<p>The player guesses, the game marks each guess.</p>
+<p>They solve it (or run out of tries), see their streak, and share it.</p>
+<p>ui-game (Screen-first): the screen is HTML, no 3D drawn, rules run behind buttons. It is built for clickers, card games, idle games, quizzes and dashboards. A place in mode: ui opens with no 3D graphics at all; the whole game is what ui.js returns, re-drawn whenever what it reads changes.</p>
+<p>mode: ui</p>
+<p>When the cards or pieces should be real objects on a table you can lean over (a pool table, a chess board, a gem cube you turn), choose 3d instead: the game becomes a 3D place with a camera over the board, and clicks on pieces come from the pointer-raycasting skill. 8-Ball Pool 3D and GEMSMITH 3D below are built that way. A simple rule: if the thing the player touches is a number or a card, screen-first; if it is a ball or a piece that moves, 3D.</p>
+<p>game-ui: the whole game lives here. HUD plates, menus, cards, shop dialogs (data-modal), the font (engine.ui.theme.font: Jersey 10 or Geist Pixel Square), and the rule that buttons send actions with sendAction(name, payload).</p>
+<p>data-modal</p>
+<p>engine.ui.theme.font</p>
+<p>sendAction(name, payload)</p>
+<p>platform-systems: saves (coins, upgrades and streaks in player.state, seeded once with ??=), cheat-proof keys (platformState: [&quot;gold&quot;] so no player's machine can write them), SQL leaderboards across every room, timers (ctx.after, and engine.crons for something every few minutes), and secret hands (a row with visibility: &quot;owner&quot; under a player reaches only that player's screen; visibility: &quot;platform&quot; for a deck nobody sees).</p>
+<p>platformState: [&quot;gold&quot;]</p>
+<p>engine.crons</p>
+<p>visibility: &quot;owner&quot;</p>
+<p>visibility: &quot;platform&quot;</p>
+<p>rooms-and-matchmaking: tables of a fixed size (routing.maxPlayers), private copies of a place per group (instance: party), and Jayzee's own Invite button (ctx.emit(&quot;openInvite&quot;, {})).</p>
+<p>routing.maxPlayers</p>
+<p>jev: computer opponents that weigh their options and answer in odds, so a bot player bluffs some of the time instead of always playing the same card.</p>
+<p>game-feel: a tap is a coin-weight contact: a pitch-stepped chime, a sparkle, a floating &quot;+1&quot;, never a hitstop.</p>
+<p>buyables: a shop that sells with spoins, Jayzee's currency, if the game wants real purchases.</p>
+<p>audio: a soft music loop and the click, flip, shuffle and win sounds, conjured by name.</p>
+<p>pointer-raycasting: clicking or tapping pieces when the board is 3D.</p>
+<p>mobile-controls: mostly not needed for screen-first (your buttons are the controls), but the rules about the rail and thumb reach still apply.</p>
+<p>A screen-first game draws no bodies, so it uses no clips: its motion is CSS (a number that kicks bigger when it changes, a card that slides into place). If you build the table in 3D with players seated around it, the sitting clips are made for exactly this: sit, sitting clap, sitting cheer, sitting thumbs up, sitting laugh, sitting point and sitting talk, plus victory, cheer, shrug and angry for the end of a hand. A body parented to a seat sits by itself.</p>
+<p>toon-vibrant: bouncy cartoon marimba and brass, a cartoon boing: perfect for a silly clicker where everything pops.</p>
+<p>pixel-bright: an 8-bit coin pickup is the sound of a clicker. Bright and arcade.</p>
+<p>lowpoly-cozy: acoustic guitar and glockenspiel for a calm idle game or a cosy card table.</p>
+<p>scifi-neon: a driving synthwave loop for a sleek dashboard or a neon casino.</p>
+<p>gothic-horror: a low organ drone for a dark tarot table or a haunted board game.</p>
+<p>Shared clicker: everyone is in one room and one number belongs to the room (ctx.world.state). Many hands add to it at once, so the engine's rule applies: a number two machines change at once is stepped in place (+= 1), never assigned, so no tap overwrites another. Each player's own coins stay in their player.state.</p>
+<p>Shared clicker</p>
+<p>+= 1</p>
+<p>Leaderboard: the board that spans every room is SQL, written at an event (a rebirth, the end of a run), never every tick. A board can also show on Jayzee's own game page through leaderboards in world.config.yaml.</p>
+<p>world.config.yaml</p>
+<p>Card table: a table of four is a room or a copy of a place. Set routing.maxPlayers and the door fills rooms of that size and opens the next one; no lobby, no room codes (Jayzee has none). A friend arrives through Jayzee's invite.</p>
+<p>Card table</p>
+<p>Bots filling seats: an empty seat is a bot row. Give it simulatedBy: &quot;platform&quot; so it runs on Jayzee's machine rather than any player's, and let it pick its move with jev:decide, sampling the odds with ctx.random() so it plays like a person, not a robot.</p>
+<p>simulatedBy: &quot;platform&quot;</p>
+<p>Secrets: the deal happens on Jayzee's machine. Hands are rows under each player with visibility: &quot;owner&quot;; the deck is visibility: &quot;platform&quot;. Anything else can be read by others, so a secret never rides an ordinary row.</p>
+<p>Referee: sim.js judges claims several hands make at once: whose turn it is, who won, the last seat.</p>
+<p>Screen-first games are some of the best phone games on Jayzee because the controls are simply your buttons. Make them big, put the main one where a thumb rests (bottom centre for the big tap target), and let rows of upgrade plates flex-wrap so they fit a 390 px wide screen, none narrower than its one-line label. A panel taller than about 640 px scrolls. Keep plates clear of the right edge where Jayzee's rail sits (the HUD uses var(--spawn-chrome-reservation-right-inset) to keep its distance). Tap haptics are a ctx.emit(&quot;haptic&quot;, { kind: &quot;light&quot; }) from the action's handler (the Jayzee app buzzes; a phone browser doesn't).</p>
+<p>flex-wrap</p>
+<p>var(--spawn-chrome-reservation-right-inset)</p>
+<p>ctx.emit(&quot;haptic&quot;, { kind: &quot;light&quot; })</p>
+<p>spawn.co/@longthunder/cubemunity, Cubemunity: a cosy community clicker; break a giant cube together, one layer at a time.</p>
+<p>spawn.co/@longthunder/cubemunity</p>
+<p>spawn.co/@ohtheicee/banana-clicker, Banana Clicker: a giant banana in a field. Click it. Everyone's clicks count.</p>
+<p>spawn.co/@ohtheicee/banana-clicker</p>
+<p>spawn.co/@sharkyrex16/clicker-sim, Clicker Sim: click the gem, buy upgrades, rebirth, get stupid rich.</p>
+<p>spawn.co/@sharkyrex16/clicker-sim</p>
+<p>spawn.co/@00ercruptedsupreme/1-clicker, 1 Clicker: click the big 1, catch the golden 1, buy mines and super clickers, top the room.</p>
+<p>spawn.co/@00ercruptedsupreme/1-clicker</p>
+<p>spawn.co/@dreamcatcher/spawndle, Spawndle: guess the Jayzee game from one screenshot, every day, plus Wordlock, Fours, Threads and Culprits.</p>
+<p>spawn.co/@dreamcatcher/spawndle</p>
+<p>spawn.co/@tuanteku/8-ball-pool-3d, 8-Ball Pool 3D: 3D 8-ball pool with AI save and resume, friend matches, practice and challenges.</p>
+<p>spawn.co/@tuanteku/8-ball-pool-3d</p>
+<p>A first session stands up a complete shared clicker:</p>
+<p>Place: the ui-game starter, mode: ui, one page.</p>
+<p>Loop: one big button in the middle (a painted picture of the thing you tap). Each tap adds to your coins and to the room's shared total. Three upgrades on plates down the side: more per tap, an auto-earner, a multiplier, each price rising after each buy.</p>
+<p>Goal and ending: a room goal (break the cube at one million taps). When the shared total crosses it, the referee writes the phase, everyone sees the same moment (a big burst, a sting, the top tapper's name across the screen for a few seconds), then the goal resets one tier higher.</p>
+<p>Goal and ending</p>
+<p>HUD: your coins big at the top, coins per second smaller beneath, the room's progress bar across the top, the top ten tappers on a plate.</p>
+<p>Sound: one soft music loop, a tap pop whose pitch steps up while you tap fast, a cash register on a buy, a fanfare at the goal.</p>
+<p>Effects: the button squashes on each tap, a &quot;+1&quot; floats up from the press, the coin number kicks bigger when it changes.</p>
+<p>Saved: coins and upgrades in player.state, protected with platformState; best totals in SQL.</p>
+<p>platformState</p>
+<p>For a card game, the first session is one table of four with a dealt hand, legal-move checking, a turn indicator, a bot in every empty seat and a winner shown at the end of the hand.</p>
+<p>Balance is the game. A clicker lives or dies on its numbers: how fast prices rise against income. Expect to tune by playing for longer than you spent building.</p>
+<p>Balance is the game.</p>
+<p>Cheating. Anything a player's own machine writes can be faked. Coins and upgrades belong in platformState, and a board should accept results judged on Jayzee's side.</p>
+<p>Cheating.</p>
+<p>Secrets leak if put in the wrong place. A card hand on an ordinary row or an ordinary emit can reach other players. Hands go on owner rows, dealt by the platform.</p>
+<p>Secrets leak if put in the wrong place.</p>
+<p>Turn games need one referee. Two machines deciding whose turn it is at the same moment cause fights; sim.js decides.</p>
+<p>Turn games need one referee.</p>
+<p>Empty tables. A four-player card game with one player is no game; plan bots from day one.</p>
+<p>Empty tables.</p>
+<p>No title screen. A start screen empties the room and costs players; the game opens straight onto the playable table or button.</p>
+<p>No title screen.</p>
+<p>The signature mechanic of a shared clicker: a button on the page sends an action, the player's own script pays them and adds a step to the room's total, stepping it rather than assigning it so simultaneous taps never overwrite each other.</p>
+<p>// world.config.yaml declares the action: inputs: { actions: { tap: {} } } // ui.js: the big button export default (ctx, player) =&gt; <code> &lt;div class=&quot;plate&quot;&gt;COINS ${player.state.coins ?? 0}&lt;/div&gt; &lt;div class=&quot;plate&quot;&gt;ROOM ${ctx.world.state.taps?.total ?? 0}&lt;/div&gt; &lt;button onclick=&quot;sendAction('tap')&quot;&gt;TAP&lt;/button&gt;</code>; // scripts/player.js: the tapper's own body export function onInput(ctx, input) { if (!input.pressed.tap) return; const s = ctx.self.state; s.coins = (s.coins ?? 0) + (s.perTap ?? 1); ctx.world.state.taps ??= { total: 0 }; ctx.world.state.taps.total += 1; // stepped, never assigned }</p>
+<h4 id="block-1">Block 1</h4>
+<pre><code class="language-`text">mode: ui</code></pre>
+<h4 id="block-2">Block 2</h4>
+<pre><code class="language-`text">data-modal</code></pre>
+<h4 id="block-3">Block 3</h4>
+<pre><code class="language-`text">engine.ui.theme.font</code></pre>
+<h4 id="block-4">Block 4</h4>
+<pre><code class="language-`text">sendAction(name, payload)</code></pre>
+<h4 id="block-5">Block 5</h4>
+<pre><code class="language-`text">platformState: [&quot;gold&quot;]</code></pre>
+<h4 id="block-6">Block 6</h4>
+<pre><code class="language-`text">engine.crons</code></pre>
+<h4 id="block-7">Block 7</h4>
+<pre><code class="language-`text">visibility: &quot;owner&quot;</code></pre>
+<h4 id="block-8">Block 8</h4>
+<pre><code class="language-`text">visibility: &quot;platform&quot;</code></pre>
+<h4 id="block-9">Block 9</h4>
+<pre><code class="language-`text">routing.maxPlayers</code></pre>
+<h4 id="block-10">Block 10</h4>
+<pre><code class="language-`text">+= 1</code></pre>
+<h4 id="block-11">Block 11</h4>
+<pre><code class="language-`text">world.config.yaml</code></pre>
+<h4 id="block-12">Block 12</h4>
+<pre><code class="language-`text">simulatedBy: &quot;platform&quot;</code></pre>
+<h4 id="block-13">Block 13</h4>
+<pre><code class="language-`text">flex-wrap</code></pre>
+<h4 id="block-14">Block 14</h4>
+<pre><code class="language-`text">var(--spawn-chrome-reservation-right-inset)</code></pre>
+<h4 id="block-15">Block 15</h4>
+<pre><code class="language-`text">ctx.emit(&quot;haptic&quot;, { kind: &quot;light&quot; })</code></pre>
+<h4 id="block-16">Block 16</h4>
+<pre><code class="language-`text">spawn.co/@longthunder/cubemunity</code></pre>
+<h4 id="block-17">Block 17</h4>
+<pre><code class="language-`text">spawn.co/@ohtheicee/banana-clicker</code></pre>
+<h4 id="block-18">Block 18</h4>
+<pre><code class="language-`text">spawn.co/@sharkyrex16/clicker-sim</code></pre>
+<h4 id="block-19">Block 19</h4>
+<pre><code class="language-`text">spawn.co/@00ercruptedsupreme/1-clicker</code></pre>
+<h4 id="block-20">Block 20</h4>
+<pre><code class="language-`text">spawn.co/@dreamcatcher/spawndle</code></pre>
+<h4 id="block-21">Block 21</h4>
+<pre><code class="language-`text">spawn.co/@tuanteku/8-ball-pool-3d</code></pre>
+<h4 id="block-22">Block 22</h4>
+<pre><code class="language-`text">platformState</code></pre>
+<h4 id="block-23">Block 23</h4>
+<pre><code class="language-`text">// world.config.yaml declares the action: inputs: { actions: { tap: {} } }
+
+// ui.js: the big button
+export default (ctx, player) =&gt; `
+  &lt;div class=&quot;plate&quot;&gt;COINS ${player.state.coins ?? 0}&lt;/div&gt;
+  &lt;div class=&quot;plate&quot;&gt;ROOM ${ctx.world.state.taps?.total ?? 0}&lt;/div&gt;
+  &lt;button onclick=&quot;sendAction('tap')&quot;&gt;TAP&lt;/button&gt;`;
+
+// scripts/player.js: the tapper's own body
+export function onInput(ctx, input) {
+  if (!input.pressed.tap) return;
+  const s = ctx.self.state;
+  s.coins = (s.coins ?? 0) + (s.perTap ?? 1);
+  ctx.world.state.taps ??= { total: 0 };
+  ctx.world.state.taps.total += 1;          // stepped, never assigned
+}</code></pre>
+<h3 id="after-clicking-read-social-hangouts-places-people-come-to-be-together-a-plaza-caf-or-club-with-seats-emotes-voice-and-chat-already-built-in-the-fun-is-the-other-people">After clicking &quot;read → Social hangouts Places people come to be together: a plaza, café or club with seats, emotes, voice and chat already built in. The fun is the other people.&quot;</h3>
+<p>A hangout is a place people come to be together: a plaza, a café, a beach club, a rooftop at night, a cat-filled house. There is no score to beat. The fun is the other people: walking up to someone, waving, sitting down on the same bench, dancing on the same floor, talking. Jayzee is unusually good at this, because the hardest parts of a social game already come built in: the chat (say, whispers, party, guild), voice that gets louder as you walk closer, nametags over every head, parties and friends, and one shared room that people arrive into by link. Your job is the place and the things to do in it: somewhere beautiful to stand, seats to sit in, emotes to show off, small toys and games that make strangers laugh together.</p>
+<p>things to do in it</p>
+<p>A player arrives into a lively spot with other people already in view (never a menu).</p>
+<p>They walk around, see nametags, hear voices nearby, read the chat.</p>
+<p>They do something visible: wave, dance, sit on a bench, ride the swing, pick up a ball and throw it.</p>
+<p>Someone answers: waves back, joins the dance, sits beside them, starts talking.</p>
+<p>Little activities give a reason to stay: a karaoke stage, a photo spot, a mini-game in the corner, a pet to feed, a room to decorate.</p>
+<p>They leave with a friend or a party, and come back because the place feels like theirs (a saved outfit, a home, a level next to their name).</p>
+<p>3d (3D world): a body, mouse look, jump, open sky. A hangout wants bodies with clips, seats, emotes and a camera that shows you and your friends, so the 3D starter is the natural home; swap the first-person view for a third-person orbit (the way this site's Animation Hall does) so you can see yourself dance.</p>
+<p>A cosy pixel hangout (a café or a town square drawn from above) uses 2d-top (Top-down 2D): no gravity, a tile ground, drawn heroes, and sprites that sort by depth so people stand in front of or behind each other. It loads fast and looks great on phones, at the cost of the full-body emotes.</p>
+<p>social: the centre of the genre. Your own scripts/chat.js adds channels (a zone scope so only people in the same room of the club read each other, or a voice: true scope for a private booth), sets what the nametag shows (export const character = &quot;name&quot;, plus up to four profile rows such as a level), hears chat lines with onSay for /commands, and speaks as the world with ctx.emit(&quot;say&quot;, { text, scope }). Parties and guilds are Jayzee's own: partyAdd, guildAdd.</p>
+<p>scripts/chat.js</p>
+<p>voice: true</p>
+<p>export const character = &quot;name&quot;</p>
+<p>profile</p>
+<p>ctx.emit(&quot;say&quot;, { text, scope })</p>
+<p>animations: emotes. Any clip plays on a channel over the walk (ctx.self.anim.gesture), with a spine mask so the legs keep walking; a body parented to a seat sits by itself.</p>
+<p>ctx.self.anim.gesture</p>
+<p>rooms-and-matchmaking: the main room holds almost everyone, there is no lobby and no room code; friends come by Jayzee's invite (ctx.emit(&quot;openInvite&quot;, {})) or share (openShare). A private apartment is a place with instance: party (or solo) and persistence: persistent so the decorations stay.</p>
+<p>interactive-objects: seats, doors, swings, things you can pick up and hand to someone.</p>
+<p>atmosphere and looks: the vibe is the product. A sunset, string lights, fog over the water, a warm colour grade.</p>
+<p>audio: a quiet music bed, ambient beds (waves, café clatter), and ctx.music.play for one shared jukebox everyone hears.</p>
+<p>game-ui: an emote wheel, a small &quot;now playing&quot; plate, plates that follow a thing (data-world-anchor).</p>
+<p>data-world-anchor</p>
+<p>platform-systems: player saves (outfit, home layout, coins), and gentle cosmetics for sale with buyables.</p>
+<p>mobile-controls: a stick and a few chips, including the emote button.</p>
+<p>This genre uses more of the library than any other. From Social: wave, wave one hand, wave both hands, point, clap, laugh, cry, talk, cheer, bow, salute, shrug, thumbs up, nod yes, shake no, angry, pickup and victory. From Emotes &amp; dance: dance, chicken dance, locking hip hop, slide hip hop, step hip hop, wave hip hop and backflip, plus the seated set (sitting cheer, sitting thumbs up, sitting laugh, sitting point, sitting clap, sitting talk) for when people are on benches. From Body &amp; traversal: sit, sit on floor and sleep for lounging, swim idle and swim for a pool or beach, drive, enter car and exit car if cars cruise the boulevard. And the Locomotion set (idle, walk, run, jump, fall, land) underneath everything. You can watch every one of these on a figure in this site's Animation Hall.</p>
+<p>lowpoly-cozy: the default hangout feel. Acoustic guitar, glockenspiel, soft footsteps on wood. A café, a cabin, a village green.</p>
+<p>toon-vibrant: bright and bouncy, for a party plaza or a goofy playground.</p>
+<p>scifi-neon: driving synthwave for a night club, a rooftop city, a neon arcade.</p>
+<p>pixel-bright: chiptune for a cheerful top-down town square.</p>
+<p>painterly-fantasy: a fairy glade or a floating island tea house, with harp and strings.</p>
+<p>One big room. A hangout is the case Jayzee's main room was made for: nearly unlimited people in one place. If a busy hangout wants smaller, cosier rooms, routing.maxPlayers caps each room and the door opens the next one, filling the fullest room that still has space so people find people.</p>
+<p>One big room.</p>
+<p>No bots needed in seats, but an empty hangout is sad: the first visitor should find life. Ambient NPCs (a barista, a DJ, cats wandering) and a world that moves on its own (music, water, lights) fill the space until people come.</p>
+<p>No bots needed in seats</p>
+<p>Homes and private rooms are copies of a place per party or per player (instance: party | solo), kept with persistence: persistent.</p>
+<p>Homes and private rooms</p>
+<p>instance: party | solo</p>
+<p>Voice and chat are Jayzee's: spatial voice over earshot, and a ring on the talking head (player.talking) your nametag or HUD can read.</p>
+<p>player.talking</p>
+<p>Saved per player: player.state follows a player into every room and through portals, so their outfit and home go with them.</p>
+<p>Saved per player</p>
+<p>The phone layout comes from your inputs: axes named moveX and moveZ give a thumb stick on the left, and each action becomes a round chip on the right, at most four, the first one biggest. For a hangout that is: jump, emote (opens the emote wheel), interact (sit, pick up) and maybe a camera button. Make emote-wheel buttons large, keep plates clear of Jayzee's rail on the right edge, and remember Jayzee's own chat and mic buttons already live on the screen: never stack your HUD over them.</p>
+<p>spawn.co/@binxius/spawn-hangout, Jayzee Hangout: a lakeside town to meet up, talk and play: ski, skate, bowl, shoot pool and fire yourself out of a cannon.</p>
+<p>spawn.co/@chizkeykkk/cat-haven, Cat Haven: a pink house in the clouds with a glass-domed cat yard. Carry the cats, pet them, run the cloud roads.</p>
+<p>spawn.co/@ninjacatlive/dojo-city, DOJO CITY: games, a casino and a social hangout in a Ninja Cat world.</p>
+<p>spawn.co/@ninjacatlive/dojo-city</p>
+<p>spawn.co/@chucky/need-for-spawn, Need for Jayzee: build your street car in an underground garage, then run it hot on the night test track.</p>
+<p>spawn.co/@chucky/need-for-spawn</p>
+<p>spawn.co/@longthunder/cubemunity, Cubemunity: a cozy community clicker; break a giant cube together, one layer at a time.</p>
+<p>A first session stands up a small, beautiful plaza people want to stay in:</p>
+<p>Place: the 3d starter with a third-person orbit camera, terrain flattened into a round plaza about 40 m across: a fountain in the middle, benches around it, string lights, a small stage to one side. Golden-hour sky and a warm grade.</p>
+<p>Loop: walk, emote, sit. An emote wheel with eight clips (wave, dance, clap, cheer, laugh, bow, thumbs up, chicken dance). Every bench seat is a seat object: walk up, press interact, sit; sitting emotes swap to the seated set.</p>
+<p>A toy: one shared activity, a ball anyone can kick into the fountain, or a stage where whoever stands on it gets a spotlight and the crowd's cheer clip plays.</p>
+<p>A toy</p>
+<p>No win or lose: instead, little recognitions. A &quot;hangouts visited&quot; counter, a title under your name after an hour here (a profile row), confetti when ten people dance at once.</p>
+<p>No win or lose</p>
+<p>HUD: almost nothing. A small plate with how many people are here, the emote wheel button, the now-playing song.</p>
+<p>Sound: a quiet music bed for everyone, the fountain's water as a spatial bed (gain about 0.15), soft footsteps, a sparkle on each emote.</p>
+<p>Effects: fireflies or drifting petals near the lights, a burst of confetti at the stage, the fountain's spray.</p>
+<p>Chat: a scripts/chat.js with a zone scope so the café corner and the stage each have their own talk.</p>
+<p>The empty room. A hangout with one person in it is a walk in a park. Ambient life, sound and NPCs carry it until real crowds arrive; invites matter more here than anywhere.</p>
+<p>The empty room.</p>
+<p>Reasons to come back. Without saved progress (homes, outfits, titles), people visit once. Plan one thing that grows.</p>
+<p>Reasons to come back.</p>
+<p>Performance with many bodies. Forty animated avatars, lights and particles on a phone is real cost; keep effects light and lights few.</p>
+<p>Performance with many bodies.</p>
+<p>Safety. Anything players type or draw is visible to strangers. Jayzee's chat and moderation carry this; a game never relays one player's words to another by its own route, and never builds its own sign-up, friend code or player ID.</p>
+<p>Safety.</p>
+<p>It's design, not code. The hard part is making a place feel alive: light, sound, density of small details. Budget more time on looking and tuning than on scripting.</p>
+<p>It's design, not code.</p>
+<p>An emote: a button sends an action, and the player's own body plays a library clip on a gesture channel over the walk. Weight 4 beats the idle, and the spine mask leaves the legs to keep walking.</p>
+<p>// world.config.yaml: inputs: { actions: { emote: {} } } // ui.js: &lt;button onclick=&quot;sendAction('emote', { clip: 'dance-loop' })&quot;&gt;DANCE&lt;/button&gt; // scripts/player.js const EMOTES = [&quot;wave-loop&quot;, &quot;dance-loop&quot;, &quot;clap-loop&quot;, &quot;cheer-loop&quot;, &quot;bow&quot;, &quot;thumbs-up&quot;]; export function onInput(ctx, input) { if (!input.pressed.emote) return; const clip = input.actionData.emote?.clip; if (!EMOTES.includes(clip)) return; ctx.self.anim.gesture = { clip: <code>cdn/clip-${clip}.glb</code>, weight: 4, duration: 3, mask: { from: &quot;Spine&quot; }, }; }</p>
+<h4 id="block-1">Block 1</h4>
+<pre><code class="language-`text">scripts/chat.js</code></pre>
+<h4 id="block-2">Block 2</h4>
+<pre><code class="language-`text">voice: true</code></pre>
+<h4 id="block-3">Block 3</h4>
+<pre><code class="language-`text">export const character = &quot;name&quot;</code></pre>
+<h4 id="block-4">Block 4</h4>
+<pre><code class="language-`text">profile</code></pre>
+<h4 id="block-5">Block 5</h4>
+<pre><code class="language-`text">ctx.emit(&quot;say&quot;, { text, scope })</code></pre>
+<h4 id="block-6">Block 6</h4>
+<pre><code class="language-`text">ctx.self.anim.gesture</code></pre>
+<h4 id="block-7">Block 7</h4>
+<pre><code class="language-`text">data-world-anchor</code></pre>
+<h4 id="block-8">Block 8</h4>
+<pre><code class="language-`text">instance: party | solo</code></pre>
+<h4 id="block-9">Block 9</h4>
+<pre><code class="language-`text">player.talking</code></pre>
+<h4 id="block-10">Block 10</h4>
+<pre><code class="language-`text">spawn.co/@ninjacatlive/dojo-city</code></pre>
+<h4 id="block-11">Block 11</h4>
+<pre><code class="language-`text">spawn.co/@chucky/need-for-spawn</code></pre>
+<h4 id="block-12">Block 12</h4>
+<pre><code class="language-`text">// world.config.yaml: inputs: { actions: { emote: {} } }
+// ui.js: &lt;button onclick=&quot;sendAction('emote', { clip: 'dance-loop' })&quot;&gt;DANCE&lt;/button&gt;
+
+// scripts/player.js
+const EMOTES = [&quot;wave-loop&quot;, &quot;dance-loop&quot;, &quot;clap-loop&quot;, &quot;cheer-loop&quot;, &quot;bow&quot;, &quot;thumbs-up&quot;];
+export function onInput(ctx, input) {
+  if (!input.pressed.emote) return;
+  const clip = input.actionData.emote?.clip;
+  if (!EMOTES.includes(clip)) return;
+  ctx.self.anim.gesture = {
+    clip: `cdn/clip-${clip}.glb`,
+    weight: 4,
+    duration: 3,
+    mask: { from: &quot;Spine&quot; },
+  };
+}</code></pre>
+<h3 id="after-clicking-read-npc-driven-story-games-stories-carried-by-characters-who-answer-what-players-say-remember-each-player-and-decide-with-a-mind-of-their-own-chapter-by-chapter">After clicking &quot;read → NPC-driven story games Stories carried by characters who answer what players say, remember each player, and decide with a mind of their own, chapter by chapter.&quot;</h3>
+<p>A story game is carried by the people in it: a village where every neighbour remembers you, a haunted house where the pet you are minding changes a little more every day, a shift at a factory where a voice on the radio tells you what to do next. On Jayzee these characters can be far more than a list of lines. The engine ships language-model jobs, so an NPC can actually answer what a player types, keep a memory of that player, and stay in character from a short description you write. It also ships jev, a &quot;mind&quot; for characters that weighs a few options and picks one with odds, so a shopkeeper haggles and a guard grows suspicious. The game around them is yours: the place, the days or chapters, the choices that matter, and the ending. Think of it as writing a play where the actors can improvise, and your script decides what scenes happen and when.</p>
+<p>The player arrives somewhere with a clear first person to meet (a figure waving at the gate, a note on the door).</p>
+<p>They walk up; a prompt appears (&quot;Talk&quot;); they press interact.</p>
+<p>A dialog card opens: the character greets them, and the player picks a reply or types their own.</p>
+<p>The conversation gives them something: a task, a clue, an item, a feeling about the character.</p>
+<p>They go out and act on it: find the thing, visit the next person, choose a door.</p>
+<p>The world remembers. The next character knows what happened, a flag changes what is possible, a day passes.</p>
+<p>Chapter by chapter (or day by day) the story builds to an ending, and the choices made decide which one they get.</p>
+<p>3d (3D world) is the usual choice: characters with bodies and faces, a village or house you walk through, a camera that can frame a conversation. Story games love atmosphere, and the 3D starter gives you sky, fog and light to set the mood. Call of the Soil and Building 66 below are built this way.</p>
+<p>2d-top (Top-down 2D) suits a cosy pixel story in the spirit of classic RPG villages: drawn characters, tile houses, dialog boxes at the bottom of the screen. Cheap to make look good and lovely on phones.</p>
+<p>ui-game (Screen-first) works for pure text adventures, visual novels and interrogation games where the story is all cards, choices and portraits, with no walking at all.</p>
+<p>platform-systems: the AI text jobs. llm:chat is a character that talks: you give it a system description, the player's message, and a conversationId that IS its memory, written as &quot;npc:&quot; + npcId + &quot;:&quot; + playerId so each player gets their own relationship. It answers in r.data.text, and can stream word by word with onPart. llm:generate with a schema returns structured data (a quest, a verdict, a mood), and llm:clear makes a character forget. Each answer takes seconds, so set state.loading from the moment of asking to the reply. This skill also covers saves (story flags in player.state) and timers (ctx.after).</p>
+<p>conversationId</p>
+<p>&quot;npc:&quot; + npcId + &quot;:&quot; + playerId</p>
+<p>r.data.text</p>
+<p>schema</p>
+<p>state.loading</p>
+<p>jev: minds for NPCs. ctx.job(&quot;jev:decide&quot;, { state, questions }) asks a choice question with instructions and criteria, and answers with odds you sample with ctx.random(), so a character's decisions vary like a person's. Asked at moments, never every tick.</p>
+<p>ctx.job(&quot;jev:decide&quot;, { state, questions })</p>
+<p>interactive-objects: the Talk button. You declare an interact action, the player's script finds the nearest interactable within 3 m and sends it a press; the NPC's ear answers. The prompt itself is your UI, anchored over the character.</p>
+<p>interactable</p>
+<p>game-ui: the dialog card (data-modal, so it owns the screen and frees the cursor), choices as buttons that sendAction, a quest log, a plate that follows a character with data-world-anchor.</p>
+<p>social: characters can also hear the chat. An ears.say on an NPC rings for lines spoken within earshot, so a shopkeeper answers &quot;buy&quot;. And the world can speak with ctx.emit(&quot;say&quot;, …).</p>
+<p>ears.say</p>
+<p>ctx.emit(&quot;say&quot;, …)</p>
+<p>animations: characters that talk with their hands, nod, shake their heads, point the way, and a walking gait for NPCs that move (humanoid-locomotion.js beside their own behavior).</p>
+<p>humanoid-locomotion.js</p>
+<p>audio: voiced lines conjured from words, one voice identity per character, a mood soundtrack that crossfades as chapters turn and ducks under a voice line.</p>
+<p>atmosphere and looks: time of day as storytelling, fog for dread, a warm grade for home.</p>
+<p>cameras: a camera that turns to frame the speaker during a conversation.</p>
+<p>From Social: talk (the backbone of every conversation), nod yes, shake no, point, wave, shrug, laugh, cry, angry, bow, salute, clap, cheer, thumbs up, and pickup for handing over an item. From Body &amp; traversal: sit and sit on floor for a character at a table or a campfire, sleep for the night scenes, and crouch idle / crouch walk for sneaking in a horror story. From Locomotion: idle, walk and run for characters going about their day. From Combat: hit react and die, if the story turns dangerous. The seated set (sitting talk, sitting laugh, sitting point, sitting clap) is perfect for conversations at a table.</p>
+<p>painterly-fantasy: harp, strings and soft woodwinds for a village tale or a fairy story.</p>
+<p>lowpoly-cozy: acoustic, gentle, homely: a farm life story, a neighbourhood, a slice of life.</p>
+<p>gothic-horror: low organ drones and creaks for the haunted house or the night shift.</p>
+<p>realistic-gritty: grounded and heavy for a mystery, a crime story or a survival drama.</p>
+<p>pixel-moody: melancholy chiptune for a small, sad, beautiful pixel story.</p>
+<p>Story games are often best played alone or with one or two friends, because a story has one pace.</p>
+<p>Solo or party copies: a place with instance: solo (or party) gives each player or group their own copy of the house or village, so their choices do not collide with strangers'. persistence: session or persistent decides how long that copy lives.</p>
+<p>Solo or party copies</p>
+<p>Memory per player: player.state holds the story flags (met the baker, found the key, day 4) and follows the player into every room. Because conversationId includes the player's id, the same character keeps a separate memory for each person.</p>
+<p>Memory per player</p>
+<p>Shared towns: a living village everyone shares (like Call of the Soil) works too. Then the NPCs belong to the room, and each conversation is still private by its conversation id.</p>
+<p>Shared towns</p>
+<p>NPCs fill the world: there are no seats to fill; your characters ARE the company. Run important NPC minds on Jayzee's machine (simulatedBy: &quot;platform&quot;) so they do not depend on which player is nearby.</p>
+<p>NPCs fill the world</p>
+<p>A story game needs very little: the movement stick from axes named moveX/moveZ, and an interact action, which a phone shows as a chip carrying its word, INTERACT. Dialog choices are big buttons stacked at the bottom of the screen, easy for thumbs. Typing a free reply works through the phone's keyboard, but always offer two or three ready-made replies so nobody has to type. Keep the dialog card clear of Jayzee's rail on the right edge.</p>
+<p>spawn.co/@ayon/call-of-the-soil-a-bengal-village-adventure, Call of the Soil: A Bengal Village Adventure: roam a living Bangladeshi village, chat with neighbours, make friends, ride rickshaws and boats, race on the river and join festivals, in English or Bangla.</p>
+<p>spawn.co/@ghost_dragon/ten-days-petsitting-horror, Ten Days Petsitting (horror): ten days pet-sitting the sweetest pet on the street. Something changes every day.</p>
+<p>spawn.co/@ghost_dragon/ten-days-petsitting-horror</p>
+<p>spawn.co/@fracture/building-66, Building 66: Norilsk, 1994. Seven night shifts. Find the fuses, bring the power back, and do not look behind you.</p>
+<p>spawn.co/@op_nico/haunted-plushie-game-lingo-pals-horror-stories, Haunted Plushie game: Lingo Pals Horror Stories: learn the Chinese word, pick the right door, or she finds you.</p>
+<p>spawn.co/@op_nico/haunted-plushie-game-lingo-pals-horror-stories</p>
+<p>spawn.co/@lakaplay/cartoon-horror, Cartoon horror: find 8 film reels in the foggy woods before Cartoon Cat and Cartoon Dog find you.</p>
+<p>A first session stands up one small, complete chapter:</p>
+<p>Place: the 3d starter shaped into a tiny village square at dusk: three houses, a well, lamps glowing, a path leading out.</p>
+<p>Cast: three characters, each a body with a name plate and a short written personality: a baker who knows everything, a worried mother whose child is missing, and an old man by the well who speaks in riddles. Each runs llm:chat with its own system description and a list of facts it knows.</p>
+<p>Loop: walk up, the &quot;Talk&quot; prompt appears, press interact, a dialog card opens. Two ready replies and a box to type your own. The characters drop clues; the player follows them to the child's hidden spot (a glowing object to find).</p>
+<p>Win and lose: finding the child before nightfall (a 10-minute timer, the sky darkening as it runs) ends the chapter happily; night falling first ends it with the mother's sad goodbye. Both endings save a flag that chapter two would read.</p>
+<p>HUD: a small quest line in the corner (&quot;Find Mira before dark&quot;), the clock as a sun sinking along a bar, and the dialog card.</p>
+<p>Sound: a gentle evening music loop, crickets as an ambient bed, a soft chime when a clue is learned, the voice of each character conjured from their words.</p>
+<p>Effects: fireflies by the well, the found object pulsing with a highlight, a warm glow when the child is found.</p>
+<p>Saved: story flags and what each character told the player in player.state.</p>
+<p>AI characters wander. A language model will happily make things up. Give each character a tight system description, the facts it is allowed to know, and let your script, not the model, decide what changes in the world. Use llm:generate with a schema when you need a clean yes/no (&quot;did the player convince her?&quot;).</p>
+<p>AI characters wander.</p>
+<p>Waiting. Each answer takes seconds. Show a thinking state, stream the words with onPart, and never freeze the player while waiting.</p>
+<p>Waiting.</p>
+<p>Limits per player. Language model calls are rationed, so ask at moments that matter (when a player speaks), never on a timer or every tick.</p>
+<p>Limits per player.</p>
+<p>Branching grows fast. Every choice doubles the paths. Keep the big choices few and the small reactions many.</p>
+<p>Branching grows fast.</p>
+<p>Pacing. A story that is all talking is a book. Mix conversation with moving, finding, and small scares or triumphs.</p>
+<p>Safety. Players type anything. Jayzee's text:check job exists for checking text, and a character's description should keep it gently in its role.</p>
+<p>A character that answers in its own voice and remembers each player: the player presses interact near it, the NPC's ear hears the press, and it asks llm:chat with a conversation id that is unique to that NPC and that player. The reply lands in the player's state, where the dialog card reads it.</p>
+<p>// scripts/npc.js: on the baker (tags: [&quot;interactable&quot;], state: { name: &quot;Ada&quot; }) const SYSTEM = &quot;You are Ada, the village baker. Warm, nosy, talks in short lines. &quot; + &quot;You saw Mira, a small girl, walk toward the old mill at noon. Never mention anything else you weren't told.&quot;; export const ears = { press: (ctx, { by }) =&gt; { const player = ctx.getObject(by); if (!player) return; player.state.talk = { with: ctx.self.id, loading: true, text: &quot;&quot; }; ctx.job(&quot;llm:chat&quot;, { conversationId: &quot;npc:&quot; + ctx.self.id + &quot;:&quot; + player.id, system: SYSTEM, message: player.state.said ?? &quot;Hello!&quot;, model: &quot;fast&quot;, }, (r) =&gt; { player.state.talk = { with: ctx.self.id, loading: false, text: r.ok ? r.data.text : &quot;Ada smiles and goes back to her dough.&quot; }; }); }, };</p>
+<p>The player's own script sends the press: on input.pressed.interact it finds the nearest interactable within 3 m and calls ctx.emit(&quot;press&quot;, { by: ctx.self.id }, { to: nearest.id }). The dialog card in ui.js shows player.state.talk.text, or a &quot;...&quot; while loading is true.</p>
+<p>input.pressed.interact</p>
+<p>ctx.emit(&quot;press&quot;, { by: ctx.self.id }, { to: nearest.id })</p>
+<p>player.state.talk.text</p>
+<h4 id="block-1">Block 1</h4>
+<pre><code class="language-`text">conversationId</code></pre>
+<h4 id="block-2">Block 2</h4>
+<pre><code class="language-`text">&quot;npc:&quot; + npcId + &quot;:&quot; + playerId</code></pre>
+<h4 id="block-3">Block 3</h4>
+<pre><code class="language-`text">r.data.text</code></pre>
+<h4 id="block-4">Block 4</h4>
+<pre><code class="language-`text">schema</code></pre>
+<h4 id="block-5">Block 5</h4>
+<pre><code class="language-`text">state.loading</code></pre>
+<h4 id="block-6">Block 6</h4>
+<pre><code class="language-`text">ctx.job(&quot;jev:decide&quot;, { state, questions })</code></pre>
+<h4 id="block-7">Block 7</h4>
+<pre><code class="language-`text">interactable</code></pre>
+<h4 id="block-8">Block 8</h4>
+<pre><code class="language-`text">ears.say</code></pre>
+<h4 id="block-9">Block 9</h4>
+<pre><code class="language-`text">ctx.emit(&quot;say&quot;, …)</code></pre>
+<h4 id="block-10">Block 10</h4>
+<pre><code class="language-`text">humanoid-locomotion.js</code></pre>
+<h4 id="block-11">Block 11</h4>
+<pre><code class="language-`text">spawn.co/@ghost_dragon/ten-days-petsitting-horror</code></pre>
+<h4 id="block-12">Block 12</h4>
+<pre><code class="language-`text">spawn.co/@op_nico/haunted-plushie-game-lingo-pals-horror-stories</code></pre>
+<h4 id="block-13">Block 13</h4>
+<pre><code class="language-`text">// scripts/npc.js: on the baker (tags: [&quot;interactable&quot;], state: { name: &quot;Ada&quot; })
+const SYSTEM = &quot;You are Ada, the village baker. Warm, nosy, talks in short lines. &quot; +
+  &quot;You saw Mira, a small girl, walk toward the old mill at noon. Never mention anything else you weren't told.&quot;;
+
+export const ears = {
+  press: (ctx, { by }) =&gt; {
+    const player = ctx.getObject(by);
+    if (!player) return;
+    player.state.talk = { with: ctx.self.id, loading: true, text: &quot;&quot; };
+    ctx.job(&quot;llm:chat&quot;, {
+      conversationId: &quot;npc:&quot; + ctx.self.id + &quot;:&quot; + player.id,
+      system: SYSTEM,
+      message: player.state.said ?? &quot;Hello!&quot;,
+      model: &quot;fast&quot;,
+    }, (r) =&gt; {
+      player.state.talk = { with: ctx.self.id, loading: false,
+        text: r.ok ? r.data.text : &quot;Ada smiles and goes back to her dough.&quot; };
+    });
+  },
+};</code></pre>
+<h4 id="block-14">Block 14</h4>
+<pre><code class="language-`text">input.pressed.interact</code></pre>
+<h4 id="block-15">Block 15</h4>
+<pre><code class="language-`text">ctx.emit(&quot;press&quot;, { by: ctx.self.id }, { to: nearest.id })</code></pre>
+<h4 id="block-16">Block 16</h4>
+<pre><code class="language-`text">player.state.talk.text</code></pre>
 <h2 id="not-captured">Not captured</h2>
-<p>Controls clicked: 148 of 148 planned controls in this section, out of 0 candidates found after the load and the scroll. Controls not clicked by policy: 9. Their labels name an action that changes state or sends something, so they were left alone: &quot;play →&quot;; &quot;3D 8-ball pool with AI save and resume, friend matches, practice and Five in Eight challenges.&quot;; &quot;Peashooters vs the undead: hold the backyard and save the gnome from ten waves of zombies.&quot;; &quot;Roam a living Bangladeshi village: chat with neighbours, make friends, ride rickshaws and boats, race on the river, and join festivals. Play in English or Bangla.&quot;; &quot;Pastel cat-cafe arcade in the clouds: walk up to a cat-eared cabinet and play Purrtris: Marathon, Sprint 40 and Versus.&quot;; &quot;Arcade time trial racing on 18 tracks: loops, wallrides and jumps. Chase ranked ghosts, top the season leaderboard, earn crates and build your own tracks to share.&quot;; &quot;Click the big 1, catch the golden 1, buy mines and super clickers, top the room.&quot;; &quot;click the gem, buy upgrades, rebirth, get stupid rich&quot;; &quot;A lakeside town to meet up, talk and play: ski, skate, bowl, shoot pool and fire yourself out of a cannon.&quot;. Controls that could not be found again after a retry: 0. Errors: 0.</p>
-<p>Clicks made: 148. Clicks that brought up content not in the swept state: 0. The rest brought up nothing new.</p>
+<p>Controls clicked: 20 of 20 planned controls in this section, out of 0 candidates found after the load and the scroll. Controls not clicked by policy: 8. Their labels name an action that changes state or sends something, so they were left alone: &quot;read → 3D action &amp; adventure A body in a 3D world with a sword, a gun or a spell, a place worth crossing and something in the way. Jayzee's strongest genre: start from 3d, add combat and juice.&quot;; &quot;A body in a 3D world with a sword, a gun or a spell, a place worth crossing and something in the way. Jayzee's strongest genre: start from 3d, add combat and juice.&quot;; &quot;read → Racing &amp; vehicles Cars, karts, boats, planes, dragons: a dynamic hull you sit in, pushed by real forces. Add a track, checkpoints and a referee and you have a race.&quot;; &quot;Cars, karts, boats, planes, dragons: a dynamic hull you sit in, pushed by real forces. Add a track, checkpoints and a referee and you have a race.&quot;; &quot;read → Survival &amp; building Gather, build, hold out through the night. Jayzee's block world digs and places out of the box; add hunger, a night that bites and a base worth defending.&quot;; &quot;Gather, build, hold out through the night. Jayzee's block world digs and places out of the box; add hunger, a night that bites and a base worth defending.&quot;; &quot;read → Clickers, card &amp; board games Screen-first games where the rules matter most: tap the number up, play a hand, move a piece, solve today's puzzle, together with the room.&quot;; &quot;Screen-first games where the rules matter most: tap the number up, play a hand, move a piece, solve today's puzzle, together with the room.&quot;. Controls that could not be found again after a retry: 0. Errors: 0.</p>
+<p>Clicks made: 20. Clicks that brought up content not in the swept state: 20. The rest brought up nothing new.</p>
 <h2 id="sources">Sources</h2>
-<ul><li><code>wiki-tools/recapture/states/toolbox/10-initial.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-swept.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c001.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c002.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c003.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c004.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c005.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c006.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c007.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c008.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c009.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c010.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c011.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c012.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c013.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c014.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c015.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c016.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c017.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c018.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c019.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c020.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c021.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c022.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c023.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c024.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c025.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c026.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c027.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c028.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c029.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c030.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c031.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c032.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c033.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c034.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c035.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c036.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c037.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c038.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c039.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c040.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c041.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c042.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c043.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c044.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c045.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c046.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c047.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c048.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c049.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c050.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c051.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c052.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c053.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c054.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c055.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c056.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c057.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c058.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c059.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c060.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c061.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c062.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c063.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c064.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c065.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c066.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c067.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c068.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c069.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c070.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c071.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c072.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c073.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c074.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c075.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c076.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c077.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c078.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c079.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c080.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c081.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c082.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c083.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c084.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c085.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c086.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c087.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c088.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c089.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c090.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c091.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c092.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c093.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c094.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c095.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c096.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c097.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c098.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c099.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c100.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c101.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c102.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c103.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c104.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c105.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c106.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c107.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c108.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c109.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c110.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c111.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c112.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c113.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c114.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c115.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c116.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c117.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c118.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c119.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c120.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c121.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c122.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c123.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c124.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c125.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c126.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c127.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c128.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c129.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c130.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c131.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c132.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c133.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c134.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c135.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c136.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c137.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c138.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c139.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c140.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c141.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c142.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c143.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c144.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c145.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c146.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c147.json</code></li><li><code>wiki-tools/recapture/states/toolbox/10-c148.json</code></li><li><code>wiki-tools/recapture/states/toolbox/summary-10.json</code></li></ul>
+<ul><li><code>wiki-tools/recapture/states/toolbox/11-initial.json</code></li><li><code>wiki-tools/recapture/states/toolbox/11-swept.json</code></li><li><code>wiki-tools/recapture/states/toolbox/11-c001.json</code></li><li><code>wiki-tools/recapture/states/toolbox/11-c002.json</code></li><li><code>wiki-tools/recapture/states/toolbox/11-c003.json</code></li><li><code>wiki-tools/recapture/states/toolbox/11-c004.json</code></li><li><code>wiki-tools/recapture/states/toolbox/11-c005.json</code></li><li><code>wiki-tools/recapture/states/toolbox/11-c006.json</code></li><li><code>wiki-tools/recapture/states/toolbox/11-c007.json</code></li><li><code>wiki-tools/recapture/states/toolbox/11-c008.json</code></li><li><code>wiki-tools/recapture/states/toolbox/11-c009.json</code></li><li><code>wiki-tools/recapture/states/toolbox/11-c010.json</code></li><li><code>wiki-tools/recapture/states/toolbox/11-c011.json</code></li><li><code>wiki-tools/recapture/states/toolbox/11-c012.json</code></li><li><code>wiki-tools/recapture/states/toolbox/11-c013.json</code></li><li><code>wiki-tools/recapture/states/toolbox/11-c014.json</code></li><li><code>wiki-tools/recapture/states/toolbox/11-c015.json</code></li><li><code>wiki-tools/recapture/states/toolbox/11-c016.json</code></li><li><code>wiki-tools/recapture/states/toolbox/11-c017.json</code></li><li><code>wiki-tools/recapture/states/toolbox/11-c018.json</code></li><li><code>wiki-tools/recapture/states/toolbox/11-c019.json</code></li><li><code>wiki-tools/recapture/states/toolbox/11-c020.json</code></li><li><code>wiki-tools/recapture/states/toolbox/summary-11.json</code></li></ul>
 </main>
 </div>
 <footer class="foot"><div class="foot-inner">wiki · every page cites the on-disk sources it was written from</div></footer>
