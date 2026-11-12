@@ -233,3 +233,11 @@ Each page below is in `wiki/` and listed in `wiki/toc.md`.
 - [Game page section: Pick A Genre](`reference-game-16/page-11-pick-a-genre.md`)
 - [Host page: Untitled game (`@lanmower/game-16)](reference-game-16/page-host.md`)
 - [README](wiki/README.md) and [table of contents](wiki/toc.md) are the two pages not listed above; the build counts them, so 81 + 2 = 83.
+
+## Push
+
+- `git push -u origin main` to `https://github.com/AnEntrypoint/extra.git`, run once after the build and the link check were green.
+- Result: `[new branch] main -> main`, `branch 'main' set up to track 'origin/main'`, exit 0.
+- Wall time: 4.183 s.
+- Remote `main` after the push: `a91291e0050a03bb4545afcb38de987433caedc3` (matches the local commit).
+- This record is committed locally only, after the push, so the push itself was not repeated.
