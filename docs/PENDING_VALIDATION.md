@@ -712,3 +712,61 @@ Recorded in the session report, not here, so that this record can be pushed once
 ### Phase B witnesses
 
 Recorded in the session report, not here, so that this record can be pushed once with the commit.
+
+## Row-level record of the bevy-gaps corrections (2026-11-16, commit bc6c927)
+
+Each change to the three bevy-gaps documents, in the order git shows it. The form is [-old-]{+new+}, with a little context on each side. The source for each change is named in the entries above, under the same date.
+
+Phase B checks for these rows: each corrected line number was re-read against its source symbol after the edit (witness in the session report), and the game-16 snapshot paragraph was reverted to its original text.
+
+    `, and large documentation-data modules [-(`docs-*.js`).-]{+(`lib/docs-*.js`).+} It also has `architectur
+    les below follows `script/mod.rs` lines [-2394-]{+2398+} to [-2395,-]{+2399,+} wh
+    | JS shim | `script/prelude.js` line [-1330:-]{+1336:+} `spawnPlayer: (options)
+     ctx object built by `__make_ctx` (line [-1224).-]{+1222).+} |
+    er`, dispatched at `script/mod.rs` line [-1462.-]{+1466.+} |
+    n spawn_player` in `script/mod.rs` line [-2364.-]{+2368.+} It calls `world::spawn_i
+    b as "Bevy ECS world query/state" (line [-2394).-]{+2398).+} |
+    | JS shim | `script/prelude.js` line [-1331:-]{+1337:+} `setInput: (options) =>
+    ut`, dispatched at `script/mod.rs` line [-1453.-]{+1457.+} |
+     `fn set_input` in `script/mod.rs` line [-1990.-]{+1994.+} The `InputState` struct
+    b as "Bevy ECS world query/state" (line [-2394).-]{+2398).+} |
+     source does not show what-]`input_map` [-does with malformed entries. The reading above is from-]{+(`script/mod.rs` line 3981) keeps only+} the [-code path only.-]{
+    | JS shim | `script/prelude.js` line [-1332:-]{+1338:+} `setAnim: (channel, valu
+    im`, dispatched at `script/mod.rs` line [-1383.-]{+1387.+} It reads `id`, `channel`
+    | `fn set_anim` in `script/mod.rs` line [-1644.-]{+1648.+} It works on the `AnimSta
+    y is handled | `script/prelude.js` line [-220-]{+218+} (`if (key === 'anim') re
+    | Read path | `script/mod.rs` line [-251-]{+255+} handles the `anim:` pref
+    e channel map through `anim_json` (line [-1634).-]{+1638).+} A named key returns that
+    | Write path | `script/mod.rs` line [-921,-]{+925,+} the `"anim"` branch of t
+    `__make('obj:' + selfId)` (prelude line [-1225).-]{+1223).+} The source does not defi
+    | JS shim | `script/prelude.js` line [-1326:-]{+1332:+} `getTerrainHeight: (x, z
+    t`, dispatched at `script/mod.rs` lines [-1425-]{+1429+} to [-1435.-]{+1437.+} |
+    t as "Bevy ECS world query/state" (line [-2394).-]{+2398).+} |
+     The globe version in `prelude.js` line [-1211-]{+1209+} maps to `globeElevation`
+    , and `globe.rs` line [-468-]{+478+} handles the `"elevation"
+    ld`, dispatched at `script/mod.rs` line [-1424.-]{+1428.+} |
+    `fn read_field` in `script/mod.rs` line [-2007.-]{+2011.+} It looks up `TerrainData
+    dy here, so the interpolation rule-] is [-not documented on this page.-]{+`FieldGrid::height` in `runtime.rs` line 133. It interpolates bilinearly between the four surrounding grid heights, clamps x and z to the grid, and returns 0 when the grid has fewer than two columns or rows, or fewer heights than cols times rows.+}
+    be`, dispatched at `script/mod.rs` line [-1463.-]{+1467.+} |
+    _feature_probe` in `script/mod.rs` line [-1502,-]{+1506,+} which calls `FeatureStat
+    ifies it as "native FeatureState" (line [-2395).-]{+2399).+} |
+    | ctx.ensureScatter(options) | Line [-1333:-]{+1339:+} sends `featureProbe` wit
+    | ctx.getPixelProvenance(x, y) | Line [-1334:-]{+1340:+} sends `featureProbe` wit
+    enance'`, `x` and `y`. Falls back to `{ [-x, y,-]{+x: x ?? 0, y: y ?? 0,+} source: 'local-shim' }`.
+    /bevy/src/script/prelude.js around line [-131.-]{+129.+} It is a path-keyed facto
+    amples in the code are `cameraJson` for [-`ctx.camera`-]{+`world.camera`+} reads of `forward`, `fov
+    _ctx(selfId, placeName)` at around line [-1224-]{+1222+} builds the per-object `c
+    ace/bevy/src/script/mod.rs, around line [-1353).-]{+1355).+} When `op == "apiCall"`,
+    ace/bevy/src/script/mod.rs, around line [-2392)-]{+2396)+} maps an op name to one o
+    rkspace/bevy/src/world.rs, around lines [-886-]{+891+} to [-910)-]{+918)+} runs
+     [-one-]{+`ticks`+} world [-step-]{+steps+} for a place and prints s
+    ace/bevy/src/script/mod.rs, around line [-2543)-]{+2558)+} builds the record. It ca
+    lls `api_report()` (around line [-2404)-]{+2408)+} and `game16_api_paths(ro
+    ot)` (around line [-2500)-]{+2515)+} and combines them.
+    d.rs. It reads the text of `prelude.js` [-between `function __make_ctx` and-]{+after+} `const ctx = [-{`,-]{+{`
+    6_dynamic_paths()` (mod.rs, around line [-2578).-]{+2593).+} The dynamic list covers
+    t !== 0`,[-or-] `scriptStats.errors !== [-0`.-]{+0`, or `missingUsage` is non-empty.+} It also builds its own `
+
+### Phase B witnesses
+
+Recorded in the session report, not here, so that this record can be pushed once with the commit.
