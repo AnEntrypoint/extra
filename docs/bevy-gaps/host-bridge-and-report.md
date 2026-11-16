@@ -40,7 +40,7 @@ I read only the `world`, `camera`, `fields:` branches and the call sites listed 
 
 ### 4.1 Emission
 
-`world.rs` (/workspace/bevy/src/world.rs, around lines 891 to 918) runs `ticks` world steps for a place and prints several JSON lines to stdout:
+`world.rs` (/workspace/bevy/src/world.rs, around lines 891 to 918) runs `ticks` world steps for a place and prints several JSON lines to stdout. Before the list below, it prints `world-camera` (only when a row named `camera` exists), `world`, `world-bodies` and `world-colliders`. Between the first and second items below it prints `globe-report`, with a `globe` entry. The lines in the list are:
 
 1. `{"kind":"script-stats", ...}` from `crate::script::stats()`. Its `errors` value is passed on as the script error count.
 2. `{"kind":"feature-report", "features": ...}`. This is a different record. Its `features` object is the `FeatureState` report with an `ecs` entry (from `crate::features_ecs::entity_report`) and a `globe` entry added to it.

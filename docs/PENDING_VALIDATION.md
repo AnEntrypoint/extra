@@ -796,3 +796,19 @@ Top item of the ranked extra work, after the queue was emptied. Each open questi
 ### Phase B witnesses
 
 Recorded in the session report, not here, so that this record can be pushed once with the commit.
+## Host-bridge record list completed (2026-11-16)
+
+Ranked item 1 of the extra work after the queue was emptied. `docs/bevy-gaps/host-bridge-and-report.md` section 4.1 listed three of the record kinds that `world.rs` prints.
+
+### Change in `docs/bevy-gaps/host-bridge-and-report.md` (1 line)
+
+- Section 4.1: adds the other kinds that `world.rs` prints, in order. Before the list: `world-camera` (only when a row named `camera` exists), `world`, `world-bodies` and `world-colliders`. Between items 1 and 2 of the list: `globe-report`. Evidence: `src/world.rs` lines 852, 857, 877, 892, 911 and the three `println!` calls at 896, 915 and 918.
+
+### Still open, next in the ranking
+
+- The empty place argument for the `world` subcommand, which is a read-only run of the built binary.
+- The signal snapshot path. It is blocked: the server that runs on port 4173 has its snapshot path in its environment, and the search for it timed out.
+
+### Phase B witnesses
+
+Recorded in the session report, not here, so that this record can be pushed once with the commit.
