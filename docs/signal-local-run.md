@@ -24,7 +24,7 @@ SNAPSHOT_ROOT=/workspace/signal PORT=4173 HOST=127.0.0.1 node .spawn/local/serve
 
 - `PORT` defaults to 4173 (**checked**: `serve-local.mjs` line 9). `HOST` defaults to `127.0.0.1`.
 - Open `http://127.0.0.1:4173/`.
-- `GET /__health` returns `{ ok, mappings, misses }`. `mappings` is the number of captured URL mappings. **Checked:** on the server running now it returned `{"ok":true,"mappings":4284,"misses":33}`.
+- `GET /__health` returns `{ ok, mappings, misses }`. `mappings` is the number of captured URL mappings. **Checked:** on the first check it returned `{"ok":true,"mappings":4284,"misses":33}`. See section 6 for a later reading.
 - `GET /__misses` lists the URLs with no captured bytes, with a count for each.
 - `GET /api/session/grant` and every `/api/sdk/*` path return `503` JSON. No session or token is issued. **Checked** against the source (`serve-local.mjs` lines 125 to 127).
 
@@ -57,7 +57,7 @@ This guide lives in the extra repository on GitHub. It contains no token, grant 
 
 ## 6. Checks on this guide
 
-- Health: `curl http://127.0.0.1:4173/__health` returned `{"ok":true,"mappings":4284,"misses":33}` (checked).
+- Health: `curl http://127.0.0.1:4173/__health` returned `{"ok":true,"mappings":4284,"misses":33}` (checked on 2026-11-16 at the first check). On a later check the same day it returned `{"ok":true,"mappings":4322,"misses":0}`. The counts changed while the server kept running, so the server may be serving a different capture. The cause was not checked.
 - Grant: `curl -i http://127.0.0.1:4173/api/session/grant` returns `503` with a JSON error (checked in this pass).
 - Imports: `serve-local.mjs` imports only `node:http`, `node:fs`, `node:path` and `node:url` (checked).
 - Ignore rule: `.gitignore` line 6 excludes `.spawn/local/snapshot/` (checked).
