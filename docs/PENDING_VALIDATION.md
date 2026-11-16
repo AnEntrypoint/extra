@@ -551,3 +551,29 @@ Owner decision needed: if the rename is not intended, the 26 files should be rev
 ### Phase B witnesses
 
 Recorded in the session report, not here, so that this record can be pushed with the extra commit once.
+
+## game-16 rename fixed forward, not reverted (2026-11-16)
+
+Starting state: game-16 at 3eb8aeb with 27 modified files, all from the `spawn` to `jayzee` and `Savi` to `Cleetus` rename. Extra at 8af1c01.
+
+### Changes in game-16 (commit cea8593, local only, not pushed)
+
+- Method: the 27 files were reset to 3eb8aeb. Then only the brand prose was renamed: `Spawn` to `Jayzee` where it names the platform, and `Savi` to `Cleetus` where it names the agent. Result: 14 files, 73 insertions and 73 deletions. The 13 other files had only identifier, path or endpoint changes, and those are now restored.
+- Hook names restored: `onSpawn` in `scripts/hall-figure.js` (was `onJayzee`), and in `AGENTS.md` and the `scripts/lib/docs-*.js` hook examples.
+- Identifiers restored: `defaultSpawnPoint` and `defaultSpawnRotation` in `places/hall/config.yaml` and `places/main/config.yaml` (were `defaultJayzeePoint` and `defaultJayzeeRotation`).
+- Endpoints restored: `.spawn/engine.yaml` is `https://git.spawn.co/engine/6.0.0.git` again. Every `www.spawn.co` and `spawn.co/@...` URL is back. The `.gitignore` entry is `.spawn/engine/` again.
+- Paths and formats restored: the `spawn6/` directory name in the text (was `jayzee6/`), the scene header `# spawn-scene v2 yaml`, the skill id `spawn-engine` and `.spawn/engine/skills/` in `.spawn/skills.md`.
+- Environment variables and token paths restored: `SPAWN_TOKEN`, `SPAWN_TOKEN_FILE`, `SPAWN_WORLD_URL`, `~/.spawn/token`.
+- Corrupted text repaired, 7 places where `spawned` had become `jayzeeed`: `AGENTS.md` (1), `scripts/lib/docs-engine-a.js` (1), `scripts/lib/docs-shapes.js` (3), `scripts/lib/docs-skills.js` (1), `scripts/lib/docs-workshop-b.js` (1).
+- Kept as `Spawn`, not renamed: the real game titles `Spawn Hangout`, `Need for Spawn` and `Super Smash Spawn Brawl`; the user agent `SpawnProbe/<name>` in `AGENTS.md`; the CSS variables `--spawn-*`; all lowercase `spawn`.
+- Kept as `Savi`, not renamed: `Savi-verbosity` and `Editor/Savi` in `scripts/lib/docs-shapes.js`, which name a setting and a UI surface.
+- Still open: the 14 changed files contain prose comments (for example `scripts/ui.js` line 88, `ui/nametag.js` line 3 and the `scripts/lib/catalog.js` comments). CLAUDE.md says comments are swept when their file is next changed. This pass did not sweep them.
+
+### Hold
+
+- game-16 is not pushed. The endpoint in `.spawn/engine.yaml` is the real one, and pushes reach Spawn.
+- Extra is not pushed in this pass.
+
+### Phase B witnesses
+
+Recorded in the session report, not here, so that this record can be pushed with the next extra push.
