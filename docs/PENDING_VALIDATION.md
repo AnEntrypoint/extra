@@ -524,3 +524,30 @@ Every repository path the three docs cite exists: `/workspace/bevy/src/main.rs`,
 - `docs/PENDING_VALIDATION.md`: this section added.
 - No change to the three bevy-gaps docs.
 - No change to the six untracked entries.
+
+## Extra repo decisions: scripts, .gitignore and the game-16 hold (2026-11-16)
+
+Starting state: local main and origin/main at ad51ba8. Untracked top-level entries: `.gitignore`, `.local/`, `game-16/`, `runs/`, `scripts/`, `site/`.
+
+### Changes in this pass
+
+- `.gitignore`: was `.playwriter/`. Now also `.local/`, `site/` and `runs/`, so these are never tracked. This replaces the earlier decision in c6b058b that they stay untracked by design.
+- `scripts/check-extraction-complete.py`: now tracked. The module docstring and the section comments were removed; the shebang is kept. No code line changed.
+- `scripts/check-extraction-drift.py`: now tracked. The module docstring (lines 2 to 6) and the comment lines were removed; the shebang is kept. No code line changed. Its docstring said the script never mutates upstream. The script sends one POST to `/agent/exec`, so that claim is not kept. See `AGENTS.md`.
+- `AGENTS.md`: new, at the repo root. It holds the facts from the drift docstring that the code confirms: where the token comes from, the 0600 header file and its removal, and the POST.
+- `docs/PENDING_VALIDATION.md`: this section.
+
+### game-16: held, not committed and not pushed
+
+The 27 modified files in the nested `game-16/` repository are not committed. Their diff is a mechanical rename of spawn to jayzee and of Savi to Cleetus, and it is not safe to land:
+
+- Every added line (152 of 152) contains `jayzee` or `Cleetus`. The rename also reaches code: `export function onSpawn(ctx)` in `scripts/hall-figure.js` is now `onJayzee`, and `defaultSpawnPoint` and `defaultSpawnRotation` are now `defaultJayzeePoint` and `defaultJayzeeRotation`. The engine calls the hook by its old name.
+- The text is corrupted in 7 places, where `spawned` became `jayzeeed`: `AGENTS.md`, `scripts/lib/docs-engine-a.js`, `scripts/lib/docs-shapes.js` (3), `scripts/lib/docs-skills.js` and `scripts/lib/docs-workshop-b.js`.
+- `spawn6/cut-axis.yaml` and `spawn6/flat-anchor.yaml` now name `jayzee6/` in their text, while the files on disk are still under `spawn6/`.
+- `.spawn/engine.yaml` points the engine at `https://git.jayzee.co/engine/6.0.0.git`, not `git.spawn.co`. `.gitignore` now names `.jayzee/engine/`.
+
+Owner decision needed: if the rename is not intended, the 26 files should be reverted. If it is intended, the `spawned` corruption and the hook name must be fixed first, and the file on disk must match the path in the text.
+
+### Phase B witnesses
+
+Recorded in the session report, not here, so that this record can be pushed with the extra commit once.
