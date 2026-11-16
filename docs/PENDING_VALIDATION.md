@@ -887,6 +887,7 @@ Checked before ranking: the reachable queue in the extra repo is empty after thi
 ### Changes in this pass
 
 - `docs/signal-local-run.md`: section 1 status, the server command in section 2 (now with `SNAPSHOT_ROOT=/workspace/signal`, run from `world/signal-stage`), and one line in section 6. The placeholder `/path/to/snapshot` is gone.
+- `docs/signal-local-run.md`, second commit: the health reading. A later check returned `{"ok":true,"mappings":4322,"misses":0}`, where the first check returned `{"ok":true,"mappings":4284,"misses":33}`. Section 2 and section 6 now date both readings. The counts changed while the server kept running, so the server may be serving a different capture. The cause was not checked, and it is open.
 - `docs/PENDING_VALIDATION.md`: this section.
 
 ### Phase B witnesses
