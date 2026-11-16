@@ -862,3 +862,33 @@ Supersedes the status of items 2 and 3 in the ranked list above. The earlier lin
 ### Phase B witnesses
 
 Recorded in the session report, not here, so that this record can be pushed once with the commit.
+
+## Ranked remaining extra work, excluding game-16 (2026-11-16)
+
+Checked before ranking: the reachable queue in the extra repo is empty after this pass. Every item left needs the owner, or a push or build in another repo.
+
+### Ranking
+
+| # | Item | Status | Who unblocks it | Evidence |
+|---|---|---|---|---|
+| 1 | Signal guide names the snapshot root | Done in this pass (top reachable) | none | `docs/signal-local-run.md` section 1 and the server command now name `/workspace/signal`. Witnesses are in the Phase B record below. |
+| 2 | Signal-stage commit `7a18a88` (real snapshot path in `docs/LOCAL-RUN.md`) reaches its origin | Open | owner: signal-stage origin is `git.spawn.co`, and a push lands in the room | Local commit exists (see item 1 evidence). Not pushed. |
+| 3 | Bevy empty-place change lands in bevy | Open | bevy's queue: apply `docs/patches/bevy-empty-place.patch` (2fa1c14 base), rebuild, then witness that `bevy-jayzee world <game> "" 5` exits 1 with `the place argument is empty` | Patch applies to `2fa1c14` (checked in the previous pass). Not built here, because bevy's cargo build holds the target directory. |
+| 4 | `ctx.anim` alias intent | Open | owner: the source defines no plain `ctx.anim` (zero matches in bevy `src`), and whether an alias was meant is not in the tree | `docs/bevy-gaps/ctx-and-terrain.md` section `ctx.anim` and open points. |
+| 5 | Unverified `exec-readonly` POST in `scripts/check-extraction-drift.py` | Open, held | owner: checking it means an authenticated POST to the upstream server, which needs a token and an approved target. `AGENTS.md` records it as unverified. | `AGENTS.md`, section on the drift script. |
+| 6 | Games scope (148 pages; 52 fetched on 2026-11-12) | Open, held | owner: scope decision | Ranked-work status table, item 9. |
+| 7 | History rewrite to remove token values from older commits | Held | owner: force push | Ranked-work status table, item 5. |
+| 8 | Savi and Jayzee open items | Held | owner: the sources are in `/workspace/savi` and `/workspace/jayzee`, outside this write scope | Ranked-work status table, item 8. |
+| 9 | Walk control hall action; 38 state-changing controls | Held | owner policy: not clicked | Ranked-work status table, items 11 and 12. |
+| 10 | FEATURE_MATRIX 67-row figure | Closed: verified, no doc change | none | Counted in `/workspace/bevy/FEATURE_MATRIX.md`: 68 body rows; 60 `Implemented and verified`, 7 `Local subset implemented`, and 1 `Excluded: online infrastructure`. 60 + 7 = 67 in-scope rows, which matches `docs/bevy-gaps/checker-cli-and-corpus.md` section 3. |
+| 11 | game-16 items | Excluded by request | owner | Not ranked here. game-16 stays held. |
+| 12 | Host-bridge record list (world-colliders, globe-report) | Done | none | Commit `1ffa733`. |
+
+### Changes in this pass
+
+- `docs/signal-local-run.md`: section 1 status, the server command in section 2 (now with `SNAPSHOT_ROOT=/workspace/signal`, run from `world/signal-stage`), and one line in section 6. The placeholder `/path/to/snapshot` is gone.
+- `docs/PENDING_VALIDATION.md`: this section.
+
+### Phase B witnesses
+
+Recorded in the session report, not here, so that this record can be pushed once with the commit.
