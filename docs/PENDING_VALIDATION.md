@@ -598,3 +598,27 @@ Starting state: game-16 main at cea8593, based on 3eb8aeb. origin/main at 4d0319
 ### Phase B witnesses
 
 Recorded in the session report, not here, so that this record can be pushed later with the next extra push.
+
+## Remaining extra work that does not reach Spawn, ranked (2026-11-16)
+
+Checked before ranking:
+
+- The tracked code in extra has no real comments. The only matches are the two shebang lines, and text inside markdown strings in `wiki-tools/gen-reference.mjs` and `wiki-tools/build.mjs`. Invariant 2 needs no sweep here.
+- A fresh build of `wiki` into a scratch directory, outside the repo, matches the tracked `wiki-site` file for file. There are 0 differences across 151 files, and the link check reports 23738 internal links with 0 broken.
+
+### Ranking
+
+1. Ignore the nested `game-16/` repository in `.gitignore`, so `git status` in extra is clean. It is a separate repository with its own `.git`, and it is managed there. **Started in this pass.**
+2. Compare the `docs/bevy-gaps/` documents with the current bevy tree. The bevy tree has five modified tracked files (AGENTS.md, src/features.rs, src/script/mod.rs, src/script/prelude.js, src/world.rs). This reads `/workspace/bevy` only. **Not started.**
+3. Close the entries in the "Ranked remaining work" list above that are already done. Items 1 to 3 are done. Items 4 to 12 are held or need the owner. **Not started.**
+
+Not ranked, because they are held or need an owner decision: the gh-pages publish, the history rewrite, all game-16 pushes, the games scope (148 pages), and the unverified `exec-readonly` POST in `scripts/check-extraction-drift.py`. The last one would need a live call to Spawn to verify.
+
+### Changes in this pass
+
+- `.gitignore`: adds the line `game-16/`.
+- `docs/PENDING_VALIDATION.md`: this section.
+
+### Phase B witnesses
+
+Recorded in the session report, not here, so that this record can be pushed once with the commit.
