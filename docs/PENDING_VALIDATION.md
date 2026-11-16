@@ -812,3 +812,26 @@ Ranked item 1 of the extra work after the queue was emptied. `docs/bevy-gaps/hos
 ### Phase B witnesses
 
 Recorded in the session report, not here, so that this record can be pushed once with the commit.
+## Ranked list after the empty-place pass (2026-11-16)
+
+Items 2 and 3 of the ranked extra work, as they now stand.
+
+| # | Item | Status | Evidence |
+|---|---|---|---|
+| 2 | Empty place argument to the `world` subcommand | Done, local commit in bevy `0c8e5ec` (not pushed) | Before the change the binary exited 1 with `/workspace/extra/game-16: no place ` and no argument name. After the change, `bevy-jayzee world /workspace/extra/game-16 "" 5` exits 1 and prints `/workspace/extra/game-16: the place argument is empty; name a place or leave it out` on stderr, with no stdout. Named place `hall` still exits 0 with 8 records and a `game16-report`. Omitted place exits 0 with 7 records. |
+| 3 | Signal snapshot root | Blocked for the owner | Read from `world/signal-stage/docs/LOCAL-RUN.md`, read-only. The doc names no real path. It gives the placeholder `SNAPSHOT_ROOT=/path/to/snapshot` and the default `.spawn/local/snapshot`, which is absent in the signal-stage tree. The doc needs the real path written into it. The process environment of the port 4173 server was not read. |
+
+### Regression witness for item 2
+
+`node /workspace/bevy/scripts/check-game16-api.cjs` with the rebuilt binary: `ok` true, `usageCount` 317, `missingUsageCount` 0, and for hall and main `exit` 0, `errors` 0, `scriptErrors` 0 and `missingApiCount` 0.
+
+### Held and other open items
+
+- game-16 stays held at `cad7f6e`, since its remote is git.spawn.co.
+- The bevy repo has uncommitted changes from other work in `Cargo.toml`, `src/main.rs`, `src/viewer.rs`, `src/viewer_world.rs` and `web/status-main.json`. They were left unstaged. The bevy commit `0c8e5ec` includes only `src/world.rs`. It is not pushed, and no push to the bevy remote was requested.
+- The rebuild waited about 18 minutes for a cargo build from another session that held the build directory lock. That build was not interrupted.
+- The `ctx.anim` alias intent. The source cannot settle it, so it needs the owner.
+
+### Phase B witnesses
+
+Recorded in the session report, not here, so that this record can be pushed once with the commit.
