@@ -691,3 +691,24 @@ Content fixes:
 ### Phase B witnesses
 
 Recorded in the session report, not here, so that this record can be pushed once with the commit.
+
+## Signal local-run guide (2026-11-16)
+
+### Change
+
+- New file `docs/signal-local-run.md`. It is based on `world/signal-stage/docs/LOCAL-RUN.md`, read in place without changes. It covers the snapshot at `SNAPSHOT_ROOT`, starting the server on port 4173, the playwriter run, the residual `ERR_ABORTED` requests, and what must never reach Spawn.
+
+### Where the request and the evidence differ
+
+- `PLAYWRITER_WEBGPU=1` has no verified effect. It appears in one recorded run command. Neither the installed playwriter package nor the `pw` directory reads it. The guide says so and does not rely on it. The game-16 guide's software-WebGPU Chromium flags are given instead, with the note that playwriter's handling of them was not verified.
+- The snapshot is not at the default path in this workspace. A server already answers on port 4173, with 4284 mappings, but its snapshot path was not found within the search. The guide says the path must be set explicitly.
+- The world is not 100% local. The 3D view needs WebGL or WebGPU, and the realtime WebSocket fails. The guide says this.
+
+### Held
+
+- Signal-stage is a git repository. Its origin is `https://git.spawn.co/@lanmower/signal-stage.git`. Nothing was pushed to it, and it stays held until the owner says so.
+- game-16 stays held (`cad7f6e`).
+
+### Phase B witnesses
+
+Recorded in the session report, not here, so that this record can be pushed once with the commit.
