@@ -577,3 +577,24 @@ Starting state: game-16 at 3eb8aeb with 27 modified files, all from the `spawn` 
 ### Phase B witnesses
 
 Recorded in the session report, not here, so that this record can be pushed with the next extra push.
+
+## game-16: cea8593 rebased onto origin/main 4d03198 (2026-11-16)
+
+Starting state: game-16 main at cea8593, based on 3eb8aeb. origin/main at 4d03198, "refreshed the guide for outside agents", authored by Spawn.
+
+### Changes in this pass
+
+- The fix-forward commit is rebased onto 4d03198. The result is cad7f6e, local only, not pushed.
+- Conflicts: only `AGENTS.md`. `.spawn/` had no conflict. The diff of 4d03198 against 3eb8aeb touches `AGENTS.md` only. Its commit message also names CLAUDE.md and `.spawn/`, but neither appears in that diff.
+- `AGENTS.md` resolution: the text is taken from 4d03198 (the guide refresh). The brand rule is applied on top: `Spawn` becomes `Jayzee` where it names the platform, and `Savi` becomes `Cleetus` where it names the agent. Lowercase `spawn`, the `spawn.co` URLs, `spawn-world-shown`, `spawn-kernel-frame`, the `spawn preview` command and `SpawnProbe/` are kept.
+- Witness for the resolution: reversing the brand rule on the rebased `AGENTS.md` gives 4d03198's `AGENTS.md` byte for byte. 10 lines differ from upstream, and all 10 are brand changes.
+- The other 13 files of the commit applied without conflict. The commit now changes 14 files, 72 insertions and 72 deletions. The count was 73 before the rebase, because the upstream rewrite changed the `AGENTS.md` lines.
+- Local state: game-16 is ahead of origin/main by 1 commit and behind by 0.
+
+### Hold
+
+- game-16 is not pushed. Its remote is git.spawn.co.
+
+### Phase B witnesses
+
+Recorded in the session report, not here, so that this record can be pushed later with the next extra push.
