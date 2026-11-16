@@ -770,3 +770,29 @@ Phase B checks for these rows: each corrected line number was re-read against it
 ### Phase B witnesses
 
 Recorded in the session report, not here, so that this record can be pushed once with the commit.
+## Open questions the tree settles, bevy-gaps (2026-11-16)
+
+Top item of the ranked extra work, after the queue was emptied. Each open question that the tree can answer was answered by a read-only check, and the document now says what was found.
+
+### Changes in `docs/bevy-gaps/checker-cli-and-corpus.md` (5 changes)
+
+- Section 3, the stub claim: the matrix says the Markdown stubs are empty apart from `00-opening.md`. Checked: 71 Markdown files sit in `.local/docs`, the smallest 1526 bytes. The sentence now says the matrix is out of date on this point.
+- Section 3 table, `spawn6/` and `.spawn/`: now says no file under `bevy/src` or `bevy/scripts` names either of them.
+- Open question, missing binary: the failure path is no longer described as inferred. Run: exit 1, `ok` false, `exit: null` for both places.
+- Open question, `places/main`: it holds one file, `config.yaml` (387 bytes).
+- Open question, extra paths: `/workspace/extra/.local/docs` and `/workspace/extra/site/docs` both exist (71 Markdown files, and 75 entries). The matrix row names `01-jayzee-game-api.md`, which is not on disk: the file is `01-spawn-game-api.md`. The 67-row figure was not re-counted.
+
+### Changes in `docs/bevy-gaps/host-bridge-and-report.md` (2 changes)
+
+- Section 3: the claim that no op reaches `globalThis.__host` without the wrapper is now checked. The only `globalThis.__host` references in `/workspace/bevy/src` are the wrapper's two lines (`prelude.js` 17 and 18), and no game-16 script calls it.
+- Section 4: the open point about direct calls is closed by the same check.
+
+### Still open
+
+- The `ctx.anim` alias intent, which is not in the source.
+- The `world-colliders` and `globe-report` record kinds, which the host-bridge document does not list. This is an omission, not a contradiction.
+- The `.local/docs` stub text in the matrix, which is about the matrix, not the bevy tree.
+
+### Phase B witnesses
+
+Recorded in the session report, not here, so that this record can be pushed once with the commit.

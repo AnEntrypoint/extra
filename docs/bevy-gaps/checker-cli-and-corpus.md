@@ -94,7 +94,7 @@ The script runtime in `/workspace/bevy/src/script/mod.rs` can also write `script
 
 ## 3. `FEATURE_MATRIX.md` and its relation to the game-16 matrix
 
-`/workspace/bevy/FEATURE_MATRIX.md` is a documentation-row coverage table. Its authoritative source is the set of Markdown files at `/workspace/extra/.local/docs/*.md` together with the decoded HTML renderings under `/workspace/extra/site/docs/*.html`. The file records that the Markdown stubs are empty apart from `00-opening.md`, so the HTML renderings are the working text.
+`/workspace/bevy/FEATURE_MATRIX.md` is a documentation-row coverage table. Its authoritative source is the set of Markdown files at `/workspace/extra/.local/docs/*.md` together with the decoded HTML renderings under `/workspace/extra/site/docs/*.html`. The file records that the Markdown stubs are empty apart from `00-opening.md`. Checked on 2026-11-16, that is out of date: 71 Markdown files sit in `.local/docs`, the smallest of them 1526 bytes, so the HTML renderings are not the only text.
 
 Its scope is 67 in-scope rows. It states that 67 of 67 rows are implemented or verified after the latest increment, and that hosted, account, auth, chat, notification, feed, CDN, metrics and product-naming parts are excluded by the owner. Each row maps a source document to a native module, a verification witness and a status.
 
@@ -122,7 +122,7 @@ Top-level entries:
 | `scripts/` | JavaScript behaviour files, including the hall scripts (`hall-camera.js`, `hall-floor.js`, `hall-locomotion.js`, `hall-player.js`, `hall-plinths.js`, `hall-policy.js`), a world-level `ui.js`, and large documentation-data modules (`lib/docs-*.js`). It also has `architecture.json`. |
 | `templates/` | Camera and player templates referenced from the world config. |
 | `ui/` | Nametag and UI sources. |
-| `spawn6/`, `.spawn/` | Further project directories not read by bevy as far as this note establishes. |
+| `spawn6/`, `.spawn/` | Further project directories. Checked on 2026-11-16: no file under `bevy/src` or `bevy/scripts` names `spawn6` or `.spawn/`. |
 | `AGENTS.md`, `CLAUDE.md`, `sim.js`, `.gitignore` | Project notes and a stub world program with a `tick` function and a `cadence` of `1s`. |
 
 ### The two places
@@ -150,9 +150,9 @@ The checker also reads every `.js`, `.yaml`, `.yml`, `.json` and `.md` file in t
 ## Open questions
 
 - The `world` usage text marks `place` as optional, but a ticks value at position 3 cannot be reached without a place at position 2. Whether an explicit empty place argument is accepted was not tested.
-- The checker's failure path when the binary is missing was inferred from the spawn logic, not run.
-- The place `main` may have more files than the two entries reported by the `ls -la` listing, which showed two filtered entries. The complete contents of `places/main` were not listed.
+- Settled on 2026-11-16: with a missing binary the checker exits 1, reports `ok` false, and shows `exit: null` for both places.
+- Settled on 2026-11-16: `game-16/places/main` holds one file, `config.yaml` (387 bytes).
 - How bevy resolves the relative script, template and UI paths in the world and place configs was not traced.
-- The `FEATURE_MATRIX.md` figures (67 rows, 67 covered) and the source paths under `/workspace/extra/.local/docs` and `/workspace/extra/site/docs` were taken from the matrix text. The existence of those paths was not checked here.
+- Settled on 2026-11-16: `/workspace/extra/.local/docs` and `/workspace/extra/site/docs` both exist (71 Markdown files, and 75 entries). The matrix row for `01-jayzee-game-api.md` names a file that is not on disk: the file is `01-spawn-game-api.md`. The 67-row figure was not re-counted.
 - The corpus working tree has many uncommitted modifications. Whether the checker passes on the committed head was not tested.
 - The `world` output fields for the `world` line were described from the format string. The hash algorithm was not verified against a reference value.

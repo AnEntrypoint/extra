@@ -33,7 +33,7 @@ I read only the `world`, `camera`, `fields:` branches and the call sites listed 
 
 - The Rust side counts calls in `host_op` (/workspace/bevy/src/script/mod.rs, around line 1355). When `op == "apiCall"`, the payload's `op` name is incremented in `host_calls` (a `BTreeMap<String, u64>`), and the first sighting records a provenance string from `host_provenance(name)` into `api_provenance`. The `apiCall` branch returns an empty string and does no other work.
 - The JS wrapper sends `apiCall` once per feature call, before the real op. So `hostCalls[op]` is the number of times the prelude invoked `__host` for `op`, including calls that later returned `undefined` or failed. It counts invocations, not successful results.
-- Ops reached through `globalThis.__host` without the JS wrapper are not counted. Nothing in the read code does that, but it is the only path that would bypass the count.
+- Ops reached through `globalThis.__host` without the JS wrapper are not counted. Checked on 2026-11-16: no code does that. In `/workspace/bevy/src` the only `globalThis.__host` references are the two lines of the wrapper (`prelude.js` 17 and 18), and no game-16 script calls it. The wrapper is the only path, and it always sends `apiCall` first.
 - `host_provenance(op)` (/workspace/bevy/src/script/mod.rs, around line 2396) maps an op name to one of these labels: `Bevy ECS world query/state`, `native FeatureState`, `typed Bevy ECS resource`, `Bevy ECS spherical procedural world`, `local filesystem shim` (fileRead, fileWrite, fileDelete, fileList), `deterministic local shim` (commit, now), or `prelude local shim` for anything not listed.
 
 ## 4. The `game16-report` record
@@ -85,7 +85,7 @@ A path is reported missing when it starts with `ctx.`, its first segment is abse
 
 - Two dynamic-name lists disagree. `game16_dynamic_paths()` in mod.rs includes `slice`, `terrainBackdrop`, `vegetation` and `getTerrainNormal`, which the check script's list does not. The check script also includes `day` and `field`, which the Rust list lacks. The code does not say whether the two lists are meant to match. The two checks can therefore give different answers for the same game.
 - `game16_report` uses the `errors` argument for its `errors` field, while `api_report()` also returns an `errors` value taken from `host.errors`. The report does not use the latter. The purpose of that field in `api_report` is not stated in the code.
-- `hostCalls` counts invocations, not results, and it depends on the JS wrapper emitting `apiCall`. Whether any code path calls `globalThis.__host` directly was not checked across all of prelude.js and the game scripts.
+- `hostCalls` counts invocations, not results, and it depends on the JS wrapper emitting `apiCall`. Checked on 2026-11-16: no code path calls `globalThis.__host` except the wrapper (see section 3).
 - The `ecs` field in `game16-report` is a count of provenance labels, while the `ecs` field in `feature-report` comes from `entity_report`. The two names are easy to confuse. The code does not state which one a reader should use.
 - `globe` in `game16-report` is built from default values, so it does not describe the globe state of the run. This is what the code does, but it is not obvious from the field name.
 - `ctxKeys` is parsed from prelude source text by line scanning. A key written across lines, or a key placed outside the `const ctx = {` block, would be missed. No such case was found in the read code.
