@@ -622,3 +622,72 @@ Not ranked, because they are held or need an owner decision: the gh-pages publis
 ### Phase B witnesses
 
 Recorded in the session report, not here, so that this record can be pushed once with the commit.
+
+## Ranked-work list: status after the 2026-11-16 pass
+
+Each item of the "Ranked remaining work for the extra wiki" list (2026-11-12, from c6b058b) is closed here, with its evidence, or marked as held for the owner.
+
+| Item | Status | Evidence |
+|---|---|---|
+| 1. wiki-site/index.html renders | Done | The 2026-11-12 render witness above. Re-checked 2026-11-16: a fresh build of `wiki` matches the tracked `wiki-site` with 0 differences across 151 files, and the link check reports 23738 internal links with 0 broken. |
+| 2. Stale citation of `update-engine-pin.py` | Done | `wiki/jayzee/runs-findings.md` lines 45 and 108 carry the "absent from this workspace on 2026-11-12" annotation. |
+| 3. This ranked list and its status | Done | This section. |
+| 4. gh-pages publish | Done | Cleared by the owner in the 2026-11-12 Phase B run. Published as commit 8273f8b on gh-pages, on top of 5ba0be6. See "Games pages over HTTP, and the gh-pages publish" above. |
+| 5. History rewrite and force push | Held for the owner | Not run. Commits that hold token values are listed under item 5 in the 2026-11-12 list. |
+| 6. Six untracked top-level entries | Done | Decided on 2026-11-16. `.gitignore` now ignores `.playwriter/`, `.local/`, `site/`, `runs/` and `game-16/`. `scripts/` is tracked as 8af1c01. |
+| 7. game-16 uncommitted changes | Held for the owner | The fix-forward is committed in game-16 as cad7f6e, rebased onto 4d03198. It is not pushed, because the remote is git.spawn.co. |
+| 8. Savi and jayzee open items | Held for the owner | The sources are in /workspace/savi and /workspace/jayzee, which are outside this write scope. |
+| 9. Game pages not opened | Partly done, rest held | 52 game pages were fetched over HTTP on 2026-11-12, with 52 status 200 and 0 errors. The rest of the games pages need an owner decision on scope. |
+| 10. Play frame is a canvas | Closed | A platform limit. Nothing to do. |
+| 11. Walk control's hall action | Held for the owner | Not clicked, by owner policy. |
+| 12. 38 state-changing controls | Held for the owner | Not clicked, by owner policy. |
+
+Items 5, 7, 8, 11 and 12 stay held for the owner. Item 9 has a scope decision open.
+
+## Bevy-gaps docs checked against the bevy tree (2026-11-16)
+
+Read-only check of the three documents in `docs/bevy-gaps/` against `/workspace/bevy` (the working tree, which has uncommitted changes). Each cited line number and symbol was compared with the source. Only claims the source contradicts were changed.
+
+### Changes in `docs/bevy-gaps/checker-cli-and-corpus.md` (3 lines)
+
+- Section 2: `world::run` now says it calls `prepare`, which loads the tree with `WorldTree::load`. Evidence: `src/world.rs` lines 60 and 70 to 71.
+- Section 2 table: the `world-camera` row now comes before the `world` row. Evidence: `src/world.rs` prints `world-camera` at line 852.
+- Corpus section: the docs path is `scripts/lib/docs-*.js`, not `scripts/docs-*.js`. Evidence: `game-16/scripts/lib/docs-api.js` exists.
+- Not changed: the corpus snapshot paragraph (head `3eb8aeb`, modified working tree). It describes game-16, not the bevy tree, and the owner asked for bevy-only reads. Its head is now `cad7f6e`, and that is recorded here, not in the doc.
+
+### Changes in `docs/bevy-gaps/ctx-and-terrain.md` (29 line-number fixes, 4 content fixes)
+
+Line-number fixes, each checked against the source line:
+
+- `prelude.js`: spawnPlayer 1330 to 1336; setInput 1331 to 1337; setAnim 1332 to 1338; ensureScatter and getPixelProvenance are now 1339 and 1340; `__make_ctx` 1224 to 1222; the `getTerrainHeight` shim is 1332; the anim proxy is 218; the `__make_ctx` helper is 1223 and 1209.
+- `mod.rs`: spawnPlayer dispatch 1462 to 1466; `spawn_player` 2364 to 2368; `set_input` 1990 to 1994; `set_anim` 1644 to 1648; `setAnim` dispatch 1383 to 1387; `setInput` dispatch 1453 to 1457; classification lines 2394 to 2395 to 2398 to 2399; `readField` dispatch 1424 to 1428; `terrainHeight` dispatch 1425 to 1429; `native_feature_probe` 1502 to 1506; `anim_json` 1634 to 1638; `read_field` 2007 to 2011; `featureProbe` dispatch 1463 to 1467.
+- `globe.rs` line 478 (was 468). `runtime.rs` `FieldGrid::height` at lines 133 to 150 (was a claim with no line).
+
+Content fixes:
+
+- `input_map` is described from source: an array keeps each string item as `true`, an object is copied, anything else gives an empty map (`mod.rs` 3981 to 3991). The open point about malformed input is removed.
+- `FieldGrid::height` is described from source: bilinear interpolation with clamped coordinates, and 0 when the grid is smaller than 2 by 2 or its heights are short (`runtime.rs` 133 to 150). The open point is removed.
+- The `ensureScatter` and `getPixelProvenance` fallbacks are written as the shim writes them: `getPixelProvenance` falls back to `{ x: x ?? 0, y: y ?? 0, source: 'local-shim' }` (`prelude.js` 1340).
+- The line about the `input_map` and height open points is removed, since both are now described.
+
+### Changes in `docs/bevy-gaps/host-bridge-and-report.md` (10 lines)
+
+- `__make` is at `prelude.js` line 129, not 131. `__make_ctx` is at line 1222, not 1224.
+- `host_op` is at `mod.rs` line 1355, not about 1353. `host_provenance` is at line 2396, not 2392.
+- `world.rs` runs `ticks` world steps, not one. The record lines are at `world.rs` 891 to 918, not 886 to 910. Evidence: the loop at lines 62 to 63 and the `report` call at line 65.
+- `api_report` is at `mod.rs` 2408 (was 2404). `game16_api_paths` is at 2515 (was 2500). `game16_report` is at 2558 (was 2543). `game16_dynamic_paths` is at 2593 (was 2578).
+- The `ctxKeys` description now says the keys are read after `const ctx = {` in `__make_ctx`, up to the first `  };` line, not between `function __make_ctx` and `const ctx = {`.
+- The checker failure list now includes a non-empty `missingUsage`. Evidence: `scripts/check-game16-api.cjs` line 57.
+
+### Left as written, not confirmed from source
+
+- Whether any code calls `globalThis.__host` directly, which would skip the `apiCall` count in host-bridge section 3. The doc already says this is unchecked.
+- The `world` record list in host-bridge section 4 does not name `world-colliders` or `globe-report`. This is an omission, not a contradiction.
+- Whether `ctx.anim` was meant as an alias. `prelude.js` line 218 defines `ctx.self.anim` only.
+- The checker doc's Markdown stubs in `.local/docs` are described as empty, but the directory has non-empty files. This is about the extra repo, not the bevy tree, and is recorded here rather than changed.
+- Whether `spawn6/` and `.spawn/` are read by bevy, which was not traced.
+- The 'black colour sky' wording. The config value is `oklch(0.16 0.01 260)`, which is very dark but not black.
+
+### Phase B witnesses
+
+Recorded in the session report, not here, so that this record can be pushed once with the commit.

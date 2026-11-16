@@ -68,7 +68,7 @@ The usage line printed on an unknown subcommand is `world <dir> [place] [ticks]`
 
 ### What it does
 
-`main.rs` calls `world::run(directory, place, ticks)` in `/workspace/bevy/src/world.rs`. That function loads the tree with `WorldTree::load` in `/workspace/bevy/src/tree.rs`, resolves the place name, builds the Bevy app for that place, advances it by the requested number of fixed steps, and writes the reports as JSON lines to stdout. If `run` returns an error, the error text goes to stderr and the process exits with status 1. An unknown subcommand exits with status 2.
+`main.rs` calls `world::run(directory, place, ticks)` in `/workspace/bevy/src/world.rs`. That function calls `prepare`, which loads the tree with `WorldTree::load` in `/workspace/bevy/src/tree.rs`, resolves the place name, builds the Bevy app for that place, advances it by the requested number of fixed steps, and writes the reports as JSON lines to stdout. If `run` returns an error, the error text goes to stderr and the process exits with status 1. An unknown subcommand exits with status 2.
 
 ### Output
 
@@ -76,8 +76,8 @@ Each line on stdout is a JSON object with a `kind` field. The lines are emitted 
 
 | Kind | Content |
 |---|---|
-| `world` | Place name, object, body, behavior, model, scripted, light, collider and compound counts, tick count, and a `hash` in the form `0x` followed by eight hex digits. The hash is a fold over the entity positions and names. |
 | `world-camera` | Camera position, only when a row named `camera` exists. |
+| `world` | Place name, object, body, behavior, model, scripted, light, collider and compound counts, tick count, and a `hash` in the form `0x` followed by eight hex digits. The hash is a fold over the entity positions and names. |
 | `world-bodies` | Up to four sample rows of the form name and position. |
 | `world-colliders` | Up to four sample positions of child colliders. |
 | `script-stats` | The statistics object from the script runtime, which includes an `errors` count. |
@@ -119,7 +119,7 @@ Top-level entries:
 |---|---|
 | `world.config.yaml` | World-level config. Sets `defaultPlace: main`, the camera template, the player template, inputs, a UI render script and a nametag file. Required by bevy. |
 | `places/` | Place directories. Two are present: `hall` and `main`. |
-| `scripts/` | JavaScript behaviour files, including the hall scripts (`hall-camera.js`, `hall-floor.js`, `hall-locomotion.js`, `hall-player.js`, `hall-plinths.js`, `hall-policy.js`), a world-level `ui.js`, and large documentation-data modules (`docs-*.js`). It also has `architecture.json`. |
+| `scripts/` | JavaScript behaviour files, including the hall scripts (`hall-camera.js`, `hall-floor.js`, `hall-locomotion.js`, `hall-player.js`, `hall-plinths.js`, `hall-policy.js`), a world-level `ui.js`, and large documentation-data modules (`lib/docs-*.js`). It also has `architecture.json`. |
 | `templates/` | Camera and player templates referenced from the world config. |
 | `ui/` | Nametag and UI sources. |
 | `spawn6/`, `.spawn/` | Further project directories not read by bevy as far as this note establishes. |

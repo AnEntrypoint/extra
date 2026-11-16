@@ -20,27 +20,27 @@ Three layers are involved, and the report counts only one of them.
 
 ## 2. `__make(path)` (prelude.js)
 
-`__make` is defined at /workspace/bevy/src/script/prelude.js around line 131. It is a path-keyed factory that returns a JavaScript `Proxy` over a remote state store. It does not perform feature calls itself.
+`__make` is defined at /workspace/bevy/src/script/prelude.js around line 129. It is a path-keyed factory that returns a JavaScript `Proxy` over a remote state store. It does not perform feature calls itself.
 
 - The `path` argument is a namespaced string such as `world`, `camera`, `place:<name>:state`, `fields:<name>`, `state:<id>`, `session:<id>`, `anim:<id>`, `view:<id>`, or `obj:<id>`. The `__make` callers in the prelude are the source of these names.
 - `get` on the proxy reads through `__get_json(path, key)`, `set` writes through `__set_json(path, key, json)`, `deleteProperty` calls `__del`, `has` calls `__has`, and `ownKeys` calls `__keys_json`. These are the Rust bridge globals in section 1, not `__host` ops, so they are not added to `hostCalls`.
-- Some `get` branches return other `__make` proxies (for example `world.state` returns `__make('world:state')`, `world.camera` returns `__make('camera')`, `world.ui` returns a local object synchronised with `__set_json`). A few branches call `__host` directly. Examples in the code are `cameraJson` for `ctx.camera` reads of `forward`, `fov`, `aspect`, and `insetRight`, and `setJoint` and `setRagdoll` for object joint and ragdoll writes.
-- `__make_ctx(selfId, placeName)` at around line 1224 builds the per-object `ctx` for script handlers from `__make` proxies (`obj:`, `place:`, `world`, `session:`). Its top-level keys are the `ctxKeys` that the report reads (section 4).
+- Some `get` branches return other `__make` proxies (for example `world.state` returns `__make('world:state')`, `world.camera` returns `__make('camera')`, `world.ui` returns a local object synchronised with `__set_json`). A few branches call `__host` directly. Examples in the code are `cameraJson` for `world.camera` reads of `forward`, `fov`, `aspect`, and `insetRight`, and `setJoint` and `setRagdoll` for object joint and ragdoll writes.
+- `__make_ctx(selfId, placeName)` at around line 1222 builds the per-object `ctx` for script handlers from `__make` proxies (`obj:`, `place:`, `world`, `session:`). Its top-level keys are the `ctxKeys` that the report reads (section 4).
 
 I read only the `world`, `camera`, `fields:` branches and the call sites listed above. The remaining branches of `__make` were not read in full, so this section does not claim to list every path.
 
 ## 3. `__host(op, payload)` call counting
 
-- The Rust side counts calls in `host_op` (/workspace/bevy/src/script/mod.rs, around line 1353). When `op == "apiCall"`, the payload's `op` name is incremented in `host_calls` (a `BTreeMap<String, u64>`), and the first sighting records a provenance string from `host_provenance(name)` into `api_provenance`. The `apiCall` branch returns an empty string and does no other work.
+- The Rust side counts calls in `host_op` (/workspace/bevy/src/script/mod.rs, around line 1355). When `op == "apiCall"`, the payload's `op` name is incremented in `host_calls` (a `BTreeMap<String, u64>`), and the first sighting records a provenance string from `host_provenance(name)` into `api_provenance`. The `apiCall` branch returns an empty string and does no other work.
 - The JS wrapper sends `apiCall` once per feature call, before the real op. So `hostCalls[op]` is the number of times the prelude invoked `__host` for `op`, including calls that later returned `undefined` or failed. It counts invocations, not successful results.
 - Ops reached through `globalThis.__host` without the JS wrapper are not counted. Nothing in the read code does that, but it is the only path that would bypass the count.
-- `host_provenance(op)` (/workspace/bevy/src/script/mod.rs, around line 2392) maps an op name to one of these labels: `Bevy ECS world query/state`, `native FeatureState`, `typed Bevy ECS resource`, `Bevy ECS spherical procedural world`, `local filesystem shim` (fileRead, fileWrite, fileDelete, fileList), `deterministic local shim` (commit, now), or `prelude local shim` for anything not listed.
+- `host_provenance(op)` (/workspace/bevy/src/script/mod.rs, around line 2396) maps an op name to one of these labels: `Bevy ECS world query/state`, `native FeatureState`, `typed Bevy ECS resource`, `Bevy ECS spherical procedural world`, `local filesystem shim` (fileRead, fileWrite, fileDelete, fileList), `deterministic local shim` (commit, now), or `prelude local shim` for anything not listed.
 
 ## 4. The `game16-report` record
 
 ### 4.1 Emission
 
-`world.rs` (/workspace/bevy/src/world.rs, around lines 886 to 910) runs one world step for a place and prints several JSON lines to stdout:
+`world.rs` (/workspace/bevy/src/world.rs, around lines 891 to 918) runs `ticks` world steps for a place and prints several JSON lines to stdout:
 
 1. `{"kind":"script-stats", ...}` from `crate::script::stats()`. Its `errors` value is passed on as the script error count.
 2. `{"kind":"feature-report", "features": ...}`. This is a different record. Its `features` object is the `FeatureState` report with an `ecs` entry (from `crate::features_ecs::entity_report`) and a `globe` entry added to it.
@@ -50,7 +50,7 @@ The check script reads only the `game16-report` and `script-stats` lines (sectio
 
 ### 4.2 Fields
 
-`game16_report` (/workspace/bevy/src/script/mod.rs, around line 2543) builds the record. It calls `api_report()` (around line 2404) and `game16_api_paths(root)` (around line 2500) and combines them.
+`game16_report` (/workspace/bevy/src/script/mod.rs, around line 2558) builds the record. It calls `api_report()` (around line 2408) and `game16_api_paths(root)` (around line 2515) and combines them.
 
 | Field | Meaning | How it is computed |
 |---|---|---|
@@ -66,7 +66,7 @@ The check script reads only the `game16-report` and `script-stats` lines (sectio
 | `moduleCount` | Number of entries in `modules`. | Length of that array. |
 | `hostVerbs` | Names of host verbs known to the run. | Sorted union of the keys of `host_calls` (feature verbs actually invoked) and the static `bridge.<name>` entries from `install_bridge_names()`. This is a set of names; it does not carry counts. |
 | `hostCalls` | Invocation counts per feature verb. | `api_report().hostCalls`, the `host_calls` map from section 3. Verbs never invoked do not appear here, though they can appear in `hostVerbs` if they are bridge names. |
-| `ctxKeys` | Top-level keys of the `ctx` object the runtime builds. | `prelude_ctx_keys()` in mod.rs. It reads the text of `prelude.js` between `function __make_ctx` and `const ctx = {`, takes each line's key (up to `:` or `,`), and keeps keys made only of letters, digits, `_` and `$`. This is parsed from source text, not read from the live object. |
+| `ctxKeys` | Top-level keys of the `ctx` object the runtime builds. | `prelude_ctx_keys()` in mod.rs. It reads the text of `prelude.js` after `const ctx = {` in `function __make_ctx`, up to the first `  };` line, takes each line's key (up to `:` or `,`), and keeps keys made only of letters, digits, `_` and `$`. This is parsed from source text, not read from the live object. |
 | `provenance` | Map from a name to the mechanism that serves it. | Built in `api_report`. It starts from the `api_provenance` map (host verb name to `host_provenance` label), then adds `ctx.<key>` for each ctx key with `ctx_provenance(key)`, then `bridge.<name>` with the label `rquickjs global bridge`, then the entries from `crate::globe::provenance()` (globe.rs, around line 512). Existing entries are not overwritten. |
 | `ecs` | Count of provenance entries whose label contains the text `Bevy ECS`. | Computed in `game16_report` by counting `provenance` values that contain `Bevy ECS`. This is a count, not a list. It is unrelated to the `ecs` entry inside the `feature-report` record. |
 | `globe` | Globe summary. | `GlobeWorld::default().report(&GlobeSummary::default())`. The value is built from defaults in `game16_report`, not from the running world. |
@@ -75,11 +75,11 @@ The check script reads only the `game16-report` and `script-stats` lines (sectio
 
 `game16_api_paths(root)` walks every file under `root` (skipping `.git` directories). It reads only files with extensions `js`, `yaml`, `yml`, `json` and `md`. On each line it finds every occurrence of `ctx.` and reads the following run of letters, digits, `_`, `$` and `.`. A trailing `.` is removed. Matches are stored in a sorted set, so the same path is counted once.
 
-A path is reported missing when it starts with `ctx.`, its first segment is absent from `ctxKeys`, and that segment is absent from `game16_dynamic_paths()` (mod.rs, around line 2578). The dynamic list covers names the runtime resolves in ways the prelude key scan cannot see, such as room, terrain and sprite field names.
+A path is reported missing when it starts with `ctx.`, its first segment is absent from `ctxKeys`, and that segment is absent from `game16_dynamic_paths()` (mod.rs, around line 2593). The dynamic list covers names the runtime resolves in ways the prelude key scan cannot see, such as room, terrain and sprite field names.
 
 ### 4.4 Relation to the check script
 
-`check-game16-api.cjs` (/workspace/bevy/scripts/check-game16-api.cjs) runs `bin world <game> <place> 120` for each place and reads the `game16-report` and `script-stats` lines. It fails when any place has a non-zero exit, a missing report, `report.errors !== 0`, `report.missingApiCount !== 0`, or `scriptStats.errors !== 0`. It also builds its own `usage` set and compares it with the `ctxKeys` from the `hall` place plus its own hard-coded list. The summary it prints includes per-place `errors`, `scriptErrors`, `missingApiCount`, `missingApi`, `moduleCount`, `hostVerbs` and `hash`. It omits `hostCalls`, `provenance` and `ecs`.
+`check-game16-api.cjs` (/workspace/bevy/scripts/check-game16-api.cjs) runs `bin world <game> <place> 120` for each place and reads the `game16-report` and `script-stats` lines. It fails when any place has a non-zero exit, a missing report, `report.errors !== 0`, `report.missingApiCount !== 0`, `scriptStats.errors !== 0`, or `missingUsage` is non-empty. It also builds its own `usage` set and compares it with the `ctxKeys` from the `hall` place plus its own hard-coded list. The summary it prints includes per-place `errors`, `scriptErrors`, `missingApiCount`, `missingApi`, `moduleCount`, `hostVerbs` and `hash`. It omits `hostCalls`, `provenance` and `ecs`.
 
 ## 5. Flags and unclear points
 
