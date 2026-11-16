@@ -493,3 +493,34 @@ Starting state: local main and origin/main at c6b058b, no tracked file modified.
 - The six untracked top-level entries: untouched.
 - The 38 state-changing controls: not clicked. The HTTP pass clicked nothing.
 - No writes into /workspace/savi or /workspace/jayzee.
+
+## Docs check of the six untracked entries and the bevy-gaps docs (2026-11-16)
+
+Starting state: local main at 35d770e, equal to origin/main (0 ahead, 0 behind after a fetch). `git status --short` listed six untracked top-level entries and no tracked file modified.
+
+### What each entry holds
+
+- `.gitignore`: one line, `.playwriter/`. Untracked. Committing it is an owner decision, as recorded in c6b058b.
+- `.local/`: 597 files, 72M. Capture output, drift reports, logs and extraction scripts. Untracked by design (c6b058b).
+- `game-16/`: 149 files, 2.7M, of which 44 are tracked. A nested repository with its own `.git` (HEAD 3eb8aeb). It is not part of this repository, and 26 of its tracked files are modified. Owner decision (882ad7b, 2026-11-12 entry 7).
+- `runs/`: 755 files, 24M. gm run records. Untracked by design (c6b058b).
+- `scripts/`: 2 files, 24K: `check-extraction-complete.py` and `check-extraction-drift.py`. Untracked. Committing them is an owner decision. The drift script reads its token from `~/.jayzee/token` and does not store it.
+- `site/`: 2615 files, 71M. Saved page captures and assets. Untracked by design (c6b058b).
+
+### Decision
+
+None of the six entries is committed in this pass. `site/`, `.local/` and `runs/` hold capture and run data, and committing them would publish it. `game-16/` is a nested repository and cannot be added as files. `scripts/` and `.gitignore` remain owner decisions.
+
+### bevy-gaps docs (commit 35d770e)
+
+- `docs/bevy-gaps/checker-cli-and-corpus.md` (158 lines): no change.
+- `docs/bevy-gaps/ctx-and-terrain.md` (119 lines): no change.
+- `docs/bevy-gaps/host-bridge-and-report.md` (93 lines): no change.
+
+Every repository path the three docs cite exists: `/workspace/bevy/src/main.rs`, `src/tree.rs`, `src/world.rs`, `src/globe.rs`, `src/script/mod.rs`, `src/script/prelude.js`, `scripts/check-game16-api.cjs`, `FEATURE_MATRIX.md`, and `/workspace/extra/game-16`, `.local/docs` and `site/docs`. The `game16-report` name appears in the bevy sources. The bevy repository has five modified tracked files (AGENTS.md, src/features.rs, src/script/mod.rs, src/script/prelude.js, src/world.rs). They are not touched here, and the docs cite some of them.
+
+### Changes in this pass
+
+- `docs/PENDING_VALIDATION.md`: this section added.
+- No change to the three bevy-gaps docs.
+- No change to the six untracked entries.
