@@ -1,0 +1,24 @@
+From 0c8e5ece86beb915b03e47f38233aa37d17baeab Mon Sep 17 00:00:00 2001
+From: lanmower <almagestfraternite@gmail.com>
+Date: Mon, 16 Nov 2026 14:41:11 +0200
+Subject: [PATCH] Reject an empty place argument to the world subcommand with a
+ message that names it
+
+---
+ src/world.rs | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/world.rs b/src/world.rs
+index 1d5d4a9..8096739 100644
+--- a/src/world.rs
++++ b/src/world.rs
+@@ -68,6 +68,9 @@ pub fn run(directory: &str, place_name: Option<&str>, ticks: usize) -> Result<()
+ }
+ 
+ pub fn prepare(directory: &str, place_name: Option<&str>) -> Result<(App, Place), String> {
++    if place_name == Some("") {
++        return Err(format!("{directory}: the place argument is empty; name a place or leave it out"));
++    }
+     let tree = WorldTree::load(Path::new(directory))?;
+     let name = place_name
+         .map(str::to_string)

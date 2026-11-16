@@ -835,3 +835,30 @@ Items 2 and 3 of the ranked extra work, as they now stand.
 ### Phase B witnesses
 
 Recorded in the session report, not here, so that this record can be pushed once with the commit.
+## Empty-place change handed to bevy's queue (2026-11-16)
+
+Supersedes the status of items 2 and 3 in the ranked list above. The earlier line that called item 2 done is withdrawn: the local commit it cited has been undone, and the change now waits in bevy's queue.
+
+### Changes in this pass
+
+- `docs/patches/bevy-empty-place.patch`: new file. It is the empty-place hunk of `prepare()` in `src/world.rs`, as a patch against bevy `2fa1c14`. It applies cleanly: checked with a temporary index, so bevy's working tree was not touched.
+- bevy `0c8e5ec` was undone locally. Its HEAD was reset to `2fa1c14` (mixed reset, no working-tree change), and `src/world.rs` was restored to `2fa1c14`. The commit is no longer on bevy's branch. Its patch is the file above.
+- bevy's other uncommitted changes were not touched. Their diff hash before and after the handover is `10be9259c50451ca4ccfc6321d690787d3d7f7347db5af927dc362edbff5a76e`, for `Cargo.toml`, `src/main.rs` and `src/viewer.rs`. `src/viewer_world.rs` is still untracked.
+- The bevy build directory was not used after the handover.
+
+### Item 2: open until bevy applies the patch
+
+- Before the change, recorded in this session: `bevy-jayzee world /workspace/extra/game-16 "" 5` exited 1 and wrote `/workspace/extra/game-16: no place ` to stderr. The message does not name the argument.
+- The expected witness after bevy applies the patch: the same command exits 1 with `/workspace/extra/game-16: the place argument is empty; name a place or leave it out`. It has not been run, because the binary has to be rebuilt, and that build waits on bevy's queue.
+- The regression witness recorded earlier in this session, `ok` true with 317 usage tokens and 0 missing APIs on hall and main, was run on a binary built from the change before the handover. That binary is superseded, and the regression has to be run again after bevy rebuilds.
+
+### Item 3: open until signal records the snapshot path
+
+- signal holds the real snapshot root, and the owner has asked signal to record it in its docs.
+- Landed in signal's local repo as commit `7a18a88` ("Give the real snapshot path in the local run doc"). Its `docs/LOCAL-RUN.md` names `SNAPSHOT_ROOT=/workspace/signal` and says the snapshot is that directory. Witnesses: that directory holds `assets/` (14 entries), `raw/` (6) and `state/` (13); HEAD of signal-stage has the real root (1 hit) and the placeholder `/path/to/snapshot` (0 hits).
+- Still open: signal's origin is held, so the commit is not on the remote this record is pushed to. Item 3 closes when the owner pushes signal-stage.
+- The process environment of the port 4173 server was not read.
+
+### Phase B witnesses
+
+Recorded in the session report, not here, so that this record can be pushed once with the commit.
