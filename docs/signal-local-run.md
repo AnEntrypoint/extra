@@ -12,12 +12,14 @@ This guide says what it takes to run the Signal Stage world from captured bytes 
 - `SNAPSHOT_ROOT` points at a directory with three parts: `assets/`, `raw/` and `state/`. The snapshot is about 170 MB and is not in git.
 - The default is `.spawn/local/snapshot` inside the signal-stage repository. **Checked:** `serve-local.mjs` line 7 sets it that way, and `.gitignore` line 6 excludes `.spawn/local/snapshot/`, so `git check-ignore` reports it.
 - Building the snapshot is a separate step, `.spawn/local/capture-snapshot.mjs`. It fetches from the hosted site, so it needs network access and runs only when the owner asks for a new capture. It is not part of running the world.
-- **Status:** the default directory does not exist in this workspace. A server is already answering on port 4173, so a snapshot exists somewhere, but its path was not found. The path must be set explicitly before anyone starts a new server.
+- **Status:** the snapshot is at `/workspace/signal` in this workshop. Signal's own doc names it in commit `7a18a88` (local to signal-stage, not pushed), and `assets/` (14 entries), `raw/` (6) and `state/` (13) are present in that directory. The default `.spawn/local/snapshot` does not exist, so `SNAPSHOT_ROOT` must be set. The environment of the server already answering on port 4173 was not read.
 
 ## 2. Start the local server on port 4173
 
+Run from `world/signal-stage`:
+
 ```
-SNAPSHOT_ROOT=/path/to/snapshot PORT=4173 node .spawn/local/serve-local.mjs
+SNAPSHOT_ROOT=/workspace/signal PORT=4173 HOST=127.0.0.1 node .spawn/local/serve-local.mjs
 ```
 
 - `PORT` defaults to 4173 (**checked**: `serve-local.mjs` line 9). `HOST` defaults to `127.0.0.1`.
@@ -61,4 +63,5 @@ This guide lives in the extra repository on GitHub. It contains no token, grant 
 - Ignore rule: `.gitignore` line 6 excludes `.spawn/local/snapshot/` (checked).
 - Remote: the signal-stage origin is `git.spawn.co` (checked). Nothing was pushed to it.
 - `PLAYWRITER_WEBGPU`: read at `bin/playwriter-project` lines 428 and 437 in the `pw` install. Not read by `node_modules/playwriter` (checked).
-- Not checked here: the snapshot path, the 3D render, and the `ERR_ABORTED` counts.
+- Snapshot path: checked as a directory (section 1). Not checked: that it is the path the server already on port 4173 uses, because its environment was not read.
+- Not checked here: the 3D render, and the `ERR_ABORTED` counts.
