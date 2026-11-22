@@ -893,3 +893,19 @@ Checked before ranking: the reachable queue in the extra repo is empty after thi
 ### Phase B witnesses
 
 Recorded in the session report, not here, so that this record can be pushed once with the commit.
+
+## Bevy gaps against the extra documentation (2026-11-22)
+
+### Changes
+
+- `docs/bevy-gaps/missing.tsv`: new. 269 rows (194 missing, 75 partial), one per documented feature that bevy at `d4c407c` lacks or has in part. 169 rows carry a `docs/parity-matrix.tsv` row id, and each matrix id is owned by one row.
+- `docs/bevy-gaps/README.md`: new. Index of the three earlier notes and the TSV, counts per area, 144 documented features checked as implemented, the areas that unblock the most rows, why game-16 is not a source of rows, and the unchecked items.
+
+### Witness
+
+- `node /workspace/tmp/extra/witness.cjs` checks every row: 9 columns, unique id, status `missing` or `partial`, size S, M or L, evidence names a bevy path or says `absent: searched`, every `documented_in` reference resolves to an existing wiki line, every matrix id exists in bevy's `parity-matrix.tsv` and is used once, and every README link resolves.
+- Spot checks in bevy: `onSpawn` has 0 matches in `src`; `src/script/mod.rs:2800` calls `onJayzee`; `src/camera_rig.rs:121` returns `custom-not-ported` while matrix row 88 says present; `src/world.rs:72` holds the empty-place message.
+
+### Red check
+
+- The witness failed on the first build with `matrix twice 514`, `516` and `517`: gap-069 and gap-191 both held them. gap-069 now keeps 531 only, and the witness passes.
