@@ -90,6 +90,14 @@ Findings that apply to every module:
 
 Sizes are 3 S, 6 M and 4 L (3 + 18 + 32 = 53 points at S 1, M 3, L 8), more than the 16 points estimated on 2026-11-23, because each module needs more than an un-gate.
 
+## Re-check against origin/main c394fb9 (2026-11-23)
+
+Bevy pushed 12 commits after `270be5a`: planet stage 4 timing (frame-time witness, idle sampling) and stage 5 pose captures (`src/planet_poses.rs`, `src/bench_host.rs`, the default launch in `src/main.rs`). Stage 0 is not yet in the binary: all 13 `#[cfg(test)] mod` lines in `src/main.rs` are unchanged.
+
+The file-set scan found 16 rows that cite a changed file. Each was read against the code at `c394fb9`: [recheck-c394fb9.tsv](recheck-c394fb9.tsv). **No row changed status.** The new code is benchmark and census tooling, not script API, so the 16 rows stay as they were. Four rows cited lines that moved and are corrected in [missing-recheck-2026-11-23.tsv](missing-recheck-2026-11-23.tsv): gap-148 (the `settled` helper, now `bench_planet.rs:245`), gap-195 and gap-204 (the teleport clearance constant, now `planet_poses.rs:7`), and gap-240 (`FloatingOrigin` at `origin.rs:7`).
+
+Stage 4 and stage 5 rows in the spec that these commits describe (timing, census poses, default launch) are not gap rows, so no row is closed by them. The spec's stage 4 is netcode and was untouched.
+
 ## What was compared
 
 - Extra documentation: `wiki/README.md`, `wiki/toc.md`, every page in `wiki/jayzee`, `wiki/cleetus`, `wiki/index` and `wiki/reference-game-16`, the three notes above and `docs/PENDING_VALIDATION.md`.
