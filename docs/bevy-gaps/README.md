@@ -59,7 +59,7 @@ Counted from `depends_on` over the 267 open rows. The column is free text, and 7
 
 ### Proposed stage order for bevy
 
-0. **Wire the 16 test-only ports** into the binary (size S per row, the code and its tests exist): game_rules, character, hitscan, fire_terrain, fire_stage_map, baked_field_load, world_name, terrain_mesh_surface, terrain_grid_sample, hud, hud_overlay, chart_reanchor_service and camera_rig, the modules named in the 16 `test-only port` rows of the TSV. It turns code bevy already has into rows the game can reach, and several later rows depend on it. 16 rows, about 16 points.
+0. **Wire the 16 test-only ports** into the binary (13 modules, 3 S, 6 M and 4 L, see [stage0-wiring.tsv](stage0-wiring.tsv); the code and its tests exist): game_rules, character, hitscan, fire_terrain, fire_stage_map, baked_field_load, world_name, terrain_mesh_surface, terrain_grid_sample, hud, hud_overlay, chart_reanchor_service and camera_rig, the modules named in the 16 `test-only port` rows of the TSV. It turns code bevy already has into rows the game can reach, and several later rows depend on it. 16 rows, about 53 points.
 1. **Script surface (stage 1, 51 rows, 160 points).** It stays first: games load against it, the scripting-host prerequisite names 26 open rows, and it includes the `onSpawn` hook (S). Take its 24 S rows first.
 2. **Rendering, assets and audio (stage 3, 81 open rows, 204 points).** It moves ahead of simulation because the rendering prerequisite is named by 68 open rows, including object, camera and atmosphere rows that stage 1 can only parse without it. Rows the planet parity spec already delivers are closed against that work.
 3. **Simulation (stage 2, 49 open rows, 178 points).** Physics, terrain, animation and gameplay; the character controller from step 0 is its base.
@@ -68,6 +68,27 @@ Counted from `depends_on` over the 267 open rows. The column is free text, and 7
 6. **Services and platform (stage 6, 36 rows, 113 points).** Hosted features are decided one by one: built locally, built against a stub, or out of scope with the owner line cited.
 
 The order differs from the spec in two places: a new step 0, and stage 3 before stage 2. Both are proposals for the dispatcher to decide.
+
+## Stage 0: wiring the test-only ports
+
+[stage0-wiring.tsv](stage0-wiring.tsv) is the work list for stage 0, read from bevy `origin/main` (`270be5a`). The 16 test-only rows resolve to 13 modules, because some rows cite two modules and some modules serve several rows; the `gap_rows` column lists them and all 16 appear. Each row gives the wave, the module, the exact `#[cfg(test)]` line in `src/main.rs` (the attribute line; the `mod` line is the next one), what wiring needs, the modules that must be un-gated with it, what it conflicts with in the binary, the dead-code risk, and a size.
+
+| Wave | Modules | Size |
+|---|---|---|
+| 1 | hud, terrain_grid_sample, world_name | S, S, S |
+| 2 | baked_field_load, camera_rig, fire_terrain, game_rules, hitscan, hud_overlay | M each |
+| 3 | character, chart_reanchor_service, fire_stage_map, terrain_mesh_surface | L each |
+
+Findings that apply to every module:
+
+- Removing the attribute at `src/main.rs` is not enough. Each file declares an inner `mod tests` with no `#[cfg(test)]`, and several use `crate::testkit`, which is test-only (`src/main.rs:119-121`). Each inner test module needs its own gate, or the build breaks.
+- There is no lint gate (no `[lints]` table in `Cargo.toml`, no `#![deny]`, no `-D warnings` in `.cargo`, `scripts` or `.github`). Un-gating gives unused-code warnings until something calls the module.
+- No module has a caller in the binary yet. Un-gating alone delivers nothing: each needs a plugin, systems or a host op, and the `conflicts` column names the code it would sit beside.
+- Modules outside the 16 are prerequisites: `lattice_surface` (for baked_field_load), `canonical_json` (for world_name), `chart_transfer` and `character` (for chart_reanchor_service), and a gate on `js_round` in `src/js_math.rs` (for terrain_grid_sample). `character` is one of the 16 and also a prerequisite of another.
+- Four modules have no real implementation behind their interface in the binary: `character` needs a production avian shape-cast (only a test scene implements `CharacterSpace`), `fire_stage_map` needs real `FireKernel` and `FireLattice` (only test stubs), `hud_overlay` needs a producer of `HudInputs`, and `terrain_mesh_surface` has no consumer and uses `Rc`, so it cannot be a bevy `Resource` as written.
+- Existing code in the binary that overlaps: `update_grounding` (`src/runtime.rs:282`) against `character`; three camera drivers (`src/runtime.rs:390`, `src/viewer.rs:367`, `src/globe.rs:469`) against `camera_rig`; the avian ray query (`src/script/mod.rs:1745`) against `hitscan`; the viewer text overlay (`src/viewer.rs:348`) against `hud`; `sample_field` (`src/planet_lod/collider.rs:58`) against `terrain_grid_sample`; `FloatingOrigin::rebase` (`src/planet_lod/origin.rs:23`) against `chart_reanchor_service`.
+
+Sizes are 3 S, 6 M and 4 L (3 + 18 + 32 = 53 points at S 1, M 3, L 8), more than the 16 points estimated on 2026-11-23, because each module needs more than an un-gate.
 
 ## What was compared
 
