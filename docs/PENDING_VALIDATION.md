@@ -909,3 +909,23 @@ Recorded in the session report, not here, so that this record can be pushed once
 ### Red check
 
 - The witness failed on the first build with `matrix twice 514`, `516` and `517`: gap-069 and gap-191 both held them. gap-069 now keeps 531 only, and the witness passes.
+
+## Re-check of missing.tsv against bevy 270be5a (2026-11-23)
+
+### Changes
+
+- `docs/bevy-gaps/missing-recheck-2026-11-23.tsv`: new, next to the unchanged `missing.tsv`. All 269 rows with five added columns: `recheck_2026_11_23`, `recheck_basis`, `recheck_evidence`, `still_missing_after_recheck`, `evidence_wrong_at_d4c407c`.
+- `docs/bevy-gaps/README.md`: a section on this re-check.
+
+### Result
+
+- Bevy's "stage 4" is planet parity stage 4 (frame-time budgets): 16 commits, 17 source files, no netcode files, no change to `docs/parity-matrix.tsv`. It is not stage 4 of `specs/bevy-extra-gaps.md` (netcode). It closed no row of `missing.tsv`.
+- 24 rows were re-checked by reading the code at `origin/main`: 2 closed, 12 partly closed, 10 still open. 245 rows were not re-checked, because no cited file or searched term changed.
+- 17 of the 24 had evidence that was already wrong when `missing.tsv` was written at `d4c407c`. Their evidence repeated bevy matrix cause text about `src/vegetation.rs` and `sync_chunks`, removed on 2026-11-21 (77164f7). Both closed rows (gap-130 grass, gap-238 PlanetFrame) were implemented before the list was written.
+- Cause: the cleetus and misc slices of the original build used the matrix cause text without re-reading bevy `src` for those rows.
+
+### Witness
+
+- `git diff --name-only d4c407c origin/main` lists 29 files; `src` has 17 and none is under `src/netcode`, `src/server.rs` or `src/client.rs`.
+- A scan of every row's cited paths and symbols against `origin/main` found 13 rows naming a file or symbol that no longer exists; all 13 are in the 24 re-checked.
+- Per-row evidence is in the new TSV, cited as path:line at `origin/main`.
