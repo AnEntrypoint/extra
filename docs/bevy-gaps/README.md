@@ -9,9 +9,65 @@ This folder lists the engine features that the extra documentation describes and
 - [ctx-and-terrain.md](ctx-and-terrain.md): the ctx shims, `ctx.self.anim` and terrain height.
 - [host-bridge-and-report.md](host-bridge-and-report.md): `__make`, `__host` and the `game16-report` record.
 
-## Re-check on 2026-11-23
+## Re-check on 2026-11-23: all 269 rows read against bevy source
 
-After bevy pushed its planet stage 4 (`270be5a`), 24 rows were re-checked by reading the code. 2 are closed, 12 partly closed and 10 still open, and 17 of the 24 had evidence that was already wrong on 2026-11-22: it repeated bevy matrix text about `src/vegetation.rs`, which bevy had removed. The result is in [missing-recheck-2026-11-23.tsv](missing-recheck-2026-11-23.tsv). `missing.tsv` itself is unchanged. The 245 other rows were not re-checked, so the same kind of stale evidence may remain in them.
+Every row was re-verified by reading the cited file and searching for the symbol in bevy at `origin/main` (`270be5a`), not by the matrix text. The result is [missing-recheck-2026-11-23.tsv](missing-recheck-2026-11-23.tsv); `missing.tsv` itself is unchanged. Each row has a status, a file and line, the basis, what is still missing, whether the 2026-11-22 evidence was wrong, any new gap, and whether the code is compiled into the binary.
+
+| Result | Rows |
+|---|---|
+| closed | 2 (gap-130 grass, gap-238 PlanetFrame; both were implemented before the list was written) |
+| test-only port | 16: the logic exists but sits in a `#[cfg(test)]` module, so the binary does not contain it |
+| partly closed | 55 |
+| still open | 196 |
+| evidence wrong on 2026-11-22 | 46 (17 in the first re-check, 29 in this one) |
+| rows with a new sub-gap | 21 |
+
+Bevy's planet stage 4 closed none of the 269 rows. The 46 wrong rows came from two causes: matrix cause text that named removed code (`src/vegetation.rs`, `sync_chunks`), and searches that used one naming style only (snake_case or camelCase).
+
+### Test-only modules
+
+`src/main.rs` declares 42 modules with `#[cfg(test)] mod`, including `character`, `camera_rig`, `hitscan`, `flight_model`, `fire_terrain`, `game_rules`, `hud`, `hud_overlay`, `terrain_marks`, `field_paint`, `brush_stroke`, `chart_anchor`, `chart_reanchor_service`, `world_name`, `terrain_config` and `baked_field_load`. They compile in `cargo test` only. `camera_rig`, `flight_model` and `fire_terrain` have no caller outside their own tests. A row whose only implemented part is in such a module is marked `test-only port` and counts as open. The same applies to the list of 144 implemented features below: 10 of them cite only test-only modules (for example the character controller, hitscan and the flight model), so they are implemented in tests, not in the game.
+
+### Corrected counts per stage
+
+Stages as in `specs/bevy-extra-gaps.md`. Open means not closed. Points weigh a row as S 1, M 3, L 8.
+
+| Stage | Areas | Rows | Closed | Test-only port | Partly closed | Still open | Open rows by size (S/M/L) | Points |
+|---|---|---|---|---|---|---|---|---|
+| 1 | scripting, world-format, objects, player, input, camera | 51 | 0 | 2 | 5 | 44 | 24/16/11 | 160 |
+| 2 | physics, terrain, animation, gameplay | 50 | 1 | 8 | 13 | 28 | 17/19/13 | 178 |
+| 3 | rendering, assets, audio | 82 | 1 | 3 | 19 | 59 | 47/23/11 | 204 |
+| 4 | netcode | 31 | 0 | 1 | 7 | 23 | 11/12/8 | 111 |
+| 5 | ui, editor, tooling, content, ai, xr | 19 | 0 | 1 | 2 | 16 | 7/7/5 | 68 |
+| 6 | services, social, economy, identity, platform | 36 | 0 | 1 | 9 | 26 | 15/14/7 | 113 |
+| All | | 269 | 2 | 16 | 55 | 196 | 121/91/55 | 834 |
+
+### What unblocks the most open rows
+
+Counted from `depends_on` over the 267 open rows. The column is free text, and 74 rows record no prerequisite, so these counts are a guide and not a proof.
+
+| Prerequisite | Open rows that name it |
+|---|---|
+| Rendering pipeline (render graph, materials, sky, LOD, impostors) | 68 |
+| Netcode (lightyear, snapshots, rooms, prediction) | 54 |
+| Scripting host (`src/script`; prelude shims that return a fixed value) | 26 |
+| Physics (avian, joints, character controller) | 8 |
+| Terrain and planet frame | 5 |
+| Identity, accounts, hosted services | 5 |
+| Skeletal animation, audio playback, camera rig and input | 4 each |
+| World format (spec, tree, place config) | 3 |
+
+### Proposed stage order for bevy
+
+0. **Wire the 16 test-only ports** into the binary (size S per row, the code and its tests exist): game_rules, character, hitscan, fire_terrain, fire_stage_map, baked_field_load, world_name, terrain_mesh_surface, terrain_grid_sample, hud, hud_overlay, chart_reanchor_service and camera_rig, the modules named in the 16 `test-only port` rows of the TSV. It turns code bevy already has into rows the game can reach, and several later rows depend on it. 16 rows, about 16 points.
+1. **Script surface (stage 1, 51 rows, 160 points).** It stays first: games load against it, the scripting-host prerequisite names 26 open rows, and it includes the `onSpawn` hook (S). Take its 24 S rows first.
+2. **Rendering, assets and audio (stage 3, 81 open rows, 204 points).** It moves ahead of simulation because the rendering prerequisite is named by 68 open rows, including object, camera and atmosphere rows that stage 1 can only parse without it. Rows the planet parity spec already delivers are closed against that work.
+3. **Simulation (stage 2, 49 open rows, 178 points).** Physics, terrain, animation and gameplay; the character controller from step 0 is its base.
+4. **Netcode (stage 4, 31 rows, 111 points).** `src/server.rs` (76 lines) and `src/client.rs` (172) are a lightyear demo; 54 open rows name netcode as a prerequisite, so it is large and late.
+5. **Interface and tools (stage 5, 19 rows, 68 points).**
+6. **Services and platform (stage 6, 36 rows, 113 points).** Hosted features are decided one by one: built locally, built against a stub, or out of scope with the owner line cited.
+
+The order differs from the spec in two places: a new step 0, and stage 3 before stage 2. Both are proposals for the dispatcher to decide.
 
 ## What was compared
 
@@ -62,7 +118,7 @@ Total: 269 rows, 194 missing and 75 partial. Sizes: 123 S, 91 M and 55 L.
 
 ## Documented features that bevy does implement
 
-144 documented features were checked and found implemented, each with a bevy path and line. By area: scripting 68, physics 17, terrain 16, world-format 7, rendering 6, objects 5, netcode 4, gameplay 3, camera 3, animation 2, platform 2, economy 2, ui 2, tooling 2, input 1, player 1, effects 1, services 1, audio 1. For the ctx and builtin names in `wiki/index` this check is at name level: the name is handled in bevy, and its behaviour was not compared with the hosted engine.
+144 documented features were checked and found implemented, each with a bevy path and line. 10 of them cite only test-only modules (see the re-check section). By area: scripting 68, physics 17, terrain 16, world-format 7, rendering 6, objects 5, netcode 4, gameplay 3, camera 3, animation 2, platform 2, economy 2, ui 2, tooling 2, input 1, player 1, effects 1, services 1, audio 1. For the ctx and builtin names in `wiki/index` this check is at name level: the name is handled in bevy, and its behaviour was not compared with the hosted engine.
 
 ## Areas that unblock the most others
 
