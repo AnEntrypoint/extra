@@ -9,6 +9,10 @@ This folder lists the engine features that the extra documentation describes and
 - [ctx-and-terrain.md](ctx-and-terrain.md): the ctx shims, `ctx.self.anim` and terrain height.
 - [host-bridge-and-report.md](host-bridge-and-report.md): `__make`, `__host` and the `game16-report` record.
 
+## Re-check on 2026-11-23
+
+After bevy pushed its planet stage 4 (`270be5a`), 24 rows were re-checked by reading the code. 2 are closed, 12 partly closed and 10 still open, and 17 of the 24 had evidence that was already wrong on 2026-11-22: it repeated bevy matrix text about `src/vegetation.rs`, which bevy had removed. The result is in [missing-recheck-2026-11-23.tsv](missing-recheck-2026-11-23.tsv). `missing.tsv` itself is unchanged. The 245 other rows were not re-checked, so the same kind of stale evidence may remain in them.
+
 ## What was compared
 
 - Extra documentation: `wiki/README.md`, `wiki/toc.md`, every page in `wiki/jayzee`, `wiki/cleetus`, `wiki/index` and `wiki/reference-game-16`, the three notes above and `docs/PENDING_VALIDATION.md`.
