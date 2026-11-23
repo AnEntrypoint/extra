@@ -970,3 +970,21 @@ Recorded in the session report, not here, so that this record can be pushed once
 
 - Nothing was built or run, so the claims about what un-gating breaks come from reading the code. The statement that each inner `mod tests` lacks `#[cfg(test)]` was read in every file; the build failure it implies was not reproduced.
 - The earlier estimate of 16 points for stage 0 was wrong; the corrected figure is 53.
+
+## Re-check against bevy c394fb9 (2026-11-23)
+
+### Changes
+
+- `docs/bevy-gaps/recheck-c394fb9.tsv`: new. The 16 rows that cite a file changed in d4c407c..c394fb9. None changed status.
+- `docs/bevy-gaps/missing-recheck-2026-11-23.tsv`: citations corrected for gap-148, gap-195, gap-204 and gap-240, where the cited lines moved. Statuses unchanged.
+- `docs/bevy-gaps/README.md`: a section on this re-check.
+
+### Witness
+
+- Changed files: `git diff --name-only 270be5a origin/main` lists 16 files; the code ones are `src/main.rs`, `src/planet_poses.rs`, `src/bench_host.rs`, `src/bench_planet.rs` and `src/planet_lod/stream.rs`.
+- The script surface has no `whenSettled`, `captureFrame`, teleport op or room-health symbol (`git grep` over `src/script`, `src/spec.rs`, `src/runtime.rs`, `src/viewer*.rs`: 0 hits).
+- Corrected lines checked at `origin/main`: `bench_planet.rs:245` is `fn settled`; `planet_poses.rs:7` is `TELEPORT_CLEARANCE_M`; `planet_lod/origin.rs:7` is `FloatingOrigin` and :23 `rebase`.
+
+### Limits
+
+- The 16 rows were judged on the code at c394fb9; the other 253 rows cite no changed file and were not re-read.
