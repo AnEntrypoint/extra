@@ -953,3 +953,20 @@ Recorded in the session report, not here, so that this record can be pushed once
 - Checks name presence and a read of the code, not behaviour against the hosted engine; none of the code was run.
 - A few `documented_in` lines point at neighbouring text in the long cleetus pages; the sub-agents located the feature by searching the file, and noted it in `basis`.
 - The ranking by `depends_on` uses free-text prerequisites; 74 rows record none.
+
+## Stage 0 wiring work list (2026-11-23)
+
+### Changes
+
+- `docs/bevy-gaps/stage0-wiring.tsv`: new. 13 module rows (the 16 test-only rows resolve to 13 modules), 13 columns: wave, module, gap_rows, the `#[cfg(test)]` line and text in `src/main.rs`, the mod line, what it is, wiring needed, un-gate chain, conflicts, dead-code risk, size and the reason for it.
+- `docs/bevy-gaps/README.md`: a Stage 0 section, and the step 0 line of the proposed order corrected from about 16 points to about 53.
+
+### Witness
+
+- Every `#[cfg(test)]` line was checked against `git show origin/main:src/main.rs`: the line before each `mod` declaration is the attribute. All 16 gap ids appear in the `gap_rows` column. Every row has 13 columns and a size of S, M or L.
+- Method: three read-only sub-agents (the memory cap), four to five modules each, reading each file and its tests at `origin/main` `270be5a`.
+
+### Limits
+
+- Nothing was built or run, so the claims about what un-gating breaks come from reading the code. The statement that each inner `mod tests` lacks `#[cfg(test)]` was read in every file; the build failure it implies was not reproduced.
+- The earlier estimate of 16 points for stage 0 was wrong; the corrected figure is 53.
