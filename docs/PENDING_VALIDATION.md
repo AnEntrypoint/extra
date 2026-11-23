@@ -929,3 +929,27 @@ Recorded in the session report, not here, so that this record can be pushed once
 - `git diff --name-only d4c407c origin/main` lists 29 files; `src` has 17 and none is under `src/netcode`, `src/server.rs` or `src/client.rs`.
 - A scan of every row's cited paths and symbols against `origin/main` found 13 rows naming a file or symbol that no longer exists; all 13 are in the 24 re-checked.
 - Per-row evidence is in the new TSV, cited as path:line at `origin/main`.
+
+## All 269 rows re-read against bevy 270be5a (2026-11-23)
+
+### Changes
+
+- `docs/bevy-gaps/missing-recheck-2026-11-23.tsv`: rewritten. 269 rows, 16 columns: the 9 original, then `recheck_2026_11_23`, `file_line`, `basis`, `still_missing`, `evidence_wrong_2026_11_22`, `new_gap` and `compiled_into_binary`.
+- `docs/bevy-gaps/README.md`: the re-check section now has the counts, the test-only finding, corrected counts per stage, the prerequisite ranking and a proposed stage order.
+
+### Result
+
+- 2 closed, 16 test-only port, 55 partly closed, 196 still open. 46 rows had wrong evidence on 2026-11-22 (17 first pass, 29 second). 21 rows carry a new sub-gap.
+- Method: ten read-only sub-agents, 20 to 25 rows each, each reading the wiki lines of every row and the bevy code at `origin/main`, not the matrix text.
+- Finding: 42 modules in `src/main.rs` are `#[cfg(test)] mod`. Rows implemented only there are `test-only port`. 10 of the 144 implemented features in the README cite only such modules.
+
+### Witness
+
+- `awk -F'\t' '{print NF}'` on the TSV prints 16 for all 270 lines. Every id of `missing.tsv` appears once.
+- `git show origin/main:src/main.rs` shows the 42 `#[cfg(test)]` module lines; `character`, `camera_rig`, `hitscan`, `flight_model` and `fire_terrain` are among them.
+
+### Limits
+
+- Checks name presence and a read of the code, not behaviour against the hosted engine; none of the code was run.
+- A few `documented_in` lines point at neighbouring text in the long cleetus pages; the sub-agents located the feature by searching the file, and noted it in `basis`.
+- The ranking by `depends_on` uses free-text prerequisites; 74 rows record none.
