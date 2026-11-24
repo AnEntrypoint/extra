@@ -1123,3 +1123,13 @@ Recorded in the session report, not here, so that this record can be pushed once
 ### Red check
 
 - The base 03e48e2 fails the green check (greenOrigin false on that side), and the old unguarded read escapes. Both were shown in the witness.
+
+## Parity assignment for bevy (2026-11-25)
+
+- docs/bevy-gaps/parity-assignment-2026-11-25.md: new ledger entry. Answer: none of the 717 open rows in bevy docs/REMAINING_PARITY.md can be closed with a plain witness. Assigned instead: matrix row 227 (CaveSDF cave volume meshing), which has an intact fixture and whose witness is a cargo test bevy runs in a window.
+- docs/bevy-gaps/parity-assignment-witness.cjs: new plain check. It confirms the gap is still open (create_cave_volume and polygonize_cave_volume absent from src/cave_sdf.rs), that row 227 is still candidate-only, that the two cited lines hold, and that the fixture has 3 meshes with the expected fields.
+- No file in bevy's checkout was changed.
+
+### Witness
+
+- docs/bevy-gaps/parity-assignment-witness.cjs exit 0 (see the Phase B record below).
