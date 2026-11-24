@@ -1047,3 +1047,27 @@ Recorded in the session report, not here, so that this record can be pushed once
 ### Limits
 
 - The path answers rest on the lines read. The `..` observation at `mod.rs:3227` was not run against a real escaping script.
+
+## Scripted-primitive path traversal: witness and patch for bevy (2026-11-25)
+
+### Changes
+
+- docs/patches/bevy-path-guard.patch: new. Two hunks against bevy origin/main (03e48e2). src/script/mod.rs:3227 reads the scripted primitive path through Host::file_path, the function the script file API already uses. The loader at :3852 normalises the import name the way file_path does, refuses a leading ".." or an absolute result, and then joins the root. Valid in-root paths read the same file as before.
+- docs/patches/bevy-path-guard-witness.cjs: new, plain script. It builds a fixture world with one in-root file and one outside file, and reads each path the way the Rust code joins it.
+
+### What the witness shows
+
+- Before the fix: a scripted primitive with script "../outside.js" reads the outside file (before.scriptTraversal true). An import named by an absolute path reads it too (before.loaderAbsolute true).
+- A relative "../" import from scripts/a.js is clamped by the resolver normalize and does not escape (before.loaderResolvedRelative false). The escape is at the two raw reads, not at the resolver.
+- After the fix none of the three escapes. The valid paths scripts/a.js and ./scripts/a.js read the same file before and after.
+- Source check: the patched text comes from a temporary index with the patch applied to origin/main. Line 3227 reads file_path(script)? and line 3856 reads root.join(clean). The unpatched lines at 3227 and 3852 are checked first.
+- Result: redBeforeFix true, greenAfterFix true, exit 0.
+
+### Not done here
+
+- Bevy code is not edited, and bevy has not built the binary. The witness models the Rust path joins and the guard; it is not a run of the binary. Bevy applies the patch and runs its own build witness before the fix counts as done.
+- file_path itself never refuses a ".." path. normalize("", "../x") returns "x", so it clamps the path into the root. The fix depends on that clamp.
+
+### Red check
+
+- The unpatched lines fail the guarded-source check (sourceRed true, and the fixture reads escape). The witness exits 1 if either the before or the after side is wrong.

@@ -1,0 +1,24 @@
+--- a/src/script/mod.rs
++++ b/src/script/mod.rs
+@@ -3224,7 +3224,7 @@
+                 return None;
+             }
+         }
+-        let path = self.host.borrow().root.join(script);
++        let path = self.host.borrow().file_path(script)?;
+         let source = match std::fs::read_to_string(&path) {
+             Ok(source) => source,
+             Err(error) => {
+@@ -3849,7 +3849,11 @@
+         if let Some(key) = name.strip_prefix("builtin/") {
+             return Module::declare(ctx.clone(), name.to_string(), builtin_source(key));
+         }
+-        let path = self.root.join(name);
++        let clean = normalize("", name);
++        if clean.starts_with("..") || Path::new(&clean).is_absolute() {
++            return Err(rquickjs::Error::new_loading_message(name, "outside the world root"));
++        }
++        let path = self.root.join(clean);
+         let text = std::fs::read_to_string(&path).map_err(|error| {
+             rquickjs::Error::new_loading_message(name, error.to_string())
+         })?;
