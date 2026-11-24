@@ -1101,3 +1101,25 @@ Recorded in the session report, not here, so that this record can be pushed once
 ### Limits
 
 - The verdicts judge the code the row cites and the code around it, not every line that could change a status. The gap-207 feature text has no wiki source, so the row may describe a gap the wiki never documents; the count is held for the owner.
+
+## Item 4 closed: bevy path guard verified on origin/main (2026-11-25)
+
+### Changes
+
+- docs/patches/bevy-path-guard-verify.cjs: new plain-script witness. It checks that origin/main src/script/mod.rs is byte-identical to the patch docs/patches/bevy-path-guard.patch applied to the pre-patch base 03e48e2, checks the red side at 03e48e2 and the green side at origin/main, and reruns the traversal model.
+- This ledger entry: item 4 of the ranked list (the scripted-primitive traversal guard) is closed. Bevy pushed the guard at b50dbb7 (Guard the scripted primitive and the module loader against paths outside the world root). Its checkout was not touched here.
+
+### Witness
+
+- origin/main is b50dbb7. origin/main src/script/mod.rs equals the patch applied to 03e48e2: byteIdenticalToPatch true.
+- Red at the base 03e48e2: line 3227 reads root.join(script), line 3852 reads root.join(name). A script value of "../outside.js" and an absolute import each read the outside file (before.scriptTraversal true, before.loaderAbsolute true).
+- Green at origin/main: line 3227 reads file_path(script)?, line 3856 reads root.join(clean). Neither escape reads the outside file (after both false). Valid in-root paths still read their file (validOk true).
+- Exit 0.
+
+### Note on the earlier witness
+
+- docs/patches/bevy-path-guard-witness.cjs applies the patch to origin/main, so it now exits 1: the patch is already upstream. That exit is expected. bevy-path-guard-verify.cjs replaces it for the closed state.
+
+### Red check
+
+- The base 03e48e2 fails the green check (greenOrigin false on that side), and the old unguarded read escapes. Both were shown in the witness.
