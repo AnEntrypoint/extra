@@ -1026,3 +1026,24 @@ Recorded in the session report, not here, so that this record can be pushed once
 ### Limits
 
 - These corrections change citations only. No status changed, and bevy has not yet re-read these rows against a new tree.
+
+## Stage-0 design-check corrections, README wording, and two README questions (2026-11-25)
+
+### Changes
+
+- `docs/bevy-gaps/stage0-wiring.tsv`, three cells: T38 (frame_globe_camera at `src/globe.rs:440`, not 469, which is add_census_systems), T46 (vec3 at `src/main.rs:123`, not 118, which is planet_sky) and T50 (height::anchor at `src/height/mod.rs:4`, not 8, which is planet). Source: the stage-0 design check in the spec.
+- `docs/bevy-gaps/README.md`: "declares 42 modules" becomes "gates 42 modules" (D1 in the design check): 42 is the gated count.
+- `docs/bevy-gaps/README.md`: a section "Answered from bevy source (2026-11-25)" answers the relative path resolution question and the migrateWorldAnchors question, and the unchecked list is trimmed to match.
+
+### Witness
+
+- {"citesPass":13,"citesTotal":13,"failed":[],"tsvRows":13,"tsvCellsOk":true,"staleStage0Citations":[],"declaresLeft":0,"gatesPresent":1}.
+- Each named symbol is on its corrected line at `origin/main` (`03e48e2`). The 10 answer citations in the new section pass the same check.
+
+### Red check
+
+- The old citations fail the same check: `globe.rs:469`, `main.rs:118`, `height/mod.rs:8`, and the answer citation `mod.rs:3227` checked against `fn file_path`. Each reports "does not contain". Red check passed.
+
+### Limits
+
+- The path answers rest on the lines read. The `..` observation at `mod.rs:3227` was not run against a real escaping script.
