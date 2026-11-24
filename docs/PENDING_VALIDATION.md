@@ -1079,3 +1079,25 @@ Recorded in the session report, not here, so that this record can be pushed once
 - Changed rows: gap-009, 012, 097, 125, 129, 130, 165, 170, 172, 237, 242 and 251 (two cites). Statuses unchanged.
 - Witness: docs/bevy-gaps/recheck3-move-witness.cjs. It compares each moved cite pair in the committed table with the cited text at c394fb9 and at 03e48e2, and exits 1 on any mismatch.
 - Limit: an exact text match shows the cited line is the same code, not that the row status still holds. A status depends on code outside the cited line, which this check does not read.
+
+## Verdicts for the 12 rows whose cited code moved, and the gap-207 and gap-215 citations (2026-11-25)
+
+### Changes
+
+- docs/bevy-gaps/verdicts-2026-11-25.tsv: new. One row per judged row: status before and after, the file and line read at origin/main, the verdict basis, the citation problem and the action. Twelve rows judged; 0 statuses changed.
+- Citations corrected in missing-recheck-2026-11-23.tsv (file_line column): gap-009 (test constant src/glb.rs:561 to src/viewer_world.rs:313-316), gap-012 (rock seed src/planet_veg/rock.rs:46 to the vegetation cull src/planet_veg/gpu/cull.rs:113), gap-125 (test assertion tree.rs:475, inside cfg(test) mod tests at tree.rs:337, to src/planet_veg/context.rs:95-98), gap-130 (test-gated wrapper grass.rs:231 to production grass.rs:235), gap-242 (a bark option, not a terrain option, replaced by an absence grep), gap-251 (census and test constants replaced by an absence grep).
+- gap-215 (ServerBoot): documented_in changed from featureset-part-6.md:24, which is a WorldLocator entry, to featureset-part-3.md:66, which documents boot(overrides) and installGracefulShutdown.
+- gap-207 (RoomOrchestrator): stated as undocumented. The grep over wiki/ for RoomOrchestrator returns 7 lines; featureset-part-3.md:166 says cleetus names RoomOrchestrator only in surface lists. The row feature text (forks room workers, weighted placement, crash restart, elastic scale) has no wiki line.
+
+### Witness
+
+- docs/bevy-gaps/verdict-witness.cjs: exit 0. 11 judged file lines contain their tokens at origin/main; 0 statuses changed; every documented_in reference is a valid wiki or docs line or an UNDOCUMENTED statement; 269 rows of 16 columns; gap-215 line 66 contains boot(overrides) and installGracefulShutdown.
+- docs/bevy-gaps/recheck3-move-witness.cjs: exit 0 after the eight referent rows were excluded from its moved-in-unchanged-file rule, because verdict-witness covers them.
+
+### Red check
+
+- The old citations are test or non-production code: src/glb.rs:561 is a test constant, src/planet_veg/rock.rs:46 is a rock seed, src/planet_veg/tree.rs:475 is inside cfg(test) mod tests (tree.rs:337), src/planet_veg/grass.rs:231 is cfg(test). The red check reports 4 of 4 as wrong or not production.
+
+### Limits
+
+- The verdicts judge the code the row cites and the code around it, not every line that could change a status. The gap-207 feature text has no wiki source, so the row may describe a gap the wiki never documents; the count is held for the owner.
