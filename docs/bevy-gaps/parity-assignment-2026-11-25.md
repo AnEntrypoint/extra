@@ -20,3 +20,17 @@ No open row can be closed with a plain script. Every row that could close needs 
 - Row 725 (tps-game fire layer): shot blocking depends on fire.rayBlocked over smoke, which is not ported.
 - Row 726 (tps-game emotes): not reachable; src/protocol.rs has no emote message.
 - Row 729 (tps-game HUD overlay): its witness is a cargo test, and its value is UI-only.
+
+## Closure of row 227 (2026-11-25)
+
+- Commit on origin/main: 162145f (assertion: triangle count equals indices divided by three, src/cave_sdf.rs:462), recorded at b204b0e. origin/main is b204b0e.
+- Done condition from the assignment: a test that rebuilds each fixture mesh and matches vc, ic, triangles and checksum, plus the carve round trip. Met at origin/main: polygonizer_matches_spoint_polygonize_cave_sdf (src/cave_sdf.rs:449) checks vertex count, index count, triangle count, checksum, positions and indices for every fixture mesh; carve_layer_round_trip_matches_spoint_load_cave_carve_layer (src/cave_sdf.rs:477) covers the carve layer.
+- Counterparts for the two names in the row: createCaveVolume is add_cave_volume (src/cave_sdf.rs:299); polygonizeCaveVolume is polygonize_cave_sdf (src/cave_sdf.rs:145). The row names the spoint functions, which bevy does not name the same way.
+- Fixture consistency (plain check, not a Rust run): sphere vc 270, ic 1140, triangles 380; cylinder-y vc 230, ic 948, triangles 316; tunnel-y vc 363, ic 1614, triangles 538. Each mesh has ic equal to 3 times triangles, its indices are in range, and its checksum recomputes from its positions.
+- Bevy's record for the window (docs/PENDING_VALIDATION.md at b204b0e, bevy): green, cargo test cave_sdf:: 3 passed; red, the triangle count plus one fails at sphere with exit 101. The red and green runs are bevy's; this ledger did not re-run cargo.
+- The parity-matrix row 227 outcome still reads candidate-only at origin/main. Updating it to present is bevy's step, and it is not claimed here.
+- Witness: docs/bevy-gaps/parity-assignment-witness.cjs exit 0 (origin b204b0e, 162145f on origin, both counterparts present, three tests present, triangle assertion at line 462, fixture checks pass).
+
+## Next row for bevy
+
+- None is assigned. The only plain-checkable things are fixture integrity and the presence of names, and neither proves that bevy does the documented behaviour. A closure needs a Rust test run, which is a window. So no row is assigned until a row with a self-consistent fixture and a test bevy can run is chosen.

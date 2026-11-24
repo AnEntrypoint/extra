@@ -1133,3 +1133,9 @@ Recorded in the session report, not here, so that this record can be pushed once
 ### Witness
 
 - docs/bevy-gaps/parity-assignment-witness.cjs exit 0 (see the Phase B record below).
+
+## Row 227 closed; no plain-witnessable row assigned next (2026-11-25)
+
+- docs/bevy-gaps/parity-assignment-2026-11-25.md: closure section added. Row 227 closed on origin/main at b204b0e, from commit 162145f, with the check output recorded.
+- docs/bevy-gaps/parity-assignment-witness.cjs: rewritten. The old check looked for the spoint names and would miss bevy counterparts. The new check verifies the counterparts, the three tests, the triangle assertion line and the fixture's internal consistency. Exit 0.
+- No next row is assigned: no row is witnessable to closure by a plain script.
