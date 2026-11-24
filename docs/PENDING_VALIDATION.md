@@ -988,3 +988,21 @@ Recorded in the session report, not here, so that this record can be pushed once
 ### Limits
 
 - The 16 rows were judged on the code at c394fb9; the other 253 rows cite no changed file and were not re-read.
+
+## Items 5 and 6 of the ranked list: citations and source-answerable questions (2026-11-24)
+
+### Changes
+
+- `docs/bevy-gaps/missing-recheck-2026-11-23.tsv`: 18 documented_in cells corrected. Twelve featureset-part-7 review bullets now cite the module's own inventory line (gap-117, 120, 121, 123, 125, 126, 128, 129, 133, 134, 135, 136); gap-010, gap-045, gap-066, gap-124 and gap-245 cite the line that describes the feature; gap-118 gains the ctx.groundY line. Rows whose cited line already describes the feature were kept (the GLB rows, the object and scatter fields, the stream headings).
+- `docs/bevy-gaps/README.md`: new section "Answered from bevy source (2026-11-24)" with 11 answers, and the remaining unchecked list.
+
+### Witness
+
+- Every documented_in ref in the TSV resolves to an existing wiki or docs line (the three `docs/bevy-gaps/` refs exist); 269 rows, 16 columns.
+- Builtin namespaces: 23 `__builtins.<name> =` assignments at origin/main, counted by `git show origin/main:src/script/prelude.js | grep -o`.
+- Absences from `git grep` at origin/main: `admits`, `visitorsCarry`, `__postfx` outside the prelude, weather or cloud in `src/planet_sky`, the player folder file names.
+
+### Limits
+
+- Source answers are presence checks by grep plus the lines read. The builtin bodies, the state and parenting examples and the migrateWorldAnchors question were not run or compared in full.
+- The documented_in fixes change which line a row cites, not its status.
