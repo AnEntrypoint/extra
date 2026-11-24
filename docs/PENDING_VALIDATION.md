@@ -1071,3 +1071,11 @@ Recorded in the session report, not here, so that this record can be pushed once
 ### Red check
 
 - The unpatched lines fail the guarded-source check (sourceRed true, and the fixture reads escape). The witness exits 1 if either the before or the after side is wrong.
+
+## Citation drift after bevy 03e48e2 (2026-11-25)
+
+- Scope: bevy changed 67 files between c394fb9 and 03e48e2. 28 cited files changed; 28 cited lines were checked (four rows already corrected against 03e48e2 are excluded).
+- Result: 13 cites moved because the cited text moved to a new line, with the same text on both commits; each row gains the new line. 8 cites are unchanged. No cited line changed content, so no row needed reading and no status changed.
+- Changed rows: gap-009, 012, 097, 125, 129, 130, 165, 170, 172, 237, 242 and 251 (two cites). Statuses unchanged.
+- Witness: docs/bevy-gaps/recheck3-move-witness.cjs. It compares each moved cite pair in the committed table with the cited text at c394fb9 and at 03e48e2, and exits 1 on any mismatch.
+- Limit: an exact text match shows the cited line is the same code, not that the row status still holds. A status depends on code outside the cited line, which this check does not read.
