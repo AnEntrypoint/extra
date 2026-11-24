@@ -166,7 +166,24 @@ Counted from `depends_on` in `missing.tsv`:
 - `src/spec.rs` parses sprite, room, jiggle, wisp, boxart, attachment, scatter, template, overrides, interpolation, visibleTo and collider2d, and nothing else in `src` uses them.
 - The empty place argument fix has landed: `src/world.rs:72` returns `the place argument is empty; name a place or leave it out`. It is no longer a gap.
 
-## Not checked
+## Answered from bevy source (2026-11-24)
+
+These questions from the unchecked list were answered by reading bevy at `origin/main` (`c394fb9`). Each answer names what was read; where only a name was found, the answer says so.
+
+- **Builtin modules, 21 served against the owner's 23.** Bevy's prelude defines 23 builtin namespaces (`src/script/prelude.js`, the `__builtins.<name> =` assignments: authoring, ballistics, env, fx, globe, lighting, nav, noise, path, physics, planet, postfx, room_routing, spherical, spline, terrain, three, tsl, tween, vec, vibe, voxels, water). That matches the owner count of 23 by name. The 21 in the wiki is the jayzee-side served count. Bodies were not compared, and `tsl` and `postfx` are shims.
+- **Replay file, magic v2 byte layout.** Bevy has no `.spointreplay` code: `git grep` for the file, magic and version finds only brush-stroke and biome-stroke replays (`src/brush_stroke.rs:64,97`). The "12 PASS" witness belongs to the jayzee build, not bevy. Still missing.
+- **Replication scope and audience.** Bevy replicates with `Replicate::to_clients(NetworkTarget::All)` and `PredictionTarget::to_clients(NetworkTarget::All)` (`src/server.rs:29,45,46`). The scope wording itself is still unchecked, because the jayzee learnings 30 to 37 are in neither repo.
+- **Postfx and vibe output.** Postfx builtins build descriptors (`src/script/prelude.js:1235`, `{ __postfx: ... }`), and `__postfx` appears in no Rust file, so no renderer applies them. Vibe has state and a snapshot (`src/features.rs:15,72,123,361`), and nothing in `src` plays audio.
+- **ctx.crossing and ctx.device.hold.** The documented crossing rule (`wiki/reference-game-16/recapture-skills.md:1288`) is that an item enters another world only if its `admits()` decides, using the arrival place's policy, the world root's, or `visitorsCarry`. Bevy has none of `admits`, `visitorsCarry` or `returnDoor` (`git grep`: 0 hits). `ctx.crossing` is not defined on the ctx object; only `enterPlace` and cross move within a world (`src/script/mod.rs:2113,2188`). `ctx.device.hold` has no definition in the prelude. Both are still open.
+- **Weather and clouds in the planet sky.** No `cloud`, `weather`, rain or snow symbol in `src/planet_sky`. Absent.
+- **Trees, leaf sprays and meadow grass.** Grass and trees exist (`src/planet_veg/grass.rs`, `tree.rs`). No `meadow`, `leafSpray` or spray symbol in `src`. The documented leaf-spray and meadow API is absent; the grass and tree modules are present.
+- **Player folder files** (`player.jsui`, `player.jsscripts`, `player.ymlscripts`, `player.jstemplates`). No loader for these names in `src` (`git grep`: 0 hits in `src/tree.rs` and `src/spec.rs`). Absent.
+- **API reference sections 34 to 37.** Section 34 (ctx.player on a camera rig alone): no symbol joins player and camera rig in `src`, so absent. Section 36 (ctx.self.state compat spellings): a keyed proxy and whole-object replace are in the prelude (`src/script/prelude.js:216,254`), so present. Section 37 (ctx.self.feetPosition and rotation, read and write): read at `src/script/mod.rs:629,633`, written at `mod.rs:759,781`, so present. Section 35 (ctx.place and ctx.world on every behavior ctx): `world:state` is defined (`prelude.js:136`) but the ctx.place spine was not traced fully, so not decided.
+- **API reference section 45 (parenting).** `ctx.self.parent` is read at `src/script/prelude.js:220` and `attach(entity, parent, offset)` at `prelude.js:1404`. The example itself was not compared.
+
+Still unchecked after this pass: the path resolution of relative script, template and UI paths in world and place configs (no resolver was found by grep, so it needs reading `src/tree.rs`); the migrateWorldAnchors question; the replication scope wording; and the skill bodies, which the docs door returned as 404.
+
+## Not checked (after the 2026-11-24 pass)
 
 These were not decided, so they are not listed as missing:
 
