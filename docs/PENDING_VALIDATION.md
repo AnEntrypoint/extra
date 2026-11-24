@@ -1006,3 +1006,23 @@ Recorded in the session report, not here, so that this record can be pushed once
 
 - Source answers are presence checks by grep plus the lines read. The builtin bodies, the state and parenting examples and the migrateWorldAnchors question were not run or compared in full.
 - The documented_in fixes change which line a row cites, not its status.
+
+## Row check 2026-11-24 corrections applied (2026-11-25)
+
+### Changes
+
+- `docs/bevy-gaps/missing-recheck-2026-11-23.tsv`, rows gap-025, gap-148, gap-163 and gap-240, column `file_line`: the citations that bevy's 2026-11-24 row check named as moved. gap-025: `src/globe.rs:478` to `:449` and `src/offscreen.rs:93` to `:100`. gap-148: `src/bench_planet.rs:245` to `src/planet_scene.rs:23` and `:27`. gap-163: `src/planet_veg/trees_render/assets.rs:91-92` added, the `decode_rgba` read through `planet_assets::read`. gap-240: `src/planet_lod/stream.rs:256-262` to `:273`.
+- One correction differs from bevy's note. Bevy wrote `stream.rs:276`, which is true at `8359f30`. On `origin/main` (`03e48e2`) the registration is at `:273`, after three later commits. The record uses the line on the tree the witness reads.
+
+### Witness
+
+- Each corrected citation contains its named symbol at `origin/main`: `globe.rs:449` Projection::Perspective, `offscreen.rs:100` Projection::Perspective, `planet_scene.rs:23` fn settled, `:27` fn unsettled, `stream.rs:273` rebase_system, `trees_render/assets.rs:91` fn decode_rgba, `:92` planet_assets::read, `:107` for file in files. All 8 pass.
+- The TSV still has 269 rows of 16 columns, and its ids are the ids of `missing.tsv` in order.
+
+### Red check
+
+- The old citations fail the same check: `globe.rs:478`, `offscreen.rs:93`, `bench_planet.rs:245` and `stream.rs:256` no longer contain their symbols at `origin/main`. Each reports no. Red check passed.
+
+### Limits
+
+- These corrections change citations only. No status changed, and bevy has not yet re-read these rows against a new tree.
