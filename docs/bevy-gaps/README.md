@@ -26,7 +26,7 @@ Bevy's planet stage 4 closed none of the 269 rows. The 46 wrong rows came from t
 
 ### Test-only modules
 
-`src/main.rs` declares 42 modules with `#[cfg(test)] mod`, including `character`, `camera_rig`, `hitscan`, `flight_model`, `fire_terrain`, `game_rules`, `hud`, `hud_overlay`, `terrain_marks`, `field_paint`, `brush_stroke`, `chart_anchor`, `chart_reanchor_service`, `world_name`, `terrain_config` and `baked_field_load`. They compile in `cargo test` only. `camera_rig`, `flight_model` and `fire_terrain` have no caller outside their own tests. A row whose only implemented part is in such a module is marked `test-only port` and counts as open. The same applies to the list of 144 implemented features below: 10 of them cite only test-only modules (for example the character controller, hitscan and the flight model), so they are implemented in tests, not in the game.
+`src/main.rs` gates 42 modules with `#[cfg(test)] mod`, including `character`, `camera_rig`, `hitscan`, `flight_model`, `fire_terrain`, `game_rules`, `hud`, `hud_overlay`, `terrain_marks`, `field_paint`, `brush_stroke`, `chart_anchor`, `chart_reanchor_service`, `world_name`, `terrain_config` and `baked_field_load`. They compile in `cargo test` only. `camera_rig`, `flight_model` and `fire_terrain` have no caller outside their own tests. A row whose only implemented part is in such a module is marked `test-only port` and counts as open. The same applies to the list of 144 implemented features below: 10 of them cite only test-only modules (for example the character controller, hitscan and the flight model), so they are implemented in tests, not in the game.
 
 ### Corrected counts per stage
 
@@ -181,7 +181,21 @@ These questions from the unchecked list were answered by reading bevy at `origin
 - **API reference sections 34 to 37.** Section 34 (ctx.player on a camera rig alone): no symbol joins player and camera rig in `src`, so absent. Section 36 (ctx.self.state compat spellings): a keyed proxy and whole-object replace are in the prelude (`src/script/prelude.js:216,254`), so present. Section 37 (ctx.self.feetPosition and rotation, read and write): read at `src/script/mod.rs:629,633`, written at `mod.rs:759,781`, so present. Section 35 (ctx.place and ctx.world on every behavior ctx): `world:state` is defined (`prelude.js:136`) but the ctx.place spine was not traced fully, so not decided.
 - **API reference section 45 (parenting).** `ctx.self.parent` is read at `src/script/prelude.js:220` and `attach(entity, parent, offset)` at `prelude.js:1404`. The example itself was not compared.
 
-Still unchecked after this pass: the path resolution of relative script, template and UI paths in world and place configs (no resolver was found by grep, so it needs reading `src/tree.rs`); the migrateWorldAnchors question; the replication scope wording; and the skill bodies, which the docs door returned as 404.
+Still unchecked after this pass: the replication scope wording, and the skill bodies, which the docs door returned as 404. Path resolution and migrateWorldAnchors were answered on 2026-11-25 (see the section above the unchecked list).
+
+## Answered from bevy source (2026-11-25)
+
+Each citation below was checked at `origin/main` (`03e48e2`) before this section was written.
+
+- **Relative script, template and UI paths in world and place configs.** Bevy resolves paths against the world root, with no config-relative lookup.
+  - A scripted primitive's `script` value is read as `root.join(script)` (`src/script/mod.rs:3217`, `:3227`). Nothing checks for `..` or an absolute path there.
+  - A script's module imports resolve relative to the importing file through `normalize` (`src/script/mod.rs:3822`, `:3866`), which drops `.`, pops on `..` and passes bare names and `builtin/` through. The loader reads `root.join(name)` (`:3852`).
+  - The place program is the fixed path `places/<place>/sim.js` (`src/script/mod.rs:2693`).
+  - The script file API (read, write, delete) goes through `file_path` (`src/script/mod.rs:2265`), which normalises the path and refuses `..` prefixes and absolute paths.
+  - A template is not resolved: `template: Option<String>` (`src/spec.rs:114`) has no reader. `src/ui_html.rs:11` only skips the tag name `template`.
+  - A place's `ui` config is passed through as JSON (`src/script/mod.rs:2106`), so UI has no file path to resolve. Element HTML comes from script output.
+  - Observation, not a row: the `script` read at `mod.rs:3227` and the loader read at `:3852` have no `..` guard, unlike `file_path` at `:2265`. A scripted primitive whose `script` escapes the world root would read outside it. This was not run.
+- **migrateWorldAnchors** (`wiki/cleetus/featureset-part-3.md:72`). The documented factory `createWorldAnchorMigrator({ ctx, stageLoader })` in spoint's `src/sdk/chartState/migrateWorldAnchors.js` has no bevy counterpart. Bevy's `WorldAnchor` (`src/ui_html.rs:189`) is a UI anchor set by a `data-world-anchor` attribute, a different concept. The nearest hook is `ChartReanchorService::on_reanchor` (`src/chart_reanchor_service.rs:246`), a generic migrator list in a module that is test-only. Answer: not the same migration, and absent. No row covers it. A row would be needed if the owner wants chartState migrators tracked; none has been added.
 
 ## Not checked (after the 2026-11-24 pass)
 
@@ -190,7 +204,7 @@ These were not decided, so they are not listed as missing:
 - wiki/cleetus/featureset-part-2.md:117 Stream 24: client editor modules: checked, not a gap. Every matching bevy matrix row (609, 617, 611) is marked not applicable, so bevy scopes it out (browser-only or hosted).
 - wiki/cleetus/featureset-part-3.md:160 Stream 34: top-level bin boot and tooling scripts: checked, not a gap. Every matching bevy matrix row (964, 965, 966, 967, 968, 969, 970, 458) is marked not applicable, so bevy scopes it out (browser-only or hosted).
 - wiki/cleetus/featureset-part-4.md:46 Stream 38: bloom and FSR1: checked, not a gap. Every matching bevy matrix row (760, 761, 777, 778) is marked not applicable, so bevy scopes it out (browser-only or hosted).
-- wiki/cleetus/featureset-part-3.md:72 migrateWorldAnchors: a world_anchor term appears in src/ui_html.rs and src/viewer.rs, but no row cites the migrator, so whether it is the same per-file migration was not decided.
+- wiki/cleetus/featureset-part-3.md:72 migrateWorldAnchors: answered 2026-11-25, see the section above.
 - wiki/cleetus/featureset-part-2.md:48 src/game/index.js: an index module; whether it carries behaviour beyond re-exports was not read in spoint, so it is not classed.
 - wiki/cleetus/featureset-part-1.md:13 cleetus documented-surface counts (93 endpoints, 70 HTTP doors, 305 API types, 21 builtins, 23 skills): these are corpus counts, not engine features; endpoint-level comparison is out of this slice.
 - wiki/cleetus/jayzee-gaps.md:162 builtin modules (21 served against the owner's 23): bevy resolves `builtin/` imports at src/script/mod.rs:3831, but the count and bodies of bevy's builtins were not compared with the 21 or 23 documented ones.
