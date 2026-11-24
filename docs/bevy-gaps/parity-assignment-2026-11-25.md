@@ -20,4 +20,3 @@ No open row can be closed with a plain script. Every row that could close needs 
 - Row 725 (tps-game fire layer): shot blocking depends on fire.rayBlocked over smoke, which is not ported.
 - Row 726 (tps-game emotes): not reachable; src/protocol.rs has no emote message.
 - Row 729 (tps-game HUD overlay): its witness is a cargo test, and its value is UI-only.
-
