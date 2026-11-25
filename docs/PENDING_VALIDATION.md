@@ -1153,3 +1153,26 @@ Recorded in the session report, not here, so that this record can be pushed once
 - Result: 49 cited lines keep their text; 6 moved to a new line with the same text, each matched uniquely (gap-025, gap-165, gap-173, gap-210, gap-251, gap-255); 0 cited lines changed content. No row needed re-judging on its cited code.
 - Not checked: a row whose cited lines are unchanged can still depend on changed code elsewhere in the same file. That dependence is not read here. Vendored files (vendor/) were outside the scope of the table and were not read.
 - Witness: docs/bevy-gaps/drift-ad97f77-witness.cjs exit 0: 6 moved pairs, each with the same text at 03e48e2 and at origin/main; 269 rows of 16 columns.
+
+## Symbol-level re-check of absence claims to ad97f77, and the ranked remaining work (2026-11-25)
+
+### Changes
+
+- docs/bevy-gaps/absence-claims-witness.cjs: new plain check. It takes every 'absent: searched' claim in the table (548 unique id and term pairs) and compares each term's count in non-test src at 03e48e2 and at origin/main (ad97f77). It fails on any unexplained growth and checks gap-248's terms directly.
+
+### Result
+
+- 548 absence claims: 1 term grew since 03e48e2, triangles for gap-248. The new match is the cave volume test assertion (src/cave_sdf.rs:462, row 227), not a viewer stats field. It is accepted, and gap-248 stays still open; gpuMs and drawCalls are still absent.
+- Present-status claims: their cited lines were checked for text and move by the drift check at 2944d34, so their cited functions still exist at ad97f77.
+- Status changes: 0.
+- Scope limit: the check compares term counts, so it finds new code that names an absent term. It does not find a behaviour change in code that already existed.
+
+### Ranked remaining work (2026-11-25)
+
+1. Symbol-level re-check of absence claims to ad97f77: done (this entry). Witness: absence-claims-witness.cjs exit 0.
+2. Row 227 outcome check: bevy has not updated its matrix row, which still reads candidate-only at ad97f77. Done when the row reads present and the three tests and the triangle assertion still exist. Witness: parity-assignment-witness.cjs, extended. Blocked on bevy's matrix update.
+3. Empty-place witness on origin: bevy recorded it at 9ccfec3. Done when the message is in origin src/world.rs and the commit is an ancestor of origin. Witness: grep and merge-base. Ready; waits for bevy's REPORT on its current items.
+4. gap-207 row count: held for the owner, with no change to the count.
+5. Owner-held: the signal-stage push of 7a18a88 (the room); the game-16 push of cad7f6e (git.spawn.co); the history rewrite that removes token values (a force push); the exec-readonly POST check (needs a token and an approved target); the games scope (148 pages, 52 fetched); the ctx.anim alias intent; the walk-control hall action and the 38 controls; the skill bodies (404); and the 36 stage-6 services decisions.
+6. Blocked on other peers: the Savi and Jayzee open items (OPEN-001 to OPEN-030); the builtin body comparison (the jayzee side is not in this workspace); the replication scope wording (the jayzee learnings are in neither repo).
+7. Bevy windows: stage 0 wiring of the 16 test-only ports, and stages 1 to 6. These are bevy's implementation.
