@@ -1,0 +1,17 @@
+const fs = require('fs');
+const cp = require('child_process');
+const path = require('path');
+const ROOT = '/workspace/extra';
+const read = (f) => fs.readFileSync(path.join(ROOT, f), 'utf8');
+const bad = [];
+const idx = read('wiki/index/extra-docs.md');
+if (!idx.includes('### skills.md (a 404 error body)')) bad.push('the 404 record for skills is no longer in wiki/index/extra-docs.md');
+if (!idx.includes('section_not_found')) bad.push('the section_not_found body is no longer recorded');
+if (!idx.includes('no skill text is stored')) bad.push('the statement that no skill text is stored is gone');
+const dp = read('wiki/reference-game-16/download-process.md');
+if (!/Docs opening \|[^\n]*with bearer token/.test(dp)) bad.push('the docs door no longer records a bearer-token requirement');
+const tracked = cp.execSync('git ls-files', { cwd: ROOT, encoding: 'utf8' }).split('\n').filter(Boolean);
+const bodies = tracked.filter(f => /(^|\/)skills\.json$/.test(f) || /(^|\/)skill-bod[^\/]*\.(json|md|txt)$/i.test(f));
+if (bodies.length) bad.push('tracked skill-body store now exists, so the hold may be stale: ' + bodies.join(', '));
+console.log(JSON.stringify({ hold: 'skill bodies: the docs door needs a bearer token, and no skill text is captured', trackedSkillBodyStores: bodies, bad }, null, 1));
+process.exit(bad.length ? 1 : 0);

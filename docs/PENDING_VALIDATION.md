@@ -1305,3 +1305,26 @@ No ranked item was runnable without the owner or another peer at 980ed25, so non
 | 7 | Bevy windows | bevy's implementation | none |
 | 8 | Witness runner | done, 89a15d3 | node scripts/run-witnesses.cjs |
 | 9 | Games scope (was owner-held) | closed at 52 pages; the 148 figure was click targets | games-scope-witness.cjs exit 0 |
+
+## Skill bodies: held for the owner, with the blocker witnessed (2026-11-25)
+
+- The docs door is the Tome API reference. Its opening is GET https://www.spawn.co/api/sdk/v1/<worldId>/agent/docs with a bearer token (wiki/reference-game-16/download-process.md:24). The section route needs the same token. This check did not re-probe the door, since that would mean handling a credential.
+- The 404 for the section named skills is recorded at wiki/index/extra-docs.md:291 (section_not_found, nearest section Camera). It says the skill list is in skills.json and no skill text is stored. The repo's wiki-tools/capture/02-skills.json holds zero entries.
+- Held for the owner. The owner supplies the access path for the token, or decides that skill bodies stay out of scope. Nothing here is owner-free.
+- Witness: docs/held/skill-bodies-witness.cjs exit 0. It goes red if the 404 record, the bearer-token requirement, or the empty capture changes, which would mean skill text is now held somewhere and this status needs updating.
+
+### Ranked list status (2026-11-25, after this item)
+
+| # | Item | Status | Witness or reason |
+|---|---|---|---|
+| 1 | Symbol-level and in-place re-check | done, 760dc27 and 980ed25 | absence-claims-witness.cjs; in-place-change-witness.cjs |
+| 2 | Row 227 outcome | decided: the row is correct, the work is incomplete; blocked on bevy's port | row227-outcome-witness.cjs exit 0; bevy prompt in REPORT |
+| 3 | Empty-place witness on origin | done, fa8701f | empty-place-witness.cjs |
+| 4 | gap-207 row count | held for the owner, no change | none |
+| 5 | Owner-held items | held: signal push 7a18a88; game-16 push cad7f6e; history rewrite; exec-readonly POST check (needs a token); ctx.anim alias intent; walk-control and 38 controls; skill bodies (docs door needs a bearer token); 36 stage-6 decisions | docs/held/skill-bodies-witness.cjs exit 0 for skill bodies; the rest need the owner's decision or a credential |
+| 6 | Cross-peer blocks | witnessed; replication scope and builtin body blocked on missing sources | cross-peer-blocks-witness.cjs exit 0 |
+| 7 | Bevy windows | bevy's implementation | none |
+| 8 | Witness runner | done, 89a15d3 | node scripts/run-witnesses.cjs |
+| 9 | Games scope | closed at 52 pages, 335eedd | games-scope-witness.cjs exit 0 |
+
+No ranked item was runnable without the owner, a credential, or bevy at this point. The next owner-free step would be an architectural one, which the owner has approved in principle: wire node scripts/run-witnesses.cjs into a tracked pre-push hook via core.hooksPath. It is not on the ranked list, so it is not started here.
