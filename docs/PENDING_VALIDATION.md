@@ -1146,3 +1146,10 @@ Recorded in the session report, not here, so that this record can be pushed once
 - The patch was read in full before applying. Its two test names exist at bevy origin/main (b204b0e): scripted_primitive_does_not_read_a_traversal_outside_the_root (src/script/mod.rs:4135) and loader_does_not_read_an_absolute_name_outside_the_root (:4144). b50dbb7 is an ancestor of origin. git apply --check passed on b1292b2.
 - Witness: docs/bevy-gaps/readme-path-guard-witness.cjs exit 0, 13 checks: the new wording is present, the stale wording is absent, lines 3227 and 3856 match at bevy origin, and both test names are present.
 - Bevy's checkout was not touched.
+
+## Citation drift to bevy ad97f77 (2026-11-25)
+
+- Scope: bevy origin/main moved from 03e48e2 to ad97f77 (11 commits, 148 changed files). 256 cites in the table; 55 are in files changed under src, scripts or docs.
+- Result: 49 cited lines keep their text; 6 moved to a new line with the same text, each matched uniquely (gap-025, gap-165, gap-173, gap-210, gap-251, gap-255); 0 cited lines changed content. No row needed re-judging on its cited code.
+- Not checked: a row whose cited lines are unchanged can still depend on changed code elsewhere in the same file. That dependence is not read here. Vendored files (vendor/) were outside the scope of the table and were not read.
+- Witness: docs/bevy-gaps/drift-ad97f77-witness.cjs exit 0: 6 moved pairs, each with the same text at 03e48e2 and at origin/main; 269 rows of 16 columns.
