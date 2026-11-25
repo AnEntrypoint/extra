@@ -243,3 +243,5 @@ These were not decided, so they are not listed as missing:
 ## Witness runner
 
 Run every registered plain-script witness with node scripts/run-witnesses.cjs. scripts/witness-manifest.tsv lists each witness with its expected exit code. The runner fails on an unregistered or missing witness, an unsafe or duplicate manifest path, or an exit mismatch, and it runs a planted-failure self-test first.
+
+The pre-push hook in .githooks/pre-push runs the same runner before every push from this clone. It is installed with git config core.hooksPath .githooks. That setting is local to the clone, not committed. The hook needs the sibling checkouts (/workspace/bevy, /workspace/savi, /workspace/jayzee) that the witnesses read, so a clone without them fails the hook. scripts/hook-witness.cjs checks the hook is executable, installed, and fails when the runner fails.

@@ -1328,3 +1328,26 @@ No ranked item was runnable without the owner or another peer at 980ed25, so non
 | 9 | Games scope | closed at 52 pages, 335eedd | games-scope-witness.cjs exit 0 |
 
 No ranked item was runnable without the owner, a credential, or bevy at this point. The next owner-free step would be an architectural one, which the owner has approved in principle: wire node scripts/run-witnesses.cjs into a tracked pre-push hook via core.hooksPath. It is not on the ranked list, so it is not started here.
+
+## Pre-push hook: the witness runner on every push (2026-11-25)
+
+- .githooks/pre-push (mode 100755) runs node scripts/run-witnesses.cjs and exits with its status. The hook is installed in this clone with git config core.hooksPath .githooks; that setting is local and not committed.
+- The runner reads its manifest from WITNESS_MANIFEST when set, otherwise from scripts/witness-manifest.tsv. The override exists so a broken manifest can exercise the hook's failure path.
+- scripts/hook-witness.cjs checks the hook's mode, shebang, runner call and installation, and runs the hook with a missing manifest. The hook must exit nonzero and name the missing file. It passes.
+- The hook needs the sibling checkouts the witnesses read. A clone without /workspace/bevy, /workspace/savi and /workspace/jayzee fails the hook. That is a limit of the workspace, stated here, not a fault of the hook.
+- The end-to-end proof is the push that carries this commit: the hook runs the full runner before the push is sent.
+
+### Ranked list status (2026-11-25, after this item)
+
+| # | Item | Status | Witness or reason |
+|---|---|---|---|
+| 1 | Symbol-level and in-place re-check | done, 760dc27 and 980ed25 | absence-claims-witness.cjs; in-place-change-witness.cjs |
+| 2 | Row 227 outcome | decided: the row is correct, the work is incomplete; blocked on bevy's port | row227-outcome-witness.cjs exit 0; bevy prompt in REPORT |
+| 3 | Empty-place witness on origin | done, fa8701f | empty-place-witness.cjs |
+| 4 | gap-207 row count | held for the owner, no change | none |
+| 5 | Owner-held items | held: signal push 7a18a88; game-16 push cad7f6e; history rewrite; exec-readonly POST check (needs a token); ctx.anim alias intent; walk-control and 38 controls; skill bodies (docs door needs a bearer token); 36 stage-6 decisions | docs/held/skill-bodies-witness.cjs exit 0 for skill bodies; the rest need the owner or a credential |
+| 6 | Cross-peer blocks | witnessed; replication scope and builtin body blocked on missing sources | cross-peer-blocks-witness.cjs exit 0 |
+| 7 | Bevy windows | bevy's implementation | none |
+| 8 | Witness runner | done, 89a15d3 | node scripts/run-witnesses.cjs |
+| 9 | Games scope | closed at 52 pages, 335eedd | games-scope-witness.cjs exit 0 |
+| 10 | Pre-push hook runs the runner | done, this commit | scripts/hook-witness.cjs exit 0; the push of this commit runs the hook |

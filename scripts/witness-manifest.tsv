@@ -11,3 +11,4 @@ docs/patches/bevy-path-guard-verify.cjs	0	guard commit identical to the patch, r
 docs/peers/cross-peer-blocks-witness.cjs	0	savi register pinned at 5a30f94, OPEN-018 reads, replication scope and builtin body blockers
 wiki-tools/games-scope-witness.cjs	0	games section holds 52 pages; captures, game pages and counts agree
 docs/held/skill-bodies-witness.cjs	0	skill bodies held: the docs door needs a bearer token, and no skill text is captured
+scripts/hook-witness.cjs	0	pre-push hook runs the runner, is executable, is installed in this clone, and propagates a failing runner

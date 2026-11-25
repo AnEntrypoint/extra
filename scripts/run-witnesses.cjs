@@ -3,7 +3,7 @@ const path = require('path');
 const cp = require('child_process');
 
 const EX = path.resolve(__dirname, '..');
-const MANIFEST = path.join(EX, 'scripts', 'witness-manifest.tsv');
+const MANIFEST = process.env.WITNESS_MANIFEST || path.join(EX, 'scripts', 'witness-manifest.tsv');
 const PATTERN = /-(witness|verify)\.cjs$/;
 const CONCURRENCY = 4;
 const TIMEOUT_MS = 600000;
