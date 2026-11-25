@@ -1390,3 +1390,9 @@ Row 227 (CaveSDF volume) is candidate-only at origin/main ad97f77 because create
 | 8 | Witness runner | done, 89a15d3 | node scripts/run-witnesses.cjs |
 | 9 | Games scope | closed at 52 pages, 335eedd | games-scope-witness.cjs exit 0 |
 | 10 | Pre-push hook runs the runner | done, 0a180c7 | hook-witness.cjs exit 0 |
+
+## Watch check for row 227 (2026-11-25)
+
+- Bevy origin/main is still ad97f77. Row 227 reads candidate-only. No create_cave_volume or polygonize_cave_volume is defined, and src/cave_sdf.rs has no change since ad97f77.
+- docs/bevy-gaps/row227-outcome-witness.cjs exit 0. It stays green until the port lands and then goes red, which is the signal to update row 227 and this witness.
+- Ranked list: item 2 is still dispatched to bevy and watched. Items 3, 4 and 5 are held for the owner or a credential. Item 6 is blocked on owner or peer input. Item 7 is bevy's work. No item can run without one of those.
