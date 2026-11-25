@@ -1,0 +1,17 @@
+const cp = require('child_process');
+const B = '/workspace/bevy';
+const git = (a) => cp.execSync('git ' + a, { cwd: B, encoding: 'utf8', maxBuffer: 1 << 26 });
+const bad = [];
+const matrixRow = git('show origin/main:docs/parity-matrix.tsv').split('\n').map(l => l.split('\t')).find(c => c[0] === '227');
+const outcome = matrixRow ? matrixRow[5] : '';
+if (outcome !== 'candidate-only') bad.push('row 227 outcome is ' + outcome + ', expected candidate-only');
+const src = git('show origin/main:src/cave_sdf.rs');
+const fixture = JSON.parse(git('show origin/main:testdata/parity/spoint-cave-sdf.json'));
+for (const f of ['polygonize_cave_sdf', 'add_cave_volume', 'load_cave_carve_layer']) if (!src.includes('fn ' + f + '(')) bad.push('counterpart fn ' + f + ' is missing at origin');
+for (const f of ['create_cave_volume', 'polygonize_cave_volume']) if (src.includes('fn ' + f + '(')) bad.push('bevy now defines ' + f + ', so row 227 needs its update');
+if (/local_to_world|world_to_local/.test(src)) bad.push('bevy now has a world transform, so row 227 needs its update');
+const meshNames = fixture.meshes.map(m => m.name).join(',');
+if (meshNames !== 'sphere,cylinder-y,tunnel-y') bad.push('fixture mesh names changed: ' + meshNames);
+if (fixture.createCaveVolume || fixture.polygonizeCaveVolume) bad.push('fixture now has world-placed cases, so row 227 needs its update');
+console.log(JSON.stringify({ origin: git('rev-parse --short origin/main').trim(), row227Outcome: outcome, fixtureMeshes: meshNames, bad }, null, 1));
+process.exit(bad.length ? 1 : 0);

@@ -1,0 +1,10 @@
+file	expected_exit	scope
+docs/bevy-gaps/absence-claims-witness.cjs	0	every absence claim re-checked against bevy origin/main
+docs/bevy-gaps/drift-ad97f77-witness.cjs	0	cited lines moved, not changed, between 03e48e2 and ad97f77
+docs/bevy-gaps/empty-place-witness.cjs	0	empty-place guard on origin with a red parent
+docs/bevy-gaps/in-place-change-witness.cjs	0	no row cites a function changed in place
+docs/bevy-gaps/parity-assignment-witness.cjs	0	row 227 closure facts in bevy
+docs/bevy-gaps/readme-path-guard-witness.cjs	0	README path-guard wording
+docs/bevy-gaps/verdict-witness.cjs	0	verdict table for moved rows
+docs/bevy-gaps/row227-outcome-witness.cjs	0	row 227 stays candidate-only while the cave gap exists
+docs/patches/bevy-path-guard-verify.cjs	0	guard commit identical to the patch, red at base, green at origin

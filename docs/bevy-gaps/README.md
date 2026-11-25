@@ -239,3 +239,7 @@ These were not decided, so they are not listed as missing:
 - ctx.anim as a plain alias (docs/bevy-gaps/ctx-and-terrain.md:116): the wiki documents ctx.self.anim, which bevy has; whether ctx.anim was meant is not documented, so it is not a gap row.
 - wiki/jayzee/* and wiki/index/{cdn-inventory,discovery,exhaustive-index,open-gaps,overview,provenance,savi-index,spawn-index,extra-worlds}.md and wiki/index/tree/*: capture, survey and provenance records. Apart from CDN names and the world-store format (rows in rows-misc.tsv), they document no engine feature.
 - wiki/README.md and wiki/toc.md: index pages, no features.
+
+## Witness runner
+
+Run every registered plain-script witness with node scripts/run-witnesses.cjs. scripts/witness-manifest.tsv lists each witness with its expected exit code. The runner fails on an unregistered or missing witness, an unsafe or duplicate manifest path, or an exit mismatch, and it runs a planted-failure self-test first.

@@ -1222,3 +1222,42 @@ Recorded in the session report, not here, so that this record can be pushed once
 | 8 | Proposed, not started: one runner for every plain-script witness, with a planted-failure red check | proposed, needs no owner | to start when the owner asks, since it is not in the ranked list |
 
 No ranked item was runnable without the owner or another peer at 980ed25, so none was run.
+
+## Blocked items driven out (2026-11-25)
+
+### Item 2: row 227 decision, read-only at bevy origin/main ad97f77
+
+- The row is correct and the work is incomplete. The row is not stale.
+- spoint src/terrain/CaveSDF.js:113-117 createCaveVolume places a volume at a world anchor through caveVolumeFrom, which sets localToWorld at :104. :119-129 polygonizeCaveVolume maps local mesh positions into world space.
+- Bevy src/cave_sdf.rs has polygonize_cave_sdf (145), parse_anchor (245), add_cave_volume (299), volume_json (339) and load_cave_carve_layer (367). It stores the world anchor, and height_delta_at reads it. It has no createCaveVolume, no polygonizeCaveVolume, and no local_to_world or world_to_local (grep of origin/main src).
+- Fixture testdata/parity/spoint-cave-sdf.json has meshes sphere, cylinder-y and tunnel-y only, and no world-placed cases. So the row's text 'createCaveVolume and polygonizeCaveVolume are not ported' is accurate.
+- Witness: docs/bevy-gaps/row227-outcome-witness.cjs exit 0. It holds the decision: row 227 candidate-only, the counterparts present, no world transform, no world-placed fixture cases. It turns red when bevy closes the gap, which is the signal to update it.
+- Bevy-side fix, sent as a prompt in REPORT and not edited here: port createCaveVolume and polygonizeCaveVolume into src/cave_sdf.rs, place each parsed volume at its world anchor and scale by worldRadius as CaveSDF.js:104 does, and polygonize into world-space vertices and indices. Generate world-placed fixture cases from spoint with scripts/gen-cave-sdf.mjs, and assert vertex positions and triangle counts in a cave_sdf test. Then set row 227 to present in docs/parity-matrix.tsv and regenerate the parity docs.
+
+### Item 6: reads of savi and jayzee, read-only
+
+- Savi docs/OPEN-ITEMS.md holds 30 OPEN-NNN items: RESOLVED 2 (001, 023), DIFFERENT-DATASET 2 (002, 005), BEHAVIOUR 5 (004, 011, 012, 017, 019), INFERRED 2 (007, 008), UNVERIFIED 6 (009, 014, 015, 016, 022, 028), OPEN 10 (003, 006, 010, 013, 018, 020, 021, 024, 029, 030), HELD-OWNER 3 (025, 026, 027). Sum 30.
+- Savi OPEN-018 is stale. It says site/manifest.json was generated at 501c76e while HEAD is 6c39a16. The manifest now records commit 5a30f94, which is savi HEAD. This is a finding for savi, reported and not edited.
+- Replication scope (ranked item 6): still blocked. Savi docs/JAYZEE-GAPS.md:51 says the spawn learnings 30 to 37 are in neither repo. Jayzee docs/PARITY.md:32 and docs/IDEAL.md:35 cite them as owner-decision. Neither repo holds the learnings, so the wording cannot be checked.
+- Builtin body comparison (ranked item 6): still blocked. No builtin-body text exists in jayzee docs (grep finds none), so the jayzee side cannot be compared.
+
+### Item 8: witness runner, started and finished
+
+- scripts/run-witnesses.cjs runs every registered witness with at most 4 in parallel, checks each exit code against scripts/witness-manifest.tsv, and fails on an unregistered or missing witness, an unsafe or duplicate manifest path, or an exit mismatch.
+- It runs a planted-failure self-test first: 7 cases, each expected to fail or pass as written, against two fixtures outside the repo (green exit 0, red exit 1). The self-test passed 7 of 7.
+- Real run: 9 registered witnesses, all exit as expected. Witness: node scripts/run-witnesses.cjs exit 0.
+- Retired: docs/bevy-gaps/recheck3-move-witness.cjs was pinned to base c8a0097 and is superseded by drift-ad97f77-witness.cjs. docs/patches/bevy-path-guard-witness.cjs checked for a red state that no longer holds, since bevy applied the patch upstream. bevy-path-guard-verify.cjs covers both states.
+- Changed: docs/patches/bevy-path-guard-verify.cjs pinned its byte-identical check to origin/main. origin has moved since b50dbb7, so that check failed though the behaviour was right. The check now compares against the guard commit b50dbb7, and confirms it is an ancestor of origin/main.
+
+### Ranked list status (2026-11-25, after this item)
+
+| # | Item | Status | Witness or reason |
+|---|---|---|---|
+| 1 | Symbol-level and in-place re-check | done, 760dc27 and 980ed25 | absence-claims-witness.cjs; in-place-change-witness.cjs |
+| 2 | Row 227 outcome | decided: the row is correct, the work is incomplete; blocked on bevy's port | row227-outcome-witness.cjs exit 0; bevy prompt in REPORT |
+| 3 | Empty-place witness on origin | done, fa8701f | empty-place-witness.cjs |
+| 4 | gap-207 row count | held for the owner, no change | none |
+| 5 | Owner-held items | held | the owner decides each |
+| 6 | Blocked on other peers | savi and jayzee read; replication scope and builtin body still blocked on missing source; savi OPEN-018 stale | reads above |
+| 7 | Bevy windows | bevy's implementation | none |
+| 8 | Witness runner | done | node scripts/run-witnesses.cjs exit 0; self-test 7 of 7 |
