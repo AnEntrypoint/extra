@@ -1261,3 +1261,24 @@ No ranked item was runnable without the owner or another peer at 980ed25, so non
 | 6 | Blocked on other peers | savi and jayzee read; replication scope and builtin body still blocked on missing source; savi OPEN-018 stale | reads above |
 | 7 | Bevy windows | bevy's implementation | none |
 | 8 | Witness runner | done | node scripts/run-witnesses.cjs exit 0; self-test 7 of 7 |
+
+## Item 6 as a witness: cross-peer blocks (2026-11-25)
+
+- docs/peers/cross-peer-blocks-witness.cjs reads savi and jayzee read-only and checks four things. It exits 0 with the facts below.
+- Savi register: docs/OPEN-ITEMS.md pinned at savi commit 5a30f94, which is the savi HEAD at the time of this entry. It holds 30 items, numbered in sequence, each with a status from the register vocabulary. Counts: RESOLVED 2, DIFFERENT-DATASET 2, BEHAVIOUR 5, INFERRED 2, UNVERIFIED 6, OPEN 10, HELD-OWNER 3.
+- Savi OPEN-018 is stale at the current tree. Its claim is that site/manifest.json was generated at 501c76e while HEAD is 6c39a16. The manifest on disk records commit 5a30f94, which is savi HEAD. The manifest is not tracked in savi HEAD, so the register's claim rests on an untracked file. This is a finding for savi, reported and not edited.
+- Replication scope (ranked item 6): still blocked. The witness looks for learning records numbered 30 to 37 (named learning-record-section-30 to -37) in savi and jayzee. The only learning record in either repo is scripts/fixtures/spawn/learning-record-section-7.md, which is section 7 on world-store error keys. The assumption that the numbered records carry this name is stated here, not proven. The witness fails if a record named 30 to 37 appears, which is the unblock signal.
+- Builtin body comparison (ranked item 6): still blocked. The witness finds no builtin-body text in jayzee docs at HEAD 9485b74, and fails if any appears.
+
+### Ranked list status (2026-11-25, after this item)
+
+| # | Item | Status | Witness or reason |
+|---|---|---|---|
+| 1 | Symbol-level and in-place re-check | done, 760dc27 and 980ed25 | absence-claims-witness.cjs; in-place-change-witness.cjs |
+| 2 | Row 227 outcome | decided: the row is correct, the work is incomplete; blocked on bevy's port | row227-outcome-witness.cjs exit 0; bevy prompt in REPORT |
+| 3 | Empty-place witness on origin | done, fa8701f | empty-place-witness.cjs |
+| 4 | gap-207 row count | held for the owner, no change | none |
+| 5 | Owner-held items | held | the owner decides each |
+| 6 | Blocked on other peers | witnessed: savi register pinned and counted; OPEN-018 stale; replication scope and builtin body still blocked, and the witness says what would unblock them | docs/peers/cross-peer-blocks-witness.cjs exit 0 |
+| 7 | Bevy windows | bevy's implementation | none |
+| 8 | Witness runner | done, 89a15d3 | node scripts/run-witnesses.cjs |

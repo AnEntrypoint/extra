@@ -8,3 +8,4 @@ docs/bevy-gaps/readme-path-guard-witness.cjs	0	README path-guard wording
 docs/bevy-gaps/verdict-witness.cjs	0	verdict table for moved rows
 docs/bevy-gaps/row227-outcome-witness.cjs	0	row 227 stays candidate-only while the cave gap exists
 docs/patches/bevy-path-guard-verify.cjs	0	guard commit identical to the patch, red at base, green at origin
+docs/peers/cross-peer-blocks-witness.cjs	0	savi register pinned at 5a30f94, OPEN-018 reads, replication scope and builtin body blockers
