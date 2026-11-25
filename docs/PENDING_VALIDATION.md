@@ -1188,3 +1188,22 @@ Recorded in the session report, not here, so that this record can be pushed once
 | 5 | Owner-held: signal push 7a18a88; game-16 push cad7f6e; history rewrite; exec-readonly POST check; games scope; ctx.anim alias; walk-control and 38 controls; skill bodies; 36 stage-6 decisions | held | none |
 | 6 | Blocked on other peers: Savi and Jayzee open items; builtin body comparison; replication scope wording | blocked | none |
 | 7 | Bevy windows: stage 0 wiring; stages 1 to 6 | bevy's implementation | none |
+
+## Maximal in-place re-judge to ad97f77, ranked item 1 extension (2026-11-25)
+
+- Scope: every hunk in every src or scripts file changed between 03e48e2 and ad97f77 (4 files, 6 hunks). For each hunk the enclosing function was found by brace-level scanning, and each row whose cited line falls inside that function was listed.
+- Result: no row cites a changed function. The enclosing functions are polygonizer_matches_spoint_polygonize_cave_sdf (row 227's test), headless_app, module, load, a tsl test, and the new file src/pipeline_budget.rs (no enclosing function). None of them is cited by any row.
+- Status changes: 0.
+- Witness: docs/bevy-gaps/in-place-change-witness.cjs exit 0.
+
+### Ranked list status (2026-11-25, after this item)
+
+| # | Item | Status | Witness |
+|---|---|---|---|
+| 1 | Symbol-level re-check and its maximal in-place extension | done, pushed 760dc27 and this entry | absence-claims-witness.cjs; in-place-change-witness.cjs |
+| 2 | Row 227 outcome check | blocked on bevy: origin matrix row 227 still reads candidate-only at ad97f77 | none yet |
+| 3 | Empty-place witness on origin | done, pushed fa8701f | docs/bevy-gaps/empty-place-witness.cjs |
+| 4 | gap-207 row count | held for the owner | none |
+| 5 | Owner-held items | held | none |
+| 6 | Blocked on other peers | blocked | none |
+| 7 | Bevy windows | bevy's implementation | none |
