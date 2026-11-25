@@ -12,3 +12,4 @@ docs/peers/cross-peer-blocks-witness.cjs	0	savi register pinned at 5a30f94, OPEN
 wiki-tools/games-scope-witness.cjs	0	games section holds 52 pages; captures, game pages and counts agree
 docs/held/skill-bodies-witness.cjs	0	skill bodies held: the docs door needs a bearer token, and no skill text is captured
 scripts/hook-witness.cjs	0	pre-push hook runs the runner, is executable, is installed in this clone, and propagates a failing runner
+scripts/exec-readonly-static-witness.cjs	0	exec-readonly script body is one read of api.query and ctx.world.id; the live POST check stays held for a token

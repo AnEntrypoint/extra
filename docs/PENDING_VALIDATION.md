@@ -1372,3 +1372,21 @@ No ranked item can run at this point without the owner, a credential, a peer's s
 ### Prompt for bevy (item 2), sent by the dispatcher
 
 Row 227 (CaveSDF volume) is candidate-only at origin/main ad97f77 because createCaveVolume and polygonizeCaveVolume are not ported. Port them in src/cave_sdf.rs. createCaveVolume places a parsed cave volume at its world anchor (worldX, worldY, worldZ, worldRadius). polygonizeCaveVolume maps the local polygonized mesh into world space, as spoint src/terrain/CaveSDF.js does at lines 113-129, with localToWorld at line 104. Generate world-placed fixture cases from spoint with scripts/gen-cave-sdf.mjs and add them to testdata/parity/spoint-cave-sdf.json. Assert vertex positions and triangle counts in a cave_sdf test. Run cargo test cave_sdf:: through the usual gate. Then set row 227 to present in docs/parity-matrix.tsv, regenerate the parity docs, and record the result in docs/PENDING_VALIDATION.md. extra's docs/bevy-gaps/row227-outcome-witness.cjs will turn red by design when this lands, and then needs updating.
+
+## After the reboot: bevy has the row 227 port; ranked list (2026-11-25)
+
+- Bevy was given the row 227 cave-volume port. At the check after the reboot, bevy origin/main was still ad97f77, row 227 still read candidate-only, and no create_cave_volume or polygonize_cave_volume was defined. The watch is docs/bevy-gaps/row227-outcome-witness.cjs, which the runner executes on every push. It stays green until the port lands and turns red then, which is the signal to update row 227 and the witness.
+- exec-readonly (item 5, partly closed): the static half is witnessed. scripts/exec-readonly-static-witness.cjs pins the drift check's exec script to its one expression, which makes one call, api.query, and reads ctx.world.id, with no assignment and no mutating member. Exit 0. The live half is still held: whether the server does not mutate needs an authenticated POST, which needs a token.
+
+| # | Item | Status | Witness or reason |
+|---|---|---|---|
+| 1 | Symbol-level and in-place re-check | done, 760dc27 and 980ed25 | absence-claims-witness.cjs; in-place-change-witness.cjs |
+| 2 | Row 227 outcome | dispatched to bevy (the port); origin unchanged at ad97f77; watched by the row 227 witness | row227-outcome-witness.cjs exit 0 |
+| 3 | Empty-place witness on origin | done, fa8701f | empty-place-witness.cjs |
+| 4 | gap-207 row count | held for the owner, no change | none |
+| 5 | Owner-held items | held for the owner or a credential, except exec-readonly's static half, which is witnessed; live POST needs a token | exec-readonly-static-witness.cjs exit 0; docs/held/skill-bodies-witness.cjs exit 0 |
+| 6 | Cross-peer blocks | blocked on owner or peer input: the location of spawn learnings 30 to 37, and the jayzee-side builtin body text | cross-peer-blocks-witness.cjs exit 0 |
+| 7 | Bevy windows | bevy's implementation; the row 227 port is in progress there | none |
+| 8 | Witness runner | done, 89a15d3 | node scripts/run-witnesses.cjs |
+| 9 | Games scope | closed at 52 pages, 335eedd | games-scope-witness.cjs exit 0 |
+| 10 | Pre-push hook runs the runner | done, 0a180c7 | hook-witness.cjs exit 0 |
