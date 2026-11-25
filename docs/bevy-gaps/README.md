@@ -188,13 +188,13 @@ Still unchecked after this pass: the replication scope wording, and the skill bo
 Each citation below was checked at `origin/main` (`03e48e2`) before this section was written.
 
 - **Relative script, template and UI paths in world and place configs.** Bevy resolves paths against the world root, with no config-relative lookup.
-  - A scripted primitive's `script` value is read as `root.join(script)` (`src/script/mod.rs:3217`, `:3227`). Nothing checks for `..` or an absolute path there.
-  - A script's module imports resolve relative to the importing file through `normalize` (`src/script/mod.rs:3822`, `:3866`), which drops `.`, pops on `..` and passes bare names and `builtin/` through. The loader reads `root.join(name)` (`:3852`).
+  - A scripted primitive's `script` value is read through `file_path` (`src/script/mod.rs:3227`), which normalises the path and refuses `..` prefixes and absolute paths. Bevy b50dbb7 made this change; before it the read was `root.join(script)`.
+  - A script's module imports resolve relative to the importing file through `normalize` (`src/script/mod.rs:3822`, `:3866`), which drops `.`, pops on `..` and passes bare names and `builtin/` through. The loader refuses a leading `..` or an absolute result and then joins the root (`:3852`, `:3856`), as of b50dbb7.
   - The place program is the fixed path `places/<place>/sim.js` (`src/script/mod.rs:2693`).
   - The script file API (read, write, delete) goes through `file_path` (`src/script/mod.rs:2265`), which normalises the path and refuses `..` prefixes and absolute paths.
   - A template is not resolved: `template: Option<String>` (`src/spec.rs:114`) has no reader. `src/ui_html.rs:11` only skips the tag name `template`.
   - A place's `ui` config is passed through as JSON (`src/script/mod.rs:2106`), so UI has no file path to resolve. Element HTML comes from script output.
-  - Observation, not a row: the `script` read at `mod.rs:3227` and the loader read at `:3852` have no `..` guard, unlike `file_path` at `:2265`. A scripted primitive whose `script` escapes the world root would read outside it. This was not run.
+  - Observation, now resolved: at 03e48e2 the `script` read and the loader read had no `..` guard. Bevy b50dbb7 (extra patch bevy-path-guard.patch at c8a0097) added it, with regression tests in src/script/mod.rs: scripted_primitive_does_not_read_a_traversal_outside_the_root and loader_does_not_read_an_absolute_name_outside_the_root.
 - **migrateWorldAnchors** (`wiki/cleetus/featureset-part-3.md:72`). The documented factory `createWorldAnchorMigrator({ ctx, stageLoader })` in spoint's `src/sdk/chartState/migrateWorldAnchors.js` has no bevy counterpart. Bevy's `WorldAnchor` (`src/ui_html.rs:189`) is a UI anchor set by a `data-world-anchor` attribute, a different concept. The nearest hook is `ChartReanchorService::on_reanchor` (`src/chart_reanchor_service.rs:246`), a generic migrator list in a module that is test-only. Answer: not the same migration, and absent. No row covers it. A row would be needed if the owner wants chartState migrators tracked; none has been added.
 
 ## Not checked (after the 2026-11-24 pass)

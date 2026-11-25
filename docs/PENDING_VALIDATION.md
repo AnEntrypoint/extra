@@ -1139,3 +1139,10 @@ Recorded in the session report, not here, so that this record can be pushed once
 - docs/bevy-gaps/parity-assignment-2026-11-25.md: closure section added. Row 227 closed on origin/main at b204b0e, from commit 162145f, with the check output recorded.
 - docs/bevy-gaps/parity-assignment-witness.cjs: rewritten. The old check looked for the spoint names and would miss bevy counterparts. The new check verifies the counterparts, the three tests, the triangle assertion line and the fixture's internal consistency. Exit 0.
 - No next row is assigned: no row is witnessable to closure by a plain script.
+
+## Bevy path-guard README wording applied (2026-11-25)
+
+- Applied bevy's handover patch /workspace/tmp/bevy/next/handover/bevy-readme-path-guard.patch to docs/bevy-gaps/README.md. It corrects three stale statements: the scripted primitive read now goes through file_path (src/script/mod.rs:3227, as of b50dbb7); the loader refuses a leading .. or an absolute result before the root join (:3852, :3856); and the 'observation' bullet is marked resolved.
+- The patch was read in full before applying. Its two test names exist at bevy origin/main (b204b0e): scripted_primitive_does_not_read_a_traversal_outside_the_root (src/script/mod.rs:4135) and loader_does_not_read_an_absolute_name_outside_the_root (:4144). b50dbb7 is an ancestor of origin. git apply --check passed on b1292b2.
+- Witness: docs/bevy-gaps/readme-path-guard-witness.cjs exit 0, 13 checks: the new wording is present, the stale wording is absent, lines 3227 and 3856 match at bevy origin, and both test names are present.
+- Bevy's checkout was not touched.
