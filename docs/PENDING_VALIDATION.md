@@ -1351,3 +1351,24 @@ No ranked item was runnable without the owner, a credential, or bevy at this poi
 | 8 | Witness runner | done, 89a15d3 | node scripts/run-witnesses.cjs |
 | 9 | Games scope | closed at 52 pages, 335eedd | games-scope-witness.cjs exit 0 |
 | 10 | Pre-push hook runs the runner | done, this commit | scripts/hook-witness.cjs exit 0; the push of this commit runs the hook |
+
+## Ranked list status (2026-11-25, after 0a180c7)
+
+| # | Item | Status | Witness or reason |
+|---|---|---|---|
+| 1 | Symbol-level and in-place re-check | done, 760dc27 and 980ed25 | absence-claims-witness.cjs; in-place-change-witness.cjs |
+| 2 | Row 227 outcome | needs bevy's work: the port of createCaveVolume and polygonizeCaveVolume. Prompt for the dispatcher recorded below | row227-outcome-witness.cjs exit 0 |
+| 3 | Empty-place witness on origin | done, fa8701f | empty-place-witness.cjs |
+| 4 | gap-207 row count | held for the owner, no change | none |
+| 5 | Owner-held items | held for the owner or a credential: signal push 7a18a88; game-16 push cad7f6e; history rewrite; exec-readonly POST check (token); ctx.anim alias intent; walk-control and 38 controls; skill bodies (docs door needs a bearer token); 36 stage-6 decisions | docs/held/skill-bodies-witness.cjs exit 0 |
+| 6 | Cross-peer blocks | blocked on input only the owner or a peer can supply: the location of spawn learnings 30 to 37 (replication scope), and the jayzee-side builtin body text (builtin comparison) | cross-peer-blocks-witness.cjs exit 0 |
+| 7 | Bevy windows | bevy's implementation; the prompt is item 2's | none |
+| 8 | Witness runner | done, 89a15d3 | node scripts/run-witnesses.cjs |
+| 9 | Games scope | closed at 52 pages, 335eedd | games-scope-witness.cjs exit 0 |
+| 10 | Pre-push hook runs the runner | done, 0a180c7 | scripts/hook-witness.cjs exit 0 |
+
+No ranked item can run at this point without the owner, a credential, a peer's source, or bevy's work. Owner-free work left in the repo is only the stated limits of done items.
+
+### Prompt for bevy (item 2), sent by the dispatcher
+
+Row 227 (CaveSDF volume) is candidate-only at origin/main ad97f77 because createCaveVolume and polygonizeCaveVolume are not ported. Port them in src/cave_sdf.rs. createCaveVolume places a parsed cave volume at its world anchor (worldX, worldY, worldZ, worldRadius). polygonizeCaveVolume maps the local polygonized mesh into world space, as spoint src/terrain/CaveSDF.js does at lines 113-129, with localToWorld at line 104. Generate world-placed fixture cases from spoint with scripts/gen-cave-sdf.mjs and add them to testdata/parity/spoint-cave-sdf.json. Assert vertex positions and triangle counts in a cave_sdf test. Run cargo test cave_sdf:: through the usual gate. Then set row 227 to present in docs/parity-matrix.tsv, regenerate the parity docs, and record the result in docs/PENDING_VALIDATION.md. extra's docs/bevy-gaps/row227-outcome-witness.cjs will turn red by design when this lands, and then needs updating.
