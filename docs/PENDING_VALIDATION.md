@@ -1207,3 +1207,18 @@ Recorded in the session report, not here, so that this record can be pushed once
 | 5 | Owner-held items | held | none |
 | 6 | Blocked on other peers | blocked | none |
 | 7 | Bevy windows | bevy's implementation | none |
+
+## Ranked list status, re-checked at 980ed25 (2026-11-25)
+
+| # | Item | Status | Witness or reason |
+|---|---|---|---|
+| 1 | Symbol-level and in-place re-check | done, 760dc27 and 980ed25 | absence-claims-witness.cjs; in-place-change-witness.cjs |
+| 2 | Row 227 outcome check | blocked on bevy: origin matrix row 227 still reads candidate-only at ad97f77 | re-checked at 980ed25 |
+| 3 | Empty-place witness on origin | done, fa8701f | empty-place-witness.cjs |
+| 4 | gap-207 row count | held for the owner | no change to the count |
+| 5 | Owner-held items | held | the owner decides each |
+| 6 | Blocked on other peers | blocked | /workspace/jayzee and /workspace/savi are other peers' repositories and were not read |
+| 7 | Bevy windows | bevy's implementation | none |
+| 8 | Proposed, not started: one runner for every plain-script witness, with a planted-failure red check | proposed, needs no owner | to start when the owner asks, since it is not in the ranked list |
+
+No ranked item was runnable without the owner or another peer at 980ed25, so none was run.
