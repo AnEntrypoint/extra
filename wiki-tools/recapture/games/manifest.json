@@ -2,7 +2,7 @@
  "section": "Games",
  "url": "https://www.spawn.co/@lanmower/game-16@dev",
  "method": "HTTP GET with curl; the HTML as served, scripts not run",
- "cardsInSection": 53,
+ "cardsInSection": 52,
  "planned": 52,
  "games": [
   {

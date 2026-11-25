@@ -1282,3 +1282,26 @@ No ranked item was runnable without the owner or another peer at 980ed25, so non
 | 6 | Blocked on other peers | witnessed: savi register pinned and counted; OPEN-018 stale; replication scope and builtin body still blocked, and the witness says what would unblock them | docs/peers/cross-peer-blocks-witness.cjs exit 0 |
 | 7 | Bevy windows | bevy's implementation | none |
 | 8 | Witness runner | done, 89a15d3 | node scripts/run-witnesses.cjs |
+
+## Games scope closed at 52 pages (2026-11-25)
+
+- The '148 pages' figure in the owner-held list was a misreading. 148 was the number of click targets the first recapture made across the games cards (wiki-tools/recapture/states/toolbox/summary-10.json, clicked 148), recorded at PENDING_VALIDATION.md:449. It was never a count of game pages.
+- The Games section holds 52 game pages. The section's own heading says so (wiki-site/reference-game-16/recapture-games.html: 'Games: the 52 game pages in the Games section'). All 52 were fetched over HTTP on 2026-11-12 with status 200 and no error, and each has a page in wiki/reference-game-16/games/.
+- Two count fields were wrong: wiki-tools/recapture/games/cards.json count and manifest.json cardsInSection both read 53. The 53rd value came from a navigation link, 'Host page: Untitled game (@lanmower/game-16)', which is not a card. Both counts are now 52.
+- Witness: wiki-tools/games-scope-witness.cjs. Red before the count fix (2 failures, both the count fields). Green after it: 52 cards, 52 captures with matching URLs and status 200, 52 game pages each naming their card address, and the section heading and host link as stated.
+- Owner decision: not needed. The scope is the 52 pages the section lists, and all 52 are captured. Nothing was fetched beyond that set.
+- Supersedes: the item 9 line at PENDING_VALIDATION.md:640 ('the rest of the games pages need an owner decision on scope') and the owner-held entry for games scope.
+
+### Ranked list status (2026-11-25, after this item)
+
+| # | Item | Status | Witness or reason |
+|---|---|---|---|
+| 1 | Symbol-level and in-place re-check | done, 760dc27 and 980ed25 | absence-claims-witness.cjs; in-place-change-witness.cjs |
+| 2 | Row 227 outcome | decided: the row is correct, the work is incomplete; blocked on bevy's port | row227-outcome-witness.cjs exit 0; bevy prompt in REPORT |
+| 3 | Empty-place witness on origin | done, fa8701f | empty-place-witness.cjs |
+| 4 | gap-207 row count | held for the owner, no change | none |
+| 5 | Owner-held items | held except games scope, which is closed; the rest stay held for the owner | games-scope-witness.cjs (closed) |
+| 6 | Cross-peer blocks | witnessed; replication scope and builtin body still blocked on missing sources | cross-peer-blocks-witness.cjs exit 0 |
+| 7 | Bevy windows | bevy's implementation | none |
+| 8 | Witness runner | done, 89a15d3 | node scripts/run-witnesses.cjs |
+| 9 | Games scope (was owner-held) | closed at 52 pages; the 148 figure was click targets | games-scope-witness.cjs exit 0 |
