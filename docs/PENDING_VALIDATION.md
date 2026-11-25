@@ -1176,3 +1176,15 @@ Recorded in the session report, not here, so that this record can be pushed once
 5. Owner-held: the signal-stage push of 7a18a88 (the room); the game-16 push of cad7f6e (git.spawn.co); the history rewrite that removes token values (a force push); the exec-readonly POST check (needs a token and an approved target); the games scope (148 pages, 52 fetched); the ctx.anim alias intent; the walk-control hall action and the 38 controls; the skill bodies (404); and the 36 stage-6 services decisions.
 6. Blocked on other peers: the Savi and Jayzee open items (OPEN-001 to OPEN-030); the builtin body comparison (the jayzee side is not in this workspace); the replication scope wording (the jayzee learnings are in neither repo).
 7. Bevy windows: stage 0 wiring of the 16 test-only ports, and stages 1 to 6. These are bevy's implementation.
+
+## Ranked list status (2026-11-25)
+
+| # | Item | Status | Witness |
+|---|---|---|---|
+| 1 | Symbol-level re-check of absence claims | done, pushed 760dc27 | docs/bevy-gaps/absence-claims-witness.cjs exit 0 |
+| 2 | Row 227 outcome check (matrix row reads present) | blocked on bevy: origin matrix row 227 reads candidate-only at origin/main | parity-assignment-witness.cjs, to be extended when bevy updates the row |
+| 3 | Empty-place witness on origin | done | docs/bevy-gaps/empty-place-witness.cjs exit 0: guard at src/world.rs:72 on origin; red parent 800513a lacks the message; bevy's recorded run (/workspace/tmp/bevy/empty-place/result.out) shows exit 1, stdout 0 bytes, the exact stderr |
+| 4 | gap-207 row count | held for the owner, no change to the count | none |
+| 5 | Owner-held: signal push 7a18a88; game-16 push cad7f6e; history rewrite; exec-readonly POST check; games scope; ctx.anim alias; walk-control and 38 controls; skill bodies; 36 stage-6 decisions | held | none |
+| 6 | Blocked on other peers: Savi and Jayzee open items; builtin body comparison; replication scope wording | blocked | none |
+| 7 | Bevy windows: stage 0 wiring; stages 1 to 6 | bevy's implementation | none |

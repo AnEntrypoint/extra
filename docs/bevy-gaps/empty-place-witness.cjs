@@ -1,0 +1,27 @@
+const fs = require('fs'); const cp = require('child_process');
+const B = '/workspace/bevy';
+const g = (a) => cp.execSync('git ' + a, { cwd: B, encoding: 'utf8', maxBuffer: 1 << 26 });
+const ok = (a) => { try { g(a); return true; } catch (e) { return false; } };
+const bad = []; const out = {};
+out.origin = g('rev-parse --short origin/main').trim();
+const src = g('show origin/main:src/world.rs').split('\n');
+const line72 = src[71] || '';
+out.guardLine = line72.trim().slice(0, 100);
+if (!line72.includes('the place argument is empty; name a place or leave it out')) bad.push('guard message not at src/world.rs:72 on origin');
+if (!line72.includes('{directory}: ')) bad.push('guard does not prefix the directory');
+if (!ok('merge-base --is-ancestor 3952c02 origin/main')) bad.push('introducing commit 3952c02 not on origin');
+if (!ok('merge-base --is-ancestor 9ccfec3 origin/main')) bad.push('witness-record commit 9ccfec3 not on origin');
+const parentHas = (() => { try { return g('grep -c "place argument is empty" 800513a -- src/world.rs').trim() !== '0'; } catch (e) { return false; } })();
+out.redParentHasMessage = parentHas; if (parentHas) bad.push('red failed: parent 800513a already has the message');
+let rec = ''; try { rec = fs.readFileSync('/workspace/tmp/bevy/empty-place/result.out', 'utf8'); } catch (e) { bad.push('bevy result.out unreadable'); }
+out.recordedRc = (rec.match(/EMPTY_PLACE_RC (\d+)/) || [])[1];
+out.recordedStdoutBytes = (rec.match(/STDOUT_BYTES (\d+)/) || [])[1];
+const recStderr = (rec.match(/STDERR:\n([^\n]*)/) || [])[1] || '';
+out.recordedStderr = recStderr;
+if (out.recordedRc !== '1') bad.push('recorded rc is not 1');
+if (out.recordedStdoutBytes !== '0') bad.push('recorded stdout is not 0 bytes');
+if (!recStderr.endsWith(': the place argument is empty; name a place or leave it out')) bad.push('recorded stderr does not match the message');
+const ledger = g('show origin/main:docs/PENDING_VALIDATION.md');
+if (!ledger.includes('bevy-jayzee world /workspace/neon-syndicates/world "" 5 at b50dbb7')) bad.push('bevy ledger entry missing');
+console.log(JSON.stringify(Object.assign(out, { bad }), null, 1));
+if (bad.length) process.exit(1);
